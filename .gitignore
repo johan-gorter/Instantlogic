@@ -1,0 +1,22 @@
+target/
+
+# Useful suggestions from GitHub for windows
+
+#################
+## Eclipse
+#################
+
+.metadata
+bin/
+tmp/
+local.properties
+.settings/
+
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+Desktop.ini
+

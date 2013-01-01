@@ -1,0 +1,49 @@
+{
+  "instanceId": "fe28f9e2-d287-42b7-855b-9b0827814dc6",
+  "entityName": "project",
+  "version": 1,
+  "last issue number": 4,
+  "issues": [
+    {
+      "instanceId": "6ecaf602-42af-4046-b8e5-9976fd424880",
+      "entityName": "issue",
+      "headline": "New issue",
+      "number": 1,
+      "comments": []
+    },
+    {
+      "instanceId": "8be8240a-49e2-4964-90db-ffbb0bf2770f",
+      "entityName": "issue",
+      "headline": "New issue",
+      "number": 2,
+      "comments": []
+    },
+    {
+      "instanceId": "400674cb-e0b9-46c3-a010-80c049edd44e",
+      "entityName": "issue",
+      "headline": "New issue",
+      "number": 3,
+      "comments": []
+    },
+    {
+      "instanceId": "d0be7496-6a58-433a-b02a-097420ede3bf",
+      "entityName": "issue",
+      "headline": "New issue",
+      "number": 4,
+      "comments": [],
+      "reporter": "U4"
+    }
+  ],
+  "users": [
+    {
+      "instanceId": "662d81da-68f7-47a9-984c-e4f03539a388",
+      "entityName": "user",
+      "username": "Tim"
+    },
+    {
+      "instanceId": "15e8ce00-5dc9-48cb-844a-122c76ed8a4d",
+      "entityName": "user",
+      "username": "Bill"
+    }
+  ]
+}

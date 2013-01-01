@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/main/instantlogic-app"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/instantlogic-fabric"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/instantlogic-interaction"/>
+	<classpathentry kind="lib" path="D:/java/freemarker-2.3.18/lib/freemarker.jar"/>
+	<classpathentry kind="lib" path="D:/java/asm-4.0/lib/asm-4.0.jar" sourcepath="D:/java/asm-4.0/src.zip"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=designer&amp;ivyXmlPath=ivy.xml&amp;confs=*"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

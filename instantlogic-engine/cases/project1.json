@@ -1,0 +1,13 @@
+{
+  "instanceId": "9e3b7afd-407d-4803-bf21-005f9aadf5eb",
+  "entityName": "project",
+  "version": 1,
+  "issues": [],
+  "users": [
+    {
+      "instanceId": "a05806c6-2df6-4384-a573-bd8fc544354c",
+      "entityName": "user",
+      "username": "user1"
+    }
+  ]
+}

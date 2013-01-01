@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FragmentList Test</title>
+
+<script src="../yui-3.5.1/yui/yui.js"></script>
+<script src="../html.js"></script>
+<script src="../instantlogic.js"></script>
+<script src="../instantlogic-fragment.js"></script>
+
+<script>
+YUI({useBrowserConsole: true}).use('test', 'node', 'instantlogic', 'instantlogic-fragment', 'html', function (Y) {
+    
+    var place1 = {"type":"Page","id":"F7P3F1","mainContent":[{"type":"Table","id":"F7P3F1-F7P3F1P1F1","columns":[{"type":"Column","id":"F7P3F1-F7P3F1P1F1-F7P3F1P1F1P1F1","header":"Headline"}],"rows":[]},{"type":"Button","id":"F7P3F1-F7P3F1P1F2","text":"Create issue"}]}
+    var place2 = {"type":"Page","id":"F7P3F1","mainContent":[{"type":"Table","id":"F7P3F1-F7P3F1P1F1","columns":[{"type":"Column","id":"F7P3F1-F7P3F1P1F1-F7P3F1P1F1P1F1","header":"Headline"}],"rows":[{"type":"Row","id":"F7P3F1-F7P3F1P1F1!I1-F7P3F1P1F1P2S1F2","cells":[{"type":"Cell","id":"F7P3F1-F7P3F1P1F1!I1-F7P3F1P1F1P2S1F2-F7P3F1P1F1P2S1F2P1F1","content":[{"type":"Link","id":"F7P3F1-F7P3F1P1F1!I1-F7P3F1P1F1P2S1F2-F7P3F1P1F1P2S1F2P1F1-F7P3F1P1F1P2S1F2P1F1P1F1","text":""}]}]}]},{"type":"Button","id":"F7P3F1-F7P3F1P1F2","text":"Create issue"}]}
+    var place3 = {"type":"Page","id":"F7P3F1","mainContent":[{"type":"Table","id":"F7P3F1-F7P3F1P1F1","columns":[{"type":"Column","id":"F7P3F1-F7P3F1P1F1-F7P3F1P1F1P1F1","header":"Headline"}],"rows":[{"type":"Row","id":"F7P3F1-F7P3F1P1F1!I1-F7P3F1P1F1P2S1F2","cells":[{"type":"Cell","id":"F7P3F1-F7P3F1P1F1!I1-F7P3F1P1F1P2S1F2-F7P3F1P1F1P2S1F2P1F1","content":[{"type":"Link","id":"F7P3F1-F7P3F1P1F1!I1-F7P3F1P1F1P2S1F2-F7P3F1P1F1P2S1F2P1F1-F7P3F1P1F1P2S1F2P1F1P1F1","text":"Headline-I1"}]}]}]},{"type":"Button","id":"F7P3F1-F7P3F1P1F2","text":"Create issue"}]}
+    var instantlogic;
+    
+    var testCase = new Y.Test.Case({
+        name: "Update Test",
+        
+        setUp: function() {
+        	Y.one('#testarea').setContent('');
+        	instantlogic = new Y.instantlogic.Engine('dummyApplication', 'dummyCase', 'dummyTravelerId', Y.one('#testarea'), [Y.instantlogic.fragment]);
+        },
+
+        'place1 should display itself' : function () {
+        	instantlogic.updatePlace(place1);
+        },
+        
+        'place1 should update to place2': function() {
+            instantlogic.updatePlace(place1);
+            instantlogic.updatePlace(place2);
+        },
+        
+        'place2 should update to place3': function() {
+            instantlogic.updatePlace(place2);
+            instantlogic.updatePlace(place3);
+        },
+        
+        'place1 should update to place3': function() {
+        	instantlogic.updatePlace(place1);
+            instantlogic.updatePlace(place2);
+            instantlogic.updatePlace(place3);
+        }
+        
+    });
+    
+    Y.Test.Runner.add(testCase);
+    Y.Test.Runner.run();    
+});
+</script>
+
+</head>
+<body>
+    <div id="testarea">
+    </div>
+</body>
+</html>

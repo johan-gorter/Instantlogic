@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FragmentList Test</title>
+
+<script src="../yui-3.5.1/yui/yui-debug.js"></script>
+<script src="../html.js"></script>
+<script src="../instantlogic.js"></script>
+<script src="../instantlogic-fragment.js"></script>
+
+    <script>
+        YUI({
+            useBrowserConsole: true, filter: 'RAW', throwFail: true, errorFn: function () { return false; }
+        }).use('test', 'node', 'instantlogic', 'instantlogic-fragment', function (Y) {
+
+            var instantlogic;
+
+            var model = {
+                "type": "Page",
+                "id": "F40P1F1",
+                "headerContent": [{ "type": "Heading1", "id": "F40P1F1-F40P1F1F1F1", "text": "Welcome"}],
+                "mainContent": [{ "type": "Paragraph", "id": "F40P1F1-F40P1F1F2F1", "text": "Welcome to the Designer"}]
+            };
+
+            var testCase = new Y.Test.Case({
+                name: "Fragment Test",
+
+                setUp: function () {
+                    Y.one('#testarea').setContent('');
+                    instantlogic = new Y.instantlogic.Engine('dummyTravelerId', Y.one('#testarea'), [Y.instantlogic.fragment]);
+                },
+
+                'a simple page should be created': function () {
+                    instantlogic.updatePlace(model);
+                },
+
+                'a simple page should be created and updated': function () {
+                    instantlogic.updatePlace(model);
+                    Y.Assert.areEqual('Welcome to the Designer', Y.one('#testarea p').get('text'));
+                    var newModel = JSON.parse(JSON.stringify(model));
+                    newModel.mainContent[0].text = 'Hello again';
+                    instantlogic.updatePlace(newModel);
+                    Y.Assert.areEqual('Hello again', Y.one('#testarea p').get('text'));
+                    newModel.id = 'P2';
+                    newModel.mainContent[0].text = 'Another page';
+                    instantlogic.updatePlace(newModel);
+                    Y.Assert.areEqual('Another page', Y.one('#testarea p').get('text'));
+                }
+
+            });
+
+            Y.Test.Runner.add(testCase);
+
+            //            setTimeout(function () {
+            //                testCase['a simple page should be created']();
+            //            });
+
+            Y.Test.Runner.run();
+        });
+    </script>
+
+</head>
+<body>
+    <div id="testarea">
+    </div>
+</body>
+</html>

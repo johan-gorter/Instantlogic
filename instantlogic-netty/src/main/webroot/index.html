@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Instantlogic-netty test page</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+
+<link rel="stylesheet" type="text/css" href="style/presence.css">
+<link rel="stylesheet" type="text/css" href="style/margin.css">
+<link rel="stylesheet" type="text/css" href="style/designer.css">
+<link rel="stylesheet" type="text/css" href="style/izzy.css">
+ 
+<!-- JS -->
+<script type="text/javascript" src="/webjars/yui/3.7.3/yui/yui.js"></script>
+<script type="text/javascript" src="/html.js"></script>
+<script type="text/javascript" src="/instantlogic.js"></script>
+<script type="text/javascript" src="/instantlogic-presence.js"></script>
+<script type="text/javascript" src="/instantlogic-fragments.js"></script>
+<script type="text/javascript" src="/instantlogic-answers.js"></script>
+<script type="text/javascript" src="/instantlogic-designer.js"></script>
+
+<script type="text/javascript">
+	var travelerId = ''+Math.floor(Math.random()*100000000000);
+
+	YUI({filter: 'raw'}).use('node', 'instantlogic', 'instantlogic-presence', 'instantlogic-fragments', 'instantlogic-answers', 'instantlogic-designer', 'html', 'history', function(Y) {
+        var applicationMatch = /application=([^&]*)/g.exec(location.search);
+        if (!applicationMatch) Y.error('Missing application querystring parameter');
+        var caseMatch = /case=([^&]*)/g.exec(location.search);
+        if (!caseMatch) Y.error('Missing case querystring parameter');
+        var configuration = Y.instantlogic.createBaseConfiguration(Y); 
+		new Y.instantlogic.Engine(
+			applicationMatch[1], 
+			caseMatch[1], 
+			travelerId, 
+			Y.one('#presence'), 
+			Y.one('#place'), 
+			configuration
+		).start();
+	});
+</script>
+</head>
+<body class="yui3-skin-sam">
+    <div id="presence">
+        One moment..
+    </div>
+	<div id="place">
+	</div>
+</body>
+</html>

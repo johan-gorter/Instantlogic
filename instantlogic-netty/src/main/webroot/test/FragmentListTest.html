@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FragmentList Test</title>
+
+<script src="../yui-3.5.1/yui/yui.js"></script>
+<script src="../html.js"></script>
+<script src="../instantlogic.js"></script>
+<script src="../instantlogic-fragment.js"></script>
+
+<script>
+YUI({useBrowserConsole: true}).use('test', 'node', 'instantlogic', function (Y) {
+    
+    var model = {
+        id: '1',
+        children: [{
+                id: '1-2'
+            },{
+                id: '1-4'
+            },
+        ]
+    };
+    
+    var fullModel = {
+            id: '1',
+            children: [
+	            { id: '1-1' },
+	            { id: '1-2' },
+	            { id: '1-3' },
+	            { id: '1-4' },
+	            { id: '1-5' },
+            ]
+    }
+    
+    var instantlogicMock = {};
+    
+    var testCase = new Y.Test.Case({
+        name: "FragmentList Test",
+        
+        setUp: function() {
+        	Y.one('#testarea').setContent('');
+        },
+
+        'a simple fragment tree should be initialized' : function () {
+            var fragment = new Y.instantlogic.Fragment(Y.one('#testarea'), instantlogicMock);
+            fragment.init(model)
+        },
+        
+        'simple fragment should be morphed to the full model': function() {
+            var fragment = new Y.instantlogic.Fragment(model.id);
+            Y.one('#testarea').appendChild(fragment.node);
+            var diff = new Y.instantlogic.Diff();
+            fragment.init(model, instantlogicMock, diff);
+            var diff = new Y.instantlogic.Diff();
+            fragment.update(fullModel, instantlogicMock, diff);
+            Y.Assert.areEqual(3, diff.nodesAdded.length);
+        },
+        
+        'full model should be morphed to the simple model': function() {
+            var fragment = new Y.instantlogic.Fragment(model.id);
+            Y.one('#testarea').appendChild(fragment.node);
+            var diff = new Y.instantlogic.Diff();
+            fragment.init(fullModel, instantlogicMock, diff);
+            var diff = new Y.instantlogic.Diff();
+            fragment.update(model, instantlogicMock, diff);
+            diff.applyNow();
+            Y.Assert.areEqual(3, diff.nodesToRemove.length);
+        }
+
+    });
+    
+    Y.Test.Runner.add(testCase);
+
+    Y.Test.Runner.run();    
+});
+</script>
+
+</head>
+<body>
+    <div id="testarea">
+    </div>
+</body>
+</html>

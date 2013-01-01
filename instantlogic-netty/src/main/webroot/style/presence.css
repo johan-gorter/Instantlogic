@@ -1,0 +1,52 @@
+.yui3-widget-mask {	background-color: #666666; }
+
+body { padding-top: 20px; padding-bottom: 10px; }
+
+/* Page elements */
+.navbar-fixed-top .application-name {color: #EE4444;font-weight:bold;font-size:20px;}
+.navbar-fixed-top .minus {color: #DDDDDD;font-weight:bold;font-style:italic;font-size:20px;}
+.navbar-fixed-top .case-name {color: #DDDDDD;font-weight:bold;font-style:italic;font-size:20px;}
+.navbar-fixed-top .me .avatar {width:23px; height:23px;overflow:hidden;background-color:white;margin: 3px; }
+.navbar-fixed-top .me .avatar img {width:23px; height:23px;}
+.navbar-fixed-top .me .username {white-space: nowrap; margin:0 10px 0 0;}
+.show-communicator-button {}
+.debug-visible {display:inline-block;margin:0 10px;}
+.communicator-space {width:210px;display:inline-block;}
+.communicator {position:fixed; top:0px; right:0px;width:200px;height:40px; background-color:#2E2E2E; color: #FFFFFF;overflow:hidden;}
+
+.floating-avatar {position:absolute; left:600px; background-color:#222222;z-index:11}
+.floating-pointer {position:absolute; left:600px; width:54px; height:54px; background-color:#222222; z-index:10}
+.floating-pointer .arrow-top {position:absolute;left:-10px;top:0px;border-left:solid 10px transparent;border-bottom:solid 26px #222222}
+.floating-pointer .arrow-bottom {position:absolute;left:-10px;top:26px;border-left:solid 10px transparent;border-top:solid 26px #222222}
+
+.login {position:fixed; top: 200px; width:100%; }
+.login .window {position: relative;margin: 0 auto; width: 400px; background-color: #2E2E2E; color: #FFFFFF; padding: 10px;}
+
+.buttons {width: 100%;margin:5px 0;}
+
+/* Debugger labels */
+#presence .fragment-debug {display:none;}
+.fragment-debug {position:absolute;margin-top:-0px;width:8px;height:14px;z-index:9000;color:#FFFFFF;font-size:93%;line-height:11px;}
+.fragment-debug .fragment-debug-button {position:absolute;right:0px;top:0px;width:8px;height:14px;background:rgba(255,128,128,0.8); border:solid 1px transparent; border-radius: 0 0 5px 5px; text-align:center;cursor:pointer;box-shadow: 0 1px 2px 1px #AAA;} 
+.fragment-debug .fragment-debug-info-outer {position:absolute;right:0px;top:0px;height:16px;background:rgba(255,128,128,0.8);border:solid 1px #FF0000; border-top-color: #000000; border-radius: 0 0 4px 4px; display:none;box-shadow: 0 1px 2px 1px #AAA;}
+.fragment-debug .fragment-debug-info {margin:2px 12px 0 3px;}
+
+.fragment-debug.hover, .fragment-debug.openMenu {z-Index:9001}
+.fragment-debug.hover .fragment-debug-button, .fragment-debug.openMenu .fragment-debug-button {background:transparent url(../icons/control-double-000-small.png) no-repeat -4px 0px; border: solid 1px transparent; text-indent:-999px;}
+.fragment-debug.hover .fragment-debug-info-outer, .fragment-debug.openMenu .fragment-debug-info-outer  {display:block;}
+
+.fragment-debug-menu {position:absolute;width:120px;background-color:#FFFFFF;border:solid 1px black;z-index:10001;box-shadow: 0 2px 2px 2px #AAA;}
+.fragment-debug-menu ul, .fragment-debug.hover .fragment-debug-menu li {list-style-type: none;padding:0;margin:0;}
+.fragment-debug-menu li a {display:block;width:120px;padding: 3px 2px;}
+.fragment-debug-menu li a:hover {background-color:#80A0E0;}
+
+.fragment .fragment-debug {margin-left:20px;}
+.fragment .fragment .fragment-debug {margin-left:40px;}
+.fragment .fragment .fragment .fragment-debug {margin-left:60px;}
+.fragment .fragment .fragment .fragment .fragment-debug {margin-left:80px;}
+.fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:100px;}
+.fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:120px;}
+.fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:140px;}
+.fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:160px;}
+.fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:180px;}
+.fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:200px;}
