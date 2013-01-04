@@ -7,7 +7,7 @@ Instantlogic is an experimental web development framework, focussing on interact
 *Unfortunately, adopting a build tool has not been a priority so far. 
 This is why the checkout contains an eclipse workspace*
 
-1. Install JDK 7 and eclipse 4.2
+1. Install JDK 7 and eclipse 4.2. Start eclipse and point the workspace location to the checkout.
 2. Install the ivy plugin for eclipse
 3. Go to Window -> Preferences -> General -> Workspace. Check 'Refresh using native hooks or polling'
 4. File -> import -> general -> existing projects into workspace -> browse -> ok. Import all projects

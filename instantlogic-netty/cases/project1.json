@@ -1,14 +1,14 @@
 {
-  "instanceId": "8fa4d52d-5d4d-4851-b0bf-cf28e97930a5",
+  "instanceId": "bb14b939-0379-4cdd-be04-8f2deb72a9f7",
   "entityName": "project",
   "version": 1,
-  "last issue number": 5,
+  "last issue number": 15,
   "issues": [
     {
       "instanceId": "I1",
       "entityName": "issue",
-      "description": "Persist the statez of the system upon each change.2",
-      "headline": "Persist issuez",
+      "description": "The interface should behave like POJO\u0027s for programmers",
+      "headline": "Design an entity-attribute-relation model, called Fabric",
       "number": 1,
       "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
       "comments": [],
@@ -17,8 +17,8 @@
     {
       "instanceId": "I2",
       "entityName": "issue",
-      "description": "Another issues",
-      "headline": "Number two",
+      "description": "Add observers that are notified once and observers that are constantly being notified",
+      "headline": "Make the Fabric observable",
       "number": 2,
       "assignee": "U4",
       "comments": []
@@ -26,8 +26,8 @@
     {
       "instanceId": "I3",
       "entityName": "issue",
-      "description": "",
-      "headline": "Hello world",
+      "description": "Only implement Atomic and Consistent, not Isolated and Durable.\n\nListeners that observe a change that is rolled back should receive the opposite change event with a flag.",
+      "headline": "Make the Fabric transactional",
       "number": 3,
       "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
       "comments": [],
@@ -37,7 +37,7 @@
       "instanceId": "6f86ecaf-6e76-455b-854f-910639d16462",
       "entityName": "issue",
       "description": "We knew this was coming.",
-      "headline": "First issue with GUID",
+      "headline": "Make the Fabric rule-based",
       "number": 4,
       "comments": [],
       "reporter": "U4"
@@ -45,11 +45,95 @@
     {
       "instanceId": "be35693d-8eae-4cad-b818-4e118ea1dfc4",
       "entityName": "issue",
-      "description": "Description text",
-      "headline": "Newest issue",
+      "description": "One mechanism that is source control friendly and one mechanism that is fast and efficient.",
+      "headline": "Add a persistence mechanism to the Fabric",
       "number": 5,
+      "assignee": "U4",
       "comments": [],
-      "reporter": "e2e8126d-b2f4-4b39-a1ee-a6d8f7fdda42"
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "7c57e731-209d-4123-be23-bdba9dd96c74",
+      "entityName": "issue",
+      "description": "Basic flow, event, page(\u003dplace) stuff",
+      "headline": "Extend the fabric with a framework to create web applications, called Interaction",
+      "number": 6,
+      "comments": [],
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "b83ca3f9-5bbc-4a1e-8c53-61ccb0b99f96",
+      "entityName": "issue",
+      "headline": "Add places and flows to Interaction",
+      "number": 7,
+      "comments": [],
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "5b3fde85-c4e0-422e-ba64-e85dc3d0705d",
+      "entityName": "issue",
+      "headline": "Add reusable place-elements to Interaction",
+      "number": 8,
+      "comments": [],
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "9fbad877-15ad-48ff-adea-c322aa7083c4",
+      "entityName": "issue",
+      "headline": "Make a runtime engine for Interaction",
+      "number": 9,
+      "comments": [],
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "4810d3f1-d1e2-453e-93fd-35a04a4ca1ae",
+      "entityName": "issue",
+      "headline": "Add functionality which allows users to see and interact with each other",
+      "number": 10,
+      "comments": [],
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "63c09d1c-d57c-4918-a8df-671de11642ed",
+      "entityName": "issue",
+      "headline": "Make a tool which generates code for the Fabric and Interaction, called Designer",
+      "number": 11,
+      "comments": [],
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "439723d4-3e23-495e-bda5-5a1e91d7f3fe",
+      "entityName": "issue",
+      "headline": "Add a API interface for the Designer",
+      "number": 12,
+      "comments": [],
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "34d768cf-07bd-4d00-9d07-24f0349f67af",
+      "entityName": "issue",
+      "headline": "Add a graphical user interface for the Designer",
+      "number": 13,
+      "comments": [],
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "3bafb53d-1f90-4a1f-945d-3409fae627bd",
+      "entityName": "issue",
+      "description": "Todo: think of a good metaphore, like a construction helmet.",
+      "headline": "Add a debugging option which aids in application development",
+      "number": 14,
+      "comments": [],
+      "reporter": "U4"
+    },
+    {
+      "instanceId": "b6e7113a-2d74-4402-b9d6-cd62f3cc2585",
+      "entityName": "issue",
+      "description": "This will be the killer feature",
+      "headline": "Generate bytecode on the fly to allow changes from the designer to be visible immediately in the application",
+      "number": 15,
+      "comments": [],
+      "reporter": "U4"
     }
   ],
   "users": [
