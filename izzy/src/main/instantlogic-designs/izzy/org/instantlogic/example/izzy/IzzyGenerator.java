@@ -58,6 +58,7 @@ public class IzzyGenerator extends Design {
 	private static EventDesign issueDetailsEvent;
 	private static EventDesign dashboardEvent;
 	private static EventDesign homeEvent;
+	private static EventDesign deleteIssueEvent;
 	private static EventDesign notLoggedInEvent;
 	
 	private static PlaceTemplateDesign notLoggedInPlaceTemplate;
@@ -113,6 +114,7 @@ public class IzzyGenerator extends Design {
 		izzy.addToThemeNames("margin").addToThemeNames("izzy");
 		
 		homeEvent = new EventDesign("home").setApplication(izzy);
+		deleteIssueEvent = new EventDesign("delete issue").setApplication(izzy);
 		createIssueEvent = new EventDesign("create issue").setApplication(izzy);
 		issueDetailsEvent = new EventDesign("issue details").setApplication(izzy).addToParameters(issue);
 		dashboardEvent = new EventDesign("dashboard").setApplication(izzy).addToParameters(user);
@@ -161,42 +163,9 @@ public class IzzyGenerator extends Design {
 	
 	// Flows
 
-	private static void createIssueRowSharedElement() {
-		FragmentTemplateDesign detailsLink;
-		DeductionSchemeDesign number;
-		DeductionSchemeDesign headline;
-		DeductionSchemeDesign preview;
-		issueRow = new SharedElementDefinitionDesign()
-			.setApplication(izzy)
-			.setFragment(new FragmentTemplateDesign("Row")
-				.setChildren("cells",
-					detailsLink = new FragmentTemplateDesign("Link")
-						.setChildren("content", 
-							new FragmentTemplateDesign("Cell")
-								.setText("text", new TextTemplateDesign().addToUntranslated(
-									new StringTemplateDesign().setDeduction(number = new DeductionSchemeDesign()))),
-							new FragmentTemplateDesign("Cell")
-								.setText("text", new TextTemplateDesign().addToUntranslated(
-									new StringTemplateDesign().setDeduction(headline = new DeductionSchemeDesign()))),
-							new FragmentTemplateDesign("Cell")
-								.setText("text", new TextTemplateDesign().addToUntranslated(
-									new StringTemplateDesign().setDeduction(preview = new DeductionSchemeDesign()))),
-							new FragmentTemplateDesign("Cell")
-								.setChildren("content", 
-									new FragmentTemplateDesign("PresenceIndicator")
-							)
-						)
-					)
-				);
-		issueRow.setName("IssueRow");
-		number.deduceAttribute(issueNumber);
-		headline.deduceAttribute(issueHeadline);
-		preview.deduceCustom(IssuePreviewDeduction.class, String.class);
-		detailsLink.setEvent(issueDetailsEvent);
-	}
-
 	private static void createFragmentTypes() {
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Page"));
+		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Block"));
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Paragraph"));
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Heading1"));
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Heading2"));
@@ -234,6 +203,50 @@ public class IzzyGenerator extends Design {
 		
 		mainFlow.newEdge().setEvent(notLoggedInEvent).setEndNode(notLoggedInPlaceTemplate);
 	}
+
+	// Shared elements
+	private static void createIssueRowSharedElement() {
+		FragmentTemplateDesign detailsLink;
+		DeductionSchemeDesign number;
+		DeductionSchemeDesign headline;
+		DeductionSchemeDesign preview;
+		DeductionSchemeDesign assignee;
+		issueRow = new SharedElementDefinitionDesign()
+			.setApplication(izzy)
+			.setFragment(new FragmentTemplateDesign("Row")
+				.setChildren("cells",
+					detailsLink = new FragmentTemplateDesign("Link")
+						.setChildren("content", 
+							new FragmentTemplateDesign("Cell").addToStyleNames("issueNr")
+								.setText("text", new TextTemplateDesign().addToUntranslated(
+									new StringTemplateDesign().setDeduction(number = new DeductionSchemeDesign()))),
+							new FragmentTemplateDesign("Cell").addToStyleNames("issueDetails")
+								.setChildren("content",
+									new FragmentTemplateDesign("Text").addToStyleNames("headline")
+										.setText("text", new TextTemplateDesign().addToUntranslated(
+											new StringTemplateDesign().setDeduction(headline = new DeductionSchemeDesign()))),									
+									new FragmentTemplateDesign("Text").addToStyleNames("preview")
+										.setText("text", new TextTemplateDesign().addToUntranslated(
+											new StringTemplateDesign().setDeduction(preview = new DeductionSchemeDesign()))),
+									new FragmentTemplateDesign("Text").addToStyleNames("assignee")
+										.setText("text", new TextTemplateDesign().addToUntranslated(
+											new StringTemplateDesign().setDeduction(assignee = new DeductionSchemeDesign())))
+								),
+							new FragmentTemplateDesign("Cell").addToStyleNames("presence-indicator")
+								.setChildren("content", 
+									new FragmentTemplateDesign("PresenceIndicator")
+							)
+						)
+					)
+				);
+		issueRow.setName("IssueRow");
+		number.deduceAttribute(issueNumber);
+		headline.deduceAttribute(issueHeadline);
+		preview.deduceCustom(IssuePreviewDeduction.class, String.class);
+		assignee.deduceAttribute(userUsername, assignee.deduceRelation(issueAssignee));
+		detailsLink.setEvent(issueDetailsEvent);
+	}
+
 	
 	// Place templates
 	private static void createNotLoggedInPlaceTemplate() {
@@ -248,16 +261,88 @@ public class IzzyGenerator extends Design {
 			);
 	}
 
+	private static void createDashboardPlaceTemplate() {
+		DeductionSchemeDesign issues, assignedToMe, username;
+		FragmentTemplateDesign createButton;
+		SharedElementDesign issueRow1, issueRow2;
+		dashboardPlaceTemplate = new PlaceTemplateDesign("dashboard")
+			.setOwner(dashboardFlow)
+			.setContent(
+				new FragmentTemplateDesign("Page")
+					.setChildren("mainContent",
+						new FragmentTemplateDesign("Block").addToStyleNames("no-margin")
+							.setChildren("content", 
+								createButton = new FragmentTemplateDesign("Button")
+									.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-plus"))
+									.setText("text", createConstantText("Create issue")),
+								new FragmentTemplateDesign("Heading2")
+									.setText("text", new TextTemplateDesign()
+										.addToUntranslated(new StringTemplateDesign().setDeduction(username = new DeductionSchemeDesign()))
+										.addToUntranslated(new StringTemplateDesign().setConstantText("'s dashboard"))
+									),
+								new FragmentTemplateDesign("Heading4").setText("text", createConstantText("Assigned to me")),
+								new FragmentTemplateDesign("Table")
+									.setChildren("columns", 
+										new FragmentTemplateDesign("Column").addToStyleNames("issueNr")
+											.setText("header", createConstantText("#")),
+										new FragmentTemplateDesign("Column").addToStyleNames("issue")
+											.setText("header", createConstantText("Issue")),
+										new FragmentTemplateDesign("Column").addToStyleNames("assignee")
+											.setText("header", createConstantText("Assignee"))
+									)
+									.setChildren("rows",
+										new SelectionDesign()
+											.setSelection(assignedToMe = new DeductionSchemeDesign())
+											.addToChildren(
+												issueRow1 = new SharedElementDesign()
+											)
+									),
+								new FragmentTemplateDesign("Heading4").setText("text", createConstantText("All issues")),
+								new FragmentTemplateDesign("Table")
+									.setChildren("columns", 
+										new FragmentTemplateDesign("Column").addToStyleNames("issueNr")
+											.setText("header", createConstantText("#")),
+										new FragmentTemplateDesign("Column").addToStyleNames("issue")
+											.setText("header", createConstantText("Issue")),
+										new FragmentTemplateDesign("Column").addToStyleNames("assignee")
+											.setText("header", createConstantText("Assignee"))
+									)
+									.setChildren("rows",
+										new SelectionDesign()
+											.setSelection(issues = new DeductionSchemeDesign())
+											.addToChildren(
+												issueRow2 = new SharedElementDesign()
+											)
+									)
+							)
+					)
+			);
+		username.deduceAttribute(userUsername);
+		issues.deduceAttribute(projectIssues);
+		assignedToMe.deduceReverseRelation(issueAssignee, assignedToMe.deduceSelectedInstance(user));
+		issueRow1.setDefinition(issueRow);
+		issueRow2.setDefinition(issueRow);
+		createButton.setEvent(createIssueEvent);
+		//Title
+		dashboardPlaceTemplate.newTitle()
+			.addToUntranslated(new StringTemplateDesign().setDeduction(username = new DeductionSchemeDesign()))
+			.addToUntranslated(new StringTemplateDesign().setConstantText("'s dashboard"));
+		username.deduceAttribute(userUsername);	
+	}
+	
 	private static void createIssueDetailsPlaceTemplate() {
 		DeductionSchemeDesign number, headline;
-		FragmentTemplateDesign headlineInput, descriptionInput, homeLink, reporterInput, assigneeInput;
+		FragmentTemplateDesign headlineInput, descriptionInput, homeLink, deleteButton, reporterInput, assigneeInput;
 		issueDetailsPlaceTemplate = new PlaceTemplateDesign("issueDetails")
 			.setOwner(issueFlow)
 			.setContent(new FragmentTemplateDesign("Page")
 				.setChildren("mainContent", 
 					homeLink = new FragmentTemplateDesign("Button").addToStyleNames("btn-link")
 						.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-home"))
-						.setText("text", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setConstantText("Home"))),
+						.setText("text", createConstantText("Home")),
+					deleteButton = new FragmentTemplateDesign("Button").addToStyleNames("btn")
+						.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-remove"))
+						.setText("text", createConstantText("Delete")),
 					new FragmentTemplateDesign("Heading2")
 						.setText("text", new TextTemplateDesign()
 							.addToUntranslated(new StringTemplateDesign().setConstantText("Issue "))
@@ -273,6 +358,7 @@ public class IzzyGenerator extends Design {
 			);
 		issueDetailsPlaceTemplate.getMetadata().initUniqueId("issueDetails");// Keep this one fixed
 		homeLink.setEvent(homeEvent);
+		deleteButton.setEvent(deleteIssueEvent);
 		number.deduceAttribute(issueNumber);
 		headline.deduceAttribute(issueHeadline);
 		headlineInput.setEntity(issue).setAttribute(issueHeadline);
@@ -287,70 +373,5 @@ public class IzzyGenerator extends Design {
 			.addToUntranslated(new StringTemplateDesign().setDeduction(headline = new DeductionSchemeDesign()));
 		number.deduceAttribute(issueNumber);
 		headline.deduceAttribute(issueHeadline);
-	}
-
-	private static void createDashboardPlaceTemplate() {
-		DeductionSchemeDesign issues, assignedToMe, username;
-		FragmentTemplateDesign createButton;
-		SharedElementDesign issueRow1, issueRow2;
-		dashboardPlaceTemplate = new PlaceTemplateDesign("dashboard")
-			.setOwner(dashboardFlow)
-			.setContent(
-				new FragmentTemplateDesign("Page")
-					.setChildren("mainContent",
-						new FragmentTemplateDesign("Heading2")
-							.setText("text", new TextTemplateDesign()
-								.addToUntranslated(new StringTemplateDesign().setDeduction(username = new DeductionSchemeDesign()))
-								.addToUntranslated(new StringTemplateDesign().setConstantText("'s dashboard"))
-							),
-						new FragmentTemplateDesign("Heading4").setText("text", createConstantText("Assigned to me")),
-						new FragmentTemplateDesign("Table")
-							.setChildren("columns", 
-								new FragmentTemplateDesign("Column").addToStyleNames("issueNr")
-									.setText("header", createConstantText("#")),
-								new FragmentTemplateDesign("Column").addToStyleNames("issueHeadline")
-									.setText("header", createConstantText("Issue")),
-								new FragmentTemplateDesign("Column").addToStyleNames("issuePreview"),
-								new FragmentTemplateDesign("Column").addToStyleNames("presence-indicator")
-							)
-							.setChildren("rows",
-								new SelectionDesign()
-									.setSelection(assignedToMe = new DeductionSchemeDesign())
-									.addToChildren(
-										issueRow1 = new SharedElementDesign()
-									)
-							),
-						new FragmentTemplateDesign("Heading4").setText("text", createConstantText("All issues")),
-						new FragmentTemplateDesign("Table")
-							.setChildren("columns", 
-								new FragmentTemplateDesign("Column").addToStyleNames("issueNr")
-									.setText("header", createConstantText("#")),
-								new FragmentTemplateDesign("Column").addToStyleNames("issueHeadline")
-									.setText("header", createConstantText("Issue")),
-								new FragmentTemplateDesign("Column").addToStyleNames("issuePreview"),
-								new FragmentTemplateDesign("Column").addToStyleNames("presence-indicator")
-							)
-							.setChildren("rows",
-								new SelectionDesign()
-									.setSelection(issues = new DeductionSchemeDesign())
-									.addToChildren(
-										issueRow2 = new SharedElementDesign()
-									)
-							),
-						createButton = new FragmentTemplateDesign("Button")
-							.setText("text", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setConstantText("Create issue")))
-					)
-			);
-		username.deduceAttribute(userUsername);
-		issues.deduceAttribute(projectIssues);
-		assignedToMe.deduceReverseRelation(issueAssignee, assignedToMe.deduceSelectedInstance(user));
-		issueRow1.setDefinition(issueRow);
-		issueRow2.setDefinition(issueRow);
-		createButton.setEvent(createIssueEvent);
-		//Title
-		dashboardPlaceTemplate.newTitle()
-			.addToUntranslated(new StringTemplateDesign().setDeduction(username = new DeductionSchemeDesign()))
-			.addToUntranslated(new StringTemplateDesign().setConstantText("'s dashboard"));
-		username.deduceAttribute(userUsername);	
 	}
 }

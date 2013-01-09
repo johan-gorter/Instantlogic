@@ -21,6 +21,10 @@ public class IssuePreviewDeduction extends Deduction<String> {
 	@Override
 	public ValueAndLevel<String> deduct(DeductionContext context) {
 		Issue issue = context.getSelectedInstance(IssueEntity.INSTANCE);
-		return ValueAndLevel.rule(issue.getDescription());
+		String result = issue.getDescription();
+		if (result==null) return ValueAndLevel.inconclusive();
+		result = result.replaceAll("[\r\n]", " ");
+		if (result.length()>150) result = result.substring(0, 150);
+		return ValueAndLevel.rule(result);
 	}
 }

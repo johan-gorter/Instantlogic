@@ -15,17 +15,15 @@ YUI.add('instantlogic-presence', function (Y) {
             var markup = html.div({ className: 'navbar navbar-inverse navbar-fixed-top' },
             	html.div({className: 'navbar-inner'},
             		html.div({className:'container'},
-            			html.div({className:'nav-collapse collapse'},
-		            		html.p({className: 'navbar-text pull-left'},
-		            			this.applicationNameSpan = html.span({className: 'application-name'}, model.applicationName || ''),
-			            		html.span({className: 'minus'}, ' - '),
-			            		html.span({className: 'case-name'},
-			            			this.caseNameSpan = html.span(model.caseName || '')
-			            		)
-		            		),
-		            		this.contentDiv = html.p({className: 'navbar-text pull-right'})
-            			)
-	                )
+	            		html.p({className: 'navbar-text pull-left'},
+	            			this.applicationNameSpan = html.span({className: 'application-name'}, model.applicationName || ''),
+		            		html.span({className: 'minus'}, ' - '),
+		            		html.span({className: 'case-name'},
+		            			this.caseNameSpan = html.span(model.caseName || '')
+		            		)
+	            		)
+        			),
+            		this.contentDiv = html.p({className: 'navbar-text top-right'})
                 )
             );
             this.parentNode.appendChild(markup);
@@ -39,10 +37,7 @@ YUI.add('instantlogic-presence', function (Y) {
     		if (this.oldModel.caseName != newModel.caseName) {
     			this.caseNameSpan.set('text', newModel.caseName);
     		}
-    		if (this.oldModel.userName != newModel.userName) {
-    			this.loginNameSpan.set('text', newModel.userName);
-    		}
-    		
+
             ns.Presence.superclass.update.call(this, newModel, diff);
             this.contentFragmentList.update(newModel.content, diff);
     	}
@@ -59,7 +54,7 @@ YUI.add('instantlogic-presence', function (Y) {
     		var markup = html.span({className: 'me'},
 				this.avatarDiv = html.span({className: 'avatar'}, html.img({src:'/avatar/'+model.username+'.jpg', width:'23px', height:'23px;'})),
 				this.loginNameSpan = html.span({className: 'username'}, model.username || ''),
-				this.logoutButton = html.button({className: 'btn'}, 'Log out')
+				this.logoutButton = html.a({className: 'btn btn-inverse'}, 'Log out')
     		)
     		this.logoutButton.on('click', this.logoutClick, this);
     		this.parentNode.appendChild(markup);
@@ -76,13 +71,18 @@ YUI.add('instantlogic-presence', function (Y) {
     		var markup = html.span(
     			html.div({className:'communicator-space'}),
     			this.communicatorDiv = html.div({className:'communicator'},
-	    			this.showButton = html.button({className:'btn'},'Show communicator'),
-	    			this.hideButton = html.button({className:'btn'},'Hide communicator'),
-	    			this.usersDiv = html.div()
+    				html.ul({className:'nav'},
+    					this.dropdown = html.li({className:'dropdown'},
+			    			this.showButton = html.a({className:'dropdown-toggle'},'Communicator ', html.b({className:'caret'})),
+			    			this.hideButton = html.a({className:'dropdown-toggle'},'Communicator ', html.b({className:'caret'})),
+			    			this.usersDiv = html.div()
+			    		)
+			    	)
 	    		)
 	    	);
     		this.showButton.on('click', this.onShowClick, this);
     		this.hideButton.on('click', this.onHideClick, this);
+    		this.usersDiv.hide();
     		this.hideButton.hide();
             return markup;
     	},
@@ -100,14 +100,20 @@ YUI.add('instantlogic-presence', function (Y) {
     	overrides: {
     		subscribers : [],
         	onHideClick: function() {
+        		this.dropdown.removeClass('active');
         		this.communicatorDiv.setStyle('height', '40px');
+        		this.communicatorDiv.setStyle('background-color', null);
         		this.hideButton.hide();
         		this.showButton.show();
+        		this.usersDiv.hide();
         	},
         	onShowClick: function() {
+        		this.dropdown.addClass('active');
         		this.communicatorDiv.setStyle('height', '100%');
+        		this.communicatorDiv.setStyle('background-color', '#111');
         		this.showButton.hide();
         		this.hideButton.show();
+        		this.usersDiv.show();
         	},
         	findTravelersInPlace: function(instanceId) { // returns list of usernames who are visiting a place which contains the instanceId
         		var result = [];
@@ -203,13 +209,13 @@ YUI.add('instantlogic-presence', function (Y) {
         		);
     		},
     		positionAvatar: function(useAnimation) {
-    			var x = 480;
+    			var x = 830;
     			var y = 50;
-    			var topright = Y.one('.pull-right'); 
-    			if (topright) {
-					var region = topright.get('region');
-					x = region.right-80;
-					y = region.bottom+30;
+    			var page = Y.one('.page');
+    			if (page) {
+    				var region = page.get('region');
+    				x = region.right-80;
+    				y=region.top+50;
     			}
     			if (this.model.focus) {
     				var node = Y.one('[data-fragment-id="'+this.model.focus+'"]');

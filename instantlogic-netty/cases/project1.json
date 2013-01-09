@@ -1,8 +1,8 @@
 {
-  "instanceId": "bb14b939-0379-4cdd-be04-8f2deb72a9f7",
+  "instanceId": "4578c0e5-eefb-4112-9dc8-92a1957e68c8",
   "entityName": "project",
   "version": 1,
-  "last issue number": 15,
+  "last issue number": 16,
   "issues": [
     {
       "instanceId": "I1",
@@ -10,7 +10,7 @@
       "description": "The interface should behave like POJO\u0027s for programmers",
       "headline": "Design an entity-attribute-relation model, called Fabric",
       "number": 1,
-      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
+      "assignee": "U4",
       "comments": [],
       "reporter": "U4"
     },
@@ -39,6 +39,7 @@
       "description": "We knew this was coming.",
       "headline": "Make the Fabric rule-based",
       "number": 4,
+      "assignee": "U4",
       "comments": [],
       "reporter": "U4"
     },
@@ -134,6 +135,15 @@
       "number": 15,
       "comments": [],
       "reporter": "U4"
+    },
+    {
+      "instanceId": "ba9c7233-8e55-4416-870c-bf5a2c600704",
+      "entityName": "issue",
+      "description": "Make the application ready to be used for rapid prototyping.",
+      "headline": "Rapid prototyping",
+      "number": 16,
+      "comments": [],
+      "reporter": "U4"
     }
   ],
   "users": [
@@ -151,6 +161,11 @@
       "instanceId": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
       "entityName": "user",
       "username": "Emma"
+    },
+    {
+      "instanceId": "9cb1319d-cc85-4283-8be8-c18914062a74",
+      "entityName": "user",
+      "username": "guy1"
     }
   ]
 }

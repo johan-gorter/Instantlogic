@@ -358,25 +358,20 @@ YUI.add('instantlogic-fragments', function (Y) {
     });
 
     // Column
-    ns.Column = function (parentNode, parentFragment, engine) {
-        ns.Column.superclass.constructor.apply(this, arguments);
-    };
-
-    Y.extend(ns.Column, Y.instantlogic.Fragment, {
-        init: function (model) {
-            ns.Column.superclass.init.call(this, model);
-            this.node = html.div({className:'divtable-column-header divtable-cell'});
-            this.node.set('text', model.header || '');
-            this.parentNode.appendChild(this.node);
-        },
-
-        update: function (newModel, diff) {
-            ns.Column.superclass.update.call(this, newModel, diff);
-            if (this.oldModel.header != newModel.header) {
-                this.node.set('text', newModel.header || '');
-            }
-        }
-    });
+    ns.Column = createFragment({
+    	createMarkup: function() {
+            return this.node = html.div({className:'divtable-header'},
+            	this.contentSpan = html.span(),
+            	this.textSpan = html.span()
+            )
+    	},
+    	texts: function(model) {
+    		return [[this.textSpan, model.header]];
+    	},
+    	fragmentLists: function(model) {
+    		return [[this.contentSpan, model.content]];
+    	}
+    }); 
 
     // Cell
     ns.Cell = createFragment({

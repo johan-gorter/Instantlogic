@@ -1,1 +1,11 @@
 .height300 {height:300px;}
+
+.divtable .issueNr {width:60px;}
+.divtable .issue {width:600px;}
+.divtable .assignee {width:197px;text-align:right;padding-right:3px;}
+.divtable .presence-indicator {width:0px;overflow:visible}
+.divtable .presence-indicator img {max-width:none;}
+.divtable .issueDetails {width:800px;overflow:hidden;position:relative;}
+.divtable .issueDetails .preview {color:#888888}
+.divtable .issueDetails .headline {display:inline-block;font-weight:bold;padding-right:7px;}
+.divtable .issueDetails .assignee {position:absolute;top:0px;right:0px;width:auto;z-index:1;font-weight:bold;background-color:white;padding-left:5px;} 

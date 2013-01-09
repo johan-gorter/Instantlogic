@@ -2,12 +2,13 @@
 /* Can be used as a base for more specific stylesheets */
 .margin .main {padding-top:40px;padding-left:180px;}
 .margin .main .input {margin-left:-180px;}
+.margin .main .no-margin {padding-left:0px;}
 
 /* Global rules */
 .margin .error {color:red;}
 .animate-vertically {display:block;overflow:hidden;position:relative;margin-left:-180px;padding-left:180px;}
 
 /* Fragments */
-.divtable-column-header {font-weight: bold;color:white;background-color:#444444}
+.divtable-header {font-weight: bold;color:white;background-color:#444444;}
 .divtable-cells {display:inline-block;border-bottom: solid 1px black;}
-.divtable-cell {display:inline-block; width:180px;height:20px;vertical-align:top; overflow:hidden;white-space:no-wrap;}
+.divtable-header, .divtable-cell {display:inline-block; width:180px;height:20px;vertical-align:top; overflow:hidden;white-space:nowrap;}
