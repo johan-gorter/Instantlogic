@@ -1,6 +1,6 @@
 .yui3-widget-mask {	background-color: #666666; }
 
-body { padding-top: 20px; padding-bottom: 10px; }
+#presence {height:25px;} 
 
 /* Page elements */
 .navbar-fixed-top .application-name {color: #EE4444;font-weight:bold;font-size:20px;}

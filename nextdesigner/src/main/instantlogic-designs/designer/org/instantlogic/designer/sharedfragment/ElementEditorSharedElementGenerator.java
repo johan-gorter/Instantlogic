@@ -50,7 +50,7 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 			new FragmentTemplateDesign("Block").addToStyleNames("element")
 				.setChildren("content",
 					asFragmentTemplate = new SelectionDesign()
-						.addToChildren(
+						.addToChildren( // Editor
 							new IfElseDesign()
 								.setCondition(editorOpen1 = new DeductionSchemeDesign())
 								.addToIfChildren(
@@ -75,41 +75,40 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 												)
 										)
 								)
-						)
-						.addToChildren(new FragmentTemplateDesign("PreviewLine")
-							.setValue("previewMode", previewMode = new DeductionSchemeDesign())
-							.setChildren("content", 
-								new IfElseDesign()
-									.setCondition(editorOpen2 = new DeductionSchemeDesign())
-									.addToIfChildren(
-										closeEditorButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Close editor")).addToStyleNames("editor-toggle")
-									)
-									.addToElseChildren(
-										openEditorButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Edit")).addToStyleNames("editor-toggle")
-									),
-								new FragmentTemplateDesign("Block").addToStyleNames("info")
+						),
+						new FragmentTemplateDesign("Block").addToStyleNames("collapsable-content")
+							.setChildren("content",
+								new FragmentTemplateDesign("Button").setText("text", createConstantText("-")).addToStyleNames("collapse-button"),
+								new FragmentTemplateDesign("PreviewLine")
+									.setValue("previewMode", previewMode = new DeductionSchemeDesign())
 									.setChildren("content", 
-										new FragmentTemplateDesign("Heading5").setText("text", new TextTemplateDesign()
-											.addToUntranslated(new StringTemplateDesign().setDeduction(fragmentType = new DeductionSchemeDesign())))
+										new FragmentTemplateDesign("Strong")
+											.setText("text", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(fragmentType = new DeductionSchemeDesign()))),
+										// TODO: put all other info on this line
+										new IfElseDesign()
+											.setCondition(editorOpen2 = new DeductionSchemeDesign())
+											.addToIfChildren(
+												closeEditorButton = new FragmentTemplateDesign("Link").setText("text", createConstantText("Close editor")).addToStyleNames("editor-toggle")
+											)
+											.addToElseChildren(
+												openEditorButton = new FragmentTemplateDesign("Link").setText("text", createConstantText("Edit")).addToStyleNames("editor-toggle")
+											),
+										new FragmentTemplateDesign("Preview") // Floats right
+											.setChildren("content",
+												new FragmentTemplateDesign("PreviewPlaceholder").addToFragmentFilters("org.instantlogic.designer.fragmentfilter.PreviewFragmentFilter")
+											)
 									),
-								new FragmentTemplateDesign("Preview")
-									.setChildren("content",
-										new FragmentTemplateDesign("PreviewPlaceholder").addToFragmentFilters("org.instantlogic.designer.fragmentfilter.PreviewFragmentFilter")
-									)
+								selectProperties = new SelectionDesign()
+//											.addToChildren(
+//												new FragmentTemplateDesign("Paragraph").setText("text", new TextTemplateDesign()
+//													.addToUntranslated(new StringTemplateDesign().setDeduction(propertyName = new DeductionSchemeDesign()))
+//												)
+//											)
+										.addToChildren(
+											selectPropertyChildren = new SelectionDesign()
+												.addToChildren(recursiveElementEditor = new SharedElementDesign()) // .element's
+										)
 							)
-						)
-						.addToChildren(
-							selectProperties = new SelectionDesign()
-//								.addToChildren(
-//									new FragmentTemplateDesign("Paragraph").setText("text", new TextTemplateDesign()
-//										.addToUntranslated(new StringTemplateDesign().setDeduction(propertyName = new DeductionSchemeDesign()))
-//									)
-//								)
-								.addToChildren(
-									selectPropertyChildren = new SelectionDesign()
-										.addToChildren(recursiveElementEditor = new SharedElementDesign())
-								)
-						)
 				)
 		);
 		

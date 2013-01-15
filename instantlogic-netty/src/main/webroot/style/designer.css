@@ -2,12 +2,12 @@
 .designer .card {border: solid 1px #999999; border-radius: 10px; padding: 0 9px 9px 9px; overflow:hidden;display:block;position:relative;margin-left: -180px;padding-left:179px;}
 
 /* Element editor */
-.designer .editor {border-top: solid 1px #606060;background-color: #F0FF90;}
-.designer .preview-line {border-top: solid 1px #606060;width:100%;}
-.designer .preview-line .info {display:inline-block;vertical-align:top;width:300px;padding-left:5px;}
-.designer .preview-line .preview-container {display:inline-block;width:600px;}
-.designer .preview-line .preview-container iframe {width: 600px;height:100px;overflow:hidden;border:0;}
-.designer .preview-line .editor-toggle {position:absolute;top:0px;left:180px;width:80px;z-index:1;}
+.element-editor {padding-left:25px;}
+.collapsable-content {margin-left: 20px;padding-left:0px;overflow:visible;clear:both;}
+.collapse-button {position:absolute;left:-35px;z-index:1;}
+.designer .preview-line {width:100%;margin-right:600px;}
+.designer .preview-line .preview-container {display:inline-block;width:600px;float:right;}
+.designer .preview-line .preview-container iframe {width: 600px;height:50px;overflow:hidden;border:0;}
 
-.element-editor {width:898px;margin: 0 auto;border: solid 1px #999999; border-top: solid 0px; position: relative; top:-10px; background-color: #FFFFFF; border-radius: 0 0 10px 10px; padding:10px;}
+.designer .editor {border: solid 1px #606060;background-color: #F0FF90;float:right;width:740px;border-radius: 5px;}
 

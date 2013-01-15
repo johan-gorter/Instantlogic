@@ -1,5 +1,5 @@
 {
-  "instanceId": "4f6336a9-8b97-40a2-8202-a0621f1788d6",
+  "instanceId": "df39ccc8-9f87-451e-b189-d385702beb04",
   "entityName": "ApplicationDesign",
   "version": 0,
   "name": "izzy",
@@ -599,7 +599,7 @@
           "content": {
             "instanceId": "22f1dd78-34c6-49ff-b882-ce84d6fa8ea1",
             "entityName": "FragmentTemplateDesign",
-            "editorOpen": true,
+            "editorOpen": false,
             "fragmentFilters": [],
             "fragmentTypeName": "Page",
             "styleNames": [],
@@ -612,6 +612,7 @@
                   {
                     "instanceId": "db5f4167-3d4d-4281-aeb2-e0ba4d5e6cdd",
                     "entityName": "FragmentTemplateDesign",
+                    "editorOpen": false,
                     "fragmentFilters": [],
                     "fragmentTypeName": "Button",
                     "styleNames": [
@@ -627,6 +628,7 @@
                           {
                             "instanceId": "89bf56ac-6cfa-4564-b176-790a33b0d850",
                             "entityName": "FragmentTemplateDesign",
+                            "editorOpen": false,
                             "fragmentFilters": [],
                             "fragmentTypeName": "Icon",
                             "styleNames": [
@@ -790,6 +792,7 @@
                   {
                     "instanceId": "a4205e8b-0342-4b59-8b07-be77602f5804",
                     "entityName": "FragmentTemplateDesign",
+                    "editorOpen": false,
                     "fragmentFilters": [],
                     "fragmentTypeName": "Input",
                     "styleNames": [
@@ -816,7 +819,7 @@
                   {
                     "instanceId": "84aa9fc7-ca95-40fb-aa8d-153504df34b7",
                     "entityName": "FragmentTemplateDesign",
-                    "editorOpen": true,
+                    "editorOpen": false,
                     "fragmentFilters": [],
                     "fragmentTypeName": "Input",
                     "styleNames": [

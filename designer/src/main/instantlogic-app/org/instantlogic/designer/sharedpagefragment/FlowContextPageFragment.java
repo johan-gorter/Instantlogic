@@ -25,17 +25,17 @@ public class FlowContextPageFragment extends org.instantlogic.interaction.page.S
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-        new org.instantlogic.interaction.page.FragmentTemplate("d7fc01e2-3440-41bd-b201-39c1386e0454", "Group")      
+        new org.instantlogic.interaction.page.FragmentTemplate("71c2ce35-4045-4a0a-9f82-3deb9fcf540d", "Group")      
         .putChildren("content",
-                    new org.instantlogic.interaction.page.SharedElementHolder("31002b9f-91dd-4b22-9acd-b19c060195eb", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+                    new org.instantlogic.interaction.page.SharedElementHolder("0bde7430-e638-4faf-ae17-622324640824", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
 ,
-                new org.instantlogic.interaction.page.FragmentTemplate("ecf1d696-f4fd-43b6-bfad-bc804f3a6955", "Link")      .setEvent(org.instantlogic.designer.event.FlowDetailsEvent.INSTANCE)
+                new org.instantlogic.interaction.page.FragmentTemplate("d2e3e5a4-cc9f-483a-b25e-e31c8ffe52b1", "Link")      .setEvent(org.instantlogic.designer.event.FlowDetailsEvent.INSTANCE)
       
                 .putChildren("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("042bcfc9-bd06-4358-ad2f-af091db6210f", "Block")      .setStyleNames(new String[]{"inactive-card"})
+                        new org.instantlogic.interaction.page.FragmentTemplate("c71189a5-3b0d-476d-9fde-c78a5c257f66", "Block")      .setStyleNames(new String[]{"inactive-card"})
       
                         .putChildren("content",
-                                new org.instantlogic.interaction.page.FragmentTemplate("13bedadc-544b-4977-9f8d-28f1b4b02fc5", "Heading3")      
+                                new org.instantlogic.interaction.page.FragmentTemplate("c1900c1b-8048-45ef-a75c-f74c1bac302b", "Heading3")      
                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate(createDeduction0()),new org.instantlogic.fabric.text.StringTemplate(" (Flow)")))
                         )
                 )

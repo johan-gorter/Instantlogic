@@ -1,5 +1,5 @@
 {
-  "instanceId": "4578c0e5-eefb-4112-9dc8-92a1957e68c8",
+  "instanceId": "39ff65ec-9ac0-4c29-bf9a-ac1fd091de7e",
   "entityName": "project",
   "version": 1,
   "last issue number": 16,
@@ -10,7 +10,7 @@
       "description": "The interface should behave like POJO\u0027s for programmers",
       "headline": "Design an entity-attribute-relation model, called Fabric",
       "number": 1,
-      "assignee": "U4",
+      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
       "comments": [],
       "reporter": "U4"
     },
@@ -20,7 +20,7 @@
       "description": "Add observers that are notified once and observers that are constantly being notified",
       "headline": "Make the Fabric observable",
       "number": 2,
-      "assignee": "U4",
+      "assignee": "9cb1319d-cc85-4283-8be8-c18914062a74",
       "comments": []
     },
     {
@@ -29,7 +29,7 @@
       "description": "Only implement Atomic and Consistent, not Isolated and Durable.\n\nListeners that observe a change that is rolled back should receive the opposite change event with a flag.",
       "headline": "Make the Fabric transactional",
       "number": 3,
-      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
+      "assignee": "9cb1319d-cc85-4283-8be8-c18914062a74",
       "comments": [],
       "reporter": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2"
     },
@@ -46,10 +46,10 @@
     {
       "instanceId": "be35693d-8eae-4cad-b818-4e118ea1dfc4",
       "entityName": "issue",
-      "description": "One mechanism that is source control friendly and one mechanism that is fast and efficient.",
-      "headline": "Add a persistence mechanism to the Fabric",
+      "description": "Create one mechanism that is source control friendly.\nAdd another that is fast and efficient.",
+      "headline": "Add a persistence mechanism",
       "number": 5,
-      "assignee": "U4",
+      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
       "comments": [],
       "reporter": "U4"
     },

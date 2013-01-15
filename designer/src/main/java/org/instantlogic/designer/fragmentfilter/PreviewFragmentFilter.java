@@ -47,13 +47,16 @@ public class PreviewFragmentFilter implements FragmentFilter {
 			} else {
 				result.put("type", template.getFragmentTypeName()); // Unofficial way
 			}
+			if (template.getStyleNames()!=null && template.getStyleNames().size()>0) {
+				result.put("styleNames", template.getStyleNames().asList().toArray());
+			}
 			for (PropertyDesign property : template.getProperties()) {
 				if (property.getChildren().size()>0) {
-					result.put(property.getName(), createDummyBlock(property.getName()));
+					result.put(property.getPropertyName(), new Object[]{ createDummyBlock(property.getPropertyName(), id)});
 				} else if (property.getText()!=null) {
-					result.put(property.getName(), renderText(property.getText()));
+					result.put(property.getPropertyName(), renderText(property.getText()));
 				} else if (property.getValue()!=null) {
-					result.put(property.getName(), fakeResult(property.getValue()));
+					result.put(property.getPropertyName(), fakeResult(property.getValue()));
 				}
 			}
 			if (template.getAttribute()!=null && template.getEntity()!=null) {
@@ -133,12 +136,14 @@ public class PreviewFragmentFilter implements FragmentFilter {
 		return result.toString();
 	}
 
-	private Map<String, Object> createDummyBlock(String name) {
+	private Map<String, Object> createDummyBlock(String name, String parentId) {
 		Map<String, Object> text = new LinkedHashMap<String, Object>();
 		text.put("type", "Paragraph");
-		text.put("text", "name");
+		text.put("id", parentId+"-1-1");
+		text.put("text", name);
 		Map<String, Object> result = new LinkedHashMap<String, Object>();
 		result.put("type", "Block");
+		result.put("id", parentId+"-1");
 		result.put("styleNames", new String[]{"dummy"});
 		result.put("content", Collections.singletonList(text));
 		return result;
