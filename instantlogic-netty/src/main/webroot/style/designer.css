@@ -3,11 +3,11 @@
 
 /* Element editor */
 .element-editor {padding-left:25px;}
-.collapsable-content {margin-left: 20px;padding-left:0px;overflow:visible;clear:both;}
-.collapse-button {position:absolute;left:-35px;z-index:1;}
+.collapsable-content {margin-left: 15px;padding-left:0px;overflow:visible;clear:both;}
+.collapse-button {position:absolute;left:-15px;z-index:1;}
 .designer .preview-line {width:100%;margin-right:600px;}
-.designer .preview-line .preview-container {display:inline-block;width:600px;float:right;}
-.designer .preview-line .preview-container iframe {width: 600px;height:50px;overflow:hidden;border:0;}
+.designer .preview-line .preview-container {display:inline-block;width:600px;float:right;line-height:0;}
+.designer .preview-line .preview-container iframe {width: 600px;height:20px;overflow:hidden;border:0;}
 
 .designer .editor {border: solid 1px #606060;background-color: #F0FF90;float:right;width:740px;border-radius: 5px;}
 

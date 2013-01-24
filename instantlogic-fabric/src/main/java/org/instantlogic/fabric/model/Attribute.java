@@ -58,14 +58,17 @@ public abstract class Attribute<I extends Instance, Value extends Object, Item e
 		return false;
 	}
 
+	// TODO: public ValueAndLevel<Boolean> isRelevant(I instance) 
 	public Deduction<Boolean> getRelevance() {
 		return null;
 	}
 	
+	// TODO: public ValueAndLevel<Value> rule(I instance) 
 	public Deduction<Value> getRule() {
 		return null;
 	}
 	
+	// TODO
 	public Deduction<Value> getDefault() {
 		return null;
 	}

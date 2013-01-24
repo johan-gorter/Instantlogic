@@ -66,6 +66,7 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		setOutput(constantDeductionDesign);
 		
 		constantDeductionDesign.setValue(value);
+		constantDeductionDesign.getConstantDataType().setJavaClassName(className.getName());
 		return constantDeductionDesign;
 	}
 	

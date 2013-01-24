@@ -145,7 +145,7 @@ public class IzzyGenerator extends Design {
 		issueDetailsPlaceTemplate.lookUpTypes();
 		
 		// Application
-		izzy.setSourcePath("target/generated-sources/instantlogic-app");
+		izzy.setSourcePath("../izzy/target/generated-sources/instantlogic-app");
 		izzy.setMainFlow(mainFlow);
 		izzy.setStartEvent(homeEvent);
 

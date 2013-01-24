@@ -408,7 +408,7 @@ YUI.add('instantlogic', function (Y) {
             diff.nodeToRemove(oldNode);
             diff.nodeAdded(this.node);
             this.fragment = this.engine.createFragment(newModel.type, this.node, this.parentFragment, this.engine);
-            this.fragment.init(this.node, newModel);
+            this.fragment.init(newModel);
         },
 
         destroy: function () {

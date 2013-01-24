@@ -35,6 +35,9 @@ public abstract class ContentGenerator extends AbstractGenerator {
 			model.name = ((SharedElementDesign) element).getDefinition().getName();
 		} else if (element instanceof FragmentTemplateDesign) {
 			FragmentTemplateDesign fragmentTemplate = (FragmentTemplateDesign) element;
+			if (!fragmentTemplate.isValidForCodegeneration()) {
+				return null;
+			}
 			model.category = Category.Fragment;
 			if (fragmentTemplate.getType()!=null) {
 				model.fragmentTypeName = fragmentTemplate.getType().getName(); // Official way
@@ -47,7 +50,10 @@ public abstract class ContentGenerator extends AbstractGenerator {
 				if (property.getChildren().size()>0) {
 					List<ContentModel> children = new ArrayList<ContentModel>();
 					for (ElementDesign child : property.getChildren()) {
-						children.add(generate(child, deductionHolder));
+						ContentModel childElement = generate(child, deductionHolder);
+						if (childElement!=null) {
+							children.add(childElement);
+						}
 					}
 					model.childLists.put(propertyName, children);
 				} 

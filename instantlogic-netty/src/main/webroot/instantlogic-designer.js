@@ -28,7 +28,7 @@ YUI.add('instantlogic-designer', function (Y) {
     	init: function(model) {
             ns.Preview.superclass.init.call(this, model);
     		this.previewContainer = html.div({className:'preview-container'},
-    			this.frame = html.iframe({src:'preview.html'})
+    			this.frame = html.iframe({src:'preview.html', frameborder:'0',scrolling:'no'})
     		);
     		this.frame.on('load', this.iframeLoaded, this);
             this.parentNode.appendChild(this.previewContainer);
@@ -42,20 +42,29 @@ YUI.add('instantlogic-designer', function (Y) {
     		html.pushDocument(this.frameDocument);
 
     		this.contentDiv = html.div({className: 'preview'});
-    		Y.one(this.frameDocument.body).one('#place').appendChild(this.contentDiv);
+    		this.placeDiv = Y.one(this.frameDocument.body).one('#place'); 
+    		this.placeDiv.appendChild(this.contentDiv);
             this.contentFragmentList = new FragmentList(this.contentDiv, this, this.engine);
             this.contentFragmentList.init(this.model.content);
             
             html.popDocument();
+            var me = this;
+            setTimeout(function() {me.updateFrameHeight();});
     	},
     	
     	update: function (newModel, diff) {
     		ns.Preview.superclass.update.call(this, newModel, diff);
-    		html.pushDocument(this.frameDocument);
-            this.contentFragmentList.update(newModel.content, diff);
-            html.popDocument();
-    	}
+    		if (this.contentFragmentList) {
+	    		html.pushDocument(this.frameDocument);
+	            this.contentFragmentList.update(newModel.content, diff);
+	            html.popDocument();
+    		}
+    	},
     	
+    	updateFrameHeight: function() {
+    		var height = Y.one(this.frameDocument.body).get('docHeight');
+    		this.frame.setStyle('height', height);
+    	}
     });
     
 }, '0.7.0', { requires: ['instantlogic', 'html', 'instantlogic-fragments'] });

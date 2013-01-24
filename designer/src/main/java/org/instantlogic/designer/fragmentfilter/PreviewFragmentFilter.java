@@ -44,8 +44,10 @@ public class PreviewFragmentFilter implements FragmentFilter {
 			FragmentTemplateDesign template = (FragmentTemplateDesign) element;
 			if (template.getType()!=null) {
 				result.put("type", template.getType().getName()); // Official way
-			} else {
+			} else if (template.getFragmentTypeName()!=null) {
 				result.put("type", template.getFragmentTypeName()); // Unofficial way
+			} else {
+				result.put("type", "Text"); // Fallback
 			}
 			if (template.getStyleNames()!=null && template.getStyleNames().size()>0) {
 				result.put("styleNames", template.getStyleNames().asList().toArray());

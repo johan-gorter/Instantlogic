@@ -78,7 +78,8 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 						),
 						new FragmentTemplateDesign("Block").addToStyleNames("collapsable-content")
 							.setChildren("content",
-								new FragmentTemplateDesign("Button").setText("text", createConstantText("-")).addToStyleNames("collapse-button"),
+								new FragmentTemplateDesign("Link").addToStyleNames("collapse-button")
+									.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-chevron-down")),
 								new FragmentTemplateDesign("PreviewLine")
 									.setValue("previewMode", previewMode = new DeductionSchemeDesign())
 									.setChildren("content", 
