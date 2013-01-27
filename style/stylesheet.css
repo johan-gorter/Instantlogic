@@ -1,0 +1,8 @@
+/* FF7F00-orange A65200-brown BF7730-lightbrown FF9F40-lighter FFB873-lightest */ 
+
+.banner {display:block; position:relative;padding:30px; border-bottom:1px solid #A65200; background-color: #FF7F00; color: #FFFFFF;text-align:center;}
+.banner h1 {color: #FFFFFF;font-size:120px;margin:30px;line-height:1;}
+.banner h1 em {font-weight: normal;}
+.banner p {font-size: 32px; line-height:1.25;}
+.footer {display:block; text-align:center; padding:30px 0; margin-top:70px; border-top:1px solid #A65200; background-color: #FFB873;}
+.footer a {color: #BF7730}
