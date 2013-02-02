@@ -69,48 +69,27 @@ YUI.add('instantlogic-fragments', function (Y) {
     		return [[this.questionDiv, model.questionText]];
     	},
     	postInit: function(model) {
-        	this.answer = this.engine.createAnswer(model);
-        	this.answerMarkup = this.answer.createMarkup();
-        	this.answer.updateValue(model.value);
-    		if (model.styleNames) {
-    			for (var i=0;i<model.styleNames.length;i++) {
-    				var name = model.styleNames[i];
-    				if (name.substr(0,7)=='answer-') {
-    					this.markup.removeClass(name);
-    					this.answerMarkup.addClass(name.substr(7));
-    				}
-    			}
-    		}
-        	this.answerDiv.setContent(this.answerMarkup);
+        	this.answer = this.engine.createAnswer(model, this.answerDiv, this, this.engine);
+        	this.answer.init(model);
         	this.answerDiv.on('change', this.inputChange, this);
         	this.answerDiv.on('focus', this.inputFocus, this);
+			this.removeStyleNames(model.styleNames);
     	},
     	postUpdate: function(newModel, diff) {
-        	if (newModel.value!=this.oldModel.value) {
-        		this.answer.updateValue(newModel.value);
-        	}
+    		this.answer.update(newModel, diff);
     		if (!util.arrayEquals(this.oldModel.styleNames, newModel.styleNames)) {
-	    		if (this.oldModel.styleNames) {
-	    			for (var i=0;i<this.oldModel.styleNames.length;i++) {
-	    				var name = this.oldModel.styleNames[i];
-	    				if (name.substr(0,7)=='answer-') {
-	    					this.answerMarkup.removeClass(name.substr(7));
-	    				}
-	    			}
-	    		}
-	    		if (newModel.styleNames) {
-	    			for (var i=0;i<newModel.styleNames.length;i++) {
-	    				var name = newModel.styleNames[i];
-	    				if (name.substr(0,7)=='answer-') {
-	    					this.markup.removeClass(name);	    					
-	    					this.answerMarkup.addClass(name.substr(7));
-	    				}
-	    			}
-	    		}
-	    		diff.nodeUpdated(this.markup);
+    			this.removeStyleNames(newModel.styleNames);
     		}
     	},
     	overrides: {
+    		removeStyleNames: function(names) {
+    			if (!names) return;
+    			for (var i=0;i<names.length;i++) {
+    				if (names[i].substr(0,7)=='answer-') {
+    					this.markup.removeClass(names[i]);
+    				}
+    			}
+    		},
             inputChange: function() {
             	this.engine.sendChange(this.model.id, this.answer.getValue());
             },

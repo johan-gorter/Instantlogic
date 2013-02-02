@@ -8,10 +8,5 @@
 	<classpathentry kind="src" path="/instantlogic-interaction"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="src" path="/instantlogic-engine"/>
-	<classpathentry kind="lib" path="C:/Users/gast/.ivy2/cache/com.google.code.gson/gson/jars/gson-2.1.jar" sourcepath="C:/Users/gast/.ivy2/cache/com.google.code.gson/gson/sources/gson-2.1-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/gast/.ivy2/cache/com.google.code.gson/gson/javadocs/gson-2.1-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

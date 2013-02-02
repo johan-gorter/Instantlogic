@@ -8,11 +8,6 @@
 	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=instantlogic-engine&amp;ivyXmlPath=ivy.xml&amp;confs=*"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/instantlogic-fabric"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/instantlogic-interaction"/>
-	<classpathentry kind="lib" path="C:/Users/gast/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.6.4.jar" sourcepath="C:/Users/gast/.ivy2/cache/org.slf4j/slf4j-api/sources/slf4j-api-1.6.4-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/gast/.ivy2/cache/org.slf4j/slf4j-api/javadocs/slf4j-api-1.6.4-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/designer"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

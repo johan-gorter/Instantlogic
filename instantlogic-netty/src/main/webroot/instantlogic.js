@@ -209,8 +209,8 @@ YUI.add('instantlogic', function (Y) {
             return new ns.MessageFragment(parentNode, parentFragment, engine || this, 'No fragmentnamespace provides a fragment called ' + name, 'error');
         },
         
-        createAnswer: function(model) {
-        	return this.createAnswerFunction(model);
+        createAnswer: function(model, parentNode, parentFragment, engine) {
+        	return this.createAnswerFunction(model, parentNode, parentFragment, engine);
         },
         
         sendEnter: function() {
@@ -626,13 +626,72 @@ YUI.add('instantlogic', function (Y) {
         }
     };
     
+    // Extends Fragment, is used as part of an Input
+    ns.Answer = function(parentNode, parentFragment, engine) {
+    	ns.Answer.superclass.constructor.apply(this, arguments);
+    };
+    Y.extend(ns.Answer, ns.Fragment, {
+    	init: function(model) {
+    		ns.Answer.superclass.init.call(this, model);
+    		this.markup = this.createMarkup();
+    		if (!this.markup) Y.error('no markup');
+    		this.parentNode.appendChild(this.markup);
+        	this.updateValue(model.value); // Convenient
+    		if (model.styleNames) {
+    			for (var i=0;i<model.styleNames.length;i++) {
+    				var name = model.styleNames[i];
+    				if (name.substr(0,7)=='answer-') {
+    					this.markup.removeClass(name);
+    					this.markup.addClass(name.substr(7));
+    				}
+    			}
+    		}
+    	},
+    	update: function(newModel, diff) {
+    		ns.Answer.superclass.update.call(this, newModel, diff);
+    		if (this.oldModel.value!=newModel.value) {
+    			this.updateValue(newModel.value);
+    		}
+    		if (!ns.util.arrayEquals(this.oldModel.styleNames, newModel.styleNames)) {
+	    		if (this.oldModel.styleNames) {
+	    			for (var i=0;i<this.oldModel.styleNames.length;i++) {
+	    				var name = this.oldModel.styleNames[i];
+	    				if (name.substr(0,7)=='answer-') {
+	    					this.markup.removeClass(name.substr(7));
+	    				}
+	    			}
+	    		}
+	    		if (newModel.styleNames) {
+	    			for (var i=0;i<newModel.styleNames.length;i++) {
+	    				var name = newModel.styleNames[i];
+	    				if (name.substr(0,7)=='answer-') {
+	    					this.markup.removeClass(name);	    					
+	    					this.markup.addClass(name.substr(7));
+	    				}
+	    			}
+	    		}
+	    		diff.nodeUpdated(this.markup);
+    		}
+    	},
+    	createMarkup: function() {
+    		Y.error('not implemented');
+    	},
+    	// Should update the markup to reflect the new value
+    	updateValue: function(newValue) {
+    		Y.error('not implemented');
+    	},
+    	getValue: function() {
+    		Y.error('not implemented');
+    	}
+    });
+    
     ns.MessageFragment = function (parentNode, parentFragment, engine, message, messageclassName) {
         ns.MessageFragment.superclass.constructor.apply(this, arguments);
         this.message = message;
         this.messageclassName = messageclassName;
     };
 
-    Y.extend(ns.MessageFragment, Y.instantlogic.Fragment, {
+    Y.extend(ns.MessageFragment, ns.Fragment, {
         init: function (model) {
         	ns.MessageFragment.superclass.init.call(this, model);
         	var markup = Y.html.div({className:'message '+this.messageclassName}, 

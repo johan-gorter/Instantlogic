@@ -1,5 +1,5 @@
 {
-  "instanceId": "239c21b9-97ec-487e-893a-cf92ced5e1fa",
+  "instanceId": "274c2e21-62d2-4e4b-96ff-cc9b7aa6f7b9",
   "entityName": "project",
   "version": 1,
   "last issue number": 16,
@@ -59,12 +59,14 @@
       "description": "Basic flow, event, page(\u003dplace) stuff",
       "headline": "Extend the fabric with a framework to create web applications, called Interaction",
       "number": 6,
+      "assignee": "U4",
       "comments": [],
       "reporter": "U4"
     },
     {
       "instanceId": "b83ca3f9-5bbc-4a1e-8c53-61ccb0b99f96",
       "entityName": "issue",
+      "description": "Test one two tree",
       "headline": "Add places and flows to Interaction",
       "number": 7,
       "comments": [],
