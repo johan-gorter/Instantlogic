@@ -31,7 +31,6 @@ import java.util.concurrent.TimeUnit;
 import org.instantlogic.engine.manager.ApplicationManager;
 import org.instantlogic.engine.manager.EngineProcessor;
 import org.instantlogic.engine.manager.Update;
-import org.instantlogic.example.izzy.IzzyApplication;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.slf4j.Logger;
@@ -121,9 +120,9 @@ public class NettyServer {
 	};
 
 	public static void main(String[] args) throws IOException {
-		// TODO: Discover which applications should be loaded
+
 		DesignerApplicationManager.registerDesignerApplication();
-		ApplicationManager.registerApplication(IzzyApplication.INSTANCE);
+		ApplicationManager.registerWebappsDirectory(new File("../webapps"));
 		
 		ExecutorService executor = Executors.newCachedThreadPool(factory);
 		ServerBootstrap bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newSingleThreadExecutor(factory), executor));
