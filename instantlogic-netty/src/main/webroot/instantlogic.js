@@ -68,7 +68,11 @@ YUI.add('instantlogic', function (Y) {
             var me = this;
             window.onbeforeunload = function() {
             	me.stop();
-            }
+            };
+            window.onerror = function(e) {
+            	alert('Unexpected javascript error '+e);
+            	debugger
+            };
         },
         
         stop: function() {

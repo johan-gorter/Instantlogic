@@ -77,7 +77,7 @@ public class NettyTraveler implements TravelerProxy {
 		}
 	}
 	
-	public static NettyTraveler getOrCreate(String travelerId, String applicationName, String caseId) {
+	public static synchronized NettyTraveler getOrCreate(String travelerId, String applicationName, String caseId) {
 		NettyTraveler result = nettyTravelers.get(travelerId);
 		if (result==null) {
 			logger.info("Registering new traveler {}", travelerId);
