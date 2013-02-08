@@ -16,7 +16,7 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
 
 	@Override
 	public String getId() {
-		return "eea70c62-ba14-44fc-9bd5-c3c7fd71642d";
+		return "40bafeba-da26-46e0-8b10-81d5e02efa5c";
 	}
 	
 
@@ -61,34 +61,34 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
 
 	
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
-        new org.instantlogic.interaction.page.FragmentTemplate("ac9033a6-c408-4144-8e3b-622173f03838", "Page")      
+        new org.instantlogic.interaction.page.FragmentTemplate("b104136f-04ac-4222-b61f-425411e934b6", "Page")      
         .putChildren("mainContent",
-                    new org.instantlogic.interaction.page.SharedElementHolder("fdada56a-5768-471f-8145-f0550939ad35", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+                    new org.instantlogic.interaction.page.SharedElementHolder("85ef2b4d-7fc3-4391-91ba-8e03fd3a4f39", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
 ,
-                new org.instantlogic.interaction.page.FragmentTemplate("080e602d-498d-4cee-9808-28405bed2e3f", "Block")      .setStyleNames(new String[]{"card"})
+                new org.instantlogic.interaction.page.FragmentTemplate("62cbf60c-8d18-430d-bfe3-6d49e3bfd090", "Block")      .setStyleNames(new String[]{"card"})
       
                 .putChildren("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("dffb6d7b-2003-40fd-ae19-0fec623a9d69", "Heading3")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("6f66a4d3-b3b9-4ccd-b62d-9527df0f9a30", "Heading3")      
                         .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate(createDeduction0()),new org.instantlogic.fabric.text.StringTemplate(" (Entity)")))
 ,
-                        new org.instantlogic.interaction.page.FragmentTemplate("360517c2-41c0-446f-b737-aacbaa27202d", "Input")      .setField(org.instantlogic.designer.entity.DesignEntity.INSTANCE, org.instantlogic.designer.entity.DesignEntity.name)
+                        new org.instantlogic.interaction.page.FragmentTemplate("0cdbed8d-9495-46c4-bdac-2a2248cccfee", "Input")      .setField(org.instantlogic.designer.entity.DesignEntity.INSTANCE, org.instantlogic.designer.entity.DesignEntity.name)
 ,
-                        new org.instantlogic.interaction.page.FragmentTemplate("efbe3d12-ebb6-407d-9ae1-1fab4d270ebd", "Heading4")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("8b1a3bb5-c1aa-47df-80d9-a8ced223ed0f", "Heading4")      
                         .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Attributes")))
 ,
                         new org.instantlogic.interaction.page.SelectionElement(createDeduction1()
-,                                new org.instantlogic.interaction.page.FragmentTemplate("99da8216-7987-4461-acc7-473eae6ea0db", "Link")      .setEvent(org.instantlogic.designer.event.AttributeDetailsEvent.INSTANCE)
+,                                new org.instantlogic.interaction.page.FragmentTemplate("e485a48c-75c7-4cca-9645-21414f056e4f", "Link")      .setEvent(org.instantlogic.designer.event.AttributeDetailsEvent.INSTANCE)
       
                                 .putChildren("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("ea1c749a-c80d-4677-9d6a-cf9ce089e2ea", "Block")      
+                                        new org.instantlogic.interaction.page.FragmentTemplate("5d0daec3-e52a-4764-9cfc-b257d851eead", "Block")      
                                         .putChildren("content",
-                                                new org.instantlogic.interaction.page.FragmentTemplate("f8c54c0c-c1f5-4988-bc0a-078cb5f59bf9", "Strong")      
+                                                new org.instantlogic.interaction.page.FragmentTemplate("d0cd2dd4-284e-4109-852c-5a451cf65e78", "Strong")      
                                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate(createDeduction2())))
                                         )
                                 )
 )
 ,
-                        new org.instantlogic.interaction.page.FragmentTemplate("992d4215-5304-4883-a70e-ed3dec74e821", "Button")      .setEvent(org.instantlogic.designer.event.AddAttributeEvent.INSTANCE)
+                        new org.instantlogic.interaction.page.FragmentTemplate("fa0269e2-dd83-488d-8114-9e9c913f0bf0", "Button")      .setEvent(org.instantlogic.designer.event.AddAttributeEvent.INSTANCE)
       
                         .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Add attribute")))
                 )

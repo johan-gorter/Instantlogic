@@ -24,7 +24,6 @@ import org.instantlogic.designer.SharedElementDefinitionDesign;
 import org.instantlogic.designer.SharedElementDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
-import org.instantlogic.designer.event.AddAttributeEventGenerator;
 import org.instantlogic.designer.event.CloseEditorEventGenerator;
 import org.instantlogic.designer.event.NewAttributeForFragmentTemplateEventGenerator;
 import org.instantlogic.designer.event.OpenEditorEventGenerator;

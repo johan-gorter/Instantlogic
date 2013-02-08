@@ -1,5 +1,5 @@
 {
-  "instanceId": "76c14020-6adc-4a4c-8ed6-6f495f6be3c3",
+  "instanceId": "42ba435b-0fff-4769-9b75-08c02eb626e5",
   "entityName": "project",
   "version": 1,
   "last issue number": 16,
@@ -20,7 +20,7 @@
       "description": "Add observers that are notified once and observers that are constantly being notified",
       "headline": "Make the Fabric observable",
       "number": 2,
-      "assignee": "9cb1319d-cc85-4283-8be8-c18914062a74",
+      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
       "comments": []
     },
     {
@@ -29,9 +29,9 @@
       "description": "Only implement Atomic and Consistent, not Isolated and Durable.\n\nListeners that observe a change that is rolled back should receive the opposite change event with a flag.",
       "headline": "Make the Fabric transactional",
       "number": 3,
-      "assignee": "9cb1319d-cc85-4283-8be8-c18914062a74",
+      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
       "comments": [],
-      "reporter": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2"
+      "reporter": "U4"
     },
     {
       "instanceId": "6f86ecaf-6e76-455b-854f-910639d16462",
@@ -47,7 +47,7 @@
       "instanceId": "be35693d-8eae-4cad-b818-4e118ea1dfc4",
       "entityName": "issue",
       "description": "Create one mechanism that is source control friendly.\nAdd another that is fast and efficient.",
-      "headline": "Add a persistence mechanism",
+      "headline": "Add persistence mechanisms",
       "number": 5,
       "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
       "comments": [],
@@ -66,6 +66,7 @@
     {
       "instanceId": "b83ca3f9-5bbc-4a1e-8c53-61ccb0b99f96",
       "entityName": "issue",
+      "Fun factor": 1,
       "description": "Test one two tree",
       "headline": "Add places and flows to Interaction",
       "number": 7,

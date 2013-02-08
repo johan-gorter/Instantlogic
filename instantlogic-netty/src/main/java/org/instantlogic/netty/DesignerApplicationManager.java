@@ -34,7 +34,7 @@ public class DesignerApplicationManager extends ApplicationManager {
 		ApplicationDesign applicationDesign = (ApplicationDesign)theCase;
 		applicationDesign.setGeneratedClassModelsProcessor(
 			new BackgroundThreadGeneratedClassModelsProcessor(
-				new ApplicationJavacodeGenerator(new File(applicationDesign.getSourcePath()))
+				new ApplicationJavacodeGenerator(new File(new File("../webapps", theCase.getName()), "target/generated-sources/instantlogic-app").getAbsoluteFile())
 			)
 		);
 	}

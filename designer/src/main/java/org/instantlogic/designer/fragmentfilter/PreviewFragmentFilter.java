@@ -147,7 +147,7 @@ public class PreviewFragmentFilter implements FragmentFilter {
 		result.put("type", "Block");
 		result.put("id", parentId+"-1");
 		result.put("styleNames", new String[]{"dummy"});
-		result.put("content", Collections.singletonList(text));
+		result.put("content", Collections.EMPTY_LIST);// Collections.singletonList(text));
 		return result;
 	}
 
