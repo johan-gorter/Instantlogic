@@ -18,7 +18,7 @@ import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 
-public class InstanceBytecodeTemplate extends AbstractTemplate {
+public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 
 	public static void generate(Map<String, byte[]> bytecodeClasses, EntityClassModel model) {
 		bytecodeClasses.put(model.rootPackageName+"."+model.name, dump(model));	

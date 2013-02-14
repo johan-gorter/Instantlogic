@@ -20,7 +20,7 @@ import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Type;
 
-public class EntityBytecodeTemplate extends AbstractTemplate {
+public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 
 	public static void generate(Map<String, byte[]> bytecodeClasses, String fullName, EntityClassModel model) {
 		bytecodeClasses.put(fullName, dump(model));

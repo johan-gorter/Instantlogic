@@ -26,7 +26,7 @@ public class BytecodeClassloader extends URLClassLoader {
 	
 	@Override
 	protected Class<?> findClass(String name) throws ClassNotFoundException {
-		byte[] bytes = bytecodeClasses.get(name);
+		byte[] bytes = bytecodeClasses.get(name); // Despite the default JEE behavior, we want to be eager
 		if (bytes!=null) {
 			return defineClass(name, bytes, 0, bytes.length);
 		}
