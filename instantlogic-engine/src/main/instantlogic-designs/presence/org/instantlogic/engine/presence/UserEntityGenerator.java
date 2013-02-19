@@ -13,6 +13,8 @@ package org.instantlogic.engine.presence;
 import org.instantlogic.designer.AttributeDesign;
 import org.instantlogic.designer.DataCategoryDesign;
 import org.instantlogic.designer.EntityDesign;
+import org.instantlogic.engine.presence.deduction.UserAvatarUrlDefaultDeduction;
+import org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction;
 
 public class UserEntityGenerator extends EntityDesign {
 
@@ -26,6 +28,17 @@ public class UserEntityGenerator extends EntityDesign {
 
     // Attributes
     public static final AttributeDesign username = addAttribute(ENTITY, "username", DataCategoryDesign.text);
+    public static final AttributeDesign email = addAttribute(ENTITY, "email", DataCategoryDesign.text);
+    public static final AttributeDesign name = addAttribute(ENTITY, "name", DataCategoryDesign.text);
+    public static final AttributeDesign avatarUrl = addAttribute(ENTITY, "avatarUrl", DataCategoryDesign.text);
     
     // Relations
+    
+    // init
+    @Override
+    public void init() {
+    	email.newDefault().deduceAttribute(username);
+    	name.newDefault().deduceCustom(UserNameDefaultDeduction.class, String.class);
+    	avatarUrl.newDefault().deduceCustom(UserAvatarUrlDefaultDeduction.class, String.class);
+    }
 }

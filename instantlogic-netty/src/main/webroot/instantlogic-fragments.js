@@ -269,10 +269,9 @@ YUI.add('instantlogic-fragments', function (Y) {
     	overrides: {
     		updateImages: function() {
     			this.markup.get('children').remove();
-    			var usernames = this.engine.communicator.findTravelersInPlace(this.lastInstanceId);
-    			for (var i=0; i<usernames.length;i++) {
-    				var username = usernames[i];
-    				this.markup.appendChild(html.img({src:'/avatar/'+username+'.jpg', width:'20', height:'20', style:'width:20px;height:20px;'}));
+    			var users = this.engine.communicator.findTravelersInPlace(this.lastInstanceId);
+    			for (var i=0; i<users.length;i++) {
+    				this.markup.appendChild(html.img({src:users[i].avatarUrl, width:'20', height:'20', style:'width:20px;height:20px;'}));
     			}
     		},
     		destroy: function() {

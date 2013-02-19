@@ -31,8 +31,8 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 	
 	@Override
 	public void init() {
-		DeductionSchemeDesign applicationNameDeduction, caseNameDeduction, userHasValue, travelerUsername, 
-			activeUsers, username, userTravelers, travelerId, travelerPlaceUrl, travelerPlaceTitle, visitors, username2, focus, currentPlace;
+		DeductionSchemeDesign applicationNameDeduction, caseNameDeduction, userHasValue, user, userUsername, userAvatarUrl, userName, 
+			activeUsers, username, avatarUrl, name, userTravelers, travelerId, travelerPlaceUrl, travelerPlaceTitle, visitors, username2, name2, avatarUrl2, focus, currentPlace;
 		FragmentTemplateDesign debugVisible;
 		
 		setContent(
@@ -45,8 +45,14 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 							new IfElseDesign()
 								.setCondition(userHasValue = new DeductionSchemeDesign()) // Logged in
 								.addToIfChildren(
-									new FragmentTemplateDesign("Me")
-										.setValue("username", travelerUsername = new DeductionSchemeDesign())
+									new SelectionDesign()
+										.setSelection(user = new DeductionSchemeDesign())
+										.addToChildren(
+											new FragmentTemplateDesign("Me")
+												.setValue("username", userUsername = new DeductionSchemeDesign())
+												.setValue("avatarUrl", userAvatarUrl = new DeductionSchemeDesign())
+												.setValue("name", userName = new DeductionSchemeDesign())
+										)
 								)
 								.addToIfChildren(
 									debugVisible = new FragmentTemplateDesign("DebugVisibleToggle")
@@ -58,6 +64,8 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 												.setSelection(activeUsers = new DeductionSchemeDesign())
 												.addToChildren(new FragmentTemplateDesign("User")
 													.setValue("username", username = new DeductionSchemeDesign())
+													.setValue("avatarUrl", avatarUrl = new DeductionSchemeDesign())
+													.setValue("name", name = new DeductionSchemeDesign())
 													.setChildren("travelers", 
 														new SelectionDesign()
 															.setSelection(userTravelers = new DeductionSchemeDesign())
@@ -80,6 +88,8 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 									.addToChildren(
 										new FragmentTemplateDesign("Avatar")
 											.setValue("username", username2 = new DeductionSchemeDesign())
+											.setValue("name", name2 = new DeductionSchemeDesign())
+											.setValue("avatarUrl", avatarUrl2 = new DeductionSchemeDesign())
 											.setValue("focus", focus = new DeductionSchemeDesign())
 									)
 							)
@@ -91,11 +101,19 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 		userHasValue.deduceHasValue(
 			userHasValue.deduceRelation(TravelerEntityGenerator.user, 
 				userHasValue.deduceSelectedInstance(TravelerEntityGenerator.ENTITY)));
-		travelerUsername.deduceAttribute(UserEntityGenerator.username, 
-			travelerUsername.deduceRelation(TravelerEntityGenerator.user, 
-				travelerUsername.deduceSelectedInstance(TravelerEntityGenerator.ENTITY)));
+
+		user.deduceRelation(TravelerEntityGenerator.user);
+
+		userUsername.deduceAttribute(UserEntityGenerator.username);
+		userAvatarUrl.deduceAttribute(UserEntityGenerator.avatarUrl);
+		userName.deduceAttribute(UserEntityGenerator.name);
+
 		activeUsers.deduceRelation(PresenceEntityGenerator.activeUsers);
+
 		username.deduceAttribute(UserEntityGenerator.username);
+		avatarUrl.deduceAttribute(UserEntityGenerator.avatarUrl);
+		name.deduceAttribute(UserEntityGenerator.name);
+		
 		userTravelers.deduceReverseRelation(TravelerEntityGenerator.user, 
 			userTravelers.deduceSelectedInstance(UserEntityGenerator.ENTITY));
 		travelerId.deduceAttribute(TravelerEntityGenerator.id);
@@ -104,7 +122,11 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 		travelerPlaceTitle.deduceAttribute(PlaceEntityGenerator.title, 
 			travelerPlaceTitle.deduceRelation(TravelerEntityGenerator.currentPlace));
 		visitors.deduceReverseRelation(TravelerEntityGenerator.currentPlace, visitors.deduceSelectedInstance(PlaceEntityGenerator.ENTITY));
+
 		username2.deduceAttribute(UserEntityGenerator.username, username2.deduceRelation(TravelerEntityGenerator.user));
+		name2.deduceAttribute(UserEntityGenerator.name, name2.deduceRelation(TravelerEntityGenerator.user));
+		avatarUrl2.deduceAttribute(UserEntityGenerator.avatarUrl, avatarUrl2.deduceRelation(TravelerEntityGenerator.user));
+		
 		currentPlace.deduceRelation(TravelerEntityGenerator.currentPlace);
 		focus.deduceAttribute(TravelerEntityGenerator.focus);
 		

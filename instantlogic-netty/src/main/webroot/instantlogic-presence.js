@@ -52,8 +52,8 @@ YUI.add('instantlogic-presence', function (Y) {
     	init: function(model) {
     		ns.Me.superclass.init.call(this, model);
     		var markup = html.span({className: 'me'},
-				this.avatarDiv = html.span({className: 'avatar'}, html.img({src:'/avatar/'+model.username+'.jpg', width:'23px', height:'23px;'})),
-				this.loginNameSpan = html.span({className: 'username'}, model.username || ''),
+				this.avatarDiv = html.span({className: 'avatar'}, html.img({src: model.avatarUrl, width:'23px', height:'23px;'})),
+				this.loginNameSpan = html.span({className: 'username'}, model.name || ''),
 				this.logoutButton = html.a({className: 'btn btn-inverse'}, 'Log out')
     		)
     		this.logoutButton.on('click', this.logoutClick, this);
@@ -115,7 +115,7 @@ YUI.add('instantlogic-presence', function (Y) {
         		this.hideButton.show();
         		this.usersDiv.show();
         	},
-        	findTravelersInPlace: function(instanceId) { // returns list of usernames who are visiting a place which contains the instanceId
+        	findTravelersInPlace: function(instanceId) { // returns list of objects who are visiting a place which contains the instanceId
         		var result = [];
         		var placeUrlSubstring = '/'+instanceId+'/';
         		for (var i=0;i<this.model.users.length;i++) {
@@ -123,7 +123,7 @@ YUI.add('instantlogic-presence', function (Y) {
         			for (var ii=0;ii<user.travelers.length;ii++) {
         				var traveler = user.travelers[ii];
         				if (traveler.placeUrl.indexOf(placeUrlSubstring)>=0) {
-        					result.push(user.username);
+        					result.push({username: user.username, name: user.name, avatarUrl: user.avatarUrl});
         				}
         			}
         		}
@@ -205,7 +205,7 @@ YUI.add('instantlogic-presence', function (Y) {
     		updateAvatarImage: function(model) {
     			this.avatarDiv.get('children').remove();
         		this.avatarDiv.appendChild(
-        			html.img({src:'/avatar/'+(model.username || 'anonymous')+'.jpg', width:'50px', height:'50px;'})
+        			html.img({src:(model.avatarUrl || '/avatar/anonymous.jpg'), width:'50px', height:'50px;'})
         		);
     		},
     		positionAvatar: function(useAnimation) {

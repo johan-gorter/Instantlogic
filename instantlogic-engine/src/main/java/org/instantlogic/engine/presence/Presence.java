@@ -46,7 +46,12 @@ public class Presence extends AbstractPresence {
 	public void executeCommand(Traveler traveler, String command, String id, Object value) {
 		switch (command) {
 			case "login":
-				traveler.getTravelerInfo().setAuthenticatedUsername((String)value);
+				String login = (String)value;
+				login = login.toLowerCase();
+				if (login.indexOf('@')<0) {
+					login = login+"@instantlogic.org";
+				}
+				traveler.getTravelerInfo().setAuthenticatedUsername(login);
 				traveler.setUser(findOrActivateUser((String)value));
 				break;
 			case "logout":
