@@ -25,6 +25,7 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
 	private static final char[] LabelStartChars = "_ABCDEFGHIJKLMNOPQRSTUVWXYZvwxyz".toCharArray();
 	private static final char[] LabelChars = "_abcdefghijklmnopqrstuvwxyzVWXYZ".toCharArray();
 	private static final char[] hexChars = "0123456789abcdef".toCharArray();
+	private static final String underscores = "________________";
 	
     private static final long serialVersionUID = 1L;
 
@@ -46,6 +47,67 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     private static class SecureRandomHolder {
         static final SecureRandom secureRandom = new SecureRandom();
     }
+    
+    private static char[] getLabelChars(String label)
+    {
+        StringBuilder chars = new StringBuilder(label.length());
+    	label = label.toLowerCase();
+    	boolean first = true;
+        for (int i=0;i<label.length();i++) {
+        	char c = label.charAt(i);
+        	if (c=='_' || (c>='a' && c<='z')) {
+        		if (first) {
+        			first = false;
+        			chars.append((char)(c+'A'-'a'));
+        		} else {
+        			chars.append(c);
+        		}
+        	}
+        }
+        int length = chars.length();
+        if (length > 16)
+        {
+            int tooMuch = length - 16;
+            int index = length - 1;
+            while (index >= 1 && tooMuch > 0)
+            {
+                if ("aeiou".indexOf(chars.charAt(index))>=0)
+                {
+                    chars.deleteCharAt(index);
+                    tooMuch--;
+                }
+                index--;
+            }
+            if (tooMuch>0) {
+            	index = chars.length()-1;
+                while (index >= 1 && tooMuch > 0)
+                {
+                    if ("hmnv".indexOf(chars.charAt(index))>=0)
+                    {
+                        chars.deleteCharAt(index);
+                        tooMuch--;
+                    }
+                    index--;
+                }
+            }
+            if (tooMuch > 0)
+            {
+                chars.replace(10, 11 + tooMuch,"_");
+            }
+        }
+        else if (length < 16)
+        {
+            chars.append(underscores.substring(length));
+        }
+        char[] result = new char[16];
+        chars.getChars(0, 16, result, 0);
+        return result;
+    }
+    
+    public static Id newFixedId(String label) {
+    	char[] chars = getLabelChars(label);
+    }
+    
 
     private Id(byte[] data) {
         long hi = 0;
