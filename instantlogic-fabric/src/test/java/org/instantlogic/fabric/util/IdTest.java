@@ -2,6 +2,7 @@ package org.instantlogic.fabric.util;
 
 import static org.junit.Assert.assertEquals;
 
+import org.instantlogic.fabric.util.id.Id;
 import org.junit.Test;
 
 public class IdTest {

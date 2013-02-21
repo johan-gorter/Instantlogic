@@ -1,18 +1,18 @@
-package org.instantlogic.fabric.util;
+package org.instantlogic.fabric.util.id;
 
 import java.security.SecureRandom;
 
 /**
  * 128 bit identifier.
  * 
- * Encodes and decodes to String as follows:
- * 16 5-bit characters + underscore + 8 hex digits + underscore + 4 hex digits
- * 
  * An Id can be generated in one of the following ways:
  * - Secure random, using the same algorithm as a UUID/GUID level 4
  * - Developer friendly unique identifier: Uses a provided label, fixed random number and a global sequence number
  * - Sequence: Uses only a global sequence number
  * - Fixed: Uses only the provided label
+ * 
+ * Encodes and decodes to String as follows:
+ * 16 5-bit characters (label) + underscore + 8 hex digits (random) + underscore + 4 hex digits (sequence number)
  * 
  * About the String presentation:
  * - The first character is encoded from: _ABCDEFGHIJKLMNOPQRSTUVWXYZvwxyz
@@ -30,6 +30,7 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     private static final long serialVersionUID = 1L;
 
     private final long hiBits;
+	private final long loBits;
 
     public long getHiBits() {
 		return hiBits;
@@ -39,10 +40,8 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
 		return loBits;
 	}
 
-	private final long loBits;
-
     /*
-     * Lazy initialized to create random UIDs
+     * Lazy initialized to create random GUID/UUIDs
      */
     private static class SecureRandomHolder {
         static final SecureRandom secureRandom = new SecureRandom();
@@ -108,6 +107,27 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	char[] chars = getLabelChars(label);
     }
     
+    /**
+     * Static factory to retrieve a type 4 (pseudo randomly generated) UUID.
+     *
+     * The {@code Id} is generated using a cryptographically strong pseudo
+     * random number generator.
+     *
+     * @return  A randomly generated {@code Id}, created in exactly the same way as a UUID.
+     */
+    public static Id newRandomId() {
+        byte[] randomBytes = new byte[16];
+        SecureRandomHolder.secureRandom.nextBytes(randomBytes);
+        randomBytes[6]  &= 0x0f;  /* clear version        */
+        randomBytes[6]  |= 0x40;  /* set to version 4     */
+        randomBytes[8]  &= 0x3f;  /* clear variant        */
+        randomBytes[8]  |= 0x80;  /* set to IETF variant  */
+        return new Id(randomBytes);
+    }
+    
+    public static Id newFixedId(String label) {
+    	
+    }
 
     private Id(byte[] data) {
         long hi = 0;
@@ -126,24 +146,6 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     public Id(long hiBits, long loBits) {
         this.hiBits = hiBits;
         this.loBits = loBits;
-    }
-
-    /**
-     * Static factory to retrieve a type 4 (pseudo randomly generated) UUID.
-     *
-     * The {@code Uid} is generated using a cryptographically strong pseudo
-     * random number generator.
-     *
-     * @return  A randomly generated {@code Uid}, created in exactly the same way as a UUID.
-     */
-    public static Id randomUid() {
-        byte[] randomBytes = new byte[16];
-        SecureRandomHolder.secureRandom.nextBytes(randomBytes);
-        randomBytes[6]  &= 0x0f;  /* clear version        */
-        randomBytes[6]  |= 0x40;  /* set to version 4     */
-        randomBytes[8]  &= 0x3f;  /* clear variant        */
-        randomBytes[8]  |= 0x80;  /* set to IETF variant  */
-        return new Id(randomBytes);
     }
     
     private static long indexOf(char[] chars, char c) {
