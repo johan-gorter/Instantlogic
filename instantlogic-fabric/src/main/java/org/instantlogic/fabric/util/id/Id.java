@@ -102,9 +102,26 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
         chars.getChars(0, 16, result, 0);
         return result;
     }
-    
+
+    // 0 - 11
+    // 12
+    // 13, 14, 15
     public static Id newFixedId(String label) {
     	char[] chars = getLabelChars(label);
+		long hi = indexOf(LabelStartChars, chars[0]);
+    	for (int i=1;i<12;i++) {
+    		hi = (hi << 5) | indexOf(LabelChars, chars[i]);
+    	}
+    	long index = indexOf(LabelChars, chars[12]);
+    	hi = hi << 4 | (index >> 1);
+    	long lo = index << 63;
+    	index = indexOf(LabelChars, chars[13]);
+    	lo = lo | (index << 58);
+    	index = indexOf(LabelChars, chars[14]);
+    	lo = lo | (index << 53);
+    	index = indexOf(LabelChars, chars[15]);
+    	lo = lo | (index << 48);
+    	return new Id(hi, lo);
     }
     
     /**
@@ -125,10 +142,6 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
         return new Id(randomBytes);
     }
     
-    public static Id newFixedId(String label) {
-    	
-    }
-
     private Id(byte[] data) {
         long hi = 0;
         long lo = 0;
@@ -199,17 +212,30 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	long index = indexOf(LabelChars, c);
     	hi = hi << 4 | (index >> 1);
     	lo = lo | (index << 63);
-		c = uidString.charAt(14);
+		c = uidString.charAt(13);
     	index = indexOf(LabelChars, c);
     	lo = lo | (index << 58);
-		c = uidString.charAt(15);
+		c = uidString.charAt(14);
     	index = indexOf(LabelChars, c);
     	lo = lo | (index << 53);
+		c = uidString.charAt(15);
+    	index = indexOf(LabelChars, c);
+    	lo = lo | (index << 48);
         return new Id(hi, lo);
     }
 
     public String toString() {
-    	long sequenceNr = loBits & 0x00ffffff;
+    	char[] chars = new char[16];
+    	chars[0] = LabelStartChars[(int)((this.hiBits >> 59) & 0x0000001f)];
+    	for (int i=1;i<11;i++) {
+    		chars[i] = LabelChars[(int)((this.hiBits >> (59-i*5)) & 0x0000001f)];
+    	}
+    	long bits = (loBits>>>48) | (hiBits<<16);
+    	for (int i=11;i<16;i++) {
+    		chars[i] = LabelChars[(int)((bits >> (20-(i-11)*5)) & 0x0000001f)];
+    	}
+
+    	long sequenceNr = loBits & 0x0000ffff;
     	long runId = (loBits >> 24) & 0x00ffffff;
     	String runIdString = runId==0?"":hexRunId((int)runId);
     	StringBuffer sb = new StringBuffer();
@@ -222,7 +248,7 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	labelBits = labelBits >> 5;
     	sb.insert(0, LabelChars[(int)(labelBits & 31)]);
     	labelBits = labelBits >> 5;
-    	return "TODO_"+runIdString+"_"+sequenceNr;
+    	return new String(chars)+"_"+runIdString+"_"+sequenceNr;
     }
 
     private String hexRunId(int runId) {
