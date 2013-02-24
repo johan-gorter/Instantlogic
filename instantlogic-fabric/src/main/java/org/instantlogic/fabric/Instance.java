@@ -98,9 +98,9 @@ public abstract class Instance {
 		} else {
 			name="("+name+")";
 		}
-		StringBuilder instanceId = new StringBuilder();
-		getMetadata().getUniqueId();
-		return getInstanceEntity().toString()+"#"+instanceId+name;
+		String uniqueId = getMetadata().getUniqueIdIfInitialized();
+		if (uniqueId==null) uniqueId="Anonymous";
+		return getInstanceEntity().toString()+"#"+uniqueId+name;
 	}
 	
 	public String renderTitle(AbstractDeductionContext context) {

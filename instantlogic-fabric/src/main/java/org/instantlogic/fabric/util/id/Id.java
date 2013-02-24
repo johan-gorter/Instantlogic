@@ -218,6 +218,8 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	for (int i=11;i<16;i++) {
     		chars[i] = LabelChars[(int)((bits >> (20-(i-11)*5)) & 0x0000001f)];
     	}
+    	int labelLength = 16;
+    	while (chars[labelLength-1]=='_') labelLength--;
     	long sequenceNr = loBits & 0x0000ffff;
     	long runId = (loBits >> 24) & 0x00ffffff;
     	StringBuffer sb = new StringBuffer();
@@ -230,7 +232,7 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	labelBits = labelBits >> 5;
     	sb.insert(0, LabelChars[(int)(labelBits & 31)]);
     	labelBits = labelBits >> 5;
-    	return new String(chars)+"_"+hexRunId((int)runId)+"_"+hexSequenceNr((int)sequenceNr);
+    	return new String(chars,0,labelLength)+"_"+hexRunId((int)runId)+"_"+hexSequenceNr((int)sequenceNr);
     }
 
     private String hexRunId(int runId) {
@@ -246,7 +248,8 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	if (sequenceNr==0) return "";
 		char[] chars = new char[4];
 		for (int i=0;i<4;i++) {
-			chars[5-i] = hexChars[sequenceNr & 15];
+			chars[3-i] = hexChars[sequenceNr & 15];
+			sequenceNr = sequenceNr >> 4;
 		}
 		return new String(chars);
 	}

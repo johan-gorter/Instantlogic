@@ -18,9 +18,9 @@ public class SequencePerLabelIdGenerator implements IdGenerator {
 		if (entry==null) {
 			entry = new Entry();
 			entry.base = Id.newFixedId(label);
-			entry = entries.putIfAbsent(label, entry);
+			Entry concurrentEntry = entries.putIfAbsent(label, entry);
+			if (concurrentEntry!=null) entry = concurrentEntry;
 		}
 		return new Id(entry.base.getHiBits(), entry.base.getLoBits()+entry.next.incrementAndGet());
 	}
-
 }

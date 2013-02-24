@@ -37,6 +37,7 @@ import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGenerator;
 import org.instantlogic.engine.persistence.json.CasePersister;
 import org.instantlogic.example.izzy.deduction.IssuePreviewDeduction;
+import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
 
 public class IzzyGenerator extends Design {
 	private static ApplicationDesign izzy;
@@ -77,6 +78,7 @@ public class IzzyGenerator extends Design {
 	public static void main(String[] args) throws IOException {
 		// Entities and attributes
 		izzy = new ApplicationDesign();
+		izzy.getMetadata().getCaseAdministration().setIdGenerator(new SequencePerLabelIdGenerator());
 		project = new EntityDesign("project").setApplication(izzy);
 		project.addAttribute("last issue number", Integer.class).setDefault(new DeductionSchemeDesign().deduceConstant(Integer.class, 0).getScheme());
 		user = new EntityDesign("user").setApplication(izzy);

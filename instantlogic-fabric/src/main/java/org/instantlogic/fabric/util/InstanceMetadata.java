@@ -306,9 +306,13 @@ public class InstanceMetadata {
 
 	public String getUniqueId() {
 		if (this.uniqueId==null) {
-			this.uniqueId = UUID.randomUUID().toString();
+			this.uniqueId = getCaseAdministration().newId(instance).toString();
 			getCaseAdministration().rememberInstanceWithUniqueId(this.uniqueId, this.instance);
 		}
+		return uniqueId;
+	}
+
+	public String getUniqueIdIfInitialized() {
 		return uniqueId;
 	}
 }

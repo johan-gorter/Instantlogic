@@ -20,6 +20,8 @@ import java.util.TreeMap;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
+import org.instantlogic.fabric.util.id.Id;
+import org.instantlogic.fabric.util.id.IdGenerator;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 
 public class CaseAdministration {
@@ -29,6 +31,7 @@ public class CaseAdministration {
 	private long version;
 	private List<Observations> observationsStack = new ArrayList<Observations>();
 	private Observations currentObservations = null;
+	private IdGenerator idGenerator;
 	
 	private SortedMap<String, Entity<?>> allEntities;
 	
@@ -180,5 +183,18 @@ public class CaseAdministration {
 		if (removed==null) {
 			throw new RuntimeException("UniqueId was not registered: "+uniqueId);
 		}
+	}
+
+	public IdGenerator getIdGenerator() {
+		return idGenerator;
+	}
+
+	public void setIdGenerator(IdGenerator idGenerator) {
+		this.idGenerator = idGenerator;
+	}
+
+	public Id newId(Instance forInstance) {
+		if (idGenerator==null) return Id.newRandomId();
+		return idGenerator.generate(forInstance.getMetadata().getEntity().getName());
 	}
 }
