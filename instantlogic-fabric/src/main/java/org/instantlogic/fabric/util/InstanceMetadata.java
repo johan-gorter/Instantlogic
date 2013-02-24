@@ -12,12 +12,12 @@ package org.instantlogic.fabric.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.UUID;
 
 import org.instantlogic.fabric.Instance;
@@ -41,10 +41,8 @@ public class InstanceMetadata {
 	// Only available on the top instance, instances with an owner get the registry from the top instance (TODO: cache and invalidate for performance)
 	private CaseAdministration caseAdministration; 
 	
-	private String localId="0";
-	private int lastChildId=0;
-	private Map<String, Instance> children;
-	private Map<String, Instance> unmodifiableChildren = Collections.emptyMap();
+	private Set<Instance> children;
+	private Set<Instance> unmodifiableChildren = Collections.emptySet();
 	
 	private TextTemplate staticDescription;
 	private String staticName;
@@ -59,7 +57,6 @@ public class InstanceMetadata {
 		boolean alsoForOwnedInstances;
 	}
 	
-	
 	public CaseAdministration getCaseAdministration() {
 		if (caseAdministration==null) {
 			if (owner!=null) {
@@ -69,27 +66,6 @@ public class InstanceMetadata {
 			}
 		}
 		return caseAdministration;
-	}
-	
-	@Deprecated //Use getUniqueId
-	public void getInstanceId(StringBuilder builder) {
-		if (owner!=null) {
-			owner.getMetadata().getInstanceId(builder);
-			if (builder.length()==1) { // "0", the id of the case instance
-				builder.setLength(0);
-			}
-		}
-		builder.append(localId);
-	}
-	
-	public String getInstanceLocalId() {
-		return localId;
-	}
-	
-	public String getInstanceId() {
-		StringBuilder builder = new StringBuilder();
-		getInstanceId(builder);
-		return builder.toString();
 	}
 	
 	public void addGlobalValueChangeListener(ValueChangeObserver listener, boolean alsoForOwnedInstances) {
@@ -171,12 +147,11 @@ public class InstanceMetadata {
 	 */
 	public void adopt(Instance instance) {
 		if (children==null) {
-			children = new HashMap<String, Instance>();
-			this.unmodifiableChildren = Collections.unmodifiableMap(children);
+			children = new HashSet<Instance>();
+			this.unmodifiableChildren = Collections.unmodifiableSet(children);
 		}
-		String childLocalId = (Character.toUpperCase(instance.getMetadata().getEntity().getName().charAt(0)))+""+(++lastChildId);
-		children.put(childLocalId, instance);
-		instance.getMetadata().registerOwner(this.instance, childLocalId);
+		children.add(instance);
+		instance.getMetadata().registerOwner(this.instance);
 	}
 	
 	/**
@@ -184,12 +159,12 @@ public class InstanceMetadata {
 	 * @param instance
 	 */
 	public void reject(Instance instance) {
-		Instance found = children.remove(instance.getMetadata().getInstanceLocalId());
-		if (found!=instance) throw new RuntimeException("This instance was not adopted: "+instance);
-		instance.getMetadata().registerOwner(null, null);
+		boolean found = children.remove(instance);
+		if (!found) throw new RuntimeException("This instance was not adopted: "+instance);
+		instance.getMetadata().registerOwner(null);
 	}
 	
-	protected void registerOwner(Instance owner, String localId) {
+	protected void registerOwner(Instance owner) {
 		if (this.isStatic()) throw new RuntimeException("Static instances cannot be owned by a case, they are global");
 		if (this.owner!=null && owner!=null) {
 			// 'Migration' to another owner is not allowed, because this would change instance Id's
@@ -203,10 +178,8 @@ public class InstanceMetadata {
 		if (owner==null) {
 			clearRelationsAfterSplit(this.instance);
 			this.caseAdministration = null;
-			this.localId="0";
 		} else {
 			this.caseAdministration = null; // Fallthrough to the owner
-			this.localId = localId;
 			registerUniqueIdsWithCaseAdministration(getCaseAdministration());
 		}
 	}
@@ -216,7 +189,7 @@ public class InstanceMetadata {
 			newCaseAdministration.rememberInstanceWithUniqueId(uniqueId, instance);
 		}
 		if (children!=null) {
-			for(Instance instance: children.values()) { // depth-first
+			for(Instance instance: children) { // depth-first
 				instance.getMetadata().registerUniqueIdsWithCaseAdministration(newCaseAdministration);
 			}
 		}
@@ -231,19 +204,8 @@ public class InstanceMetadata {
 		return "InstanceMetadata("+instance.toString()+")";
 	}
 
-	public Map<String, Instance> getChildren() {
+	public Set<Instance> getChildren() {
 		return unmodifiableChildren;
-	}
-	
-	public Instance getChild(String localId) {
-		if (children==null) {
-			throw new NoSuchElementException("Child "+localId);
-		}
-		Instance result = children.get(localId);
-		if (result==null) {
-			throw new NoSuchElementException("Child "+localId);
-		}
-		return result;
 	}
 	
 	/**
@@ -255,7 +217,7 @@ public class InstanceMetadata {
 			getCaseAdministration().forgetInstanceWithUniqueId(uniqueId);
 		}
 		if (children!=null) {
-			for(Instance instance: children.values()) { // depth-first
+			for(Instance instance: children) { // depth-first
 				instance.getMetadata().clearRelationsAfterSplit(newCase);
 			}
 		}

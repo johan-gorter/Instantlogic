@@ -9,6 +9,7 @@ import java.security.SecureRandom;
  * - Secure random, using the same algorithm as a UUID/GUID level 4
  * - Developer friendly unique identifier: Uses a provided label, fixed random number and a global sequence number
  * - Sequence: Uses only a global sequence number
+ * - Sequence per label: Uses the provided label and a sequence number.
  * - Fixed: Uses only the provided label
  * 
  * Encodes and decodes to String as follows:
@@ -103,9 +104,6 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
         return result;
     }
 
-    // 0 - 11
-    // 12
-    // 13, 14, 15
     public static Id newFixedId(String label) {
     	char[] chars = getLabelChars(label);
 		long hi = indexOf(LabelStartChars, chars[0]);
@@ -168,20 +166,6 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	throw new IllegalArgumentException("Illegal character "+c);
     }
 
-    /**
-     * Creates a {@code UUID} from the string standard representation as
-     * described in the {@link #toString} method.
-     *
-     * @param  name
-     *         A string that specifies a {@code UUID}
-     *
-     * @return  A {@code UUID} with the specified value
-     *
-     * @throws  IllegalArgumentException
-     *          If name does not conform to the string representation as
-     *          described in {@link #toString}
-     *
-     */
     public static Id parse(String uidString) {
     	long hi, lo;
     	// SequenceNr
@@ -234,10 +218,8 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	for (int i=11;i<16;i++) {
     		chars[i] = LabelChars[(int)((bits >> (20-(i-11)*5)) & 0x0000001f)];
     	}
-
     	long sequenceNr = loBits & 0x0000ffff;
     	long runId = (loBits >> 24) & 0x00ffffff;
-    	String runIdString = runId==0?"":hexRunId((int)runId);
     	StringBuffer sb = new StringBuffer();
     	long labelBits = loBits >> 48; // 16
     	sb.insert(0, LabelChars[(int)(labelBits & 31)]);
@@ -248,13 +230,23 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	labelBits = labelBits >> 5;
     	sb.insert(0, LabelChars[(int)(labelBits & 31)]);
     	labelBits = labelBits >> 5;
-    	return new String(chars)+"_"+runIdString+"_"+sequenceNr;
+    	return new String(chars)+"_"+hexRunId((int)runId)+"_"+hexSequenceNr((int)sequenceNr);
     }
 
     private String hexRunId(int runId) {
+    	if (runId==0) return "";
 		char[] chars = new char[6];
 		for (int i=0;i<6;i++) {
 			chars[5-i] = hexChars[runId & 15];
+		}
+		return new String(chars);
+	}
+
+    private String hexSequenceNr(int sequenceNr) {
+    	if (sequenceNr==0) return "";
+		char[] chars = new char[4];
+		for (int i=0;i<4;i++) {
+			chars[5-i] = hexChars[sequenceNr & 15];
 		}
 		return new String(chars);
 	}

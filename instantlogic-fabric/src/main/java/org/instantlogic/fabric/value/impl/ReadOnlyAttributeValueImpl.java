@@ -376,7 +376,7 @@ public class ReadOnlyAttributeValueImpl<I extends Instance, Value extends Object
 
 	@Override
 	public int hashCode() {
-		return forInstance.getMetadata().getInstanceLocalId().hashCode()+metadata.model.getName().hashCode();
+		return forInstance.hashCode()+metadata.model.getName().hashCode();
 	}
 	
 	@SuppressWarnings("unchecked")

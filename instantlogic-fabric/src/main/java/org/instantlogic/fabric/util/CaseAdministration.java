@@ -67,23 +67,6 @@ public class CaseAdministration {
 		this.rootInstance = rootInstance;
 	}
 
-	@Deprecated
-	public Instance getInstanceById(String id) {
-		if ("0".equals(id)) return rootInstance;
-		Instance result = rootInstance;
-		StringBuilder currentLocalId = new StringBuilder(15);
-		for (int i=0;i<id.length();i++) {
-			char nextChar = id.charAt(i);
-			if (i>0 && nextChar>'9') {
-				result = result.getMetadata().getChild(currentLocalId.toString());
-				currentLocalId.setLength(0);
-			}
-			currentLocalId.append(nextChar);
-		}
-		result = result.getMetadata().getChild(currentLocalId.toString());
-		return result;
-	}
-
 	/**
 	 * Finds the instance by unique id
 	 * @param uniqueId the unique id
