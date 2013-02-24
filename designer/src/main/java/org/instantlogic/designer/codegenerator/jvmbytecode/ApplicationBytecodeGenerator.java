@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
+import org.instantlogic.designer.codegenerator.jvmbytecode.template.ApplicationBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.EntityBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.InstanceBytecodeTemplate;
 
@@ -21,7 +22,9 @@ public class ApplicationBytecodeGenerator extends AbstractBytecodeGenerator {
 
 	public static void generate(GeneratedClassModels classModels, Map<String, byte[]> bytecodeClasses) {
 		if (classModels.updatedApplication!=null) {
-			//todo
+			String fullApplicationClassName = classModels.rootPackageName+"." + classModels.updatedApplication.name+"Application";
+			remove(bytecodeClasses, fullApplicationClassName);
+			ApplicationBytecodeTemplate.generate(bytecodeClasses, classModels.updatedApplication);
 		}
 		for (EntityClassModel entity: classModels.deletedEntities) {
 			//Instance

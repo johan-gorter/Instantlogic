@@ -9,7 +9,7 @@ import org.objectweb.asm.*;
 public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 
 	public static void generate(Map<String, byte[]> bytecodeClasses, ApplicationClassModel model) {
-		bytecodeClasses.put(model.rootPackageName+"."+model.name, dump(model));	
+		bytecodeClasses.put(model.rootPackageName+"."+model.name+"Application", dump(model));	
 	}
 
 	public static byte[] dump(ApplicationClassModel model) {
@@ -19,10 +19,10 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 		
 		String className = model.getRootPackageInternalPrefix()+model.name+"Application";
 		
-		// public class IzzyApplication extends org.instantlogic.interaction.Application
+		// public class ??Application extends org.instantlogic.interaction.Application
 		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className, null, "org/instantlogic/interaction/Application", null);
 
-		// public static final IzzyApplication INSTANCE ...
+		// public static final ??Application INSTANCE ...
 		{
 			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "INSTANCE", "L"+className+";", null, null);
 			fv.visitEnd();
@@ -37,9 +37,9 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv = cw.visitMethod(ACC_STATIC, "<clinit>", "()V", null, null);
 			mv.visitCode();
 			// INSTANCE = 
-			mv.visitTypeInsn(NEW, "org/instantlogic/example/izzy/IzzyApplication");
+			mv.visitTypeInsn(NEW, className);
 			mv.visitInsn(DUP);
-			mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/example/izzy/IzzyApplication", "<init>", "()V");
+			mv.visitMethodInsn(INVOKESPECIAL, className, "<init>", "()V");
 			mv.visitFieldInsn(PUTSTATIC, className, "INSTANCE", "L"+className+";");
 			// THEME_NAMES =
 			mv.visitIntInsn(BIPUSH, model.themeNames.length);
@@ -56,7 +56,7 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitEnd();
 		}
 		
-		// protected IzzyApplication()
+		// protected ??Application()
 		{
 			mv = cw.visitMethod(ACC_PROTECTED, "<init>", "()V", null, null);
 			mv.visitCode();
@@ -67,12 +67,16 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitEnd();
 		}
 		
-		// public org.instantlogic.fabric.model.Entity<org.instantlogic.example.izzy.Project> getCaseEntity()
+		// public org.instantlogic.fabric.model.Entity<org.instantlogic.example.??.??> getCaseEntity()
 		{
-			String caseEntity = model.getRootPackageInternalPrefix()+"entity/"+model.caseEntity+"Entity";
 			mv = cw.visitMethod(ACC_PUBLIC, "getCaseEntity", "()Lorg/instantlogic/fabric/model/Entity;", "()Lorg/instantlogic/fabric/model/Entity<+Lorg/instantlogic/fabric/Instance;>;", null);
 			mv.visitCode();
-			mv.visitFieldInsn(GETSTATIC, caseEntity, "INSTANCE", "L"+caseEntity+";");
+			if (model.caseEntity==null) {
+				mv.visitInsn(ACONST_NULL);
+			} else {
+				String caseEntity = model.getRootPackageInternalPrefix()+"entity/"+model.caseEntity+"Entity";
+				mv.visitFieldInsn(GETSTATIC, caseEntity, "INSTANCE", "L"+caseEntity+";");
+			}
 			mv.visitInsn(ARETURN);
 			mv.visitMaxs(0, 0);
 			mv.visitEnd();
@@ -82,7 +86,7 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv = cw.visitMethod(ACC_PUBLIC, "getMainFlow", "()Lorg/instantlogic/interaction/flow/Flow;", null, null);
 			mv.visitCode();
 			throwUnsupported(mv);
-//			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/izzy/flow/MainFlow", "INSTANCE", "Lorg/instantlogic/example/izzy/flow/MainFlow;");
+//			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/??/flow/MainFlow", "INSTANCE", "Lorg/instantlogic/example/??/flow/??Flow;");
 //			mv.visitInsn(ARETURN);
 			mv.visitMaxs(0, 0);
 			mv.visitEnd();
@@ -93,7 +97,7 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv = cw.visitMethod(ACC_PUBLIC, "getStartEvent", "()Lorg/instantlogic/interaction/flow/FlowEvent;", null, null);
 			mv.visitCode();
 			throwUnsupported(mv);
-//			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/izzy/event/HomeEvent", "INSTANCE", "Lorg/instantlogic/example/izzy/event/HomeEvent;");
+//			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/??/event/??Event", "INSTANCE", "Lorg/instantlogic/example/??/event/??Event;");
 //			mv.visitInsn(ARETURN);
 			mv.visitMaxs(0, 0);
 			mv.visitEnd();

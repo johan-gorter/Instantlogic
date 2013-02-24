@@ -19,6 +19,11 @@ public class BytecodeClassloader extends URLClassLoader {
 
 	private Map<String, byte[]> bytecodeClasses = new HashMap<String, byte[]>();
 	
+	public BytecodeClassloader(ClassLoader parentClassLoader, Map<String, byte[]> bytecodeClasses) {
+		super(new URL[0], parentClassLoader);
+		this.bytecodeClasses = bytecodeClasses;
+	}
+	
 	public BytecodeClassloader(URL compiledClasses, ClassLoader parentClassLoader, Map<String, byte[]> bytecodeClasses) {
 		super(new URL[]{compiledClasses}, parentClassLoader);
 		this.bytecodeClasses = bytecodeClasses;

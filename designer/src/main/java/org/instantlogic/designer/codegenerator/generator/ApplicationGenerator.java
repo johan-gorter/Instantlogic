@@ -39,9 +39,14 @@ public class ApplicationGenerator extends AbstractGenerator{
 		this.applicationInstance = applicationInstance;
 	}
 	
+	public void resetClassModelUpdates() {
+		if (observations==null) return;
+		observations.remove();
+		observations = null;
+	}
 	
 	/**
-	 * @return The updates to the class models since the previous call. On the first call, every classmodel is returned.
+	 * @return The updates to the class models since the previous call (or since resetClassModelUpdates()). On the first call, every classmodel is returned.
 	 */
 	public GeneratedClassModels getClassModelUpdates() {
 		GeneratedClassModels result = new GeneratedClassModels();
@@ -70,7 +75,9 @@ public class ApplicationGenerator extends AbstractGenerator{
 		for (EntityDesign entity: applicationInstance.getEntities()) {
 			model.entities.add(entity.getName());
 		}
-		model.caseEntity = applicationInstance.getCaseEntity().getTechnicalNameCapitalized();
+		if (applicationInstance.getCaseEntity()!=null) {
+			model.caseEntity = applicationInstance.getCaseEntity().getTechnicalNameCapitalized();
+		}
 		if (applicationInstance.getMainFlow()!=null) {
 			model.mainFlow = applicationInstance.getMainFlow().getTechnicalNameCapitalized();
 		}
@@ -79,6 +86,8 @@ public class ApplicationGenerator extends AbstractGenerator{
 		}
 		if (applicationInstance.getThemeNames().size()>0) {
 			model.themeNames = applicationInstance.getThemeNames().asList().toArray(new String[applicationInstance.getThemeNames().size()]);
+		} else {
+			model.themeNames = new String[0];
 		}
 		
 		List<Design> newEntities = updateGenerators(entityGenerators, applicationInstance.getEntities(), context);
