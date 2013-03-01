@@ -15,14 +15,14 @@ import java.util.List;
 
 import org.instantlogic.engine.TravelerProxy;
 import org.instantlogic.engine.message.Message;
-import org.instantlogic.engine.persistence.json.CasePersister;
-import org.instantlogic.engine.persistence.json.FileCasePersister;
 import org.instantlogic.engine.presence.Presence;
 import org.instantlogic.engine.presence.Traveler;
 import org.instantlogic.fabric.CaseInstanceTriggers;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.Operation;
+import org.instantlogic.tools.persistence.json.CasePersister;
+import org.instantlogic.tools.persistence.json.FileCasePersister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

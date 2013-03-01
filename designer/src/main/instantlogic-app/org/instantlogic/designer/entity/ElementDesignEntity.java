@@ -21,10 +21,10 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 	}
 
 	private static final org.instantlogic.fabric.model.Entity<?>[] EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
-		org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.IfElseDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.SharedElementDesignEntity.INSTANCE
+		org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.SharedElementDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE
 	};
 	 
 	@Override

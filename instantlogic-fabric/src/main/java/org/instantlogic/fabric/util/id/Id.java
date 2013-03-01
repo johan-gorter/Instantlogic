@@ -16,15 +16,15 @@ import java.security.SecureRandom;
  * 16 5-bit characters (label) + underscore + 8 hex digits (random) + underscore + 4 hex digits (sequence number)
  * 
  * About the String presentation:
- * - The first character is encoded from: _ABCDEFGHIJKLMNOPQRSTUVWXYZvwxyz
- * - The following characters are encoded from: _abcdefghijklmnopqrstuvwxyzVWXYZ
+ * - The first character is encoded from: _ABCDEFGHIJKLMNOPQRSTUVWXYZaeiou
+ * - The following characters are encoded from: _abcdefghijklmnopqrstuvwxyzAEIOU
  * - Trailing underscores in the label are trimmed off (Except when toFixedString is used)
  * - When a hex block consists of only zeroes, it is omitted (Except when toFixedString is used)
  */
 public class Id  implements java.io.Serializable, Comparable<Id> {
 
-	private static final char[] LabelStartChars = "_ABCDEFGHIJKLMNOPQRSTUVWXYZvwxyz".toCharArray();
-	private static final char[] LabelChars = "_abcdefghijklmnopqrstuvwxyzVWXYZ".toCharArray();
+	private static final char[] LabelStartChars = "_ABCDEFGHIJKLMNOPQRSTUVWXYZaeiou".toCharArray();
+	private static final char[] LabelChars = "_abcdefghijklmnopqrstuvwxyzAEIOU".toCharArray();
 	private static final char[] hexChars = "0123456789abcdef".toCharArray();
 	private static final String underscores = "________________";
 	
@@ -221,7 +221,7 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	int labelLength = 16;
     	while (chars[labelLength-1]=='_') labelLength--;
     	long sequenceNr = loBits & 0x0000ffff;
-    	long runId = (loBits >> 24) & 0x00ffffff;
+    	long runId = (loBits >> 16) & 0xffffffff;
     	StringBuffer sb = new StringBuffer();
     	long labelBits = loBits >> 48; // 16
     	sb.insert(0, LabelChars[(int)(labelBits & 31)]);
@@ -237,9 +237,10 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
 
     private String hexRunId(int runId) {
     	if (runId==0) return "";
-		char[] chars = new char[6];
-		for (int i=0;i<6;i++) {
-			chars[5-i] = hexChars[runId & 15];
+		char[] chars = new char[8];
+		for (int i=0;i<8;i++) {
+			chars[7-i] = hexChars[runId & 15];
+			runId = runId >> 4;
 		}
 		return new String(chars);
 	}

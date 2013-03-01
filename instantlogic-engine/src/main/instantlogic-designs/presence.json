@@ -1,0 +1,1106 @@
+{
+  "instanceId": "Applicationdesgn__0001",
+  "entityName": "ApplicationDesign",
+  "version": 0,
+  "name": "Presence",
+  "rootPackageName": "org.instantlogic.engine.presence",
+  "sourcePath": "target/generated-sources/instantlogic-app",
+  "themeNames": [],
+  "caseEntity": "Entitydesign__0001",
+  "entities": [
+    {
+      "instanceId": "Entitydesign__0001",
+      "entityName": "EntityDesign",
+      "isCustomized": true,
+      "name": "Presence",
+      "attributes": [
+        {
+          "instanceId": "Attributedesign__0001",
+          "entityName": "AttributeDesign",
+          "name": "applicationName",
+          "dataType": {
+            "instanceId": "Datatypedesign__0001",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          }
+        },
+        {
+          "instanceId": "Attributedesign__0002",
+          "entityName": "AttributeDesign",
+          "name": "caseName",
+          "dataType": {
+            "instanceId": "Datatypedesign__0002",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          }
+        }
+      ],
+      "relations": [
+        {
+          "instanceId": "Relationdesign__0001",
+          "entityName": "RelationDesign",
+          "name": "activeUsers",
+          "autoCreate": false,
+          "owner": true,
+          "reverseMultivalue": false,
+          "reverseName": "presence",
+          "dataType": {
+            "instanceId": "Datatypedesign__0003",
+            "entityName": "DataTypeDesign",
+            "multivalue": true
+          },
+          "to": "Entitydesign__0002"
+        },
+        {
+          "instanceId": "Relationdesign__0002",
+          "entityName": "RelationDesign",
+          "name": "activeTravelers",
+          "autoCreate": false,
+          "owner": true,
+          "reverseMultivalue": false,
+          "reverseName": "presence",
+          "dataType": {
+            "instanceId": "Datatypedesign__0004",
+            "entityName": "DataTypeDesign",
+            "multivalue": true
+          },
+          "to": "Entitydesign__0003"
+        },
+        {
+          "instanceId": "Relationdesign__0003",
+          "entityName": "RelationDesign",
+          "name": "activePlaces",
+          "autoCreate": false,
+          "owner": true,
+          "reverseMultivalue": false,
+          "reverseName": "presence",
+          "dataType": {
+            "instanceId": "Datatypedesign__0005",
+            "entityName": "DataTypeDesign",
+            "multivalue": true
+          },
+          "to": "Entitydesign__0004"
+        }
+      ],
+      "staticInstances": [],
+      "validations": []
+    },
+    {
+      "instanceId": "Entitydesign__0002",
+      "entityName": "EntityDesign",
+      "isCustomized": true,
+      "name": "User",
+      "attributes": [
+        {
+          "instanceId": "Attributedesign__0003",
+          "entityName": "AttributeDesign",
+          "name": "username",
+          "dataType": {
+            "instanceId": "Datatypedesign__0006",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          }
+        },
+        {
+          "instanceId": "Attributedesign__0004",
+          "entityName": "AttributeDesign",
+          "name": "email",
+          "dataType": {
+            "instanceId": "Datatypedesign__0007",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          },
+          "default": {
+            "instanceId": "Deductinschmdsgn__0001",
+            "entityName": "DeductionSchemeDesign",
+            "deductions": [
+              {
+                "instanceId": "Slctdnstcddctdsg__0001",
+                "entityName": "SelectedInstanceDeductionDesign",
+                "inputs": [],
+                "ofEntity": "Entitydesign__0002"
+              },
+              {
+                "instanceId": "Attribtddctndsgn__0001",
+                "entityName": "AttributeDeductionDesign",
+                "inputs": [
+                  "Slctdnstcddctdsg__0001"
+                ],
+                "attribute": "Attributedesign__0003"
+              }
+            ],
+            "output": "Attribtddctndsgn__0001"
+          }
+        },
+        {
+          "instanceId": "Attributedesign__0005",
+          "entityName": "AttributeDesign",
+          "name": "name",
+          "dataType": {
+            "instanceId": "Datatypedesign__0008",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          },
+          "default": {
+            "instanceId": "Deductinschmdsgn__0002",
+            "entityName": "DeductionSchemeDesign",
+            "deductions": [
+              {
+                "instanceId": "Customdedctndsgn__0001",
+                "entityName": "CustomDeductionDesign",
+                "implementationClassName": "org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction",
+                "inputs": [],
+                "customDataType": {
+                  "instanceId": "Datatypedesign__0009",
+                  "entityName": "DataTypeDesign",
+                  "javaClassName": "java.lang.String"
+                }
+              }
+            ],
+            "output": "Customdedctndsgn__0001"
+          }
+        },
+        {
+          "instanceId": "Attributedesign__0006",
+          "entityName": "AttributeDesign",
+          "name": "avatarUrl",
+          "dataType": {
+            "instanceId": "Datatypedesign__000a",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          },
+          "default": {
+            "instanceId": "Deductinschmdsgn__0003",
+            "entityName": "DeductionSchemeDesign",
+            "deductions": [
+              {
+                "instanceId": "Customdedctndsgn__0002",
+                "entityName": "CustomDeductionDesign",
+                "implementationClassName": "org.instantlogic.engine.presence.deduction.UserAvatarUrlDefaultDeduction",
+                "inputs": [],
+                "customDataType": {
+                  "instanceId": "Datatypedesign__000b",
+                  "entityName": "DataTypeDesign",
+                  "javaClassName": "java.lang.String"
+                }
+              }
+            ],
+            "output": "Customdedctndsgn__0002"
+          }
+        }
+      ],
+      "relations": [],
+      "staticInstances": [],
+      "validations": []
+    },
+    {
+      "instanceId": "Entitydesign__0003",
+      "entityName": "EntityDesign",
+      "isCustomized": true,
+      "name": "Traveler",
+      "attributes": [
+        {
+          "instanceId": "Attributedesign__0007",
+          "entityName": "AttributeDesign",
+          "name": "id",
+          "dataType": {
+            "instanceId": "Datatypedesign__000c",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          }
+        },
+        {
+          "instanceId": "Attributedesign__0008",
+          "entityName": "AttributeDesign",
+          "name": "debugVisible",
+          "dataType": {
+            "instanceId": "Datatypedesign__000d",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
+          },
+          "question": {
+            "instanceId": "Texttemplatedsgn__0001",
+            "entityName": "TextTemplateDesign",
+            "untranslated": [
+              {
+                "instanceId": "Stringtempltdsgn__0001",
+                "entityName": "StringTemplateDesign",
+                "constantText": "debug"
+              }
+            ]
+          }
+        },
+        {
+          "instanceId": "Attributedesign__0009",
+          "entityName": "AttributeDesign",
+          "name": "focus",
+          "dataType": {
+            "instanceId": "Datatypedesign__000e",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          }
+        }
+      ],
+      "relations": [
+        {
+          "instanceId": "Relationdesign__0004",
+          "entityName": "RelationDesign",
+          "name": "currentPlace",
+          "autoCreate": false,
+          "owner": false,
+          "reverseMultivalue": true,
+          "reverseName": "visitingTravelers",
+          "dataType": {
+            "instanceId": "Datatypedesign__000f",
+            "entityName": "DataTypeDesign",
+            "multivalue": false
+          },
+          "to": "Entitydesign__0004"
+        },
+        {
+          "instanceId": "Relationdesign__0005",
+          "entityName": "RelationDesign",
+          "name": "user",
+          "autoCreate": false,
+          "owner": false,
+          "reverseMultivalue": true,
+          "reverseName": "travelers",
+          "dataType": {
+            "instanceId": "Datatypedesign__0010",
+            "entityName": "DataTypeDesign",
+            "multivalue": false
+          },
+          "to": "Entitydesign__0002"
+        }
+      ],
+      "staticInstances": [],
+      "validations": []
+    },
+    {
+      "instanceId": "Entitydesign__0004",
+      "entityName": "EntityDesign",
+      "isCustomized": true,
+      "name": "Place",
+      "attributes": [
+        {
+          "instanceId": "Attributedesign__000a",
+          "entityName": "AttributeDesign",
+          "name": "url",
+          "dataType": {
+            "instanceId": "Datatypedesign__0011",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          }
+        },
+        {
+          "instanceId": "Attributedesign__000b",
+          "entityName": "AttributeDesign",
+          "name": "title",
+          "dataType": {
+            "instanceId": "Datatypedesign__0012",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          }
+        }
+      ],
+      "relations": [],
+      "staticInstances": [],
+      "validations": []
+    }
+  ],
+  "events": [],
+  "flows": [
+    {
+      "instanceId": "Flowdesign__0001",
+      "entityName": "FlowDesign",
+      "name": "Main",
+      "edges": [],
+      "nodes": [
+        {
+          "instanceId": "Subflowdesign__0001",
+          "entityName": "SubFlowDesign",
+          "name": "Traveler",
+          "flow": "Flowdesign__0002"
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "instanceId": "Flowdesign__0002",
+      "entityName": "FlowDesign",
+      "name": "Traveler",
+      "edges": [],
+      "nodes": [
+        {
+          "instanceId": "Placetemplatdsgn__0001",
+          "entityName": "PlaceTemplateDesign",
+          "name": "Traveler",
+          "content": {
+            "instanceId": "Fragmnttmpltdsgn__0001",
+            "entityName": "FragmentTemplateDesign",
+            "fragmentFilters": [],
+            "fragmentTypeName": "Group",
+            "styleNames": [],
+            "properties": [
+              {
+                "instanceId": "Propertydesign__0001",
+                "entityName": "PropertyDesign",
+                "propertyName": "content",
+                "children": [
+                  {
+                    "instanceId": "Fragmnttmpltdsgn__0002",
+                    "entityName": "FragmentTemplateDesign",
+                    "fragmentFilters": [],
+                    "fragmentTypeName": "Presence",
+                    "styleNames": [],
+                    "properties": [
+                      {
+                        "instanceId": "Propertydesign__0002",
+                        "entityName": "PropertyDesign",
+                        "propertyName": "applicationName",
+                        "children": [],
+                        "value": {
+                          "instanceId": "Deductinschmdsgn__0004",
+                          "entityName": "DeductionSchemeDesign",
+                          "deductions": [
+                            {
+                              "instanceId": "Slctdnstcddctdsg__0002",
+                              "entityName": "SelectedInstanceDeductionDesign",
+                              "inputs": [],
+                              "ofEntity": "Entitydesign__0001"
+                            },
+                            {
+                              "instanceId": "Attribtddctndsgn__0002",
+                              "entityName": "AttributeDeductionDesign",
+                              "inputs": [
+                                "Slctdnstcddctdsg__0002"
+                              ],
+                              "attribute": "Attributedesign__0001"
+                            }
+                          ],
+                          "output": "Attribtddctndsgn__0002"
+                        }
+                      },
+                      {
+                        "instanceId": "Propertydesign__0003",
+                        "entityName": "PropertyDesign",
+                        "propertyName": "caseName",
+                        "children": [],
+                        "value": {
+                          "instanceId": "Deductinschmdsgn__0005",
+                          "entityName": "DeductionSchemeDesign",
+                          "deductions": [
+                            {
+                              "instanceId": "Slctdnstcddctdsg__0003",
+                              "entityName": "SelectedInstanceDeductionDesign",
+                              "inputs": [],
+                              "ofEntity": "Entitydesign__0001"
+                            },
+                            {
+                              "instanceId": "Attribtddctndsgn__0003",
+                              "entityName": "AttributeDeductionDesign",
+                              "inputs": [
+                                "Slctdnstcddctdsg__0003"
+                              ],
+                              "attribute": "Attributedesign__0002"
+                            }
+                          ],
+                          "output": "Attribtddctndsgn__0003"
+                        }
+                      },
+                      {
+                        "instanceId": "Propertydesign__0004",
+                        "entityName": "PropertyDesign",
+                        "propertyName": "content",
+                        "children": [
+                          {
+                            "instanceId": "Ifelsedesign__0001",
+                            "entityName": "IfElseDesign",
+                            "condition": {
+                              "instanceId": "Deductinschmdsgn__0006",
+                              "entityName": "DeductionSchemeDesign",
+                              "deductions": [
+                                {
+                                  "instanceId": "Slctdnstcddctdsg__0004",
+                                  "entityName": "SelectedInstanceDeductionDesign",
+                                  "inputs": [],
+                                  "ofEntity": "Entitydesign__0003"
+                                },
+                                {
+                                  "instanceId": "Attribtddctndsgn__0004",
+                                  "entityName": "AttributeDeductionDesign",
+                                  "inputs": [
+                                    "Slctdnstcddctdsg__0004"
+                                  ],
+                                  "attribute": "Relationdesign__0005"
+                                },
+                                {
+                                  "instanceId": "Hasvaluddctndsgn__0001",
+                                  "entityName": "HasValueDeductionDesign",
+                                  "inputs": [
+                                    "Attribtddctndsgn__0004"
+                                  ]
+                                }
+                              ],
+                              "output": "Hasvaluddctndsgn__0001"
+                            },
+                            "elseChildren": [
+                              {
+                                "instanceId": "Fragmnttmpltdsgn__0003",
+                                "entityName": "FragmentTemplateDesign",
+                                "fragmentFilters": [],
+                                "fragmentTypeName": "Login",
+                                "styleNames": [],
+                                "properties": []
+                              }
+                            ],
+                            "ifChildren": [
+                              {
+                                "instanceId": "Selectiondesign__0001",
+                                "entityName": "SelectionDesign",
+                                "children": [
+                                  {
+                                    "instanceId": "Fragmnttmpltdsgn__0004",
+                                    "entityName": "FragmentTemplateDesign",
+                                    "fragmentFilters": [],
+                                    "fragmentTypeName": "Me",
+                                    "styleNames": [],
+                                    "properties": [
+                                      {
+                                        "instanceId": "Propertydesign__0005",
+                                        "entityName": "PropertyDesign",
+                                        "propertyName": "username",
+                                        "children": [],
+                                        "value": {
+                                          "instanceId": "Deductinschmdsgn__0007",
+                                          "entityName": "DeductionSchemeDesign",
+                                          "deductions": [
+                                            {
+                                              "instanceId": "Slctdnstcddctdsg__0005",
+                                              "entityName": "SelectedInstanceDeductionDesign",
+                                              "inputs": [],
+                                              "ofEntity": "Entitydesign__0002"
+                                            },
+                                            {
+                                              "instanceId": "Attribtddctndsgn__0005",
+                                              "entityName": "AttributeDeductionDesign",
+                                              "inputs": [
+                                                "Slctdnstcddctdsg__0005"
+                                              ],
+                                              "attribute": "Attributedesign__0003"
+                                            }
+                                          ],
+                                          "output": "Attribtddctndsgn__0005"
+                                        }
+                                      },
+                                      {
+                                        "instanceId": "Propertydesign__0006",
+                                        "entityName": "PropertyDesign",
+                                        "propertyName": "avatarUrl",
+                                        "children": [],
+                                        "value": {
+                                          "instanceId": "Deductinschmdsgn__0008",
+                                          "entityName": "DeductionSchemeDesign",
+                                          "deductions": [
+                                            {
+                                              "instanceId": "Slctdnstcddctdsg__0006",
+                                              "entityName": "SelectedInstanceDeductionDesign",
+                                              "inputs": [],
+                                              "ofEntity": "Entitydesign__0002"
+                                            },
+                                            {
+                                              "instanceId": "Attribtddctndsgn__0006",
+                                              "entityName": "AttributeDeductionDesign",
+                                              "inputs": [
+                                                "Slctdnstcddctdsg__0006"
+                                              ],
+                                              "attribute": "Attributedesign__0006"
+                                            }
+                                          ],
+                                          "output": "Attribtddctndsgn__0006"
+                                        }
+                                      },
+                                      {
+                                        "instanceId": "Propertydesign__0007",
+                                        "entityName": "PropertyDesign",
+                                        "propertyName": "name",
+                                        "children": [],
+                                        "value": {
+                                          "instanceId": "Deductinschmdsgn__0009",
+                                          "entityName": "DeductionSchemeDesign",
+                                          "deductions": [
+                                            {
+                                              "instanceId": "Slctdnstcddctdsg__0007",
+                                              "entityName": "SelectedInstanceDeductionDesign",
+                                              "inputs": [],
+                                              "ofEntity": "Entitydesign__0002"
+                                            },
+                                            {
+                                              "instanceId": "Attribtddctndsgn__0007",
+                                              "entityName": "AttributeDeductionDesign",
+                                              "inputs": [
+                                                "Slctdnstcddctdsg__0007"
+                                              ],
+                                              "attribute": "Attributedesign__0005"
+                                            }
+                                          ],
+                                          "output": "Attribtddctndsgn__0007"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "selection": {
+                                  "instanceId": "Deductinschmdsgn__000a",
+                                  "entityName": "DeductionSchemeDesign",
+                                  "deductions": [
+                                    {
+                                      "instanceId": "Slctdnstcddctdsg__0008",
+                                      "entityName": "SelectedInstanceDeductionDesign",
+                                      "inputs": [],
+                                      "ofEntity": "Entitydesign__0003"
+                                    },
+                                    {
+                                      "instanceId": "Attribtddctndsgn__0008",
+                                      "entityName": "AttributeDeductionDesign",
+                                      "inputs": [
+                                        "Slctdnstcddctdsg__0008"
+                                      ],
+                                      "attribute": "Relationdesign__0005"
+                                    }
+                                  ],
+                                  "output": "Attribtddctndsgn__0008"
+                                }
+                              },
+                              {
+                                "instanceId": "Fragmnttmpltdsgn__0005",
+                                "entityName": "FragmentTemplateDesign",
+                                "fragmentFilters": [],
+                                "fragmentTypeName": "DebugVisibleToggle",
+                                "styleNames": [],
+                                "attribute": "Attributedesign__0008",
+                                "entity": "Entitydesign__0003",
+                                "properties": []
+                              },
+                              {
+                                "instanceId": "Fragmnttmpltdsgn__0006",
+                                "entityName": "FragmentTemplateDesign",
+                                "fragmentFilters": [],
+                                "fragmentTypeName": "Communicator",
+                                "styleNames": [],
+                                "properties": [
+                                  {
+                                    "instanceId": "Propertydesign__0008",
+                                    "entityName": "PropertyDesign",
+                                    "propertyName": "users",
+                                    "children": [
+                                      {
+                                        "instanceId": "Selectiondesign__0002",
+                                        "entityName": "SelectionDesign",
+                                        "children": [
+                                          {
+                                            "instanceId": "Fragmnttmpltdsgn__0007",
+                                            "entityName": "FragmentTemplateDesign",
+                                            "fragmentFilters": [],
+                                            "fragmentTypeName": "User",
+                                            "styleNames": [],
+                                            "properties": [
+                                              {
+                                                "instanceId": "Propertydesign__0009",
+                                                "entityName": "PropertyDesign",
+                                                "propertyName": "username",
+                                                "children": [],
+                                                "value": {
+                                                  "instanceId": "Deductinschmdsgn__000b",
+                                                  "entityName": "DeductionSchemeDesign",
+                                                  "deductions": [
+                                                    {
+                                                      "instanceId": "Slctdnstcddctdsg__0009",
+                                                      "entityName": "SelectedInstanceDeductionDesign",
+                                                      "inputs": [],
+                                                      "ofEntity": "Entitydesign__0002"
+                                                    },
+                                                    {
+                                                      "instanceId": "Attribtddctndsgn__0009",
+                                                      "entityName": "AttributeDeductionDesign",
+                                                      "inputs": [
+                                                        "Slctdnstcddctdsg__0009"
+                                                      ],
+                                                      "attribute": "Attributedesign__0003"
+                                                    }
+                                                  ],
+                                                  "output": "Attribtddctndsgn__0009"
+                                                }
+                                              },
+                                              {
+                                                "instanceId": "Propertydesign__000a",
+                                                "entityName": "PropertyDesign",
+                                                "propertyName": "avatarUrl",
+                                                "children": [],
+                                                "value": {
+                                                  "instanceId": "Deductinschmdsgn__000c",
+                                                  "entityName": "DeductionSchemeDesign",
+                                                  "deductions": [
+                                                    {
+                                                      "instanceId": "Slctdnstcddctdsg__000a",
+                                                      "entityName": "SelectedInstanceDeductionDesign",
+                                                      "inputs": [],
+                                                      "ofEntity": "Entitydesign__0002"
+                                                    },
+                                                    {
+                                                      "instanceId": "Attribtddctndsgn__000a",
+                                                      "entityName": "AttributeDeductionDesign",
+                                                      "inputs": [
+                                                        "Slctdnstcddctdsg__000a"
+                                                      ],
+                                                      "attribute": "Attributedesign__0006"
+                                                    }
+                                                  ],
+                                                  "output": "Attribtddctndsgn__000a"
+                                                }
+                                              },
+                                              {
+                                                "instanceId": "Propertydesign__000b",
+                                                "entityName": "PropertyDesign",
+                                                "propertyName": "name",
+                                                "children": [],
+                                                "value": {
+                                                  "instanceId": "Deductinschmdsgn__000d",
+                                                  "entityName": "DeductionSchemeDesign",
+                                                  "deductions": [
+                                                    {
+                                                      "instanceId": "Slctdnstcddctdsg__000b",
+                                                      "entityName": "SelectedInstanceDeductionDesign",
+                                                      "inputs": [],
+                                                      "ofEntity": "Entitydesign__0002"
+                                                    },
+                                                    {
+                                                      "instanceId": "Attribtddctndsgn__000b",
+                                                      "entityName": "AttributeDeductionDesign",
+                                                      "inputs": [
+                                                        "Slctdnstcddctdsg__000b"
+                                                      ],
+                                                      "attribute": "Attributedesign__0005"
+                                                    }
+                                                  ],
+                                                  "output": "Attribtddctndsgn__000b"
+                                                }
+                                              },
+                                              {
+                                                "instanceId": "Propertydesign__000c",
+                                                "entityName": "PropertyDesign",
+                                                "propertyName": "travelers",
+                                                "children": [
+                                                  {
+                                                    "instanceId": "Selectiondesign__0003",
+                                                    "entityName": "SelectionDesign",
+                                                    "children": [
+                                                      {
+                                                        "instanceId": "Fragmnttmpltdsgn__0008",
+                                                        "entityName": "FragmentTemplateDesign",
+                                                        "fragmentFilters": [],
+                                                        "fragmentTypeName": "Traveler",
+                                                        "styleNames": [],
+                                                        "properties": [
+                                                          {
+                                                            "instanceId": "Propertydesign__000d",
+                                                            "entityName": "PropertyDesign",
+                                                            "propertyName": "travelerId",
+                                                            "children": [],
+                                                            "value": {
+                                                              "instanceId": "Deductinschmdsgn__000e",
+                                                              "entityName": "DeductionSchemeDesign",
+                                                              "deductions": [
+                                                                {
+                                                                  "instanceId": "Slctdnstcddctdsg__000c",
+                                                                  "entityName": "SelectedInstanceDeductionDesign",
+                                                                  "inputs": [],
+                                                                  "ofEntity": "Entitydesign__0003"
+                                                                },
+                                                                {
+                                                                  "instanceId": "Attribtddctndsgn__000c",
+                                                                  "entityName": "AttributeDeductionDesign",
+                                                                  "inputs": [
+                                                                    "Slctdnstcddctdsg__000c"
+                                                                  ],
+                                                                  "attribute": "Attributedesign__0007"
+                                                                }
+                                                              ],
+                                                              "output": "Attribtddctndsgn__000c"
+                                                            }
+                                                          },
+                                                          {
+                                                            "instanceId": "Propertydesign__000e",
+                                                            "entityName": "PropertyDesign",
+                                                            "propertyName": "placeUrl",
+                                                            "children": [],
+                                                            "value": {
+                                                              "instanceId": "Deductinschmdsgn__000f",
+                                                              "entityName": "DeductionSchemeDesign",
+                                                              "deductions": [
+                                                                {
+                                                                  "instanceId": "Slctdnstcddctdsg__000d",
+                                                                  "entityName": "SelectedInstanceDeductionDesign",
+                                                                  "inputs": [],
+                                                                  "ofEntity": "Entitydesign__0003"
+                                                                },
+                                                                {
+                                                                  "instanceId": "Attribtddctndsgn__000d",
+                                                                  "entityName": "AttributeDeductionDesign",
+                                                                  "inputs": [
+                                                                    "Slctdnstcddctdsg__000d"
+                                                                  ],
+                                                                  "attribute": "Relationdesign__0004"
+                                                                },
+                                                                {
+                                                                  "instanceId": "Attribtddctndsgn__000e",
+                                                                  "entityName": "AttributeDeductionDesign",
+                                                                  "inputs": [
+                                                                    "Attribtddctndsgn__000d"
+                                                                  ],
+                                                                  "attribute": "Attributedesign__000a"
+                                                                }
+                                                              ],
+                                                              "output": "Attribtddctndsgn__000e"
+                                                            }
+                                                          },
+                                                          {
+                                                            "instanceId": "Propertydesign__000f",
+                                                            "entityName": "PropertyDesign",
+                                                            "propertyName": "placeTitle",
+                                                            "children": [],
+                                                            "value": {
+                                                              "instanceId": "Deductinschmdsgn__0010",
+                                                              "entityName": "DeductionSchemeDesign",
+                                                              "deductions": [
+                                                                {
+                                                                  "instanceId": "Slctdnstcddctdsg__000e",
+                                                                  "entityName": "SelectedInstanceDeductionDesign",
+                                                                  "inputs": [],
+                                                                  "ofEntity": "Entitydesign__0003"
+                                                                },
+                                                                {
+                                                                  "instanceId": "Attribtddctndsgn__000f",
+                                                                  "entityName": "AttributeDeductionDesign",
+                                                                  "inputs": [
+                                                                    "Slctdnstcddctdsg__000e"
+                                                                  ],
+                                                                  "attribute": "Relationdesign__0004"
+                                                                },
+                                                                {
+                                                                  "instanceId": "Attribtddctndsgn__0010",
+                                                                  "entityName": "AttributeDeductionDesign",
+                                                                  "inputs": [
+                                                                    "Attribtddctndsgn__000f"
+                                                                  ],
+                                                                  "attribute": "Attributedesign__000b"
+                                                                }
+                                                              ],
+                                                              "output": "Attribtddctndsgn__0010"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "selection": {
+                                                      "instanceId": "Deductinschmdsgn__0011",
+                                                      "entityName": "DeductionSchemeDesign",
+                                                      "deductions": [
+                                                        {
+                                                          "instanceId": "Slctdnstcddctdsg__000f",
+                                                          "entityName": "SelectedInstanceDeductionDesign",
+                                                          "inputs": [],
+                                                          "ofEntity": "Entitydesign__0002"
+                                                        },
+                                                        {
+                                                          "instanceId": "Rvrsrltnddctndsg__0001",
+                                                          "entityName": "ReverseRelationDeductionDesign",
+                                                          "inputs": [
+                                                            "Slctdnstcddctdsg__000f"
+                                                          ],
+                                                          "relation": "Relationdesign__0005"
+                                                        }
+                                                      ],
+                                                      "output": "Rvrsrltnddctndsg__0001"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "selection": {
+                                          "instanceId": "Deductinschmdsgn__0012",
+                                          "entityName": "DeductionSchemeDesign",
+                                          "deductions": [
+                                            {
+                                              "instanceId": "Slctdnstcddctdsg__0010",
+                                              "entityName": "SelectedInstanceDeductionDesign",
+                                              "inputs": [],
+                                              "ofEntity": "Entitydesign__0001"
+                                            },
+                                            {
+                                              "instanceId": "Attribtddctndsgn__0011",
+                                              "entityName": "AttributeDeductionDesign",
+                                              "inputs": [
+                                                "Slctdnstcddctdsg__0010"
+                                              ],
+                                              "attribute": "Relationdesign__0001"
+                                            }
+                                          ],
+                                          "output": "Attribtddctndsgn__0011"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "instanceId": "Selectiondesign__0004",
+                    "entityName": "SelectionDesign",
+                    "children": [
+                      {
+                        "instanceId": "Selectiondesign__0005",
+                        "entityName": "SelectionDesign",
+                        "children": [
+                          {
+                            "instanceId": "Fragmnttmpltdsgn__0009",
+                            "entityName": "FragmentTemplateDesign",
+                            "fragmentFilters": [],
+                            "fragmentTypeName": "Avatar",
+                            "styleNames": [],
+                            "properties": [
+                              {
+                                "instanceId": "Propertydesign__0010",
+                                "entityName": "PropertyDesign",
+                                "propertyName": "username",
+                                "children": [],
+                                "value": {
+                                  "instanceId": "Deductinschmdsgn__0013",
+                                  "entityName": "DeductionSchemeDesign",
+                                  "deductions": [
+                                    {
+                                      "instanceId": "Slctdnstcddctdsg__0011",
+                                      "entityName": "SelectedInstanceDeductionDesign",
+                                      "inputs": [],
+                                      "ofEntity": "Entitydesign__0003"
+                                    },
+                                    {
+                                      "instanceId": "Attribtddctndsgn__0012",
+                                      "entityName": "AttributeDeductionDesign",
+                                      "inputs": [
+                                        "Slctdnstcddctdsg__0011"
+                                      ],
+                                      "attribute": "Relationdesign__0005"
+                                    },
+                                    {
+                                      "instanceId": "Attribtddctndsgn__0013",
+                                      "entityName": "AttributeDeductionDesign",
+                                      "inputs": [
+                                        "Attribtddctndsgn__0012"
+                                      ],
+                                      "attribute": "Attributedesign__0003"
+                                    }
+                                  ],
+                                  "output": "Attribtddctndsgn__0013"
+                                }
+                              },
+                              {
+                                "instanceId": "Propertydesign__0011",
+                                "entityName": "PropertyDesign",
+                                "propertyName": "name",
+                                "children": [],
+                                "value": {
+                                  "instanceId": "Deductinschmdsgn__0014",
+                                  "entityName": "DeductionSchemeDesign",
+                                  "deductions": [
+                                    {
+                                      "instanceId": "Slctdnstcddctdsg__0012",
+                                      "entityName": "SelectedInstanceDeductionDesign",
+                                      "inputs": [],
+                                      "ofEntity": "Entitydesign__0003"
+                                    },
+                                    {
+                                      "instanceId": "Attribtddctndsgn__0014",
+                                      "entityName": "AttributeDeductionDesign",
+                                      "inputs": [
+                                        "Slctdnstcddctdsg__0012"
+                                      ],
+                                      "attribute": "Relationdesign__0005"
+                                    },
+                                    {
+                                      "instanceId": "Attribtddctndsgn__0015",
+                                      "entityName": "AttributeDeductionDesign",
+                                      "inputs": [
+                                        "Attribtddctndsgn__0014"
+                                      ],
+                                      "attribute": "Attributedesign__0005"
+                                    }
+                                  ],
+                                  "output": "Attribtddctndsgn__0015"
+                                }
+                              },
+                              {
+                                "instanceId": "Propertydesign__0012",
+                                "entityName": "PropertyDesign",
+                                "propertyName": "avatarUrl",
+                                "children": [],
+                                "value": {
+                                  "instanceId": "Deductinschmdsgn__0015",
+                                  "entityName": "DeductionSchemeDesign",
+                                  "deductions": [
+                                    {
+                                      "instanceId": "Slctdnstcddctdsg__0013",
+                                      "entityName": "SelectedInstanceDeductionDesign",
+                                      "inputs": [],
+                                      "ofEntity": "Entitydesign__0003"
+                                    },
+                                    {
+                                      "instanceId": "Attribtddctndsgn__0016",
+                                      "entityName": "AttributeDeductionDesign",
+                                      "inputs": [
+                                        "Slctdnstcddctdsg__0013"
+                                      ],
+                                      "attribute": "Relationdesign__0005"
+                                    },
+                                    {
+                                      "instanceId": "Attribtddctndsgn__0017",
+                                      "entityName": "AttributeDeductionDesign",
+                                      "inputs": [
+                                        "Attribtddctndsgn__0016"
+                                      ],
+                                      "attribute": "Attributedesign__0006"
+                                    }
+                                  ],
+                                  "output": "Attribtddctndsgn__0017"
+                                }
+                              },
+                              {
+                                "instanceId": "Propertydesign__0013",
+                                "entityName": "PropertyDesign",
+                                "propertyName": "focus",
+                                "children": [],
+                                "value": {
+                                  "instanceId": "Deductinschmdsgn__0016",
+                                  "entityName": "DeductionSchemeDesign",
+                                  "deductions": [
+                                    {
+                                      "instanceId": "Slctdnstcddctdsg__0014",
+                                      "entityName": "SelectedInstanceDeductionDesign",
+                                      "inputs": [],
+                                      "ofEntity": "Entitydesign__0003"
+                                    },
+                                    {
+                                      "instanceId": "Attribtddctndsgn__0018",
+                                      "entityName": "AttributeDeductionDesign",
+                                      "inputs": [
+                                        "Slctdnstcddctdsg__0014"
+                                      ],
+                                      "attribute": "Attributedesign__0009"
+                                    }
+                                  ],
+                                  "output": "Attribtddctndsgn__0018"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "selection": {
+                          "instanceId": "Deductinschmdsgn__0017",
+                          "entityName": "DeductionSchemeDesign",
+                          "deductions": [
+                            {
+                              "instanceId": "Slctdnstcddctdsg__0015",
+                              "entityName": "SelectedInstanceDeductionDesign",
+                              "inputs": [],
+                              "ofEntity": "Entitydesign__0004"
+                            },
+                            {
+                              "instanceId": "Rvrsrltnddctndsg__0002",
+                              "entityName": "ReverseRelationDeductionDesign",
+                              "inputs": [
+                                "Slctdnstcddctdsg__0015"
+                              ],
+                              "relation": "Relationdesign__0004"
+                            }
+                          ],
+                          "output": "Rvrsrltnddctndsg__0002"
+                        }
+                      }
+                    ],
+                    "selection": {
+                      "instanceId": "Deductinschmdsgn__0018",
+                      "entityName": "DeductionSchemeDesign",
+                      "deductions": [
+                        {
+                          "instanceId": "Slctdnstcddctdsg__0016",
+                          "entityName": "SelectedInstanceDeductionDesign",
+                          "inputs": [],
+                          "ofEntity": "Entitydesign__0003"
+                        },
+                        {
+                          "instanceId": "Attribtddctndsgn__0019",
+                          "entityName": "AttributeDeductionDesign",
+                          "inputs": [
+                            "Slctdnstcddctdsg__0016"
+                          ],
+                          "attribute": "Relationdesign__0004"
+                        }
+                      ],
+                      "output": "Attribtddctndsgn__0019"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "parameters": [
+        "Entitydesign__0003"
+      ]
+    }
+  ],
+  "fragmentTypes": [],
+  "mainFlow": "Flowdesign__0001",
+  "sharedElements": []
+}

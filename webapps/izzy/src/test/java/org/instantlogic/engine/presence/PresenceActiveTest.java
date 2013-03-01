@@ -10,9 +10,10 @@
 
 package org.instantlogic.engine.presence;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
-import org.instantlogic.engine.persistence.json.CasePersister;
 import org.instantlogic.engine.util.TravelerProxyStub;
 import org.instantlogic.fabric.util.Operation;
 import org.junit.After;

@@ -175,7 +175,11 @@ public class CaseAdministration {
 	}
 
 	void rememberInstanceWithUniqueId(String uniqueId, Instance instance) {
-		this.instanceByUniqueId.put(uniqueId, instance);
+		Instance oldInstance = this.instanceByUniqueId.put(uniqueId, instance);
+		if (oldInstance!=null) {
+			this.instanceByUniqueId.put(uniqueId, oldInstance);
+			throw new RuntimeException("Duplicate unique id detected: "+uniqueId);
+		}
 	}
 
 	void forgetInstanceWithUniqueId(String uniqueId) {

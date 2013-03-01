@@ -59,6 +59,7 @@ public class EntityGenerator extends AbstractGenerator {
 		for (EntityDesign extension : entityDesign.getExtensions()) {
 			model.extensions.add(extension.getTechnicalNameCapitalized());
 		}
+		Collections.sort(model.extensions);
 		for (AttributeDesign attributeDesign: entityDesign.getAttributes()) {
 			if (!attributeDesign.isValidForCodegeneration()) continue;
 			EntityClassModel.Attribute attribute = new EntityClassModel.Attribute();
