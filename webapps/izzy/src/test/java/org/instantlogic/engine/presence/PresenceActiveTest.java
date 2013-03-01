@@ -46,12 +46,12 @@ public class PresenceActiveTest {
 	
 	@After
 	public void tearDown() {
-		System.out.println(CasePersister.gson.toJson(presence));
+//		System.out.println(CasePersister.gson.toJson(presence));
 		ensurePresenceConsistency();
 		
 		// Rollback is an awesome feature
 		operation.close();
-		System.out.println(CasePersister.gson.toJson(presence));
+//		System.out.println(CasePersister.gson.toJson(presence));
 		ensurePresenceConsistency();
 		ensureInitialTotals();
 	}
