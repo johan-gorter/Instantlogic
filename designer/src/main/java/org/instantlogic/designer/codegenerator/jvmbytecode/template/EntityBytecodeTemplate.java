@@ -16,7 +16,6 @@ import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.Attribute;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
-import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Type;
 
@@ -27,108 +26,43 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 		for (int i = 0; i < model.attributes.size(); i++) {
 			bytecodeClasses.put(fullName + "$" + (i + 1), dumpAttributeInnerClass(model, i+1, model.attributes.get(i)));
 		}
-	}
-
-	private static byte[] dumpAttributeInnerClass(EntityClassModel model, int innerClassIndex, Attribute attribute) {
-		ClassWriter cw = new ClassWriter(0);
-		MethodVisitor mv;
-
-		cw.visit(V1_6, ACC_SUPER, "com/instantlogic/mini/entity/MiniThingEntity$"+innerClassIndex,
-				"Lorg/instantlogic/fabric/model/impl/SimpleAttribute<Lcom/instantlogic/mini/MiniThing;Ljava/lang/Float;Ljava/lang/Float;>;",
-				"org/instantlogic/fabric/model/impl/SimpleAttribute", null);
-
-		cw.visitSource("MiniThingEntity.java", null);
-
-		cw.visitOuterClass("com/instantlogic/mini/entity/MiniThingEntity", null, null);
-
-		cw.visitInnerClass("com/instantlogic/mini/entity/MiniThingEntity$"+innerClassIndex, null, null, 0);
-
-		{
-			mv = cw.visitMethod(0, "<init>", "(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;)V", null, null);
-			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitVarInsn(ALOAD, 0);
-			mv.visitVarInsn(ALOAD, 1);
-			mv.visitVarInsn(ALOAD, 2);
-			mv.visitVarInsn(ALOAD, 3);
-			mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleAttribute", "<init>",
-					"(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;)V");
-			Label l1 = new Label();
-			mv.visitLabel(l1);
-			mv.visitInsn(RETURN);
-			Label l2 = new Label();
-			mv.visitLabel(l2);
-			mv.visitMaxs(4, 4);
-			mv.visitEnd();
-		}
-		{
-			mv = cw.visitMethod(
-					ACC_PUBLIC,
-					"get",
-					"(Lcom/instantlogic/mini/MiniThing;)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue;",
-					"(Lcom/instantlogic/mini/MiniThing;)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue<Lcom/instantlogic/mini/MiniThing;Ljava/lang/Float;>;",
-					null);
-			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitVarInsn(ALOAD, 1);
-			mv.visitMethodInsn(INVOKEVIRTUAL, "com/instantlogic/mini/MiniThing", "get"+upperFirst(attribute.name)+"AttributeValue",
-					"()Lorg/instantlogic/fabric/value/AttributeValue;");
-			mv.visitInsn(ARETURN);
-			Label l1 = new Label();
-			mv.visitLabel(l1);
-			mv.visitMaxs(1, 2);
-			mv.visitEnd();
-		}
-		{
-			mv = cw.visitMethod(ACC_PUBLIC + ACC_BRIDGE + ACC_SYNTHETIC, "get",
-					"(Lorg/instantlogic/fabric/Instance;)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue;", null, null);
-			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitVarInsn(ALOAD, 0);
-			mv.visitVarInsn(ALOAD, 1);
-			mv.visitTypeInsn(CHECKCAST, "com/instantlogic/mini/MiniThing");
-			mv.visitMethodInsn(INVOKEVIRTUAL, "com/instantlogic/mini/entity/MiniThingEntity$"+innerClassIndex, "get",
-					"(Lcom/instantlogic/mini/MiniThing;)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue;");
-			mv.visitInsn(ARETURN);
-			mv.visitMaxs(2, 2);
-			mv.visitEnd();
-		}
-		cw.visitEnd();
-
-		return cw.toByteArray();
+		// TODO: relations and reverse relations
 	}
 
 	public static byte[] dump(EntityClassModel model) {
-		ClassWriter cw = new ClassWriter(0);
+		ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 		FieldVisitor fv;
 		MethodVisitor mv;
 
-		cw.visit(V1_6, ACC_PUBLIC + ACC_SUPER, "com/instantlogic/mini/entity/MiniThingEntity",
-				"Lorg/instantlogic/fabric/model/Entity<Lcom/instantlogic/mini/MiniThing;>;", "org/instantlogic/fabric/model/Entity", null);
+		String className = model.getRootPackageInternalPrefix()+"entity/"+model.name+"Entity";
+		String instanceClassName = model.getRootPackageInternalPrefix()+model.name;
 
-		cw.visitSource("MiniThingEntity.java", null);
+		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className,
+				"Lorg/instantlogic/fabric/model/Entity<L"+instanceClassName+";>;", "org/instantlogic/fabric/model/Entity", null);
 
-		cw.visitInnerClass("com/instantlogic/mini/entity/MiniThingEntity$1", null, null, 0);
+		for (int i = 0; i < model.attributes.size(); i++) { // TODO: + relations.size()
+			cw.visitInnerClass("com/instantlogic/mini/entity/MiniThingEntity$"+(i+1), null, null, 0);
+		}
 
-		cw.visitInnerClass("com/instantlogic/mini/entity/MiniThingEntity$2", null, null, 0);
-
+		// public static final UserEntity INSTANCE 
 		{
-			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "INSTANCE", "Lcom/instantlogic/mini/entity/MiniThingEntity;", null, null);
+			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "INSTANCE", "L"+className+";", null, null);
 			fv.visitEnd();
 		}
+		// private org.instantlogic.fabric.text.TextTemplate title;
 		{
-			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "miniProperty", "Lorg/instantlogic/fabric/model/Attribute;",
-					"Lorg/instantlogic/fabric/model/Attribute<Lcom/instantlogic/mini/MiniThing;Ljava/lang/Float;Ljava/lang/Float;>;", null);
+			fv = cw.visitField(ACC_PRIVATE, "title", "Lorg/instantlogic/fabric/text/TextTemplate;", null, null);
 			fv.visitEnd();
 		}
-		{
-			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "miniProperty2", "Lorg/instantlogic/fabric/model/Attribute;",
-					"Lorg/instantlogic/fabric/model/Attribute<Lcom/instantlogic/mini/MiniThing;Ljava/lang/Float;Ljava/lang/Float;>;", null);
-			fv.visitEnd();
+		for(Attribute a:model.attributes) {
+			{
+				// public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.example.izzy.User, java.lang.String, java.lang.String> username
+				fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, a.javaIdentifier, "Lorg/instantlogic/fabric/model/Attribute;", "Lorg/instantlogic/fabric/model/Attribute<L"+instanceClassName+";L"+a.internalClassName+";L"+a.internalItemClassName+";>;", null);
+				fv.visitEnd();
+			}
 		}
+		// TODO: relations and reverserelations
+		
 		{
 			fv = cw.visitField(ACC_PRIVATE + ACC_FINAL + ACC_STATIC, "ATTRIBUTES", "[Lorg/instantlogic/fabric/model/Attribute;", null, null);
 			fv.visitEnd();
@@ -142,182 +76,223 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			fv.visitEnd();
 		}
 		{
+			fv = cw.visitField(ACC_PRIVATE + ACC_FINAL + ACC_STATIC, "VALIDATIONS", "[Lorg/instantlogic/fabric/model/Validation;", null, null);
+			fv.visitEnd();
+		}		
+		{
 			mv = cw.visitMethod(ACC_STATIC, "<clinit>", "()V", null, null);
 			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitTypeInsn(NEW, "com/instantlogic/mini/entity/MiniThingEntity");
+			mv.visitTypeInsn(NEW, className);
 			mv.visitInsn(DUP);
-			mv.visitMethodInsn(INVOKESPECIAL, "com/instantlogic/mini/entity/MiniThingEntity", "<init>", "()V");
-			mv.visitFieldInsn(PUTSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "INSTANCE", "Lcom/instantlogic/mini/entity/MiniThingEntity;");
-			Label l1 = new Label();
-			mv.visitLabel(l1);
-			mv.visitTypeInsn(NEW, "com/instantlogic/mini/entity/MiniThingEntity$1");
-			mv.visitInsn(DUP);
-			Label l2 = new Label();
-			mv.visitLabel(l2);
-			mv.visitLdcInsn("miniProperty");
-			mv.visitFieldInsn(GETSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "INSTANCE", "Lcom/instantlogic/mini/entity/MiniThingEntity;");
-			mv.visitLdcInsn(Type.getType("Ljava/lang/Float;"));
-			Label l3 = new Label();
-			mv.visitLabel(l3);
-			mv.visitMethodInsn(INVOKESPECIAL, "com/instantlogic/mini/entity/MiniThingEntity$1", "<init>",
-					"(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;)V");
-			Label l4 = new Label();
-			mv.visitLabel(l4);
-			mv.visitFieldInsn(PUTSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "miniProperty", "Lorg/instantlogic/fabric/model/Attribute;");
-			Label l5 = new Label();
-			mv.visitLabel(l5);
-			mv.visitTypeInsn(NEW, "com/instantlogic/mini/entity/MiniThingEntity$2");
-			mv.visitInsn(DUP);
-			Label l6 = new Label();
-			mv.visitLabel(l6);
-			mv.visitLdcInsn("miniProperty2");
-			mv.visitFieldInsn(GETSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "INSTANCE", "Lcom/instantlogic/mini/entity/MiniThingEntity;");
-			mv.visitLdcInsn(Type.getType("Ljava/lang/Float;"));
-			Label l7 = new Label();
-			mv.visitLabel(l7);
-			mv.visitMethodInsn(INVOKESPECIAL, "com/instantlogic/mini/entity/MiniThingEntity$2", "<init>",
-					"(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;)V");
-			Label l8 = new Label();
-			mv.visitLabel(l8);
-			mv.visitFieldInsn(PUTSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "miniProperty2", "Lorg/instantlogic/fabric/model/Attribute;");
-			Label l9 = new Label();
-			mv.visitLabel(l9);
-			mv.visitInsn(ICONST_2);
+			mv.visitMethodInsn(INVOKESPECIAL, className, "<init>", "()V");
+			mv.visitFieldInsn(PUTSTATIC, className, "INSTANCE", "L"+className+";");
+
+			int innerClassIndex=1;
+			for(Attribute a:model.attributes) {
+				mv.visitTypeInsn(NEW, className+"$"+innerClassIndex);
+				mv.visitInsn(DUP);
+				mv.visitLdcInsn(a.javaIdentifier);
+				mv.visitFieldInsn(GETSTATIC, className, "INSTANCE", "L"+className+";");
+				mv.visitLdcInsn(Type.getType("L"+a.internalClassName+";"));
+				mv.visitMethodInsn(INVOKESPECIAL, className+"$"+innerClassIndex, "<init>", "(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;)V");
+				mv.visitFieldInsn(PUTSTATIC, className, a.javaIdentifier, "Lorg/instantlogic/fabric/model/Attribute;");
+				innerClassIndex++;
+			}
+
+			// private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{ ...
+			mv.visitIntInsn(BIPUSH, model.attributes.size());
 			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/model/Attribute");
-			mv.visitInsn(DUP);
-			mv.visitInsn(ICONST_0);
-			Label l10 = new Label();
-			mv.visitLabel(l10);
-			mv.visitFieldInsn(GETSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "miniProperty", "Lorg/instantlogic/fabric/model/Attribute;");
-			mv.visitInsn(AASTORE);
-			mv.visitInsn(DUP);
-			mv.visitInsn(ICONST_1);
-			Label l11 = new Label();
-			mv.visitLabel(l11);
-			mv.visitFieldInsn(GETSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "miniProperty2", "Lorg/instantlogic/fabric/model/Attribute;");
-			mv.visitInsn(AASTORE);
-			Label l12 = new Label();
-			mv.visitLabel(l12);
-			mv.visitFieldInsn(PUTSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "ATTRIBUTES", "[Lorg/instantlogic/fabric/model/Attribute;");
-			Label l13 = new Label();
-			mv.visitLabel(l13);
+			int i=0;
+			for(Attribute a:model.attributes) {
+				mv.visitInsn(DUP);
+				mv.visitIntInsn(BIPUSH, i);
+				mv.visitFieldInsn(GETSTATIC, className, a.javaIdentifier, "Lorg/instantlogic/fabric/model/Attribute;");
+				mv.visitInsn(AASTORE);
+				i++;
+			}
+			mv.visitFieldInsn(PUTSTATIC, className, "ATTRIBUTES", "[Lorg/instantlogic/fabric/model/Attribute;");
+			
 			mv.visitInsn(ICONST_0);
 			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/model/Relation");
-			mv.visitFieldInsn(PUTSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "RELATIONS", "[Lorg/instantlogic/fabric/model/Relation;");
-			Label l14 = new Label();
-			mv.visitLabel(l14);
+			mv.visitFieldInsn(PUTSTATIC, className, "RELATIONS", "[Lorg/instantlogic/fabric/model/Relation;");
+			
 			mv.visitInsn(ICONST_0);
 			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/model/Relation");
-			mv.visitFieldInsn(PUTSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "REVERSE_RELATIONS", "[Lorg/instantlogic/fabric/model/Relation;");
-			Label l15 = new Label();
-			mv.visitLabel(l15);
+			mv.visitFieldInsn(PUTSTATIC, className, "REVERSE_RELATIONS", "[Lorg/instantlogic/fabric/model/Relation;");
+
+			mv.visitInsn(ICONST_0);
+			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/model/Validation");
+			mv.visitFieldInsn(PUTSTATIC, className, "VALIDATIONS", "[Lorg/instantlogic/fabric/model/Validation;");
 			mv.visitInsn(RETURN);
-			mv.visitMaxs(5, 0);
+			mv.visitMaxs(7, 0);
 			mv.visitEnd();
 		}
+		// Default synthetic constructor
 		{
-			mv = cw.visitMethod(ACC_PROTECTED, "<init>", "()V", null, null);
+			mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
 			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
 			mv.visitVarInsn(ALOAD, 0);
 			mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/Entity", "<init>", "()V");
-			Label l1 = new Label();
-			mv.visitLabel(l1);
 			mv.visitInsn(RETURN);
-			Label l2 = new Label();
-			mv.visitLabel(l2);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
+		//@Override
+		//public org.instantlogic.example.izzy.User createInstance() {
+		//	return new org.instantlogic.example.izzy.User();
+		//}
 		{
-			mv = cw.visitMethod(ACC_PUBLIC, "createInstance", "()Lcom/instantlogic/mini/MiniThing;", null, null);
+			mv = cw.visitMethod(ACC_PUBLIC, "createInstance", "()L"+instanceClassName+";", null, null);
 			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitTypeInsn(NEW, "com/instantlogic/mini/MiniThing");
+			mv.visitTypeInsn(NEW, instanceClassName);
 			mv.visitInsn(DUP);
-			mv.visitMethodInsn(INVOKESPECIAL, "com/instantlogic/mini/MiniThing", "<init>", "()V");
+			mv.visitMethodInsn(INVOKESPECIAL, instanceClassName, "<init>", "()V");
 			mv.visitInsn(ARETURN);
-			Label l1 = new Label();
-			mv.visitLabel(l1);
 			mv.visitMaxs(2, 1);
 			mv.visitEnd();
 		}
+		//@Override
+		//public Class<org.instantlogic.example.izzy.User> getInstanceClass() {
+		//	return org.instantlogic.example.izzy.User.class;
+		//}
 		{
-			mv = cw.visitMethod(ACC_PUBLIC, "getInstanceClass", "()Ljava/lang/Class;", "()Ljava/lang/Class<Lcom/instantlogic/mini/MiniThing;>;", null);
+			mv = cw.visitMethod(ACC_PUBLIC, "getInstanceClass", "()Ljava/lang/Class;", "()Ljava/lang/Class<L"+instanceClassName+";>;", null);
 			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitLdcInsn(Type.getType("Lcom/instantlogic/mini/MiniThing;"));
+			mv.visitLdcInsn(Type.getType("L"+instanceClassName+";"));
 			mv.visitInsn(ARETURN);
-			Label l1 = new Label();
-			mv.visitLabel(l1);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
+		//@Override
+		//public String getName() {
+		//	return "user";
+		//}
 		{
 			mv = cw.visitMethod(ACC_PUBLIC, "getName", "()Ljava/lang/String;", null, null);
 			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitLdcInsn("MiniThing");
+			mv.visitLdcInsn(model.name);
 			mv.visitInsn(ARETURN);
-			Label l1 = new Label();
-			mv.visitLabel(l1);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
 		{
 			mv = cw.visitMethod(ACC_PUBLIC, "getLocalAttributes", "()[Lorg/instantlogic/fabric/model/Attribute;", null, null);
 			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitFieldInsn(GETSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "ATTRIBUTES", "[Lorg/instantlogic/fabric/model/Attribute;");
+			mv.visitFieldInsn(GETSTATIC, className, "ATTRIBUTES", "[Lorg/instantlogic/fabric/model/Attribute;");
 			mv.visitInsn(ARETURN);
-			Label l1 = new Label();
-			mv.visitLabel(l1);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
 		{
 			mv = cw.visitMethod(ACC_PUBLIC, "getLocalRelations", "()[Lorg/instantlogic/fabric/model/Relation;", null, null);
 			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitFieldInsn(GETSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "RELATIONS", "[Lorg/instantlogic/fabric/model/Relation;");
+			mv.visitFieldInsn(GETSTATIC, className, "RELATIONS", "[Lorg/instantlogic/fabric/model/Relation;");
 			mv.visitInsn(ARETURN);
-			Label l1 = new Label();
-			mv.visitLabel(l1);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
 		{
 			mv = cw.visitMethod(ACC_PUBLIC, "getLocalReverseRelations", "()[Lorg/instantlogic/fabric/model/Relation;", null, null);
 			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
-			mv.visitFieldInsn(GETSTATIC, "com/instantlogic/mini/entity/MiniThingEntity", "REVERSE_RELATIONS", "[Lorg/instantlogic/fabric/model/Relation;");
+			mv.visitFieldInsn(GETSTATIC, className, "REVERSE_RELATIONS", "[Lorg/instantlogic/fabric/model/Relation;");
 			mv.visitInsn(ARETURN);
-			Label l1 = new Label();
-			mv.visitLabel(l1);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "getLocalValidations", "()[Lorg/instantlogic/fabric/model/Validation;", null, null);
+			mv.visitCode();
+			mv.visitFieldInsn(GETSTATIC, className, "VALIDATIONS", "[Lorg/instantlogic/fabric/model/Validation;");
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "getStaticInstances", "()Ljava/util/Map;", "()Ljava/util/Map<Ljava/lang/String;L"+instanceClassName+";>;", null);
+			mv.visitCode();
+			mv.visitMethodInsn(INVOKESTATIC, instanceClassName, "getStatic"+model.technicalNameCapitalized+"Instances", "()Ljava/util/Map;");
+			mv.visitInsn(ARETURN);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
 		{
 			mv = cw.visitMethod(ACC_PUBLIC + ACC_BRIDGE + ACC_SYNTHETIC, "createInstance", "()Lorg/instantlogic/fabric/Instance;", null, null);
 			mv.visitCode();
-			Label l0 = new Label();
-			mv.visitLabel(l0);
 			mv.visitVarInsn(ALOAD, 0);
-			mv.visitMethodInsn(INVOKEVIRTUAL, "com/instantlogic/mini/entity/MiniThingEntity", "createInstance", "()Lcom/instantlogic/mini/MiniThing;");
+			mv.visitMethodInsn(INVOKEVIRTUAL, className, "createInstance", "()L"+instanceClassName+";");
 			mv.visitInsn(ARETURN);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
+		
+		// TODO: getTitle
 		cw.visitEnd();
 		return cw.toByteArray();
 	}
+	
+	private static byte[] dumpAttributeInnerClass(EntityClassModel model, int innerClassIndex, Attribute attribute) {
+		ClassWriter cw = new ClassWriter(0);
+		MethodVisitor mv;
+		
+		String className = model.getRootPackageInternalPrefix()+"entity/"+model.name+"Entity$"+innerClassIndex;
+
+		cw.visit(V1_7, ACC_SUPER, className,
+				"Lorg/instantlogic/fabric/model/impl/SimpleAttribute<L"+model.getRootPackageInternalPrefix()+model.name+";L"+attribute.internalClassName+";>;",
+				"org/instantlogic/fabric/model/impl/SimpleAttribute", null);
+
+		cw.visitOuterClass(model.getRootPackageInternalPrefix()+model.name+"Entity", null, null);
+
+		cw.visitInnerClass(model.getRootPackageInternalPrefix()+model.name+"Entity$"+innerClassIndex, null, null, 0);
+
+		//username = new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.example.izzy.User, java.lang.String, java.lang.String>("username", INSTANCE, java.lang.String.class
+		{
+			mv = cw.visitMethod(0, "<init>", "(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;)V", null, null);
+			mv.visitCode();
+			mv.visitVarInsn(ALOAD, 0);
+			mv.visitVarInsn(ALOAD, 1);
+			mv.visitVarInsn(ALOAD, 2);
+			mv.visitVarInsn(ALOAD, 3);
+			mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleAttribute", "<init>",
+					"(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;)V");
+			mv.visitVarInsn(ALOAD, 0);
+			// dataType.put("category", "text");
+			for (Map.Entry<String,Object> dataTypeEntry : attribute.dataType.entrySet()) {
+				mv.visitFieldInsn(GETFIELD, className, "dataType", "Ljava/util/Map;");
+				mv.visitLdcInsn(dataTypeEntry.getKey());
+				mv.visitLdcInsn(dataTypeEntry.getValue()); // Works at least for strings...
+				mv.visitMethodInsn(INVOKEINTERFACE, "java/util/Map", "put", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+				mv.visitInsn(POP);
+			}
+			mv.visitInsn(RETURN);
+			mv.visitMaxs(4, 4);
+			mv.visitEnd();
+		}
+		//@Override
+		//public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.example.izzy.User, java.lang.String> get(org.instantlogic.example.izzy.User instance) {
+		//	return instance.getUsernameAttributeValue();
+		//}
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "get", "(L"+model.getRootPackageInternalPrefix()+model.name+";)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue;", "(L"+model.getRootPackageInternalPrefix()+model.name+";)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue<L"+model.getRootPackageInternalPrefix()+model.name+";L"+attribute.internalClassName+";>;", null);
+			mv.visitCode();
+			mv.visitVarInsn(ALOAD, 1);
+			mv.visitMethodInsn(INVOKEVIRTUAL, model.getRootPackageInternalPrefix()+model.name, "get"+attribute.technicalNameCapitalized+"AttributeValue", "()Lorg/instantlogic/fabric/value/AttributeValue;");
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 2);
+			mv.visitEnd();
+		}
+		{
+			mv = cw.visitMethod(ACC_PUBLIC + ACC_BRIDGE + ACC_SYNTHETIC, "get", "(Lorg/instantlogic/fabric/Instance;)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue;", null, null);
+			mv.visitCode();
+			mv.visitVarInsn(ALOAD, 0);
+			mv.visitVarInsn(ALOAD, 1);
+			mv.visitTypeInsn(CHECKCAST, model.getRootPackageInternalPrefix()+model.name);
+			mv.visitMethodInsn(INVOKEVIRTUAL, className, "get", "(L"+model.getRootPackageInternalPrefix()+model.name+";)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue;");
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(2, 2);
+			mv.visitEnd();
+		}
+		cw.visitEnd();
+
+		return cw.toByteArray();
+	}	
 }

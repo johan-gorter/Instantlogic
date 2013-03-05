@@ -27,7 +27,9 @@ import org.instantlogic.designer.ValidationDesign;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.Attribute;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstance;
+import org.instantlogic.designer.deduction.TechnicalNameDeduction;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
+import org.objectweb.asm.Type;
 
 public class EntityGenerator extends AbstractGenerator {
 
@@ -65,14 +67,18 @@ public class EntityGenerator extends AbstractGenerator {
 			EntityClassModel.Attribute attribute = new EntityClassModel.Attribute();
 			attribute.name = attributeDesign.getName();
 			attribute.technicalName = attributeDesign.getTechnicalName();
+			attribute.technicalNameCapitalized = attributeDesign.getTechnicalNameCapitalized();
 			attribute.javaIdentifier = attributeDesign.getJavaIdentifier();
 			setDatatype(attribute, attributeDesign.getDataType());
 			attribute.itemClassName = attributeDesign.getDataType().getJavaClassName();
+			attribute.internalItemClassName = attribute.itemClassName.replace('.', '/');
 			attribute.multivalue = (attributeDesign.getDataType().getMultivalue()==Boolean.TRUE);
 			if (attribute.multivalue) {
 				attribute.className="org.instantlogic.fabric.value.Multi<"+attribute.itemClassName+">";
+				attribute.internalClassName = "org/instantlogic/fabric/value/Multi";
 			} else {
 				attribute.className=attribute.itemClassName;
+				attribute.internalClassName = attribute.itemClassName.replace('.', '/');
 			}
 			attribute.readonly = (attributeDesign.getWriteable()==Boolean.FALSE);
 			TextTemplateDesign question = attributeDesign.getQuestion();
@@ -102,6 +108,7 @@ public class EntityGenerator extends AbstractGenerator {
 			EntityClassModel.Relation relation = new EntityClassModel.Relation();
 			relation.name = relationDesign.getName();
 			relation.technicalName = relationDesign.getTechnicalName();
+			relation.technicalNameCapitalized = relationDesign.getTechnicalNameCapitalized();
 			relation.javaIdentifier = relationDesign.getJavaIdentifier();
 			relation.multivalue = (relationDesign.getDataType().getMultivalue()==Boolean.TRUE);
 			relation.readonly = (relationDesign.getWriteable()==Boolean.FALSE);
@@ -131,6 +138,7 @@ public class EntityGenerator extends AbstractGenerator {
 				EntityClassModel.Relation relation = new EntityClassModel.Relation();
 				relation.name = relationDesign.getReverseName();
 				relation.technicalName = relationDesign.getReverseTechnicalName();
+				relation.technicalNameCapitalized = TechnicalNameDeduction.capitalizeFirst(relationDesign.getReverseTechnicalName());
 				relation.javaIdentifier = relationDesign.getReverseJavaIdentifier();
 				relation.multivalue = (relationDesign.getReverseMultivalue()==Boolean.TRUE);
 				relation.reverseName = relationDesign.getTechnicalNameCapitalized();

@@ -33,9 +33,12 @@ public class EntityClassModel extends AbstractClassModel {
 		
 		public String name;
 		public String technicalName;
+		public String technicalNameCapitalized;
 		public String javaIdentifier;
 		public String className;
+		public String internalClassName;
 		public String itemClassName;
+		public String internalItemClassName;
 		public TextModel question;
 		public boolean multivalue;
 		public boolean readonly;

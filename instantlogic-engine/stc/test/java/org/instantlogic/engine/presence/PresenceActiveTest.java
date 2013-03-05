@@ -16,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.instantlogic.engine.util.TravelerProxyStub;
 import org.instantlogic.fabric.util.Operation;
+import org.instantlogic.tools.persistence.json.CasePersister;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,12 +47,12 @@ public class PresenceActiveTest {
 	
 	@After
 	public void tearDown() {
-//		System.out.println(CasePersister.gson.toJson(presence));
+		System.out.println(CasePersister.gson.toJson(presence));
 		ensurePresenceConsistency();
 		
 		// Rollback is an awesome feature
 		operation.close();
-//		System.out.println(CasePersister.gson.toJson(presence));
+		System.out.println(CasePersister.gson.toJson(presence));
 		ensurePresenceConsistency();
 		ensureInitialTotals();
 	}
