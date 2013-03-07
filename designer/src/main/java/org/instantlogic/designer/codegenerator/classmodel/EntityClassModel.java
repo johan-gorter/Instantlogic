@@ -108,6 +108,7 @@ public class EntityClassModel extends AbstractClassModel {
 	public static class Relation extends Attribute {
 		public boolean owner;
 		public String to;
+		public String internalTo;
 		public String item;
 		public String reverseName;
 		public boolean autoCreate;
