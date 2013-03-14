@@ -28,19 +28,19 @@ public class ApplicationBytecodeGenerator extends AbstractBytecodeGenerator {
 		}
 		for (EntityClassModel entity: classModels.deletedEntities) {
 			//Instance
-			String fullInstanceClassName = classModels.rootPackageName+"." + entity.name;
+			String fullInstanceClassName = classModels.rootPackageName+"." + (entity.isCustomized?"Abstract":"") + entity.technicalNameCapitalized;
 			remove(bytecodeClasses, fullInstanceClassName);
 			//Entity
-			String fullEntityClassName = classModels.rootPackageName+".entity." + entity.name+"Entity";
+			String fullEntityClassName = classModels.rootPackageName+".entity." + entity.technicalNameCapitalized+"Entity";
 			remove(bytecodeClasses, fullEntityClassName);
 		}
 		for (EntityClassModel entity: classModels.updatedEntities) {
 			//Instance
-			String fullInstanceClassName = classModels.rootPackageName+"." + entity.name;
+			String fullInstanceClassName = classModels.rootPackageName+"." + (entity.isCustomized?"Abstract":"") + entity.technicalNameCapitalized;
 			remove(bytecodeClasses, fullInstanceClassName);
 			InstanceBytecodeTemplate.generate(bytecodeClasses, entity);
 			//Entity
-			String fullEntityClassName = classModels.rootPackageName+".entity." + entity.name+"Entity";
+			String fullEntityClassName = classModels.rootPackageName+".entity." + entity.technicalNameCapitalized+"Entity";
 			remove(bytecodeClasses, fullEntityClassName);
 			EntityBytecodeTemplate.generate(bytecodeClasses, fullEntityClassName, entity);
 		}

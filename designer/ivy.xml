@@ -11,6 +11,7 @@
 	</configurations>
 	<dependencies>
         <dependency org="junit" name="junit" rev="4.10" conf="test->default" />
+        <dependency org ="org.ow2.asm" name="asm-util" rev="4.1" conf="test->default" />
 		<dependency org="ch.qos.logback" name="logback-classic" rev="1.0.1" />
         <dependency org ="org.ow2.asm" name="asm" rev="4.1" />
         <dependency org="org.freemarker" name="freemarker" rev="2.3.19"/>

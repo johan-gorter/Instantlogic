@@ -24,4 +24,16 @@ public class AbstractBytecodeTemplate implements Opcodes {
 		mv.visitMethodInsn(INVOKESPECIAL, "java/lang/UnsupportedOperationException", "<init>", "()V");
 		mv.visitInsn(ATHROW);
 	}
+	
+	protected static void emitReturnTrue(ClassWriter cw, String methodName) {
+		{
+			MethodVisitor mv = cw.visitMethod(ACC_PUBLIC, methodName, "()Z", null, null);
+			mv.visitCode();
+			mv.visitInsn(ICONST_1);
+			mv.visitInsn(IRETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}			
+	}
+	
 }
