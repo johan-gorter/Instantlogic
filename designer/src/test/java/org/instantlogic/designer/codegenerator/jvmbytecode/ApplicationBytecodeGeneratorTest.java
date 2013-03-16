@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,7 +16,7 @@ import org.instantlogic.designer.codegenerator.generator.ApplicationGenerator;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.test.application.EmptyApplicationGenerator;
 import org.instantlogic.designer.test.application.MiniApplicationGenerator;
-import org.instantlogic.designer.test.application.mini.Thing;
+import org.instantlogic.designer.test.application.mini.Named;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
@@ -27,30 +28,35 @@ import org.junit.Test;
 public class ApplicationBytecodeGeneratorTest {
 
 	private ClassLoader restoreClassLoader;
+	private BytecodeClassloader applicationClassLoader;
 	
 	@After
-	public void tearDown() {
+	public void tearDown() throws Exception {
 		if (restoreClassLoader!=null) {
 			Thread.currentThread().setContextClassLoader(restoreClassLoader);
+			restoreClassLoader=null;
+		}
+		if (applicationClassLoader!=null) {
+			applicationClassLoader.close();
+			applicationClassLoader=null;
 		}
 	}
 
-	private Application generate(ApplicationDesign applicationDesign) throws Exception {
+	private Application generate(ApplicationDesign applicationDesign, URL... customizationUrls) throws Exception {
 		ApplicationGenerator applicationGenerator = applicationDesign.getApplicationGenerator();
 		applicationGenerator.resetClassModelUpdates();
 		GeneratedClassModels classModels = applicationGenerator.getClassModelUpdates();
 		Map<String, byte[]> bytecodeClasses = new HashMap<String, byte[]>();
 		ApplicationBytecodeGenerator.generate(classModels, bytecodeClasses);
-		try (BytecodeClassloader classLoader = new BytecodeClassloader(getClass().getClassLoader(), bytecodeClasses)) {
-			this.restoreClassLoader = Thread.currentThread().getContextClassLoader(); 
-			Thread.currentThread().setContextClassLoader(classLoader);
-			Class<?> applicationClass = classLoader.loadClass(applicationDesign.getRootPackageName()+"."+applicationDesign.getName()+"Application");
-			
-			Class<?> thingClass = classLoader.loadClass(applicationDesign.getRootPackageName()+".AbstractThing");
-			
-			Application application = (Application) applicationClass.getField("INSTANCE").get(null);
-			return application;
-		}
+		
+		applicationClassLoader = new BytecodeClassloader(getClass().getClassLoader(), bytecodeClasses, customizationUrls);
+		this.restoreClassLoader = Thread.currentThread().getContextClassLoader(); 
+		
+		Thread.currentThread().setContextClassLoader(applicationClassLoader);
+		Class<?> applicationClass = applicationClassLoader.loadClass(applicationDesign.getRootPackageName()+"."+applicationDesign.getName()+"Application");
+		
+		Application application = (Application) applicationClass.getField("INSTANCE").get(null);
+		return application;
 	}
 	
 	@Test
@@ -63,7 +69,7 @@ public class ApplicationBytecodeGeneratorTest {
 	@Test
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void testMini() throws Exception {
-		Application application = generate(MiniApplicationGenerator.APPLICATION_DESIGN);
+		Application application = generate(MiniApplicationGenerator.APPLICATION_DESIGN, getClass().getClassLoader().getResource("mini-customizations.jar"));
 		Entity<? extends Instance> personEntity = application.getCaseEntity(); 
 		assertNotNull(personEntity);
 		Instance person1 = personEntity.createInstance();
@@ -78,13 +84,13 @@ public class ApplicationBytecodeGeneratorTest {
 	
 	@Test
 	public void testCustomizedEntity() throws Exception {
-		Application application = generate(MiniApplicationGenerator.APPLICATION_DESIGN);
+		Application application = generate(MiniApplicationGenerator.APPLICATION_DESIGN, getClass().getClassLoader().getResource("mini-customizations.jar"));
 		Entity<? extends Instance> thingEntity = application.getCaseEntity().getRelations().iterator().next().getTo();
-		Object thing1 =  thingEntity.createInstance();
-//		thing1.setName("thing1");
-//		assertEquals("thing1", thing1.getName());
+		Named thing1 =  (Named)thingEntity.createInstance();
+		thing1.setMyName("thing1");
+		assertEquals("thing1", thing1.getMyName());
 		// Static instance
-		Thing holyGrail = (Thing) thingEntity.getStaticInstances().get("holyGrail");
+		Named holyGrail = (Named) thingEntity.getStaticInstances().get("holyGrail");
 		assertNotNull(holyGrail);
 	}
 
@@ -95,5 +101,15 @@ public class ApplicationBytecodeGeneratorTest {
 		Attribute result = iterator.next();
 		assertFalse(iterator.hasNext());
 		return result;
+	}
+	
+	public static void main(String[] args) throws Exception {
+		ApplicationBytecodeGeneratorTest test = new ApplicationBytecodeGeneratorTest();
+		test.testCustomizedEntity();
+		test.tearDown();
+		test.testEmpty();
+		test.tearDown();
+		test.testMini();
+		test.tearDown();
 	}
 }

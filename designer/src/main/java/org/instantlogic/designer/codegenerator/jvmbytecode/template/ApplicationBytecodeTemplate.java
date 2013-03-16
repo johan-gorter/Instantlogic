@@ -8,8 +8,8 @@ import org.objectweb.asm.*;
 
 public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 
-	public static void generate(Map<String, byte[]> bytecodeClasses, ApplicationClassModel model) {
-		bytecodeClasses.put(model.rootPackageName+"."+model.name+"Application", dump(model));	
+	public static void generate(Map<String, byte[]> bytecodeClasses, ApplicationClassModel model, String fullApplicationClassName) {
+		bytecodeClasses.put(fullApplicationClassName, dump(model));	
 	}
 
 	public static byte[] dump(ApplicationClassModel model) {

@@ -19,22 +19,18 @@ public class BytecodeClassloader extends URLClassLoader {
 
 	private Map<String, byte[]> bytecodeClasses = new HashMap<String, byte[]>();
 	
-	public BytecodeClassloader(ClassLoader parentClassLoader, Map<String, byte[]> bytecodeClasses) {
-		super(new URL[0], parentClassLoader);
-		this.bytecodeClasses = bytecodeClasses;
-	}
-	
-	public BytecodeClassloader(URL compiledClasses, ClassLoader parentClassLoader, Map<String, byte[]> bytecodeClasses) {
-		super(new URL[]{compiledClasses}, parentClassLoader);
+	public BytecodeClassloader(ClassLoader parentClassLoader, Map<String, byte[]> bytecodeClasses, URL... customizationUrls) {
+		super(customizationUrls, parentClassLoader);
 		this.bytecodeClasses = bytecodeClasses;
 	}
 	
 	@Override
 	protected Class<?> findClass(String name) throws ClassNotFoundException {
-		byte[] bytes = bytecodeClasses.get(name); // Despite the default JEE behavior, we want to be eager
+		byte[] bytes = bytecodeClasses.get(name);
 		if (bytes!=null) {
 			return defineClass(name, bytes, 0, bytes.length);
 		}
-		return super.findClass(name);
+		return super.findClass(name); // Customizations last
+		// TODO: If not found, but abstract class is found, return an empty customization
 	}
 }

@@ -183,12 +183,12 @@ public class EntityClassModel extends AbstractClassModel {
 	public String getExtendsFrom() {
 		return extendsFrom;
 	}
-	public String getInternalName() {
-		if (internalName==null) {
-			internalName = getRootPackageInternalPrefix()+technicalNameCapitalized;
-		}
-		return internalName;
-	}
+//	public String getInternalName() {
+//		if (internalName==null) {
+//			internalName = getRootPackageInternalPrefix()+technicalNameCapitalized;
+//		}
+//		return internalName;
+//	}
 	public String getInternalEntityName() {
 		if (internalEntityName==null) {
 			internalEntityName = getRootPackageInternalPrefix()+"entity/"+technicalNameCapitalized+"Entity";

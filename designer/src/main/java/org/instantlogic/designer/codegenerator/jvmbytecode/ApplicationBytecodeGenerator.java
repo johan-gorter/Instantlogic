@@ -24,7 +24,7 @@ public class ApplicationBytecodeGenerator extends AbstractBytecodeGenerator {
 		if (classModels.updatedApplication!=null) {
 			String fullApplicationClassName = classModels.rootPackageName+"." + classModels.updatedApplication.name+"Application";
 			remove(bytecodeClasses, fullApplicationClassName);
-			ApplicationBytecodeTemplate.generate(bytecodeClasses, classModels.updatedApplication);
+			ApplicationBytecodeTemplate.generate(bytecodeClasses, classModels.updatedApplication, fullApplicationClassName);
 		}
 		for (EntityClassModel entity: classModels.deletedEntities) {
 			//Instance
@@ -38,11 +38,11 @@ public class ApplicationBytecodeGenerator extends AbstractBytecodeGenerator {
 			//Instance
 			String fullInstanceClassName = classModels.rootPackageName+"." + (entity.isCustomized?"Abstract":"") + entity.technicalNameCapitalized;
 			remove(bytecodeClasses, fullInstanceClassName);
-			InstanceBytecodeTemplate.generate(bytecodeClasses, entity);
+			InstanceBytecodeTemplate.generate(bytecodeClasses, entity, fullInstanceClassName);
 			//Entity
 			String fullEntityClassName = classModels.rootPackageName+".entity." + entity.technicalNameCapitalized+"Entity";
 			remove(bytecodeClasses, fullEntityClassName);
-			EntityBytecodeTemplate.generate(bytecodeClasses, fullEntityClassName, entity);
+			EntityBytecodeTemplate.generate(bytecodeClasses, entity, fullEntityClassName);
 		}
 	}
 

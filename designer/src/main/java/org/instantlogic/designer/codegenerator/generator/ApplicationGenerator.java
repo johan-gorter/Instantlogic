@@ -43,6 +43,10 @@ public class ApplicationGenerator extends AbstractGenerator{
 		if (observations==null) return;
 		observations.remove();
 		observations = null;
+		entityGenerators.clear();
+		eventGenerators.clear();
+		flowGenerators.clear();
+		sharedPageFragmentGenerators.clear();
 	}
 	
 	/**
