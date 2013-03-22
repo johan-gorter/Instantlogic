@@ -30,7 +30,7 @@ public class DataTypeDataCategoryOptionsDeduction extends Deduction<Multi<DataCa
 		DataCategoryDesign._boolean, DataCategoryDesign.custom}); 
 	
 	@Override
-	public ValueAndLevel<Multi<DataCategoryDesign>> deduct(DeductionContext context) {
+	public ValueAndLevel<Multi<DataCategoryDesign>> execute(DeductionContext context) {
 		DataTypeDesign dataType = context.getSelectedInstance(DataTypeDesignEntity.INSTANCE);
 		if (dataType.getAttribute() instanceof RelationDesign) {
 			return ValueAndLevel.rule(new Multi<DataCategoryDesign>(Collections.singletonList(DataCategoryDesign.entity)));

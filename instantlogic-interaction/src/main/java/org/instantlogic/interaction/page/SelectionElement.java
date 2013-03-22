@@ -37,7 +37,7 @@ public class SelectionElement extends Element {
 
 	@Override
 	public void render(RenderContext context, List<Map<String, Object>> appendTo) {
-		ValueAndLevel<?> valueAndLevel = selection.deduct(context);
+		ValueAndLevel<?> valueAndLevel = selection.deduce(context);
 		if (!valueAndLevel.isConclusive()) {
 			throw new RuntimeException("Selection did not yield a conclusive result"); // TODO: render an error
 		}
@@ -71,7 +71,7 @@ public class SelectionElement extends Element {
 	@Override
 	public FlowEventOccurrence submit(SubmitContext submitContext) {
 		FlowEventOccurrence result = null;
-		ValueAndLevel<?> valueAndLevel = selection.deduct(submitContext);
+		ValueAndLevel<?> valueAndLevel = selection.deduce(submitContext);
 		if (valueAndLevel.hasValue()) {
 			Object value = valueAndLevel.getValue();
 			if (value instanceof Multi<?>) {
@@ -116,7 +116,7 @@ public class SelectionElement extends Element {
 
 	@Override
 	public void change(ChangeContext changeContext) {
-		ValueAndLevel<?> valueAndLevel = selection.deduct(changeContext);
+		ValueAndLevel<?> valueAndLevel = selection.deduce(changeContext);
 		if (valueAndLevel.hasValue()) {
 			Object value = valueAndLevel.getValue();
 			if (value instanceof Multi<?>) {

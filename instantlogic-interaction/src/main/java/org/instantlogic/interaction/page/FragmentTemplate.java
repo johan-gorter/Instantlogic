@@ -162,7 +162,7 @@ public class FragmentTemplate extends Element {
 			result.put("styleNames", styleNames);
 		}
 		for (Map.Entry<String, Deduction<?>> entry : valueProperties.entrySet()) {
-			result.put(entry.getKey(), entry.getValue().deduct(context).getValue());
+			result.put(entry.getKey(), entry.getValue().deduce(context).getValue());
 		}
 		for (Map.Entry<String, TextTemplate> entry : textProperties.entrySet()) {
 			result.put(entry.getKey(), entry.getValue().renderText(context));

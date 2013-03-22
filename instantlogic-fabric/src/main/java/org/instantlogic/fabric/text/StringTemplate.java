@@ -36,7 +36,7 @@ public class StringTemplate {
 		if (constant!=null) {
 			return constant;
 		}
-		ValueAndLevel<?> result =  deduction.deduct(context);
+		ValueAndLevel<?> result =  deduction.deduce(context);
 		if (result.hasValue()) {
 			return result.getValue().toString();
 		}

@@ -14,6 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.instantlogic.fabric.Instance;
+import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.text.TextTemplate;
@@ -24,8 +25,12 @@ public abstract class SimpleAttribute<I extends Instance, Value extends Object, 
 	private final String name;
 	private final Entity<I> entity;
 	private final Class<Item> javaClassName;
-	protected final Map<String, Object> dataType = new LinkedHashMap<String, Object>();
-	private TextTemplate question = null;
+	public final Map<String, Object> dataType = new LinkedHashMap<String, Object>();
+	
+	public TextTemplate question = null;
+	public Deduction<Value> rule;
+	public Deduction<Value> _default;
+	public Deduction<Boolean> relevance;
 	
 	public SimpleAttribute(String name, Entity<I> entity, Class<Item> javaClassName) {
 		this.name = name;

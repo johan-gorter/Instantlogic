@@ -10,6 +10,7 @@
 
 package org.instantlogic.designer.entity;
 
+
 @SuppressWarnings({"unchecked","rawtypes"})
 public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<org.instantlogic.designer.RelationDesign> {
 

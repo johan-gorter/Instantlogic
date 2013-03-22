@@ -12,6 +12,7 @@ package org.instantlogic.designer.codegenerator.generator;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.instantlogic.designer.AttributeDeductionDesign;
@@ -24,16 +25,18 @@ import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.RelationDesign;
 import org.instantlogic.designer.ReverseRelationDeductionDesign;
 import org.instantlogic.designer.SelectedInstanceDeductionDesign;
+import org.instantlogic.designer.codegenerator.classmodel.ConstantValueModel;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionModel;
+import org.instantlogic.designer.codegenerator.classmodel.DeductionModel.Input;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionSchemeModel;
-import org.instantlogic.designer.deduction.TechnicalNameDeduction;
-import org.instantlogic.fabric.Instance;
+import org.instantlogic.designer.codegenerator.classmodel.StaticFieldValueModel;
 
 public class DeductionSchemeGenerator {
 	
 	public static DeductionSchemeModel generate(String rootPackageName, DeductionSchemeDesign deductionSchemeDesign) {
 		List<DeductionDesign> deductionDesigns = new ArrayList<DeductionDesign>();
 		fillDeductions(deductionSchemeDesign.getOutput(), deductionDesigns);
+		Collections.reverse(deductionDesigns);
 		int deductionIndex = 0;
 		DeductionSchemeModel model = new DeductionSchemeModel();
 		for (DeductionDesign deduction : deductionDesigns) {
@@ -50,38 +53,31 @@ public class DeductionSchemeGenerator {
 			}
 			if (deduction instanceof SelectedInstanceDeductionDesign) {
 				String name = ((SelectedInstanceDeductionDesign)deduction).getOfEntity().getTechnicalNameCapitalized();
-				classModel.parameters.add(rootPackageName+".entity."+name+"Entity.INSTANCE");
+				classModel.parameters.add(new StaticFieldValueModel(rootPackageName+".entity."+name+"Entity","INSTANCE"));
 			} else if (deduction instanceof AttributeDeductionDesign) {
 				AttributeDesign attribute = ((AttributeDeductionDesign)deduction).getAttribute(); 
 				String name = attribute.getJavaIdentifier();
 				String entityName = (attribute instanceof RelationDesign)?((RelationDesign)attribute).getFrom().getTechnicalNameCapitalized():attribute.getBelongsToEntity().getTechnicalNameCapitalized();
-				classModel.parameters.add(rootPackageName+".entity."+entityName+"Entity."+name);
+				classModel.parameters.add(new StaticFieldValueModel(rootPackageName+".entity."+entityName+"Entity",name));
 			} else if (deduction instanceof ReverseRelationDeductionDesign) {
 				RelationDesign relation = ((ReverseRelationDeductionDesign)deduction).getRelation(); 
 				String name = relation.getJavaIdentifier();
 				String entityName = relation.getFrom().getTechnicalNameCapitalized();
-				classModel.parameters.add(rootPackageName+".entity."+entityName+"Entity."+name);
+				classModel.parameters.add(new StaticFieldValueModel(rootPackageName+".entity."+entityName+"Entity",name));
 			} else if (deduction instanceof CastInstanceDeductionDesign) {
 				String name = ((CastInstanceDeductionDesign)deduction).getToEntity().getTechnicalNameCapitalized();
-				classModel.parameters.add(rootPackageName+".entity."+name+"Entity.INSTANCE");
+				classModel.parameters.add(new StaticFieldValueModel(rootPackageName+".entity."+name+"Entity","INSTANCE"));
 			} else if (deduction instanceof ConstantDeductionDesign) {
-				Object value = ((ConstantDeductionDesign)deduction).getValue();
-				String valueAsText;
-				if (value==null) {
-					valueAsText = "null";
-				} else if (value instanceof Instance) { // Must be a static instance
-					valueAsText = ((Instance)value).getMetadata().getEntity().getInstanceClass().getName() + "."+TechnicalNameDeduction.makeTechnicalName(((Instance)value).getMetadata().getStaticName());
-				} else if (String.class.getName().equals(deduction.getDataType().getJavaClassName())) {
-					valueAsText="\""+value.toString()+"\"";
-				} else {
-					valueAsText = value.toString();
-				}
-				classModel.parameters.add(valueAsText);
+				classModel.parameters.add(new ConstantValueModel(((ConstantDeductionDesign)deduction).getValue()));
 			} else if (deduction instanceof CustomDeductionDesign) {
 				classModel.customization = ((CustomDeductionDesign) deduction).getImplementationClassName();
 			}
 			for (DeductionDesign input : deduction.getInputs()) {
-				classModel.parameters.add("d"+deductionDesigns.indexOf(input));
+				Input inputModel = new DeductionModel.Input();
+				inputModel.deductionIndex = deductionDesigns.indexOf(input);
+				inputModel.multivalue = true; //TODO
+				inputModel.inputName = "Inputs"; // TODO
+				classModel.inputs.add(inputModel);
 			}
 			model.deductions.add(classModel);
 		}

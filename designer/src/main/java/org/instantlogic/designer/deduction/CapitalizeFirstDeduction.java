@@ -23,8 +23,8 @@ public class CapitalizeFirstDeduction extends Deduction<String> {
 	}
 	
 	@Override
-	public ValueAndLevel<String> deduct(DeductionContext context) {
-		ValueAndLevel<String> inputString = input.deduct(context);
+	public ValueAndLevel<String> execute(DeductionContext context) {
+		ValueAndLevel<String> inputString = input.deduce(context);
 		if (!inputString.hasValue()) return ValueAndLevel.inconclusive();
 		return ValueAndLevel.rule(TechnicalNameDeduction.capitalizeFirst(inputString.getValue()));
 	}

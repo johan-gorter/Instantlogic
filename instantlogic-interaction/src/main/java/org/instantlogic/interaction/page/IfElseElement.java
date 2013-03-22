@@ -36,7 +36,7 @@ public class IfElseElement extends Element {
 
 	@Override
 	public void render(RenderContext context, List<Map<String, Object>> appendTo) {
-		ValueAndLevel<Boolean> valueAndLevel = condition.deduct(context);
+		ValueAndLevel<Boolean> valueAndLevel = condition.deduce(context);
 		if (!valueAndLevel.hasValue()) {
 			return; // Render no If nor Else elements. This may be worth reconsidering
 		}
@@ -49,7 +49,7 @@ public class IfElseElement extends Element {
 	@Override
 	public FlowEventOccurrence submit(SubmitContext submitContext) {
 		FlowEventOccurrence result = null;
-		ValueAndLevel<?> valueAndLevel = condition.deduct(submitContext);
+		ValueAndLevel<?> valueAndLevel = condition.deduce(submitContext);
 		if (!valueAndLevel.hasValue()) return null; 
 		Element[] elements = valueAndLevel.getValue()==Boolean.TRUE?ifElements:elseElements;
 
@@ -67,7 +67,7 @@ public class IfElseElement extends Element {
 
 	@Override
 	public void change(ChangeContext changeContext) {
-		ValueAndLevel<?> valueAndLevel = condition.deduct(changeContext);
+		ValueAndLevel<?> valueAndLevel = condition.deduce(changeContext);
 		if (!valueAndLevel.hasValue()) return; // Depend on render() to handle this gracefully
 		Element[] elements = valueAndLevel.getValue()==Boolean.TRUE?ifElements:elseElements;
 		

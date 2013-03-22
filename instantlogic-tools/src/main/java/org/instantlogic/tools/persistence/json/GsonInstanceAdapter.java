@@ -269,23 +269,29 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 	}
 
 	private Object toPrimitive(Attribute attribute, JsonElement value, CaseAdministration caseAdministration) {
-		if (attribute.getJavaClassName() == Date.class) {
+		Class javaClassName = attribute.getJavaClassName();
+		if (javaClassName == Object.class && value.isJsonPrimitive()) {
+			JsonPrimitive primitiveValue = value.getAsJsonPrimitive();
+			if (primitiveValue.isBoolean()) return primitiveValue.getAsBoolean();
+			if (primitiveValue.isNumber()) return primitiveValue.getAsNumber();
+			return primitiveValue.getAsString();
+		} else if (javaClassName == Date.class) {
 			try {
 				return UNIVERSAL_DATE.parse(value.getAsString());
 			} catch (ParseException e) {
 				throw new RuntimeException(e);
 			}
-		} else if (attribute.getJavaClassName() == Boolean.class) {
+		} else if (javaClassName == Boolean.class) {
 			return value.getAsBoolean();
-		} else if (attribute.getJavaClassName() == Long.class) {
+		} else if (javaClassName == Long.class) {
 			return value.getAsLong();
-		} else if (attribute.getJavaClassName() == Integer.class) {
+		} else if (javaClassName == Integer.class) {
 			return value.getAsInt();
-		} else if (attribute.getJavaClassName() == Double.class) {
+		} else if (javaClassName == Double.class) {
 			return value.getAsDouble();
-		} else if (attribute.getJavaClassName() == BigDecimal.class) {
+		} else if (javaClassName == BigDecimal.class) {
 			return value.getAsBigDecimal();
-		} else if (Number.class.isAssignableFrom(attribute.getJavaClassName())) {
+		} else if (Number.class.isAssignableFrom(javaClassName)) {
 			return value.getAsNumber();
 		} else if (value.isJsonObject()) {
 			return deserializeStaticInstance((JsonObject)value, caseAdministration);

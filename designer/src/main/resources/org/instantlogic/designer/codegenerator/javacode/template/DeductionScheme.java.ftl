@@ -13,14 +13,23 @@ along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
 	private static org.instantlogic.fabric.deduction.Deduction<${scheme.lastResultType}> createDeduction${scheme.index}() {
 		<#list scheme.deductions as deduction>
 		  <#if deduction.customization??>
-		    org.instantlogic.fabric.deduction.Deduction<${deduction.resultType}> d${deduction.index} 
-		    	= new ${deduction.customization}(<#list deduction.parameters as parameters>${parameters}<#if parameters_has_next>, </#if></#list>);
+		    ${deduction.customization} d${deduction.index} 
+		      = new ${deduction.customization}(<#list deduction.parameters as parameter>${parameter.asJavaTemplate}<#if parameter_has_next>, </#if></#list>);
 		  <#else>
-		  	org.instantlogic.fabric.deduction.Deduction<${deduction.resultType}> d${deduction.index} 
-		  		= ${deduction.type}.create(<#list deduction.parameters as parameter>${parameter}<#if parameter_has_next>, </#if></#list>);
+		  	${deduction.type} d${deduction.index} 
+		  	  = new ${deduction.type}(<#list deduction.parameters as parameter>${parameter.asJavaTemplate}<#if parameter_has_next>, </#if></#list>);
 		  </#if>
 		</#list>
-		return d${scheme.lastDeductionIndex};
+		<#list scheme.deductions as deduction>
+			<#list deduction.inputs as input>
+			  <#if input.multivalue>
+		    d${deduction.index}.addTo${input.inputName}(d${input.deductionIndex});
+			  <#else>
+		    d${deduction.index}.set${input.inputName}(d${input.deductionIndex});
+			  </#if>
+			</#list>
+		</#list>
+		return d0;
 	}
 
 </#macro>

@@ -1,36 +1,26 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.fabric.deduction;
-
 
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.DeductionContext;
 import org.instantlogic.fabric.util.ValueAndLevel;
 
-public class SelectedInstanceDeduction<V extends Instance> extends Deduction<V> {
-
-	public static <V extends Instance> SelectedInstanceDeduction<V> create(Entity<V> entity) {
-		return new SelectedInstanceDeduction<V>(entity);
-	}
+public class SelectedInstanceDeduction<I extends Instance> extends Deduction<I>{
 	
-	private Entity<V> ofEntity;
+	private Entity<I> entity;
 
-	public SelectedInstanceDeduction(Entity<V> entity) {
-		this.ofEntity = entity;
-	}
 	
+	public SelectedInstanceDeduction(Entity<I> entity) {
+		this.entity = entity;
+	}
+
 	@Override
-	public ValueAndLevel<V> deduct(DeductionContext context) {
-		return ValueAndLevel.rule((V)context.getSelectedInstance(ofEntity)); // Will throw an exception if no such entity is selected. (This should have been validated at design time)
+	protected ValueAndLevel<I> execute(DeductionContext context) {
+		return ValueAndLevel.rule((I)context.getSelectedInstance(entity));
 	}
 
+	public static <X extends Instance> Deduction<X> create(Entity<X> entity) {
+		SelectedInstanceDeduction<X> result = new SelectedInstanceDeduction<X>(entity);
+		return result ;
+	}
 }

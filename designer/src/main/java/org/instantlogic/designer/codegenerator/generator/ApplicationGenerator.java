@@ -103,26 +103,26 @@ public class ApplicationGenerator extends AbstractGenerator{
 		
 		// Comment from here to temporarely skip the interaction part
 		
-		List<Design> newSharedPageFragments = updateGenerators(sharedPageFragmentGenerators, applicationInstance.getSharedElements(), context);
-		for(Design newSharedPageFragment : newSharedPageFragments) {
-			SharedElementDefinitionGenerator sharedPageFragmentGenerator = new SharedElementDefinitionGenerator((SharedElementDefinitionDesign)newSharedPageFragment);
-			sharedPageFragmentGenerator.update(context);
-			sharedPageFragmentGenerators.put(newSharedPageFragment.getName(), sharedPageFragmentGenerator);
-		}
-
-		List<Design> newEvents = updateGenerators(eventGenerators, applicationInstance.getEvents(), context);
-		for(Design newEvent : newEvents) {
-			EventGenerator eventGenerator = new EventGenerator((EventDesign)newEvent);
-			eventGenerator.update(context);
-			eventGenerators.put(newEvent.getName(), eventGenerator);
-		}
-		
-		List<Design> newFlows = updateGenerators(flowGenerators, applicationInstance.getFlows(), context);
-		for(Design newFlow : newFlows) {
-			FlowGenerator flowGenerator = new FlowGenerator((FlowDesign)newFlow);
-			flowGenerator.update(context);
-			flowGenerators.put(newFlow.getName(), flowGenerator);
-		}
+//		List<Design> newSharedPageFragments = updateGenerators(sharedPageFragmentGenerators, applicationInstance.getSharedElements(), context);
+//		for(Design newSharedPageFragment : newSharedPageFragments) {
+//			SharedElementDefinitionGenerator sharedPageFragmentGenerator = new SharedElementDefinitionGenerator((SharedElementDefinitionDesign)newSharedPageFragment);
+//			sharedPageFragmentGenerator.update(context);
+//			sharedPageFragmentGenerators.put(newSharedPageFragment.getName(), sharedPageFragmentGenerator);
+//		}
+//
+//		List<Design> newEvents = updateGenerators(eventGenerators, applicationInstance.getEvents(), context);
+//		for(Design newEvent : newEvents) {
+//			EventGenerator eventGenerator = new EventGenerator((EventDesign)newEvent);
+//			eventGenerator.update(context);
+//			eventGenerators.put(newEvent.getName(), eventGenerator);
+//		}
+//		
+//		List<Design> newFlows = updateGenerators(flowGenerators, applicationInstance.getFlows(), context);
+//		for(Design newFlow : newFlows) {
+//			FlowGenerator flowGenerator = new FlowGenerator((FlowDesign)newFlow);
+//			flowGenerator.update(context);
+//			flowGenerators.put(newFlow.getName(), flowGenerator);
+//		}
 		
 		this.observations = new ObservationsOutdatedObserver(applicationInstance.getMetadata().getCaseAdministration().stopRecordingObservations(), null);
 		context.updatedApplication = model;

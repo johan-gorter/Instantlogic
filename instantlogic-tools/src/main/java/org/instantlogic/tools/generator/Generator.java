@@ -14,11 +14,15 @@ import org.instantlogic.tools.persistence.json.CasePersister;
  */
 public class Generator {
 	public static void main(String[] args) {
-		for(File webapp : new File("../webapps").listFiles()) {
-			scanForInstantlogicDesigns(webapp);
-		}
-		for(File app : new File("..").listFiles()) {
-			scanForInstantlogicDesigns(app);
+		if (args.length>0) {
+			scanForInstantlogicDesigns(new File(args[0]));
+		} else {
+			for(File webapp : new File("../webapps").listFiles()) {
+				scanForInstantlogicDesigns(webapp);
+			}
+			for(File app : new File("..").listFiles()) {
+				scanForInstantlogicDesigns(app);
+			}
 		}
 	}
 

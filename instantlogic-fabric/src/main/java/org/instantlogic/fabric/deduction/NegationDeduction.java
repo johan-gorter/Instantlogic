@@ -27,8 +27,8 @@ public class NegationDeduction<V extends Number> extends Deduction<V> {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public ValueAndLevel<V> deduct(DeductionContext context) {
-		Number value = input.deduct(context).getValue();
+	public ValueAndLevel<V> execute(DeductionContext context) {
+		Number value = input.deduce(context).getValue();
 		if (value==null) return ValueAndLevel.inconclusive();
 		if (value instanceof Long) {
 			return ValueAndLevel.rule((V)Long.valueOf(-value.longValue()));
@@ -41,5 +41,4 @@ public class NegationDeduction<V extends Number> extends Deduction<V> {
 		}
 		throw new RuntimeException("Exotic number class not supported: "+value.getClass());
 	}
-	
 }

@@ -139,7 +139,7 @@ public class ReadOnlyAttributeValueImpl<I extends Instance, Value extends Object
 		//Relevance
 		Deduction<Boolean> relevance = attribute.getRelevance();
 		if (relevance!=null) {
-			ValueAndLevel<Boolean> relevanceValue = relevance.deduct(context);
+			ValueAndLevel<Boolean> relevanceValue = relevance.deduce(context);
 			if (relevanceValue.getValue()!=Boolean.TRUE) {
 				cached = ValueAndLevel.irrelevant();
 				return;
@@ -148,7 +148,7 @@ public class ReadOnlyAttributeValueImpl<I extends Instance, Value extends Object
 		//Rule
 		Deduction<Value> ruleDeduction = attribute.getRule();
 		if (ruleDeduction!=null) {
-			ValueAndLevel<Value> result = ruleDeduction.deduct(context);
+			ValueAndLevel<Value> result = ruleDeduction.deduce(context);
 			if (result.isConclusive()) {
 				cached = ValueAndLevel.rule(result.getValue());
 				return;
@@ -162,7 +162,7 @@ public class ReadOnlyAttributeValueImpl<I extends Instance, Value extends Object
 		//Default
 		Deduction<Value> defaultDeduction = attribute.getDefault();
 		if (defaultDeduction!=null) {
-			ValueAndLevel<Value> defaultValue = defaultDeduction.deduct(context);
+			ValueAndLevel<Value> defaultValue = defaultDeduction.deduce(context);
 			if (defaultValue.isConclusive()) {
 				cached = ValueAndLevel.def(defaultValue.getValue());
 				return;

@@ -19,12 +19,11 @@ import org.instantlogic.fabric.util.ValueAndLevel;
 public class DataTypeMultivalueDeduction extends Deduction<Boolean> {
 
 	@Override
-	public ValueAndLevel<Boolean> deduct(DeductionContext context) {
+	public ValueAndLevel<Boolean> execute(DeductionContext context) {
 		DataTypeDesign dataType = context.getSelectedInstance(DataTypeDesignEntity.INSTANCE);
 		if (dataType.getReverseRelation()!=null) {
 			return ValueAndLevel.rule(dataType.getReverseRelation().getReverseMultivalue());
 		}
 		return ValueAndLevel.inconclusive();
 	}
-
 }

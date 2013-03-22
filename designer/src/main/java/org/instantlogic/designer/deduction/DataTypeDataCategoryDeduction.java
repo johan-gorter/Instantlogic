@@ -21,7 +21,7 @@ import org.instantlogic.fabric.util.ValueAndLevel;
 public class DataTypeDataCategoryDeduction extends Deduction<DataCategoryDesign> {
 
 	@Override
-	public ValueAndLevel<DataCategoryDesign> deduct(DeductionContext context) {
+	public ValueAndLevel<DataCategoryDesign> execute(DeductionContext context) {
 		DataTypeDesign dataType = context.getSelectedInstance(DataTypeDesignEntity.INSTANCE);
 		if (dataType == DataTypeDesign._boolean) { 
 			return ValueAndLevel.rule(DataCategoryDesign._boolean); // Hack until static instances are fully supported
@@ -34,5 +34,4 @@ public class DataTypeDataCategoryDeduction extends Deduction<DataCategoryDesign>
 		}
 		return ValueAndLevel.rule(DataCategoryDesign.entity); // A (reverse) relation
 	}
-
 }

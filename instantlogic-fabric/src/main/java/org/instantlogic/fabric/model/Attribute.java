@@ -17,6 +17,7 @@ import org.instantlogic.fabric.deduction.AttributeDeduction;
 import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.deduction.SelectedInstanceDeduction;
 import org.instantlogic.fabric.text.TextTemplate;
+import org.instantlogic.fabric.util.ValueAndLevel;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 
 /**
@@ -63,6 +64,10 @@ public abstract class Attribute<I extends Instance, Value extends Object, Item e
 		return null;
 	}
 	
+	public ValueAndLevel<Value> rule(I instance) {
+		return ValueAndLevel.inconclusive();
+	}
+	
 	// TODO: public ValueAndLevel<Value> rule(I instance) 
 	public Deduction<Value> getRule() {
 		return null;
@@ -75,8 +80,12 @@ public abstract class Attribute<I extends Instance, Value extends Object, Item e
 	
 	public abstract ReadOnlyAttributeValue<I, Value> get(I instance);
 	
-	public AttributeDeduction<Value, I> toDeduction() {
-		SelectedInstanceDeduction<I> selectedInstanceDeduction = new SelectedInstanceDeduction<I>(this.getEntity());
-		return new AttributeDeduction<Value, I>((Attribute<I, Value, ? extends Object>) this, selectedInstanceDeduction);
+	public AttributeDeduction<Value> toDeduction() {
+		SelectedInstanceDeduction<I> selectedInstanceDeduction = new SelectedInstanceDeduction<I>();
+		selectedInstanceDeduction.setEntity(this.getEntity());
+		AttributeDeduction<Value> result = new AttributeDeduction<Value>();
+		result.setAttribute(this);
+		result.setInstance(selectedInstanceDeduction);
+		return result;
 	}
 }

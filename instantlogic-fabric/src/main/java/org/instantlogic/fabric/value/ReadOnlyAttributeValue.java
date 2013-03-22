@@ -17,7 +17,7 @@ import org.instantlogic.fabric.util.ValueAndLevel;
 import org.instantlogic.fabric.util.ValueChangeObserver;
 
 
-public interface ReadOnlyAttributeValue<I extends Instance, Value extends Object> {
+public interface ReadOnlyAttributeValue<I extends Instance, Value extends Object> extends ObservableValue<Value> {
 
 	Attribute<I, Value, ? extends Object> getModel();
 	

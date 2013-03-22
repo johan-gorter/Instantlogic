@@ -10,6 +10,7 @@
 
 package org.instantlogic.designer.entity;
 
+
 @SuppressWarnings({"unchecked","rawtypes"})
 public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.instantlogic.designer.Design> {
 
@@ -53,10 +54,11 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction0() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.Design> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.String> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.DesignEntity.name, d0);
+	  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction<org.instantlogic.designer.Design> d0 
+	  		= new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
+	  	org.instantlogic.fabric.deduction.AttributeDeduction<java.lang.String> d1 
+	  		= new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
+	  	d1.setInstance(d0);
 		return d1;
 	}
 

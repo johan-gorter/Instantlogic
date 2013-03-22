@@ -14,12 +14,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeductionModel {
+	public static class Input {
+		public int deductionIndex;
+		public String inputName;
+		public boolean multivalue;
+
+		public String getInputName() {
+			return inputName;
+		}
+
+		public boolean isMultivalue() {
+			return multivalue;
+		}
+
+		public void setDeductionIndex(int deductionIndex) {
+			this.deductionIndex = deductionIndex;
+		}
+
+		public int getDeductionIndex() {
+			return deductionIndex;
+		}
+	}
+	
 	public int index;
 	public String type;
 	public String resultType;
 	public String customization;
-	public List<String> parameters = new ArrayList<String>();
+	public List<Input> inputs = new ArrayList<Input>();
+	public List<ValueModel> parameters = new ArrayList<ValueModel>();
 	
+	public List<ValueModel> getParameters() {
+		return parameters;
+	}
 	public int getIndex() {
 		return index;
 	}
@@ -29,8 +55,8 @@ public class DeductionModel {
 	public String getResultType() {
 		return resultType;
 	}
-	public List<String> getParameters() {
-		return parameters;
+	public List<Input> getInputs() {
+		return inputs;
 	}
 	public String getCustomization() {
 		return customization;

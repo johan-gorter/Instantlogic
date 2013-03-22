@@ -30,7 +30,7 @@ public class PeriodEntity extends Entity<Period> {
 		private static final int MILLISECONDS_PER_DAY = 1000*60*60*24;
 
 		@Override
-		public ValueAndLevel<Integer> deduct(DeductionContext context) {
+		public ValueAndLevel<Integer> execute(DeductionContext context) {
 			Period period = context.getSelectedInstance(PeriodEntity.INSTANCE);
 			Date from = period.getFrom();
 			Date to = period.getTo();
@@ -40,6 +40,9 @@ public class PeriodEntity extends Entity<Period> {
 			return ValueAndLevel.rule((int)((to.getTime() - from.getTime())/MILLISECONDS_PER_DAY));
 		}
 
+		@Override
+		protected void clearInputs() {
+		}
 	}
 	
 	public static final PeriodEntity INSTANCE = new PeriodEntity();

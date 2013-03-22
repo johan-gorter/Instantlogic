@@ -10,6 +10,7 @@
 
 package org.instantlogic.designer.entity;
 
+
 @SuppressWarnings({"unchecked","rawtypes"})
 public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<org.instantlogic.designer.AttributeDesign> {
 
@@ -47,29 +48,25 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction0() {
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> d0 
-		  		= org.instantlogic.fabric.deduction.ConstantDeduction.create(true);
+	  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction(true);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction1() {
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> d0 
-		  		= org.instantlogic.fabric.deduction.ConstantDeduction.create(false);
+	  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction2() {
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> d0 
-		  		= org.instantlogic.fabric.deduction.ConstantDeduction.create(false);
+	  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.EntityDesign> createDeduction3() {
-		    org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.EntityDesign> d0 
-		    	= new org.instantlogic.designer.deduction.AttributeBelongsToDeduction();
+	    org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.EntityDesign> d0 = new org.instantlogic.designer.deduction.AttributeBelongsToDeduction();
 		return d0;
 	}
 

@@ -10,6 +10,7 @@
 
 package org.instantlogic.designer.entity;
 
+
 @SuppressWarnings({"unchecked","rawtypes"})
 public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<org.instantlogic.designer.DeductionDesign> {
 

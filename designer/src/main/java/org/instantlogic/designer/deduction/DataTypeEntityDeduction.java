@@ -21,7 +21,7 @@ import org.instantlogic.fabric.util.ValueAndLevel;
 public class DataTypeEntityDeduction extends Deduction<EntityDesign> {
 
 	@Override
-	public ValueAndLevel<EntityDesign> deduct(DeductionContext context) {
+	public ValueAndLevel<EntityDesign> execute(DeductionContext context) {
 		DataTypeDesign dataType = context.getSelectedInstance(DataTypeDesignEntity.INSTANCE);
 		if (dataType.getAttribute()!=null && dataType.getAttribute() instanceof RelationDesign) {
 			return ValueAndLevel.rule(((RelationDesign)dataType.getAttribute()).getTo());
@@ -40,5 +40,4 @@ public class DataTypeEntityDeduction extends Deduction<EntityDesign> {
 		}
 		return ValueAndLevel.rule(null);
 	}
-
 }

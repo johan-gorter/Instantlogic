@@ -31,7 +31,7 @@ public class DeductionSchemeModel {
 	}
 
 	public String getLastResultType() {
-		return deductions.get(deductions.size()-1).resultType;
+		return deductions.get(0).resultType;
 	}
 
 	

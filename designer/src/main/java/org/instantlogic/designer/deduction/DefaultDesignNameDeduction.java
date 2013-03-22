@@ -19,7 +19,7 @@ import org.instantlogic.fabric.util.ValueAndLevel;
 public class DefaultDesignNameDeduction extends Deduction<String> {
 
 	@Override
-	public ValueAndLevel<String> deduct(DeductionContext context) {
+	public ValueAndLevel<String> execute(DeductionContext context) {
 		Design design = context.getSelectedInstance(DesignEntity.INSTANCE);
 		String name = design.getMetadata().getEntity().getName();
 		if (name.endsWith("Design")) {

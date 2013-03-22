@@ -57,7 +57,7 @@ public class FieldFilter extends AbstractFragmentFilter {
 		if (!result.containsKey("options") && (attribute instanceof Relation<?,?,?>)) {
 			Deduction options = ((Relation)attribute).getOptions();
 			if (options!=null) {
-				Iterable<Instance> values = (Iterable<Instance>) options.deduct(context).getValue();
+				Iterable<Instance> values = (Iterable<Instance>) options.deduce(context).getValue();
 				List<Map<String, Object>> resultOptions = new ArrayList<Map<String, Object>>();
 				for(Instance value : values) {
 					Map resultOption = new HashMap<String, Object>();
