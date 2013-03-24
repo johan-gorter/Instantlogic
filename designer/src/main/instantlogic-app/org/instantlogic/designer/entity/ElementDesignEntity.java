@@ -21,10 +21,10 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 	}
 
 	private static final org.instantlogic.fabric.model.Entity<?>[] EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
-		org.instantlogic.designer.entity.IfElseDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.SharedElementDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE
+		org.instantlogic.designer.entity.IfElseDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.SharedElementDesignEntity.INSTANCE
 	};
 	 
 	@Override
@@ -50,15 +50,15 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction0() {
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> d0 
-		  		= org.instantlogic.fabric.deduction.ConstantDeduction.create(false);
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction1() {
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.String> d0 
-		  		= org.instantlogic.fabric.deduction.ConstantDeduction.create("mobile");
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction("mobile");
 		return d0;
 	}
 

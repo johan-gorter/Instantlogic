@@ -34,7 +34,7 @@ class MD5Util {
 public class UserAvatarUrlDefaultDeduction extends Deduction<String> {
 
 	@Override
-	public ValueAndLevel<String> deduct(DeductionContext context) {
+	public ValueAndLevel<String> execute(DeductionContext context) {
 		User user = context.getSelectedInstance(UserEntity.INSTANCE);
 		String email = user.getEmail();
 		if (email==null) return ValueAndLevel.inconclusive();

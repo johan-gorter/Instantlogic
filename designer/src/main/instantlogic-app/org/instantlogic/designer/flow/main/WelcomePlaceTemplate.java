@@ -21,49 +21,55 @@ public class WelcomePlaceTemplate extends org.instantlogic.interaction.flow.Plac
 	
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction0() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.ApplicationDesign> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.String> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.ApplicationDesignEntity.name, d0);
-		    org.instantlogic.fabric.deduction.Deduction<java.lang.String> d2 
-		    	= new org.instantlogic.designer.deduction.CapitalizeFirstDeduction(d1);
-		return d2;
+		    org.instantlogic.designer.deduction.CapitalizeFirstDeduction d0 
+		      = new org.instantlogic.designer.deduction.CapitalizeFirstDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.name);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		    d1.addToInputs(d2);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>> createDeduction1() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.ApplicationDesign> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.ApplicationDesignEntity.entities, d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction2() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.Design> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.String> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.DesignEntity.name, d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowDesign>> createDeduction3() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.ApplicationDesign> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowDesign>> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.ApplicationDesignEntity.flows, d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.flows);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction4() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.FlowDesign> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.String> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.DesignEntity.name, d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 	

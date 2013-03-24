@@ -20,4 +20,9 @@ public class HasValueDeduction extends Deduction<Boolean> {
 		ValueAndLevel<? extends Object> inputValue = input.deduce(context);
 		return ValueAndLevel.rule(inputValue.hasValue()?Boolean.TRUE:Boolean.FALSE);
 	}
+
+	@Deprecated
+	public void addToInputs(Deduction<? extends Object> d1) {
+		input = d1;
+	}
 }

@@ -22,14 +22,19 @@ public class CastInstanceDeduction<I extends Instance, V extends Instance> exten
 	private Deduction<I> instance;
 	private Entity<V> toEntity;
 
+	public CastInstanceDeduction(Entity<V> toEntity) {
+		this.toEntity = toEntity;
+	}
+
 	public void setInstance(Deduction<I> instance) {
 		this.instance = instance;
 	}
 
-	public void setToEntity(Entity<V> toEntity) {
-		this.toEntity = toEntity;
+	@Deprecated
+	public void addToInputs(Deduction<I> instance) {
+		this.instance = instance;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	protected ValueAndLevel<V> execute(DeductionContext context) {

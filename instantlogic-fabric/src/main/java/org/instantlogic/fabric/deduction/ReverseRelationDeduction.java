@@ -27,13 +27,19 @@ public class ReverseRelationDeduction<From extends Instance, Item extends Object
 
 	private Relation<From, Item, To> relation;
 	private Deduction<To> toInstance;
+
 	
+	public ReverseRelationDeduction(Relation<From, Item, To> relation) {
+		this.relation = relation;
+	}
+
 	public void setToInstance(Deduction<To> toInstance) {
 		this.toInstance = toInstance;
 	}
-
-	public void setRelation(Relation<From, Item, To> relation) {
-		this.relation = relation;
+	
+	@Deprecated
+	public void addToInputs(Deduction<To> toInstance) {
+		this.toInstance = toInstance;
 	}
 
 	@Override

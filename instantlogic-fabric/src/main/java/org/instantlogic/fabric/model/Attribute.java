@@ -81,10 +81,8 @@ public abstract class Attribute<I extends Instance, Value extends Object, Item e
 	public abstract ReadOnlyAttributeValue<I, Value> get(I instance);
 	
 	public AttributeDeduction<Value> toDeduction() {
-		SelectedInstanceDeduction<I> selectedInstanceDeduction = new SelectedInstanceDeduction<I>();
-		selectedInstanceDeduction.setEntity(this.getEntity());
-		AttributeDeduction<Value> result = new AttributeDeduction<Value>();
-		result.setAttribute(this);
+		SelectedInstanceDeduction<I> selectedInstanceDeduction = new SelectedInstanceDeduction<I>(this.getEntity());
+		AttributeDeduction<Value> result = new AttributeDeduction<Value>(this);
 		result.setInstance(selectedInstanceDeduction);
 		return result;
 	}

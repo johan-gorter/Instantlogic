@@ -39,10 +39,6 @@ public class PeriodEntity extends Entity<Period> {
 			}
 			return ValueAndLevel.rule((int)((to.getTime() - from.getTime())/MILLISECONDS_PER_DAY));
 		}
-
-		@Override
-		protected void clearInputs() {
-		}
 	}
 	
 	public static final PeriodEntity INSTANCE = new PeriodEntity();

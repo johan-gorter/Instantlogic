@@ -16,11 +16,12 @@ public class FlowContextPageFragment extends org.instantlogic.interaction.page.S
 	
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction0() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.FlowDesign> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.String> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.DesignEntity.name, d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 	

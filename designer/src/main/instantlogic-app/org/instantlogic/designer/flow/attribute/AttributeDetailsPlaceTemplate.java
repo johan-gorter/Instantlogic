@@ -21,38 +21,42 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
 	
 
 	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.EntityDesign> createDeduction0() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.AttributeDesign> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.EntityDesign> d1 
-		  		= org.instantlogic.fabric.deduction.ReverseRelationDeduction.create(org.instantlogic.designer.entity.EntityDesignEntity.attributes, d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.ReverseRelationDeduction(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction1() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.Design> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.String> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.DesignEntity.name, d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataTypeDesign> createDeduction2() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.AttributeDesign> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataTypeDesign> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.AttributeDesignEntity.dataType, d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.AttributeDesignEntity.dataType);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction3() {
-		  	org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.Design> d0 
-		  		= org.instantlogic.fabric.deduction.SelectedInstanceDeduction.create(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.Deduction<java.lang.String> d1 
-		  		= org.instantlogic.fabric.deduction.AttributeDeduction.create(org.instantlogic.designer.entity.DesignEntity.name, d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 	

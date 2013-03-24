@@ -10,9 +10,6 @@
 
 package org.instantlogic.designer.entity;
 
-import org.instantlogic.designer.DataCategoryDesign;
-import org.instantlogic.fabric.deduction.Deduction;
-
 @SuppressWarnings({"unchecked","rawtypes"})
 public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<org.instantlogic.designer.DataTypeDesign> {
 
@@ -38,124 +35,124 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction0() {
-		    org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> d0 
-		    	= new org.instantlogic.designer.deduction.DataTypeMultivalueDeduction();
+		    org.instantlogic.designer.deduction.DataTypeMultivalueDeduction d0 
+		      = new org.instantlogic.designer.deduction.DataTypeMultivalueDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction1() {
-		  	org.instantlogic.fabric.deduction.ConstantDeduction<java.lang.Boolean> d0 
-		  		= new org.instantlogic.fabric.deduction.ConstantDeduction(false);
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction2() {
-		    org.instantlogic.fabric.deduction.Deduction<java.lang.String> d0 
-		    	= new org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction();
+		    org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction d0 
+		      = new org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction3() {
-	  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction<org.instantlogic.designer.DataTypeDesign> d0 
-	  		= new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
-	  	org.instantlogic.fabric.deduction.AttributeDeduction<org.instantlogic.designer.DataCategoryDesign>  d1 
-	  		= new org.instantlogic.fabric.deduction.AttributeDeduction<org.instantlogic.designer.DataCategoryDesign>(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
-	  	org.instantlogic.fabric.deduction.ConstantDeduction<org.instantlogic.designer.DataCategoryDesign> d2 
-	  		= new org.instantlogic.fabric.deduction.ConstantDeduction(org.instantlogic.designer.DataCategoryDesign.number);
-	  	org.instantlogic.fabric.deduction.EqualsDeduction d3 = new org.instantlogic.fabric.deduction.EqualsDeduction();
-	  	d1.setInstance(d0);
-	  	d3.addToInputs(d1);
-	  	d3.addToInputs(d2);
-		return d3;
+		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.EqualsDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(org.instantlogic.designer.DataCategoryDesign.number);
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
+		    d0.addToInputs(d2);
+		    d0.addToInputs(d1);
+		    d2.addToInputs(d3);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction4() {
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction<org.instantlogic.designer.DataTypeDesign> d0 
-		  		= new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
-		  	org.instantlogic.fabric.deduction.AttributeDeduction<org.instantlogic.designer.DataCategoryDesign> d1 
-		  		= new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
-		  	org.instantlogic.fabric.deduction.ConstantDeduction<org.instantlogic.designer.DataCategoryDesign> d2 
-		  		= new org.instantlogic.fabric.deduction.ConstantDeduction(org.instantlogic.designer.DataCategoryDesign.number);
-		  	org.instantlogic.fabric.deduction.EqualsDeduction d3 
-		  		= new org.instantlogic.fabric.deduction.EqualsDeduction();
-		  	d1.setInstance(d0);
-		  	d3.addToInputs(d1);
-		  	d3.addToInputs(d2);
-		return d3;
+		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.EqualsDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(org.instantlogic.designer.DataCategoryDesign.number);
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
+		    d0.addToInputs(d2);
+		    d0.addToInputs(d1);
+		    d2.addToInputs(d3);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction5() {
-	  	org.instantlogic.fabric.deduction.ConstantDeduction<java.lang.Boolean> d0 
-	  		= new org.instantlogic.fabric.deduction.ConstantDeduction(false);
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction6() {
-	  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction<org.instantlogic.designer.DataTypeDesign> d0 
-	  		= new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
-	  	org.instantlogic.fabric.deduction.AttributeDeduction<java.lang.Boolean> d1 
-	  		= new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.wholeNumber);
-	  	org.instantlogic.fabric.deduction.ConstantDeduction<java.lang.Boolean> d2 
-	  		= new org.instantlogic.fabric.deduction.ConstantDeduction(false);
-	  	org.instantlogic.fabric.deduction.EqualsDeduction d3 
-	  		= new org.instantlogic.fabric.deduction.EqualsDeduction();
-	  	d1.setInstance(d0);
-	  	d3.addToInputs(d1);
-	  	d3.addToInputs(d2);
-		return d3;
+		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.EqualsDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.wholeNumber);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
+		    d0.addToInputs(d2);
+		    d0.addToInputs(d1);
+		    d2.addToInputs(d3);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction7() {
-	  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction<org.instantlogic.designer.DataTypeDesign> d0 
-	  		= new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
-	  	org.instantlogic.fabric.deduction.AttributeDeduction<org.instantlogic.designer.DataCategoryDesign> d1 
-	  		= new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
-	  	org.instantlogic.fabric.deduction.ConstantDeduction<org.instantlogic.designer.DataCategoryDesign> d2 
-	  		= new org.instantlogic.fabric.deduction.ConstantDeduction(org.instantlogic.designer.DataCategoryDesign.text);
-	  	org.instantlogic.fabric.deduction.EqualsDeduction d3 
-	  		= new org.instantlogic.fabric.deduction.EqualsDeduction();
-	  	
-	  	d1.setInstance(d0);
-	  	d3.addToInputs(d1);
-	  	d3.addToInputs(d2);
-		return d3;
+		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.EqualsDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(org.instantlogic.designer.DataCategoryDesign.text);
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
+		    d0.addToInputs(d2);
+		    d0.addToInputs(d1);
+		    d2.addToInputs(d3);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction8() {
-	  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction<org.instantlogic.designer.DataTypeDesign> d0 
-	  		= new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
-	  	org.instantlogic.fabric.deduction.AttributeDeduction<java.lang.Boolean> d1 
-	  		= new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.multiLine);
-	  	d1.setInstance(d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.multiLine);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataCategoryDesign> createDeduction9() {
-		org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction d0 
-	    	= new org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction();
+		    org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction d0 
+		      = new org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<? extends Iterable> createDeduction10() {
-		org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction d0 
-	    	= new org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction();
+		    org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction d0 
+		      = new org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.EntityDesign> createDeduction11() {
-		org.instantlogic.designer.deduction.DataTypeEntityDeduction d0 
-	    	= new org.instantlogic.designer.deduction.DataTypeEntityDeduction();
+		    org.instantlogic.designer.deduction.DataTypeEntityDeduction d0 
+		      = new org.instantlogic.designer.deduction.DataTypeEntityDeduction();
 		return d0;
 	}
 
@@ -376,7 +373,7 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 			@Override
 			public org.instantlogic.fabric.deduction.Deduction<? extends java.lang.Iterable<org.instantlogic.designer.DataCategoryDesign>> getOptions() {
 				if (options==null) {
-					options = (Deduction<? extends Iterable<DataCategoryDesign>>) createDeduction10();
+					options = (org.instantlogic.fabric.deduction.Deduction)createDeduction10();
 				}
 				return options;
 			};

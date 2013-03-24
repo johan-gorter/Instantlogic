@@ -10,7 +10,6 @@
 
 package org.instantlogic.designer.entity;
 
-
 @SuppressWarnings({"unchecked","rawtypes"})
 public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<org.instantlogic.designer.RelationDesign> {
 
@@ -40,15 +39,15 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction0() {
-		    org.instantlogic.fabric.deduction.Deduction<java.lang.String> d0 
-		    	= new org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction();
+		    org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction d0 
+		      = new org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction1() {
-		    org.instantlogic.fabric.deduction.Deduction<java.lang.String> d0 
-		    	= new org.instantlogic.designer.deduction.ReverseJavaIdentifierDeduction();
+		    org.instantlogic.designer.deduction.ReverseJavaIdentifierDeduction d0 
+		      = new org.instantlogic.designer.deduction.ReverseJavaIdentifierDeduction();
 		return d0;
 	}
 

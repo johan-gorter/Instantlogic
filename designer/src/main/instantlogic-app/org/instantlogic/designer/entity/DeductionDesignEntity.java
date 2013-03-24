@@ -10,7 +10,6 @@
 
 package org.instantlogic.designer.entity;
 
-
 @SuppressWarnings({"unchecked","rawtypes"})
 public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<org.instantlogic.designer.DeductionDesign> {
 
@@ -19,15 +18,15 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 
 	private static final org.instantlogic.fabric.model.Entity<?>[] EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
 		org.instantlogic.designer.entity.AttributeDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.NegationDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.HasValueDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.SumDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.SelectedInstanceDeductionDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.CastInstanceDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.EqualsDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.CustomDeductionDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.ConstantDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.ReverseRelationDeductionDesignEntity.INSTANCE
+		org.instantlogic.designer.entity.CustomDeductionDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.EqualsDeductionDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.HasValueDeductionDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.NegationDeductionDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.ReverseRelationDeductionDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.SelectedInstanceDeductionDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.SumDeductionDesignEntity.INSTANCE
 	};
 	 
 	@Override
@@ -53,8 +52,8 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataTypeDesign> createDeduction0() {
-		    org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataTypeDesign> d0 
-		    	= new org.instantlogic.designer.deduction.DeductionDataTypeDeduction();
+		    org.instantlogic.designer.deduction.DeductionDataTypeDeduction d0 
+		      = new org.instantlogic.designer.deduction.DeductionDataTypeDeduction();
 		return d0;
 	}
 

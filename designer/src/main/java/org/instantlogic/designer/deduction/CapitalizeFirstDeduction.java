@@ -18,14 +18,19 @@ public class CapitalizeFirstDeduction extends Deduction<String> {
 
 	private Deduction<String> input;
 
-	public CapitalizeFirstDeduction(Deduction<String> input) {
-		this.input = input;
-	}
-	
 	@Override
 	public ValueAndLevel<String> execute(DeductionContext context) {
 		ValueAndLevel<String> inputString = input.deduce(context);
 		if (!inputString.hasValue()) return ValueAndLevel.inconclusive();
 		return ValueAndLevel.rule(TechnicalNameDeduction.capitalizeFirst(inputString.getValue()));
+	}
+
+	public void setInput(Deduction<String> input) {
+		this.input = input;
+	}
+	
+	@Deprecated
+	public void addToInputs(Deduction<String> input) {
+		this.input = input;
 	}
 }

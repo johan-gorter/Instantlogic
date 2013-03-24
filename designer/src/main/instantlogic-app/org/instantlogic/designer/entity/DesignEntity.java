@@ -10,7 +10,6 @@
 
 package org.instantlogic.designer.entity;
 
-
 @SuppressWarnings({"unchecked","rawtypes"})
 public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.instantlogic.designer.Design> {
 
@@ -18,17 +17,17 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	
 
 	private static final org.instantlogic.fabric.model.Entity<?>[] EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
-		org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.StaticInstanceDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.EventDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.EventDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE
+		org.instantlogic.designer.entity.StaticInstanceDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE
 	};
 	 
 	@Override
@@ -54,32 +53,32 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction0() {
-	  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction<org.instantlogic.designer.Design> d0 
-	  		= new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
-	  	org.instantlogic.fabric.deduction.AttributeDeduction<java.lang.String> d1 
-	  		= new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
-	  	d1.setInstance(d0);
-		return d1;
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
+		    d0.addToInputs(d1);
+		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction1() {
-		    org.instantlogic.fabric.deduction.Deduction<java.lang.String> d0 
-		    	= new org.instantlogic.designer.deduction.DefaultDesignNameDeduction();
+		    org.instantlogic.designer.deduction.DefaultDesignNameDeduction d0 
+		      = new org.instantlogic.designer.deduction.DefaultDesignNameDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction2() {
-		    org.instantlogic.fabric.deduction.Deduction<java.lang.String> d0 
-		    	= new org.instantlogic.designer.deduction.JavaIdentifierDeduction();
+		    org.instantlogic.designer.deduction.JavaIdentifierDeduction d0 
+		      = new org.instantlogic.designer.deduction.JavaIdentifierDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction3() {
-		    org.instantlogic.fabric.deduction.Deduction<java.lang.String> d0 
-		    	= new org.instantlogic.designer.deduction.TechnicalNameDeduction();
+		    org.instantlogic.designer.deduction.TechnicalNameDeduction d0 
+		      = new org.instantlogic.designer.deduction.TechnicalNameDeduction();
 		return d0;
 	}
 
