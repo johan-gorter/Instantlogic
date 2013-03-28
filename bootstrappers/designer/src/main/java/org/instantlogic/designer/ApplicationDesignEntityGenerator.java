@@ -33,6 +33,9 @@ public class ApplicationDesignEntityGenerator extends EntityDesign {
     public static final RelationDesign entities = addRelation(ENTITY, "entities", RelationType.OneToManyAggregation, EntityDesignEntityGenerator.ENTITY)
             .setReverseName("application");
     public static final RelationDesign caseEntity = addRelation(ENTITY, "caseEntity", RelationType.OneToZeroOrOne, EntityDesignEntityGenerator.ENTITY);
+
+    public static final RelationDesign deductionOperations = addRelation(ENTITY, "deductionOperations", RelationType.OneToManyAggregation, DeductionOperationDesignEntityGenerator.ENTITY);
+    
     public static final RelationDesign flows = addRelation(ENTITY, "flows", RelationType.OneToManyAggregation, FlowDesignEntityGenerator.ENTITY)
             .setReverseName("application");
     public static final RelationDesign events = addRelation(ENTITY, "events", RelationType.OneToManyAggregation, EventDesignEntityGenerator.ENTITY)

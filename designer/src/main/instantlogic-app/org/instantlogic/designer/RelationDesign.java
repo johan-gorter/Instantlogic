@@ -27,6 +27,8 @@ public class RelationDesign extends AttributeDesign {
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override

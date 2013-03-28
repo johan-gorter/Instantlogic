@@ -23,21 +23,26 @@ import org.instantlogic.fabric.util.ValueLevel;
  */
 public class EqualsDeduction extends Deduction<Boolean> { 
 
-	private List<Deduction<?>> inputs = new ArrayList<Deduction<?>>();
+	private List<Deduction<?>> operands = new ArrayList<Deduction<?>>();
 	
+	@Deprecated
 	public void addToInputs(Deduction<?> input) {
-		inputs.add(input);
+		operands.add(input);
+	}
+
+	public void addToOperands(Deduction<?> input) {
+		operands.add(input);
 	}
 
 	@Override
 	public ValueAndLevel<Boolean> execute(DeductionContext context) {
-		if (inputs.size()<2) return ValueAndLevel.rule(Boolean.TRUE);
-		ValueAndLevel<?> firstValue = inputs.get(0).deduce(context);
+		if (operands.size()<2) return ValueAndLevel.rule(Boolean.TRUE);
+		ValueAndLevel<?> firstValue = operands.get(0).deduce(context);
 		if (firstValue.getValueLevel()==ValueLevel.INCONCLUSIVE || firstValue.getValueLevel()==ValueLevel.IRRELEVANT) {
 			return ValueAndLevel.inconclusive();
 		}
-		for (int i=1;i<inputs.size();i++) {
-			ValueAndLevel<?> nextValue = inputs.get(i).deduce(context);
+		for (int i=1;i<operands.size();i++) {
+			ValueAndLevel<?> nextValue = operands.get(i).deduce(context);
 			if (firstValue.getValueLevel()==ValueLevel.INCONCLUSIVE || firstValue.getValueLevel()==ValueLevel.IRRELEVANT) {
 				return ValueAndLevel.inconclusive();
 			}

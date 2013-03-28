@@ -42,7 +42,11 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(attributeDeductionDesign);
 		setOutput(attributeDeductionDesign);
 		
-		attributeDeductionDesign.addToInputs(instanceDeduction);
+		DeductionInputDesign input = new DeductionInputDesign()
+			.setOperationInput(DeductionOperationInputDesign.attributeInstance);
+		
+		attributeDeductionDesign.addToInputs(input);
+		input.addToInputs(instanceDeduction);
 		attributeDeductionDesign.setAttribute(attribute);
 		return attributeDeductionDesign;
 		
@@ -82,10 +86,13 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		CustomDeductionDesign result = new CustomDeductionDesign();
 
 		addToDeductions(result);
-		for (DeductionDesign input : inputs) {
-			result.addToInputs(input);
-		}
 		setOutput(result);
+		
+		for (DeductionDesign input: inputs) {
+			DeductionInputDesign deductionInput = new DeductionInputDesign();
+			result.addToInputs(deductionInput); // TODO: operationInput?
+			deductionInput.addToInputs(input);
+		}
 		
 		result.setImplementationClassName(javaClassName);
 		result.getDataType().setJavaClassName(resultClassName);
@@ -98,7 +105,12 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(result);
 		setOutput(result);
 		
-		result.addToInputs(input);
+		DeductionInputDesign deductionInput = new DeductionInputDesign()
+			.setOperationInput(DeductionOperationInputDesign.hasValueInput);
+		
+		result.addToInputs(deductionInput);
+		
+		deductionInput.addToInputs(input);
 		return result;
 	}
 
@@ -109,7 +121,12 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		DeductionDesign attributeDeduction = deduceAttribute(attribute);
 		setOutput(result);
 		
-		result.addToInputs(attributeDeduction);
+		DeductionInputDesign input = new DeductionInputDesign()
+			.setOperationInput(DeductionOperationInputDesign.hasValueInput);
+		
+		result.addToInputs(input);
+		
+		input.addToInputs(attributeDeduction);
 		return result;
 	}
 	
@@ -119,7 +136,13 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(result);
 		setOutput(result);
 		
-		result.addToInputs(input);
+		DeductionInputDesign deductionInput = new DeductionInputDesign()
+			.setOperationInput(DeductionOperationInputDesign.castInstance);
+		
+		result.addToInputs(deductionInput);
+		
+		deductionInput.addToInputs(input);
+
 		result.setToEntity(to);
 		return result;
 	}
@@ -129,10 +152,15 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 
 		addToDeductions(result);
 		setOutput(result);
+
+		DeductionInputDesign deductionInput = new DeductionInputDesign()
+			.setOperationInput(DeductionOperationInputDesign.equalsOperands);
+		result.addToInputs(deductionInput);
 		
 		for (DeductionDesign input: inputs) {
-			result.addToInputs(input);
+			deductionInput.addToInputs(input);
 		}
+		
 		return result;
 	}
 	
@@ -141,8 +169,12 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		
 		addToDeductions(result);
 		setOutput(result);
+
+		DeductionInputDesign input = new DeductionInputDesign()
+			.setOperationInput(DeductionOperationInputDesign.reverseRelationToInstance);
 		
-		result.addToInputs(instance);
+		result.addToInputs(input);
+		input.addToInputs(instance);
 		result.setRelation(relation);
 		return result; 
 	}

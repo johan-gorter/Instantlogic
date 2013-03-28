@@ -98,6 +98,26 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 				return true;
 			}
 		};
+	
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> valueOfStaticInstances
+		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
+			"valueOfStaticInstances", INSTANCE, org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.INSTANCE, org.instantlogic.designer.StaticInstanceValueDesign.class, org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.relationValue
+		) {
+	
+			@Override
+			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.StaticInstanceValueDesign> get(
+					org.instantlogic.designer.StaticInstanceDesign instance) {
+				return instance.getValueOfStaticInstancesRelationValue();
+			}
+	
+			public boolean isReverse() {
+				return true;
+			}
+	
+			public boolean isMultivalue() {
+				return true;
+			}
+		};
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 	};
@@ -107,6 +127,7 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		entity,
+		valueOfStaticInstances,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

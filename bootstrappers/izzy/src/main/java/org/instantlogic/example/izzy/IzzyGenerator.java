@@ -158,7 +158,7 @@ public class IzzyGenerator extends Design {
 		ApplicationJavacodeGenerator.generate(classModelUpdates, new File(izzy.getSourcePath()));
 		
 		// Display the design in json format
-		try (FileWriter fileWriter = new FileWriter(new File("../../webapps/izzy/src/main/instantlogic-designs/izzy/izzy.json"))) {
+		try (FileWriter fileWriter = new FileWriter(new File("../../webapps/izzy/src/main/instantlogic-designs/izzy.json"))) {
 			new CasePersister().save(izzy, fileWriter);
 		}
 		System.out.println("izzy.json written");

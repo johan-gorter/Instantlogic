@@ -27,6 +27,8 @@ public class IfElseDesign extends ElementDesign {
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override

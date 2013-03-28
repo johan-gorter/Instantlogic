@@ -27,6 +27,8 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override
@@ -155,6 +157,38 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	}
 	
 
+	
+	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> deductionOperations
+		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.deductionOperations);
+		
+	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> getDeductionOperationsRelationValue() {
+		return deductionOperations;
+	}
+
+	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationDesign> getDeductionOperations() {
+		return deductionOperations.getValue();
+	}
+	
+	public ApplicationDesign addToDeductionOperations(DeductionOperationDesign item) {
+		deductionOperations.addValue(item);
+		return (ApplicationDesign)this;
+	}
+	
+	public ApplicationDesign addToDeductionOperations(DeductionOperationDesign item, int index) {
+		deductionOperations.insertValue(item, index);
+		return (ApplicationDesign)this;
+	}
+	
+	public ApplicationDesign removeFromDeductionOperations(DeductionOperationDesign item) {
+		deductionOperations.removeValue(item);
+		return (ApplicationDesign)this;
+	}
+	
+	public ApplicationDesign removeFromDeductionOperations(int index) {
+		deductionOperations.removeValue(index);
+		return (ApplicationDesign)this;
+	}
+	
 	
 	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> entities
 		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);

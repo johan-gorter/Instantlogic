@@ -27,6 +27,8 @@ public class FragmentTypeDesign extends Design {
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override

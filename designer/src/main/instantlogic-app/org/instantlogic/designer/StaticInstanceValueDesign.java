@@ -27,6 +27,8 @@ public class StaticInstanceValueDesign extends org.instantlogic.fabric.Instance 
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override
@@ -68,6 +70,24 @@ public class StaticInstanceValueDesign extends org.instantlogic.fabric.Instance 
 	
 	public StaticInstanceValueDesign setAttribute(org.instantlogic.designer.AttributeDesign newValue) {
 		attribute.setValue(newValue);
+		return (StaticInstanceValueDesign)this;
+	}
+	
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceValueDesign, StaticInstanceDesign> relationValue
+		= createRelationValue(org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.relationValue);
+		
+	public org.instantlogic.fabric.value.RelationValue<StaticInstanceValueDesign, StaticInstanceDesign> getRelationValueRelationValue() {
+		return relationValue;
+	}
+
+	public org.instantlogic.designer.StaticInstanceDesign getRelationValue() {
+		return relationValue.getValue();
+	}
+	
+	public StaticInstanceValueDesign setRelationValue(org.instantlogic.designer.StaticInstanceDesign newValue) {
+		relationValue.setValue(newValue);
 		return (StaticInstanceValueDesign)this;
 	}
 	

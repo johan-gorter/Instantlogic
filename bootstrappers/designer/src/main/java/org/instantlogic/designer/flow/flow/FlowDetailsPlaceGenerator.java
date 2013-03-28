@@ -10,6 +10,7 @@
 
 package org.instantlogic.designer.flow.flow;
 
+import org.instantlogic.designer.DeductionInputDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.DesignEntityGenerator;
 import org.instantlogic.designer.FlowDesignEntityGenerator;
@@ -43,7 +44,8 @@ public class FlowDetailsPlaceGenerator extends PlaceTemplateDesign {
 					.addToUntranslated(new StringTemplateDesign().setConstantText(" (Flow)"))
 		);
 		
-		flowName.deduceCustom(CapitalizeFirstDeduction.class, String.class, flowName.deduceAttribute(DesignEntityGenerator.name));
+		flowName.deduceCustom(CapitalizeFirstDeduction.class, String.class, 
+			flowName.deduceAttribute(DesignEntityGenerator.name));		
 		
 		setContent(new FragmentTemplateDesign("Page")
 			.setChildren("mainContent", 
@@ -82,7 +84,8 @@ public class FlowDetailsPlaceGenerator extends PlaceTemplateDesign {
 		
 		applicationContext.setDefinition(ApplicationContextSharedElementGenerator.DEFINITION);
 		
-		flowName.deduceCustom(CapitalizeFirstDeduction.class, String.class, flowName.deduceAttribute(DesignEntityGenerator.name));
+		flowName.deduceCustom(CapitalizeFirstDeduction.class, String.class, 
+				flowName.deduceAttribute(DesignEntityGenerator.name));		
 		nodes.deduceAttribute(FlowDesignEntityGenerator.nodes);
 		nodeName.deduceAttribute(DesignEntityGenerator.name, nodeName.deduceSelectedInstance(FlowNodeBaseDesignEntityGenerator.ENTITY));
 		nodeLink.setEvent(FlowNodeDetailsEventGenerator.EVENT);

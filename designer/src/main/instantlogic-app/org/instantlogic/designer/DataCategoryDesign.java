@@ -33,18 +33,20 @@ public class DataCategoryDesign extends org.instantlogic.fabric.Instance {
 	public static final DataCategoryDesign custom;
 	
 	static {
-	   text = addStaticInstance("text", new DataCategoryDesign());
-	   text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Text")));
-	   number = addStaticInstance("number", new DataCategoryDesign());
-	   number.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Number")));
-	   dateTime = addStaticInstance("dateTime", new DataCategoryDesign());
-	   dateTime.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Date/Time")));
-	   _boolean = addStaticInstance("boolean", new DataCategoryDesign());
-	   _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Yes-No")));
-	   entity = addStaticInstance("entity", new DataCategoryDesign());
-	   entity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Entity")));
-	   custom = addStaticInstance("custom", new DataCategoryDesign());
-	   custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Custom")));
+	  // Phase 1
+	  text = addStaticInstance("text", new DataCategoryDesign());
+	  number = addStaticInstance("number", new DataCategoryDesign());
+	  dateTime = addStaticInstance("dateTime", new DataCategoryDesign());
+	  _boolean = addStaticInstance("boolean", new DataCategoryDesign());
+	  entity = addStaticInstance("entity", new DataCategoryDesign());
+	  custom = addStaticInstance("custom", new DataCategoryDesign());
+	  // Phase 2
+	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Text")));
+	  number.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Number")));
+	  dateTime.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Date/Time")));
+	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Yes-No")));
+	  entity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Entity")));
+	  custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Custom")));
 	}
 	
 	@Override

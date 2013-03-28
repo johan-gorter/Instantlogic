@@ -27,6 +27,8 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override

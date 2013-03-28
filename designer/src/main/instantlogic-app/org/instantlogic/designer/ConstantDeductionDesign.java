@@ -27,6 +27,8 @@ public class ConstantDeductionDesign extends DeductionDesign {
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override

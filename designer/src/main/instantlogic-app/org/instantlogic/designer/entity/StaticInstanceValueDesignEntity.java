@@ -66,6 +66,19 @@ public class StaticInstanceValueDesignEntity extends org.instantlogic.fabric.mod
 			}
 		};
 	
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StaticInstanceValueDesign, org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.StaticInstanceDesign> relationValue
+		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceValueDesign, org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.StaticInstanceDesign>(
+			"relationValue", INSTANCE, org.instantlogic.designer.entity.StaticInstanceDesignEntity.INSTANCE, org.instantlogic.designer.StaticInstanceDesign.class, 
+			org.instantlogic.designer.entity.StaticInstanceDesignEntity.valueOfStaticInstances
+		) {
+	
+			@Override
+			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.StaticInstanceValueDesign, org.instantlogic.designer.StaticInstanceDesign> get(
+					org.instantlogic.designer.StaticInstanceValueDesign instance) {
+				return instance.getRelationValueRelationValue();
+			}
+		};
+	
 	// Reverse relations
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
@@ -73,6 +86,7 @@ public class StaticInstanceValueDesignEntity extends org.instantlogic.fabric.mod
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		attribute,
+		relationValue,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};

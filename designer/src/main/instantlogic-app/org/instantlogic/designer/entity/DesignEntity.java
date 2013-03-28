@@ -18,6 +18,8 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 
 	private static final org.instantlogic.fabric.model.Entity<?>[] EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
 		org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.EventDesignEntity.INSTANCE,

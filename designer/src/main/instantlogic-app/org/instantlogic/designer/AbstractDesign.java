@@ -27,6 +27,8 @@ public abstract class AbstractDesign extends org.instantlogic.fabric.Instance {
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override

@@ -27,6 +27,8 @@ public abstract class AbstractDeductionSchemeDesign extends org.instantlogic.fab
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override

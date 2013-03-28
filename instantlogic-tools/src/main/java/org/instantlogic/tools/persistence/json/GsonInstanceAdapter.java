@@ -245,7 +245,9 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 	
 	private JsonElement serializeStaticInstance(Instance instance) {
 		JsonObject result = new JsonObject();
-		result.addProperty("instanceName", instance.getMetadata().getStaticName());
+		String instanceName = instance.getMetadata().getStaticName();
+		if (instanceName==null) throw new IllegalArgumentException();
+		result.addProperty("instanceName", instanceName);
 		result.addProperty("entityName", instance.getMetadata().getEntity().getName());
 		return result;
 	}

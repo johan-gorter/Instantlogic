@@ -28,8 +28,10 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
 	public static final DataTypeDesign _boolean;
 	
 	static {
-	   _boolean = addStaticInstance("boolean", new DataTypeDesign());
-	   _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Boolean")));
+	  // Phase 1
+	  _boolean = addStaticInstance("boolean", new DataTypeDesign());
+	  // Phase 2
+	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Boolean")));
 	}
 	
 	@Override

@@ -12,23 +12,18 @@ package org.instantlogic.designer;
 
 
 
-public class StaticInstanceValueDesignEntityGenerator extends EntityDesign {
+public class DeductionInputDesignEntityGenerator extends EntityDesign {
 
-    public static final StaticInstanceValueDesignEntityGenerator ENTITY = new StaticInstanceValueDesignEntityGenerator();
+    public static final DeductionInputDesignEntityGenerator ENTITY = new DeductionInputDesignEntityGenerator();
     
-    private StaticInstanceValueDesignEntityGenerator() {
+    private DeductionInputDesignEntityGenerator() {
     	DesignerApplicationGenerator.APPLICATION.addToEntities(this);
-        setName("StaticInstanceValueDesign");
+        setName("DeductionInputDesign");
     }
 
-    // Attributes
-    public static final AttributeDesign value = addAttribute(ENTITY, "value", java.lang.Object.class);
-
     // Relations
-    public static final RelationDesign relationValue = addRelation(ENTITY, "relationValue", RelationType.ManyToZeroOrOne, StaticInstanceDesignEntityGenerator.ENTITY)
-    	.setReverseName("valueOfStaticInstances");
-    
-    public static final RelationDesign attribute = addRelation(ENTITY, "attribute", RelationType.ManyToZeroOrOne, AttributeDesignEntityGenerator.ENTITY);
-    
-    //TODO?: pairs of attribute and value
+    public static final RelationDesign operationInput = addRelation(ENTITY, "operationInput", RelationType.ManyToZeroOrOne, DeductionOperationInputDesignEntityGenerator.ENTITY);
+
+    public static final RelationDesign inputs = addRelation(ENTITY, "inputs", RelationType.ManyToMany, DeductionDesignEntityGenerator.ENTITY)
+    	.setReverseName("outputs");
 }

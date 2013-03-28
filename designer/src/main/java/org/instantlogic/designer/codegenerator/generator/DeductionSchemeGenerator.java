@@ -21,6 +21,7 @@ import org.instantlogic.designer.CastInstanceDeductionDesign;
 import org.instantlogic.designer.ConstantDeductionDesign;
 import org.instantlogic.designer.CustomDeductionDesign;
 import org.instantlogic.designer.DeductionDesign;
+import org.instantlogic.designer.DeductionInputDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.RelationDesign;
 import org.instantlogic.designer.ReverseRelationDeductionDesign;
@@ -72,12 +73,14 @@ public class DeductionSchemeGenerator {
 			} else if (deduction instanceof CustomDeductionDesign) {
 				classModel.customization = ((CustomDeductionDesign) deduction).getImplementationClassName();
 			}
-			for (DeductionDesign input : deduction.getInputs()) {
-				Input inputModel = new DeductionModel.Input();
-				inputModel.deductionIndex = deductionDesigns.indexOf(input);
-				inputModel.multivalue = true; //TODO
-				inputModel.inputName = "Inputs"; // TODO
-				classModel.inputs.add(inputModel);
+			for (DeductionInputDesign input : deduction.getInputs()) {
+				for (DeductionDesign inputDeduction: input.getInputs()) {
+					Input inputModel = new DeductionModel.Input();
+					inputModel.deductionIndex = deductionDesigns.indexOf(inputDeduction);
+					inputModel.multivalue = true; //TODO
+					inputModel.inputName = "Inputs"; // TODO
+					classModel.inputs.add(inputModel);
+				}
 			}
 			model.deductions.add(classModel);
 		}
@@ -86,8 +89,10 @@ public class DeductionSchemeGenerator {
 
 	private static void fillDeductions(DeductionDesign fromOutput, List<DeductionDesign> deductionDesigns) {
 		if (deductionDesigns.contains(fromOutput)) return;
-		for (DeductionDesign input: fromOutput.getInputs()) {
-			fillDeductions(input, deductionDesigns);
+		for (DeductionInputDesign deductionInput: fromOutput.getInputs()) {
+			for (DeductionDesign input:deductionInput.getInputs()) {
+				fillDeductions(input, deductionDesigns);
+			}
 		}
 		if (deductionDesigns.contains(fromOutput)) return;
 		deductionDesigns.add(fromOutput);

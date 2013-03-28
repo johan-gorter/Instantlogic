@@ -27,6 +27,8 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override
@@ -108,6 +110,28 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 
     public StaticInstanceDesign setEntity(org.instantlogic.designer.EntityDesign newValue) {
         entity.setValue(newValue);
+        return (StaticInstanceDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> valueOfStaticInstances
+		= createReverseRelationValues(org.instantlogic.designer.entity.StaticInstanceDesignEntity.valueOfStaticInstances);
+
+	public org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> getValueOfStaticInstancesRelationValue() {
+		return valueOfStaticInstances;
+	}
+
+	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign> getValueOfStaticInstances() {
+		return valueOfStaticInstances.getValue();
+	}
+
+    public StaticInstanceDesign addToValueOfStaticInstances(StaticInstanceValueDesign item) {
+        valueOfStaticInstances.addValue(item);
+        return (StaticInstanceDesign)this;
+    }
+
+    public StaticInstanceDesign removeFromValueOfStaticInstances(StaticInstanceValueDesign item) {
+        valueOfStaticInstances.removeValue(item);
         return (StaticInstanceDesign)this;
     }
 

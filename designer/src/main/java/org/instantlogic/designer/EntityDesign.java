@@ -12,6 +12,8 @@ package org.instantlogic.designer;
 
 import java.util.Iterator;
 
+import com.sun.java.swing.plaf.gtk.GTKConstants.TextDirection;
+
 
 
 public class EntityDesign extends AbstractEntityDesign { 
@@ -46,6 +48,14 @@ public class EntityDesign extends AbstractEntityDesign {
 	
 	protected static RelationDesign addRelation(EntityDesign from, String name, RelationType relationType, EntityDesign to) {
 		return from.addRelation(name, relationType, to);
+	}
+	
+	protected static StaticInstanceDesign addStaticInstance(EntityDesign of, String name, TextTemplateDesign description) {
+		StaticInstanceDesign result = new StaticInstanceDesign();
+		of.addToStaticInstances(result);
+		result.setDescription(description);
+		result.setName(name);
+		return result;
 	}
 
 	public AttributeDesign addAttribute(String name, Class<?> type) {

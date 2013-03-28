@@ -22,11 +22,15 @@ import org.instantlogic.designer.Design;
 import org.instantlogic.designer.EntityDesign;
 import org.instantlogic.designer.RelationDesign;
 import org.instantlogic.designer.StaticInstanceDesign;
+import org.instantlogic.designer.StaticInstanceValueDesign;
 import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.ValidationDesign;
+import org.instantlogic.designer.codegenerator.classmodel.ConstantValueModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.Attribute;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstance;
+import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstanceValue;
+import org.instantlogic.designer.codegenerator.classmodel.StaticFieldValueModel;
 import org.instantlogic.designer.deduction.TechnicalNameDeduction;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 import org.objectweb.asm.Type;
@@ -167,6 +171,17 @@ public class EntityGenerator extends AbstractGenerator {
 			staticInstance.name = staticInstanceDesign.getName();
 			staticInstance.javaIdentifier = staticInstanceDesign.getJavaIdentifier();
 			staticInstance.description = TextGenerator.generate(staticInstanceDesign.getDescription(), model);
+			for (StaticInstanceValueDesign valueDesign: staticInstanceDesign.getValues()) {
+				StaticInstanceValue value = new StaticInstanceValue();
+				value.attributeName = valueDesign.getAttribute().getTechnicalNameCapitalized();
+				value.multivalue = valueDesign.getAttribute().getDataType().getMultivalue();
+				if (valueDesign.getRelationValue()!=null) {
+					value.value = new StaticFieldValueModel(model.rootPackageName + "."+ valueDesign.getRelationValue().getEntity().getTechnicalNameCapitalized(), valueDesign.getRelationValue().getTechnicalName());
+				} else {
+					value.value = new ConstantValueModel(valueDesign.getValue());
+				}
+				staticInstance.values.add(value);
+			}
 			model.staticInstances.add(staticInstance);
 		}
 		

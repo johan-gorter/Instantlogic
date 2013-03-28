@@ -139,11 +139,31 @@ public class EntityClassModel extends AbstractClassModel {
 		}
 	}
 	
+	public static class StaticInstanceValue {
+		public ValueModel value;
+		public boolean multivalue;
+		public String attributeName;
+		
+		public ValueModel getValue() {
+			return value;
+		}
+		public boolean isMultivalue() {
+			return multivalue;
+		}
+		public String getAttributeName() {
+			return attributeName;
+		}
+	}
+	
 	public static class StaticInstance {
 		public String name;
 		public String javaIdentifier;
 		public TextModel description;
+		public final List<StaticInstanceValue> values = new ArrayList<StaticInstanceValue>();
 		
+		public List<StaticInstanceValue> getValues() {
+			return values;
+		}
 		public String getName() {
 			return name;
 		}

@@ -42,6 +42,7 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
         setName("Designer");
         setRootPackageName("org.instantlogic.designer");
         setSourcePath("target/generated-sources/instantlogic-app");
+        addDeductionOperations();
         setCaseEntity(ApplicationDesignEntityGenerator.ENTITY);
         setMainFlow(MainFlowGenerator.FLOW);
         setStartEvent(HomeEventGenerator.EVENT);
@@ -53,7 +54,11 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
         addFragmentTypes();
     }
     
-    private void addFragmentTypes() {
+    private void addDeductionOperations() {
+    	
+	}
+
+	private void addFragmentTypes() {
     	FragmentTypeInput = (FragmentTypeDesign) new FragmentTypeDesign().setHasAttribute(true).setName("Input");
     	FragmentTypeButton = (FragmentTypeDesign) new FragmentTypeDesign().setHasEvent(true).setName("Button");
     	FragmentTypeLink = (FragmentTypeDesign) new FragmentTypeDesign().setHasEvent(true).setName("Link");

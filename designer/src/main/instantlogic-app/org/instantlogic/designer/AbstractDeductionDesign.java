@@ -27,6 +27,8 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 	
 	
 	static {
+	  // Phase 1
+	  // Phase 2
 	}
 	
 	@Override
@@ -50,28 +52,28 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 	}
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionDesign> inputs
+	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> inputs
 		= createRelationValues(org.instantlogic.designer.entity.DeductionDesignEntity.inputs);
 		
-	public org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionDesign> getInputsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> getInputsRelationValue() {
 		return inputs;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionDesign> getInputs() {
+	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign> getInputs() {
 		return inputs.getValue();
 	}
 	
-	public DeductionDesign addToInputs(DeductionDesign item) {
+	public DeductionDesign addToInputs(DeductionInputDesign item) {
 		inputs.addValue(item);
 		return (DeductionDesign)this;
 	}
 	
-	public DeductionDesign addToInputs(DeductionDesign item, int index) {
+	public DeductionDesign addToInputs(DeductionInputDesign item, int index) {
 		inputs.insertValue(item, index);
 		return (DeductionDesign)this;
 	}
 	
-	public DeductionDesign removeFromInputs(DeductionDesign item) {
+	public DeductionDesign removeFromInputs(DeductionInputDesign item) {
 		inputs.removeValue(item);
 		return (DeductionDesign)this;
 	}
@@ -81,26 +83,44 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 		return (DeductionDesign)this;
 	}
 	
+	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionDesign, DeductionOperationDesign> operation
+		= createRelationValue(org.instantlogic.designer.entity.DeductionDesignEntity.operation);
+		
+	public org.instantlogic.fabric.value.RelationValue<DeductionDesign, DeductionOperationDesign> getOperationRelationValue() {
+		return operation;
+	}
+
+	public org.instantlogic.designer.DeductionOperationDesign getOperation() {
+		return operation.getValue();
+	}
+	
+	public DeductionDesign setOperation(org.instantlogic.designer.DeductionOperationDesign newValue) {
+		operation.setValue(newValue);
+		return (DeductionDesign)this;
+	}
+	
+
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionDesign> outputs
+	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> outputs
 		= createReverseRelationValues(org.instantlogic.designer.entity.DeductionDesignEntity.outputs);
 
-	public org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionDesign> getOutputsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> getOutputsRelationValue() {
 		return outputs;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionDesign> getOutputs() {
+	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign> getOutputs() {
 		return outputs.getValue();
 	}
 
-    public DeductionDesign addToOutputs(DeductionDesign item) {
+    public DeductionDesign addToOutputs(DeductionInputDesign item) {
         outputs.addValue(item);
         return (DeductionDesign)this;
     }
 
-    public DeductionDesign removeFromOutputs(DeductionDesign item) {
+    public DeductionDesign removeFromOutputs(DeductionInputDesign item) {
         outputs.removeValue(item);
         return (DeductionDesign)this;
     }

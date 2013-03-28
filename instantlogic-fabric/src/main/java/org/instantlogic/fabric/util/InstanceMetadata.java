@@ -168,7 +168,7 @@ public class InstanceMetadata {
 		if (this.isStatic()) throw new RuntimeException("Static instances cannot be owned by a case, they are global");
 		if (this.owner!=null && owner!=null) {
 			// 'Migration' to another owner is not allowed, because this would change instance Id's
-			throw new RuntimeException("This instance is already owned by "+this.owner);
+			throw new RuntimeException("This instance ["+instance+"] is already owned by "+this.owner);
 		}
 		if (this.owner!=null) {
 			this.caseAdministration = this.owner.getMetadata().getCaseAdministration(); // temporary

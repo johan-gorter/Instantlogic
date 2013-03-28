@@ -31,10 +31,17 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 	</#list>
 	
 	static {
-	   <#list staticInstances as staticInstance>
-	   ${staticInstance.javaIdentifier} = addStaticInstance("${staticInstance.name}", new ${technicalNameCapitalized}());
-	   <#if staticInstance.description??>${staticInstance.javaIdentifier}.getMetadata().setStaticDescription(<@text_macro text=staticInstance.description />);</#if>
-	   </#list>
+	  // Phase 1
+	  <#list staticInstances as staticInstance>
+	  ${staticInstance.javaIdentifier} = addStaticInstance("${staticInstance.name}", new ${technicalNameCapitalized}());
+	  </#list>
+	  // Phase 2
+	  <#list staticInstances as staticInstance>
+	    <#list staticInstance.values as value>
+      ${staticInstance.javaIdentifier}.<#if value.multivalue>addTo<#else>set</#if>${value.attributeName}(${value.value.asJavaTemplate});
+	    </#list>
+	  <#if staticInstance.description??>${staticInstance.javaIdentifier}.getMetadata().setStaticDescription(<@text_macro text=staticInstance.description />);</#if>
+	  </#list>
 	}
 	
 	@Override
