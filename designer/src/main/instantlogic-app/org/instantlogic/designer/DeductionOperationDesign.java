@@ -49,16 +49,32 @@ public class DeductionOperationDesign extends Design {
 	  selectedInstance = addStaticInstance("selectedInstance", new DeductionOperationDesign());
 	  sum = addStaticInstance("sum", new DeductionOperationDesign());
 	  // Phase 2
+      attribute.setJavaClassName("org.instantlogic.fabric.deduction.AttributeDeduction");
       attribute.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.attributeInstance);
 	  attribute.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Attribute")));
+      cast.setJavaClassName("org.instantlogic.fabric.deduction.CastInstanceDeduction");
+      cast.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.castInstance);
 	  cast.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Cast")));
+      constant.setJavaClassName("org.instantlogic.fabric.deduction.ConstantDeduction");
 	  constant.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Constant")));
+      custom.setJavaClassName("org.instantlogic.fabric.deduction.CustomDeduction");
 	  custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Custom")));
+      equals.setJavaClassName("org.instantlogic.fabric.deduction.EqualsDeduction");
+      equals.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.equalsOperands);
 	  equals.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Equals")));
+      hasValue.setJavaClassName("org.instantlogic.fabric.deduction.HasValueDeduction");
+      hasValue.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.hasValueInput);
 	  hasValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Has value")));
+      negation.setJavaClassName("org.instantlogic.fabric.deduction.NegationDeduction");
+      negation.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.negationInput);
 	  negation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Negation")));
+      reverseRelation.setJavaClassName("org.instantlogic.fabric.deduction.ReverseRelationDeduction");
+      reverseRelation.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.reverseRelationToInstance);
 	  reverseRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Reverse relation")));
+      selectedInstance.setJavaClassName("org.instantlogic.fabric.deduction.SelectedInstanceDeduction");
 	  selectedInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Selected instance")));
+      sum.setJavaClassName("org.instantlogic.fabric.deduction.SumDeduction");
+      sum.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.sumOperands);
 	  sum.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Sum")));
 	}
 	
@@ -68,6 +84,23 @@ public class DeductionOperationDesign extends Design {
 	}
 
 	// Attributes
+	
+	private final org.instantlogic.fabric.value.AttributeValue<DeductionOperationDesign, java.lang.String> javaClassName
+		= createAttributeValue(org.instantlogic.designer.entity.DeductionOperationDesignEntity.javaClassName);
+	
+	public java.lang.String getJavaClassName() {
+		return javaClassName.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<DeductionOperationDesign, java.lang.String> getJavaClassNameAttributeValue() {
+		return javaClassName;
+	}
+
+	public DeductionOperationDesign setJavaClassName(java.lang.String newValue) {
+		javaClassName.setValue(newValue);
+		return (DeductionOperationDesign)this;
+	}
+	
 	
 	// Relations
 	

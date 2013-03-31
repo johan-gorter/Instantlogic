@@ -58,6 +58,20 @@ public class EntityDesign extends AbstractEntityDesign {
 		return result;
 	}
 
+	protected static void addStaticInstanceRelationValue(StaticInstanceDesign staticInstance, RelationDesign relation, StaticInstanceDesign to) {
+    	StaticInstanceValueDesign value = new StaticInstanceValueDesign();
+    	staticInstance.addToValues(value);
+    	value.setAttribute(relation);
+    	value.setRelationValue(to);
+	}
+
+	protected static void addStaticInstanceValue(StaticInstanceDesign staticInstance, AttributeDesign relation, Object value) {
+    	StaticInstanceValueDesign valueDesign = new StaticInstanceValueDesign();
+    	staticInstance.addToValues(valueDesign);
+    	valueDesign.setAttribute(relation);
+    	valueDesign.setValue(value);
+	}
+
 	public AttributeDesign addAttribute(String name, Class<?> type) {
 		return addAttribute(name, type.getName());
 	}

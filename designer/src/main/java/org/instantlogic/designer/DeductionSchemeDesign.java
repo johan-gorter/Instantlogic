@@ -21,7 +21,7 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 	
 	public DeductionDesign deduceSelectedInstance(EntityDesign entity) {
 		SelectedInstanceDeductionDesign selectedInstanceDeductionDesign = new SelectedInstanceDeductionDesign();
-		
+		selectedInstanceDeductionDesign.setOperation(DeductionOperationDesign.selectedInstance);
 		addToDeductions(selectedInstanceDeductionDesign);
 		setOutput(selectedInstanceDeductionDesign);
 		
@@ -96,6 +96,14 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		
 		result.setImplementationClassName(javaClassName);
 		result.getDataType().setJavaClassName(resultClassName);
+		return result;
+	}
+
+	public AbstractDeductionDesign deduceCustom(DeductionOperationDesign operation) {
+		DeductionDesign result = new DeductionDesign();
+		addToDeductions(result);
+		setOutput(result);
+		result.setOperation(operation);
 		return result;
 	}
 	

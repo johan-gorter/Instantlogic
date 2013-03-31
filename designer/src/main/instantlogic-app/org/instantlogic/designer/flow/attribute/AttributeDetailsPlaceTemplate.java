@@ -20,7 +20,7 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
 	}
 	
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.EntityDesign> createDeduction0() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.ReverseRelationDeduction(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -30,7 +30,7 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction1() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -40,7 +40,7 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataTypeDesign> createDeduction2() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.AttributeDesignEntity.dataType);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -50,7 +50,7 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction3() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 

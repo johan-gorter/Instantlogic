@@ -15,7 +15,7 @@ public class ApplicationContextPageFragment extends org.instantlogic.interaction
 	public static ApplicationContextPageFragment INSTANCE = new ApplicationContextPageFragment();
 	
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction0() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 

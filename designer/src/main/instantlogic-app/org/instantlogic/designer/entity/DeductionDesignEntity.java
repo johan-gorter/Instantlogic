@@ -51,7 +51,7 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 
 	// Deductions
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataTypeDesign> createDeduction0() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		    org.instantlogic.designer.deduction.DeductionDataTypeDeduction d0 
 		      = new org.instantlogic.designer.deduction.DeductionDataTypeDeduction();
 		return d0;

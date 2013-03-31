@@ -38,14 +38,14 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 	// Deductions
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction0() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		    org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction d0 
 		      = new org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction();
 		return d0;
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction1() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		    org.instantlogic.designer.deduction.ReverseJavaIdentifierDeduction d0 
 		      = new org.instantlogic.designer.deduction.ReverseJavaIdentifierDeduction();
 		return d0;

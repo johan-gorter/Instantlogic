@@ -38,7 +38,6 @@ public class DeductionModel {
 	
 	public int index;
 	public String type;
-	public String resultType;
 	public String customization;
 	public List<Input> inputs = new ArrayList<Input>();
 	public List<ValueModel> parameters = new ArrayList<ValueModel>();
@@ -51,9 +50,6 @@ public class DeductionModel {
 	}
 	public String getType() {
 		return type;
-	}
-	public String getResultType() {
-		return resultType;
 	}
 	public List<Input> getInputs() {
 		return inputs;

@@ -10,7 +10,7 @@ along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
 -->
 <#macro deductionscheme_macro scheme>
 
-	private static org.instantlogic.fabric.deduction.Deduction<${scheme.lastResultType}> createDeduction${scheme.index}() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction${scheme.index}() {
 		<#list scheme.deductions as deduction>
 		  <#if deduction.customization??>
 		    ${deduction.customization} d${deduction.index} 

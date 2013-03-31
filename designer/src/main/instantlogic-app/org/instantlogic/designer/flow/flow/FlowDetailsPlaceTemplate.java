@@ -20,7 +20,7 @@ public class FlowDetailsPlaceTemplate extends org.instantlogic.interaction.flow.
 	}
 	
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction0() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		    org.instantlogic.designer.deduction.CapitalizeFirstDeduction d0 
 		      = new org.instantlogic.designer.deduction.CapitalizeFirstDeduction();
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 
@@ -33,7 +33,7 @@ public class FlowDetailsPlaceTemplate extends org.instantlogic.interaction.flow.
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowNodeBaseDesign>> createDeduction1() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.FlowDesignEntity.nodes);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -43,7 +43,7 @@ public class FlowDetailsPlaceTemplate extends org.instantlogic.interaction.flow.
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction2() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -53,7 +53,7 @@ public class FlowDetailsPlaceTemplate extends org.instantlogic.interaction.flow.
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction3() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
 		    org.instantlogic.designer.deduction.CapitalizeFirstDeduction d0 
 		      = new org.instantlogic.designer.deduction.CapitalizeFirstDeduction();
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 

@@ -15,7 +15,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 	public static ElementEditorPageFragment INSTANCE = new ElementEditorPageFragment();
 	
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.FragmentTemplateDesign> createDeduction0() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.CastInstanceDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.CastInstanceDeduction(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -25,7 +25,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction1() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ElementDesignEntity.editorOpen);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -35,7 +35,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction2() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasAttribute);
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 
@@ -48,7 +48,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction3() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
 		  	org.instantlogic.fabric.deduction.HasValueDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.HasValueDeduction();
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 
@@ -61,7 +61,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction4() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction4() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ElementDesignEntity.previewMode);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -71,7 +71,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction5() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction5() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 
@@ -84,7 +84,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction6() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction6() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ElementDesignEntity.editorOpen);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -94,7 +94,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.PropertyDesign>> createDeduction7() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction7() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.properties);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -104,7 +104,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ElementDesign>> createDeduction8() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction8() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.PropertyDesignEntity.children);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 

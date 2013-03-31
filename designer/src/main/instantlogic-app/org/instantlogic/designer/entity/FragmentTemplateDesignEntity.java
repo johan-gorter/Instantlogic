@@ -38,7 +38,7 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 
 	// Deductions
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTypeDesign>> createDeduction0() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.fragmentTypes);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -48,7 +48,7 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>> createDeduction1() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 
@@ -61,7 +61,7 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>> createDeduction2() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 

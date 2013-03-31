@@ -10,7 +10,36 @@
     "designer"
   ],
   "caseEntity": "Entitydesign__0001",
-  "deductionOperations": [],
+  "deductionOperations": [
+    {
+      "instanceId": "Deductinprtndsgn__0001",
+      "entityName": "DeductionOperationDesign",
+      "name": "CapitalizeFirst",
+      "javaClassName": "org.instantlogic.designer.deduction.CapitalizeFirstDeduction",
+      "inputs": [
+        {
+          "instanceId": "Ddctnprtnnptdsgn__0001",
+          "entityName": "DeductionOperationInputDesign",
+          "name": "Input"
+        }
+      ],
+      "outputDataType": {
+        "instanceName": "text",
+        "entityName": "DataTypeDesign"
+      }
+    },
+    {
+      "instanceId": "Deductinprtndsgn__0002",
+      "entityName": "DeductionOperationDesign",
+      "name": "TechnicalName",
+      "javaClassName": "org.instantlogic.designer.deduction.TechnicalNameDeduction",
+      "inputs": [],
+      "outputDataType": {
+        "instanceName": "text",
+        "entityName": "DataTypeDesign"
+      }
+    }
+  ],
   "entities": [
     {
       "instanceId": "Entitydesign__0001",
@@ -392,7 +421,6 @@
           "instanceId": "Attributedesign__0008",
           "entityName": "AttributeDesign",
           "name": "technicalName",
-          "hasRule": true,
           "writeable": false,
           "dataType": {
             "instanceId": "Datatypedesign__001a",
@@ -404,18 +432,13 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__0003",
-                "entityName": "CustomDeductionDesign",
-                "implementationClassName": "org.instantlogic.designer.deduction.TechnicalNameDeduction",
+                "instanceId": "Deductiondesign__0001",
+                "entityName": "DeductionDesign",
                 "inputs": [],
-                "customDataType": {
-                  "instanceId": "Datatypedesign__001b",
-                  "entityName": "DataTypeDesign",
-                  "javaClassName": "java.lang.String"
-                }
+                "operation": "Deductinprtndsgn__0002"
               }
             ],
-            "output": "Customdedctndsgn__0003"
+            "output": "Deductiondesign__0001"
           }
         },
         {
@@ -423,7 +446,7 @@
           "entityName": "AttributeDesign",
           "name": "isCustomized",
           "dataType": {
-            "instanceId": "Datatypedesign__001c",
+            "instanceId": "Datatypedesign__001b",
             "entityName": "DataTypeDesign",
             "javaClassName": "java.lang.Boolean"
           }
@@ -446,6 +469,10 @@
                   "instanceId": "Slctdnstcddctdsg__0001",
                   "entityName": "SelectedInstanceDeductionDesign",
                   "inputs": [],
+                  "operation": {
+                    "instanceName": "selectedInstance",
+                    "entityName": "DeductionOperationDesign"
+                  },
                   "ofEntity": "Entitydesign__0008"
                 },
                 {
@@ -490,7 +517,7 @@
           "reverseMultivalue": false,
           "reverseName": "untranslatedInTemplate",
           "dataType": {
-            "instanceId": "Datatypedesign__001d",
+            "instanceId": "Datatypedesign__001c",
             "entityName": "DataTypeDesign",
             "multivalue": true
           },
@@ -510,7 +537,7 @@
           "entityName": "AttributeDesign",
           "name": "constantText",
           "dataType": {
-            "instanceId": "Datatypedesign__001e",
+            "instanceId": "Datatypedesign__001d",
             "entityName": "DataTypeDesign",
             "javaClassName": "java.lang.String"
           }
@@ -525,7 +552,7 @@
           "owner": true,
           "reverseMultivalue": false,
           "dataType": {
-            "instanceId": "Datatypedesign__001f",
+            "instanceId": "Datatypedesign__001e",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -551,7 +578,7 @@
           "reverseMultivalue": false,
           "reverseName": "scheme",
           "dataType": {
-            "instanceId": "Datatypedesign__0020",
+            "instanceId": "Datatypedesign__001f",
             "entityName": "DataTypeDesign",
             "multivalue": true
           },
@@ -565,7 +592,7 @@
           "owner": false,
           "reverseMultivalue": false,
           "dataType": {
-            "instanceId": "Datatypedesign__0021",
+            "instanceId": "Datatypedesign__0020",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -590,7 +617,7 @@
           "owner": false,
           "reverseMultivalue": true,
           "dataType": {
-            "instanceId": "Datatypedesign__0022",
+            "instanceId": "Datatypedesign__0021",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -606,7 +633,7 @@
           "owner": false,
           "reverseMultivalue": true,
           "dataType": {
-            "instanceId": "Datatypedesign__0023",
+            "instanceId": "Datatypedesign__0022",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -615,18 +642,18 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__0004",
+                "instanceId": "Customdedctndsgn__0003",
                 "entityName": "CustomDeductionDesign",
                 "implementationClassName": "org.instantlogic.designer.deduction.DeductionDataTypeDeduction",
                 "inputs": [],
                 "customDataType": {
-                  "instanceId": "Datatypedesign__0024",
+                  "instanceId": "Datatypedesign__0023",
                   "entityName": "DataTypeDesign",
                   "javaClassName": "org.instantlogic.designer.DataTypeDesign"
                 }
               }
             ],
-            "output": "Customdedctndsgn__0004"
+            "output": "Customdedctndsgn__0003"
           },
           "to": "Entitydesign__000e"
         },
@@ -639,7 +666,7 @@
           "reverseMultivalue": false,
           "reverseName": "deduction",
           "dataType": {
-            "instanceId": "Datatypedesign__0025",
+            "instanceId": "Datatypedesign__0024",
             "entityName": "DataTypeDesign",
             "multivalue": true
           },
@@ -653,7 +680,21 @@
       "instanceId": "Entitydesign__0003",
       "entityName": "EntityDesign",
       "name": "DeductionOperationDesign",
-      "attributes": [],
+      "attributes": [
+        {
+          "instanceId": "Attributedesign__000b",
+          "entityName": "AttributeDesign",
+          "name": "javaClassName",
+          "dataType": {
+            "instanceId": "Datatypedesign__0025",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          }
+        }
+      ],
       "extendsFrom": "Entitydesign__0008",
       "relations": [
         {
@@ -706,6 +747,12 @@
             {
               "instanceId": "Statcnstncvldsgn__0001",
               "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.AttributeDeduction",
+              "attribute": "Attributedesign__000b"
+            },
+            {
+              "instanceId": "Statcnstncvldsgn__0002",
+              "entityName": "StaticInstanceValueDesign",
               "attribute": "Relationdesign__0019",
               "relationValue": "Staticinstncdsgn__0002"
             }
@@ -726,10 +773,23 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__0003",
+              "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.CastInstanceDeduction",
+              "attribute": "Attributedesign__000b"
+            },
+            {
+              "instanceId": "Statcnstncvldsgn__0004",
+              "entityName": "StaticInstanceValueDesign",
+              "attribute": "Relationdesign__0019",
+              "relationValue": "Staticinstncdsgn__0004"
+            }
+          ]
         },
         {
-          "instanceId": "Staticinstncdsgn__0004",
+          "instanceId": "Staticinstncdsgn__0005",
           "entityName": "StaticInstanceDesign",
           "name": "constant",
           "description": {
@@ -743,10 +803,17 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__0005",
+              "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.ConstantDeduction",
+              "attribute": "Attributedesign__000b"
+            }
+          ]
         },
         {
-          "instanceId": "Staticinstncdsgn__0005",
+          "instanceId": "Staticinstncdsgn__0006",
           "entityName": "StaticInstanceDesign",
           "name": "custom",
           "description": {
@@ -760,10 +827,17 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__0006",
+              "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.CustomDeduction",
+              "attribute": "Attributedesign__000b"
+            }
+          ]
         },
         {
-          "instanceId": "Staticinstncdsgn__0006",
+          "instanceId": "Staticinstncdsgn__0007",
           "entityName": "StaticInstanceDesign",
           "name": "equals",
           "description": {
@@ -777,10 +851,23 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__0007",
+              "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.EqualsDeduction",
+              "attribute": "Attributedesign__000b"
+            },
+            {
+              "instanceId": "Statcnstncvldsgn__0008",
+              "entityName": "StaticInstanceValueDesign",
+              "attribute": "Relationdesign__0019",
+              "relationValue": "Staticinstncdsgn__0008"
+            }
+          ]
         },
         {
-          "instanceId": "Staticinstncdsgn__0007",
+          "instanceId": "Staticinstncdsgn__0009",
           "entityName": "StaticInstanceDesign",
           "name": "hasValue",
           "description": {
@@ -794,10 +881,23 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__0009",
+              "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.HasValueDeduction",
+              "attribute": "Attributedesign__000b"
+            },
+            {
+              "instanceId": "Statcnstncvldsgn__000a",
+              "entityName": "StaticInstanceValueDesign",
+              "attribute": "Relationdesign__0019",
+              "relationValue": "Staticinstncdsgn__000a"
+            }
+          ]
         },
         {
-          "instanceId": "Staticinstncdsgn__0008",
+          "instanceId": "Staticinstncdsgn__000b",
           "entityName": "StaticInstanceDesign",
           "name": "negation",
           "description": {
@@ -811,10 +911,23 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__000b",
+              "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.NegationDeduction",
+              "attribute": "Attributedesign__000b"
+            },
+            {
+              "instanceId": "Statcnstncvldsgn__000c",
+              "entityName": "StaticInstanceValueDesign",
+              "attribute": "Relationdesign__0019",
+              "relationValue": "Staticinstncdsgn__000c"
+            }
+          ]
         },
         {
-          "instanceId": "Staticinstncdsgn__0009",
+          "instanceId": "Staticinstncdsgn__000d",
           "entityName": "StaticInstanceDesign",
           "name": "reverseRelation",
           "description": {
@@ -828,10 +941,23 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__000d",
+              "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.ReverseRelationDeduction",
+              "attribute": "Attributedesign__000b"
+            },
+            {
+              "instanceId": "Statcnstncvldsgn__000e",
+              "entityName": "StaticInstanceValueDesign",
+              "attribute": "Relationdesign__0019",
+              "relationValue": "Staticinstncdsgn__000e"
+            }
+          ]
         },
         {
-          "instanceId": "Staticinstncdsgn__000a",
+          "instanceId": "Staticinstncdsgn__000f",
           "entityName": "StaticInstanceDesign",
           "name": "selectedInstance",
           "description": {
@@ -845,10 +971,17 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__000f",
+              "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.SelectedInstanceDeduction",
+              "attribute": "Attributedesign__000b"
+            }
+          ]
         },
         {
-          "instanceId": "Staticinstncdsgn__000b",
+          "instanceId": "Staticinstncdsgn__0010",
           "entityName": "StaticInstanceDesign",
           "name": "sum",
           "description": {
@@ -862,7 +995,20 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__0010",
+              "entityName": "StaticInstanceValueDesign",
+              "value": "org.instantlogic.fabric.deduction.SumDeduction",
+              "attribute": "Attributedesign__000b"
+            },
+            {
+              "instanceId": "Statcnstncvldsgn__0011",
+              "entityName": "StaticInstanceValueDesign",
+              "attribute": "Relationdesign__0019",
+              "relationValue": "Staticinstncdsgn__0011"
+            }
+          ]
         }
       ],
       "validations": []
@@ -873,7 +1019,7 @@
       "name": "DataTypeDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__000b",
+          "instanceId": "Attributedesign__000c",
           "entityName": "AttributeDesign",
           "name": "multivalue",
           "hasDefault": true,
@@ -909,7 +1055,7 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__0005",
+                "instanceId": "Customdedctndsgn__0004",
                 "entityName": "CustomDeductionDesign",
                 "implementationClassName": "org.instantlogic.designer.deduction.DataTypeMultivalueDeduction",
                 "inputs": [],
@@ -920,11 +1066,11 @@
                 }
               }
             ],
-            "output": "Customdedctndsgn__0005"
+            "output": "Customdedctndsgn__0004"
           }
         },
         {
-          "instanceId": "Attributedesign__000c",
+          "instanceId": "Attributedesign__000d",
           "entityName": "AttributeDesign",
           "name": "javaClassName",
           "hasDefault": true,
@@ -941,7 +1087,7 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__0006",
+                "instanceId": "Customdedctndsgn__0005",
                 "entityName": "CustomDeductionDesign",
                 "implementationClassName": "org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction",
                 "inputs": [],
@@ -952,11 +1098,11 @@
                 }
               }
             ],
-            "output": "Customdedctndsgn__0006"
+            "output": "Customdedctndsgn__0005"
           }
         },
         {
-          "instanceId": "Attributedesign__000d",
+          "instanceId": "Attributedesign__000e",
           "entityName": "AttributeDesign",
           "name": "percentage",
           "dataType": {
@@ -975,6 +1121,10 @@
                 "instanceId": "Slctdnstcddctdsg__0002",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000e"
               },
               {
@@ -1032,7 +1182,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__000e",
+          "instanceId": "Attributedesign__000f",
           "entityName": "AttributeDesign",
           "name": "wholeNumber",
           "dataType": {
@@ -1069,6 +1219,10 @@
                 "instanceId": "Slctdnstcddctdsg__0003",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000e"
               },
               {
@@ -1126,7 +1280,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__000f",
+          "instanceId": "Attributedesign__0010",
           "entityName": "AttributeDesign",
           "name": "exactRounding",
           "dataType": {
@@ -1145,6 +1299,10 @@
                 "instanceId": "Slctdnstcddctdsg__0004",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000e"
               },
               {
@@ -1163,7 +1321,7 @@
                     }
                   }
                 ],
-                "attribute": "Attributedesign__000e"
+                "attribute": "Attributedesign__000f"
               },
               {
                 "instanceId": "Constntddctndsgn__0005",
@@ -1199,7 +1357,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0010",
+          "instanceId": "Attributedesign__0011",
           "entityName": "AttributeDesign",
           "name": "multiLine",
           "dataType": {
@@ -1218,6 +1376,10 @@
                 "instanceId": "Slctdnstcddctdsg__0005",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000e"
               },
               {
@@ -1275,7 +1437,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0011",
+          "instanceId": "Attributedesign__0012",
           "entityName": "AttributeDesign",
           "name": "formatted",
           "dataType": {
@@ -1294,6 +1456,10 @@
                 "instanceId": "Slctdnstcddctdsg__0006",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000e"
               },
               {
@@ -1312,7 +1478,7 @@
                     }
                   }
                 ],
-                "attribute": "Attributedesign__0010"
+                "attribute": "Attributedesign__0011"
               }
             ],
             "output": "Attribtddctndsgn__0006"
@@ -1360,7 +1526,7 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__0007",
+                "instanceId": "Customdedctndsgn__0006",
                 "entityName": "CustomDeductionDesign",
                 "implementationClassName": "org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction",
                 "inputs": [],
@@ -1371,14 +1537,14 @@
                 }
               }
             ],
-            "output": "Customdedctndsgn__0007"
+            "output": "Customdedctndsgn__0006"
           },
           "options": {
             "instanceId": "Deductinschmdsgn__0011",
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__0008",
+                "instanceId": "Customdedctndsgn__0007",
                 "entityName": "CustomDeductionDesign",
                 "implementationClassName": "org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction",
                 "inputs": [],
@@ -1389,7 +1555,7 @@
                 }
               }
             ],
-            "output": "Customdedctndsgn__0008"
+            "output": "Customdedctndsgn__0007"
           },
           "to": "Entitydesign__0014"
         },
@@ -1412,7 +1578,7 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__0009",
+                "instanceId": "Customdedctndsgn__0008",
                 "entityName": "CustomDeductionDesign",
                 "implementationClassName": "org.instantlogic.designer.deduction.DataTypeEntityDeduction",
                 "inputs": [],
@@ -1423,14 +1589,14 @@
                 }
               }
             ],
-            "output": "Customdedctndsgn__0009"
+            "output": "Customdedctndsgn__0008"
           },
           "to": "Entitydesign__0002"
         }
       ],
       "staticInstances": [
         {
-          "instanceId": "Staticinstncdsgn__000c",
+          "instanceId": "Staticinstncdsgn__0012",
           "entityName": "StaticInstanceDesign",
           "name": "boolean",
           "description": {
@@ -1444,7 +1610,38 @@
               }
             ]
           },
-          "values": []
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__0012",
+              "entityName": "StaticInstanceValueDesign",
+              "attribute": "Relationdesign__001a",
+              "relationValue": "Staticinstncdsgn__0013"
+            }
+          ]
+        },
+        {
+          "instanceId": "Staticinstncdsgn__0014",
+          "entityName": "StaticInstanceDesign",
+          "name": "text",
+          "description": {
+            "instanceId": "Texttemplatedsgn__000d",
+            "entityName": "TextTemplateDesign",
+            "untranslated": [
+              {
+                "instanceId": "Stringtempltdsgn__000d",
+                "entityName": "StringTemplateDesign",
+                "constantText": "Text"
+              }
+            ]
+          },
+          "values": [
+            {
+              "instanceId": "Statcnstncvldsgn__0013",
+              "entityName": "StaticInstanceValueDesign",
+              "attribute": "Relationdesign__001a",
+              "relationValue": "Staticinstncdsgn__0015"
+            }
+          ]
         }
       ],
       "validations": [
@@ -1455,11 +1652,11 @@
             "Relationdesign__001a"
           ],
           "message": {
-            "instanceId": "Texttemplatedsgn__000d",
+            "instanceId": "Texttemplatedsgn__000e",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__000d",
+                "instanceId": "Stringtempltdsgn__000e",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Select a value"
               }
@@ -1490,6 +1687,10 @@
                 "instanceId": "Slctdnstcddctdsg__0007",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000e"
               },
               {
@@ -1524,15 +1725,15 @@
       "relations": [],
       "staticInstances": [
         {
-          "instanceId": "Staticinstncdsgn__000d",
+          "instanceId": "Staticinstncdsgn__0015",
           "entityName": "StaticInstanceDesign",
           "name": "text",
           "description": {
-            "instanceId": "Texttemplatedsgn__000e",
+            "instanceId": "Texttemplatedsgn__000f",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__000e",
+                "instanceId": "Stringtempltdsgn__000f",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Text"
               }
@@ -1541,15 +1742,15 @@
           "values": []
         },
         {
-          "instanceId": "Staticinstncdsgn__000e",
+          "instanceId": "Staticinstncdsgn__0016",
           "entityName": "StaticInstanceDesign",
           "name": "number",
           "description": {
-            "instanceId": "Texttemplatedsgn__000f",
+            "instanceId": "Texttemplatedsgn__0010",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__000f",
+                "instanceId": "Stringtempltdsgn__0010",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Number"
               }
@@ -1558,15 +1759,15 @@
           "values": []
         },
         {
-          "instanceId": "Staticinstncdsgn__000f",
+          "instanceId": "Staticinstncdsgn__0017",
           "entityName": "StaticInstanceDesign",
           "name": "dateTime",
           "description": {
-            "instanceId": "Texttemplatedsgn__0010",
+            "instanceId": "Texttemplatedsgn__0011",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__0010",
+                "instanceId": "Stringtempltdsgn__0011",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Date/Time"
               }
@@ -1575,15 +1776,15 @@
           "values": []
         },
         {
-          "instanceId": "Staticinstncdsgn__0010",
+          "instanceId": "Staticinstncdsgn__0013",
           "entityName": "StaticInstanceDesign",
           "name": "boolean",
           "description": {
-            "instanceId": "Texttemplatedsgn__0011",
+            "instanceId": "Texttemplatedsgn__0012",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__0011",
+                "instanceId": "Stringtempltdsgn__0012",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Yes-No"
               }
@@ -1592,15 +1793,15 @@
           "values": []
         },
         {
-          "instanceId": "Staticinstncdsgn__0011",
+          "instanceId": "Staticinstncdsgn__0018",
           "entityName": "StaticInstanceDesign",
           "name": "entity",
           "description": {
-            "instanceId": "Texttemplatedsgn__0012",
+            "instanceId": "Texttemplatedsgn__0013",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__0012",
+                "instanceId": "Stringtempltdsgn__0013",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Entity"
               }
@@ -1609,15 +1810,15 @@
           "values": []
         },
         {
-          "instanceId": "Staticinstncdsgn__0012",
+          "instanceId": "Staticinstncdsgn__0019",
           "entityName": "StaticInstanceDesign",
           "name": "custom",
           "description": {
-            "instanceId": "Texttemplatedsgn__0013",
+            "instanceId": "Texttemplatedsgn__0014",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__0013",
+                "instanceId": "Stringtempltdsgn__0014",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Custom"
               }
@@ -1634,7 +1835,7 @@
       "name": "DeductionOperationInputDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__0012",
+          "instanceId": "Attributedesign__0013",
           "entityName": "AttributeDesign",
           "name": "multivalue",
           "dataType": {
@@ -1667,23 +1868,6 @@
           "entityName": "StaticInstanceDesign",
           "name": "attributeInstance",
           "description": {
-            "instanceId": "Texttemplatedsgn__0014",
-            "entityName": "TextTemplateDesign",
-            "untranslated": [
-              {
-                "instanceId": "Stringtempltdsgn__0014",
-                "entityName": "StringTemplateDesign",
-                "constantText": "Instance"
-              }
-            ]
-          },
-          "values": []
-        },
-        {
-          "instanceId": "Staticinstncdsgn__0013",
-          "entityName": "StaticInstanceDesign",
-          "name": "castInstance",
-          "description": {
             "instanceId": "Texttemplatedsgn__0015",
             "entityName": "TextTemplateDesign",
             "untranslated": [
@@ -1697,15 +1881,32 @@
           "values": []
         },
         {
-          "instanceId": "Staticinstncdsgn__0014",
+          "instanceId": "Staticinstncdsgn__0004",
           "entityName": "StaticInstanceDesign",
-          "name": "equalsOperands",
+          "name": "castInstance",
           "description": {
             "instanceId": "Texttemplatedsgn__0016",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
                 "instanceId": "Stringtempltdsgn__0016",
+                "entityName": "StringTemplateDesign",
+                "constantText": "Instance"
+              }
+            ]
+          },
+          "values": []
+        },
+        {
+          "instanceId": "Staticinstncdsgn__0008",
+          "entityName": "StaticInstanceDesign",
+          "name": "equalsOperands",
+          "description": {
+            "instanceId": "Texttemplatedsgn__0017",
+            "entityName": "TextTemplateDesign",
+            "untranslated": [
+              {
+                "instanceId": "Stringtempltdsgn__0017",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Operands"
               }
@@ -1714,26 +1915,9 @@
           "values": []
         },
         {
-          "instanceId": "Staticinstncdsgn__0015",
+          "instanceId": "Staticinstncdsgn__000a",
           "entityName": "StaticInstanceDesign",
           "name": "hasValueInput",
-          "description": {
-            "instanceId": "Texttemplatedsgn__0017",
-            "entityName": "TextTemplateDesign",
-            "untranslated": [
-              {
-                "instanceId": "Stringtempltdsgn__0017",
-                "entityName": "StringTemplateDesign",
-                "constantText": "Input"
-              }
-            ]
-          },
-          "values": []
-        },
-        {
-          "instanceId": "Staticinstncdsgn__0016",
-          "entityName": "StaticInstanceDesign",
-          "name": "negationInput",
           "description": {
             "instanceId": "Texttemplatedsgn__0018",
             "entityName": "TextTemplateDesign",
@@ -1748,15 +1932,32 @@
           "values": []
         },
         {
-          "instanceId": "Staticinstncdsgn__0017",
+          "instanceId": "Staticinstncdsgn__000c",
           "entityName": "StaticInstanceDesign",
-          "name": "reverseRelationToInstance",
+          "name": "negationInput",
           "description": {
             "instanceId": "Texttemplatedsgn__0019",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
                 "instanceId": "Stringtempltdsgn__0019",
+                "entityName": "StringTemplateDesign",
+                "constantText": "Input"
+              }
+            ]
+          },
+          "values": []
+        },
+        {
+          "instanceId": "Staticinstncdsgn__000e",
+          "entityName": "StaticInstanceDesign",
+          "name": "reverseRelationToInstance",
+          "description": {
+            "instanceId": "Texttemplatedsgn__001a",
+            "entityName": "TextTemplateDesign",
+            "untranslated": [
+              {
+                "instanceId": "Stringtempltdsgn__001a",
                 "entityName": "StringTemplateDesign",
                 "constantText": "To instance"
               }
@@ -1765,15 +1966,15 @@
           "values": []
         },
         {
-          "instanceId": "Staticinstncdsgn__0018",
+          "instanceId": "Staticinstncdsgn__0011",
           "entityName": "StaticInstanceDesign",
           "name": "sumOperands",
           "description": {
-            "instanceId": "Texttemplatedsgn__001a",
+            "instanceId": "Texttemplatedsgn__001b",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__001a",
+                "instanceId": "Stringtempltdsgn__001b",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Operands"
               }
@@ -1830,7 +2031,7 @@
       "name": "AttributeDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__0013",
+          "instanceId": "Attributedesign__0014",
           "entityName": "AttributeDesign",
           "name": "writeable",
           "hasDefault": true,
@@ -1862,7 +2063,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0014",
+          "instanceId": "Attributedesign__0015",
           "entityName": "AttributeDesign",
           "name": "hasRelevance",
           "hasDefault": true,
@@ -1894,7 +2095,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0015",
+          "instanceId": "Attributedesign__0016",
           "entityName": "AttributeDesign",
           "name": "hasRule",
           "hasDefault": true,
@@ -1926,7 +2127,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0016",
+          "instanceId": "Attributedesign__0017",
           "entityName": "AttributeDesign",
           "name": "hasDefault",
           "dataType": {
@@ -2005,6 +2206,10 @@
                 "instanceId": "Slctdnstcddctdsg__0008",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000a"
               },
               {
@@ -2023,7 +2228,7 @@
                     }
                   }
                 ],
-                "attribute": "Attributedesign__0014"
+                "attribute": "Attributedesign__0015"
               }
             ],
             "output": "Attribtddctndsgn__0008"
@@ -2051,6 +2256,10 @@
                 "instanceId": "Slctdnstcddctdsg__0009",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000a"
               },
               {
@@ -2069,7 +2278,7 @@
                     }
                   }
                 ],
-                "attribute": "Attributedesign__0015"
+                "attribute": "Attributedesign__0016"
               }
             ],
             "output": "Attribtddctndsgn__0009"
@@ -2097,6 +2306,10 @@
                 "instanceId": "Slctdnstcddctdsg__000a",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000a"
               },
               {
@@ -2115,7 +2328,7 @@
                     }
                   }
                 ],
-                "attribute": "Attributedesign__0016"
+                "attribute": "Attributedesign__0017"
               }
             ],
             "output": "Attribtddctndsgn__000a"
@@ -2141,7 +2354,7 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__000a",
+                "instanceId": "Customdedctndsgn__0009",
                 "entityName": "CustomDeductionDesign",
                 "implementationClassName": "org.instantlogic.designer.deduction.AttributeBelongsToDeduction",
                 "inputs": [],
@@ -2152,7 +2365,7 @@
                 }
               }
             ],
-            "output": "Customdedctndsgn__000a"
+            "output": "Customdedctndsgn__0009"
           },
           "to": "Entitydesign__0002"
         }
@@ -2166,7 +2379,7 @@
       "name": "RelationDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__0017",
+          "instanceId": "Attributedesign__0018",
           "entityName": "AttributeDesign",
           "name": "owner",
           "dataType": {
@@ -2176,7 +2389,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0018",
+          "instanceId": "Attributedesign__0019",
           "entityName": "AttributeDesign",
           "name": "autoCreate",
           "dataType": {
@@ -2186,7 +2399,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0019",
+          "instanceId": "Attributedesign__001a",
           "entityName": "AttributeDesign",
           "name": "reverseMultivalue",
           "dataType": {
@@ -2196,7 +2409,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__001a",
+          "instanceId": "Attributedesign__001b",
           "entityName": "AttributeDesign",
           "name": "reverseName",
           "dataType": {
@@ -2206,7 +2419,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__001b",
+          "instanceId": "Attributedesign__001c",
           "entityName": "AttributeDesign",
           "name": "reverseTechnicalName",
           "hasRule": true,
@@ -2221,7 +2434,7 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__000b",
+                "instanceId": "Customdedctndsgn__000a",
                 "entityName": "CustomDeductionDesign",
                 "implementationClassName": "org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction",
                 "inputs": [],
@@ -2232,11 +2445,11 @@
                 }
               }
             ],
-            "output": "Customdedctndsgn__000b"
+            "output": "Customdedctndsgn__000a"
           }
         },
         {
-          "instanceId": "Attributedesign__001c",
+          "instanceId": "Attributedesign__001d",
           "entityName": "AttributeDesign",
           "name": "reverseJavaIdentifier",
           "hasRule": true,
@@ -2251,7 +2464,7 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Customdedctndsgn__000c",
+                "instanceId": "Customdedctndsgn__000b",
                 "entityName": "CustomDeductionDesign",
                 "implementationClassName": "org.instantlogic.designer.deduction.ReverseJavaIdentifierDeduction",
                 "inputs": [],
@@ -2262,11 +2475,11 @@
                 }
               }
             ],
-            "output": "Customdedctndsgn__000c"
+            "output": "Customdedctndsgn__000b"
           }
         },
         {
-          "instanceId": "Attributedesign__001d",
+          "instanceId": "Attributedesign__001e",
           "entityName": "AttributeDesign",
           "name": "hasOptions",
           "dataType": {
@@ -2329,6 +2542,10 @@
                 "instanceId": "Slctdnstcddctdsg__000b",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__000b"
               },
               {
@@ -2347,7 +2564,7 @@
                     }
                   }
                 ],
-                "attribute": "Attributedesign__001d"
+                "attribute": "Attributedesign__001e"
               }
             ],
             "output": "Attribtddctndsgn__000b"
@@ -2461,7 +2678,7 @@
       "name": "StaticInstanceValueDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__001e",
+          "instanceId": "Attributedesign__001f",
           "entityName": "AttributeDesign",
           "name": "value",
           "dataType": {
@@ -2657,7 +2874,7 @@
       "name": "FragmentTypeDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__001f",
+          "instanceId": "Attributedesign__0020",
           "entityName": "AttributeDesign",
           "name": "fragmentFilters",
           "dataType": {
@@ -2671,7 +2888,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0020",
+          "instanceId": "Attributedesign__0021",
           "entityName": "AttributeDesign",
           "name": "hasAttribute",
           "dataType": {
@@ -2702,7 +2919,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0021",
+          "instanceId": "Attributedesign__0022",
           "entityName": "AttributeDesign",
           "name": "hasEvent",
           "dataType": {
@@ -2771,7 +2988,7 @@
       "name": "ElementDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__0022",
+          "instanceId": "Attributedesign__0023",
           "entityName": "AttributeDesign",
           "name": "editorOpen",
           "dataType": {
@@ -2799,7 +3016,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0023",
+          "instanceId": "Attributedesign__0024",
           "entityName": "AttributeDesign",
           "name": "previewMode",
           "dataType": {
@@ -2959,7 +3176,7 @@
       "name": "FragmentTemplateDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__0024",
+          "instanceId": "Attributedesign__0025",
           "entityName": "AttributeDesign",
           "name": "fragmentTypeName",
           "dataType": {
@@ -2969,7 +3186,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0025",
+          "instanceId": "Attributedesign__0026",
           "entityName": "AttributeDesign",
           "name": "styleNames",
           "dataType": {
@@ -2980,7 +3197,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0026",
+          "instanceId": "Attributedesign__0027",
           "entityName": "AttributeDesign",
           "name": "fragmentFilters",
           "dataType": {
@@ -3014,6 +3231,10 @@
                 "instanceId": "Slctdnstcddctdsg__000c",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__0001"
               },
               {
@@ -3059,6 +3280,10 @@
                 "instanceId": "Slctdnstcddctdsg__000d",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__001c"
               },
               {
@@ -3122,6 +3347,10 @@
                 "instanceId": "Slctdnstcddctdsg__000e",
                 "entityName": "SelectedInstanceDeductionDesign",
                 "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
                 "ofEntity": "Entitydesign__0001"
               },
               {
@@ -3186,7 +3415,7 @@
       "name": "PropertyDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__0027",
+          "instanceId": "Attributedesign__0028",
           "entityName": "AttributeDesign",
           "name": "propertyName",
           "dataType": {
@@ -3196,7 +3425,7 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0028",
+          "instanceId": "Attributedesign__0029",
           "entityName": "AttributeDesign",
           "name": "collapsed",
           "dataType": {
@@ -3420,7 +3649,7 @@
       "name": "CustomDeductionDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__0029",
+          "instanceId": "Attributedesign__002a",
           "entityName": "AttributeDesign",
           "name": "implementationClassName",
           "dataType": {
@@ -3498,7 +3727,7 @@
       "name": "ConstantDeductionDesign",
       "attributes": [
         {
-          "instanceId": "Attributedesign__002a",
+          "instanceId": "Attributedesign__002b",
           "entityName": "AttributeDesign",
           "name": "value",
           "dataType": {
@@ -3778,11 +4007,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__001b",
+                                  "instanceId": "Texttemplatedsgn__001c",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__001b",
+                                      "instanceId": "Stringtempltdsgn__001c",
                                       "entityName": "StringTemplateDesign",
                                       "deduction": {
                                         "instanceId": "Deductinschmdsgn__0026",
@@ -3792,6 +4021,10 @@
                                             "instanceId": "Slctdnstcddctdsg__000f",
                                             "entityName": "SelectedInstanceDeductionDesign",
                                             "inputs": [],
+                                            "operation": {
+                                              "instanceName": "selectedInstance",
+                                              "entityName": "DeductionOperationDesign"
+                                            },
                                             "ofEntity": "Entitydesign__0001"
                                           },
                                           {
@@ -3813,7 +4046,7 @@
                                             "attribute": "Attributedesign__0001"
                                           },
                                           {
-                                            "instanceId": "Customdedctndsgn__000d",
+                                            "instanceId": "Customdedctndsgn__000c",
                                             "entityName": "CustomDeductionDesign",
                                             "implementationClassName": "org.instantlogic.designer.deduction.CapitalizeFirstDeduction",
                                             "inputs": [
@@ -3832,11 +4065,11 @@
                                             }
                                           }
                                         ],
-                                        "output": "Customdedctndsgn__000d"
+                                        "output": "Customdedctndsgn__000c"
                                       }
                                     },
                                     {
-                                      "instanceId": "Stringtempltdsgn__001c",
+                                      "instanceId": "Stringtempltdsgn__001d",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": " (Application)"
                                     }
@@ -3858,11 +4091,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__001c",
+                                  "instanceId": "Texttemplatedsgn__001d",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__001d",
+                                      "instanceId": "Stringtempltdsgn__001e",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Welcome to the Designer"
                                     }
@@ -3896,11 +4129,11 @@
                                         "propertyName": "header",
                                         "children": [],
                                         "text": {
-                                          "instanceId": "Texttemplatedsgn__001d",
+                                          "instanceId": "Texttemplatedsgn__001e",
                                           "entityName": "TextTemplateDesign",
                                           "untranslated": [
                                             {
-                                              "instanceId": "Stringtempltdsgn__001e",
+                                              "instanceId": "Stringtempltdsgn__001f",
                                               "entityName": "StringTemplateDesign",
                                               "constantText": "Entities"
                                             }
@@ -3958,11 +4191,11 @@
                                                             "propertyName": "text",
                                                             "children": [],
                                                             "text": {
-                                                              "instanceId": "Texttemplatedsgn__001e",
+                                                              "instanceId": "Texttemplatedsgn__001f",
                                                               "entityName": "TextTemplateDesign",
                                                               "untranslated": [
                                                                 {
-                                                                  "instanceId": "Stringtempltdsgn__001f",
+                                                                  "instanceId": "Stringtempltdsgn__0020",
                                                                   "entityName": "StringTemplateDesign",
                                                                   "deduction": {
                                                                     "instanceId": "Deductinschmdsgn__0027",
@@ -3972,6 +4205,10 @@
                                                                         "instanceId": "Slctdnstcddctdsg__0010",
                                                                         "entityName": "SelectedInstanceDeductionDesign",
                                                                         "inputs": [],
+                                                                        "operation": {
+                                                                          "instanceName": "selectedInstance",
+                                                                          "entityName": "DeductionOperationDesign"
+                                                                        },
                                                                         "ofEntity": "Entitydesign__0008"
                                                                       },
                                                                       {
@@ -4018,6 +4255,10 @@
                                           "instanceId": "Slctdnstcddctdsg__0011",
                                           "entityName": "SelectedInstanceDeductionDesign",
                                           "inputs": [],
+                                          "operation": {
+                                            "instanceName": "selectedInstance",
+                                            "entityName": "DeductionOperationDesign"
+                                          },
                                           "ofEntity": "Entitydesign__0001"
                                         },
                                         {
@@ -4060,11 +4301,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__001f",
+                                  "instanceId": "Texttemplatedsgn__0020",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0020",
+                                      "instanceId": "Stringtempltdsgn__0021",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Add entity"
                                     }
@@ -4098,11 +4339,11 @@
                                         "propertyName": "header",
                                         "children": [],
                                         "text": {
-                                          "instanceId": "Texttemplatedsgn__0020",
+                                          "instanceId": "Texttemplatedsgn__0021",
                                           "entityName": "TextTemplateDesign",
                                           "untranslated": [
                                             {
-                                              "instanceId": "Stringtempltdsgn__0021",
+                                              "instanceId": "Stringtempltdsgn__0022",
                                               "entityName": "StringTemplateDesign",
                                               "constantText": "Flows"
                                             }
@@ -4160,11 +4401,11 @@
                                                             "propertyName": "text",
                                                             "children": [],
                                                             "text": {
-                                                              "instanceId": "Texttemplatedsgn__0021",
+                                                              "instanceId": "Texttemplatedsgn__0022",
                                                               "entityName": "TextTemplateDesign",
                                                               "untranslated": [
                                                                 {
-                                                                  "instanceId": "Stringtempltdsgn__0022",
+                                                                  "instanceId": "Stringtempltdsgn__0023",
                                                                   "entityName": "StringTemplateDesign",
                                                                   "deduction": {
                                                                     "instanceId": "Deductinschmdsgn__0029",
@@ -4174,6 +4415,10 @@
                                                                         "instanceId": "Slctdnstcddctdsg__0012",
                                                                         "entityName": "SelectedInstanceDeductionDesign",
                                                                         "inputs": [],
+                                                                        "operation": {
+                                                                          "instanceName": "selectedInstance",
+                                                                          "entityName": "DeductionOperationDesign"
+                                                                        },
                                                                         "ofEntity": "Entitydesign__0004"
                                                                       },
                                                                       {
@@ -4220,6 +4465,10 @@
                                           "instanceId": "Slctdnstcddctdsg__0013",
                                           "entityName": "SelectedInstanceDeductionDesign",
                                           "inputs": [],
+                                          "operation": {
+                                            "instanceName": "selectedInstance",
+                                            "entityName": "DeductionOperationDesign"
+                                          },
                                           "ofEntity": "Entitydesign__0001"
                                         },
                                         {
@@ -4257,11 +4506,11 @@
             ]
           },
           "title": {
-            "instanceId": "Texttemplatedsgn__0022",
+            "instanceId": "Texttemplatedsgn__0023",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__0023",
+                "instanceId": "Stringtempltdsgn__0024",
                 "entityName": "StringTemplateDesign",
                 "constantText": "Welcome"
               }
@@ -4355,11 +4604,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__0023",
+                                  "instanceId": "Texttemplatedsgn__0024",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0024",
+                                      "instanceId": "Stringtempltdsgn__0025",
                                       "entityName": "StringTemplateDesign",
                                       "deduction": {
                                         "instanceId": "Deductinschmdsgn__002b",
@@ -4369,6 +4618,10 @@
                                             "instanceId": "Slctdnstcddctdsg__0014",
                                             "entityName": "SelectedInstanceDeductionDesign",
                                             "inputs": [],
+                                            "operation": {
+                                              "instanceName": "selectedInstance",
+                                              "entityName": "DeductionOperationDesign"
+                                            },
                                             "ofEntity": "Entitydesign__0008"
                                           },
                                           {
@@ -4390,7 +4643,7 @@
                                             "attribute": "Attributedesign__0006"
                                           },
                                           {
-                                            "instanceId": "Customdedctndsgn__000e",
+                                            "instanceId": "Customdedctndsgn__000d",
                                             "entityName": "CustomDeductionDesign",
                                             "implementationClassName": "org.instantlogic.designer.deduction.CapitalizeFirstDeduction",
                                             "inputs": [
@@ -4409,11 +4662,11 @@
                                             }
                                           }
                                         ],
-                                        "output": "Customdedctndsgn__000e"
+                                        "output": "Customdedctndsgn__000d"
                                       }
                                     },
                                     {
-                                      "instanceId": "Stringtempltdsgn__0025",
+                                      "instanceId": "Stringtempltdsgn__0026",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": " (Entity)"
                                     }
@@ -4445,11 +4698,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__0024",
+                                  "instanceId": "Texttemplatedsgn__0025",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0026",
+                                      "instanceId": "Stringtempltdsgn__0027",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Attributes"
                                     }
@@ -4500,11 +4753,11 @@
                                                     "propertyName": "text",
                                                     "children": [],
                                                     "text": {
-                                                      "instanceId": "Texttemplatedsgn__0025",
+                                                      "instanceId": "Texttemplatedsgn__0026",
                                                       "entityName": "TextTemplateDesign",
                                                       "untranslated": [
                                                         {
-                                                          "instanceId": "Stringtempltdsgn__0027",
+                                                          "instanceId": "Stringtempltdsgn__0028",
                                                           "entityName": "StringTemplateDesign",
                                                           "deduction": {
                                                             "instanceId": "Deductinschmdsgn__002c",
@@ -4514,6 +4767,10 @@
                                                                 "instanceId": "Slctdnstcddctdsg__0015",
                                                                 "entityName": "SelectedInstanceDeductionDesign",
                                                                 "inputs": [],
+                                                                "operation": {
+                                                                  "instanceName": "selectedInstance",
+                                                                  "entityName": "DeductionOperationDesign"
+                                                                },
                                                                 "ofEntity": "Entitydesign__000a"
                                                               },
                                                               {
@@ -4560,6 +4817,10 @@
                                   "instanceId": "Slctdnstcddctdsg__0016",
                                   "entityName": "SelectedInstanceDeductionDesign",
                                   "inputs": [],
+                                  "operation": {
+                                    "instanceName": "selectedInstance",
+                                    "entityName": "DeductionOperationDesign"
+                                  },
                                   "ofEntity": "Entitydesign__0002"
                                 },
                                 {
@@ -4598,11 +4859,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__0026",
+                                  "instanceId": "Texttemplatedsgn__0027",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0028",
+                                      "instanceId": "Stringtempltdsgn__0029",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Add attribute"
                                     }
@@ -4620,11 +4881,11 @@
             ]
           },
           "title": {
-            "instanceId": "Texttemplatedsgn__0027",
+            "instanceId": "Texttemplatedsgn__0028",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__0029",
+                "instanceId": "Stringtempltdsgn__002a",
                 "entityName": "StringTemplateDesign",
                 "deduction": {
                   "instanceId": "Deductinschmdsgn__002e",
@@ -4634,6 +4895,10 @@
                       "instanceId": "Slctdnstcddctdsg__0017",
                       "entityName": "SelectedInstanceDeductionDesign",
                       "inputs": [],
+                      "operation": {
+                        "instanceName": "selectedInstance",
+                        "entityName": "DeductionOperationDesign"
+                      },
                       "ofEntity": "Entitydesign__0008"
                     },
                     {
@@ -4655,7 +4920,7 @@
                       "attribute": "Attributedesign__0006"
                     },
                     {
-                      "instanceId": "Customdedctndsgn__000f",
+                      "instanceId": "Customdedctndsgn__000e",
                       "entityName": "CustomDeductionDesign",
                       "implementationClassName": "org.instantlogic.designer.deduction.CapitalizeFirstDeduction",
                       "inputs": [
@@ -4674,11 +4939,11 @@
                       }
                     }
                   ],
-                  "output": "Customdedctndsgn__000f"
+                  "output": "Customdedctndsgn__000e"
                 }
               },
               {
-                "instanceId": "Stringtempltdsgn__002a",
+                "instanceId": "Stringtempltdsgn__002b",
                 "entityName": "StringTemplateDesign",
                 "constantText": " (Entity)"
               }
@@ -4780,11 +5045,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__0028",
+                                  "instanceId": "Texttemplatedsgn__0029",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__002b",
+                                      "instanceId": "Stringtempltdsgn__002c",
                                       "entityName": "StringTemplateDesign",
                                       "deduction": {
                                         "instanceId": "Deductinschmdsgn__002f",
@@ -4794,6 +5059,10 @@
                                             "instanceId": "Slctdnstcddctdsg__0018",
                                             "entityName": "SelectedInstanceDeductionDesign",
                                             "inputs": [],
+                                            "operation": {
+                                              "instanceName": "selectedInstance",
+                                              "entityName": "DeductionOperationDesign"
+                                            },
                                             "ofEntity": "Entitydesign__0008"
                                           },
                                           {
@@ -4815,7 +5084,7 @@
                                             "attribute": "Attributedesign__0006"
                                           },
                                           {
-                                            "instanceId": "Customdedctndsgn__0010",
+                                            "instanceId": "Customdedctndsgn__000f",
                                             "entityName": "CustomDeductionDesign",
                                             "implementationClassName": "org.instantlogic.designer.deduction.CapitalizeFirstDeduction",
                                             "inputs": [
@@ -4834,11 +5103,11 @@
                                             }
                                           }
                                         ],
-                                        "output": "Customdedctndsgn__0010"
+                                        "output": "Customdedctndsgn__000f"
                                       }
                                     },
                                     {
-                                      "instanceId": "Stringtempltdsgn__002c",
+                                      "instanceId": "Stringtempltdsgn__002d",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": " (Flow)"
                                     }
@@ -4870,11 +5139,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__0029",
+                                  "instanceId": "Texttemplatedsgn__002a",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__002d",
+                                      "instanceId": "Stringtempltdsgn__002e",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Nodes"
                                     }
@@ -4925,11 +5194,11 @@
                                                     "propertyName": "text",
                                                     "children": [],
                                                     "text": {
-                                                      "instanceId": "Texttemplatedsgn__002a",
+                                                      "instanceId": "Texttemplatedsgn__002b",
                                                       "entityName": "TextTemplateDesign",
                                                       "untranslated": [
                                                         {
-                                                          "instanceId": "Stringtempltdsgn__002e",
+                                                          "instanceId": "Stringtempltdsgn__002f",
                                                           "entityName": "StringTemplateDesign",
                                                           "deduction": {
                                                             "instanceId": "Deductinschmdsgn__0030",
@@ -4939,6 +5208,10 @@
                                                                 "instanceId": "Slctdnstcddctdsg__0019",
                                                                 "entityName": "SelectedInstanceDeductionDesign",
                                                                 "inputs": [],
+                                                                "operation": {
+                                                                  "instanceName": "selectedInstance",
+                                                                  "entityName": "DeductionOperationDesign"
+                                                                },
                                                                 "ofEntity": "Entitydesign__0016"
                                                               },
                                                               {
@@ -4985,6 +5258,10 @@
                                   "instanceId": "Slctdnstcddctdsg__001a",
                                   "entityName": "SelectedInstanceDeductionDesign",
                                   "inputs": [],
+                                  "operation": {
+                                    "instanceName": "selectedInstance",
+                                    "entityName": "DeductionOperationDesign"
+                                  },
                                   "ofEntity": "Entitydesign__0004"
                                 },
                                 {
@@ -5018,11 +5295,11 @@
             ]
           },
           "title": {
-            "instanceId": "Texttemplatedsgn__002b",
+            "instanceId": "Texttemplatedsgn__002c",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__002f",
+                "instanceId": "Stringtempltdsgn__0030",
                 "entityName": "StringTemplateDesign",
                 "deduction": {
                   "instanceId": "Deductinschmdsgn__0032",
@@ -5032,6 +5309,10 @@
                       "instanceId": "Slctdnstcddctdsg__001b",
                       "entityName": "SelectedInstanceDeductionDesign",
                       "inputs": [],
+                      "operation": {
+                        "instanceName": "selectedInstance",
+                        "entityName": "DeductionOperationDesign"
+                      },
                       "ofEntity": "Entitydesign__0008"
                     },
                     {
@@ -5053,7 +5334,7 @@
                       "attribute": "Attributedesign__0006"
                     },
                     {
-                      "instanceId": "Customdedctndsgn__0011",
+                      "instanceId": "Customdedctndsgn__0010",
                       "entityName": "CustomDeductionDesign",
                       "implementationClassName": "org.instantlogic.designer.deduction.CapitalizeFirstDeduction",
                       "inputs": [
@@ -5072,11 +5353,11 @@
                       }
                     }
                   ],
-                  "output": "Customdedctndsgn__0011"
+                  "output": "Customdedctndsgn__0010"
                 }
               },
               {
-                "instanceId": "Stringtempltdsgn__0030",
+                "instanceId": "Stringtempltdsgn__0031",
                 "entityName": "StringTemplateDesign",
                 "constantText": " (Flow)"
               }
@@ -5226,6 +5507,10 @@
                           "instanceId": "Slctdnstcddctdsg__001c",
                           "entityName": "SelectedInstanceDeductionDesign",
                           "inputs": [],
+                          "operation": {
+                            "instanceName": "selectedInstance",
+                            "entityName": "DeductionOperationDesign"
+                          },
                           "ofEntity": "Entitydesign__0016"
                         },
                         {
@@ -5277,11 +5562,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__002c",
+                                  "instanceId": "Texttemplatedsgn__002d",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0031",
+                                      "instanceId": "Stringtempltdsgn__0032",
                                       "entityName": "StringTemplateDesign",
                                       "deduction": {
                                         "instanceId": "Deductinschmdsgn__0034",
@@ -5291,6 +5576,10 @@
                                             "instanceId": "Slctdnstcddctdsg__001d",
                                             "entityName": "SelectedInstanceDeductionDesign",
                                             "inputs": [],
+                                            "operation": {
+                                              "instanceName": "selectedInstance",
+                                              "entityName": "DeductionOperationDesign"
+                                            },
                                             "ofEntity": "Entitydesign__0008"
                                           },
                                           {
@@ -5316,7 +5605,7 @@
                                       }
                                     },
                                     {
-                                      "instanceId": "Stringtempltdsgn__0032",
+                                      "instanceId": "Stringtempltdsgn__0033",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": " (Place template)"
                                     }
@@ -5348,11 +5637,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__002d",
+                                  "instanceId": "Texttemplatedsgn__002e",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0033",
+                                      "instanceId": "Stringtempltdsgn__0034",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Content"
                                     }
@@ -5395,6 +5684,10 @@
                                   "instanceId": "Slctdnstcddctdsg__001e",
                                   "entityName": "SelectedInstanceDeductionDesign",
                                   "inputs": [],
+                                  "operation": {
+                                    "instanceName": "selectedInstance",
+                                    "entityName": "DeductionOperationDesign"
+                                  },
                                   "ofEntity": "Entitydesign__0019"
                                 },
                                 {
@@ -5428,11 +5721,11 @@
             ]
           },
           "title": {
-            "instanceId": "Texttemplatedsgn__002e",
+            "instanceId": "Texttemplatedsgn__002f",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__0034",
+                "instanceId": "Stringtempltdsgn__0035",
                 "entityName": "StringTemplateDesign",
                 "deduction": {
                   "instanceId": "Deductinschmdsgn__0036",
@@ -5442,6 +5735,10 @@
                       "instanceId": "Slctdnstcddctdsg__001f",
                       "entityName": "SelectedInstanceDeductionDesign",
                       "inputs": [],
+                      "operation": {
+                        "instanceName": "selectedInstance",
+                        "entityName": "DeductionOperationDesign"
+                      },
                       "ofEntity": "Entitydesign__0008"
                     },
                     {
@@ -5467,7 +5764,7 @@
                 }
               },
               {
-                "instanceId": "Stringtempltdsgn__0035",
+                "instanceId": "Stringtempltdsgn__0036",
                 "entityName": "StringTemplateDesign",
                 "constantText": " (Place)"
               }
@@ -5550,6 +5847,10 @@
                           "instanceId": "Slctdnstcddctdsg__0020",
                           "entityName": "SelectedInstanceDeductionDesign",
                           "inputs": [],
+                          "operation": {
+                            "instanceName": "selectedInstance",
+                            "entityName": "DeductionOperationDesign"
+                          },
                           "ofEntity": "Entitydesign__000a"
                         },
                         {
@@ -5601,11 +5902,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__002f",
+                                  "instanceId": "Texttemplatedsgn__0030",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0036",
+                                      "instanceId": "Stringtempltdsgn__0037",
                                       "entityName": "StringTemplateDesign",
                                       "deduction": {
                                         "instanceId": "Deductinschmdsgn__0038",
@@ -5615,6 +5916,10 @@
                                             "instanceId": "Slctdnstcddctdsg__0021",
                                             "entityName": "SelectedInstanceDeductionDesign",
                                             "inputs": [],
+                                            "operation": {
+                                              "instanceName": "selectedInstance",
+                                              "entityName": "DeductionOperationDesign"
+                                            },
                                             "ofEntity": "Entitydesign__0008"
                                           },
                                           {
@@ -5640,7 +5945,7 @@
                                       }
                                     },
                                     {
-                                      "instanceId": "Stringtempltdsgn__0037",
+                                      "instanceId": "Stringtempltdsgn__0038",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": " (Attribute)"
                                     }
@@ -5672,11 +5977,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__0030",
+                                  "instanceId": "Texttemplatedsgn__0031",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0038",
+                                      "instanceId": "Stringtempltdsgn__0039",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Data type"
                                     }
@@ -5705,7 +6010,7 @@
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Input",
                                 "styleNames": [],
-                                "attribute": "Attributedesign__0010",
+                                "attribute": "Attributedesign__0011",
                                 "entity": "Entitydesign__000e",
                                 "properties": []
                               },
@@ -5715,7 +6020,7 @@
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Input",
                                 "styleNames": [],
-                                "attribute": "Attributedesign__0011",
+                                "attribute": "Attributedesign__0012",
                                 "entity": "Entitydesign__000e",
                                 "properties": []
                               },
@@ -5725,7 +6030,7 @@
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Input",
                                 "styleNames": [],
-                                "attribute": "Attributedesign__000d",
+                                "attribute": "Attributedesign__000e",
                                 "entity": "Entitydesign__000e",
                                 "properties": []
                               },
@@ -5735,7 +6040,7 @@
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Input",
                                 "styleNames": [],
-                                "attribute": "Attributedesign__000e",
+                                "attribute": "Attributedesign__000f",
                                 "entity": "Entitydesign__000e",
                                 "properties": []
                               },
@@ -5745,7 +6050,7 @@
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Input",
                                 "styleNames": [],
-                                "attribute": "Attributedesign__000f",
+                                "attribute": "Attributedesign__0010",
                                 "entity": "Entitydesign__000e",
                                 "properties": []
                               }
@@ -5758,6 +6063,10 @@
                                   "instanceId": "Slctdnstcddctdsg__0022",
                                   "entityName": "SelectedInstanceDeductionDesign",
                                   "inputs": [],
+                                  "operation": {
+                                    "instanceName": "selectedInstance",
+                                    "entityName": "DeductionOperationDesign"
+                                  },
                                   "ofEntity": "Entitydesign__000a"
                                 },
                                 {
@@ -5795,11 +6104,11 @@
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__0031",
+                                  "instanceId": "Texttemplatedsgn__0032",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0039",
+                                      "instanceId": "Stringtempltdsgn__003a",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Value"
                                     }
@@ -5814,7 +6123,7 @@
                             "fragmentFilters": [],
                             "fragmentTypeName": "Input",
                             "styleNames": [],
-                            "attribute": "Attributedesign__0014",
+                            "attribute": "Attributedesign__0015",
                             "entity": "Entitydesign__000a",
                             "properties": []
                           },
@@ -5824,7 +6133,7 @@
                             "fragmentFilters": [],
                             "fragmentTypeName": "Input",
                             "styleNames": [],
-                            "attribute": "Attributedesign__0015",
+                            "attribute": "Attributedesign__0016",
                             "entity": "Entitydesign__000a",
                             "properties": []
                           },
@@ -5834,7 +6143,7 @@
                             "fragmentFilters": [],
                             "fragmentTypeName": "Input",
                             "styleNames": [],
-                            "attribute": "Attributedesign__0013",
+                            "attribute": "Attributedesign__0014",
                             "entity": "Entitydesign__000a",
                             "properties": []
                           },
@@ -5844,7 +6153,7 @@
                             "fragmentFilters": [],
                             "fragmentTypeName": "Input",
                             "styleNames": [],
-                            "attribute": "Attributedesign__0016",
+                            "attribute": "Attributedesign__0017",
                             "entity": "Entitydesign__000a",
                             "properties": []
                           }
@@ -5857,11 +6166,11 @@
             ]
           },
           "title": {
-            "instanceId": "Texttemplatedsgn__0032",
+            "instanceId": "Texttemplatedsgn__0033",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__003a",
+                "instanceId": "Stringtempltdsgn__003b",
                 "entityName": "StringTemplateDesign",
                 "deduction": {
                   "instanceId": "Deductinschmdsgn__003a",
@@ -5871,6 +6180,10 @@
                       "instanceId": "Slctdnstcddctdsg__0023",
                       "entityName": "SelectedInstanceDeductionDesign",
                       "inputs": [],
+                      "operation": {
+                        "instanceName": "selectedInstance",
+                        "entityName": "DeductionOperationDesign"
+                      },
                       "ofEntity": "Entitydesign__0008"
                     },
                     {
@@ -5896,7 +6209,7 @@
                 }
               },
               {
-                "instanceId": "Stringtempltdsgn__003b",
+                "instanceId": "Stringtempltdsgn__003c",
                 "entityName": "StringTemplateDesign",
                 "constantText": " (Attribute)"
               }
@@ -5982,11 +6295,11 @@
                                     "propertyName": "text",
                                     "children": [],
                                     "text": {
-                                      "instanceId": "Texttemplatedsgn__0033",
+                                      "instanceId": "Texttemplatedsgn__0034",
                                       "entityName": "TextTemplateDesign",
                                       "untranslated": [
                                         {
-                                          "instanceId": "Stringtempltdsgn__003c",
+                                          "instanceId": "Stringtempltdsgn__003d",
                                           "entityName": "StringTemplateDesign",
                                           "deduction": {
                                             "instanceId": "Deductinschmdsgn__003b",
@@ -5996,6 +6309,10 @@
                                                 "instanceId": "Slctdnstcddctdsg__0024",
                                                 "entityName": "SelectedInstanceDeductionDesign",
                                                 "inputs": [],
+                                                "operation": {
+                                                  "instanceName": "selectedInstance",
+                                                  "entityName": "DeductionOperationDesign"
+                                                },
                                                 "ofEntity": "Entitydesign__0002"
                                               },
                                               {
@@ -6021,7 +6338,7 @@
                                           }
                                         },
                                         {
-                                          "instanceId": "Stringtempltdsgn__003d",
+                                          "instanceId": "Stringtempltdsgn__003e",
                                           "entityName": "StringTemplateDesign",
                                           "constantText": " (Entity)"
                                         }
@@ -6104,11 +6421,11 @@
                                     "propertyName": "text",
                                     "children": [],
                                     "text": {
-                                      "instanceId": "Texttemplatedsgn__0034",
+                                      "instanceId": "Texttemplatedsgn__0035",
                                       "entityName": "TextTemplateDesign",
                                       "untranslated": [
                                         {
-                                          "instanceId": "Stringtempltdsgn__003e",
+                                          "instanceId": "Stringtempltdsgn__003f",
                                           "entityName": "StringTemplateDesign",
                                           "deduction": {
                                             "instanceId": "Deductinschmdsgn__003c",
@@ -6118,6 +6435,10 @@
                                                 "instanceId": "Slctdnstcddctdsg__0025",
                                                 "entityName": "SelectedInstanceDeductionDesign",
                                                 "inputs": [],
+                                                "operation": {
+                                                  "instanceName": "selectedInstance",
+                                                  "entityName": "DeductionOperationDesign"
+                                                },
                                                 "ofEntity": "Entitydesign__0004"
                                               },
                                               {
@@ -6143,7 +6464,7 @@
                                           }
                                         },
                                         {
-                                          "instanceId": "Stringtempltdsgn__003f",
+                                          "instanceId": "Stringtempltdsgn__0040",
                                           "entityName": "StringTemplateDesign",
                                           "constantText": " (Flow)"
                                         }
@@ -6198,6 +6519,10 @@
                           "instanceId": "Slctdnstcddctdsg__0026",
                           "entityName": "SelectedInstanceDeductionDesign",
                           "inputs": [],
+                          "operation": {
+                            "instanceName": "selectedInstance",
+                            "entityName": "DeductionOperationDesign"
+                          },
                           "ofEntity": "Entitydesign__0018"
                         },
                         {
@@ -6216,7 +6541,7 @@
                               }
                             }
                           ],
-                          "attribute": "Attributedesign__0022"
+                          "attribute": "Attributedesign__0023"
                         }
                       ],
                       "output": "Attribtddctndsgn__0025"
@@ -6258,6 +6583,10 @@
                                       "instanceId": "Slctdnstcddctdsg__0027",
                                       "entityName": "SelectedInstanceDeductionDesign",
                                       "inputs": [],
+                                      "operation": {
+                                        "instanceName": "selectedInstance",
+                                        "entityName": "DeductionOperationDesign"
+                                      },
                                       "ofEntity": "Entitydesign__001c"
                                     },
                                     {
@@ -6294,7 +6623,7 @@
                                           }
                                         }
                                       ],
-                                      "attribute": "Attributedesign__0020"
+                                      "attribute": "Attributedesign__0021"
                                     }
                                   ],
                                   "output": "Attribtddctndsgn__0027"
@@ -6334,6 +6663,10 @@
                                                   "instanceId": "Slctdnstcddctdsg__0028",
                                                   "entityName": "SelectedInstanceDeductionDesign",
                                                   "inputs": [],
+                                                  "operation": {
+                                                    "instanceName": "selectedInstance",
+                                                    "entityName": "DeductionOperationDesign"
+                                                  },
                                                   "ofEntity": "Entitydesign__001c"
                                                 },
                                                 {
@@ -6412,11 +6745,11 @@
                                                             "propertyName": "text",
                                                             "children": [],
                                                             "text": {
-                                                              "instanceId": "Texttemplatedsgn__0035",
+                                                              "instanceId": "Texttemplatedsgn__0036",
                                                               "entityName": "TextTemplateDesign",
                                                               "untranslated": [
                                                                 {
-                                                                  "instanceId": "Stringtempltdsgn__0040",
+                                                                  "instanceId": "Stringtempltdsgn__0041",
                                                                   "entityName": "StringTemplateDesign",
                                                                   "constantText": "New attribute"
                                                                 }
@@ -6452,6 +6785,10 @@
                       "instanceId": "Slctdnstcddctdsg__0029",
                       "entityName": "SelectedInstanceDeductionDesign",
                       "inputs": [],
+                      "operation": {
+                        "instanceName": "selectedInstance",
+                        "entityName": "DeductionOperationDesign"
+                      },
                       "ofEntity": "Entitydesign__0018"
                     },
                     {
@@ -6538,6 +6875,10 @@
                                   "instanceId": "Slctdnstcddctdsg__002a",
                                   "entityName": "SelectedInstanceDeductionDesign",
                                   "inputs": [],
+                                  "operation": {
+                                    "instanceName": "selectedInstance",
+                                    "entityName": "DeductionOperationDesign"
+                                  },
                                   "ofEntity": "Entitydesign__0018"
                                 },
                                 {
@@ -6556,7 +6897,7 @@
                                       }
                                     }
                                   ],
-                                  "attribute": "Attributedesign__0023"
+                                  "attribute": "Attributedesign__0024"
                                 }
                               ],
                               "output": "Attribtddctndsgn__0029"
@@ -6580,11 +6921,11 @@
                                     "propertyName": "text",
                                     "children": [],
                                     "text": {
-                                      "instanceId": "Texttemplatedsgn__0036",
+                                      "instanceId": "Texttemplatedsgn__0037",
                                       "entityName": "TextTemplateDesign",
                                       "untranslated": [
                                         {
-                                          "instanceId": "Stringtempltdsgn__0041",
+                                          "instanceId": "Stringtempltdsgn__0042",
                                           "entityName": "StringTemplateDesign",
                                           "deduction": {
                                             "instanceId": "Deductinschmdsgn__0042",
@@ -6594,6 +6935,10 @@
                                                 "instanceId": "Slctdnstcddctdsg__002b",
                                                 "entityName": "SelectedInstanceDeductionDesign",
                                                 "inputs": [],
+                                                "operation": {
+                                                  "instanceName": "selectedInstance",
+                                                  "entityName": "DeductionOperationDesign"
+                                                },
                                                 "ofEntity": "Entitydesign__001c"
                                               },
                                               {
@@ -6652,6 +6997,10 @@
                                       "instanceId": "Slctdnstcddctdsg__002c",
                                       "entityName": "SelectedInstanceDeductionDesign",
                                       "inputs": [],
+                                      "operation": {
+                                        "instanceName": "selectedInstance",
+                                        "entityName": "DeductionOperationDesign"
+                                      },
                                       "ofEntity": "Entitydesign__0018"
                                     },
                                     {
@@ -6670,7 +7019,7 @@
                                           }
                                         }
                                       ],
-                                      "attribute": "Attributedesign__0022"
+                                      "attribute": "Attributedesign__0023"
                                     }
                                   ],
                                   "output": "Attribtddctndsgn__002c"
@@ -6692,11 +7041,11 @@
                                         "propertyName": "text",
                                         "children": [],
                                         "text": {
-                                          "instanceId": "Texttemplatedsgn__0037",
+                                          "instanceId": "Texttemplatedsgn__0038",
                                           "entityName": "TextTemplateDesign",
                                           "untranslated": [
                                             {
-                                              "instanceId": "Stringtempltdsgn__0042",
+                                              "instanceId": "Stringtempltdsgn__0043",
                                               "entityName": "StringTemplateDesign",
                                               "constantText": "Edit"
                                             }
@@ -6723,11 +7072,11 @@
                                         "propertyName": "text",
                                         "children": [],
                                         "text": {
-                                          "instanceId": "Texttemplatedsgn__0038",
+                                          "instanceId": "Texttemplatedsgn__0039",
                                           "entityName": "TextTemplateDesign",
                                           "untranslated": [
                                             {
-                                              "instanceId": "Stringtempltdsgn__0043",
+                                              "instanceId": "Stringtempltdsgn__0044",
                                               "entityName": "StringTemplateDesign",
                                               "constantText": "Close editor"
                                             }
@@ -6790,6 +7139,10 @@
                                   "instanceId": "Slctdnstcddctdsg__002d",
                                   "entityName": "SelectedInstanceDeductionDesign",
                                   "inputs": [],
+                                  "operation": {
+                                    "instanceName": "selectedInstance",
+                                    "entityName": "DeductionOperationDesign"
+                                  },
                                   "ofEntity": "Entitydesign__001d"
                                 },
                                 {
@@ -6823,6 +7176,10 @@
                               "instanceId": "Slctdnstcddctdsg__002e",
                               "entityName": "SelectedInstanceDeductionDesign",
                               "inputs": [],
+                              "operation": {
+                                "instanceName": "selectedInstance",
+                                "entityName": "DeductionOperationDesign"
+                              },
                               "ofEntity": "Entitydesign__001c"
                             },
                             {
@@ -6900,11 +7257,11 @@
                             "propertyName": "text",
                             "children": [],
                             "text": {
-                              "instanceId": "Texttemplatedsgn__0039",
+                              "instanceId": "Texttemplatedsgn__003a",
                               "entityName": "TextTemplateDesign",
                               "untranslated": [
                                 {
-                                  "instanceId": "Stringtempltdsgn__0044",
+                                  "instanceId": "Stringtempltdsgn__0045",
                                   "entityName": "StringTemplateDesign",
                                   "deduction": {
                                     "instanceId": "Deductinschmdsgn__0046",
@@ -6914,6 +7271,10 @@
                                         "instanceId": "Slctdnstcddctdsg__002f",
                                         "entityName": "SelectedInstanceDeductionDesign",
                                         "inputs": [],
+                                        "operation": {
+                                          "instanceName": "selectedInstance",
+                                          "entityName": "DeductionOperationDesign"
+                                        },
                                         "ofEntity": "Entitydesign__0001"
                                       },
                                       {
@@ -6939,7 +7300,7 @@
                                   }
                                 },
                                 {
-                                  "instanceId": "Stringtempltdsgn__0045",
+                                  "instanceId": "Stringtempltdsgn__0046",
                                   "entityName": "StringTemplateDesign",
                                   "constantText": " (Application)"
                                 }

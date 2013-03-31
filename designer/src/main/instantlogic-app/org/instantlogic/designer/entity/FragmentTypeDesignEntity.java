@@ -38,14 +38,14 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 
 	// Deductions
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction0() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
 		return d0;
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> createDeduction1() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
 		return d0;

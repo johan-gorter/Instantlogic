@@ -41,6 +41,21 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 	
 	// Attributes
 	
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String> javaClassName 
+		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String>(
+			"javaClassName", INSTANCE, java.lang.String.class
+		) {
+			{
+				dataType.put("category", "text");
+			}
+	
+			@Override
+			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DeductionOperationDesign, java.lang.String> get(org.instantlogic.designer.DeductionOperationDesign instance) {
+				return instance.getJavaClassNameAttributeValue();
+			}
+            
+		};
+	
 	// Relations
 	
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign> inputs
@@ -80,6 +95,7 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 	// Reverse relations
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
+		javaClassName,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		inputs,

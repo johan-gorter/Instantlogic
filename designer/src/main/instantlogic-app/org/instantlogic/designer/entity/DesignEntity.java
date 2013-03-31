@@ -54,7 +54,7 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 
 	// Deductions
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction0() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
 		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
@@ -64,23 +64,23 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction1() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		    org.instantlogic.designer.deduction.DefaultDesignNameDeduction d0 
 		      = new org.instantlogic.designer.deduction.DefaultDesignNameDeduction();
 		return d0;
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction2() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		    org.instantlogic.designer.deduction.JavaIdentifierDeduction d0 
 		      = new org.instantlogic.designer.deduction.JavaIdentifierDeduction();
 		return d0;
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction<java.lang.String> createDeduction3() {
-		    org.instantlogic.designer.deduction.TechnicalNameDeduction d0 
-		      = new org.instantlogic.designer.deduction.TechnicalNameDeduction();
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
+		  	org.instantlogic.designer.deduction.TechnicalNameDeduction d0 
+		  	  = new org.instantlogic.designer.deduction.TechnicalNameDeduction();
 		return d0;
 	}
 

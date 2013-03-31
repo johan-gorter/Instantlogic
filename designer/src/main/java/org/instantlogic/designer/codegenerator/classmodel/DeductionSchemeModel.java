@@ -29,10 +29,4 @@ public class DeductionSchemeModel {
 	public int getLastDeductionIndex() {
 		return deductions.size()-1;
 	}
-
-	public String getLastResultType() {
-		return deductions.get(0).resultType;
-	}
-
-	
 }

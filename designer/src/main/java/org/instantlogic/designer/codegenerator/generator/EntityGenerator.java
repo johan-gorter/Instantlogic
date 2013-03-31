@@ -176,7 +176,7 @@ public class EntityGenerator extends AbstractGenerator {
 				value.attributeName = valueDesign.getAttribute().getTechnicalNameCapitalized();
 				value.multivalue = valueDesign.getAttribute().getDataType().getMultivalue();
 				if (valueDesign.getRelationValue()!=null) {
-					value.value = new StaticFieldValueModel(model.rootPackageName + "."+ valueDesign.getRelationValue().getEntity().getTechnicalNameCapitalized(), valueDesign.getRelationValue().getTechnicalName());
+					value.value = new StaticFieldValueModel(model.rootPackageName + "."+ valueDesign.getRelationValue().getEntity().getTechnicalNameCapitalized(), valueDesign.getRelationValue().getJavaIdentifier());
 				} else {
 					value.value = new ConstantValueModel(valueDesign.getValue());
 				}
