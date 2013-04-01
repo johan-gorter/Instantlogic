@@ -101,6 +101,38 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 	}
 	
 
+	
+	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionParameterDesign> parameters
+		= createRelationValues(org.instantlogic.designer.entity.DeductionDesignEntity.parameters);
+		
+	public org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionParameterDesign> getParametersRelationValue() {
+		return parameters;
+	}
+
+	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionParameterDesign> getParameters() {
+		return parameters.getValue();
+	}
+	
+	public DeductionDesign addToParameters(DeductionParameterDesign item) {
+		parameters.addValue(item);
+		return (DeductionDesign)this;
+	}
+	
+	public DeductionDesign addToParameters(DeductionParameterDesign item, int index) {
+		parameters.insertValue(item, index);
+		return (DeductionDesign)this;
+	}
+	
+	public DeductionDesign removeFromParameters(DeductionParameterDesign item) {
+		parameters.removeValue(item);
+		return (DeductionDesign)this;
+	}
+	
+	public DeductionDesign removeFromParameters(int index) {
+		parameters.removeValue(index);
+		return (DeductionDesign)this;
+	}
+	
 
 	// Reverse relations
 	

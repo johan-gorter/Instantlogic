@@ -10,6 +10,7 @@
 
 package org.instantlogic.designer;
 
+import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstance;
 import org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction;
 import org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction;
 import org.instantlogic.designer.deduction.DataTypeEntityDeduction;
@@ -43,11 +44,14 @@ public class DataTypeDesignEntityGenerator extends EntityDesign {
     public static final AttributeDesign multiLine = addAttribute(ENTITY, "multiLine", DataCategoryDesign._boolean);
     public static final AttributeDesign formatted = addAttribute(ENTITY, "formatted", DataCategoryDesign._boolean);
     
+    public static final StaticInstanceDesign _boolean = addStaticInstance(ENTITY, "boolean", createConstantText("Boolean"));
+    public static final StaticInstanceDesign text = addStaticInstance(ENTITY, "text", createConstantText("Text"));
+    
     @Override
     public void init() {
-        // static instances
-        addToStaticInstances((StaticInstanceDesign) new StaticInstanceDesign().setDescription(createConstantText("Boolean")).setName("boolean"));
-        
+    	addStaticInstanceRelationValue(_boolean, dataCategory, DataCategoryDesignEntityGenerator._boolean);
+    	addStaticInstanceRelationValue(text, dataCategory, DataCategoryDesignEntityGenerator.text);
+    	
     	javaClassName.setDefault(new DeductionSchemeDesign().deduceCustom(DataTypeJavaClassNameDeduction.class, String.class).getScheme());
     	
     	entity.setWriteable(false);

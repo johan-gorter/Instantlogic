@@ -20,6 +20,7 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 		org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.INSTANCE,
+		org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE,
 		org.instantlogic.designer.entity.EventDesignEntity.INSTANCE,
@@ -79,8 +80,8 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
-		  	org.instantlogic.designer.deduction.TechnicalNameDeduction d0 
-		  	  = new org.instantlogic.designer.deduction.TechnicalNameDeduction();
+		    org.instantlogic.designer.deduction.TechnicalNameDeduction d0 
+		      = new org.instantlogic.designer.deduction.TechnicalNameDeduction();
 		return d0;
 	}
 

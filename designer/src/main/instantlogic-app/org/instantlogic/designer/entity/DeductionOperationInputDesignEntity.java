@@ -38,6 +38,13 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 
 	// Deductions
 
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
+		return d0;
+	}
+
+
 	
 	// Attributes
 	
@@ -52,6 +59,15 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean> get(org.instantlogic.designer.DeductionOperationInputDesign instance) {
 				return instance.getMultivalueAttributeValue();
 			}
+
+            private org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> defaultDeduction;
+            @Override
+            public org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> getDefault() {
+                if (defaultDeduction==null) {
+                    defaultDeduction = createDeduction0();
+                }
+                return defaultDeduction;
+            }
             
 		};
 	

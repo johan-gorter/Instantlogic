@@ -19,27 +19,27 @@ public class DeductionOperationInputDesignEntityGenerator extends EntityDesign {
     
     // Static instances
     public static final StaticInstanceDesign attributeInstance = addStaticInstance(ENTITY, "attributeInstance", createConstantText("Instance"));
+    public static final StaticInstanceDesign castInstance = addStaticInstance(ENTITY, "castInstance", createConstantText("Instance"));
+    public static final StaticInstanceDesign equalsOperands = addStaticInstance(ENTITY, "equalsOperands", createConstantText("Operands"));
+    public static final StaticInstanceDesign hasValueInput = addStaticInstance(ENTITY, "hasValueInput", createConstantText("Input"));
+    public static final StaticInstanceDesign negationInput = addStaticInstance(ENTITY, "negationInput", createConstantText("Input"));
+    public static final StaticInstanceDesign reverseRelationToInstance = addStaticInstance(ENTITY, "reverseRelationToInstance", createConstantText("To instance"));
+    public static final StaticInstanceDesign sumOperands = addStaticInstance(ENTITY, "sumOperands", createConstantText("Operands"));
 
     @Override
     public void init() {
-    	// TODO: Rule for multivalue, only for static instances
-    	// TODO: Rule for dataType, only for static instances
-    	// static instances
-
-    	// Attribute
+    	multivalue.newDefault().deduceConstant(Boolean.class, false);
     	
-    	// Cast
-    	addToStaticInstances((StaticInstanceDesign) new StaticInstanceDesign().setDescription(createConstantText("Instance")).setName("castInstance"));
-    	// Equals
-    	addToStaticInstances((StaticInstanceDesign) new StaticInstanceDesign().setDescription(createConstantText("Operands")).setName("equalsOperands"));
-    	// HasValue
-    	addToStaticInstances((StaticInstanceDesign) new StaticInstanceDesign().setDescription(createConstantText("Input")).setName("hasValueInput"));
-    	// Negation
-    	addToStaticInstances((StaticInstanceDesign) new StaticInstanceDesign().setDescription(createConstantText("Input")).setName("negationInput"));
-    	// Reverse relation
-    	addToStaticInstances((StaticInstanceDesign) new StaticInstanceDesign().setDescription(createConstantText("To instance")).setName("reverseRelationToInstance"));
-    	// Sum
-    	addToStaticInstances((StaticInstanceDesign) new StaticInstanceDesign().setDescription(createConstantText("Operands")).setName("sumOperands"));
+    	addStaticInstanceValue(attributeInstance, DesignEntityGenerator.name, "instance");
+    	addStaticInstanceValue(castInstance, DesignEntityGenerator.name, "instance");
+    	addStaticInstanceValue(equalsOperands, DesignEntityGenerator.name, "operands");
+    	addStaticInstanceValue(hasValueInput, DesignEntityGenerator.name, "input");
+    	addStaticInstanceValue(negationInput, DesignEntityGenerator.name, "input");
+    	addStaticInstanceValue(reverseRelationToInstance, DesignEntityGenerator.name, "toInstance");
+    	addStaticInstanceValue(sumOperands, DesignEntityGenerator.name, "operands");
+    	
+    	addStaticInstanceValue(equalsOperands, multivalue, true);
+    	addStaticInstanceValue(sumOperands, multivalue, true);
     }
     
 }

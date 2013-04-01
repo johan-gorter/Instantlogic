@@ -43,12 +43,21 @@ public class DeductionOperationInputDesign extends Design {
 	  reverseRelationToInstance = addStaticInstance("reverseRelationToInstance", new DeductionOperationInputDesign());
 	  sumOperands = addStaticInstance("sumOperands", new DeductionOperationInputDesign());
 	  // Phase 2
+      attributeInstance.setName("instance");
 	  attributeInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Instance")));
+      castInstance.setName("instance");
 	  castInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Instance")));
+      equalsOperands.setName("operands");
+      equalsOperands.setMultivalue(true);
 	  equalsOperands.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Operands")));
+      hasValueInput.setName("input");
 	  hasValueInput.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Input")));
+      negationInput.setName("input");
 	  negationInput.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Input")));
+      reverseRelationToInstance.setName("toInstance");
 	  reverseRelationToInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("To instance")));
+      sumOperands.setName("operands");
+      sumOperands.setMultivalue(true);
 	  sumOperands.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Operands")));
 	}
 	

@@ -92,6 +92,27 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 			}
 		};
 	
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign> parameters
+		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign>(
+			"parameters", INSTANCE, org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.INSTANCE, org.instantlogic.designer.DeductionOperationParameterDesign.class, 
+			org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.operation
+		) {
+	
+			@Override
+			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationParameterDesign> get(
+					org.instantlogic.designer.DeductionOperationDesign instance) {
+				return instance.getParametersRelationValue();
+			}
+	
+			public boolean isOwner() {
+				return true;
+			}
+	
+			public boolean isMultivalue() {
+				return true;
+			}
+		};
+	
 	// Reverse relations
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
@@ -100,6 +121,7 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		inputs,
 		outputDataType,
+		parameters,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};

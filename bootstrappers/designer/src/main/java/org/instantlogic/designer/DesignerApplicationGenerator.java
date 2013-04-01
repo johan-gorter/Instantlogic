@@ -13,12 +13,10 @@ package org.instantlogic.designer;
 import java.io.File;
 import java.io.FileWriter;
 
-import org.instantlogic.designer.ApplicationDesign;
-import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
-import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGenerator;
 import org.instantlogic.designer.event.HomeEventGenerator;
 import org.instantlogic.designer.flow.MainFlowGenerator;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
+import org.instantlogic.tools.generator.Generator;
 import org.instantlogic.tools.persistence.json.CasePersister;
 
 
@@ -35,6 +33,11 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
     public static FragmentTypeDesign FragmentTypeHeading3;
     public static FragmentTypeDesign FragmentTypeHeading4;
     public static FragmentTypeDesign FragmentTypeHeading5;
+    
+    public static DeductionOperationDesign CapitalizeFirstDeduction;
+    public static DeductionOperationInputDesign CapitalizeFirstDeductionInput;
+
+    public static DeductionOperationDesign TechnicalNameDeduction;
     
     public DesignerApplicationGenerator() {
         APPLICATION = this;
@@ -55,7 +58,19 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
     }
     
     private void addDeductionOperations() {
+    	CapitalizeFirstDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(CapitalizeFirstDeduction);
+    	CapitalizeFirstDeduction.setName("CapitalizeFirst");
+    	CapitalizeFirstDeduction.setJavaClassName("org.instantlogic.designer.deduction.CapitalizeFirstDeduction");
+    	CapitalizeFirstDeduction.setOutputDataType(DataTypeDesign.text);
+    	CapitalizeFirstDeductionInput = new DeductionOperationInputDesign();
+    	CapitalizeFirstDeduction.addToInputs(CapitalizeFirstDeductionInput);
+    	CapitalizeFirstDeductionInput.setName("Input");
     	
+    	TechnicalNameDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(TechnicalNameDeduction);
+    	TechnicalNameDeduction.setName("TechnicalName");
+    	TechnicalNameDeduction.setJavaClassName("org.instantlogic.designer.deduction.TechnicalNameDeduction");
 	}
 
 	private void addFragmentTypes() {
@@ -75,8 +90,6 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
 			new CasePersister().save(APPLICATION, fileWriter);
 		}
 		System.out.println("designer.json written");
-
-//        GeneratedClassModels classModelUpdates = APPLICATION.getApplicationGenerator().getClassModelUpdates();
-//        ApplicationJavacodeGenerator.generate(classModelUpdates, new File(APPLICATION.getSourcePath()));
+		Generator.scanForInstantlogicDesigns(new File("../../webapps/nextdesigner"));
     }
 }

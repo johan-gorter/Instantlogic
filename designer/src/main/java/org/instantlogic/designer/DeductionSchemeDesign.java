@@ -25,6 +25,10 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(selectedInstanceDeductionDesign);
 		setOutput(selectedInstanceDeductionDesign);
 		
+		DeductionParameterDesign parameter = new DeductionParameterDesign().setOperationParameter(DeductionOperationParameterDesign.selectedInstanceEntity);
+		selectedInstanceDeductionDesign.addToParameters(parameter);
+		parameter.setEntityValue(entity);
+		
 		selectedInstanceDeductionDesign.setOfEntity(entity);
 		return selectedInstanceDeductionDesign;
 	}

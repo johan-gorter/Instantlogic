@@ -30,7 +30,10 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
     
     public static final RelationDesign inputs = addRelation(ENTITY, "inputs", RelationType.OneToManyAggregation, DeductionInputDesignEntityGenerator.ENTITY)
     	.setReverseName("deduction");
-    
+
+    public static final RelationDesign parameters = addRelation(ENTITY, "parameters", RelationType.OneToManyAggregation, DeductionParameterDesignEntityGenerator.ENTITY)
+        	.setReverseName("deduction");
+
     @Override
     public void init() {
     	dataType.setWriteable(false);

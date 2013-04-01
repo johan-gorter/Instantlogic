@@ -26,7 +26,7 @@ public class Generator {
 		}
 	}
 
-	private static void scanForInstantlogicDesigns(File webapp) {
+	public static void scanForInstantlogicDesigns(File webapp) {
 		File designsDirectory = new File(webapp, "src/main/instantlogic-designs");
 		if (designsDirectory.isDirectory()) {
 			for(File file : designsDirectory.listFiles()) {
