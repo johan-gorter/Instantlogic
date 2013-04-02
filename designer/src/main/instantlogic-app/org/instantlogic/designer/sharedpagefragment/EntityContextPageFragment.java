@@ -17,10 +17,12 @@ public class EntityContextPageFragment extends org.instantlogic.interaction.page
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE);
-		    d0.addToInputs(d1);
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
 		return d0;
 	}
 

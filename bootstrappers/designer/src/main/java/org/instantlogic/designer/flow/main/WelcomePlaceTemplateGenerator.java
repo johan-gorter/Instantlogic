@@ -11,16 +11,15 @@
 package org.instantlogic.designer.flow.main;
 
 import org.instantlogic.designer.ApplicationDesignEntityGenerator;
-import org.instantlogic.designer.DeductionInputDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.DesignEntityGenerator;
+import org.instantlogic.designer.DesignerApplicationGenerator;
 import org.instantlogic.designer.FlowDesignEntityGenerator;
 import org.instantlogic.designer.FragmentTemplateDesign;
 import org.instantlogic.designer.PlaceTemplateDesign;
 import org.instantlogic.designer.SelectionDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
-import org.instantlogic.designer.deduction.CapitalizeFirstDeduction;
 import org.instantlogic.designer.event.AddEntityEventGenerator;
 import org.instantlogic.designer.event.EntityDetailsEventGenerator;
 import org.instantlogic.designer.event.FlowDetailsEventGenerator;
@@ -105,8 +104,9 @@ public class WelcomePlaceTemplateGenerator extends PlaceTemplateDesign {
 						)
 		));
 
-		applicationName.deduceCustom(CapitalizeFirstDeduction.class, String.class, 
-			applicationName.deduceAttribute(ApplicationDesignEntityGenerator.name));		
+		applicationName.deduceCustom(DesignerApplicationGenerator.CapitalizeFirstDeduction, 
+			DesignerApplicationGenerator.CapitalizeFirstDeductionInput, applicationName.deduceAttribute(ApplicationDesignEntityGenerator.name));
+		
 		entitiesDeduction.deduceRelation(ApplicationDesignEntityGenerator.entities);
 		flowsDeduction.deduceRelation(ApplicationDesignEntityGenerator.flows);
 		entityName.deduceAttribute(DesignEntityGenerator.name);

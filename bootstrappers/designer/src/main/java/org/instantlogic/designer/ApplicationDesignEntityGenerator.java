@@ -34,7 +34,7 @@ public class ApplicationDesignEntityGenerator extends EntityDesign {
             .setReverseName("application");
     public static final RelationDesign caseEntity = addRelation(ENTITY, "caseEntity", RelationType.OneToZeroOrOne, EntityDesignEntityGenerator.ENTITY);
 
-    public static final RelationDesign deductionOperations = addRelation(ENTITY, "deductionOperations", RelationType.OneToManyAggregation, DeductionOperationDesignEntityGenerator.ENTITY);
+    public static final RelationDesign customDeductionOperations = addRelation(ENTITY, "customDeductionOperations", RelationType.OneToManyAggregation, DeductionOperationDesignEntityGenerator.ENTITY);
     
     public static final RelationDesign flows = addRelation(ENTITY, "flows", RelationType.OneToManyAggregation, FlowDesignEntityGenerator.ENTITY)
             .setReverseName("application");

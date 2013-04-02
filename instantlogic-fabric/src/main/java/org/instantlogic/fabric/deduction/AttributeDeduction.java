@@ -9,17 +9,22 @@ public class AttributeDeduction<V> extends Deduction<V> {
 
 	private Attribute<? extends Instance, V, ? extends Object> attribute;
 	
+	public void setAttribute(Attribute<? extends Instance, V, ? extends Object> attribute) {
+		this.attribute = attribute;
+	}
+
 	private Deduction<? extends Instance> instance;
 	
 	public void setInstance(Deduction<? extends Instance> instance) {
 		this.instance = instance;
 	}
 	
+	public AttributeDeduction() {
+	}
+	
 	public AttributeDeduction(Attribute<? extends Instance, V, ? extends Object> attribute) {
 		this.attribute = attribute;
 	}
-
-
 
 	public AttributeDeduction(Deduction<? extends Instance> instance, Attribute<? extends Instance, V, ? extends Object> attribute) {
 		this.attribute = attribute;

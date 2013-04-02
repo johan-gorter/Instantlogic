@@ -10,8 +10,6 @@
 
 package org.instantlogic.designer;
 
-import org.instantlogic.designer.deduction.ReverseJavaIdentifierDeduction;
-import org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction;
 
 
 
@@ -49,10 +47,10 @@ public class RelationDesignEntityGenerator extends EntityDesign {
     	super.init();
     	
     	reverseTechnicalName.setWriteable(false);
-    	reverseTechnicalName.setRule(new DeductionSchemeDesign().deduceCustom(ReverseTechnicalNameDeduction.class, String.class).getScheme());
+    	reverseTechnicalName.newRule().deduceCustom(DesignerApplicationGenerator.ReverseTechnicalNameDeduction);
 
     	reverseJavaIdentifier.setWriteable(false);
-    	reverseJavaIdentifier.setRule(new DeductionSchemeDesign().deduceCustom(ReverseJavaIdentifierDeduction.class, String.class).getScheme());
+    	reverseJavaIdentifier.newRule().deduceCustom(DesignerApplicationGenerator.ReverseJavaIdentifierDeduction);
     	
     	new DeductionSchemeDesign().setRelevanceOfAttribute(options).deduceAttribute(hasOptions);
     }

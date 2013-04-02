@@ -22,7 +22,14 @@ public class CastInstanceDeduction<I extends Instance, V extends Instance> exten
 	private Deduction<I> instance;
 	private Entity<V> toEntity;
 
+	public CastInstanceDeduction() {
+	}
+
 	public CastInstanceDeduction(Entity<V> toEntity) {
+		this.toEntity = toEntity;
+	}
+
+	public void setToEntity(Entity<V> toEntity) {
 		this.toEntity = toEntity;
 	}
 

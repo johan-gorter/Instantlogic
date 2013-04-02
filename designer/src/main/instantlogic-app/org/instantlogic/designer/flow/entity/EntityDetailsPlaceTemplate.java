@@ -21,47 +21,39 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
 	
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
-		    org.instantlogic.designer.deduction.CapitalizeFirstDeduction d0 
-		      = new org.instantlogic.designer.deduction.CapitalizeFirstDeduction();
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
-		    d0.addToInputs(d1);
-		    d1.addToInputs(d2);
+		  	org.instantlogic.designer.deduction.CapitalizeFirstDeduction d0 
+		  	  = new org.instantlogic.designer.deduction.CapitalizeFirstDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE);
-		    d0.addToInputs(d1);
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE);
-		    d0.addToInputs(d1);
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
-		    org.instantlogic.designer.deduction.CapitalizeFirstDeduction d0 
-		      = new org.instantlogic.designer.deduction.CapitalizeFirstDeduction();
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.DesignEntity.name);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
-		    d0.addToInputs(d1);
-		    d1.addToInputs(d2);
+		  	org.instantlogic.designer.deduction.CapitalizeFirstDeduction d0 
+		  	  = new org.instantlogic.designer.deduction.CapitalizeFirstDeduction();
 		return d0;
 	}
 

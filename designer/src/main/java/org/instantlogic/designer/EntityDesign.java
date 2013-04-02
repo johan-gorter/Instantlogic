@@ -12,7 +12,8 @@ package org.instantlogic.designer;
 
 import java.util.Iterator;
 
-import com.sun.java.swing.plaf.gtk.GTKConstants.TextDirection;
+import org.instantlogic.designer.codegenerator.classmodel.StaticFieldValueModel;
+import org.instantlogic.designer.codegenerator.classmodel.ValueModel;
 
 
 
@@ -175,5 +176,10 @@ public class EntityDesign extends AbstractEntityDesign {
 	 * Will be called once for every entity from ApplicationDesign.init
 	 */
 	public void init() {
+	}
+
+	// Used for code generation
+	public ValueModel asStaticFieldValue() {
+		return new StaticFieldValueModel(getApplication().getRootPackageName()+".entity."+getTechnicalNameCapitalized()+"Entity","INSTANCE");
 	}
 }

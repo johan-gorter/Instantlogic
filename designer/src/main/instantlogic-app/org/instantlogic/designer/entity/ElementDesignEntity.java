@@ -51,14 +51,16 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		    d0.setValue(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction("mobile");
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		    d0.setValue("mobile");
 		return d0;
 	}
 

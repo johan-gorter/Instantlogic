@@ -34,9 +34,19 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
     public static FragmentTypeDesign FragmentTypeHeading4;
     public static FragmentTypeDesign FragmentTypeHeading5;
     
+    public static DeductionOperationDesign AttributeBelongsToDeduction;
     public static DeductionOperationDesign CapitalizeFirstDeduction;
     public static DeductionOperationInputDesign CapitalizeFirstDeductionInput;
-
+    public static DeductionOperationDesign DataTypeDataCategoryDeduction;
+    public static DeductionOperationDesign DataTypeDataCategoryOptionsDeduction;
+    public static DeductionOperationDesign DataTypeEntityDeduction;
+    public static DeductionOperationDesign DataTypeJavaClassNameDeduction;
+    public static DeductionOperationDesign DataTypeMultivalueDeduction;
+    public static DeductionOperationDesign DeductionDataTypeDeduction;
+    public static DeductionOperationDesign DefaultDesignNameDeduction;
+    public static DeductionOperationDesign JavaIdentifierDeduction;
+    public static DeductionOperationDesign ReverseJavaIdentifierDeduction;
+    public static DeductionOperationDesign ReverseTechnicalNameDeduction;
     public static DeductionOperationDesign TechnicalNameDeduction;
     
     public DesignerApplicationGenerator() {
@@ -58,6 +68,11 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
     }
     
     private void addDeductionOperations() {
+    	AttributeBelongsToDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(AttributeBelongsToDeduction);
+    	AttributeBelongsToDeduction.setName("DataTypeDataCategoryOptions");
+    	AttributeBelongsToDeduction.setJavaClassName("org.instantlogic.designer.deduction.AttributeBelongsToDeduction");
+    	
     	CapitalizeFirstDeduction = new DeductionOperationDesign();
     	addToDeductionOperations(CapitalizeFirstDeduction);
     	CapitalizeFirstDeduction.setName("CapitalizeFirst");
@@ -66,7 +81,57 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
     	CapitalizeFirstDeductionInput = new DeductionOperationInputDesign();
     	CapitalizeFirstDeduction.addToInputs(CapitalizeFirstDeductionInput);
     	CapitalizeFirstDeductionInput.setName("Input");
-    	
+
+    	DataTypeDataCategoryDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(DataTypeDataCategoryDeduction);
+    	DataTypeDataCategoryDeduction.setName("DataTypeDataCategoryOptions");
+    	DataTypeDataCategoryDeduction.setJavaClassName("org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction");
+
+    	DataTypeDataCategoryOptionsDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(DataTypeDataCategoryOptionsDeduction);
+    	DataTypeDataCategoryOptionsDeduction.setName("DataTypeDataCategoryOptions");
+    	DataTypeDataCategoryOptionsDeduction.setJavaClassName("org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction");
+
+    	DataTypeEntityDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(DataTypeEntityDeduction);
+    	DataTypeEntityDeduction.setName("DataTypeDataCategoryOptions");
+    	DataTypeEntityDeduction.setJavaClassName("org.instantlogic.designer.deduction.DataTypeEntityDeduction");
+
+    	DataTypeJavaClassNameDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(DataTypeJavaClassNameDeduction);
+    	DataTypeJavaClassNameDeduction.setName("DataTypeDataCategoryOptions");
+    	DataTypeJavaClassNameDeduction.setJavaClassName("org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction");
+
+    	DataTypeMultivalueDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(DataTypeMultivalueDeduction);
+    	DataTypeMultivalueDeduction.setName("DataTypeDataCategoryOptions");
+    	DataTypeMultivalueDeduction.setJavaClassName("org.instantlogic.designer.deduction.DataTypeMultivalueDeduction");
+
+    	DeductionDataTypeDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(DeductionDataTypeDeduction);
+    	DeductionDataTypeDeduction.setName("DataTypeDataCategoryOptions");
+    	DeductionDataTypeDeduction.setJavaClassName("org.instantlogic.designer.deduction.DeductionDataTypeDeduction");
+
+    	DefaultDesignNameDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(DefaultDesignNameDeduction);
+    	DefaultDesignNameDeduction.setName("DataTypeDataCategoryOptions");
+    	DefaultDesignNameDeduction.setJavaClassName("org.instantlogic.designer.deduction.DefaultDesignNameDeduction");
+
+    	JavaIdentifierDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(JavaIdentifierDeduction);
+    	JavaIdentifierDeduction.setName("DataTypeDataCategoryOptions");
+    	JavaIdentifierDeduction.setJavaClassName("org.instantlogic.designer.deduction.JavaIdentifierDeduction");
+
+    	ReverseJavaIdentifierDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(ReverseJavaIdentifierDeduction);
+    	ReverseJavaIdentifierDeduction.setName("DataTypeDataCategoryOptions");
+    	ReverseJavaIdentifierDeduction.setJavaClassName("org.instantlogic.designer.deduction.ReverseJavaIdentifierDeduction");
+
+    	ReverseTechnicalNameDeduction = new DeductionOperationDesign();
+    	addToDeductionOperations(ReverseTechnicalNameDeduction);
+    	ReverseTechnicalNameDeduction.setName("DataTypeDataCategoryOptions");
+    	ReverseTechnicalNameDeduction.setJavaClassName("org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction");
+
     	TechnicalNameDeduction = new DeductionOperationDesign();
     	addToDeductionOperations(TechnicalNameDeduction);
     	TechnicalNameDeduction.setName("TechnicalName");

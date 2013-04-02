@@ -10,7 +10,16 @@
     "izzy"
   ],
   "caseEntity": "Entitydesign__0001",
-  "deductionOperations": [],
+  "deductionOperations": [
+    {
+      "instanceId": "Deductinprtndsgn__0001",
+      "entityName": "DeductionOperationDesign",
+      "name": "issue preview",
+      "javaClassName": "org.instantlogic.example.izzy.deduction.IssuePreviewDeduction",
+      "inputs": [],
+      "parameters": []
+    }
+  ],
   "entities": [
     {
       "instanceId": "Entitydesign__0001",
@@ -32,25 +41,30 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Constntddctndsgn__0001",
-                "entityName": "ConstantDeductionDesign",
-                "value": 0,
+                "instanceId": "Deductiondesign__0001",
+                "entityName": "DeductionDesign",
                 "inputs": [],
-                "constantDataType": {
-                  "instanceId": "Datatypedesign__0002",
-                  "entityName": "DataTypeDesign",
-                  "javaClassName": "java.lang.Integer"
-                }
+                "operation": {
+                  "instanceName": "constant",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": [
+                  {
+                    "instanceId": "Deductnprmtrdsgn__0001",
+                    "entityName": "DeductionParameterDesign",
+                    "value": 0,
+                    "operationParameter": {
+                      "instanceName": "constantValue",
+                      "entityName": "DeductionOperationParameterDesign"
+                    }
+                  }
+                ]
               }
             ],
-            "output": "Constntddctndsgn__0001"
+            "output": "Deductiondesign__0001"
           }
         }
       ],
-      "dataType": {
-        "instanceId": "Datatypedesign__0003",
-        "entityName": "DataTypeDesign"
-      },
       "relations": [
         {
           "instanceId": "Relationdesign__0001",
@@ -61,7 +75,7 @@
           "reverseMultivalue": false,
           "reverseName": "project",
           "dataType": {
-            "instanceId": "Datatypedesign__0004",
+            "instanceId": "Datatypedesign__0002",
             "entityName": "DataTypeDesign",
             "multivalue": true
           },
@@ -76,7 +90,7 @@
           "reverseMultivalue": false,
           "reverseName": "project",
           "dataType": {
-            "instanceId": "Datatypedesign__0005",
+            "instanceId": "Datatypedesign__0003",
             "entityName": "DataTypeDesign",
             "multivalue": true
           },
@@ -96,7 +110,7 @@
           "entityName": "AttributeDesign",
           "name": "username",
           "dataType": {
-            "instanceId": "Datatypedesign__0006",
+            "instanceId": "Datatypedesign__0004",
             "entityName": "DataTypeDesign",
             "dataCategory": {
               "instanceName": "text",
@@ -105,10 +119,6 @@
           }
         }
       ],
-      "dataType": {
-        "instanceId": "Datatypedesign__0007",
-        "entityName": "DataTypeDesign"
-      },
       "relations": [],
       "staticInstances": [],
       "title": {
@@ -123,20 +133,34 @@
               "entityName": "DeductionSchemeDesign",
               "deductions": [
                 {
-                  "instanceId": "Slctdnstcddctdsg__0001",
-                  "entityName": "SelectedInstanceDeductionDesign",
+                  "instanceId": "Deductiondesign__0002",
+                  "entityName": "DeductionDesign",
                   "inputs": [],
-                  "ofEntity": "Entitydesign__0002"
+                  "operation": {
+                    "instanceName": "selectedInstance",
+                    "entityName": "DeductionOperationDesign"
+                  },
+                  "parameters": [
+                    {
+                      "instanceId": "Deductnprmtrdsgn__0002",
+                      "entityName": "DeductionParameterDesign",
+                      "entityValue": "Entitydesign__0002",
+                      "operationParameter": {
+                        "instanceName": "selectedInstanceEntity",
+                        "entityName": "DeductionOperationParameterDesign"
+                      }
+                    }
+                  ]
                 },
                 {
-                  "instanceId": "Attribtddctndsgn__0001",
-                  "entityName": "AttributeDeductionDesign",
+                  "instanceId": "Deductiondesign__0003",
+                  "entityName": "DeductionDesign",
                   "inputs": [
                     {
                       "instanceId": "Deductionnptdsgn__0001",
                       "entityName": "DeductionInputDesign",
                       "inputs": [
-                        "Slctdnstcddctdsg__0001"
+                        "Deductiondesign__0002"
                       ],
                       "operationInput": {
                         "instanceName": "attributeInstance",
@@ -144,10 +168,24 @@
                       }
                     }
                   ],
-                  "attribute": "Attributedesign__0002"
+                  "operation": {
+                    "instanceName": "attribute",
+                    "entityName": "DeductionOperationDesign"
+                  },
+                  "parameters": [
+                    {
+                      "instanceId": "Deductnprmtrdsgn__0003",
+                      "entityName": "DeductionParameterDesign",
+                      "attributeValue": "Attributedesign__0002",
+                      "operationParameter": {
+                        "instanceName": "attribute",
+                        "entityName": "DeductionOperationParameterDesign"
+                      }
+                    }
+                  ]
                 }
               ],
-              "output": "Attribtddctndsgn__0001"
+              "output": "Deductiondesign__0003"
             }
           }
         ]
@@ -164,7 +202,7 @@
           "entityName": "AttributeDesign",
           "name": "number",
           "dataType": {
-            "instanceId": "Datatypedesign__0008",
+            "instanceId": "Datatypedesign__0005",
             "entityName": "DataTypeDesign",
             "javaClassName": "java.lang.Integer"
           }
@@ -174,7 +212,7 @@
           "entityName": "AttributeDesign",
           "name": "headline",
           "dataType": {
-            "instanceId": "Datatypedesign__0009",
+            "instanceId": "Datatypedesign__0006",
             "entityName": "DataTypeDesign",
             "dataCategory": {
               "instanceName": "text",
@@ -187,7 +225,7 @@
           "entityName": "AttributeDesign",
           "name": "description",
           "dataType": {
-            "instanceId": "Datatypedesign__000a",
+            "instanceId": "Datatypedesign__0007",
             "entityName": "DataTypeDesign",
             "formatted": true,
             "multiLine": true,
@@ -198,10 +236,6 @@
           }
         }
       ],
-      "dataType": {
-        "instanceId": "Datatypedesign__000b",
-        "entityName": "DataTypeDesign"
-      },
       "relations": [
         {
           "instanceId": "Relationdesign__0003",
@@ -212,7 +246,7 @@
           "reverseMultivalue": true,
           "reverseName": "reported issues",
           "dataType": {
-            "instanceId": "Datatypedesign__000c",
+            "instanceId": "Datatypedesign__0008",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -221,20 +255,34 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Slctdnstcddctdsg__0002",
-                "entityName": "SelectedInstanceDeductionDesign",
+                "instanceId": "Deductiondesign__0004",
+                "entityName": "DeductionDesign",
                 "inputs": [],
-                "ofEntity": "Entitydesign__0001"
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": [
+                  {
+                    "instanceId": "Deductnprmtrdsgn__0004",
+                    "entityName": "DeductionParameterDesign",
+                    "entityValue": "Entitydesign__0001",
+                    "operationParameter": {
+                      "instanceName": "selectedInstanceEntity",
+                      "entityName": "DeductionOperationParameterDesign"
+                    }
+                  }
+                ]
               },
               {
-                "instanceId": "Attribtddctndsgn__0002",
-                "entityName": "AttributeDeductionDesign",
+                "instanceId": "Deductiondesign__0005",
+                "entityName": "DeductionDesign",
                 "inputs": [
                   {
                     "instanceId": "Deductionnptdsgn__0002",
                     "entityName": "DeductionInputDesign",
                     "inputs": [
-                      "Slctdnstcddctdsg__0002"
+                      "Deductiondesign__0004"
                     ],
                     "operationInput": {
                       "instanceName": "attributeInstance",
@@ -242,10 +290,24 @@
                     }
                   }
                 ],
-                "attribute": "Relationdesign__0001"
+                "operation": {
+                  "instanceName": "attribute",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": [
+                  {
+                    "instanceId": "Deductnprmtrdsgn__0005",
+                    "entityName": "DeductionParameterDesign",
+                    "attributeValue": "Relationdesign__0001",
+                    "operationParameter": {
+                      "instanceName": "attribute",
+                      "entityName": "DeductionOperationParameterDesign"
+                    }
+                  }
+                ]
               }
             ],
-            "output": "Attribtddctndsgn__0002"
+            "output": "Deductiondesign__0005"
           },
           "to": "Entitydesign__0002"
         },
@@ -258,7 +320,7 @@
           "reverseMultivalue": true,
           "reverseName": "assigned issues",
           "dataType": {
-            "instanceId": "Datatypedesign__000d",
+            "instanceId": "Datatypedesign__0009",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -267,20 +329,34 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Slctdnstcddctdsg__0003",
-                "entityName": "SelectedInstanceDeductionDesign",
+                "instanceId": "Deductiondesign__0006",
+                "entityName": "DeductionDesign",
                 "inputs": [],
-                "ofEntity": "Entitydesign__0001"
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": [
+                  {
+                    "instanceId": "Deductnprmtrdsgn__0006",
+                    "entityName": "DeductionParameterDesign",
+                    "entityValue": "Entitydesign__0001",
+                    "operationParameter": {
+                      "instanceName": "selectedInstanceEntity",
+                      "entityName": "DeductionOperationParameterDesign"
+                    }
+                  }
+                ]
               },
               {
-                "instanceId": "Attribtddctndsgn__0003",
-                "entityName": "AttributeDeductionDesign",
+                "instanceId": "Deductiondesign__0007",
+                "entityName": "DeductionDesign",
                 "inputs": [
                   {
                     "instanceId": "Deductionnptdsgn__0003",
                     "entityName": "DeductionInputDesign",
                     "inputs": [
-                      "Slctdnstcddctdsg__0003"
+                      "Deductiondesign__0006"
                     ],
                     "operationInput": {
                       "instanceName": "attributeInstance",
@@ -288,14 +364,24 @@
                     }
                   }
                 ],
-                "attribute": "Relationdesign__0001"
+                "operation": {
+                  "instanceName": "attribute",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": [
+                  {
+                    "instanceId": "Deductnprmtrdsgn__0007",
+                    "entityName": "DeductionParameterDesign",
+                    "attributeValue": "Relationdesign__0001",
+                    "operationParameter": {
+                      "instanceName": "attribute",
+                      "entityName": "DeductionOperationParameterDesign"
+                    }
+                  }
+                ]
               }
             ],
-            "output": "Attribtddctndsgn__0003"
-          },
-          "reverseDataType": {
-            "instanceId": "Datatypedesign__000e",
-            "entityName": "DataTypeDesign"
+            "output": "Deductiondesign__0007"
           },
           "to": "Entitydesign__0002"
         },
@@ -308,7 +394,7 @@
           "reverseMultivalue": false,
           "reverseName": "issue",
           "dataType": {
-            "instanceId": "Datatypedesign__000f",
+            "instanceId": "Datatypedesign__000a",
             "entityName": "DataTypeDesign",
             "multivalue": true
           },
@@ -339,37 +425,34 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Hasvaluddctndsgn__0001",
-                "entityName": "HasValueDeductionDesign",
-                "inputs": [
+                "instanceId": "Deductiondesign__0008",
+                "entityName": "DeductionDesign",
+                "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": [
                   {
-                    "instanceId": "Deductionnptdsgn__0004",
-                    "entityName": "DeductionInputDesign",
-                    "inputs": [
-                      "Attribtddctndsgn__0004"
-                    ],
-                    "operationInput": {
-                      "instanceName": "hasValueInput",
-                      "entityName": "DeductionOperationInputDesign"
+                    "instanceId": "Deductnprmtrdsgn__0008",
+                    "entityName": "DeductionParameterDesign",
+                    "entityValue": "Entitydesign__0003",
+                    "operationParameter": {
+                      "instanceName": "selectedInstanceEntity",
+                      "entityName": "DeductionOperationParameterDesign"
                     }
                   }
                 ]
               },
               {
-                "instanceId": "Slctdnstcddctdsg__0004",
-                "entityName": "SelectedInstanceDeductionDesign",
-                "inputs": [],
-                "ofEntity": "Entitydesign__0003"
-              },
-              {
-                "instanceId": "Attribtddctndsgn__0004",
-                "entityName": "AttributeDeductionDesign",
+                "instanceId": "Deductiondesign__0009",
+                "entityName": "DeductionDesign",
                 "inputs": [
                   {
-                    "instanceId": "Deductionnptdsgn__0005",
+                    "instanceId": "Deductionnptdsgn__0004",
                     "entityName": "DeductionInputDesign",
                     "inputs": [
-                      "Slctdnstcddctdsg__0004"
+                      "Deductiondesign__0008"
                     ],
                     "operationInput": {
                       "instanceName": "attributeInstance",
@@ -377,10 +460,46 @@
                     }
                   }
                 ],
-                "attribute": "Attributedesign__0004"
+                "operation": {
+                  "instanceName": "attribute",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": [
+                  {
+                    "instanceId": "Deductnprmtrdsgn__0009",
+                    "entityName": "DeductionParameterDesign",
+                    "attributeValue": "Attributedesign__0004",
+                    "operationParameter": {
+                      "instanceName": "attribute",
+                      "entityName": "DeductionOperationParameterDesign"
+                    }
+                  }
+                ]
+              },
+              {
+                "instanceId": "Deductiondesign__000a",
+                "entityName": "DeductionDesign",
+                "inputs": [
+                  {
+                    "instanceId": "Deductionnptdsgn__0005",
+                    "entityName": "DeductionInputDesign",
+                    "inputs": [
+                      "Deductiondesign__0009"
+                    ],
+                    "operationInput": {
+                      "instanceName": "hasValueInput",
+                      "entityName": "DeductionOperationInputDesign"
+                    }
+                  }
+                ],
+                "operation": {
+                  "instanceName": "hasValue",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": []
               }
             ],
-            "output": "Hasvaluddctndsgn__0001"
+            "output": "Deductiondesign__000a"
           }
         },
         {
@@ -405,37 +524,34 @@
             "entityName": "DeductionSchemeDesign",
             "deductions": [
               {
-                "instanceId": "Hasvaluddctndsgn__0002",
-                "entityName": "HasValueDeductionDesign",
-                "inputs": [
+                "instanceId": "Deductiondesign__000b",
+                "entityName": "DeductionDesign",
+                "inputs": [],
+                "operation": {
+                  "instanceName": "selectedInstance",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": [
                   {
-                    "instanceId": "Deductionnptdsgn__0006",
-                    "entityName": "DeductionInputDesign",
-                    "inputs": [
-                      "Attribtddctndsgn__0005"
-                    ],
-                    "operationInput": {
-                      "instanceName": "hasValueInput",
-                      "entityName": "DeductionOperationInputDesign"
+                    "instanceId": "Deductnprmtrdsgn__000a",
+                    "entityName": "DeductionParameterDesign",
+                    "entityValue": "Entitydesign__0003",
+                    "operationParameter": {
+                      "instanceName": "selectedInstanceEntity",
+                      "entityName": "DeductionOperationParameterDesign"
                     }
                   }
                 ]
               },
               {
-                "instanceId": "Slctdnstcddctdsg__0005",
-                "entityName": "SelectedInstanceDeductionDesign",
-                "inputs": [],
-                "ofEntity": "Entitydesign__0003"
-              },
-              {
-                "instanceId": "Attribtddctndsgn__0005",
-                "entityName": "AttributeDeductionDesign",
+                "instanceId": "Deductiondesign__000c",
+                "entityName": "DeductionDesign",
                 "inputs": [
                   {
-                    "instanceId": "Deductionnptdsgn__0007",
+                    "instanceId": "Deductionnptdsgn__0006",
                     "entityName": "DeductionInputDesign",
                     "inputs": [
-                      "Slctdnstcddctdsg__0005"
+                      "Deductiondesign__000b"
                     ],
                     "operationInput": {
                       "instanceName": "attributeInstance",
@@ -443,10 +559,46 @@
                     }
                   }
                 ],
-                "attribute": "Attributedesign__0005"
+                "operation": {
+                  "instanceName": "attribute",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": [
+                  {
+                    "instanceId": "Deductnprmtrdsgn__000b",
+                    "entityName": "DeductionParameterDesign",
+                    "attributeValue": "Attributedesign__0005",
+                    "operationParameter": {
+                      "instanceName": "attribute",
+                      "entityName": "DeductionOperationParameterDesign"
+                    }
+                  }
+                ]
+              },
+              {
+                "instanceId": "Deductiondesign__000d",
+                "entityName": "DeductionDesign",
+                "inputs": [
+                  {
+                    "instanceId": "Deductionnptdsgn__0007",
+                    "entityName": "DeductionInputDesign",
+                    "inputs": [
+                      "Deductiondesign__000c"
+                    ],
+                    "operationInput": {
+                      "instanceName": "hasValueInput",
+                      "entityName": "DeductionOperationInputDesign"
+                    }
+                  }
+                ],
+                "operation": {
+                  "instanceName": "hasValue",
+                  "entityName": "DeductionOperationDesign"
+                },
+                "parameters": []
               }
             ],
-            "output": "Hasvaluddctndsgn__0002"
+            "output": "Deductiondesign__000d"
           }
         }
       ]
@@ -461,7 +613,7 @@
           "entityName": "AttributeDesign",
           "name": "text",
           "dataType": {
-            "instanceId": "Datatypedesign__0010",
+            "instanceId": "Datatypedesign__000b",
             "entityName": "DataTypeDesign",
             "dataCategory": {
               "instanceName": "text",
@@ -471,7 +623,7 @@
         }
       ],
       "dataType": {
-        "instanceId": "Datatypedesign__0011",
+        "instanceId": "Datatypedesign__000c",
         "entityName": "DataTypeDesign"
       },
       "relations": [
@@ -484,7 +636,7 @@
           "reverseMultivalue": false,
           "reverseName": "comments",
           "dataType": {
-            "instanceId": "Datatypedesign__0012",
+            "instanceId": "Datatypedesign__000d",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -805,20 +957,34 @@
                                 "entityName": "DeductionSchemeDesign",
                                 "deductions": [
                                   {
-                                    "instanceId": "Slctdnstcddctdsg__0006",
-                                    "entityName": "SelectedInstanceDeductionDesign",
+                                    "instanceId": "Deductiondesign__000e",
+                                    "entityName": "DeductionDesign",
                                     "inputs": [],
-                                    "ofEntity": "Entitydesign__0003"
+                                    "operation": {
+                                      "instanceName": "selectedInstance",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
+                                      {
+                                        "instanceId": "Deductnprmtrdsgn__000c",
+                                        "entityName": "DeductionParameterDesign",
+                                        "entityValue": "Entitydesign__0003",
+                                        "operationParameter": {
+                                          "instanceName": "selectedInstanceEntity",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
+                                      }
+                                    ]
                                   },
                                   {
-                                    "instanceId": "Attribtddctndsgn__0006",
-                                    "entityName": "AttributeDeductionDesign",
+                                    "instanceId": "Deductiondesign__000f",
+                                    "entityName": "DeductionDesign",
                                     "inputs": [
                                       {
                                         "instanceId": "Deductionnptdsgn__0008",
                                         "entityName": "DeductionInputDesign",
                                         "inputs": [
-                                          "Slctdnstcddctdsg__0006"
+                                          "Deductiondesign__000e"
                                         ],
                                         "operationInput": {
                                           "instanceName": "attributeInstance",
@@ -826,10 +992,24 @@
                                         }
                                       }
                                     ],
-                                    "attribute": "Attributedesign__0003"
+                                    "operation": {
+                                      "instanceName": "attribute",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
+                                      {
+                                        "instanceId": "Deductnprmtrdsgn__000d",
+                                        "entityName": "DeductionParameterDesign",
+                                        "attributeValue": "Attributedesign__0003",
+                                        "operationParameter": {
+                                          "instanceName": "attribute",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
+                                      }
+                                    ]
                                   }
                                 ],
-                                "output": "Attribtddctndsgn__0006"
+                                "output": "Deductiondesign__000f"
                               }
                             },
                             {
@@ -845,20 +1025,34 @@
                                 "entityName": "DeductionSchemeDesign",
                                 "deductions": [
                                   {
-                                    "instanceId": "Slctdnstcddctdsg__0007",
-                                    "entityName": "SelectedInstanceDeductionDesign",
+                                    "instanceId": "Deductiondesign__0010",
+                                    "entityName": "DeductionDesign",
                                     "inputs": [],
-                                    "ofEntity": "Entitydesign__0003"
+                                    "operation": {
+                                      "instanceName": "selectedInstance",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
+                                      {
+                                        "instanceId": "Deductnprmtrdsgn__000e",
+                                        "entityName": "DeductionParameterDesign",
+                                        "entityValue": "Entitydesign__0003",
+                                        "operationParameter": {
+                                          "instanceName": "selectedInstanceEntity",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
+                                      }
+                                    ]
                                   },
                                   {
-                                    "instanceId": "Attribtddctndsgn__0007",
-                                    "entityName": "AttributeDeductionDesign",
+                                    "instanceId": "Deductiondesign__0011",
+                                    "entityName": "DeductionDesign",
                                     "inputs": [
                                       {
                                         "instanceId": "Deductionnptdsgn__0009",
                                         "entityName": "DeductionInputDesign",
                                         "inputs": [
-                                          "Slctdnstcddctdsg__0007"
+                                          "Deductiondesign__0010"
                                         ],
                                         "operationInput": {
                                           "instanceName": "attributeInstance",
@@ -866,10 +1060,24 @@
                                         }
                                       }
                                     ],
-                                    "attribute": "Attributedesign__0004"
+                                    "operation": {
+                                      "instanceName": "attribute",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
+                                      {
+                                        "instanceId": "Deductnprmtrdsgn__000f",
+                                        "entityName": "DeductionParameterDesign",
+                                        "attributeValue": "Attributedesign__0004",
+                                        "operationParameter": {
+                                          "instanceName": "attribute",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
+                                      }
+                                    ]
                                   }
                                 ],
-                                "output": "Attribtddctndsgn__0007"
+                                "output": "Deductiondesign__0011"
                               }
                             }
                           ]
@@ -953,20 +1161,34 @@
                   "entityName": "DeductionSchemeDesign",
                   "deductions": [
                     {
-                      "instanceId": "Slctdnstcddctdsg__0008",
-                      "entityName": "SelectedInstanceDeductionDesign",
+                      "instanceId": "Deductiondesign__0012",
+                      "entityName": "DeductionDesign",
                       "inputs": [],
-                      "ofEntity": "Entitydesign__0003"
+                      "operation": {
+                        "instanceName": "selectedInstance",
+                        "entityName": "DeductionOperationDesign"
+                      },
+                      "parameters": [
+                        {
+                          "instanceId": "Deductnprmtrdsgn__0010",
+                          "entityName": "DeductionParameterDesign",
+                          "entityValue": "Entitydesign__0003",
+                          "operationParameter": {
+                            "instanceName": "selectedInstanceEntity",
+                            "entityName": "DeductionOperationParameterDesign"
+                          }
+                        }
+                      ]
                     },
                     {
-                      "instanceId": "Attribtddctndsgn__0008",
-                      "entityName": "AttributeDeductionDesign",
+                      "instanceId": "Deductiondesign__0013",
+                      "entityName": "DeductionDesign",
                       "inputs": [
                         {
                           "instanceId": "Deductionnptdsgn__000a",
                           "entityName": "DeductionInputDesign",
                           "inputs": [
-                            "Slctdnstcddctdsg__0008"
+                            "Deductiondesign__0012"
                           ],
                           "operationInput": {
                             "instanceName": "attributeInstance",
@@ -974,10 +1196,24 @@
                           }
                         }
                       ],
-                      "attribute": "Attributedesign__0003"
+                      "operation": {
+                        "instanceName": "attribute",
+                        "entityName": "DeductionOperationDesign"
+                      },
+                      "parameters": [
+                        {
+                          "instanceId": "Deductnprmtrdsgn__0011",
+                          "entityName": "DeductionParameterDesign",
+                          "attributeValue": "Attributedesign__0003",
+                          "operationParameter": {
+                            "instanceName": "attribute",
+                            "entityName": "DeductionOperationParameterDesign"
+                          }
+                        }
+                      ]
                     }
                   ],
-                  "output": "Attribtddctndsgn__0008"
+                  "output": "Deductiondesign__0013"
                 }
               },
               {
@@ -993,20 +1229,34 @@
                   "entityName": "DeductionSchemeDesign",
                   "deductions": [
                     {
-                      "instanceId": "Slctdnstcddctdsg__0009",
-                      "entityName": "SelectedInstanceDeductionDesign",
+                      "instanceId": "Deductiondesign__0014",
+                      "entityName": "DeductionDesign",
                       "inputs": [],
-                      "ofEntity": "Entitydesign__0003"
+                      "operation": {
+                        "instanceName": "selectedInstance",
+                        "entityName": "DeductionOperationDesign"
+                      },
+                      "parameters": [
+                        {
+                          "instanceId": "Deductnprmtrdsgn__0012",
+                          "entityName": "DeductionParameterDesign",
+                          "entityValue": "Entitydesign__0003",
+                          "operationParameter": {
+                            "instanceName": "selectedInstanceEntity",
+                            "entityName": "DeductionOperationParameterDesign"
+                          }
+                        }
+                      ]
                     },
                     {
-                      "instanceId": "Attribtddctndsgn__0009",
-                      "entityName": "AttributeDeductionDesign",
+                      "instanceId": "Deductiondesign__0015",
+                      "entityName": "DeductionDesign",
                       "inputs": [
                         {
                           "instanceId": "Deductionnptdsgn__000b",
                           "entityName": "DeductionInputDesign",
                           "inputs": [
-                            "Slctdnstcddctdsg__0009"
+                            "Deductiondesign__0014"
                           ],
                           "operationInput": {
                             "instanceName": "attributeInstance",
@@ -1014,10 +1264,24 @@
                           }
                         }
                       ],
-                      "attribute": "Attributedesign__0004"
+                      "operation": {
+                        "instanceName": "attribute",
+                        "entityName": "DeductionOperationDesign"
+                      },
+                      "parameters": [
+                        {
+                          "instanceId": "Deductnprmtrdsgn__0013",
+                          "entityName": "DeductionParameterDesign",
+                          "attributeValue": "Attributedesign__0004",
+                          "operationParameter": {
+                            "instanceName": "attribute",
+                            "entityName": "DeductionOperationParameterDesign"
+                          }
+                        }
+                      ]
                     }
                   ],
-                  "output": "Attribtddctndsgn__0009"
+                  "output": "Deductiondesign__0015"
                 }
               }
             ]
@@ -1150,20 +1414,34 @@
                                         "entityName": "DeductionSchemeDesign",
                                         "deductions": [
                                           {
-                                            "instanceId": "Slctdnstcddctdsg__000a",
-                                            "entityName": "SelectedInstanceDeductionDesign",
+                                            "instanceId": "Deductiondesign__0016",
+                                            "entityName": "DeductionDesign",
                                             "inputs": [],
-                                            "ofEntity": "Entitydesign__0002"
+                                            "operation": {
+                                              "instanceName": "selectedInstance",
+                                              "entityName": "DeductionOperationDesign"
+                                            },
+                                            "parameters": [
+                                              {
+                                                "instanceId": "Deductnprmtrdsgn__0014",
+                                                "entityName": "DeductionParameterDesign",
+                                                "entityValue": "Entitydesign__0002",
+                                                "operationParameter": {
+                                                  "instanceName": "selectedInstanceEntity",
+                                                  "entityName": "DeductionOperationParameterDesign"
+                                                }
+                                              }
+                                            ]
                                           },
                                           {
-                                            "instanceId": "Attribtddctndsgn__000a",
-                                            "entityName": "AttributeDeductionDesign",
+                                            "instanceId": "Deductiondesign__0017",
+                                            "entityName": "DeductionDesign",
                                             "inputs": [
                                               {
                                                 "instanceId": "Deductionnptdsgn__000c",
                                                 "entityName": "DeductionInputDesign",
                                                 "inputs": [
-                                                  "Slctdnstcddctdsg__000a"
+                                                  "Deductiondesign__0016"
                                                 ],
                                                 "operationInput": {
                                                   "instanceName": "attributeInstance",
@@ -1171,10 +1449,24 @@
                                                 }
                                               }
                                             ],
-                                            "attribute": "Attributedesign__0002"
+                                            "operation": {
+                                              "instanceName": "attribute",
+                                              "entityName": "DeductionOperationDesign"
+                                            },
+                                            "parameters": [
+                                              {
+                                                "instanceId": "Deductnprmtrdsgn__0015",
+                                                "entityName": "DeductionParameterDesign",
+                                                "attributeValue": "Attributedesign__0002",
+                                                "operationParameter": {
+                                                  "instanceName": "attribute",
+                                                  "entityName": "DeductionOperationParameterDesign"
+                                                }
+                                              }
+                                            ]
                                           }
                                         ],
-                                        "output": "Attribtddctndsgn__000a"
+                                        "output": "Deductiondesign__0017"
                                       }
                                     },
                                     {
@@ -1336,20 +1628,34 @@
                                       "entityName": "DeductionSchemeDesign",
                                       "deductions": [
                                         {
-                                          "instanceId": "Slctdnstcddctdsg__000b",
-                                          "entityName": "SelectedInstanceDeductionDesign",
+                                          "instanceId": "Deductiondesign__0018",
+                                          "entityName": "DeductionDesign",
                                           "inputs": [],
-                                          "ofEntity": "Entitydesign__0002"
+                                          "operation": {
+                                            "instanceName": "selectedInstance",
+                                            "entityName": "DeductionOperationDesign"
+                                          },
+                                          "parameters": [
+                                            {
+                                              "instanceId": "Deductnprmtrdsgn__0016",
+                                              "entityName": "DeductionParameterDesign",
+                                              "entityValue": "Entitydesign__0002",
+                                              "operationParameter": {
+                                                "instanceName": "selectedInstanceEntity",
+                                                "entityName": "DeductionOperationParameterDesign"
+                                              }
+                                            }
+                                          ]
                                         },
                                         {
-                                          "instanceId": "Rvrsrltnddctndsg__0001",
-                                          "entityName": "ReverseRelationDeductionDesign",
+                                          "instanceId": "Deductiondesign__0019",
+                                          "entityName": "DeductionDesign",
                                           "inputs": [
                                             {
                                               "instanceId": "Deductionnptdsgn__000d",
                                               "entityName": "DeductionInputDesign",
                                               "inputs": [
-                                                "Slctdnstcddctdsg__000b"
+                                                "Deductiondesign__0018"
                                               ],
                                               "operationInput": {
                                                 "instanceName": "reverseRelationToInstance",
@@ -1357,10 +1663,24 @@
                                               }
                                             }
                                           ],
-                                          "relation": "Relationdesign__0004"
+                                          "operation": {
+                                            "instanceName": "reverseRelation",
+                                            "entityName": "DeductionOperationDesign"
+                                          },
+                                          "parameters": [
+                                            {
+                                              "instanceId": "Deductnprmtrdsgn__0017",
+                                              "entityName": "DeductionParameterDesign",
+                                              "attributeValue": "Relationdesign__0004",
+                                              "operationParameter": {
+                                                "instanceName": "reverseRelationRelation",
+                                                "entityName": "DeductionOperationParameterDesign"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ],
-                                      "output": "Rvrsrltnddctndsg__0001"
+                                      "output": "Deductiondesign__0019"
                                     }
                                   }
                                 ]
@@ -1516,20 +1836,34 @@
                                       "entityName": "DeductionSchemeDesign",
                                       "deductions": [
                                         {
-                                          "instanceId": "Slctdnstcddctdsg__000c",
-                                          "entityName": "SelectedInstanceDeductionDesign",
+                                          "instanceId": "Deductiondesign__001a",
+                                          "entityName": "DeductionDesign",
                                           "inputs": [],
-                                          "ofEntity": "Entitydesign__0001"
+                                          "operation": {
+                                            "instanceName": "selectedInstance",
+                                            "entityName": "DeductionOperationDesign"
+                                          },
+                                          "parameters": [
+                                            {
+                                              "instanceId": "Deductnprmtrdsgn__0018",
+                                              "entityName": "DeductionParameterDesign",
+                                              "entityValue": "Entitydesign__0001",
+                                              "operationParameter": {
+                                                "instanceName": "selectedInstanceEntity",
+                                                "entityName": "DeductionOperationParameterDesign"
+                                              }
+                                            }
+                                          ]
                                         },
                                         {
-                                          "instanceId": "Attribtddctndsgn__000b",
-                                          "entityName": "AttributeDeductionDesign",
+                                          "instanceId": "Deductiondesign__001b",
+                                          "entityName": "DeductionDesign",
                                           "inputs": [
                                             {
                                               "instanceId": "Deductionnptdsgn__000e",
                                               "entityName": "DeductionInputDesign",
                                               "inputs": [
-                                                "Slctdnstcddctdsg__000c"
+                                                "Deductiondesign__001a"
                                               ],
                                               "operationInput": {
                                                 "instanceName": "attributeInstance",
@@ -1537,10 +1871,24 @@
                                               }
                                             }
                                           ],
-                                          "attribute": "Relationdesign__0002"
+                                          "operation": {
+                                            "instanceName": "attribute",
+                                            "entityName": "DeductionOperationDesign"
+                                          },
+                                          "parameters": [
+                                            {
+                                              "instanceId": "Deductnprmtrdsgn__0019",
+                                              "entityName": "DeductionParameterDesign",
+                                              "attributeValue": "Relationdesign__0002",
+                                              "operationParameter": {
+                                                "instanceName": "attribute",
+                                                "entityName": "DeductionOperationParameterDesign"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ],
-                                      "output": "Attribtddctndsgn__000b"
+                                      "output": "Deductiondesign__001b"
                                     }
                                   }
                                 ]
@@ -1570,20 +1918,34 @@
                   "entityName": "DeductionSchemeDesign",
                   "deductions": [
                     {
-                      "instanceId": "Slctdnstcddctdsg__000d",
-                      "entityName": "SelectedInstanceDeductionDesign",
+                      "instanceId": "Deductiondesign__001c",
+                      "entityName": "DeductionDesign",
                       "inputs": [],
-                      "ofEntity": "Entitydesign__0002"
+                      "operation": {
+                        "instanceName": "selectedInstance",
+                        "entityName": "DeductionOperationDesign"
+                      },
+                      "parameters": [
+                        {
+                          "instanceId": "Deductnprmtrdsgn__001a",
+                          "entityName": "DeductionParameterDesign",
+                          "entityValue": "Entitydesign__0002",
+                          "operationParameter": {
+                            "instanceName": "selectedInstanceEntity",
+                            "entityName": "DeductionOperationParameterDesign"
+                          }
+                        }
+                      ]
                     },
                     {
-                      "instanceId": "Attribtddctndsgn__000c",
-                      "entityName": "AttributeDeductionDesign",
+                      "instanceId": "Deductiondesign__001d",
+                      "entityName": "DeductionDesign",
                       "inputs": [
                         {
                           "instanceId": "Deductionnptdsgn__000f",
                           "entityName": "DeductionInputDesign",
                           "inputs": [
-                            "Slctdnstcddctdsg__000d"
+                            "Deductiondesign__001c"
                           ],
                           "operationInput": {
                             "instanceName": "attributeInstance",
@@ -1591,10 +1953,24 @@
                           }
                         }
                       ],
-                      "attribute": "Attributedesign__0002"
+                      "operation": {
+                        "instanceName": "attribute",
+                        "entityName": "DeductionOperationDesign"
+                      },
+                      "parameters": [
+                        {
+                          "instanceId": "Deductnprmtrdsgn__001b",
+                          "entityName": "DeductionParameterDesign",
+                          "attributeValue": "Attributedesign__0002",
+                          "operationParameter": {
+                            "instanceName": "attribute",
+                            "entityName": "DeductionOperationParameterDesign"
+                          }
+                        }
+                      ]
                     }
                   ],
-                  "output": "Attribtddctndsgn__000c"
+                  "output": "Deductiondesign__001d"
                 }
               },
               {
@@ -1772,20 +2148,34 @@
                                     "entityName": "DeductionSchemeDesign",
                                     "deductions": [
                                       {
-                                        "instanceId": "Slctdnstcddctdsg__000e",
-                                        "entityName": "SelectedInstanceDeductionDesign",
+                                        "instanceId": "Deductiondesign__001e",
+                                        "entityName": "DeductionDesign",
                                         "inputs": [],
-                                        "ofEntity": "Entitydesign__0003"
+                                        "operation": {
+                                          "instanceName": "selectedInstance",
+                                          "entityName": "DeductionOperationDesign"
+                                        },
+                                        "parameters": [
+                                          {
+                                            "instanceId": "Deductnprmtrdsgn__001c",
+                                            "entityName": "DeductionParameterDesign",
+                                            "entityValue": "Entitydesign__0003",
+                                            "operationParameter": {
+                                              "instanceName": "selectedInstanceEntity",
+                                              "entityName": "DeductionOperationParameterDesign"
+                                            }
+                                          }
+                                        ]
                                       },
                                       {
-                                        "instanceId": "Attribtddctndsgn__000d",
-                                        "entityName": "AttributeDeductionDesign",
+                                        "instanceId": "Deductiondesign__001f",
+                                        "entityName": "DeductionDesign",
                                         "inputs": [
                                           {
                                             "instanceId": "Deductionnptdsgn__0010",
                                             "entityName": "DeductionInputDesign",
                                             "inputs": [
-                                              "Slctdnstcddctdsg__000e"
+                                              "Deductiondesign__001e"
                                             ],
                                             "operationInput": {
                                               "instanceName": "attributeInstance",
@@ -1793,10 +2183,24 @@
                                             }
                                           }
                                         ],
-                                        "attribute": "Attributedesign__0003"
+                                        "operation": {
+                                          "instanceName": "attribute",
+                                          "entityName": "DeductionOperationDesign"
+                                        },
+                                        "parameters": [
+                                          {
+                                            "instanceId": "Deductnprmtrdsgn__001d",
+                                            "entityName": "DeductionParameterDesign",
+                                            "attributeValue": "Attributedesign__0003",
+                                            "operationParameter": {
+                                              "instanceName": "attribute",
+                                              "entityName": "DeductionOperationParameterDesign"
+                                            }
+                                          }
+                                        ]
                                       }
                                     ],
-                                    "output": "Attribtddctndsgn__000d"
+                                    "output": "Deductiondesign__001f"
                                   }
                                 }
                               ]
@@ -1844,20 +2248,34 @@
                                             "entityName": "DeductionSchemeDesign",
                                             "deductions": [
                                               {
-                                                "instanceId": "Slctdnstcddctdsg__000f",
-                                                "entityName": "SelectedInstanceDeductionDesign",
+                                                "instanceId": "Deductiondesign__0020",
+                                                "entityName": "DeductionDesign",
                                                 "inputs": [],
-                                                "ofEntity": "Entitydesign__0003"
+                                                "operation": {
+                                                  "instanceName": "selectedInstance",
+                                                  "entityName": "DeductionOperationDesign"
+                                                },
+                                                "parameters": [
+                                                  {
+                                                    "instanceId": "Deductnprmtrdsgn__001e",
+                                                    "entityName": "DeductionParameterDesign",
+                                                    "entityValue": "Entitydesign__0003",
+                                                    "operationParameter": {
+                                                      "instanceName": "selectedInstanceEntity",
+                                                      "entityName": "DeductionOperationParameterDesign"
+                                                    }
+                                                  }
+                                                ]
                                               },
                                               {
-                                                "instanceId": "Attribtddctndsgn__000e",
-                                                "entityName": "AttributeDeductionDesign",
+                                                "instanceId": "Deductiondesign__0021",
+                                                "entityName": "DeductionDesign",
                                                 "inputs": [
                                                   {
                                                     "instanceId": "Deductionnptdsgn__0011",
                                                     "entityName": "DeductionInputDesign",
                                                     "inputs": [
-                                                      "Slctdnstcddctdsg__000f"
+                                                      "Deductiondesign__0020"
                                                     ],
                                                     "operationInput": {
                                                       "instanceName": "attributeInstance",
@@ -1865,10 +2283,24 @@
                                                     }
                                                   }
                                                 ],
-                                                "attribute": "Attributedesign__0004"
+                                                "operation": {
+                                                  "instanceName": "attribute",
+                                                  "entityName": "DeductionOperationDesign"
+                                                },
+                                                "parameters": [
+                                                  {
+                                                    "instanceId": "Deductnprmtrdsgn__001f",
+                                                    "entityName": "DeductionParameterDesign",
+                                                    "attributeValue": "Attributedesign__0004",
+                                                    "operationParameter": {
+                                                      "instanceName": "attribute",
+                                                      "entityName": "DeductionOperationParameterDesign"
+                                                    }
+                                                  }
+                                                ]
                                               }
                                             ],
-                                            "output": "Attribtddctndsgn__000e"
+                                            "output": "Deductiondesign__0021"
                                           }
                                         }
                                       ]
@@ -1902,18 +2334,14 @@
                                             "entityName": "DeductionSchemeDesign",
                                             "deductions": [
                                               {
-                                                "instanceId": "Customdedctndsgn__0001",
-                                                "entityName": "CustomDeductionDesign",
-                                                "implementationClassName": "org.instantlogic.example.izzy.deduction.IssuePreviewDeduction",
+                                                "instanceId": "Deductiondesign__0022",
+                                                "entityName": "DeductionDesign",
                                                 "inputs": [],
-                                                "customDataType": {
-                                                  "instanceId": "Datatypedesign__0013",
-                                                  "entityName": "DataTypeDesign",
-                                                  "javaClassName": "java.lang.String"
-                                                }
+                                                "operation": "Deductinprtndsgn__0001",
+                                                "parameters": []
                                               }
                                             ],
-                                            "output": "Customdedctndsgn__0001"
+                                            "output": "Deductiondesign__0022"
                                           }
                                         }
                                       ]
@@ -1947,20 +2375,34 @@
                                             "entityName": "DeductionSchemeDesign",
                                             "deductions": [
                                               {
-                                                "instanceId": "Slctdnstcddctdsg__0010",
-                                                "entityName": "SelectedInstanceDeductionDesign",
+                                                "instanceId": "Deductiondesign__0023",
+                                                "entityName": "DeductionDesign",
                                                 "inputs": [],
-                                                "ofEntity": "Entitydesign__0003"
+                                                "operation": {
+                                                  "instanceName": "selectedInstance",
+                                                  "entityName": "DeductionOperationDesign"
+                                                },
+                                                "parameters": [
+                                                  {
+                                                    "instanceId": "Deductnprmtrdsgn__0020",
+                                                    "entityName": "DeductionParameterDesign",
+                                                    "entityValue": "Entitydesign__0003",
+                                                    "operationParameter": {
+                                                      "instanceName": "selectedInstanceEntity",
+                                                      "entityName": "DeductionOperationParameterDesign"
+                                                    }
+                                                  }
+                                                ]
                                               },
                                               {
-                                                "instanceId": "Attribtddctndsgn__000f",
-                                                "entityName": "AttributeDeductionDesign",
+                                                "instanceId": "Deductiondesign__0024",
+                                                "entityName": "DeductionDesign",
                                                 "inputs": [
                                                   {
                                                     "instanceId": "Deductionnptdsgn__0012",
                                                     "entityName": "DeductionInputDesign",
                                                     "inputs": [
-                                                      "Slctdnstcddctdsg__0010"
+                                                      "Deductiondesign__0023"
                                                     ],
                                                     "operationInput": {
                                                       "instanceName": "attributeInstance",
@@ -1968,17 +2410,31 @@
                                                     }
                                                   }
                                                 ],
-                                                "attribute": "Relationdesign__0004"
+                                                "operation": {
+                                                  "instanceName": "attribute",
+                                                  "entityName": "DeductionOperationDesign"
+                                                },
+                                                "parameters": [
+                                                  {
+                                                    "instanceId": "Deductnprmtrdsgn__0021",
+                                                    "entityName": "DeductionParameterDesign",
+                                                    "attributeValue": "Relationdesign__0004",
+                                                    "operationParameter": {
+                                                      "instanceName": "attribute",
+                                                      "entityName": "DeductionOperationParameterDesign"
+                                                    }
+                                                  }
+                                                ]
                                               },
                                               {
-                                                "instanceId": "Attribtddctndsgn__0010",
-                                                "entityName": "AttributeDeductionDesign",
+                                                "instanceId": "Deductiondesign__0025",
+                                                "entityName": "DeductionDesign",
                                                 "inputs": [
                                                   {
                                                     "instanceId": "Deductionnptdsgn__0013",
                                                     "entityName": "DeductionInputDesign",
                                                     "inputs": [
-                                                      "Attribtddctndsgn__000f"
+                                                      "Deductiondesign__0024"
                                                     ],
                                                     "operationInput": {
                                                       "instanceName": "attributeInstance",
@@ -1986,10 +2442,24 @@
                                                     }
                                                   }
                                                 ],
-                                                "attribute": "Attributedesign__0002"
+                                                "operation": {
+                                                  "instanceName": "attribute",
+                                                  "entityName": "DeductionOperationDesign"
+                                                },
+                                                "parameters": [
+                                                  {
+                                                    "instanceId": "Deductnprmtrdsgn__0022",
+                                                    "entityName": "DeductionParameterDesign",
+                                                    "attributeValue": "Attributedesign__0002",
+                                                    "operationParameter": {
+                                                      "instanceName": "attribute",
+                                                      "entityName": "DeductionOperationParameterDesign"
+                                                    }
+                                                  }
+                                                ]
                                               }
                                             ],
-                                            "output": "Attribtddctndsgn__0010"
+                                            "output": "Deductiondesign__0025"
                                           }
                                         }
                                       ]

@@ -40,14 +40,16 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		    d0.setValue(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		    d0.setValue(false);
 		return d0;
 	}
 

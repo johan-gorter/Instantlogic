@@ -5,20 +5,25 @@ import org.instantlogic.fabric.util.ValueAndLevel;
 
 public class ConstantDeduction<V> extends Deduction<V> {
 
-	private ValueAndLevel<V> constant;
+	private V value;
 
-	public ConstantDeduction(V constant) {
-		this.constant = ValueAndLevel.rule(constant);
+	public ConstantDeduction() {
+	}
+
+	public ConstantDeduction(V value) {
+		this.value = value;
+	}
+
+	public V getValue() {
+		return value;
+	}
+
+	public void setValue(V value) {
+		this.value = value;
 	}
 
 	@Override
 	public ValueAndLevel<V> execute(DeductionContext context) {
-		return constant;
-	}
-
-	@Deprecated
-	public static <X> Deduction<X> create(X x) {
-		ConstantDeduction<X> result = new ConstantDeduction<X>(x);
-		return result;
+		return ValueAndLevel.rule(value);
 	}
 }

@@ -37,6 +37,6 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
     @Override
     public void init() {
     	dataType.setWriteable(false);
-    	dataType.setRule(new DeductionSchemeDesign().deduceCustom(DeductionDataTypeDeduction.class, DataTypeDesign.class).getScheme());
+    	dataType.newRule().deduceCustom(DesignerApplicationGenerator.DeductionDataTypeDeduction);
     }
 }

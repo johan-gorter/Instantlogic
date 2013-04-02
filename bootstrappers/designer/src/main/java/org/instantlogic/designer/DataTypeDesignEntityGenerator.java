@@ -52,16 +52,16 @@ public class DataTypeDesignEntityGenerator extends EntityDesign {
     	addStaticInstanceRelationValue(_boolean, dataCategory, DataCategoryDesignEntityGenerator._boolean);
     	addStaticInstanceRelationValue(text, dataCategory, DataCategoryDesignEntityGenerator.text);
     	
-    	javaClassName.setDefault(new DeductionSchemeDesign().deduceCustom(DataTypeJavaClassNameDeduction.class, String.class).getScheme());
+    	javaClassName.newDefault().deduceCustom(DesignerApplicationGenerator.DataTypeJavaClassNameDeduction);
     	
     	entity.setWriteable(false);
-    	entity.setRule(new DeductionSchemeDesign().deduceCustom(DataTypeEntityDeduction.class, EntityDesign.class).getScheme());
+    	entity.newRule().deduceCustom(DesignerApplicationGenerator.DataTypeEntityDeduction);
     	
-    	dataCategory.setRule(new DeductionSchemeDesign().deduceCustom(DataTypeDataCategoryDeduction.class, DataCategoryDesign.class).getScheme());
+    	dataCategory.newRule().deduceCustom(DesignerApplicationGenerator.DataTypeDataCategoryDeduction);
     	dataCategory.setDefault(DeductionSchemeDesign.constant(DataCategoryDesign.text));
-    	dataCategory.setOptions(new DeductionSchemeDesign().deduceCustom(DataTypeDataCategoryOptionsDeduction.class.getName(), "? extends Iterable").getScheme());
+    	dataCategory.newOptions().deduceCustom(DesignerApplicationGenerator.DataTypeDataCategoryOptionsDeduction);
     	
-    	multivalue.setRule(new DeductionSchemeDesign().deduceCustom(DataTypeMultivalueDeduction.class, Boolean.class).getScheme());
+    	multivalue.newRule().deduceCustom(DesignerApplicationGenerator.DataTypeMultivalueDeduction);
     	multivalue.setDefault(DeductionSchemeDesign.constant(false));
 
     	wholeNumber.newDefault().deduceConstant(Boolean.class, Boolean.FALSE);

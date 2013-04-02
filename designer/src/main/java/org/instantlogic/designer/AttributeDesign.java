@@ -10,6 +10,9 @@
 
 package org.instantlogic.designer;
 
+import org.instantlogic.designer.codegenerator.classmodel.StaticFieldValueModel;
+import org.instantlogic.designer.codegenerator.classmodel.ValueModel;
+
 public class AttributeDesign extends AbstractAttributeDesign {
 	
 	// TODO: override for RelationDesign and take the uniqueness of the reverseRelation into account 
@@ -43,6 +46,11 @@ public class AttributeDesign extends AbstractAttributeDesign {
 	public AttributeDesign setDefault(DeductionSchemeDesign newValue) {
 		setHasDefault(true);
 		return super.setDefault(newValue);
+	}
+	
+	public ValueModel asStaticFieldValue() {
+		EntityDesign entity = getBelongsToEntity();
+		return new StaticFieldValueModel(entity.getApplication().getRootPackageName()+".entity."+entity.getTechnicalNameCapitalized()+"Entity", getTechnicalName());
 	}
 
 }

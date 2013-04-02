@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeductionModel {
+	
 	public static class Input {
 		public int deductionIndex;
 		public String inputName;
@@ -36,13 +37,27 @@ public class DeductionModel {
 		}
 	}
 	
+	public static class Parameter {
+		public String name;
+		
+		public ValueModel value;
+
+		public String getName() {
+			return name;
+		}
+
+		public ValueModel getValue() {
+			return value;
+		}
+	}
+	
 	public int index;
 	public String type;
 	public String customization;
 	public List<Input> inputs = new ArrayList<Input>();
-	public List<ValueModel> parameters = new ArrayList<ValueModel>();
+	public List<Parameter> parameters = new ArrayList<Parameter>();
 	
-	public List<ValueModel> getParameters() {
+	public List<Parameter> getParameters() {
 		return parameters;
 	}
 	public int getIndex() {

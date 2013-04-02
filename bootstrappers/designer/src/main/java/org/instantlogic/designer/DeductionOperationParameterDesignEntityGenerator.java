@@ -16,6 +16,7 @@ public class DeductionOperationParameterDesignEntityGenerator extends EntityDesi
     public static final StaticInstanceDesign castToEntity = addStaticInstance(ENTITY, "castToEntity", createConstantText("To entity"));
     public static final StaticInstanceDesign constantValue = addStaticInstance(ENTITY, "constantValue", createConstantText("Value"));
     public static final StaticInstanceDesign selectedInstanceEntity = addStaticInstance(ENTITY, "selectedInstanceEntity", createConstantText("Of entity"));
+    public static final StaticInstanceDesign reverseRelationRelation = addStaticInstance(ENTITY, "reverseRelationRelation", createConstantText("Relation"));
     
     @Override
     public void init() {
@@ -23,5 +24,6 @@ public class DeductionOperationParameterDesignEntityGenerator extends EntityDesi
     	addStaticInstanceValue(castToEntity, DesignEntityGenerator.name, "toEntity");
     	addStaticInstanceValue(constantValue, DesignEntityGenerator.name, "value");
     	addStaticInstanceValue(selectedInstanceEntity, DesignEntityGenerator.name, "ofEntity");
+    	addStaticInstanceValue(reverseRelationRelation, DesignEntityGenerator.name, "relation");
     }
 }

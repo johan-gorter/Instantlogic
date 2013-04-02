@@ -14,6 +14,7 @@ import org.instantlogic.designer.AttributeDesignEntityGenerator;
 import org.instantlogic.designer.DeductionInputDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.DesignEntityGenerator;
+import org.instantlogic.designer.DesignerApplicationGenerator;
 import org.instantlogic.designer.EntityDesignEntityGenerator;
 import org.instantlogic.designer.FragmentTemplateDesign;
 import org.instantlogic.designer.PlaceTemplateDesign;
@@ -46,8 +47,8 @@ public class EntityDetailsPlaceGenerator extends PlaceTemplateDesign {
 		);
 		
 		
-		entityName.deduceCustom(CapitalizeFirstDeduction.class, String.class, 
-			entityName.deduceAttribute(DesignEntityGenerator.name));
+		entityName.deduceCustom(DesignerApplicationGenerator.CapitalizeFirstDeduction, 
+			DesignerApplicationGenerator.CapitalizeFirstDeductionInput, entityName.deduceAttribute(DesignEntityGenerator.name));
 		
 		setContent(new FragmentTemplateDesign("Page")
 			.setChildren("mainContent", 
@@ -88,8 +89,8 @@ public class EntityDetailsPlaceGenerator extends PlaceTemplateDesign {
 		
 		applicationContext.setDefinition(ApplicationContextSharedElementGenerator.DEFINITION);
 		
-		entityName.deduceCustom(CapitalizeFirstDeduction.class, String.class, 
-			entityName.deduceAttribute(DesignEntityGenerator.name));
+		entityName.deduceCustom(DesignerApplicationGenerator.CapitalizeFirstDeduction, 
+			DesignerApplicationGenerator.CapitalizeFirstDeductionInput, entityName.deduceAttribute(DesignEntityGenerator.name));
 		attributes.deduceAttribute(EntityDesignEntityGenerator.attributes);
 		attributeName.deduceAttribute(DesignEntityGenerator.name, attributeName.deduceSelectedInstance(AttributeDesignEntityGenerator.ENTITY));
 		attributeLink.setEvent(AttributeDetailsEventGenerator.EVENT);

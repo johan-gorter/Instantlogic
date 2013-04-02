@@ -13,11 +13,11 @@ package org.instantlogic.example.izzy;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.AttributeDesign;
 import org.instantlogic.designer.DataCategoryDesign;
+import org.instantlogic.designer.DeductionOperationDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.Design;
 import org.instantlogic.designer.EntityDesign;
@@ -37,11 +37,14 @@ import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGenerator;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
+import org.instantlogic.tools.generator.Generator;
 import org.instantlogic.tools.persistence.json.CasePersister;
 
 public class IzzyGenerator extends Design {
 	private static ApplicationDesign izzy;
 
+	private static DeductionOperationDesign issuePreviewDeduction;
+	
 	private static EntityDesign project;
 	private static EntityDesign user;
 	private static EntityDesign issue;
@@ -79,6 +82,10 @@ public class IzzyGenerator extends Design {
 		// Entities and attributes
 		izzy = new ApplicationDesign();
 		izzy.getMetadata().getCaseAdministration().setIdGenerator(new SequencePerLabelIdGenerator()); // predictable Id's for better source control
+		issuePreviewDeduction = new DeductionOperationDesign();
+		izzy.addToDeductionOperations(issuePreviewDeduction);
+		issuePreviewDeduction.setName("issue preview");
+		issuePreviewDeduction.setJavaClassName("org.instantlogic.example.izzy.deduction.IssuePreviewDeduction");
 		project = new EntityDesign("project").setApplication(izzy);
 		project.addAttribute("last issue number", Integer.class).setDefault(new DeductionSchemeDesign().deduceConstant(Integer.class, 0).getScheme());
 		user = new EntityDesign("user").setApplication(izzy);
@@ -162,6 +169,7 @@ public class IzzyGenerator extends Design {
 			new CasePersister().save(izzy, fileWriter);
 		}
 		System.out.println("izzy.json written");
+		Generator.scanForInstantlogicDesigns(new File("../../webapps/izzy"));
 	}
 	
 	// Flows
@@ -245,7 +253,7 @@ public class IzzyGenerator extends Design {
 		issueRow.setName("IssueRow");
 		number.deduceAttribute(issueNumber);
 		headline.deduceAttribute(issueHeadline);
-		preview.deduceCustom("org.instantlogic.example.izzy.deduction.IssuePreviewDeduction", String.class);
+		preview.deduceCustom(issuePreviewDeduction);
 		assignee.deduceAttribute(userUsername, assignee.deduceRelation(issueAssignee));
 		detailsLink.setEvent(issueDetailsEvent);
 	}

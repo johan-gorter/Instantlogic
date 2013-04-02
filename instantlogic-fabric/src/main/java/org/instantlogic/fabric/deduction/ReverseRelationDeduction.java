@@ -12,7 +12,6 @@ package org.instantlogic.fabric.deduction;
 
 
 import org.instantlogic.fabric.Instance;
-import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.util.DeductionContext;
 import org.instantlogic.fabric.util.ValueAndLevel;
@@ -27,9 +26,16 @@ public class ReverseRelationDeduction<From extends Instance, Item extends Object
 
 	private Relation<From, Item, To> relation;
 	private Deduction<To> toInstance;
+	
 
+	public ReverseRelationDeduction() {
+	}
 	
 	public ReverseRelationDeduction(Relation<From, Item, To> relation) {
+		this.relation = relation;
+	}
+
+	public void setRelation(Relation<From, Item, To> relation) {
 		this.relation = relation;
 	}
 
@@ -50,6 +56,5 @@ public class ReverseRelationDeduction<From extends Instance, Item extends Object
 			return ValueAndLevel.inconclusive();
 		}
 		return (ValueAndLevel<ReverseItem>) relation.getReverseRelation().get(instanceValue.getValue()).getValueAndLevel();
-		
 	}
 }

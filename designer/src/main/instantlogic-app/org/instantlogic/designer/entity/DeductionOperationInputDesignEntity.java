@@ -40,7 +40,8 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction(false);
+		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		    d0.setValue(false);
 		return d0;
 	}
 

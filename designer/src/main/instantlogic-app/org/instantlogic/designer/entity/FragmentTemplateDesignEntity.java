@@ -40,33 +40,40 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.fragmentTypes);
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.ApplicationDesignEntity.fragmentTypes);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
-		    d0.addToInputs(d1);
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity);
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d1.setAttribute(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE);
-		    d0.addToInputs(d1);
-		    d1.addToInputs(d2);
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d2.setOfEntity(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
+		    d1.setInstance(d2);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
+		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
-		    d0.addToInputs(d1);
+		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
 		return d0;
 	}
 

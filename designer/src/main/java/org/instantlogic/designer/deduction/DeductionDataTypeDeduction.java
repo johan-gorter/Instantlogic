@@ -26,6 +26,7 @@ import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.util.DeductionContext;
 import org.instantlogic.fabric.util.ValueAndLevel;
 
+//TODO: no longer in use?
 public class DeductionDataTypeDeduction extends Deduction<DataTypeDesign> {
 
 	@Override

@@ -47,7 +47,7 @@ public class AttributeDesignEntityGenerator extends EntityDesign {
     @Override
     public void init() {
     	belongsToEntity.setWriteable(false);
-    	belongsToEntity.setRule(new DeductionSchemeDesign().deduceCustom(AttributeBelongsToDeduction.class, EntityDesign.class).getScheme());
+    	belongsToEntity.newRule().deduceCustom(DesignerApplicationGenerator.AttributeBelongsToDeduction);
     	
     	hasRelevance.setDefault(DeductionSchemeDesign.constant(false));
     	hasRule.setDefault(DeductionSchemeDesign.constant(false));

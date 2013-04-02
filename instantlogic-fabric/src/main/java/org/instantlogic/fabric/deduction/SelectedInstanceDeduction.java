@@ -7,10 +7,15 @@ import org.instantlogic.fabric.util.ValueAndLevel;
 
 public class SelectedInstanceDeduction<I extends Instance> extends Deduction<I>{
 	
-	private Entity<I> entity;
+	private Entity<I> ofEntity;
 	
+	@Deprecated
 	public void setEntity(Entity<I> entity) {
-		this.entity = entity;
+		this.ofEntity = entity;
+	}
+
+	public void setOfEntity(Entity<I> entity) {
+		this.ofEntity = entity;
 	}
 
 	public SelectedInstanceDeduction()
@@ -19,12 +24,12 @@ public class SelectedInstanceDeduction<I extends Instance> extends Deduction<I>{
 
 	@Deprecated
 	public SelectedInstanceDeduction(Entity<I> entity) {
-		this.entity = entity;
+		this.ofEntity = entity;
 	}
 
 	@Override
 	protected ValueAndLevel<I> execute(DeductionContext context) {
-		return ValueAndLevel.rule((I)context.getSelectedInstance(entity));
+		return ValueAndLevel.rule((I)context.getSelectedInstance(ofEntity));
 	}
 
 	@Deprecated
@@ -32,4 +37,5 @@ public class SelectedInstanceDeduction<I extends Instance> extends Deduction<I>{
 		SelectedInstanceDeduction<X> result = new SelectedInstanceDeduction<X>(entity);
 		return result ;
 	}
+
 }

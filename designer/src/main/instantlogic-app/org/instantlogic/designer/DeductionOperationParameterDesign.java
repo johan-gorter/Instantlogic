@@ -29,6 +29,7 @@ public class DeductionOperationParameterDesign extends Design {
 	public static final DeductionOperationParameterDesign castToEntity;
 	public static final DeductionOperationParameterDesign constantValue;
 	public static final DeductionOperationParameterDesign selectedInstanceEntity;
+	public static final DeductionOperationParameterDesign reverseRelationRelation;
 	
 	static {
 	  // Phase 1
@@ -36,6 +37,7 @@ public class DeductionOperationParameterDesign extends Design {
 	  castToEntity = addStaticInstance("castToEntity", new DeductionOperationParameterDesign());
 	  constantValue = addStaticInstance("constantValue", new DeductionOperationParameterDesign());
 	  selectedInstanceEntity = addStaticInstance("selectedInstanceEntity", new DeductionOperationParameterDesign());
+	  reverseRelationRelation = addStaticInstance("reverseRelationRelation", new DeductionOperationParameterDesign());
 	  // Phase 2
       attribute.setName("attribute");
 	  attribute.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Attribute")));
@@ -45,6 +47,8 @@ public class DeductionOperationParameterDesign extends Design {
 	  constantValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Value")));
       selectedInstanceEntity.setName("ofEntity");
 	  selectedInstanceEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Of entity")));
+      reverseRelationRelation.setName("relation");
+	  reverseRelationRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Relation")));
 	}
 	
 	@Override
