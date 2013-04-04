@@ -36,7 +36,7 @@ public class UserEntityGenerator extends EntityDesign {
     @Override
     public void init() {
     	email.newDefault().deduceAttribute(username);
-    	name.newDefault().deduceCustom("org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction", String.class);
-    	avatarUrl.newDefault().deduceCustom("org.instantlogic.engine.presence.deduction.UserAvatarUrlDefaultDeduction", String.class);
+    	name.newDefault().deduceCustom(PresenceApplicationGenerator.UserNameDefaultDeduction);
+    	avatarUrl.newDefault().deduceCustom(PresenceApplicationGenerator.UserAvatarUrlDefaultDeduction);
     }
 }

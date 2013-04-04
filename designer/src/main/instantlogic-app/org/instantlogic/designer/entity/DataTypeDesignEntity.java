@@ -35,38 +35,31 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
-		  	org.instantlogic.designer.deduction.DataTypeMultivalueDeduction d0 
-		  	  = new org.instantlogic.designer.deduction.DataTypeMultivalueDeduction();
+		  	org.instantlogic.designer.deduction.DataTypeMultivalueDeduction d0 = new org.instantlogic.designer.deduction.DataTypeMultivalueDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d0.setValue(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
-		  	org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction d0 
-		  	  = new org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction();
+		  	org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction d0 = new org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
-		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.EqualsDeduction();
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 = new org.instantlogic.fabric.deduction.EqualsDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d1.setValue(org.instantlogic.designer.DataCategoryDesign.number);
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d2.setAttribute(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d3.setOfEntity(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
 		    d0.addToOperands(d2);
 		    d0.addToOperands(d1);
@@ -76,16 +69,12 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction4() {
-		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.EqualsDeduction();
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 = new org.instantlogic.fabric.deduction.EqualsDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d1.setValue(org.instantlogic.designer.DataCategoryDesign.number);
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d2.setAttribute(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d3.setOfEntity(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
 		    d0.addToOperands(d2);
 		    d0.addToOperands(d1);
@@ -95,24 +84,19 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction5() {
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d0.setValue(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction6() {
-		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.EqualsDeduction();
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 = new org.instantlogic.fabric.deduction.EqualsDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d1.setValue(false);
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d2.setAttribute(org.instantlogic.designer.entity.DataTypeDesignEntity.wholeNumber);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d3.setOfEntity(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
 		    d0.addToOperands(d2);
 		    d0.addToOperands(d1);
@@ -122,16 +106,12 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction7() {
-		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.EqualsDeduction();
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.EqualsDeduction d0 = new org.instantlogic.fabric.deduction.EqualsDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d1 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d1.setValue(org.instantlogic.designer.DataCategoryDesign.text);
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d2 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d2.setAttribute(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d3 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d3.setOfEntity(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
 		    d0.addToOperands(d2);
 		    d0.addToOperands(d1);
@@ -141,11 +121,9 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction8() {
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DataTypeDesignEntity.multiLine);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
 		    d0.setInstance(d1);
 		return d0;
@@ -153,22 +131,19 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction9() {
-		  	org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction d0 
-		  	  = new org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction();
+		  	org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction d0 = new org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction10() {
-		  	org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction d0 
-		  	  = new org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction();
+		  	org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction d0 = new org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction();
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction11() {
-		  	org.instantlogic.designer.deduction.DataTypeEntityDeduction d0 
-		  	  = new org.instantlogic.designer.deduction.DataTypeEntityDeduction();
+		  	org.instantlogic.designer.deduction.DataTypeEntityDeduction d0 = new org.instantlogic.designer.deduction.DataTypeEntityDeduction();
 		return d0;
 	}
 
@@ -450,38 +425,6 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 			}
 		};
 	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.ConstantDeductionDesign, org.instantlogic.designer.ConstantDeductionDesign> constantDeductionDesign
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.ConstantDeductionDesign, org.instantlogic.designer.ConstantDeductionDesign>(
-			"constantDeductionDesign", INSTANCE, org.instantlogic.designer.entity.ConstantDeductionDesignEntity.INSTANCE, org.instantlogic.designer.ConstantDeductionDesign.class, org.instantlogic.designer.entity.ConstantDeductionDesignEntity.constantDataType
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.ConstantDeductionDesign> get(
-					org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getConstantDeductionDesignRelationValue();
-			}
-	
-			public boolean isReverse() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.CustomDeductionDesign, org.instantlogic.designer.CustomDeductionDesign> customDeductionDesign
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.CustomDeductionDesign, org.instantlogic.designer.CustomDeductionDesign>(
-			"customDeductionDesign", INSTANCE, org.instantlogic.designer.entity.CustomDeductionDesignEntity.INSTANCE, org.instantlogic.designer.CustomDeductionDesign.class, org.instantlogic.designer.entity.CustomDeductionDesignEntity.customDataType
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.CustomDeductionDesign> get(
-					org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getCustomDeductionDesignRelationValue();
-			}
-	
-			public boolean isReverse() {
-				return true;
-			}
-		};
-	
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> forEntity
 		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
 			"forEntity", INSTANCE, org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE, org.instantlogic.designer.EntityDesign.class, org.instantlogic.designer.entity.EntityDesignEntity.dataType
@@ -529,8 +472,6 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		attribute,
-		constantDeductionDesign,
-		customDeductionDesign,
 		forEntity,
 		reverseRelation,
 	};

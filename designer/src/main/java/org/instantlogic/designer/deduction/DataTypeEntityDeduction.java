@@ -32,12 +32,6 @@ public class DataTypeEntityDeduction extends Deduction<EntityDesign> {
 		if (dataType.getForEntity()!=null) {
 			return ValueAndLevel.rule(dataType.getForEntity());
 		}
-		if (dataType.getConstantDeductionDesign()!=null) {
-			Object value = dataType.getConstantDeductionDesign().getValue();
-			if (value instanceof EntityDesign) {
-				return ValueAndLevel.rule((EntityDesign)value);
-			}
-		}
 		return ValueAndLevel.rule(null);
 	}
 }

@@ -10,7 +10,6 @@
 
 package org.instantlogic.designer;
 
-import org.instantlogic.designer.deduction.DeductionDataTypeDeduction;
 
 
 public class DeductionDesignEntityGenerator extends EntityDesign {
@@ -36,7 +35,5 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
 
     @Override
     public void init() {
-    	dataType.setWriteable(false);
-    	dataType.newRule().deduceCustom(DesignerApplicationGenerator.DeductionDataTypeDeduction);
     }
 }

@@ -216,40 +216,6 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<DataTypeDesign, ConstantDeductionDesign> constantDeductionDesign
-		= createReverseRelationValue(org.instantlogic.designer.entity.DataTypeDesignEntity.constantDeductionDesign);
-
-	public org.instantlogic.fabric.value.RelationValue<DataTypeDesign, ConstantDeductionDesign> getConstantDeductionDesignRelationValue() {
-		return constantDeductionDesign;
-	}
-
-	public org.instantlogic.designer.ConstantDeductionDesign getConstantDeductionDesign() {
-		return constantDeductionDesign.getValue();
-	}
-
-    public DataTypeDesign setConstantDeductionDesign(org.instantlogic.designer.ConstantDeductionDesign newValue) {
-        constantDeductionDesign.setValue(newValue);
-        return (DataTypeDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<DataTypeDesign, CustomDeductionDesign> customDeductionDesign
-		= createReverseRelationValue(org.instantlogic.designer.entity.DataTypeDesignEntity.customDeductionDesign);
-
-	public org.instantlogic.fabric.value.RelationValue<DataTypeDesign, CustomDeductionDesign> getCustomDeductionDesignRelationValue() {
-		return customDeductionDesign;
-	}
-
-	public org.instantlogic.designer.CustomDeductionDesign getCustomDeductionDesign() {
-		return customDeductionDesign.getValue();
-	}
-
-    public DataTypeDesign setCustomDeductionDesign(org.instantlogic.designer.CustomDeductionDesign newValue) {
-        customDeductionDesign.setValue(newValue);
-        return (DataTypeDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<DataTypeDesign, EntityDesign> forEntity
 		= createReverseRelationValue(org.instantlogic.designer.entity.DataTypeDesignEntity.forEntity);
 

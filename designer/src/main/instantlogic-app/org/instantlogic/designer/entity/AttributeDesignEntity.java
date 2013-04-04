@@ -47,32 +47,28 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d0.setValue(true);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d0.setValue(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d0.setValue(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
-		  	org.instantlogic.designer.deduction.AttributeBelongsToDeduction d0 
-		  	  = new org.instantlogic.designer.deduction.AttributeBelongsToDeduction();
+		  	org.instantlogic.designer.deduction.AttributeBelongsToDeduction d0 = new org.instantlogic.designer.deduction.AttributeBelongsToDeduction();
 		return d0;
 	}
 

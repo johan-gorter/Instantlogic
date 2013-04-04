@@ -23,9 +23,6 @@ public class DataTypeDataCategoryDeduction extends Deduction<DataCategoryDesign>
 	@Override
 	public ValueAndLevel<DataCategoryDesign> execute(DeductionContext context) {
 		DataTypeDesign dataType = context.getSelectedInstance(DataTypeDesignEntity.INSTANCE);
-		if (dataType.getConstantDeductionDesign()!=null || dataType.getCustomDeductionDesign()!=null) {
-			return ValueAndLevel.rule(DataCategoryDesign.custom);
-		}
 		if (dataType.getReverseRelation()!=null || dataType.getAttribute() instanceof RelationDesign) {
 			return ValueAndLevel.rule(DataCategoryDesign.entity); // A (reverse) relation
 		}

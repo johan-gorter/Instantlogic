@@ -40,10 +40,10 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.ReadOnlyRelationValue<DeductionDesign, DataTypeDesign> dataType
-		= createReadOnlyRelationValue(org.instantlogic.designer.entity.DeductionDesignEntity.dataType);
+	private final org.instantlogic.fabric.value.RelationValue<DeductionDesign, DataTypeDesign> dataType
+		= createRelationValue(org.instantlogic.designer.entity.DeductionDesignEntity.dataType);
 		
-	public org.instantlogic.fabric.value.ReadOnlyRelationValue<DeductionDesign, DataTypeDesign> getDataTypeRelationValue() {
+	public org.instantlogic.fabric.value.RelationValue<DeductionDesign, DataTypeDesign> getDataTypeRelationValue() {
 		return dataType;
 	}
 
@@ -51,6 +51,12 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 		return dataType.getValue();
 	}
 	
+	public DeductionDesign setDataType(org.instantlogic.designer.DataTypeDesign newValue) {
+		dataType.setValue(newValue);
+		return (DeductionDesign)this;
+	}
+	
+
 	
 	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> inputs
 		= createRelationValues(org.instantlogic.designer.entity.DeductionDesignEntity.inputs);

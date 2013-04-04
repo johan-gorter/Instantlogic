@@ -14,18 +14,26 @@ import java.io.File;
 import java.io.FileWriter;
 
 import org.instantlogic.designer.ApplicationDesign;
+import org.instantlogic.designer.DeductionOperationDesign;
 import org.instantlogic.engine.presence.flow.MainFlowGenerator;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
+import org.instantlogic.tools.generator.Generator;
 import org.instantlogic.tools.persistence.json.CasePersister;
 
 public class PresenceApplicationGenerator extends ApplicationDesign {
 
-    public static PresenceApplicationGenerator APPLICATION = new PresenceApplicationGenerator();
+	public static final DeductionOperationDesign UserNameDefaultDeduction = new DeductionOperationDesign();
+	public static final DeductionOperationDesign UserAvatarUrlDefaultDeduction  = new DeductionOperationDesign();
     
+	public static PresenceApplicationGenerator APPLICATION = new PresenceApplicationGenerator();
+
     public PresenceApplicationGenerator() {
     	APPLICATION = this;
 		getMetadata().getCaseAdministration().setIdGenerator(new SequencePerLabelIdGenerator()); // predictable Id's for better source control
-    	
+    	addToCustomDeductionOperations(UserNameDefaultDeduction);
+		UserNameDefaultDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction");
+		addToCustomDeductionOperations(UserAvatarUrlDefaultDeduction);
+		UserAvatarUrlDefaultDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.UserAvatarUrlDefaultDeduction");
         setName("Presence");
         setRootPackageName("org.instantlogic.engine.presence");
         setSourcePath("target/generated-sources/instantlogic-app");
@@ -40,5 +48,6 @@ public class PresenceApplicationGenerator extends ApplicationDesign {
 			new CasePersister().save(APPLICATION, fileWriter);
 		}
 		System.out.println("presence.json written");
+		Generator.scanForInstantlogicDesigns(new File("../../instantlogic-engine"));
     }
 }

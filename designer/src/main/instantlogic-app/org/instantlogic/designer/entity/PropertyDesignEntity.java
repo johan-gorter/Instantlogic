@@ -35,8 +35,7 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
-		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d0.setValue(true);
 		return d0;
 	}

@@ -16,8 +16,13 @@ public class DataTypeDesignDataCategoryRequiredValidation extends org.instantlog
 	
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
-		  	org.instantlogic.fabric.deduction.HasValueDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.HasValueDeduction();
+		  	org.instantlogic.fabric.deduction.HasValueDeduction d0 = new org.instantlogic.fabric.deduction.HasValueDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d1.setAttribute(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d2.setOfEntity(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE);
+		    d0.setInput(d1);
+		    d1.setInstance(d2);
 		return d0;
 	}
 

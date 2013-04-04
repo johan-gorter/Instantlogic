@@ -29,9 +29,6 @@ public class DataTypeJavaClassNameDeduction extends Deduction<String> {
 		if (result!=null) {
 			return ValueAndLevel.rule(result.getName());
 		}
-		if (dataType.getConstantDeductionDesign()!=null) {
-			return ValueAndLevel.rule(dataType.getConstantDeductionDesign().getValue().getClass().getName());
-		}
 		if (dataType.getDataCategory() == DataCategoryDesign.entity) {
 			return ValueAndLevel.rule(dataType.getEntity().getApplication().getRootPackageName()+"."+dataType.getEntity().getTechnicalNameCapitalized());
 		}

@@ -21,11 +21,9 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 	
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
-		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.ReverseRelationDeduction();
+		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 = new org.instantlogic.fabric.deduction.ReverseRelationDeduction();
 		    d0.setRelation(org.instantlogic.designer.entity.FlowDesignEntity.nodes);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE);
 		    d0.setToInstance(d1);
 		return d0;
@@ -33,11 +31,9 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DesignEntity.name);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
 		    d0.setInstance(d1);
 		return d0;
@@ -45,11 +41,9 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.content);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE);
 		    d0.setInstance(d1);
 		return d0;
@@ -57,11 +51,9 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 
-		  	  = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DesignEntity.name);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 
-		  	  = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
 		    d0.setInstance(d1);
 		return d0;

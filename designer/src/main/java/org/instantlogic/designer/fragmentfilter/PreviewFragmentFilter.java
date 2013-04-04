@@ -15,8 +15,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.instantlogic.designer.AttributeDesign;
-import org.instantlogic.designer.ConstantDeductionDesign;
 import org.instantlogic.designer.DataTypeDesign;
+import org.instantlogic.designer.DeductionOperationDesign;
+import org.instantlogic.designer.DeductionParameterDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.ElementDesign;
 import org.instantlogic.designer.EntityDesign;
@@ -120,8 +121,9 @@ public class PreviewFragmentFilter implements FragmentFilter {
 	}
 
 	private Object fakeResult(DeductionSchemeDesign scheme) {
-		if (scheme.getOutput() instanceof ConstantDeductionDesign) {
-			return ((ConstantDeductionDesign)scheme.getOutput()).getValue();
+		if (scheme.getOutput().getOperation() == DeductionOperationDesign.constant) {
+			DeductionParameterDesign constantValue = scheme.getOutput().getParameters().iterator().next();
+			return constantValue.getValue();
 		}
 		return dummyValue(scheme.getOutput().getDataType());
 	}

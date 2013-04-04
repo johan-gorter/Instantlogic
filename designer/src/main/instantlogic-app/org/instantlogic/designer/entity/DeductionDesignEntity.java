@@ -16,23 +16,6 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	public static final DeductionDesignEntity INSTANCE = new DeductionDesignEntity();
 	
 
-	private static final org.instantlogic.fabric.model.Entity<?>[] EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
-		org.instantlogic.designer.entity.AttributeDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.CastInstanceDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.ConstantDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.CustomDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.EqualsDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.HasValueDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.NegationDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.ReverseRelationDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.SelectedInstanceDeductionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.SumDeductionDesignEntity.INSTANCE
-	};
-	 
-	@Override
-	public org.instantlogic.fabric.model.Entity[] extensions() {
-		return EXTENSIONS;
-	}
 	
 	@Override
 	public org.instantlogic.designer.DeductionDesign createInstance() {
@@ -51,13 +34,6 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 
 	// Deductions
 
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
-		  	org.instantlogic.designer.deduction.DeductionDataTypeDeduction d0 
-		  	  = new org.instantlogic.designer.deduction.DeductionDataTypeDeduction();
-		return d0;
-	}
-
-
 	
 	// Attributes
 	
@@ -73,19 +49,6 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DataTypeDesign> get(
 					org.instantlogic.designer.DeductionDesign instance) {
 				return instance.getDataTypeRelationValue();
-			}
-	
-			public boolean isReadOnly() {
-				return true;
-			}
-
-			private org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataTypeDesign> rule;
-			@Override
-			public org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataTypeDesign> getRule() {
-				if (rule==null) {
-					rule  = createDeduction0();
-				}
-				return rule;
 			}
 		};
 	

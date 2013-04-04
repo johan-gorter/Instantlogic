@@ -83,7 +83,7 @@ public class IzzyGenerator extends Design {
 		izzy = new ApplicationDesign();
 		izzy.getMetadata().getCaseAdministration().setIdGenerator(new SequencePerLabelIdGenerator()); // predictable Id's for better source control
 		issuePreviewDeduction = new DeductionOperationDesign();
-		izzy.addToDeductionOperations(issuePreviewDeduction);
+		izzy.addToCustomDeductionOperations(issuePreviewDeduction);
 		issuePreviewDeduction.setName("issue preview");
 		issuePreviewDeduction.setJavaClassName("org.instantlogic.example.izzy.deduction.IssuePreviewDeduction");
 		project = new EntityDesign("project").setApplication(izzy);

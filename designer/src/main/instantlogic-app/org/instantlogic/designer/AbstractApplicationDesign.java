@@ -158,34 +158,34 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> deductionOperations
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.deductionOperations);
+	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> customDeductionOperations
+		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.customDeductionOperations);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> getDeductionOperationsRelationValue() {
-		return deductionOperations;
+	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> getCustomDeductionOperationsRelationValue() {
+		return customDeductionOperations;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationDesign> getDeductionOperations() {
-		return deductionOperations.getValue();
+	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationDesign> getCustomDeductionOperations() {
+		return customDeductionOperations.getValue();
 	}
 	
-	public ApplicationDesign addToDeductionOperations(DeductionOperationDesign item) {
-		deductionOperations.addValue(item);
+	public ApplicationDesign addToCustomDeductionOperations(DeductionOperationDesign item) {
+		customDeductionOperations.addValue(item);
 		return (ApplicationDesign)this;
 	}
 	
-	public ApplicationDesign addToDeductionOperations(DeductionOperationDesign item, int index) {
-		deductionOperations.insertValue(item, index);
+	public ApplicationDesign addToCustomDeductionOperations(DeductionOperationDesign item, int index) {
+		customDeductionOperations.insertValue(item, index);
 		return (ApplicationDesign)this;
 	}
 	
-	public ApplicationDesign removeFromDeductionOperations(DeductionOperationDesign item) {
-		deductionOperations.removeValue(item);
+	public ApplicationDesign removeFromCustomDeductionOperations(DeductionOperationDesign item) {
+		customDeductionOperations.removeValue(item);
 		return (ApplicationDesign)this;
 	}
 	
-	public ApplicationDesign removeFromDeductionOperations(int index) {
-		deductionOperations.removeValue(index);
+	public ApplicationDesign removeFromCustomDeductionOperations(int index) {
+		customDeductionOperations.removeValue(index);
 		return (ApplicationDesign)this;
 	}
 	
