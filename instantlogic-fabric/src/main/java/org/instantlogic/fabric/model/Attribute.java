@@ -29,59 +29,34 @@ import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
  */
 public abstract class Attribute<I extends Instance, Value extends Object, Item extends Object> extends Concept {
 
-	private static final Validation[] NO_VALIDATIONS = new Validation[0];
 	public abstract Entity<I> getEntity();
 	
 	public abstract Class<Item> getJavaClassName();
 
 	public abstract TextTemplate getQuestion();
 
-	public Validation[] getValidations() {
-		return NO_VALIDATIONS;
-	}
+	public abstract Validation[] getValidations();
 	
-	public TextTemplate getExplain() {
-		return null;
-	}
-
-	public boolean isMultivalue() {
-		return false;
-	}
+	public abstract boolean isMultivalue();
 
 	/**
 	 * @return a list of data type characteristics, like [category = number, exactRounding = true, decimalPlaces = 2, unitPrefix = $] or [category = text, multiline = true, formatted = true]
 	 */
-	public Map<String, Object> getDataType() {
-		return null;
-	}
+	public abstract Map<String, Object> getDataType();
 	
-	public boolean isReadOnly() {
-		return false;
-	}
+	public abstract boolean isReadOnly();
 
-	// TODO: public ValueAndLevel<Boolean> isRelevant(I instance) 
-	public Deduction<Boolean> getRelevance() {
-		return null;
-	}
+	public abstract Deduction<Boolean> getRelevance();
 	
-	public ValueAndLevel<Value> rule(I instance) {
-		return ValueAndLevel.inconclusive();
-	}
+	public abstract Deduction<Value> getRule();
 	
-	// TODO: public ValueAndLevel<Value> rule(I instance) 
-	public Deduction<Value> getRule() {
-		return null;
-	}
-	
-	// TODO
-	public Deduction<Value> getDefault() {
-		return null;
-	}
+	public abstract Deduction<Value> getDefault();
 	
 	public abstract ReadOnlyAttributeValue<I, Value> get(I instance);
 	
 	public AttributeDeduction<Value> toDeduction() {
-		SelectedInstanceDeduction<I> selectedInstanceDeduction = new SelectedInstanceDeduction<I>(this.getEntity());
+		SelectedInstanceDeduction<I> selectedInstanceDeduction = new SelectedInstanceDeduction<I>();
+		selectedInstanceDeduction.setOfEntity(this.getEntity());
 		AttributeDeduction<Value> result = new AttributeDeduction<Value>(this);
 		result.setInstance(selectedInstanceDeduction);
 		return result;

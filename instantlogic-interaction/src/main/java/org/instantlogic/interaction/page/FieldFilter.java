@@ -49,11 +49,6 @@ public class FieldFilter extends AbstractFragmentFilter {
 				result.put("questionText", attribute.getName());
 			}
 		}
-		if (!result.containsKey("explainText")) {
-			if (attribute.getExplain()!=null) {
-				result.put("explainText", attribute.getExplain().renderText(context));
-			}
-		}
 		if (!result.containsKey("options") && (attribute instanceof Relation<?,?,?>)) {
 			Deduction options = ((Relation)attribute).getOptions();
 			if (options!=null) {

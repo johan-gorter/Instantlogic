@@ -10,22 +10,44 @@
 
 package org.instantlogic.fabric.model.impl;
 
+import java.lang.reflect.Field;
+import java.util.Map;
+
 import org.instantlogic.fabric.Instance;
+import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
+import org.instantlogic.fabric.model.Validation;
+import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 
 
-public abstract class SimpleRelation<I extends Instance, Value extends Object, To extends Instance> extends Relation<I, Value, To> {
+public class SimpleRelation<I extends Instance, Value extends Object, To extends Instance> extends Relation<I, Value, To> {
 
 	private final String name;
 	private final Entity<I> entity;
 	private final Entity<To> to;
 	private final Class<To> valueClass;
 	private Relation<To, ? extends Object,I> reverseRelation;
+
+	public boolean owner;
+	public boolean autoCreate;
+	public boolean multivalue;
+	public boolean reverse;
+	public Validation[] validations;
+	public Map<String, Object> dataType;
+	public boolean readOnly;
+	public Deduction<Boolean> relevance;
+	public Deduction<Value> rule;
+	public Deduction<Value> _default;
+
+	private Field instanceField; 
+
+	public SimpleRelation(String name, Entity<I> entity, Entity<To> to, Class<To> valueClass, Relation<To, ? extends Object,I> reverseRelation) {
+		this(name, entity, to, valueClass, reverseRelation, null);
+	}
+
 	
-	
-	public SimpleRelation(String name, Entity<I> entity, Entity<To> to, 
-			Class<To> valueClass, Relation<To, ? extends Object,I> reverseRelation) {
+	public SimpleRelation(String name, Entity<I> entity, Entity<To> to, Class<To> valueClass, Relation<To, ? extends Object,I> reverseRelation, String instanceFieldName) {
 		this.name = name;
 		this.entity = entity;
 		this.to = to;
@@ -33,6 +55,14 @@ public abstract class SimpleRelation<I extends Instance, Value extends Object, T
 		this.reverseRelation = reverseRelation;
 		if (reverseRelation!=null) {
 			reverseRelation.setReverseRelation(this);
+		}
+		if (instanceFieldName!=null) {
+			try {
+				instanceField = entity.getInstanceClass().getField(instanceFieldName);
+				instanceField.setAccessible(true);
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 	
@@ -47,22 +77,22 @@ public abstract class SimpleRelation<I extends Instance, Value extends Object, T
 
 	@Override
 	public boolean isOwner() {
-		return false;
+		return owner;
 	}
 	
 	@Override
 	public boolean isAutoCreate() {
-		return false;
+		return autoCreate;
 	}
 
 	@Override
 	public boolean isMultivalue() {
-		return false;
+		return multivalue;
 	}
 	
 	@Override
 	public boolean isReverse() {
-		return false;
+		return reverse;
 	}
 	
 	/* Needed for bootstrapping */
@@ -90,5 +120,45 @@ public abstract class SimpleRelation<I extends Instance, Value extends Object, T
 	@Override
 	public Class<To> getJavaClassName() {
 		return valueClass;
+	}
+
+	@Override
+	public Validation[] getValidations() {
+		return validations;
+	}
+
+	@Override
+	public Map<String, Object> getDataType() {
+		return dataType;
+	}
+
+	@Override
+	public boolean isReadOnly() {
+		return readOnly;
+	}
+
+	@Override
+	public Deduction<Boolean> getRelevance() {
+		return relevance;
+	}
+
+	@Override
+	public Deduction<Value> getRule() {
+		return rule;
+	}
+
+	@Override
+	public Deduction<Value> getDefault() {
+		return _default;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public ReadOnlyAttributeValue<I, Value> get(I instance) {
+		try {
+			return (ReadOnlyAttributeValue<I, Value>) instanceField.get(instance);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
