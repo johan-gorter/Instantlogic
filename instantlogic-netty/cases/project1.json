@@ -1,5 +1,5 @@
 {
-  "instanceId": "QzjaqoruUmdqkhy_5261cac7_5d60",
+  "instanceId": "LfjfzhEsyaaOAahb_7b291c18_8ea0",
   "entityName": "project",
   "version": 1,
   "last issue number": 16,
@@ -75,6 +75,7 @@
     {
       "instanceId": "5b3fde85-c4e0-422e-ba64-e85dc3d0705d",
       "entityName": "issue",
+      "description": "call them SharedElements",
       "headline": "Add reusable place-elements to Interaction",
       "number": 8,
       "comments": [],

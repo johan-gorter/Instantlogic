@@ -51,10 +51,10 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 		this.javaClassName = javaClassName;
 		if (instanceFieldName!=null) {
 			try {
-				instanceField = entity.getInstanceClass().getField(instanceFieldName);
+				instanceField = entity.getInstanceClass().getDeclaredField(instanceFieldName);
 				instanceField.setAccessible(true);
 			} catch (Exception e) {
-				throw new RuntimeException(e);
+				throw new RuntimeException("Problem with field "+instanceFieldName+" from "+entity.getInstanceClass(), e);
 			}
 		}
 	}

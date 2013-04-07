@@ -10,7 +10,7 @@
     "izzy"
   ],
   "caseEntity": "Entitydesign__0001",
-  "deductionOperations": [
+  "customDeductionOperations": [
     {
       "instanceId": "Deductinprtndsgn__0001",
       "entityName": "DeductionOperationDesign",

@@ -72,96 +72,7 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 	// Attributes
 	<#list attributes as attribute>
 	
-	public static final org.instantlogic.fabric.model.Attribute<${rootPackageName}.${technicalNameCapitalized}, ${attribute.className}, ${attribute.itemClassName}> ${attribute.javaIdentifier} 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<${rootPackageName}.${technicalNameCapitalized}, ${attribute.className}, ${attribute.itemClassName}>(
-			"${attribute.name}", INSTANCE, ${attribute.itemClassName}.class
-		) {
-			{
-			<#list attribute.dataType?keys as key>
-			<#if attribute.dataType[key]?is_string>
-				dataType.put("${key}", "${attribute.dataType[key]}");
-			<#elseif attribute.dataType[key]?is_boolean>
-				dataType.put("${key}", <#if attribute.dataType[key]>true<#else>false</#if>);
-			<#else>
-				dataType.put("${key}", ${attribute.dataType[key]});
-			</#if>
-			</#list>
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<#if attribute.multivalue>s</#if><${rootPackageName}.${technicalNameCapitalized}, ${attribute.itemClassName}> get(${rootPackageName}.${technicalNameCapitalized} instance) {
-				return instance.get${attribute.technicalName?cap_first}AttributeValue();
-			}
-			<#if attribute.multivalue>
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-			</#if>
-			<#if attribute.question??>
-			
-			private final org.instantlogic.fabric.text.TextTemplate question = <@text_macro text=attribute.question />;
-			@Override
-			public org.instantlogic.fabric.text.TextTemplate getQuestion() {
-				return question;
-			}
-			</#if>
-			<#if attribute.readonly>
-			
-			public boolean isReadOnly() {
-				return true;
-			};
-			</#if>
-            <#if attribute.relevanceDeductionIndex??>
-
-            private org.instantlogic.fabric.deduction.Deduction<Boolean> relevance;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<Boolean> getRelevance() {
-                if (relevance==null) {
-                    relevance = createDeduction${attribute.relevanceDeductionIndex}();
-                }
-                return relevance;
-            }
-            </#if>
-            <#if attribute.ruleDeductionIndex??>
-
-            private org.instantlogic.fabric.deduction.Deduction<${attribute.itemClassName}> rule;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<${attribute.itemClassName}> getRule() {
-                if (rule==null) {
-                    rule = createDeduction${attribute.ruleDeductionIndex}();
-                }
-                return rule;
-            }
-            </#if>
-            <#if attribute.defaultDeductionIndex??>
-
-            private org.instantlogic.fabric.deduction.Deduction<${attribute.itemClassName}> defaultDeduction;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<${attribute.itemClassName}> getDefault() {
-                if (defaultDeduction==null) {
-                    defaultDeduction = createDeduction${attribute.defaultDeductionIndex}();
-                }
-                return defaultDeduction;
-            }
-            </#if>
-            
-            <#if attribute.validations?size!=0>
-            
-            public org.instantlogic.fabric.model.Validation[] validations;
-			@Override
-			public org.instantlogic.fabric.model.Validation[] getValidations() {
-				if (validations==null) {
-					validations = new org.instantlogic.fabric.model.Validation[] {
-						<#list attribute.validations as validation>
-						${rootPackageName}.validation.${validation}Validation.INSTANCE,
-						</#list>
-					};
-				}
-				return validations;
-			}
-			</#if>
-		};
+	public static final org.instantlogic.fabric.model.Attribute<${rootPackageName}.${technicalNameCapitalized}, ${attribute.className}, ${attribute.itemClassName}> ${attribute.javaIdentifier}; 
 	</#list>
 	
 	// Relations
@@ -268,6 +179,55 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 		};
 	</#list>
 
+	static {
+		// Phase 1
+		<#list attributes as attribute>
+		org.instantlogic.fabric.model.impl.SimpleAttribute<${rootPackageName}.${technicalNameCapitalized}, ${attribute.className}, ${attribute.itemClassName}> $${attribute.javaIdentifier}
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<${rootPackageName}.${technicalNameCapitalized}, ${attribute.className}, ${attribute.itemClassName}>(
+				"${attribute.name}", INSTANCE, ${attribute.itemClassName}.class, "${attribute.javaIdentifier}");
+		${attribute.javaIdentifier} = $${attribute.javaIdentifier};
+		</#list>
+
+		// Phase 2
+		<#list attributes as attribute>
+			<#list attribute.dataType?keys as key>
+			<#if attribute.dataType[key]?is_string>
+		$${attribute.javaIdentifier}.dataType.put("${key}", "${attribute.dataType[key]}");
+			<#elseif attribute.dataType[key]?is_boolean>
+		$${attribute.javaIdentifier}.dataType.put("${key}", <#if attribute.dataType[key]>true<#else>false</#if>);
+			<#else>
+		$${attribute.javaIdentifier}.dataType.put("${key}", ${attribute.dataType[key]});
+			</#if>
+			</#list>
+
+			<#if attribute.multivalue>
+		$${attribute.javaIdentifier}.multivalue = true;
+			</#if>
+			<#if attribute.question??>
+		$${attribute.javaIdentifier}.question=<@text_macro text=attribute.question />;
+			</#if>
+			<#if attribute.readonly>
+		$${attribute.javaIdentifier}.readOnly = true;
+			</#if>
+            <#if attribute.relevanceDeductionIndex??>
+		$${attribute.javaIdentifier}.relevance = createDeduction${attribute.relevanceDeductionIndex}();
+            </#if>
+            <#if attribute.ruleDeductionIndex??>
+		$${attribute.javaIdentifier}.relevance = createDeduction${attribute.ruleDeductionIndex}();
+            </#if>
+            <#if attribute.defaultDeductionIndex??>
+		$${attribute.javaIdentifier}._default = createDeduction${attribute.defaultDeductionIndex}();
+            </#if>
+            <#if attribute.validations?size!=0>
+        $${attribute.javaIdentifier}.validations = new org.instantlogic.fabric.model.Validation[] {
+				<#list attribute.validations as validation>
+			${rootPackageName}.validation.${validation}Validation.INSTANCE,
+				</#list>
+		};
+			</#if>
+		</#list>
+	}	
+
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 		<#list attributes as attribute>
 		${attribute.javaIdentifier},
@@ -288,7 +248,6 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 		${rootPackageName}.validation.${validation}Validation.INSTANCE,
 		</#list>
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {
