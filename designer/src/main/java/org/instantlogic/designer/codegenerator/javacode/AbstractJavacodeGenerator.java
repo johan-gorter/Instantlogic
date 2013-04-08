@@ -61,7 +61,7 @@ public abstract class AbstractJavacodeGenerator {
 				root = new File(root, subDirectory);
 				root.mkdirs();
 			}
-			String prefix = classModel.isCustomized?"Abstract":"";
+			String prefix = (classModel.isCustomized && template!=entityTemplate)?"Abstract":"";
 			File output = new File(root, prefix+classModel.technicalNameCapitalized+postfix+".java");
 			writer = new OutputStreamWriter(new FileOutputStream(output), "UTF-8");
 			template.process(classModel, writer);

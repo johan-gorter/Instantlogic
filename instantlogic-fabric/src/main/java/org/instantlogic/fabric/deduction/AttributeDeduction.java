@@ -10,12 +10,15 @@ public class AttributeDeduction<V> extends Deduction<V> {
 	private Attribute<? extends Instance, V, ? extends Object> attribute;
 	
 	public void setAttribute(Attribute<? extends Instance, V, ? extends Object> attribute) {
+		if (attribute==null) 
+			throw new IllegalArgumentException();
 		this.attribute = attribute;
 	}
 
 	private Deduction<? extends Instance> instance;
 	
 	public void setInstance(Deduction<? extends Instance> instance) {
+		if (instance==null) throw new IllegalArgumentException();
 		this.instance = instance;
 	}
 	
@@ -23,10 +26,12 @@ public class AttributeDeduction<V> extends Deduction<V> {
 	}
 	
 	public AttributeDeduction(Attribute<? extends Instance, V, ? extends Object> attribute) {
+		if (attribute==null) throw new IllegalArgumentException();
 		this.attribute = attribute;
 	}
 
 	public AttributeDeduction(Deduction<? extends Instance> instance, Attribute<? extends Instance, V, ? extends Object> attribute) {
+		if (attribute==null) throw new IllegalArgumentException();
 		this.attribute = attribute;
 	}
 

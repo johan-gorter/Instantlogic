@@ -1,13 +1,3 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.designer.entity;
 
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -17,21 +7,6 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	
 
 	
-	@Override
-	public org.instantlogic.designer.DataTypeDesign createInstance() {
-		return new org.instantlogic.designer.DataTypeDesign();
-	}
-	
-	@Override
-	public Class<org.instantlogic.designer.DataTypeDesign> getInstanceClass() {
-		return org.instantlogic.designer.DataTypeDesign.class;
-	}
-	
-	@Override
-	public String getName() {
-		return "DataTypeDesign";
-	}
-
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
@@ -150,312 +125,133 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 	
 	// Attributes
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> exactRounding 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-			"exactRounding", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-				dataType.put("category", "boolean");
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean> get(org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getExactRoundingAttributeValue();
-			}
-
-            private org.instantlogic.fabric.deduction.Deduction<Boolean> relevance;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<Boolean> getRelevance() {
-                if (relevance==null) {
-                    relevance = createDeduction6();
-                }
-                return relevance;
-            }
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> formatted 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-			"formatted", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-				dataType.put("category", "boolean");
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean> get(org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getFormattedAttributeValue();
-			}
-
-            private org.instantlogic.fabric.deduction.Deduction<Boolean> relevance;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<Boolean> getRelevance() {
-                if (relevance==null) {
-                    relevance = createDeduction8();
-                }
-                return relevance;
-            }
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.String, java.lang.String> javaClassName 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.String, java.lang.String>(
-			"javaClassName", INSTANCE, java.lang.String.class
-		) {
-			{
-				dataType.put("category", "text");
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DataTypeDesign, java.lang.String> get(org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getJavaClassNameAttributeValue();
-			}
-
-            private org.instantlogic.fabric.deduction.Deduction<java.lang.String> defaultDeduction;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<java.lang.String> getDefault() {
-                if (defaultDeduction==null) {
-                    defaultDeduction = createDeduction2();
-                }
-                return defaultDeduction;
-            }
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> multiLine 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-			"multiLine", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-				dataType.put("category", "boolean");
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean> get(org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getMultiLineAttributeValue();
-			}
-
-            private org.instantlogic.fabric.deduction.Deduction<Boolean> relevance;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<Boolean> getRelevance() {
-                if (relevance==null) {
-                    relevance = createDeduction7();
-                }
-                return relevance;
-            }
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> multivalue 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-			"multivalue", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-				dataType.put("category", "boolean");
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean> get(org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getMultivalueAttributeValue();
-			}
-
-            private org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> rule;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> getRule() {
-                if (rule==null) {
-                    rule = createDeduction0();
-                }
-                return rule;
-            }
-
-            private org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> defaultDeduction;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> getDefault() {
-                if (defaultDeduction==null) {
-                    defaultDeduction = createDeduction1();
-                }
-                return defaultDeduction;
-            }
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> percentage 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-			"percentage", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-				dataType.put("category", "boolean");
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean> get(org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getPercentageAttributeValue();
-			}
-
-            private org.instantlogic.fabric.deduction.Deduction<Boolean> relevance;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<Boolean> getRelevance() {
-                if (relevance==null) {
-                    relevance = createDeduction3();
-                }
-                return relevance;
-            }
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> wholeNumber 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-			"wholeNumber", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-				dataType.put("category", "boolean");
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean> get(org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getWholeNumberAttributeValue();
-			}
-
-            private org.instantlogic.fabric.deduction.Deduction<Boolean> relevance;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<Boolean> getRelevance() {
-                if (relevance==null) {
-                    relevance = createDeduction4();
-                }
-                return relevance;
-            }
-
-            private org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> defaultDeduction;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<java.lang.Boolean> getDefault() {
-                if (defaultDeduction==null) {
-                    defaultDeduction = createDeduction5();
-                }
-                return defaultDeduction;
-            }
-            
-		};
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> exactRounding; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> formatted; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.String, java.lang.String> javaClassName; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> multiLine; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> multivalue; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> percentage; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> wholeNumber; 
 	
 	// Relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataCategoryDesign> dataCategory
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataCategoryDesign>(
-			"dataCategory", INSTANCE, org.instantlogic.designer.entity.DataCategoryDesignEntity.INSTANCE, org.instantlogic.designer.DataCategoryDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataCategoryDesign> get(
-					org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getDataCategoryRelationValue();
-			}
-
-			private org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataCategoryDesign> rule;
-			@Override
-			public org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.DataCategoryDesign> getRule() {
-				if (rule==null) {
-					rule  = createDeduction9();
-				}
-				return rule;
-			}
-			
-			private org.instantlogic.fabric.deduction.Deduction<? extends java.lang.Iterable<org.instantlogic.designer.DataCategoryDesign>> options;
-			@Override
-			public org.instantlogic.fabric.deduction.Deduction<? extends java.lang.Iterable<org.instantlogic.designer.DataCategoryDesign>> getOptions() {
-				if (options==null) {
-					options = (org.instantlogic.fabric.deduction.Deduction)createDeduction10();
-				}
-				return options;
-			};
-            
-            public org.instantlogic.fabric.model.Validation[] validations;
-			@Override
-			public org.instantlogic.fabric.model.Validation[] getValidations() {
-				if (validations==null) {
-					validations = new org.instantlogic.fabric.model.Validation[] {
-						org.instantlogic.designer.validation.DataTypeDesignDataCategoryRequiredValidation.INSTANCE,
-					};
-				}
-				return validations;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> entity
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-			"entity", INSTANCE, org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE, org.instantlogic.designer.EntityDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign> get(
-					org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getEntityRelationValue();
-			}
-	
-			public boolean isReadOnly() {
-				return true;
-			}
-
-			private org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.EntityDesign> rule;
-			@Override
-			public org.instantlogic.fabric.deduction.Deduction<org.instantlogic.designer.EntityDesign> getRule() {
-				if (rule==null) {
-					rule  = createDeduction11();
-				}
-				return rule;
-			}
-		};
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataCategoryDesign> dataCategory;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> entity;
 	
 	// Reverse relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> attribute
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
-			"attribute", INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.AttributeDesign.class, org.instantlogic.designer.entity.AttributeDesignEntity.dataType
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign> get(
-					org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getAttributeRelationValue();
-			}
-	
-			public boolean isReverse() {
-				return true;
-			}
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> attribute;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> forEntity;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign, org.instantlogic.designer.RelationDesign> reverseRelation;
+
+	static {
+		// Phase 1
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> $exactRounding
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
+				"exactRounding", INSTANCE, java.lang.Boolean.class, "exactRounding", org.instantlogic.designer.DataTypeDesign.class);
+		exactRounding = $exactRounding;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> $formatted
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
+				"formatted", INSTANCE, java.lang.Boolean.class, "formatted", org.instantlogic.designer.DataTypeDesign.class);
+		formatted = $formatted;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.String, java.lang.String> $javaClassName
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.String, java.lang.String>(
+				"javaClassName", INSTANCE, java.lang.String.class, "javaClassName", org.instantlogic.designer.DataTypeDesign.class);
+		javaClassName = $javaClassName;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> $multiLine
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
+				"multiLine", INSTANCE, java.lang.Boolean.class, "multiLine", org.instantlogic.designer.DataTypeDesign.class);
+		multiLine = $multiLine;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> $multivalue
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
+				"multivalue", INSTANCE, java.lang.Boolean.class, "multivalue", org.instantlogic.designer.DataTypeDesign.class);
+		multivalue = $multivalue;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> $percentage
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
+				"percentage", INSTANCE, java.lang.Boolean.class, "percentage", org.instantlogic.designer.DataTypeDesign.class);
+		percentage = $percentage;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean> $wholeNumber
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DataTypeDesign, java.lang.Boolean, java.lang.Boolean>(
+				"wholeNumber", INSTANCE, java.lang.Boolean.class, "wholeNumber", org.instantlogic.designer.DataTypeDesign.class);
+		wholeNumber = $wholeNumber;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataCategoryDesign> $dataCategory
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataCategoryDesign>(
+				"dataCategory", INSTANCE, "dataCategory", org.instantlogic.designer.DataTypeDesign.class);
+		dataCategory = $dataCategory;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $entity
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
+				"entity", INSTANCE, "entity", org.instantlogic.designer.DataTypeDesign.class);
+		entity = $entity;
+		// Phase "reverse relations"
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> $attribute
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
+				"attribute", INSTANCE, "attribute", org.instantlogic.designer.DataTypeDesign.class);
+		attribute = $attribute;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $forEntity
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
+				"forEntity", INSTANCE, "forEntity", org.instantlogic.designer.DataTypeDesign.class);
+		forEntity = $forEntity;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign, org.instantlogic.designer.RelationDesign> $reverseRelation
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign, org.instantlogic.designer.RelationDesign>(
+				"reverseRelation", INSTANCE, "reverseRelation", org.instantlogic.designer.DataTypeDesign.class);
+		reverseRelation = $reverseRelation;
+		
+		// Phase 2
+		$exactRounding.dataType.put("category", "boolean");
+		$exactRounding.relevance = createDeduction6();
+		$formatted.dataType.put("category", "boolean");
+		$formatted.relevance = createDeduction8();
+		$javaClassName.dataType.put("category", "text");
+		$javaClassName._default = createDeduction2();
+		$multiLine.dataType.put("category", "boolean");
+		$multiLine.relevance = createDeduction7();
+		$multivalue.dataType.put("category", "boolean");
+		$multivalue.rule = createDeduction0();
+		$multivalue._default = createDeduction1();
+		$percentage.dataType.put("category", "boolean");
+		$percentage.relevance = createDeduction3();
+		$wholeNumber.dataType.put("category", "boolean");
+		$wholeNumber.relevance = createDeduction4();
+		$wholeNumber._default = createDeduction5();
+
+		$dataCategory.valueClass = org.instantlogic.designer.DataCategoryDesign.class;
+		$dataCategory.to = org.instantlogic.designer.entity.DataCategoryDesignEntity.INSTANCE;
+		$dataCategory.rule = createDeduction9();
+		$dataCategory.options = (org.instantlogic.fabric.deduction.Deduction)createDeduction10();
+		$dataCategory.validations = new org.instantlogic.fabric.model.Validation[] {
+			org.instantlogic.designer.validation.DataTypeDesignDataCategoryRequiredValidation.INSTANCE,
 		};
+		$entity.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$entity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$entity.readOnly = true;
+		$entity.rule = createDeduction11();
+
+		$attribute.valueClass = org.instantlogic.designer.AttributeDesign.class;
+		$attribute.to = org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE;
+		$attribute.setReverseRelation(org.instantlogic.designer.entity.AttributeDesignEntity.dataType);
+		$attribute.reverse = true;
+		$forEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$forEntity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$forEntity.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.dataType);
+		$forEntity.reverse = true;
+		$reverseRelation.valueClass = org.instantlogic.designer.RelationDesign.class;
+		$reverseRelation.to = org.instantlogic.designer.entity.RelationDesignEntity.INSTANCE;
+		$reverseRelation.setReverseRelation(org.instantlogic.designer.entity.RelationDesignEntity.reverseDataType);
+		$reverseRelation.reverse = true;
+	}
+
+	@Override
+	public org.instantlogic.designer.DataTypeDesign createInstance() {
+		return new org.instantlogic.designer.DataTypeDesign();
+	}
 	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> forEntity
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-			"forEntity", INSTANCE, org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE, org.instantlogic.designer.EntityDesign.class, org.instantlogic.designer.entity.EntityDesignEntity.dataType
-		) {
+	@Override
+	public Class<org.instantlogic.designer.DataTypeDesign> getInstanceClass() {
+		return org.instantlogic.designer.DataTypeDesign.class;
+	}
 	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign> get(
-					org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getForEntityRelationValue();
-			}
-	
-			public boolean isReverse() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign, org.instantlogic.designer.RelationDesign> reverseRelation
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign, org.instantlogic.designer.RelationDesign>(
-			"reverseRelation", INSTANCE, org.instantlogic.designer.entity.RelationDesignEntity.INSTANCE, org.instantlogic.designer.RelationDesign.class, org.instantlogic.designer.entity.RelationDesignEntity.reverseDataType
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign> get(
-					org.instantlogic.designer.DataTypeDesign instance) {
-				return instance.getReverseRelationRelationValue();
-			}
-	
-			public boolean isReverse() {
-				return true;
-			}
-		};
+	@Override
+	public String getName() {
+		return "DataTypeDesign";
+	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 		exactRounding,
@@ -478,7 +274,6 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 		org.instantlogic.designer.validation.DataTypeDesignDataCategoryRequiredValidation.INSTANCE,
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {

@@ -1,13 +1,3 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.designer.entity;
 
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -21,6 +11,57 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 	}
 
 	
+	// Deductions
+
+	
+	// Attributes
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String> javaClassName; 
+	
+	// Relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign> inputs;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> outputDataType;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign> parameters;
+	
+	// Reverse relations
+
+	static {
+		// Phase 1
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String> $javaClassName
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String>(
+				"javaClassName", INSTANCE, java.lang.String.class, "javaClassName", org.instantlogic.designer.DeductionOperationDesign.class);
+		javaClassName = $javaClassName;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign> $inputs
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign>(
+				"inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionOperationDesign.class);
+		inputs = $inputs;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $outputDataType
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
+				"outputDataType", INSTANCE, "outputDataType", org.instantlogic.designer.DeductionOperationDesign.class);
+		outputDataType = $outputDataType;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign> $parameters
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign>(
+				"parameters", INSTANCE, "parameters", org.instantlogic.designer.DeductionOperationDesign.class);
+		parameters = $parameters;
+		// Phase "reverse relations"
+		
+		// Phase 2
+		$javaClassName.dataType.put("category", "text");
+
+		$inputs.valueClass = org.instantlogic.designer.DeductionOperationInputDesign.class;
+		$inputs.to = org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.INSTANCE;
+		$inputs.setReverseRelation(org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.operation);
+		$inputs.owner = true;
+		$inputs.multivalue = true;
+		$outputDataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;
+		$outputDataType.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
+		$parameters.valueClass = org.instantlogic.designer.DeductionOperationParameterDesign.class;
+		$parameters.to = org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.INSTANCE;
+		$parameters.setReverseRelation(org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.operation);
+		$parameters.owner = true;
+		$parameters.multivalue = true;
+
+	}
+
 	@Override
 	public org.instantlogic.designer.DeductionOperationDesign createInstance() {
 		return new org.instantlogic.designer.DeductionOperationDesign();
@@ -36,85 +77,6 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 		return "DeductionOperationDesign";
 	}
 
-	// Deductions
-
-	
-	// Attributes
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String> javaClassName 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String>(
-			"javaClassName", INSTANCE, java.lang.String.class
-		) {
-			{
-				dataType.put("category", "text");
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.DeductionOperationDesign, java.lang.String> get(org.instantlogic.designer.DeductionOperationDesign instance) {
-				return instance.getJavaClassNameAttributeValue();
-			}
-            
-		};
-	
-	// Relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign> inputs
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign>(
-			"inputs", INSTANCE, org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.INSTANCE, org.instantlogic.designer.DeductionOperationInputDesign.class, 
-			org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.operation
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationInputDesign> get(
-					org.instantlogic.designer.DeductionOperationDesign instance) {
-				return instance.getInputsRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> outputDataType
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-			"outputDataType", INSTANCE, org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE, org.instantlogic.designer.DataTypeDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign> get(
-					org.instantlogic.designer.DeductionOperationDesign instance) {
-				return instance.getOutputDataTypeRelationValue();
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign> parameters
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign>(
-			"parameters", INSTANCE, org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.INSTANCE, org.instantlogic.designer.DeductionOperationParameterDesign.class, 
-			org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.operation
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationParameterDesign> get(
-					org.instantlogic.designer.DeductionOperationDesign instance) {
-				return instance.getParametersRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-	
-	// Reverse relations
-
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 		javaClassName,
 	};
@@ -127,7 +89,6 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {

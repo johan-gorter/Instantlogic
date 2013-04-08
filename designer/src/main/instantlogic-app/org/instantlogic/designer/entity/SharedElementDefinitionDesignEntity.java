@@ -1,13 +1,3 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.designer.entity;
 
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -21,6 +11,52 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 	}
 
 	
+	// Deductions
+
+	
+	// Attributes
+	
+	// Relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> fragment;
+	
+	// Reverse relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> application;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign> usages;
+
+	static {
+		// Phase 1
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $fragment
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
+				"fragment", INSTANCE, "fragment", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+		fragment = $fragment;
+		// Phase "reverse relations"
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
+				"application", INSTANCE, "application", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+		application = $application;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign> $usages
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign>(
+				"usages", INSTANCE, "usages", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+		usages = $usages;
+		
+		// Phase 2
+
+		$fragment.valueClass = org.instantlogic.designer.ElementDesign.class;
+		$fragment.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
+		$fragment.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.partOfSharedElementDefinition);
+		$fragment.owner = true;
+
+		$application.valueClass = org.instantlogic.designer.ApplicationDesign.class;
+		$application.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
+		$application.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.sharedElements);
+		$application.reverse = true;
+		$usages.valueClass = org.instantlogic.designer.SharedElementDesign.class;
+		$usages.to = org.instantlogic.designer.entity.SharedElementDesignEntity.INSTANCE;
+		$usages.setReverseRelation(org.instantlogic.designer.entity.SharedElementDesignEntity.definition);
+		$usages.reverse = true;
+		$usages.multivalue = true;
+	}
+
 	@Override
 	public org.instantlogic.designer.SharedElementDefinitionDesign createInstance() {
 		return new org.instantlogic.designer.SharedElementDefinitionDesign();
@@ -36,68 +72,6 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 		return "SharedElementDefinitionDesign";
 	}
 
-	// Deductions
-
-	
-	// Attributes
-	
-	// Relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> fragment
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-			"fragment", INSTANCE, org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE, org.instantlogic.designer.ElementDesign.class, 
-			org.instantlogic.designer.entity.ElementDesignEntity.partOfSharedElementDefinition
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign> get(
-					org.instantlogic.designer.SharedElementDefinitionDesign instance) {
-				return instance.getFragmentRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-		};
-	
-	// Reverse relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> application
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-			"application", INSTANCE, org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE, org.instantlogic.designer.ApplicationDesign.class, org.instantlogic.designer.entity.ApplicationDesignEntity.sharedElements
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign> get(
-					org.instantlogic.designer.SharedElementDefinitionDesign instance) {
-				return instance.getApplicationRelationValue();
-			}
-	
-			public boolean isReverse() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign> usages
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign>(
-			"usages", INSTANCE, org.instantlogic.designer.entity.SharedElementDesignEntity.INSTANCE, org.instantlogic.designer.SharedElementDesign.class, org.instantlogic.designer.entity.SharedElementDesignEntity.definition
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDesign> get(
-					org.instantlogic.designer.SharedElementDefinitionDesign instance) {
-				return instance.getUsagesRelationValue();
-			}
-	
-			public boolean isReverse() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
@@ -109,7 +83,6 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {

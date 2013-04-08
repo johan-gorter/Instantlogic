@@ -1,8 +1,8 @@
 {
-  "instanceId": "LfjfzhEsyaaOAahb_7b291c18_8ea0",
+  "instanceId": "JxqwbOcobIfkagIf_8e73cc87_2dc6",
   "entityName": "project",
   "version": 1,
-  "last issue number": 16,
+  "last issue number": 17,
   "issues": [
     {
       "instanceId": "I1",
@@ -147,6 +147,14 @@
       "number": 16,
       "comments": [],
       "reporter": "U4"
+    },
+    {
+      "instanceId": "LoUjszwtaeaEA_ya_77df3004_487e",
+      "entityName": "issue",
+      "headline": "New issue",
+      "number": 17,
+      "comments": [],
+      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8"
     }
   ],
   "users": [

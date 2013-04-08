@@ -1,13 +1,3 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.designer.entity;
 
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -17,6 +7,130 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	
 
 	
+	// Deductions
+
+	
+	// Attributes
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.Boolean, java.lang.Boolean> isCustomized; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> name; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> rootPackageName; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> sourcePath; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> themeNames; 
+	
+	// Relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> caseEntity;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign> customDeductionOperations;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> entities;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign> events;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> flows;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign> fragmentTypes;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> mainFlow;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign> sharedElements;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> startEvent;
+	
+	// Reverse relations
+
+	static {
+		// Phase 1
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.Boolean, java.lang.Boolean> $isCustomized
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.Boolean, java.lang.Boolean>(
+				"isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractApplicationDesign.class);
+		isCustomized = $isCustomized;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> $name
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
+				"name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractApplicationDesign.class);
+		name = $name;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> $rootPackageName
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
+				"rootPackageName", INSTANCE, java.lang.String.class, "rootPackageName", org.instantlogic.designer.AbstractApplicationDesign.class);
+		rootPackageName = $rootPackageName;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> $sourcePath
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
+				"sourcePath", INSTANCE, java.lang.String.class, "sourcePath", org.instantlogic.designer.AbstractApplicationDesign.class);
+		sourcePath = $sourcePath;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> $themeNames
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
+				"themeNames", INSTANCE, java.lang.String.class, "themeNames", org.instantlogic.designer.AbstractApplicationDesign.class);
+		themeNames = $themeNames;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $caseEntity
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
+				"caseEntity", INSTANCE, "caseEntity", org.instantlogic.designer.AbstractApplicationDesign.class);
+		caseEntity = $caseEntity;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign> $customDeductionOperations
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign>(
+				"customDeductionOperations", INSTANCE, "customDeductionOperations", org.instantlogic.designer.AbstractApplicationDesign.class);
+		customDeductionOperations = $customDeductionOperations;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> $entities
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
+				"entities", INSTANCE, "entities", org.instantlogic.designer.AbstractApplicationDesign.class);
+		entities = $entities;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign> $events
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign>(
+				"events", INSTANCE, "events", org.instantlogic.designer.AbstractApplicationDesign.class);
+		events = $events;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> $flows
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign>(
+				"flows", INSTANCE, "flows", org.instantlogic.designer.AbstractApplicationDesign.class);
+		flows = $flows;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign> $fragmentTypes
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign>(
+				"fragmentTypes", INSTANCE, "fragmentTypes", org.instantlogic.designer.AbstractApplicationDesign.class);
+		fragmentTypes = $fragmentTypes;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> $mainFlow
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
+				"mainFlow", INSTANCE, "mainFlow", org.instantlogic.designer.AbstractApplicationDesign.class);
+		mainFlow = $mainFlow;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign> $sharedElements
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign>(
+				"sharedElements", INSTANCE, "sharedElements", org.instantlogic.designer.AbstractApplicationDesign.class);
+		sharedElements = $sharedElements;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $startEvent
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
+				"startEvent", INSTANCE, "startEvent", org.instantlogic.designer.AbstractApplicationDesign.class);
+		startEvent = $startEvent;
+		// Phase "reverse relations"
+		
+		// Phase 2
+		$themeNames.multivalue = true;
+
+		$caseEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$caseEntity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$customDeductionOperations.valueClass = org.instantlogic.designer.DeductionOperationDesign.class;
+		$customDeductionOperations.to = org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE;
+		$customDeductionOperations.owner = true;
+		$customDeductionOperations.multivalue = true;
+		$entities.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$entities.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$entities.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.application);
+		$entities.owner = true;
+		$entities.multivalue = true;
+		$events.valueClass = org.instantlogic.designer.EventDesign.class;
+		$events.to = org.instantlogic.designer.entity.EventDesignEntity.INSTANCE;
+		$events.setReverseRelation(org.instantlogic.designer.entity.EventDesignEntity.application);
+		$events.owner = true;
+		$events.multivalue = true;
+		$flows.valueClass = org.instantlogic.designer.FlowDesign.class;
+		$flows.to = org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE;
+		$flows.setReverseRelation(org.instantlogic.designer.entity.FlowDesignEntity.application);
+		$flows.owner = true;
+		$flows.multivalue = true;
+		$fragmentTypes.valueClass = org.instantlogic.designer.FragmentTypeDesign.class;
+		$fragmentTypes.to = org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE;
+		$fragmentTypes.setReverseRelation(org.instantlogic.designer.entity.FragmentTypeDesignEntity.application);
+		$fragmentTypes.owner = true;
+		$fragmentTypes.multivalue = true;
+		$mainFlow.valueClass = org.instantlogic.designer.FlowDesign.class;
+		$mainFlow.to = org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE;
+		$sharedElements.valueClass = org.instantlogic.designer.SharedElementDefinitionDesign.class;
+		$sharedElements.to = org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE;
+		$sharedElements.setReverseRelation(org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.application);
+		$sharedElements.owner = true;
+		$sharedElements.multivalue = true;
+		$startEvent.valueClass = org.instantlogic.designer.EventDesign.class;
+		$startEvent.to = org.instantlogic.designer.entity.EventDesignEntity.INSTANCE;
+
+	}
+
 	@Override
 	public org.instantlogic.designer.ApplicationDesign createInstance() {
 		return new org.instantlogic.designer.ApplicationDesign();
@@ -31,254 +145,6 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	public String getName() {
 		return "ApplicationDesign";
 	}
-
-	// Deductions
-
-	
-	// Attributes
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.Boolean, java.lang.Boolean> isCustomized 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.Boolean, java.lang.Boolean>(
-			"isCustomized", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.ApplicationDesign, java.lang.Boolean> get(org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getIsCustomizedAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> name 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
-			"name", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.ApplicationDesign, java.lang.String> get(org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getNameAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> rootPackageName 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
-			"rootPackageName", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.ApplicationDesign, java.lang.String> get(org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getRootPackageNameAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> sourcePath 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
-			"sourcePath", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.ApplicationDesign, java.lang.String> get(org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getSourcePathAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> themeNames 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
-			"themeNames", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValues<org.instantlogic.designer.ApplicationDesign, java.lang.String> get(org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getThemeNamesAttributeValue();
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-            
-		};
-	
-	// Relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> caseEntity
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-			"caseEntity", INSTANCE, org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE, org.instantlogic.designer.EntityDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign> get(
-					org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getCaseEntityRelationValue();
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign> customDeductionOperations
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign>(
-			"customDeductionOperations", INSTANCE, org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE, org.instantlogic.designer.DeductionOperationDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.DeductionOperationDesign> get(
-					org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getCustomDeductionOperationsRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> entities
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
-			"entities", INSTANCE, org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE, org.instantlogic.designer.EntityDesign.class, 
-			org.instantlogic.designer.entity.EntityDesignEntity.application
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign> get(
-					org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getEntitiesRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign> events
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign>(
-			"events", INSTANCE, org.instantlogic.designer.entity.EventDesignEntity.INSTANCE, org.instantlogic.designer.EventDesign.class, 
-			org.instantlogic.designer.entity.EventDesignEntity.application
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign> get(
-					org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getEventsRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> flows
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign>(
-			"flows", INSTANCE, org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE, org.instantlogic.designer.FlowDesign.class, 
-			org.instantlogic.designer.entity.FlowDesignEntity.application
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign> get(
-					org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getFlowsRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign> fragmentTypes
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign>(
-			"fragmentTypes", INSTANCE, org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE, org.instantlogic.designer.FragmentTypeDesign.class, 
-			org.instantlogic.designer.entity.FragmentTypeDesignEntity.application
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FragmentTypeDesign> get(
-					org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getFragmentTypesRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> mainFlow
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
-			"mainFlow", INSTANCE, org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE, org.instantlogic.designer.FlowDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign> get(
-					org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getMainFlowRelationValue();
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign> sharedElements
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign>(
-			"sharedElements", INSTANCE, org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE, org.instantlogic.designer.SharedElementDefinitionDesign.class, 
-			org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.application
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.SharedElementDefinitionDesign> get(
-					org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getSharedElementsRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> startEvent
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
-			"startEvent", INSTANCE, org.instantlogic.designer.entity.EventDesignEntity.INSTANCE, org.instantlogic.designer.EventDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign> get(
-					org.instantlogic.designer.ApplicationDesign instance) {
-				return instance.getStartEventRelationValue();
-			}
-		};
-	
-	// Reverse relations
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 		isCustomized,
@@ -302,7 +168,6 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {

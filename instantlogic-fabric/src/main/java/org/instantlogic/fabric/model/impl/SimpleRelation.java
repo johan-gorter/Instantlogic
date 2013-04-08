@@ -18,6 +18,7 @@ import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.model.Validation;
+import org.instantlogic.fabric.text.TextTemplate;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 
 
@@ -25,10 +26,11 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 
 	private final String name;
 	private final Entity<I> entity;
-	private final Entity<To> to;
-	private final Class<To> valueClass;
-	private Relation<To, ? extends Object,I> reverseRelation;
+	private Field instanceField;
 
+	public Class<To> valueClass;
+	public Entity<To> to;
+	public Relation<To, ? extends Object,I> reverseRelation;
 	public boolean owner;
 	public boolean autoCreate;
 	public boolean multivalue;
@@ -39,15 +41,21 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 	public Deduction<Boolean> relevance;
 	public Deduction<Value> rule;
 	public Deduction<Value> _default;
+	public TextTemplate question;
+	public Deduction<? extends Iterable<To>> options; 
 
-	private Field instanceField; 
-
+	// Old constructor
 	public SimpleRelation(String name, Entity<I> entity, Entity<To> to, Class<To> valueClass, Relation<To, ? extends Object,I> reverseRelation) {
-		this(name, entity, to, valueClass, reverseRelation, null);
+		this(name, entity, to, valueClass, reverseRelation, null, null);
+	}
+	
+	// New constructor
+	public SimpleRelation(String name, Entity<I> entity, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
+		this(name, entity, null, null, null, instanceFieldName, instanceFieldClass);
 	}
 
-	
-	public SimpleRelation(String name, Entity<I> entity, Entity<To> to, Class<To> valueClass, Relation<To, ? extends Object,I> reverseRelation, String instanceFieldName) {
+	// Full constructor
+	public SimpleRelation(String name, Entity<I> entity, Entity<To> to, Class<To> valueClass, Relation<To, ? extends Object,I> reverseRelation, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
 		this.name = name;
 		this.entity = entity;
 		this.to = to;
@@ -58,7 +66,7 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 		}
 		if (instanceFieldName!=null) {
 			try {
-				instanceField = entity.getInstanceClass().getField(instanceFieldName);
+				instanceField = instanceFieldClass.getDeclaredField(instanceFieldName);
 				instanceField.setAccessible(true);
 			} catch (Exception e) {
 				throw new RuntimeException(e);
@@ -98,6 +106,8 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 	/* Needed for bootstrapping */
 	@Override
 	public void setReverseRelation(Relation<To, ? extends Object, I> reverse) {
+		if (reverse==null)
+			throw new IllegalArgumentException();
 		this.reverseRelation = reverse;
 	}
 
@@ -156,9 +166,23 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 	@Override
 	public ReadOnlyAttributeValue<I, Value> get(I instance) {
 		try {
-			return (ReadOnlyAttributeValue<I, Value>) instanceField.get(instance);
+			ReadOnlyAttributeValue<I, Value> result = (ReadOnlyAttributeValue<I, Value>) instanceField.get(instance);
+			if (result==null) throw new IllegalStateException();
+			return result;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+
+	@Override
+	public TextTemplate getQuestion() {
+		return question;
+	}
+
+
+	@Override
+	public Deduction<? extends Iterable<To>> getOptions() {
+		return options;
 	}
 }

@@ -42,16 +42,16 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 	private Field instanceField; 
 	
 	public SimpleAttribute(String name, Entity<I> entity, Class<Item> javaClassName) {
-		this(name, entity, javaClassName, null);
+		this(name, entity, javaClassName, null, null);
 	}
 	
-	public SimpleAttribute(String name, Entity<I> entity, Class<Item> javaClassName, String instanceFieldName) {
+	public SimpleAttribute(String name, Entity<I> entity, Class<Item> javaClassName, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
 		this.name = name;
 		this.entity = entity;
 		this.javaClassName = javaClassName;
 		if (instanceFieldName!=null) {
 			try {
-				instanceField = entity.getInstanceClass().getDeclaredField(instanceFieldName);
+				instanceField = instanceFieldClass.getDeclaredField(instanceFieldName);
 				instanceField.setAccessible(true);
 			} catch (Exception e) {
 				throw new RuntimeException("Problem with field "+instanceFieldName+" from "+entity.getInstanceClass(), e);
@@ -122,7 +122,9 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 	@Override
 	public ReadOnlyAttributeValue<I, Value> get(I instance) {
 		try {
-			return (ReadOnlyAttributeValue<I, Value>) instanceField.get(instance);
+			ReadOnlyAttributeValue<I, Value> result = (ReadOnlyAttributeValue<I, Value>) instanceField.get(instance);
+			if (result==null) throw new IllegalStateException();
+			return result;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

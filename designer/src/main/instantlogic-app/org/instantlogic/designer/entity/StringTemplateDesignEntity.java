@@ -1,13 +1,3 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.designer.entity;
 
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -17,6 +7,47 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 	
 
 	
+	// Deductions
+
+	
+	// Attributes
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String> constantText; 
+	
+	// Relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> deduction;
+	
+	// Reverse relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> untranslatedInTemplate;
+
+	static {
+		// Phase 1
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String> $constantText
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String>(
+				"constantText", INSTANCE, java.lang.String.class, "constantText", org.instantlogic.designer.StringTemplateDesign.class);
+		constantText = $constantText;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $deduction
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
+				"deduction", INSTANCE, "deduction", org.instantlogic.designer.StringTemplateDesign.class);
+		deduction = $deduction;
+		// Phase "reverse relations"
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $untranslatedInTemplate
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
+				"untranslatedInTemplate", INSTANCE, "untranslatedInTemplate", org.instantlogic.designer.StringTemplateDesign.class);
+		untranslatedInTemplate = $untranslatedInTemplate;
+		
+		// Phase 2
+
+		$deduction.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
+		$deduction.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
+		$deduction.owner = true;
+		$deduction.autoCreate = true;
+
+		$untranslatedInTemplate.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
+		$untranslatedInTemplate.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
+		$untranslatedInTemplate.setReverseRelation(org.instantlogic.designer.entity.TextTemplateDesignEntity.untranslated);
+		$untranslatedInTemplate.reverse = true;
+	}
+
 	@Override
 	public org.instantlogic.designer.StringTemplateDesign createInstance() {
 		return new org.instantlogic.designer.StringTemplateDesign();
@@ -32,66 +63,6 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 		return "StringTemplateDesign";
 	}
 
-	// Deductions
-
-	
-	// Attributes
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String> constantText 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String>(
-			"constantText", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.StringTemplateDesign, java.lang.String> get(org.instantlogic.designer.StringTemplateDesign instance) {
-				return instance.getConstantTextAttributeValue();
-			}
-            
-		};
-	
-	// Relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> deduction
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-			"deduction", INSTANCE, org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE, org.instantlogic.designer.DeductionSchemeDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign> get(
-					org.instantlogic.designer.StringTemplateDesign instance) {
-				return instance.getDeductionRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isAutoCreate() {
-				return true;
-			}
-		};
-	
-	// Reverse relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> untranslatedInTemplate
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-			"untranslatedInTemplate", INSTANCE, org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE, org.instantlogic.designer.TextTemplateDesign.class, org.instantlogic.designer.entity.TextTemplateDesignEntity.untranslated
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign> get(
-					org.instantlogic.designer.StringTemplateDesign instance) {
-				return instance.getUntranslatedInTemplateRelationValue();
-			}
-	
-			public boolean isReverse() {
-				return true;
-			}
-		};
-
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 		constantText,
 	};
@@ -103,7 +74,6 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {

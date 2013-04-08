@@ -1,13 +1,3 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.designer.entity;
 
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -21,6 +11,42 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 	}
 
 	
+	// Deductions
+
+	
+	// Attributes
+	
+	// Relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> content;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> title;
+	
+	// Reverse relations
+
+	static {
+		// Phase 1
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $content
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
+				"content", INSTANCE, "content", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+		content = $content;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $title
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
+				"title", INSTANCE, "title", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+		title = $title;
+		// Phase "reverse relations"
+		
+		// Phase 2
+
+		$content.valueClass = org.instantlogic.designer.ElementDesign.class;
+		$content.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
+		$content.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.contentOfPage);
+		$content.owner = true;
+		$title.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
+		$title.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
+		$title.setReverseRelation(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfPlaceTemplate);
+		$title.owner = true;
+
+	}
+
 	@Override
 	public org.instantlogic.designer.PlaceTemplateDesign createInstance() {
 		return new org.instantlogic.designer.PlaceTemplateDesign();
@@ -36,49 +62,6 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 		return "PlaceTemplateDesign";
 	}
 
-	// Deductions
-
-	
-	// Attributes
-	
-	// Relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> content
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-			"content", INSTANCE, org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE, org.instantlogic.designer.ElementDesign.class, 
-			org.instantlogic.designer.entity.ElementDesignEntity.contentOfPage
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign> get(
-					org.instantlogic.designer.PlaceTemplateDesign instance) {
-				return instance.getContentRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> title
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-			"title", INSTANCE, org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE, org.instantlogic.designer.TextTemplateDesign.class, 
-			org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfPlaceTemplate
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign> get(
-					org.instantlogic.designer.PlaceTemplateDesign instance) {
-				return instance.getTitleRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-		};
-	
-	// Reverse relations
-
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
@@ -89,7 +72,6 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {

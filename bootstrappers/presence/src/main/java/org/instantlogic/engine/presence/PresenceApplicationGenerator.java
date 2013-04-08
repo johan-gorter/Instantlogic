@@ -44,7 +44,7 @@ public class PresenceApplicationGenerator extends ApplicationDesign {
     }
     
     public static void main(String[] args) throws Exception {
-		try (FileWriter fileWriter = new FileWriter(new File("../../instantlogic-engine/src/main/instantlogic-designs/presence/presence.json"))) {
+		try (FileWriter fileWriter = new FileWriter(new File("../../instantlogic-engine/src/main/instantlogic-designs/presence.json"))) {
 			new CasePersister().save(APPLICATION, fileWriter);
 		}
 		System.out.println("presence.json written");

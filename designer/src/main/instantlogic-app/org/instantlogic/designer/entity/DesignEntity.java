@@ -1,13 +1,3 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.designer.entity;
 
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -16,43 +6,13 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	public static final DesignEntity INSTANCE = new DesignEntity();
 	
 
-	private static final org.instantlogic.fabric.model.Entity<?>[] EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
-		org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.EventDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.StaticInstanceDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE,
-		org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE
-	};
+	private static final org.instantlogic.fabric.model.Entity<?>[] EXTENSIONS;
 	 
 	@Override
 	public org.instantlogic.fabric.model.Entity[] extensions() {
 		return EXTENSIONS;
 	}
 	
-	@Override
-	public org.instantlogic.designer.Design createInstance() {
-		return new org.instantlogic.designer.Design();
-	}
-	
-	@Override
-	public Class<org.instantlogic.designer.Design> getInstanceClass() {
-		return org.instantlogic.designer.Design.class;
-	}
-	
-	@Override
-	public String getName() {
-		return "Design";
-	}
-
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
@@ -94,101 +54,75 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	}
 	
 	// Attributes
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> isCustomized 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean>(
-			"isCustomized", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.Design, java.lang.Boolean> get(org.instantlogic.designer.Design instance) {
-				return instance.getIsCustomizedAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> javaIdentifier 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-			"javaIdentifier", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.Design, java.lang.String> get(org.instantlogic.designer.Design instance) {
-				return instance.getJavaIdentifierAttributeValue();
-			}
-			
-			public boolean isReadOnly() {
-				return true;
-			};
-
-            private org.instantlogic.fabric.deduction.Deduction<java.lang.String> rule;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<java.lang.String> getRule() {
-                if (rule==null) {
-                    rule = createDeduction2();
-                }
-                return rule;
-            }
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> name 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-			"name", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.Design, java.lang.String> get(org.instantlogic.designer.Design instance) {
-				return instance.getNameAttributeValue();
-			}
-
-            private org.instantlogic.fabric.deduction.Deduction<java.lang.String> defaultDeduction;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<java.lang.String> getDefault() {
-                if (defaultDeduction==null) {
-                    defaultDeduction = createDeduction1();
-                }
-                return defaultDeduction;
-            }
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> technicalName 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-			"technicalName", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.Design, java.lang.String> get(org.instantlogic.designer.Design instance) {
-				return instance.getTechnicalNameAttributeValue();
-			}
-			
-			public boolean isReadOnly() {
-				return true;
-			};
-
-            private org.instantlogic.fabric.deduction.Deduction<java.lang.String> rule;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<java.lang.String> getRule() {
-                if (rule==null) {
-                    rule = createDeduction3();
-                }
-                return rule;
-            }
-            
-		};
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> isCustomized; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> javaIdentifier; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> name; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> technicalName; 
 	
 	// Relations
 	
 	// Reverse relations
+
+	static {
+		// Phase 1
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> $isCustomized
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean>(
+				"isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractDesign.class);
+		isCustomized = $isCustomized;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $javaIdentifier
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
+				"javaIdentifier", INSTANCE, java.lang.String.class, "javaIdentifier", org.instantlogic.designer.AbstractDesign.class);
+		javaIdentifier = $javaIdentifier;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $name
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
+				"name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractDesign.class);
+		name = $name;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $technicalName
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
+				"technicalName", INSTANCE, java.lang.String.class, "technicalName", org.instantlogic.designer.AbstractDesign.class);
+		technicalName = $technicalName;
+		// Phase "reverse relations"
+		
+		// Phase 2
+		EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
+			org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.EventDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.StaticInstanceDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE
+		};
+		$javaIdentifier.readOnly = true;
+		$javaIdentifier.rule = createDeduction2();
+		$name._default = createDeduction1();
+		$technicalName.readOnly = true;
+		$technicalName.rule = createDeduction3();
+
+
+	}
+
+	@Override
+	public org.instantlogic.designer.Design createInstance() {
+		return new org.instantlogic.designer.Design();
+	}
+	
+	@Override
+	public Class<org.instantlogic.designer.Design> getInstanceClass() {
+		return org.instantlogic.designer.Design.class;
+	}
+	
+	@Override
+	public String getName() {
+		return "Design";
+	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 		isCustomized,
@@ -202,7 +136,6 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {

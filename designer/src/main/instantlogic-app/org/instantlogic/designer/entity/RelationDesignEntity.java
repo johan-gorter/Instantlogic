@@ -1,13 +1,3 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.designer.entity;
 
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -21,21 +11,6 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	}
 
 	
-	@Override
-	public org.instantlogic.designer.RelationDesign createInstance() {
-		return new org.instantlogic.designer.RelationDesign();
-	}
-	
-	@Override
-	public Class<org.instantlogic.designer.RelationDesign> getInstanceClass() {
-		return org.instantlogic.designer.RelationDesign.class;
-	}
-	
-	@Override
-	public String getName() {
-		return "RelationDesign";
-	}
-
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
@@ -52,201 +27,109 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 	
 	// Attributes
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> autoCreate 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean>(
-			"autoCreate", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.RelationDesign, java.lang.Boolean> get(org.instantlogic.designer.RelationDesign instance) {
-				return instance.getAutoCreateAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> hasOptions 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean>(
-			"hasOptions", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.RelationDesign, java.lang.Boolean> get(org.instantlogic.designer.RelationDesign instance) {
-				return instance.getHasOptionsAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> owner 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean>(
-			"owner", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.RelationDesign, java.lang.Boolean> get(org.instantlogic.designer.RelationDesign instance) {
-				return instance.getOwnerAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String> reverseJavaIdentifier 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String>(
-			"reverseJavaIdentifier", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.RelationDesign, java.lang.String> get(org.instantlogic.designer.RelationDesign instance) {
-				return instance.getReverseJavaIdentifierAttributeValue();
-			}
-			
-			public boolean isReadOnly() {
-				return true;
-			};
-
-            private org.instantlogic.fabric.deduction.Deduction<java.lang.String> rule;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<java.lang.String> getRule() {
-                if (rule==null) {
-                    rule = createDeduction1();
-                }
-                return rule;
-            }
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> reverseMultivalue 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean>(
-			"reverseMultivalue", INSTANCE, java.lang.Boolean.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.RelationDesign, java.lang.Boolean> get(org.instantlogic.designer.RelationDesign instance) {
-				return instance.getReverseMultivalueAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String> reverseName 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String>(
-			"reverseName", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.RelationDesign, java.lang.String> get(org.instantlogic.designer.RelationDesign instance) {
-				return instance.getReverseNameAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String> reverseTechnicalName 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String>(
-			"reverseTechnicalName", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.RelationDesign, java.lang.String> get(org.instantlogic.designer.RelationDesign instance) {
-				return instance.getReverseTechnicalNameAttributeValue();
-			}
-			
-			public boolean isReadOnly() {
-				return true;
-			};
-
-            private org.instantlogic.fabric.deduction.Deduction<java.lang.String> rule;
-            @Override
-            public org.instantlogic.fabric.deduction.Deduction<java.lang.String> getRule() {
-                if (rule==null) {
-                    rule = createDeduction0();
-                }
-                return rule;
-            }
-            
-		};
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> autoCreate; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> hasOptions; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> owner; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String> reverseJavaIdentifier; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> reverseMultivalue; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String> reverseName; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String> reverseTechnicalName; 
 	
 	// Relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> options
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-			"options", INSTANCE, org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE, org.instantlogic.designer.DeductionSchemeDesign.class, 
-			org.instantlogic.designer.entity.DeductionSchemeDesignEntity.optionsOfRelation
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign> get(
-					org.instantlogic.designer.RelationDesign instance) {
-				return instance.getOptionsRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> reverseDataType
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-			"reverseDataType", INSTANCE, org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE, org.instantlogic.designer.DataTypeDesign.class, 
-			org.instantlogic.designer.entity.DataTypeDesignEntity.reverseRelation
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DataTypeDesign> get(
-					org.instantlogic.designer.RelationDesign instance) {
-				return instance.getReverseDataTypeRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isAutoCreate() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> to
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-			"to", INSTANCE, org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE, org.instantlogic.designer.EntityDesign.class, 
-			org.instantlogic.designer.entity.EntityDesignEntity.reverseRelations
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign> get(
-					org.instantlogic.designer.RelationDesign instance) {
-				return instance.getToRelationValue();
-			}
-		};
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> options;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> reverseDataType;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> to;
 	
 	// Reverse relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> from;
+
+	static {
+		// Phase 1
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> $autoCreate
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean>(
+				"autoCreate", INSTANCE, java.lang.Boolean.class, "autoCreate", org.instantlogic.designer.RelationDesign.class);
+		autoCreate = $autoCreate;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> $hasOptions
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean>(
+				"hasOptions", INSTANCE, java.lang.Boolean.class, "hasOptions", org.instantlogic.designer.RelationDesign.class);
+		hasOptions = $hasOptions;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> $owner
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean>(
+				"owner", INSTANCE, java.lang.Boolean.class, "owner", org.instantlogic.designer.RelationDesign.class);
+		owner = $owner;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String> $reverseJavaIdentifier
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String>(
+				"reverseJavaIdentifier", INSTANCE, java.lang.String.class, "reverseJavaIdentifier", org.instantlogic.designer.RelationDesign.class);
+		reverseJavaIdentifier = $reverseJavaIdentifier;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> $reverseMultivalue
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean>(
+				"reverseMultivalue", INSTANCE, java.lang.Boolean.class, "reverseMultivalue", org.instantlogic.designer.RelationDesign.class);
+		reverseMultivalue = $reverseMultivalue;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String> $reverseName
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String>(
+				"reverseName", INSTANCE, java.lang.String.class, "reverseName", org.instantlogic.designer.RelationDesign.class);
+		reverseName = $reverseName;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String> $reverseTechnicalName
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String>(
+				"reverseTechnicalName", INSTANCE, java.lang.String.class, "reverseTechnicalName", org.instantlogic.designer.RelationDesign.class);
+		reverseTechnicalName = $reverseTechnicalName;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $options
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
+				"options", INSTANCE, "options", org.instantlogic.designer.RelationDesign.class);
+		options = $options;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $reverseDataType
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
+				"reverseDataType", INSTANCE, "reverseDataType", org.instantlogic.designer.RelationDesign.class);
+		reverseDataType = $reverseDataType;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $to
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
+				"to", INSTANCE, "to", org.instantlogic.designer.RelationDesign.class);
+		to = $to;
+		// Phase "reverse relations"
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $from
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
+				"from", INSTANCE, "from", org.instantlogic.designer.RelationDesign.class);
+		from = $from;
+		
+		// Phase 2
+		$reverseJavaIdentifier.readOnly = true;
+		$reverseJavaIdentifier.rule = createDeduction1();
+		$reverseTechnicalName.readOnly = true;
+		$reverseTechnicalName.rule = createDeduction0();
+
+		$options.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
+		$options.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
+		$options.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.optionsOfRelation);
+		$options.owner = true;
+		$reverseDataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;
+		$reverseDataType.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
+		$reverseDataType.setReverseRelation(org.instantlogic.designer.entity.DataTypeDesignEntity.reverseRelation);
+		$reverseDataType.owner = true;
+		$reverseDataType.autoCreate = true;
+		$to.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$to.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$to.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.reverseRelations);
+
+		$from.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$from.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$from.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.relations);
+		$from.reverse = true;
+	}
+
+	@Override
+	public org.instantlogic.designer.RelationDesign createInstance() {
+		return new org.instantlogic.designer.RelationDesign();
+	}
 	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> from
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-			"from", INSTANCE, org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE, org.instantlogic.designer.EntityDesign.class, org.instantlogic.designer.entity.EntityDesignEntity.relations
-		) {
+	@Override
+	public Class<org.instantlogic.designer.RelationDesign> getInstanceClass() {
+		return org.instantlogic.designer.RelationDesign.class;
+	}
 	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign> get(
-					org.instantlogic.designer.RelationDesign instance) {
-				return instance.getFromRelationValue();
-			}
-	
-			public boolean isReverse() {
-				return true;
-			}
-		};
+	@Override
+	public String getName() {
+		return "RelationDesign";
+	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 		autoCreate,
@@ -267,7 +150,6 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {

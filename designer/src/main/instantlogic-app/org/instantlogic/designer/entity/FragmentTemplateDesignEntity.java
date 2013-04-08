@@ -1,13 +1,3 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.instantlogic.designer.entity;
 
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -21,21 +11,6 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 	}
 
 	
-	@Override
-	public org.instantlogic.designer.FragmentTemplateDesign createInstance() {
-		return new org.instantlogic.designer.FragmentTemplateDesign();
-	}
-	
-	@Override
-	public Class<org.instantlogic.designer.FragmentTemplateDesign> getInstanceClass() {
-		return org.instantlogic.designer.FragmentTemplateDesign.class;
-	}
-	
-	@Override
-	public String getName() {
-		return "FragmentTemplateDesign";
-	}
-
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
@@ -73,160 +48,93 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 
 	
 	// Attributes
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> fragmentFilters 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
-			"fragmentFilters", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValues<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String> get(org.instantlogic.designer.FragmentTemplateDesign instance) {
-				return instance.getFragmentFiltersAttributeValue();
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String, java.lang.String> fragmentTypeName 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String, java.lang.String>(
-			"fragmentTypeName", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValue<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String> get(org.instantlogic.designer.FragmentTemplateDesign instance) {
-				return instance.getFragmentTypeNameAttributeValue();
-			}
-            
-		};
-	
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> styleNames 
-		= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
-			"styleNames", INSTANCE, java.lang.String.class
-		) {
-			{
-			}
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyAttributeValues<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String> get(org.instantlogic.designer.FragmentTemplateDesign instance) {
-				return instance.getStyleNamesAttributeValue();
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-            
-		};
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> fragmentFilters; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String, java.lang.String> fragmentTypeName; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> styleNames; 
 	
 	// Relations
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> attribute
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
-			"attribute", INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.AttributeDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign> get(
-					org.instantlogic.designer.FragmentTemplateDesign instance) {
-				return instance.getAttributeRelationValue();
-			}
-			
-			private org.instantlogic.fabric.deduction.Deduction<? extends java.lang.Iterable<org.instantlogic.designer.AttributeDesign>> options;
-			@Override
-			public org.instantlogic.fabric.deduction.Deduction<? extends java.lang.Iterable<org.instantlogic.designer.AttributeDesign>> getOptions() {
-				if (options==null) {
-					options = (org.instantlogic.fabric.deduction.Deduction)createDeduction1();
-				}
-				return options;
-			};
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> entity
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-			"entity", INSTANCE, org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE, org.instantlogic.designer.EntityDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EntityDesign> get(
-					org.instantlogic.designer.FragmentTemplateDesign instance) {
-				return instance.getEntityRelationValue();
-			}
-			
-			private org.instantlogic.fabric.deduction.Deduction<? extends java.lang.Iterable<org.instantlogic.designer.EntityDesign>> options;
-			@Override
-			public org.instantlogic.fabric.deduction.Deduction<? extends java.lang.Iterable<org.instantlogic.designer.EntityDesign>> getOptions() {
-				if (options==null) {
-					options = (org.instantlogic.fabric.deduction.Deduction)createDeduction2();
-				}
-				return options;
-			};
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> event
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
-			"event", INSTANCE, org.instantlogic.designer.entity.EventDesignEntity.INSTANCE, org.instantlogic.designer.EventDesign.class, 
-			null
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EventDesign> get(
-					org.instantlogic.designer.FragmentTemplateDesign instance) {
-				return instance.getEventRelationValue();
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign> properties
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign>(
-			"properties", INSTANCE, org.instantlogic.designer.entity.PropertyDesignEntity.INSTANCE, org.instantlogic.designer.PropertyDesign.class, 
-			org.instantlogic.designer.entity.PropertyDesignEntity.fragment
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValues<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.PropertyDesign> get(
-					org.instantlogic.designer.FragmentTemplateDesign instance) {
-				return instance.getPropertiesRelationValue();
-			}
-	
-			public boolean isOwner() {
-				return true;
-			}
-	
-			public boolean isMultivalue() {
-				return true;
-			}
-		};
-	
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> type
-		= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign>(
-			"type", INSTANCE, org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE, org.instantlogic.designer.FragmentTypeDesign.class, 
-			org.instantlogic.designer.entity.FragmentTypeDesignEntity.usages
-		) {
-	
-			@Override
-			public org.instantlogic.fabric.value.ReadOnlyRelationValue<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign> get(
-					org.instantlogic.designer.FragmentTemplateDesign instance) {
-				return instance.getTypeRelationValue();
-			}
-			
-			private org.instantlogic.fabric.deduction.Deduction<? extends java.lang.Iterable<org.instantlogic.designer.FragmentTypeDesign>> options;
-			@Override
-			public org.instantlogic.fabric.deduction.Deduction<? extends java.lang.Iterable<org.instantlogic.designer.FragmentTypeDesign>> getOptions() {
-				if (options==null) {
-					options = (org.instantlogic.fabric.deduction.Deduction)createDeduction0();
-				}
-				return options;
-			};
-		};
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> attribute;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> entity;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> event;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign> properties;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> type;
 	
 	// Reverse relations
+
+	static {
+		// Phase 1
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> $fragmentFilters
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
+				"fragmentFilters", INSTANCE, java.lang.String.class, "fragmentFilters", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		fragmentFilters = $fragmentFilters;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String, java.lang.String> $fragmentTypeName
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String, java.lang.String>(
+				"fragmentTypeName", INSTANCE, java.lang.String.class, "fragmentTypeName", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		fragmentTypeName = $fragmentTypeName;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> $styleNames
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
+				"styleNames", INSTANCE, java.lang.String.class, "styleNames", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		styleNames = $styleNames;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> $attribute
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
+				"attribute", INSTANCE, "attribute", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		attribute = $attribute;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $entity
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
+				"entity", INSTANCE, "entity", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		entity = $entity;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $event
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
+				"event", INSTANCE, "event", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		event = $event;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign> $properties
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign>(
+				"properties", INSTANCE, "properties", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		properties = $properties;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> $type
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign>(
+				"type", INSTANCE, "type", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		type = $type;
+		// Phase "reverse relations"
+		
+		// Phase 2
+		$fragmentFilters.multivalue = true;
+		$styleNames.multivalue = true;
+
+		$attribute.valueClass = org.instantlogic.designer.AttributeDesign.class;
+		$attribute.to = org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE;
+		$attribute.options = (org.instantlogic.fabric.deduction.Deduction)createDeduction1();
+		$entity.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$entity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$entity.options = (org.instantlogic.fabric.deduction.Deduction)createDeduction2();
+		$event.valueClass = org.instantlogic.designer.EventDesign.class;
+		$event.to = org.instantlogic.designer.entity.EventDesignEntity.INSTANCE;
+		$properties.valueClass = org.instantlogic.designer.PropertyDesign.class;
+		$properties.to = org.instantlogic.designer.entity.PropertyDesignEntity.INSTANCE;
+		$properties.setReverseRelation(org.instantlogic.designer.entity.PropertyDesignEntity.fragment);
+		$properties.owner = true;
+		$properties.multivalue = true;
+		$type.valueClass = org.instantlogic.designer.FragmentTypeDesign.class;
+		$type.to = org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE;
+		$type.setReverseRelation(org.instantlogic.designer.entity.FragmentTypeDesignEntity.usages);
+		$type.options = (org.instantlogic.fabric.deduction.Deduction)createDeduction0();
+
+	}
+
+	@Override
+	public org.instantlogic.designer.FragmentTemplateDesign createInstance() {
+		return new org.instantlogic.designer.FragmentTemplateDesign();
+	}
+	
+	@Override
+	public Class<org.instantlogic.designer.FragmentTemplateDesign> getInstanceClass() {
+		return org.instantlogic.designer.FragmentTemplateDesign.class;
+	}
+	
+	@Override
+	public String getName() {
+		return "FragmentTemplateDesign";
+	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 		fragmentFilters,
@@ -244,7 +152,6 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};
-	
 
 	@Override
 	public org.instantlogic.fabric.model.Attribute[] getLocalAttributes() {

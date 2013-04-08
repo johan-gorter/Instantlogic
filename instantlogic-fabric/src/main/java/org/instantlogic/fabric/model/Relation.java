@@ -34,12 +34,8 @@ public abstract class Relation<I extends Instance, Value extends Object, To exte
 	public abstract To createTo(I from);
 	
 	@Override
-	public TextTemplate getQuestion() {
-		return null;
-	}
+	public abstract TextTemplate getQuestion();
 	
 	// This is meant to be used to fill the options of a dropdown.
-	public Deduction<? extends Iterable<To>> getOptions() {
-		return null;
-	}
+	public abstract Deduction<? extends Iterable<To>> getOptions();
 }

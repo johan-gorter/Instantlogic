@@ -42,10 +42,7 @@ public class ApplicationJavacodeGenerator extends AbstractJavacodeGenerator impl
 			generateFile(AbstractJavacodeGenerator.applicationTemplate, context.updatedApplication, null, "Application", applicationRoot);
 		}
 		for (EntityClassModel entity: context.updatedEntities) {
-			boolean oldCustomized = entity.isCustomized;
-			entity.isCustomized = false;
 			generateFile(AbstractJavacodeGenerator.entityTemplate, entity, "entity", "Entity", applicationRoot);
-			entity.isCustomized = oldCustomized;
 			generateFile(AbstractJavacodeGenerator.instanceTemplate, entity, null, "", applicationRoot);
 		}
 		for (EntityClassModel entity: context.deletedEntities) {
