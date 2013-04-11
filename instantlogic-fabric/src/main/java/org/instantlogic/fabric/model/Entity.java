@@ -13,6 +13,7 @@ package org.instantlogic.fabric.model;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.text.TextTemplate;
@@ -166,5 +167,50 @@ public abstract class Entity<I extends Instance> extends Concept {
 	@SuppressWarnings("unchecked")
 	public Map<String, I> getStaticInstances() {
 		return Collections.EMPTY_MAP;
+	}
+
+	// Convenience method for obtaining an attribute
+	@SuppressWarnings("rawtypes")
+	public Attribute getAttribute(String attributeName) {
+		for (Attribute attribute: getAttributes()) {
+			if (attributeName.equals(attribute.getName())) {
+				return attribute;
+			}
+		}
+		throw new NoSuchElementException(attributeName);
+	}
+
+	// Convenience method for obtaining an attribute
+	@SuppressWarnings("rawtypes")
+	public Relation getRelation(String relationName) {
+		for (Relation relation: getRelations()) {
+			if (relationName.equals(relation.getName())) {
+				return relation;
+			}
+		}
+		throw new NoSuchElementException(relationName);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public Attribute getAttributeOrRelation(String name) {
+		for (Attribute attribute: getLocalAttributes()) {
+			if (name.equals(attribute.getName())) {
+				return attribute;
+			}
+		}
+		for (Attribute attribute: getLocalRelations()) {
+			if (name.equals(attribute.getName())) {
+				return attribute;
+			}
+		}
+		for (Attribute attribute: getLocalReverseRelations()) {
+			if (name.equals(attribute.getName())) {
+				return attribute;
+			}
+		}
+		if (extendsEntity()!=null) {
+			return extendsEntity().getAttributeOrRelation(name);
+		}
+		throw new NoSuchElementException(name);
 	}
 }

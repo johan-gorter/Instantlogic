@@ -20,7 +20,6 @@ import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.model.impl.SimpleAttribute;
 import org.instantlogic.fabric.util.DeductionContext;
 import org.instantlogic.fabric.util.ValueAndLevel;
-import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class PeriodEntity extends Entity<Period> {
@@ -46,39 +45,17 @@ public class PeriodEntity extends Entity<Period> {
 	// Attributes
 
 	public static final Attribute<Period, java.util.Date, java.util.Date> from = new SimpleAttribute<Period, java.util.Date, java.util.Date>(
-			"from", INSTANCE, java.util.Date.class) {
-
-		@Override
-		public ReadOnlyAttributeValue<Period, java.util.Date> get(
-				Period instance) {
-			return instance.from;
-		}
-	};
-
+			"from", INSTANCE, java.util.Date.class, "from", Period.class);
+	
 	public static final Attribute<Period, java.util.Date, java.util.Date> to = new SimpleAttribute<Period, java.util.Date, java.util.Date>(
-			"to", INSTANCE, java.util.Date.class) {
+			"to", INSTANCE, java.util.Date.class, "to", Period.class);
 
-		@Override
-		public ReadOnlyAttributeValue<Period, java.util.Date> get(
-				Period instance) {
-			return instance.to;
-		}
-	};
-
-	public static final Attribute<Period, java.lang.Integer, java.lang.Integer> daysBetween = new SimpleAttribute<Period, java.lang.Integer, java.lang.Integer>(
-			"daysBetween", INSTANCE, java.lang.Integer.class) {
-
-		@Override
-		public ReadOnlyAttributeValue<Period, java.lang.Integer> get(
-				Period instance) {
-			return instance.daysBetween;
-		}
-		private final Deduction<Integer> RULE = new DaysBetweenRule();
-		
-		public Deduction<Integer> getRule() {
-			return RULE;
-		};
-	};
+	public static final SimpleAttribute<Period, java.lang.Integer, java.lang.Integer> daysBetween = new SimpleAttribute<Period, java.lang.Integer, java.lang.Integer>(
+			"daysBetween", INSTANCE, java.lang.Integer.class, "daysBetween", Period.class);
+	
+	static {
+		daysBetween.rule = new DaysBetweenRule();
+	}
 
 	private static final Attribute[] ATTRIBUTES = new Attribute[] { from, to, daysBetween };
 	private static final Relation[] RELATIONS = new Relation[] {};

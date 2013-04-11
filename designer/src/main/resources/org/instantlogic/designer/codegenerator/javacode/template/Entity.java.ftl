@@ -66,14 +66,14 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 		<#list relations as relation>
 		org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}> $${relation.javaIdentifier}
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}>(
-				"${relation.technicalName}", INSTANCE, "${relation.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
+				"${relation.name}", INSTANCE, "${relation.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
 		${relation.javaIdentifier} = $${relation.javaIdentifier};
 		</#list>
 		// Phase "reverse relations"
 		<#list reverseRelations as relation>
 		org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}> $${relation.javaIdentifier}
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}>(
-				"${relation.technicalName}", INSTANCE, "${relation.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
+				"${relation.name}", INSTANCE, "${relation.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
 		${relation.javaIdentifier} = $${relation.javaIdentifier};
 		</#list>
 		

@@ -62,6 +62,14 @@ public class CaseAdministration {
 		return allEntities;
 	}
 	
+	// Convenience method
+	// Watch out, the created instance is not yet added to this caseAdministration. The instance needs to be owned by another instance first.
+	public Instance createInstance(String entityName) {
+		Entity<? extends Instance> entity = getAllEntities().get(entityName);
+		if (entity==null) throw new IllegalArgumentException("Unknown entity "+entityName);
+		return entity.createInstance();
+	}
+	
 	private List<TransactionListener> transactionListeners = new ArrayList<TransactionListener>();
 	
 	private Operation currentOperation;

@@ -41,6 +41,7 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 	public boolean readOnly;
 	private Field instanceField; 
 	
+	// Old constructor
 	public SimpleAttribute(String name, Entity<I> entity, Class<Item> javaClassName) {
 		this(name, entity, javaClassName, null, null);
 	}
