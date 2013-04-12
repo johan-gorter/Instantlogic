@@ -15,9 +15,9 @@ import java.io.FileWriter;
 
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.DeductionOperationDesign;
+import org.instantlogic.designer.tools.Generator;
 import org.instantlogic.engine.presence.flow.MainFlowGenerator;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
-import org.instantlogic.tools.generator.Generator;
 import org.instantlogic.tools.persistence.json.CasePersister;
 
 public class PresenceApplicationGenerator extends ApplicationDesign {

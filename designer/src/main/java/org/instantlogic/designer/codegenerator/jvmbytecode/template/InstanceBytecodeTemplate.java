@@ -25,7 +25,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	private static final boolean TRACE = true;
+	private static final boolean TRACE = false;
 
 	public static void generate(Map<String, byte[]> bytecodeClasses, EntityClassModel model, String fullInstanceClassName) {
 		bytecodeClasses.put(fullInstanceClassName, dump(model));	

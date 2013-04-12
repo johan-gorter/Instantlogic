@@ -1,4 +1,4 @@
-package org.instantlogic.tools.generator;
+package org.instantlogic.designer.tools;
 
 import java.io.File;
 import java.io.FileReader;

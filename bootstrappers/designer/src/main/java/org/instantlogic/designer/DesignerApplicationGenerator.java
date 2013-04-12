@@ -15,8 +15,8 @@ import java.io.FileWriter;
 
 import org.instantlogic.designer.event.HomeEventGenerator;
 import org.instantlogic.designer.flow.MainFlowGenerator;
+import org.instantlogic.designer.tools.Generator;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
-import org.instantlogic.tools.generator.Generator;
 import org.instantlogic.tools.persistence.json.CasePersister;
 
 

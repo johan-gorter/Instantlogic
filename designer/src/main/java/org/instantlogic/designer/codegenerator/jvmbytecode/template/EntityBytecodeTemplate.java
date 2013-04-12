@@ -26,7 +26,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	public static final boolean TRACE = false;
+	public static final boolean TRACE = true;
 
 	public static void generate(Map<String, byte[]> bytecodeClasses, EntityClassModel model, String fullName) {
 		bytecodeClasses.put(fullName, dump(model));
@@ -58,8 +58,8 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 		FieldVisitor fv;
 		MethodVisitor mv;
 
-		String className = model.getRootPackageInternalPrefix()+"entity/"+model.name+"Entity";
-		String instanceClassName = model.getRootPackageInternalPrefix()+model.name;
+		String className = model.getRootPackageInternalPrefix()+"entity/"+model.technicalNameCapitalized+"Entity";
+		String instanceClassName = model.getRootPackageInternalPrefix()+model.technicalNameCapitalized;
 
 		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className,
 				"Lorg/instantlogic/fabric/model/Entity<L"+instanceClassName+";>;", "org/instantlogic/fabric/model/Entity", null);
@@ -324,7 +324,7 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 		String className = model.getRootPackageInternalPrefix()+"entity/"+model.technicalNameCapitalized+"Entity$"+innerClassIndex;
 
 		cw.visit(V1_7, ACC_SUPER, className,
-				"Lorg/instantlogic/fabric/model/impl/SimpleAttribute<L"+model.getRootPackageInternalPrefix()+model.name+";L"+attribute.internalClassName+";>;",
+				"Lorg/instantlogic/fabric/model/impl/SimpleAttribute<L"+model.getRootPackageInternalPrefix()+model.technicalNameCapitalized+";L"+attribute.internalClassName+";>;",
 				"org/instantlogic/fabric/model/impl/SimpleAttribute", null);
 
 		cw.visitOuterClass(model.getRootPackageInternalPrefix()+"entity/"+model.technicalNameCapitalized+"Entity", null, null);
@@ -359,10 +359,10 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 		//	return instance.getUsernameAttributeValue();
 		//}
 		{
-			mv = cw.visitMethod(ACC_PUBLIC, "get", "(L"+model.getRootPackageInternalPrefix()+model.name+";)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue"+(attribute.multivalue?"s":"")+";", "(L"+model.getRootPackageInternalPrefix()+model.name+";)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue"+(attribute.multivalue?"s":"")+"<L"+model.getRootPackageInternalPrefix()+model.name+";L"+attribute.internalClassName+";>;", null);
+			mv = cw.visitMethod(ACC_PUBLIC, "get", "(L"+model.getRootPackageInternalPrefix()+model.technicalNameCapitalized+";)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue"+(attribute.multivalue?"s":"")+";", "(L"+model.getRootPackageInternalPrefix()+model.technicalNameCapitalized+";)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue"+(attribute.multivalue?"s":"")+"<L"+model.getRootPackageInternalPrefix()+model.technicalNameCapitalized+";L"+attribute.internalClassName+";>;", null);
 			mv.visitCode();
 			mv.visitVarInsn(ALOAD, 1);
-			mv.visitMethodInsn(INVOKEVIRTUAL, model.getRootPackageInternalPrefix()+model.name, "get"+attribute.technicalNameCapitalized+"AttributeValue", "()Lorg/instantlogic/fabric/value/AttributeValue"+(attribute.multivalue?"s":"")+";");
+			mv.visitMethodInsn(INVOKEVIRTUAL, model.getRootPackageInternalPrefix()+model.technicalNameCapitalized, "get"+attribute.technicalNameCapitalized+"AttributeValue", "()Lorg/instantlogic/fabric/value/AttributeValue"+(attribute.multivalue?"s":"")+";");
 			mv.visitInsn(ARETURN);
 			mv.visitMaxs(1, 2);
 			mv.visitEnd();
@@ -372,8 +372,8 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitCode();
 			mv.visitVarInsn(ALOAD, 0);
 			mv.visitVarInsn(ALOAD, 1);
-			mv.visitTypeInsn(CHECKCAST, model.getRootPackageInternalPrefix()+model.name);
-			mv.visitMethodInsn(INVOKEVIRTUAL, className, "get", "(L"+model.getRootPackageInternalPrefix()+model.name+";)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue"+(attribute.multivalue?"s":"")+";");
+			mv.visitTypeInsn(CHECKCAST, model.getRootPackageInternalPrefix()+model.technicalNameCapitalized);
+			mv.visitMethodInsn(INVOKEVIRTUAL, className, "get", "(L"+model.getRootPackageInternalPrefix()+model.technicalNameCapitalized+";)Lorg/instantlogic/fabric/value/ReadOnlyAttributeValue"+(attribute.multivalue?"s":"")+";");
 			mv.visitInsn(ARETURN);
 			mv.visitMaxs(2, 2);
 			mv.visitEnd();

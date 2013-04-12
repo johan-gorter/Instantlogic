@@ -36,8 +36,8 @@ import org.instantlogic.designer.SubFlowDesign;
 import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGenerator;
+import org.instantlogic.designer.tools.Generator;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
-import org.instantlogic.tools.generator.Generator;
 import org.instantlogic.tools.persistence.json.CasePersister;
 
 public class IzzyGenerator extends Design {
