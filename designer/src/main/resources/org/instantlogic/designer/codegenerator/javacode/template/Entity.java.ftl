@@ -57,19 +57,21 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 
 	static {
 		// Phase 1
+		// Attributes
 		<#list attributes as attribute>
 		org.instantlogic.fabric.model.impl.SimpleAttribute<${rootPackageName}.${technicalNameCapitalized}, ${attribute.className}, ${attribute.itemClassName}> $${attribute.javaIdentifier}
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<${rootPackageName}.${technicalNameCapitalized}, ${attribute.className}, ${attribute.itemClassName}>(
 				"${attribute.name}", INSTANCE, ${attribute.itemClassName}.class, "${attribute.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
 		${attribute.javaIdentifier} = $${attribute.javaIdentifier};
 		</#list>
+		// Relations
 		<#list relations as relation>
 		org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}> $${relation.javaIdentifier}
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}>(
 				"${relation.name}", INSTANCE, "${relation.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
 		${relation.javaIdentifier} = $${relation.javaIdentifier};
 		</#list>
-		// Phase "reverse relations"
+		// Reverse relations
 		<#list reverseRelations as relation>
 		org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}> $${relation.javaIdentifier}
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}>(
@@ -156,10 +158,10 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 		</#list>
 
 		<#list reverseRelations as relation>
+		$${relation.javaIdentifier}.reverse = true;
 		$${relation.javaIdentifier}.valueClass = ${rootPackageName}.${relation.item}.class;
 		$${relation.javaIdentifier}.to = ${rootPackageName}.entity.${relation.item}Entity.INSTANCE;
 		$${relation.javaIdentifier}.setReverseRelation(${rootPackageName}.entity.${relation.item}Entity.${relation.reverseJavaIdentifier});
-		$${relation.javaIdentifier}.reverse = true;
 			<#if relation.multivalue>
 		$${relation.javaIdentifier}.multivalue = true;
 			</#if>
