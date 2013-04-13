@@ -41,22 +41,15 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 	public boolean readOnly;
 	private Field instanceField; 
 	
-	// Old constructor
-	public SimpleAttribute(String name, Entity<I> entity, Class<Item> javaClassName) {
-		this(name, entity, javaClassName, null, null);
-	}
-	
 	public SimpleAttribute(String name, Entity<I> entity, Class<Item> javaClassName, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
 		this.name = name;
 		this.entity = entity;
 		this.javaClassName = javaClassName;
-		if (instanceFieldName!=null) {
-			try {
-				instanceField = instanceFieldClass.getDeclaredField(instanceFieldName);
-				instanceField.setAccessible(true);
-			} catch (Exception e) {
-				throw new RuntimeException("Problem with field "+instanceFieldName+" from "+entity.getInstanceClass(), e);
-			}
+		try {
+			instanceField = instanceFieldClass.getDeclaredField(instanceFieldName);
+			instanceField.setAccessible(true);
+		} catch (Exception e) {
+			throw new RuntimeException("Problem with field "+instanceFieldName+" from "+entity.getInstanceClass(), e);
 		}
 	}
 

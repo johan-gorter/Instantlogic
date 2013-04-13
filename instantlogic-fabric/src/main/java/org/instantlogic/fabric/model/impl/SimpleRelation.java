@@ -44,33 +44,15 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 	public TextTemplate question;
 	public Deduction<? extends Iterable<To>> options; 
 
-	// Old constructor
-	public SimpleRelation(String name, Entity<I> entity, Entity<To> to, Class<To> valueClass, Relation<To, ? extends Object,I> reverseRelation) {
-		this(name, entity, to, valueClass, reverseRelation, null, null);
-	}
-	
 	// New constructor
 	public SimpleRelation(String name, Entity<I> entity, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
-		this(name, entity, null, null, null, instanceFieldName, instanceFieldClass);
-	}
-
-	// Full constructor
-	public SimpleRelation(String name, Entity<I> entity, Entity<To> to, Class<To> valueClass, Relation<To, ? extends Object,I> reverseRelation, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
 		this.name = name;
 		this.entity = entity;
-		this.to = to;
-		this.valueClass = valueClass;
-		this.reverseRelation = reverseRelation;
-		if (reverseRelation!=null) {
-			reverseRelation.setReverseRelation(this);
-		}
-		if (instanceFieldName!=null) {
-			try {
-				instanceField = instanceFieldClass.getDeclaredField(instanceFieldName);
-				instanceField.setAccessible(true);
-			} catch (Exception e) {
-				throw new RuntimeException(e);
-			}
+		try {
+			instanceField = instanceFieldClass.getDeclaredField(instanceFieldName);
+			instanceField.setAccessible(true);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 	
