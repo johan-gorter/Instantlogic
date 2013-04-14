@@ -2,7 +2,8 @@ package org.instantlogic.designer.codegenerator.classmodel;
 
 import org.instantlogic.designer.deduction.TechnicalNameDeduction;
 import org.instantlogic.fabric.Instance;
-import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
 public class ConstantValueModel extends ValueModel {
 
@@ -26,6 +27,17 @@ public class ConstantValueModel extends ValueModel {
 	}
 
 	@Override
-	public void writeJvmBytecode(ClassWriter cw) {
+	public void writeJvmBytecode(MethodVisitor mv) {
+		if (constantValue instanceof Boolean) {
+			if (constantValue==Boolean.TRUE) {
+				mv.visitInsn(Opcodes.ICONST_1);
+			} else {
+				mv.visitInsn(Opcodes.ICONST_0);
+			}
+		} else if (constantValue instanceof Number) {
+			mv.visitIntInsn(Opcodes.BIPUSH, (Integer)constantValue);
+		} else {
+			throw new RuntimeException("Unsupported value "+constantValue);
+		}
 	}
 }

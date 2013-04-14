@@ -13,6 +13,8 @@ package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import org.instantlogic.designer.codegenerator.classmodel.DeductionModel;
+import org.instantlogic.designer.codegenerator.classmodel.DeductionSchemeModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.Attribute;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.Relation;
@@ -252,7 +254,9 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 					// TODO
 				}
 				if (r.optionsDeductionIndex!=null) {
-					// TODO
+					mv.visitVarInsn(ALOAD, localVariableIndex);
+					mv.visitMethodInsn(INVOKESTATIC, className, "createDeduction"+r.optionsDeductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
+					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleRelation", "options", "Lorg/instantlogic/fabric/deduction/Deduction;");
 				}
 				if (r.validations.size()>0) {
 					// TODO
@@ -340,6 +344,12 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
+		
+		//Deductions
+		for (DeductionSchemeModel scheme : model.getDeductionSchemes()) {
+			dumpDeductionScheme(cw, scheme);
+		}
+		
 		//@Override
 		//public org.instantlogic.example.izzy.User createInstance() {
 		//	return new org.instantlogic.example.izzy.User();

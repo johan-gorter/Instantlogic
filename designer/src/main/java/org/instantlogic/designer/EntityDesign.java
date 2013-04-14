@@ -180,6 +180,7 @@ public class EntityDesign extends AbstractEntityDesign {
 
 	// Used for code generation
 	public ValueModel asStaticFieldValue() {
-		return new StaticFieldValueModel(getApplication().getRootPackageName()+".entity."+getTechnicalNameCapitalized()+"Entity","INSTANCE");
+		String className = getApplication().getRootPackageName()+".entity."+getTechnicalNameCapitalized()+"Entity";
+		return new StaticFieldValueModel(className,"INSTANCE", className);
 	}
 }

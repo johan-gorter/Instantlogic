@@ -10,6 +10,9 @@
 
 package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 
+import org.instantlogic.designer.codegenerator.classmodel.DeductionModel;
+import org.instantlogic.designer.codegenerator.classmodel.DeductionModel.Parameter;
+import org.instantlogic.designer.codegenerator.classmodel.DeductionSchemeModel;
 import org.objectweb.asm.*;
 
 public class AbstractBytecodeTemplate implements Opcodes {
@@ -36,4 +39,41 @@ public class AbstractBytecodeTemplate implements Opcodes {
 		}			
 	}
 	
+	protected static void dumpDeductionScheme(ClassVisitor cw, DeductionSchemeModel scheme) {
+		MethodVisitor mv = cw.visitMethod(ACC_PRIVATE + ACC_STATIC, "createDeduction"+scheme.index, "()Lorg/instantlogic/fabric/deduction/Deduction;", null, null);
+		mv.visitCode();
+		int localVariableIndex = 0;
+		for (DeductionModel deduction: scheme.deductions) {
+			// org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+			mv.visitTypeInsn(NEW, deduction.getInternalClassName());
+			mv.visitInsn(DUP);
+			mv.visitMethodInsn(INVOKESPECIAL, deduction.getInternalClassName(), "<init>", "()V");
+			mv.visitVarInsn(ASTORE, localVariableIndex);
+			for (Parameter parameter: deduction.getParameters()) {
+				// d0.setAttribute(org.instantlogic.example.izzy.entity.ProjectEntity.users);
+				mv.visitVarInsn(ALOAD, localVariableIndex);
+				parameter.getValue().writeJvmBytecode(mv);
+				mv.visitMethodInsn(INVOKEVIRTUAL, deduction.getInternalClassName() , "set"+parameter.name, "(Lorg/instantlogic/fabric/model/Attribute;)V");
+			}
+			localVariableIndex++;
+		}
+		localVariableIndex = 0;
+		for (DeductionModel deduction: scheme.deductions) {
+			localVariableIndex++;
+			for (DeductionModel.Input input: deduction.inputs) {
+				// d0.setInstance(d1);
+				mv.visitVarInsn(ALOAD, localVariableIndex);
+				mv.visitVarInsn(ALOAD, input.deductionIndex);
+				if (input.multivalue) {
+					mv.visitMethodInsn(INVOKEVIRTUAL, deduction.getInternalClassName(), "addTo"+input.getInputName(), "(Lorg/instantlogic/fabric/deduction/Deduction;)V");
+				} else {
+					mv.visitMethodInsn(INVOKEVIRTUAL, deduction.getInternalClassName(), "set"+input.getInputName(), "(Lorg/instantlogic/fabric/deduction/Deduction;)V");
+				}
+			}
+		}
+		mv.visitVarInsn(ALOAD, 0);
+		mv.visitInsn(ARETURN);
+		mv.visitMaxs(2, 2);
+		mv.visitEnd();
+	}	
 }

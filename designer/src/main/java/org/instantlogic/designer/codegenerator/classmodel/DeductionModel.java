@@ -56,6 +56,7 @@ public class DeductionModel {
 	public String customization;
 	public List<Input> inputs = new ArrayList<Input>();
 	public List<Parameter> parameters = new ArrayList<Parameter>();
+	private String internalClassName;
 	
 	public List<Parameter> getParameters() {
 		return parameters;
@@ -71,5 +72,11 @@ public class DeductionModel {
 	}
 	public String getCustomization() {
 		return customization;
+	}
+	public String getInternalClassName() {
+		if (internalClassName==null) {
+			internalClassName = type.replace(".", "/")+"/";
+		}
+		return internalClassName;
 	}
 }

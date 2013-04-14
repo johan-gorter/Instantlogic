@@ -33,7 +33,6 @@ import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.Stati
 import org.instantlogic.designer.codegenerator.classmodel.StaticFieldValueModel;
 import org.instantlogic.designer.deduction.TechnicalNameDeduction;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
-import org.objectweb.asm.Type;
 
 public class EntityGenerator extends AbstractGenerator {
 
@@ -176,7 +175,7 @@ public class EntityGenerator extends AbstractGenerator {
 				value.attributeName = valueDesign.getAttribute().getTechnicalNameCapitalized();
 				value.multivalue = valueDesign.getAttribute().getDataType().getMultivalue();
 				if (valueDesign.getRelationValue()!=null) {
-					value.value = new StaticFieldValueModel(model.rootPackageName + "."+ valueDesign.getRelationValue().getEntity().getTechnicalNameCapitalized(), valueDesign.getRelationValue().getJavaIdentifier());
+					value.value = new StaticFieldValueModel(model.rootPackageName + "."+ valueDesign.getRelationValue().getEntity().getTechnicalNameCapitalized(), valueDesign.getRelationValue().getJavaIdentifier(), "org.instantlogic.fabric.model.Relation");
 				} else {
 					value.value = new ConstantValueModel(valueDesign.getValue());
 				}
