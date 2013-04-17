@@ -45,6 +45,7 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 	static {
 		// Phase 1
+		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean> $autoCreate
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.Boolean, java.lang.Boolean>(
 				"autoCreate", INSTANCE, java.lang.Boolean.class, "autoCreate", org.instantlogic.designer.RelationDesign.class);
@@ -73,6 +74,7 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.RelationDesign, java.lang.String, java.lang.String>(
 				"reverseTechnicalName", INSTANCE, java.lang.String.class, "reverseTechnicalName", org.instantlogic.designer.RelationDesign.class);
 		reverseTechnicalName = $reverseTechnicalName;
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $options
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"options", INSTANCE, "options", org.instantlogic.designer.RelationDesign.class);
@@ -85,7 +87,7 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
 				"to", INSTANCE, "to", org.instantlogic.designer.RelationDesign.class);
 		to = $to;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $from
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
 				"from", INSTANCE, "from", org.instantlogic.designer.RelationDesign.class);
@@ -110,10 +112,10 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		$to.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$to.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.reverseRelations);
 
+		$from.reverse = true;
 		$from.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$from.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$from.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.relations);
-		$from.reverse = true;
 	}
 
 	@Override

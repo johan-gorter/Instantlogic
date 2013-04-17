@@ -32,15 +32,17 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 
 	static {
 		// Phase 1
+		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean> $multivalue
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean>(
 				"multivalue", INSTANCE, java.lang.Boolean.class, "multivalue", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		multivalue = $multivalue;
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
 				"dataType", INSTANCE, "dataType", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		dataType = $dataType;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
 				"operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationInputDesign.class);
@@ -52,10 +54,10 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 		$dataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;
 		$dataType.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
 
+		$operation.reverse = true;
 		$operation.valueClass = org.instantlogic.designer.DeductionOperationDesign.class;
 		$operation.to = org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE;
 		$operation.setReverseRelation(org.instantlogic.designer.entity.DeductionOperationDesignEntity.inputs);
-		$operation.reverse = true;
 	}
 
 	@Override

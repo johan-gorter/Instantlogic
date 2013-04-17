@@ -24,6 +24,8 @@ public class SelectionDesignEntity extends org.instantlogic.fabric.model.Entity<
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ElementDesign>, org.instantlogic.designer.ElementDesign> $children
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ElementDesign>, org.instantlogic.designer.ElementDesign>(
 				"children", INSTANCE, "children", org.instantlogic.designer.SelectionDesign.class);
@@ -32,7 +34,7 @@ public class SelectionDesignEntity extends org.instantlogic.fabric.model.Entity<
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"selection", INSTANCE, "selection", org.instantlogic.designer.SelectionDesign.class);
 		selection = $selection;
-		// Phase "reverse relations"
+		// Reverse relations
 		
 		// Phase 2
 

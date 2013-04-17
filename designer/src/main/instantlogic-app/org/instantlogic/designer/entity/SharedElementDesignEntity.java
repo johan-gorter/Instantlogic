@@ -23,11 +23,13 @@ public class SharedElementDesignEntity extends org.instantlogic.fabric.model.Ent
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDesign, org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDefinitionDesign> $definition
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDesign, org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDefinitionDesign>(
 				"definition", INSTANCE, "definition", org.instantlogic.designer.SharedElementDesign.class);
 		definition = $definition;
-		// Phase "reverse relations"
+		// Reverse relations
 		
 		// Phase 2
 

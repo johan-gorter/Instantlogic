@@ -26,6 +26,8 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $description
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
 				"description", INSTANCE, "description", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
@@ -34,7 +36,7 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
 				"values", INSTANCE, "values", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		values = $values;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $entity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
 				"entity", INSTANCE, "entity", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
@@ -54,14 +56,14 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 		$values.owner = true;
 		$values.multivalue = true;
 
+		$entity.reverse = true;
 		$entity.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$entity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$entity.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.staticInstances);
-		$entity.reverse = true;
+		$valueOfStaticInstances.reverse = true;
 		$valueOfStaticInstances.valueClass = org.instantlogic.designer.StaticInstanceValueDesign.class;
 		$valueOfStaticInstances.to = org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.INSTANCE;
 		$valueOfStaticInstances.setReverseRelation(org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.relationValue);
-		$valueOfStaticInstances.reverse = true;
 		$valueOfStaticInstances.multivalue = true;
 	}
 

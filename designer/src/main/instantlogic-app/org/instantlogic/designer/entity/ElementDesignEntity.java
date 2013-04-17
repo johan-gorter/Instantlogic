@@ -48,6 +48,7 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 
 	static {
 		// Phase 1
+		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ElementDesign, java.lang.Boolean, java.lang.Boolean> $editorOpen
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ElementDesign, java.lang.Boolean, java.lang.Boolean>(
 				"editorOpen", INSTANCE, java.lang.Boolean.class, "editorOpen", org.instantlogic.designer.ElementDesign.class);
@@ -56,7 +57,8 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ElementDesign, java.lang.String, java.lang.String>(
 				"previewMode", INSTANCE, java.lang.String.class, "previewMode", org.instantlogic.designer.ElementDesign.class);
 		previewMode = $previewMode;
-		// Phase "reverse relations"
+		// Relations
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign> $childOfSelection
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign>(
 				"childOfSelection", INSTANCE, "childOfSelection", org.instantlogic.designer.ElementDesign.class);
@@ -85,22 +87,22 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 		$previewMode._default = createDeduction1();
 
 
+		$childOfSelection.reverse = true;
 		$childOfSelection.valueClass = org.instantlogic.designer.SelectionDesign.class;
 		$childOfSelection.to = org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE;
 		$childOfSelection.setReverseRelation(org.instantlogic.designer.entity.SelectionDesignEntity.children);
-		$childOfSelection.reverse = true;
+		$childrenForFragment.reverse = true;
 		$childrenForFragment.valueClass = org.instantlogic.designer.PropertyDesign.class;
 		$childrenForFragment.to = org.instantlogic.designer.entity.PropertyDesignEntity.INSTANCE;
 		$childrenForFragment.setReverseRelation(org.instantlogic.designer.entity.PropertyDesignEntity.children);
-		$childrenForFragment.reverse = true;
+		$contentOfPage.reverse = true;
 		$contentOfPage.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
 		$contentOfPage.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
 		$contentOfPage.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.content);
-		$contentOfPage.reverse = true;
+		$partOfSharedElementDefinition.reverse = true;
 		$partOfSharedElementDefinition.valueClass = org.instantlogic.designer.SharedElementDefinitionDesign.class;
 		$partOfSharedElementDefinition.to = org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE;
 		$partOfSharedElementDefinition.setReverseRelation(org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.fragment);
-		$partOfSharedElementDefinition.reverse = true;
 	}
 
 	@Override

@@ -41,6 +41,7 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 
 	static {
 		// Phase 1
+		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> $fragmentFilters
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
 				"fragmentFilters", INSTANCE, java.lang.String.class, "fragmentFilters", org.instantlogic.designer.FragmentTypeDesign.class);
@@ -53,7 +54,8 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean>(
 				"hasEvent", INSTANCE, java.lang.Boolean.class, "hasEvent", org.instantlogic.designer.FragmentTypeDesign.class);
 		hasEvent = $hasEvent;
-		// Phase "reverse relations"
+		// Relations
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
 				"application", INSTANCE, "application", org.instantlogic.designer.FragmentTypeDesign.class);
@@ -72,14 +74,14 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 		$hasEvent._default = createDeduction1();
 
 
+		$application.reverse = true;
 		$application.valueClass = org.instantlogic.designer.ApplicationDesign.class;
 		$application.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
 		$application.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.fragmentTypes);
-		$application.reverse = true;
+		$usages.reverse = true;
 		$usages.valueClass = org.instantlogic.designer.FragmentTemplateDesign.class;
 		$usages.to = org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE;
 		$usages.setReverseRelation(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.type);
-		$usages.reverse = true;
 		$usages.multivalue = true;
 	}
 

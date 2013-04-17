@@ -276,7 +276,13 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 		if (javaClassName == Object.class && value.isJsonPrimitive()) {
 			JsonPrimitive primitiveValue = value.getAsJsonPrimitive();
 			if (primitiveValue.isBoolean()) return primitiveValue.getAsBoolean();
-			if (primitiveValue.isNumber()) return primitiveValue.getAsNumber();
+			if (primitiveValue.isNumber()) {
+				if (primitiveValue.getAsString().contains(".")) {
+					return primitiveValue.getAsBigDecimal(); // To be on the safe side
+				} else {
+					return primitiveValue.getAsNumber().intValue();
+				}
+			}
 			return primitiveValue.getAsString();
 		} else if (javaClassName == Date.class) {
 			try {

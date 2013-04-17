@@ -15,6 +15,7 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 
 	
 	// Attributes
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionOperationParameterDesign, java.lang.String, java.lang.String> valueClass; 
 	
 	// Relations
 	
@@ -23,7 +24,13 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 
 	static {
 		// Phase 1
-		// Phase "reverse relations"
+		// Attributes
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationParameterDesign, java.lang.String, java.lang.String> $valueClass
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationParameterDesign, java.lang.String, java.lang.String>(
+				"valueClass", INSTANCE, java.lang.String.class, "valueClass", org.instantlogic.designer.DeductionOperationParameterDesign.class);
+		valueClass = $valueClass;
+		// Relations
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
 				"operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationParameterDesign.class);
@@ -32,10 +39,10 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 		// Phase 2
 
 
+		$operation.reverse = true;
 		$operation.valueClass = org.instantlogic.designer.DeductionOperationDesign.class;
 		$operation.to = org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE;
 		$operation.setReverseRelation(org.instantlogic.designer.entity.DeductionOperationDesignEntity.parameters);
-		$operation.reverse = true;
 	}
 
 	@Override
@@ -54,6 +61,7 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
+		valueClass,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};

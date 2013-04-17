@@ -31,7 +31,9 @@ public class FlowNodeBaseDesignEntity extends org.instantlogic.fabric.model.Enti
 
 	static {
 		// Phase 1
-		// Phase "reverse relations"
+		// Attributes
+		// Relations
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign> $incomingEdges
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign>(
 				"incomingEdges", INSTANCE, "incomingEdges", org.instantlogic.designer.FlowNodeBaseDesign.class);
@@ -52,20 +54,20 @@ public class FlowNodeBaseDesignEntity extends org.instantlogic.fabric.model.Enti
 		};
 
 
+		$incomingEdges.reverse = true;
 		$incomingEdges.valueClass = org.instantlogic.designer.FlowEdgeDesign.class;
 		$incomingEdges.to = org.instantlogic.designer.entity.FlowEdgeDesignEntity.INSTANCE;
 		$incomingEdges.setReverseRelation(org.instantlogic.designer.entity.FlowEdgeDesignEntity.endNode);
-		$incomingEdges.reverse = true;
 		$incomingEdges.multivalue = true;
+		$outgoingEdges.reverse = true;
 		$outgoingEdges.valueClass = org.instantlogic.designer.FlowEdgeDesign.class;
 		$outgoingEdges.to = org.instantlogic.designer.entity.FlowEdgeDesignEntity.INSTANCE;
 		$outgoingEdges.setReverseRelation(org.instantlogic.designer.entity.FlowEdgeDesignEntity.startNode);
-		$outgoingEdges.reverse = true;
 		$outgoingEdges.multivalue = true;
+		$owner.reverse = true;
 		$owner.valueClass = org.instantlogic.designer.FlowDesign.class;
 		$owner.to = org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE;
 		$owner.setReverseRelation(org.instantlogic.designer.entity.FlowDesignEntity.nodes);
-		$owner.reverse = true;
 	}
 
 	@Override

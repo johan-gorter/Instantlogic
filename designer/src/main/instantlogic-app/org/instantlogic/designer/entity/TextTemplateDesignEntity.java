@@ -26,11 +26,13 @@ public class TextTemplateDesignEntity extends org.instantlogic.fabric.model.Enti
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StringTemplateDesign>, org.instantlogic.designer.StringTemplateDesign> $untranslated
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StringTemplateDesign>, org.instantlogic.designer.StringTemplateDesign>(
 				"untranslated", INSTANCE, "untranslated", org.instantlogic.designer.TextTemplateDesign.class);
 		untranslated = $untranslated;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.ValidationDesign> $messageOfValidation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.ValidationDesign>(
 				"messageOfValidation", INSTANCE, "messageOfValidation", org.instantlogic.designer.TextTemplateDesign.class);
@@ -52,18 +54,18 @@ public class TextTemplateDesignEntity extends org.instantlogic.fabric.model.Enti
 		$untranslated.owner = true;
 		$untranslated.multivalue = true;
 
+		$messageOfValidation.reverse = true;
 		$messageOfValidation.valueClass = org.instantlogic.designer.ValidationDesign.class;
 		$messageOfValidation.to = org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE;
 		$messageOfValidation.setReverseRelation(org.instantlogic.designer.entity.ValidationDesignEntity.message);
-		$messageOfValidation.reverse = true;
+		$titleOfEntity.reverse = true;
 		$titleOfEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$titleOfEntity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$titleOfEntity.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.title);
-		$titleOfEntity.reverse = true;
+		$titleOfPlaceTemplate.reverse = true;
 		$titleOfPlaceTemplate.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
 		$titleOfPlaceTemplate.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
 		$titleOfPlaceTemplate.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.title);
-		$titleOfPlaceTemplate.reverse = true;
 	}
 
 	@Override

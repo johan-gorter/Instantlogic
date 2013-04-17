@@ -68,6 +68,7 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 
 	static {
 		// Phase 1
+		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> $hasDefault
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean>(
 				"hasDefault", INSTANCE, java.lang.Boolean.class, "hasDefault", org.instantlogic.designer.AbstractAttributeDesign.class);
@@ -84,6 +85,7 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean>(
 				"writeable", INSTANCE, java.lang.Boolean.class, "writeable", org.instantlogic.designer.AbstractAttributeDesign.class);
 		writeable = $writeable;
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $belongsToEntity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
 				"belongsToEntity", INSTANCE, "belongsToEntity", org.instantlogic.designer.AbstractAttributeDesign.class);
@@ -112,7 +114,7 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"rule", INSTANCE, "rule", org.instantlogic.designer.AbstractAttributeDesign.class);
 		rule = $rule;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $attributeOf
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
 				"attributeOf", INSTANCE, "attributeOf", org.instantlogic.designer.AbstractAttributeDesign.class);
@@ -162,14 +164,14 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 		$rule.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.ruleOfAttribute);
 		$rule.owner = true;
 
+		$attributeOf.reverse = true;
 		$attributeOf.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$attributeOf.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$attributeOf.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
-		$attributeOf.reverse = true;
+		$validations.reverse = true;
 		$validations.valueClass = org.instantlogic.designer.ValidationDesign.class;
 		$validations.to = org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE;
 		$validations.setReverseRelation(org.instantlogic.designer.entity.ValidationDesignEntity.displayWith);
-		$validations.reverse = true;
 		$validations.multivalue = true;
 	}
 

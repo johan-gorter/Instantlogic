@@ -10,10 +10,17 @@
 
 package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.instantlogic.designer.codegenerator.classmodel.DeductionModel;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionModel.Parameter;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionSchemeModel;
-import org.objectweb.asm.*;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
 public class AbstractBytecodeTemplate implements Opcodes {
 
@@ -40,6 +47,7 @@ public class AbstractBytecodeTemplate implements Opcodes {
 	}
 	
 	protected static void dumpDeductionScheme(ClassVisitor cw, DeductionSchemeModel scheme) {
+		List<Label> labels = new ArrayList<Label>();
 		MethodVisitor mv = cw.visitMethod(ACC_PRIVATE + ACC_STATIC, "createDeduction"+scheme.index, "()Lorg/instantlogic/fabric/deduction/Deduction;", null, null);
 		mv.visitCode();
 		int localVariableIndex = 0;
@@ -49,17 +57,19 @@ public class AbstractBytecodeTemplate implements Opcodes {
 			mv.visitInsn(DUP);
 			mv.visitMethodInsn(INVOKESPECIAL, deduction.getInternalClassName(), "<init>", "()V");
 			mv.visitVarInsn(ASTORE, localVariableIndex);
+			Label label = new Label();
+			mv.visitLabel(label);
+			labels.add(label);
 			for (Parameter parameter: deduction.getParameters()) {
 				// d0.setAttribute(org.instantlogic.example.izzy.entity.ProjectEntity.users);
 				mv.visitVarInsn(ALOAD, localVariableIndex);
 				parameter.getValue().writeJvmBytecode(mv);
-				mv.visitMethodInsn(INVOKEVIRTUAL, deduction.getInternalClassName() , "set"+parameter.name, "(Lorg/instantlogic/fabric/model/Attribute;)V");
+				mv.visitMethodInsn(INVOKEVIRTUAL, deduction.getInternalClassName() , "set"+parameter.name, "(L"+parameter.valueClass.replace('.','/')+";)V");
 			}
 			localVariableIndex++;
 		}
 		localVariableIndex = 0;
 		for (DeductionModel deduction: scheme.deductions) {
-			localVariableIndex++;
 			for (DeductionModel.Input input: deduction.inputs) {
 				// d0.setInstance(d1);
 				mv.visitVarInsn(ALOAD, localVariableIndex);
@@ -70,10 +80,18 @@ public class AbstractBytecodeTemplate implements Opcodes {
 					mv.visitMethodInsn(INVOKEVIRTUAL, deduction.getInternalClassName(), "set"+input.getInputName(), "(Lorg/instantlogic/fabric/deduction/Deduction;)V");
 				}
 			}
+			localVariableIndex++;
 		}
 		mv.visitVarInsn(ALOAD, 0);
 		mv.visitInsn(ARETURN);
-		mv.visitMaxs(2, 2);
+		Label endLabel = new Label();
+		mv.visitLabel(endLabel);
+		localVariableIndex = 0;
+		for (DeductionModel deduction: scheme.deductions) {
+			mv.visitLocalVariable("d"+localVariableIndex, "L"+deduction.getInternalClassName()+";", null, labels.get(localVariableIndex), endLabel, localVariableIndex);
+			localVariableIndex++;
+		}
+		mv.visitMaxs(2, localVariableIndex);
 		mv.visitEnd();
 	}	
 }

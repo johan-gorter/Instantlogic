@@ -26,6 +26,8 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> $displayWith
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign>(
 				"displayWith", INSTANCE, "displayWith", org.instantlogic.designer.AbstractValidationDesign.class);
@@ -38,7 +40,7 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"rule", INSTANCE, "rule", org.instantlogic.designer.AbstractValidationDesign.class);
 		rule = $rule;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $forEntity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
 				"forEntity", INSTANCE, "forEntity", org.instantlogic.designer.AbstractValidationDesign.class);
@@ -60,10 +62,10 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 		$rule.owner = true;
 		$rule.autoCreate = true;
 
+		$forEntity.reverse = true;
 		$forEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$forEntity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$forEntity.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.validations);
-		$forEntity.reverse = true;
 	}
 
 	@Override

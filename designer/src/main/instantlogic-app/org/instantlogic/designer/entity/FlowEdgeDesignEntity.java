@@ -22,6 +22,8 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> $endNode
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign>(
 				"endNode", INSTANCE, "endNode", org.instantlogic.designer.FlowEdgeDesign.class);
@@ -34,7 +36,7 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign>(
 				"startNode", INSTANCE, "startNode", org.instantlogic.designer.FlowEdgeDesign.class);
 		startNode = $startNode;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> $owner
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
 				"owner", INSTANCE, "owner", org.instantlogic.designer.FlowEdgeDesign.class);
@@ -51,10 +53,10 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		$startNode.to = org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE;
 		$startNode.setReverseRelation(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.outgoingEdges);
 
+		$owner.reverse = true;
 		$owner.valueClass = org.instantlogic.designer.FlowDesign.class;
 		$owner.to = org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE;
 		$owner.setReverseRelation(org.instantlogic.designer.entity.FlowDesignEntity.edges);
-		$owner.reverse = true;
 	}
 
 	@Override

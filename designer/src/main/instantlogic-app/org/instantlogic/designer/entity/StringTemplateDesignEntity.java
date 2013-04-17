@@ -21,15 +21,17 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 
 	static {
 		// Phase 1
+		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String> $constantText
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String>(
 				"constantText", INSTANCE, java.lang.String.class, "constantText", org.instantlogic.designer.StringTemplateDesign.class);
 		constantText = $constantText;
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $deduction
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"deduction", INSTANCE, "deduction", org.instantlogic.designer.StringTemplateDesign.class);
 		deduction = $deduction;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $untranslatedInTemplate
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
 				"untranslatedInTemplate", INSTANCE, "untranslatedInTemplate", org.instantlogic.designer.StringTemplateDesign.class);
@@ -42,10 +44,10 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 		$deduction.owner = true;
 		$deduction.autoCreate = true;
 
+		$untranslatedInTemplate.reverse = true;
 		$untranslatedInTemplate.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
 		$untranslatedInTemplate.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
 		$untranslatedInTemplate.setReverseRelation(org.instantlogic.designer.entity.TextTemplateDesignEntity.untranslated);
-		$untranslatedInTemplate.reverse = true;
 	}
 
 	@Override

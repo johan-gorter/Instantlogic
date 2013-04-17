@@ -11,9 +11,10 @@
 package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-import org.instantlogic.designer.codegenerator.classmodel.DeductionModel;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionSchemeModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.Attribute;
@@ -21,9 +22,11 @@ import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.Relat
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
+import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.util.ASMifier;
+import org.objectweb.asm.util.CheckClassAdapter;
 import org.objectweb.asm.util.TraceClassVisitor;
 
 public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
@@ -40,6 +43,7 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 		ClassVisitor cw;
 		if (TRACE) {
 			cw = new TraceClassVisitor(cwriter, new ASMifier(), new PrintWriter(System.out));
+			cw = new CheckClassAdapter(cw);
 		} else {
 			cw=cwriter;
 		}
@@ -54,6 +58,8 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className,
 				"Lorg/instantlogic/fabric/model/Entity<L"+instanceClassName+";>;", "org/instantlogic/fabric/model/Entity", null);
 
+		List<Label> labels = new ArrayList<Label>();
+		
 		// public static final UserEntity INSTANCE 
 		{
 			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "INSTANCE", "L"+className+";", null, null);
@@ -126,6 +132,9 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitLdcInsn(Type.getType("L"+abstractInstanceClassName+";"));
 				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleAttribute", "<init>", "(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Class;)V");
 				mv.visitVarInsn(ASTORE, localVariableIndex);
+				Label label = new Label();
+				mv.visitLabel(label);
+				labels.add(label);
 				mv.visitVarInsn(ALOAD, localVariableIndex);
 				mv.visitFieldInsn(PUTSTATIC, className, a.javaIdentifier, "Lorg/instantlogic/fabric/model/Attribute;");
 				localVariableIndex++;
@@ -142,6 +151,9 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitLdcInsn(Type.getType("L"+abstractInstanceClassName+";"));
 				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleRelation", "<init>", "(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/String;Ljava/lang/Class;)V");
 				mv.visitVarInsn(ASTORE, localVariableIndex);
+				Label label = new Label();
+				mv.visitLabel(label);
+				labels.add(label);
 				mv.visitVarInsn(ALOAD, localVariableIndex);
 				mv.visitFieldInsn(PUTSTATIC, className, r.javaIdentifier, "Lorg/instantlogic/fabric/model/Relation;");
 				localVariableIndex++;
@@ -159,6 +171,9 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitLdcInsn(Type.getType("L"+abstractInstanceClassName+";"));
 				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleRelation", "<init>", "(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/String;Ljava/lang/Class;)V");
 				mv.visitVarInsn(ASTORE, localVariableIndex);
+				Label label = new Label();
+				mv.visitLabel(label);
+				labels.add(label);
 				mv.visitVarInsn(ALOAD, localVariableIndex);
 				mv.visitFieldInsn(PUTSTATIC, className, r.javaIdentifier, "Lorg/instantlogic/fabric/model/Relation;");
 				localVariableIndex++;
@@ -205,7 +220,9 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 					//TODO
 				}
 				if (a.defaultDeductionIndex!=null) {
-					//TODO
+					mv.visitVarInsn(ALOAD, localVariableIndex);
+					mv.visitMethodInsn(INVOKESTATIC, className, "createDeduction"+a.defaultDeductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
+					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleAttribute", "_default", "Lorg/instantlogic/fabric/deduction/Deduction;");
 				}
 				if (a.validations.size()>0) {
 					//TODO
@@ -330,8 +347,24 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitInsn(ICONST_0);
 			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/model/Validation");
 			mv.visitFieldInsn(PUTSTATIC, className, "VALIDATIONS", "[Lorg/instantlogic/fabric/model/Validation;");
+			Label endLabel = new Label();
+			mv.visitLabel(endLabel);
+			
+			int index = 0;
+			for (Attribute a:model.attributes) {
+				mv.visitLocalVariable("$"+a.technicalName, "Lorg/instantlogic/fabric/model/impl/SimpleAttribute;", null, labels.get(index), endLabel, index);
+				index++;
+			}
+			for (Relation r:model.relations) {
+				mv.visitLocalVariable("$"+r.technicalName, "Lorg/instantlogic/fabric/model/impl/SimpleRelation;", null, labels.get(index), endLabel, index);
+				index++;
+			}
+			for (Relation r:model.reverseRelations) {
+				mv.visitLocalVariable("$"+r.technicalName, "Lorg/instantlogic/fabric/model/impl/SimpleRelation;", null, labels.get(index), endLabel, index);
+				index++;
+			}
 			mv.visitInsn(RETURN);
-			mv.visitMaxs(7, 0);
+			mv.visitMaxs(7, index);
 			mv.visitEnd();
 		}
 		// Default synthetic constructor

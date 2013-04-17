@@ -47,6 +47,10 @@ public class DeductionSchemeGenerator {
 					} else {
 						parameterModel.value = new ConstantValueModel(parameter.getValue());
 					}
+					parameterModel.valueClass = parameter.getOperationParameter().getValueClass();
+					if (parameterModel.valueClass==null) {
+						throw new RuntimeException("No value class specified for "+deduction.getOperation().getName()+", parameter "+parameter.getOperationParameter().getName());
+					}
 					classModel.parameters.add(parameterModel);
 				}
 			}

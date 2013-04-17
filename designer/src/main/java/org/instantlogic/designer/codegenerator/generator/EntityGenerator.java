@@ -120,10 +120,11 @@ public class EntityGenerator extends AbstractGenerator {
 			relation.item = relationDesign.getTo().getTechnicalNameCapitalized();
 			relation.to = model.rootPackageName+"."+relation.item;
 			if (relation.multivalue) {
+				relation.internalItemClassName=relation.to.replace('.', '/');
 				relation.to = "org.instantlogic.fabric.value.Multi<"+relation.to+">";
 				relation.internalTo="org/instantlogic/fabric/value/Multi";
 			} else {
-				relation.internalTo=relation.to.replace('.', '/');
+				relation.internalTo=relation.internalItemClassName=relation.to.replace('.', '/');
 			}
 			relation.reverseName=relationDesign.getReverseName();
 			relation.reverseJavaIdentifier = relationDesign.getReverseJavaIdentifier();
@@ -153,10 +154,11 @@ public class EntityGenerator extends AbstractGenerator {
 				relation.item = relationDesign.getFrom().getTechnicalNameCapitalized();
 				relation.to = model.rootPackageName+"."+relation.item;
 				if (relation.multivalue) {
+					relation.internalItemClassName=relation.to.replace('.', '/');
 					relation.to = "org.instantlogic.fabric.value.Multi<"+relation.to+">";
 					relation.internalTo="org/instantlogic/fabric/value/Multi";
 				} else {
-					relation.internalTo=relation.to.replace('.', '/');
+					relation.internalTo=relation.internalItemClassName=relation.to.replace('.', '/');
 				}
 				model.reverseRelations.add(relation);
 			}

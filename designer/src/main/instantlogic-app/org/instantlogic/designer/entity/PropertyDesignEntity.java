@@ -31,6 +31,7 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 
 	static {
 		// Phase 1
+		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.PropertyDesign, java.lang.Boolean, java.lang.Boolean> $collapsed
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.PropertyDesign, java.lang.Boolean, java.lang.Boolean>(
 				"collapsed", INSTANCE, java.lang.Boolean.class, "collapsed", org.instantlogic.designer.PropertyDesign.class);
@@ -39,6 +40,7 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.PropertyDesign, java.lang.String, java.lang.String>(
 				"propertyName", INSTANCE, java.lang.String.class, "propertyName", org.instantlogic.designer.PropertyDesign.class);
 		propertyName = $propertyName;
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ElementDesign>, org.instantlogic.designer.ElementDesign> $children
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ElementDesign>, org.instantlogic.designer.ElementDesign>(
 				"children", INSTANCE, "children", org.instantlogic.designer.PropertyDesign.class);
@@ -51,7 +53,7 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"value", INSTANCE, "value", org.instantlogic.designer.PropertyDesign.class);
 		value = $value;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $fragment
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
 				"fragment", INSTANCE, "fragment", org.instantlogic.designer.PropertyDesign.class);
@@ -72,10 +74,10 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		$value.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
 		$value.owner = true;
 
+		$fragment.reverse = true;
 		$fragment.valueClass = org.instantlogic.designer.FragmentTemplateDesign.class;
 		$fragment.to = org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE;
 		$fragment.setReverseRelation(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.properties);
-		$fragment.reverse = true;
 	}
 
 	@Override

@@ -12,6 +12,7 @@ package org.instantlogic.designer;
 
 import org.instantlogic.designer.codegenerator.classmodel.StaticFieldValueModel;
 import org.instantlogic.designer.codegenerator.classmodel.ValueModel;
+import org.instantlogic.fabric.model.Attribute;
 
 public class AttributeDesign extends AbstractAttributeDesign {
 	
@@ -50,7 +51,8 @@ public class AttributeDesign extends AbstractAttributeDesign {
 	
 	public ValueModel asStaticFieldValue() {
 		EntityDesign entity = getBelongsToEntity();
-		return new StaticFieldValueModel(entity.getApplication().getRootPackageName()+".entity."+entity.getTechnicalNameCapitalized()+"Entity", getTechnicalName(), getDataType().getJavaClassName());
+		return new StaticFieldValueModel(entity.getApplication().getRootPackageName()+".entity."+entity.getTechnicalNameCapitalized()+"Entity", getTechnicalName(), 
+			(this instanceof RelationDesign)?"org.instantlogic.fabric.model.Relation":"org.instantlogic.fabric.model.Attribute");
 	}
 
 }

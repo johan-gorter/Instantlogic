@@ -26,6 +26,8 @@ public class DeductionSchemeDesignEntity extends org.instantlogic.fabric.model.E
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign> $deductions
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign>(
 				"deductions", INSTANCE, "deductions", org.instantlogic.designer.AbstractDeductionSchemeDesign.class);
@@ -34,7 +36,7 @@ public class DeductionSchemeDesignEntity extends org.instantlogic.fabric.model.E
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign>(
 				"output", INSTANCE, "output", org.instantlogic.designer.AbstractDeductionSchemeDesign.class);
 		output = $output;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> $defaultOfAttribute
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
 				"defaultOfAttribute", INSTANCE, "defaultOfAttribute", org.instantlogic.designer.AbstractDeductionSchemeDesign.class);
@@ -70,30 +72,30 @@ public class DeductionSchemeDesignEntity extends org.instantlogic.fabric.model.E
 		$output.valueClass = org.instantlogic.designer.DeductionDesign.class;
 		$output.to = org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE;
 
+		$defaultOfAttribute.reverse = true;
 		$defaultOfAttribute.valueClass = org.instantlogic.designer.AttributeDesign.class;
 		$defaultOfAttribute.to = org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE;
 		$defaultOfAttribute.setReverseRelation(org.instantlogic.designer.entity.AttributeDesignEntity._default);
-		$defaultOfAttribute.reverse = true;
+		$optionsOfRelation.reverse = true;
 		$optionsOfRelation.valueClass = org.instantlogic.designer.RelationDesign.class;
 		$optionsOfRelation.to = org.instantlogic.designer.entity.RelationDesignEntity.INSTANCE;
 		$optionsOfRelation.setReverseRelation(org.instantlogic.designer.entity.RelationDesignEntity.options);
-		$optionsOfRelation.reverse = true;
+		$relevanceOfAttribute.reverse = true;
 		$relevanceOfAttribute.valueClass = org.instantlogic.designer.AttributeDesign.class;
 		$relevanceOfAttribute.to = org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE;
 		$relevanceOfAttribute.setReverseRelation(org.instantlogic.designer.entity.AttributeDesignEntity.relevance);
-		$relevanceOfAttribute.reverse = true;
+		$ruleForValidation.reverse = true;
 		$ruleForValidation.valueClass = org.instantlogic.designer.ValidationDesign.class;
 		$ruleForValidation.to = org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE;
 		$ruleForValidation.setReverseRelation(org.instantlogic.designer.entity.ValidationDesignEntity.rule);
-		$ruleForValidation.reverse = true;
+		$ruleOfAttribute.reverse = true;
 		$ruleOfAttribute.valueClass = org.instantlogic.designer.AttributeDesign.class;
 		$ruleOfAttribute.to = org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE;
 		$ruleOfAttribute.setReverseRelation(org.instantlogic.designer.entity.AttributeDesignEntity.rule);
-		$ruleOfAttribute.reverse = true;
+		$selectionElement.reverse = true;
 		$selectionElement.valueClass = org.instantlogic.designer.SelectionDesign.class;
 		$selectionElement.to = org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE;
 		$selectionElement.setReverseRelation(org.instantlogic.designer.entity.SelectionDesignEntity.selection);
-		$selectionElement.reverse = true;
 	}
 
 	@Override

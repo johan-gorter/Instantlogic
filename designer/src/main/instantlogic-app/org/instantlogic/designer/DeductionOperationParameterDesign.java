@@ -40,14 +40,19 @@ public class DeductionOperationParameterDesign extends Design {
 	  reverseRelationRelation = addStaticInstance("reverseRelationRelation", new DeductionOperationParameterDesign());
 	  // Phase 2
       attribute.setName("attribute");
+      attribute.setValueClass("org.instantlogic.fabric.model.Attribute");
 	  attribute.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Attribute")));
       castToEntity.setName("toEntity");
+      castToEntity.setValueClass("org.instantlogic.fabric.model.Entity");
 	  castToEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("To entity")));
       constantValue.setName("value");
+      constantValue.setValueClass("java.lang.Object");
 	  constantValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Value")));
       selectedInstanceEntity.setName("ofEntity");
+      selectedInstanceEntity.setValueClass("org.instantlogic.fabric.model.Entity");
 	  selectedInstanceEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Of entity")));
       reverseRelationRelation.setName("relation");
+      reverseRelationRelation.setValueClass("org.instantlogic.fabric.model.Relation");
 	  reverseRelationRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Relation")));
 	}
 	
@@ -57,6 +62,23 @@ public class DeductionOperationParameterDesign extends Design {
 	}
 
 	// Attributes
+	
+	private final org.instantlogic.fabric.value.AttributeValue<DeductionOperationParameterDesign, java.lang.String> valueClass
+		= createAttributeValue(org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.valueClass);
+	
+	public java.lang.String getValueClass() {
+		return valueClass.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<DeductionOperationParameterDesign, java.lang.String> getValueClassAttributeValue() {
+		return valueClass;
+	}
+
+	public DeductionOperationParameterDesign setValueClass(java.lang.String newValue) {
+		valueClass.setValue(newValue);
+		return (DeductionOperationParameterDesign)this;
+	}
+	
 	
 	// Relations
 

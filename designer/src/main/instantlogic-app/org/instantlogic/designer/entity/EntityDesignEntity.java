@@ -32,6 +32,8 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> $attributes
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign>(
 				"attributes", INSTANCE, "attributes", org.instantlogic.designer.AbstractEntityDesign.class);
@@ -60,7 +62,7 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign>(
 				"validations", INSTANCE, "validations", org.instantlogic.designer.AbstractEntityDesign.class);
 		validations = $validations;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
 				"application", INSTANCE, "application", org.instantlogic.designer.AbstractEntityDesign.class);
@@ -109,19 +111,19 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		$validations.owner = true;
 		$validations.multivalue = true;
 
+		$application.reverse = true;
 		$application.valueClass = org.instantlogic.designer.ApplicationDesign.class;
 		$application.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
 		$application.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
-		$application.reverse = true;
+		$extensions.reverse = true;
 		$extensions.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$extensions.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$extensions.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.extendsFrom);
-		$extensions.reverse = true;
 		$extensions.multivalue = true;
+		$reverseRelations.reverse = true;
 		$reverseRelations.valueClass = org.instantlogic.designer.RelationDesign.class;
 		$reverseRelations.to = org.instantlogic.designer.entity.RelationDesignEntity.INSTANCE;
 		$reverseRelations.setReverseRelation(org.instantlogic.designer.entity.RelationDesignEntity.to);
-		$reverseRelations.reverse = true;
 		$reverseRelations.multivalue = true;
 	}
 

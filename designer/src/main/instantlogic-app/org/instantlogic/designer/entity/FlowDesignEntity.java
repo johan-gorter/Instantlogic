@@ -27,6 +27,8 @@ public class FlowDesignEntity extends org.instantlogic.fabric.model.Entity<org.i
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign> $edges
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign>(
 				"edges", INSTANCE, "edges", org.instantlogic.designer.AbstractFlowDesign.class);
@@ -39,7 +41,7 @@ public class FlowDesignEntity extends org.instantlogic.fabric.model.Entity<org.i
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
 				"parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractFlowDesign.class);
 		parameters = $parameters;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
 				"application", INSTANCE, "application", org.instantlogic.designer.AbstractFlowDesign.class);
@@ -65,14 +67,14 @@ public class FlowDesignEntity extends org.instantlogic.fabric.model.Entity<org.i
 		$parameters.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$parameters.multivalue = true;
 
+		$application.reverse = true;
 		$application.valueClass = org.instantlogic.designer.ApplicationDesign.class;
 		$application.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
 		$application.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.flows);
-		$application.reverse = true;
+		$subFlowIn.reverse = true;
 		$subFlowIn.valueClass = org.instantlogic.designer.SubFlowDesign.class;
 		$subFlowIn.to = org.instantlogic.designer.entity.SubFlowDesignEntity.INSTANCE;
 		$subFlowIn.setReverseRelation(org.instantlogic.designer.entity.SubFlowDesignEntity.flow);
-		$subFlowIn.reverse = true;
 	}
 
 	@Override

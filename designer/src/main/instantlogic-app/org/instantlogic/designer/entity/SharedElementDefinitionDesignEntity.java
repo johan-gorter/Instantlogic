@@ -25,11 +25,13 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $fragment
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
 				"fragment", INSTANCE, "fragment", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
 		fragment = $fragment;
-		// Phase "reverse relations"
+		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
 				"application", INSTANCE, "application", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
@@ -46,14 +48,14 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 		$fragment.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.partOfSharedElementDefinition);
 		$fragment.owner = true;
 
+		$application.reverse = true;
 		$application.valueClass = org.instantlogic.designer.ApplicationDesign.class;
 		$application.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
 		$application.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.sharedElements);
-		$application.reverse = true;
+		$usages.reverse = true;
 		$usages.valueClass = org.instantlogic.designer.SharedElementDesign.class;
 		$usages.to = org.instantlogic.designer.entity.SharedElementDesignEntity.INSTANCE;
 		$usages.setReverseRelation(org.instantlogic.designer.entity.SharedElementDesignEntity.definition);
-		$usages.reverse = true;
 		$usages.multivalue = true;
 	}
 

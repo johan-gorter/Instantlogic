@@ -24,6 +24,8 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $content
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
 				"content", INSTANCE, "content", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
@@ -32,7 +34,7 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
 				"title", INSTANCE, "title", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
 		title = $title;
-		// Phase "reverse relations"
+		// Reverse relations
 		
 		// Phase 2
 

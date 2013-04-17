@@ -39,7 +39,7 @@ public class DeductionModel {
 	
 	public static class Parameter {
 		public String name;
-		
+		public String valueClass;
 		public ValueModel value;
 
 		public String getName() {
@@ -75,7 +75,7 @@ public class DeductionModel {
 	}
 	public String getInternalClassName() {
 		if (internalClassName==null) {
-			internalClassName = type.replace(".", "/")+"/";
+			internalClassName = type.replace(".", "/");
 		}
 		return internalClassName;
 	}

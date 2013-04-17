@@ -25,6 +25,8 @@ public class IfElseDesignEntity extends org.instantlogic.fabric.model.Entity<org
 
 	static {
 		// Phase 1
+		// Attributes
+		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $condition
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"condition", INSTANCE, "condition", org.instantlogic.designer.IfElseDesign.class);
@@ -37,7 +39,7 @@ public class IfElseDesignEntity extends org.instantlogic.fabric.model.Entity<org
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ElementDesign>, org.instantlogic.designer.ElementDesign>(
 				"ifChildren", INSTANCE, "ifChildren", org.instantlogic.designer.IfElseDesign.class);
 		ifChildren = $ifChildren;
-		// Phase "reverse relations"
+		// Reverse relations
 		
 		// Phase 2
 

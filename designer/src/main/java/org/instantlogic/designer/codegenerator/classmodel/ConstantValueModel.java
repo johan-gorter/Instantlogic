@@ -34,8 +34,15 @@ public class ConstantValueModel extends ValueModel {
 			} else {
 				mv.visitInsn(Opcodes.ICONST_0);
 			}
-		} else if (constantValue instanceof Number) {
-			mv.visitIntInsn(Opcodes.BIPUSH, (Integer)constantValue);
+			mv.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Boolean", "valueOf", "(Z)Ljava/lang/Boolean;");
+		} else if (constantValue instanceof Integer) {
+			int intValue = (Integer)constantValue;
+			if (intValue <= 5) {
+				mv.visitInsn(Opcodes.ICONST_0+intValue);
+			} else {
+				mv.visitIntInsn(Opcodes.BIPUSH, (Integer)constantValue);
+			}
+			mv.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;");
 		} else {
 			throw new RuntimeException("Unsupported value "+constantValue);
 		}

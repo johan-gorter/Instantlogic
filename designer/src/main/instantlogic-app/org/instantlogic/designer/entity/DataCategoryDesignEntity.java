@@ -18,7 +18,9 @@ public class DataCategoryDesignEntity extends org.instantlogic.fabric.model.Enti
 
 	static {
 		// Phase 1
-		// Phase "reverse relations"
+		// Attributes
+		// Relations
+		// Reverse relations
 		
 		// Phase 2
 
