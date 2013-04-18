@@ -65,10 +65,21 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "INSTANCE", "L"+className+";", null, null);
 			fv.visitEnd();
 		}
-		// private org.instantlogic.fabric.text.TextTemplate title;
+		// private static final org.instantlogic.fabric.text.TextTemplate title;
+		if (model.title!=null)
 		{
-			fv = cw.visitField(ACC_PRIVATE, "title", "Lorg/instantlogic/fabric/text/TextTemplate;", null, null);
-			fv.visitEnd();
+			{
+				fv = cw.visitField(ACC_PRIVATE + ACC_FINAL + ACC_STATIC, "title", "Lorg/instantlogic/fabric/text/TextTemplate;", null, null);
+				fv.visitEnd();
+			}
+			{
+				mv = cw.visitMethod(ACC_PUBLIC, "getTitle", "()Lorg/instantlogic/fabric/text/TextTemplate;", null, null);
+				mv.visitCode();
+				mv.visitFieldInsn(GETSTATIC, className, "title", "Lorg/instantlogic/fabric/text/TextTemplate;");
+				mv.visitInsn(ARETURN);
+				mv.visitMaxs(1, 1);
+				mv.visitEnd();
+			}		
 		}
 		
 		for(Attribute a:model.attributes) {
@@ -214,10 +225,14 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleAttribute", "readOnly", "Z");
 				}
 				if (a.relevanceDeductionIndex!=null) {
-					//TODO
+					mv.visitVarInsn(ALOAD, localVariableIndex);
+					mv.visitMethodInsn(INVOKESTATIC, className, "createDeduction"+a.relevanceDeductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
+					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleAttribute", "relevance", "Lorg/instantlogic/fabric/deduction/Deduction;");
 				}
 				if (a.ruleDeductionIndex!=null) {
-					//TODO
+					mv.visitVarInsn(ALOAD, localVariableIndex);
+					mv.visitMethodInsn(INVOKESTATIC, className, "createDeduction"+a.ruleDeductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
+					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleAttribute", "rule", "Lorg/instantlogic/fabric/deduction/Deduction;");
 				}
 				if (a.defaultDeductionIndex!=null) {
 					mv.visitVarInsn(ALOAD, localVariableIndex);
@@ -268,7 +283,9 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleRelation", "readOnly", "Z");
 				}
 				if (r.ruleDeductionIndex!=null) {
-					// TODO
+					mv.visitVarInsn(ALOAD, localVariableIndex);
+					mv.visitMethodInsn(INVOKESTATIC, className, "createDeduction"+r.ruleDeductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
+					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleRelation", "rule", "Lorg/instantlogic/fabric/deduction/Deduction;");
 				}
 				if (r.optionsDeductionIndex!=null) {
 					mv.visitVarInsn(ALOAD, localVariableIndex);
@@ -305,6 +322,10 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleRelation", "multivalue", "Z");
 				}
 				localVariableIndex++;
+			}
+			if (model.title!=null) {
+				dumpText(mv, model.title);
+				mv.visitFieldInsn(PUTSTATIC, className, "title", "Lorg/instantlogic/fabric/text/TextTemplate;");
 			}
 			
 			// private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{ ...
@@ -471,7 +492,6 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitEnd();
 		}
 		
-		// TODO: getTitle
 		cw.visitEnd();
 		return cwriter.toByteArray();
 	}

@@ -19,7 +19,7 @@ public class InstanceUtil {
 		return attributeValue.getValue();
 	}
 
-	public static void set(Instance instance, String attributeOrRelationName, Instance value) {
+	public static void set(Instance instance, String attributeOrRelationName, Object value) {
 		Entity<?> entity = instance.getMetadata().getEntity();
 		Attribute attribute = entity.getAttributeOrRelation(attributeOrRelationName);
 		ReadOnlyAttributeValue attributeValue = attribute.get(instance);

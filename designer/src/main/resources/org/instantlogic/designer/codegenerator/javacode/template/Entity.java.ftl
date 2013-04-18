@@ -30,12 +30,9 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 
 	<#if title??>
 	// Title
-	private org.instantlogic.fabric.text.TextTemplate title;
+	private static final org.instantlogic.fabric.text.TextTemplate title;
 	@Override
 	public org.instantlogic.fabric.text.TextTemplate getTitle() {
-		if (title==null) {
-			title = <@text_macro text=title />;
-		}
 		return title;
 	}
 	</#if>
@@ -166,6 +163,10 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 		$${relation.javaIdentifier}.multivalue = true;
 			</#if>
 		</#list>
+		<#if title??>
+
+		title = <@text_macro text=title />;
+		</#if>
 	}
 
 	@Override

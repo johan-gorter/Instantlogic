@@ -17,30 +17,31 @@ import org.instantlogic.fabric.util.DeductionContext;
 
 public class TextTemplate {
 	
-	private Map<String, StringTemplate[]> translations = new HashMap<String, StringTemplate[]>();
+	private Map<String, TextTranslationTemplate> translations = new HashMap<String, TextTranslationTemplate>();
 	
-	private final StringTemplate[] untranslated;
-	
-	public TextTemplate(StringTemplate... untranslated) {
-		this.untranslated = untranslated;
+	private final TextTranslationTemplate untranslated = new TextTranslationTemplate(this);
+
+	public TextTemplate() {
 	}
-	
-	public TextTemplate(String untranslatedConstantText) {
-		this(new StringTemplate(untranslatedConstantText));
+
+	@Deprecated
+	public TextTemplate(StringTemplate... stringTemplates) {
+		getUntranslated().add("TODO");
 	}
-	
-	public TextTemplate addTranslation(String languageCode, StringTemplate... translation) {
-		this.translations.put(languageCode, translation);
-		return this;
+
+	public TextTranslationTemplate addTranslation(String languageCode) {
+		TextTranslationTemplate result = new TextTranslationTemplate(this);
+		this.translations.put(languageCode, result);
+		return result;
+	}
+
+	public TextTranslationTemplate getUntranslated() {
+		return untranslated;
 	}
 	
 	public String renderText(DeductionContext context) {
 		// TODO: use translations
-		StringTemplate[] translation = untranslated;
-		StringBuffer sb = new StringBuffer();
-		for (StringTemplate stringTemplate : translation) {
-			sb.append(stringTemplate.render(context));
-		}
-		return sb.toString();
+		TextTranslationTemplate translation = untranslated;
+		return translation.render(context);
 	}
 }
