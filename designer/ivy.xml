@@ -10,6 +10,7 @@
 	   <conf name="test" />
 	</configurations>
 	<dependencies>
+		<dependency org="com.google.code.gson" name="gson" rev="2.1" conf="test->default" />
         <dependency org="junit" name="junit" rev="4.10" conf="test->default" />
         <dependency org ="org.ow2.asm" name="asm-util" rev="4.1" conf="test->default" />
         <dependency org ="org.ow2.asm" name="asm-tree" rev="4.1" conf="test->default" />

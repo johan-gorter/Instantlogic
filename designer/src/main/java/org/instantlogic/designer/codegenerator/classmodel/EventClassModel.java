@@ -20,4 +20,8 @@ public class EventClassModel extends AbstractClassModel {
 	public List<String> getParameters() {
 		return parameters;
 	}
+
+	public String getFullClassName() {
+		return rootPackageName+".event."+technicalNameCapitalized +"Event";
+	}
 }

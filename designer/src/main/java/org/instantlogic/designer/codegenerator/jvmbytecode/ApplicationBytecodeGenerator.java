@@ -13,10 +13,16 @@ package org.instantlogic.designer.codegenerator.jvmbytecode;
 import java.util.Map;
 
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.ApplicationBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.EntityBytecodeTemplate;
+import org.instantlogic.designer.codegenerator.jvmbytecode.template.EventBytecodeTemplate;
+import org.instantlogic.designer.codegenerator.jvmbytecode.template.FlowBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.InstanceBytecodeTemplate;
+import org.instantlogic.designer.codegenerator.jvmbytecode.template.PlaceTemplateBytecodeTemplate;
 
 public class ApplicationBytecodeGenerator extends AbstractBytecodeGenerator {
 
@@ -44,13 +50,37 @@ public class ApplicationBytecodeGenerator extends AbstractBytecodeGenerator {
 			remove(bytecodeClasses, fullEntityClassName);
 			EntityBytecodeTemplate.generate(bytecodeClasses, entity, fullEntityClassName);
 		}
+
+		for (EventClassModel event: classModels.deletedEvents) {
+			remove(bytecodeClasses, event.getFullClassName());
+		}
+		for (EventClassModel event: classModels.updatedEvents) {
+			remove(bytecodeClasses, event.getFullClassName());
+			bytecodeClasses.put(event.getFullClassName(), EventBytecodeTemplate.generate(event));
+		}
+		
+		for (FlowClassModel flow: classModels.deletedFlows) {
+			remove(bytecodeClasses, flow.getFullClassName());
+		}
+		for (FlowClassModel flow: classModels.updatedFlows) {
+			remove(bytecodeClasses, flow.getFullClassName());
+			bytecodeClasses.put(flow.getFullClassName(), FlowBytecodeTemplate.generate(flow));
+		}
+		
+		for (PlaceClassModel placeTemplate: classModels.deletedPlaces) {
+			remove(bytecodeClasses, placeTemplate.getFullClassName());
+		}
+		for (PlaceClassModel placeTemplate: classModels.updatedPlaces) {
+			remove(bytecodeClasses, placeTemplate.getFullClassName());
+			bytecodeClasses.put(placeTemplate.getFullClassName(), PlaceTemplateBytecodeTemplate.generate(placeTemplate));
+		}
 	}
 
 	protected static void remove(Map<String, byte[]> bytecodeClasses, String fullClassName) {
 		bytecodeClasses.remove(fullClassName);
-		int i=1;
-		while (bytecodeClasses.remove(fullClassName+"$"+i)!=null) {
-			i++;
-		}
+//		int i=1;
+//		while (bytecodeClasses.remove(fullClassName+"$"+i)!=null) {
+//			i++;
+//		}
 	}
 }

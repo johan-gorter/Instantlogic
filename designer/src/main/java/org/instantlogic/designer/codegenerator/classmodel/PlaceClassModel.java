@@ -27,4 +27,8 @@ public class PlaceClassModel extends AbstractClassModel {
 	public TextModel getTitle() {
 		return title;
 	}
+
+	public String getFullClassName() {
+		return rootPackageName+".flow." + flowname.toLowerCase() + "." + (isCustomized?"Abstract":"") + technicalNameCapitalized + "PlaceTemplate";
+	}
 }

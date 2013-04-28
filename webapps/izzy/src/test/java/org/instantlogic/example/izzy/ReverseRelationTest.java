@@ -1,14 +1,23 @@
 package org.instantlogic.example.izzy;
 
-import static org.instantlogic.fabric.util.InstanceUtil.*;
-import static org.junit.Assert.*;
+import static org.instantlogic.fabric.util.InstanceUtil.add;
+import static org.instantlogic.fabric.util.InstanceUtil.get;
+import static org.instantlogic.fabric.util.InstanceUtil.set;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import org.instantlogic.example.izzy.flow.MainFlow;
+import org.instantlogic.example.izzy.flow.dashboard.DashboardPlaceTemplate;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.value.Multi;
 import org.instantlogic.interaction.Application;
+import org.instantlogic.interaction.util.RenderContext;
+import org.instantlogic.interaction.util.TravelerInfo;
 import org.junit.Test;
+
+import com.google.gson.Gson;
 public class ReverseRelationTest {
 
 	@Test
@@ -19,14 +28,21 @@ public class ReverseRelationTest {
 		project.addToUsers(user);
 		project.addToIssues(issue);
 		issue.setAssignee(user);
-		user.addToReportedIssues(issue);
+		user.addToAssignedIssues(issue);
+		user.setUsername("user1");
 		
 		assertEquals(project, issue.getProject());
-		assertEquals(user, issue.getReporter());
+		assertEquals(user, issue.getAssignee());
 		assertTrue(user.getAssignedIssues().contains(issue));
+		
+		
+		TravelerInfo travelerInfo = new TravelerInfo("travelerId");
+		travelerInfo.setAuthenticatedUsername("user1");
+		RenderContext renderContext = RenderContext.create(MainFlow.INSTANCE, "dashboard/"+user.getMetadata().getUniqueId()+"/dashboard", project, "caseId", travelerInfo);
+		System.out.println(new Gson().toJson(DashboardPlaceTemplate.INSTANCE.render(renderContext)));
 	}
-
-	@SuppressWarnings("unchecked")
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test
 	public void testIndirectly() {
 		Application izzy = IzzyApplication.INSTANCE;

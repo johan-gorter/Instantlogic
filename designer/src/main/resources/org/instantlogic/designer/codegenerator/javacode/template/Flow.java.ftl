@@ -24,9 +24,9 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 	private static final org.instantlogic.interaction.flow.FlowEdge[] EDGES = new org.instantlogic.interaction.flow.FlowEdge[]{
 	<#list edges as edge>
 		new org.instantlogic.interaction.flow.FlowEdge(
-			<#if edge.startNode??>${rootPackageName}.flow.${name?lower_case}.${edge.startNode}<#else>null</#if>, 
+			<#if edge.startNode??>${rootPackageName}.flow.${name?lower_case}.${edge.startNode}.INSTANCE<#else>null</#if>, 
 			<#if edge.event??>${rootPackageName}.event.${edge.event}Event.INSTANCE<#else>null</#if>,
-			${rootPackageName}.flow.${name?lower_case}.${edge.endNode}
+			${rootPackageName}.flow.${name?lower_case}.${edge.endNode}.INSTANCE
 		),
 	</#list>
 	};

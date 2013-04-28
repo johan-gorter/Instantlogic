@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.management.RuntimeErrorException;
+
 import org.instantlogic.designer.Design;
 import org.instantlogic.designer.EntityDesign;
 import org.instantlogic.designer.FlowDesign;
@@ -130,8 +132,14 @@ public class FlowGenerator extends AbstractGenerator {
 
 	private static String edgePoint(FlowNodeBaseDesign flowNodeBaseDesign) {
 		String name = flowNodeBaseDesign.getTechnicalNameCapitalized();
-		String typeName = flowNodeBaseDesign.getMetadata().getEntity().getName();
-		typeName = typeName.substring(0, typeName.length() - 6);// Remove Design
-		return name + typeName + ".INSTANCE";
+		String typeName;
+		if (flowNodeBaseDesign instanceof PlaceTemplateDesign) {
+			typeName = "PlaceTemplate";
+		} else if (flowNodeBaseDesign instanceof SubFlowDesign) {
+			typeName = "SubFlow";
+		} else {
+			throw new RuntimeException("Unknown flow node type");
+		}
+		return name + typeName;
 	}
 }

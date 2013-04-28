@@ -57,4 +57,8 @@ public class FlowClassModel extends AbstractClassModel {
 	public List<String> getParameters() {
 		return parameters;
 	}
+
+	public String getFullClassName() {
+		return rootPackageName+".flow." + (isCustomized?"Abstract":"") + technicalNameCapitalized + "Flow";
+	}
 }

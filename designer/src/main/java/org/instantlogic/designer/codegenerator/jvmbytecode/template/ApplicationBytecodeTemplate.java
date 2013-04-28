@@ -82,14 +82,15 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitEnd();
 		}
 
-		{
-			mv = cw.visitMethod(ACC_PUBLIC, "getMainFlow", "()Lorg/instantlogic/interaction/flow/Flow;", null, null);
-			mv.visitCode();
-			throwUnsupported(mv);
-//			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/??/flow/MainFlow", "INSTANCE", "Lorg/instantlogic/example/??/flow/??Flow;");
-//			mv.visitInsn(ARETURN);
-			mv.visitMaxs(0, 0);
-			mv.visitEnd();
+		if (model.getMainFlow()!=null) {
+			{
+				mv = cw.visitMethod(ACC_PUBLIC, "getMainFlow", "()Lorg/instantlogic/interaction/flow/Flow;", null, null);
+				mv.visitCode();
+				mv.visitFieldInsn(GETSTATIC, model.getRootPackageInternalPrefix()+"flow/"+model.getMainFlow()+"Flow", "INSTANCE", "L"+model.getRootPackageInternalPrefix()+"flow/"+model.getMainFlow()+"Flow;");
+				mv.visitInsn(ARETURN);
+				mv.visitMaxs(0, 0);
+				mv.visitEnd();
+			}
 		}
 		
 		// public org.instantlogic.interaction.flow.FlowEvent getStartEvent()
