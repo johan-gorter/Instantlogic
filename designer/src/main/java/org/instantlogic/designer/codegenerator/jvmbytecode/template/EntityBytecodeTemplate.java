@@ -31,7 +31,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	public static final boolean TRACE = true;
+	public static final boolean TRACE = false;
 
 	public static void generate(Map<String, byte[]> bytecodeClasses, EntityClassModel model, String fullName) {
 		bytecodeClasses.put(fullName, dump(model));
@@ -324,7 +324,7 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 				localVariableIndex++;
 			}
 			if (model.title!=null) {
-				dumpText(mv, model.title);
+				dumpText(mv, className, model.title);
 				mv.visitFieldInsn(PUTSTATIC, className, "title", "Lorg/instantlogic/fabric/text/TextTemplate;");
 			}
 			

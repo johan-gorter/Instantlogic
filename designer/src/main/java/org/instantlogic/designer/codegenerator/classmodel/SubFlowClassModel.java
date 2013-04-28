@@ -23,4 +23,7 @@ public class SubFlowClassModel extends AbstractClassModel {
 		return subFlowName;
 	}
 
+	public String getFullClassName() {
+		return rootPackageName+".flow." + flowname.toLowerCase() + "." + (isCustomized?"Abstract":"") + technicalNameCapitalized + "SubFlow";
+	}
 }

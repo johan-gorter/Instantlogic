@@ -16,6 +16,7 @@ import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.SubFlowClassModel;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.ApplicationBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.EntityBytecodeTemplate;
@@ -23,6 +24,7 @@ import org.instantlogic.designer.codegenerator.jvmbytecode.template.EventBytecod
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.FlowBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.InstanceBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.PlaceTemplateBytecodeTemplate;
+import org.instantlogic.designer.codegenerator.jvmbytecode.template.SubFlowBytecodeTemplate;
 
 public class ApplicationBytecodeGenerator extends AbstractBytecodeGenerator {
 
@@ -73,6 +75,14 @@ public class ApplicationBytecodeGenerator extends AbstractBytecodeGenerator {
 		for (PlaceClassModel placeTemplate: classModels.updatedPlaces) {
 			remove(bytecodeClasses, placeTemplate.getFullClassName());
 			bytecodeClasses.put(placeTemplate.getFullClassName(), PlaceTemplateBytecodeTemplate.generate(placeTemplate));
+		}
+
+		for (SubFlowClassModel subFlowTemplate: classModels.deletedSubFlows) {
+			remove(bytecodeClasses, subFlowTemplate.getFullClassName());
+		}
+		for (SubFlowClassModel subFlowTemplate: classModels.updatedSubFlows) {
+			remove(bytecodeClasses, subFlowTemplate.getFullClassName());
+			bytecodeClasses.put(subFlowTemplate.getFullClassName(), SubFlowBytecodeTemplate.generate(subFlowTemplate));
 		}
 	}
 

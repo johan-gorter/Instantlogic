@@ -23,7 +23,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class EventBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	public static final boolean TRACE = true;
+	public static final boolean TRACE = false;
 
 	public static byte[] generate(EventClassModel model) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);

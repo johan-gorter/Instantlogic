@@ -96,7 +96,7 @@ public class AbstractBytecodeTemplate implements Opcodes {
 		mv.visitEnd();
 	}
 	
-	public static void dumpText(MethodVisitor mv, TextModel text) {
+	public static void dumpText(MethodVisitor mv, String className, TextModel text) {
 		mv.visitTypeInsn(NEW, "org/instantlogic/fabric/text/TextTemplate");
 		mv.visitInsn(DUP);
 		mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/text/TextTemplate", "<init>", "()V");
@@ -106,11 +106,19 @@ public class AbstractBytecodeTemplate implements Opcodes {
 				mv.visitLdcInsn(stringTemplate.constant);
 				mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/fabric/text/TextTranslationTemplate", "add", "(Ljava/lang/String;)Lorg/instantlogic/fabric/text/TextTranslationTemplate;");
 			} else {
-				mv.visitMethodInsn(INVOKESTATIC, "org/instantlogic/example/izzy/entity/UserEntity", "createDeduction"+stringTemplate.deductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
+				mv.visitMethodInsn(INVOKESTATIC, className, "createDeduction"+stringTemplate.deductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
 				mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/fabric/text/TextTranslationTemplate", "add", "(Lorg/instantlogic/fabric/deduction/Deduction;)Lorg/instantlogic/fabric/text/TextTranslationTemplate;");
 			}
 		}
 		mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/fabric/text/TextTranslationTemplate", "getTextTemplate", "()Lorg/instantlogic/fabric/text/TextTemplate;");
 		// TODO: Translations
+	}
+	
+	protected static void emitGetInstanceField(MethodVisitor mv, String packageInternalName, String className) {
+		if (className==null) {
+			mv.visitInsn(ACONST_NULL);
+		} else {
+			mv.visitFieldInsn(GETSTATIC, packageInternalName + className, "INSTANCE", "L"+packageInternalName+className+";");
+		}
 	}
 }

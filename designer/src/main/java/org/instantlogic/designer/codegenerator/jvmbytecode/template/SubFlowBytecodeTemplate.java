@@ -12,7 +12,6 @@ package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 
 import java.io.PrintWriter;
 
-import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SubFlowClassModel;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
@@ -24,7 +23,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class SubFlowBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	public static final boolean TRACE = true;
+	public static final boolean TRACE = false;
 
 	public static byte[] generate(SubFlowClassModel model) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
@@ -42,7 +41,7 @@ public class SubFlowBytecodeTemplate extends AbstractBytecodeTemplate {
 
 		String className = model.getRootPackageInternalPrefix()+ "flow/" + model.flowname + "/" + model.technicalNameCapitalized+"SubFlow";
 
-		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className, null, "org/instantlogic/interaction/flow/interaction/flow/SubFlow", null);
+		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className, null, "org/instantlogic/interaction/flow/SubFlow", null);
 
 		// public static final HomeEvent
 		{
@@ -54,7 +53,7 @@ public class SubFlowBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv = cw.visitMethod(ACC_STATIC, "<clinit>", "()V", null, null);
 			mv.visitCode();
 			
-			// INSTANCE = new HomeEvent();
+			// INSTANCE = new IssueSubFlow();
 			mv.visitTypeInsn(NEW, className);
 			mv.visitInsn(DUP);
 			mv.visitMethodInsn(INVOKESPECIAL, className, "<init>", "()V");
@@ -69,22 +68,34 @@ public class SubFlowBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
 			mv.visitCode();
 			mv.visitVarInsn(ALOAD, 0);
-			mv.visitLdcInsn(model.name);
-			mv.visitIntInsn(BIPUSH, model.parameters.size());
-			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/model/Entity");
-			int i=0;
-			for(String parameter:model.parameters) {
-				mv.visitInsn(DUP);
-				mv.visitIntInsn(BIPUSH, i);
-				mv.visitFieldInsn(GETSTATIC, model.getRootPackageInternalPrefix()+"entity/"+parameter+"Entity", "INSTANCE", "L"+model.getRootPackageInternalPrefix()+"entity/"+parameter+"Entity;");
-				mv.visitInsn(AASTORE);
-				i++;
-			}
-			mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/flow/impl/SimpleFlowEvent", "<init>", "(Ljava/lang/String;[Lorg/instantlogic/fabric/model/Entity;)V");
+			mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/flow/SubFlow", "<init>", "()V");
 			mv.visitInsn(RETURN);
-			mv.visitMaxs(9, 99);
+			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
+
+		//public org.instantlogic.interaction.flow.Flow getFlow() {
+		//	return org.instantlogic.example.izzy.flow.IssueFlow.INSTANCE;
+		//}
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "getFlow", "()Lorg/instantlogic/interaction/flow/Flow;", null, null);
+			mv.visitCode();
+			emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"flow/", model.subFlowName+"Flow");
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}
+		//public String getName() {
+		//	return "issue";
+		//}
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "getName", "()Ljava/lang/String;", null, null);
+			mv.visitCode();
+			mv.visitLdcInsn(model.name);
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}		
 		
 		cw.visitEnd();
 		return cwriter.toByteArray();

@@ -12,6 +12,7 @@ package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 
 import java.io.PrintWriter;
 
+import org.instantlogic.designer.codegenerator.classmodel.DeductionSchemeModel;
 import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
@@ -23,7 +24,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	public static final boolean TRACE = true;
+	public static final boolean TRACE = false;
 
 	public static byte[] generate(PlaceClassModel model) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
@@ -79,7 +80,7 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 
 			if (model.title!=null) {
 				// TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction3()).add("'s dashboard").getTextTemplate();
-				dumpText(mv, model.title);
+				dumpText(mv, className, model.title);
 				mv.visitFieldInsn(PUTSTATIC, className, "TITLE", "Lorg/instantlogic/fabric/text/TextTemplate;");
 			}
 			
@@ -98,6 +99,11 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitEnd();
 		}
 
+		//Deductions
+		for (DeductionSchemeModel scheme : model.getDeductionSchemes()) {
+			dumpDeductionScheme(cw, scheme);
+		}
+		
 		if (model.title!=null)
 		{
 			// protected org.instantlogic.fabric.text.TextTemplate getTitle() {

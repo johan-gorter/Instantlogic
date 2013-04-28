@@ -71,14 +71,14 @@ public class FlowBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitInsn(DUP);
 			mv.visitMethodInsn(INVOKESPECIAL, concreteClassName, "<init>", "()V");
 			mv.visitFieldInsn(PUTSTATIC, className, "INSTANCE", "L"+concreteClassName+";");
-			mv.visitInsn(ICONST_5);
+			mv.visitIntInsn(BIPUSH, model.nodes.size());
 			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/interaction/flow/FlowNodeBase");
 			
 			int i = 0;
 			for (FlowNode node:model.nodes) {
 				mv.visitInsn(DUP);
 				mv.visitIntInsn(BIPUSH, i);
-				staticField(mv, flowPackage, node.name+node.type, "INSTANCE");
+				emitGetInstanceField(mv, flowPackage, node.name+node.type);
 				mv.visitInsn(AASTORE);
 				i++;
 			}
@@ -94,9 +94,9 @@ public class FlowBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitIntInsn(BIPUSH, i);
 				mv.visitTypeInsn(NEW, "org/instantlogic/interaction/flow/FlowEdge");
 				mv.visitInsn(DUP);
-				staticField(mv, flowPackage, edge.startNode, "INSTANCE");
-				staticField(mv, model.getRootPackageInternalPrefix() +"event/", edge.event, "INSTANCE");
-				staticField(mv, flowPackage, edge.endNode, "INSTANCE");
+				emitGetInstanceField(mv, flowPackage, edge.startNode);
+				emitGetInstanceField(mv, model.getRootPackageInternalPrefix() +"event/", edge.event+"Event");
+				emitGetInstanceField(mv, flowPackage, edge.endNode);
 				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/flow/FlowEdge", "<init>", "(Lorg/instantlogic/interaction/flow/FlowNodeBase;Lorg/instantlogic/interaction/flow/FlowEvent;Lorg/instantlogic/interaction/flow/FlowNodeBase;)V");
 				mv.visitInsn(AASTORE);
 				i++;
@@ -104,7 +104,6 @@ public class FlowBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitFieldInsn(PUTSTATIC, className, "EDGES", "[Lorg/instantlogic/interaction/flow/FlowEdge;");
 
 			mv.visitIntInsn(BIPUSH, model.parameters.size());
-			mv.visitInsn(ICONST_0);
 			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/model/Entity");
 			i = 0;
 			for (String parameter:model.parameters) {
@@ -170,13 +169,5 @@ public class FlowBytecodeTemplate extends AbstractBytecodeTemplate {
 
 		cw.visitEnd();
 		return cwriter.toByteArray();
-	}
-
-	private static void staticField(MethodVisitor mv, String packageInternalName, String className, String field) {
-		if (className==null) {
-			mv.visitInsn(ACONST_NULL);
-		} else {
-			mv.visitFieldInsn(GETSTATIC, packageInternalName + className, field, "L"+packageInternalName+className+";");
-		}
 	}
 }

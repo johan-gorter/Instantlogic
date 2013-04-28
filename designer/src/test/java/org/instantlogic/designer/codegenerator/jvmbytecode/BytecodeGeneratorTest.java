@@ -6,6 +6,7 @@ import static org.instantlogic.fabric.util.InstanceUtil.set;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.util.Map;
 
 import org.instantlogic.designer.test.application.IzzyApplicationGenerator;
@@ -26,7 +27,9 @@ public class BytecodeGeneratorTest extends AbstractBytecodeGeneratorTest {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test
 	public void testReverseRelation() throws Exception {
-		Application izzy = generate(IzzyApplicationGenerator.DESIGN);
+		File customIzzyCompiledClasses = new File("../webapps/izzy/target/classes"); 
+		assertTrue("Izzy customizations are compiled", customIzzyCompiledClasses.isDirectory() && customIzzyCompiledClasses.list().length>0);
+		Application izzy = generate(IzzyApplicationGenerator.DESIGN, customIzzyCompiledClasses.toURI().toURL());
 
 		Entity<? extends Instance> projectEntity = izzy.getCaseEntity();
 		Instance project = projectEntity.createInstance();
