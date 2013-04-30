@@ -1,16 +1,6 @@
-<#--
-Copyright 2013, Johan Gorter
-This file is part of Instantlogic.
-Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
-Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
-any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
-General Public License for more details. You should have received a copy of the GNU Lesser General Public License
-along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
--->
 <#include "Text.java.ftl">
 <#macro content_macro content depth>
-  <#list 1..depth as i>    </#list><#t>
+  <#list 1..depth-1 as i>    </#list><#t>
   <#if content.category=="Shared">
     new org.instantlogic.interaction.page.SharedElementHolder("${content.id}", ${rootPackageName}.sharedpagefragment.${content.name}PageFragment.INSTANCE)
   <#elseif content.category=="Selection">
@@ -38,18 +28,26 @@ along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
   <#elseif content.category=="Fragment">
     new org.instantlogic.interaction.page.FragmentTemplate("${content.id}", "${content.fragmentTypeName}")<#t>
     <#if content.styleNames??>
-      .setStyleNames(new String[]{<#list content.styleNames as name>"${name}"<#if name_has_next>, </#if></#list>})
+      <#nt>
+      <#list 1..depth as i>    </#list><#t>
+      .setStyleNames(new String[]{<#list content.styleNames as name>"${name}"<#if name_has_next>, </#if></#list>})<#t>
     </#if>
     <#if content.fragmentFilters??>
-    	<#list content.fragmentFilters as filter>
-          .addCustomFilter(new ${filter}())
-        </#list>
+  	<#list content.fragmentFilters as filter>
+      <#nt>
+      <#list 1..depth as i>    </#list><#t>
+        .addCustomFilter(new ${filter}())<#t>
+      </#list>
     </#if>
     <#if content.event??>
-      .setEvent(${rootPackageName}.event.${content.event}Event.INSTANCE)
+      <#nt>
+      <#list 1..depth as i>    </#list><#t>
+      .setEvent(${rootPackageName}.event.${content.event}Event.INSTANCE)<#t>
     </#if>
     <#if content.attribute??>
-      .setField(${rootPackageName}.entity.${content.entity}Entity.INSTANCE, ${rootPackageName}.entity.${content.entity}Entity.${content.attribute})
+      <#nt>
+      <#list 1..depth as i>    </#list><#t>
+      .setField(${rootPackageName}.entity.${content.entity}Entity.INSTANCE, ${rootPackageName}.entity.${content.entity}Entity.${content.attribute})<#t>
     </#if>
     <#list content.values?keys as key>
       <#nt>
@@ -59,18 +57,18 @@ along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
     <#list content.texts?keys as key>
       <#nt>
       <#list 1..depth as i>    </#list><#t>
-      .putText("${key}", <@text_macro text=content.texts[key] />)<#lt>
+      .putText("${key}", <@text_macro text=content.texts[key] />)<#t>
     </#list>
     <#list content.childLists?keys as key>
-      <#nt>
-      <#list 1..depth as i>    </#list><#t>
-      .putChildren("${key}"<#t>
-        <#list content.childLists[key] as childListChild>
-          ,<#lt>
-          <@content_macro content=childListChild depth=depth+2 />
-        </#list>
-      <#list 1..depth as i>    </#list><#t>
-      )<#lt>
+      <#list content.childLists[key] as childListChild>
+        <#nt>
+        <#list 1..depth as i>    </#list><#t>
+        .addChild("${key}",<#lt>
+          <@content_macro content=childListChild depth=depth+2 /><#t>
+        <#nt>
+        <#list 1..depth as i>    </#list><#t>
+        )<#t>
+      </#list>
     </#list>
   </#if>
 </#macro>

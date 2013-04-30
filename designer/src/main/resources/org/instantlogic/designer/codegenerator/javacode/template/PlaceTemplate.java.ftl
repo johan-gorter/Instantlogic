@@ -17,7 +17,7 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 </#list>
 	
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
-<@content_macro content=content depth=2 />; 
+<@content_macro content=content depth=3 />; 
 	
 	<#if title??>
 	private static final org.instantlogic.fabric.text.TextTemplate TITLE = <@text_macro text=title />;

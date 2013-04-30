@@ -11,6 +11,7 @@
 package org.instantlogic.interaction.page;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -33,7 +34,7 @@ public class FragmentTemplate extends Element {
 	
 	private final Map<String, Deduction<?>> valueProperties = new HashMap<String, Deduction<?>>();
 	private final Map<String, TextTemplate> textProperties = new HashMap<String, TextTemplate>();
-	private final Map<String, Element[]> childlistProperties = new HashMap<String, Element[]>();
+	private final Map<String, List<Element>> childlistProperties = new HashMap<String, List<Element>>();
 	
 	private final String id;
 	private final String fragmentTypeName;
@@ -116,9 +117,20 @@ public class FragmentTemplate extends Element {
 	}
 	
 	public FragmentTemplate putChildren(String DataKey, Element... children) {
-		childlistProperties.put(DataKey, children);
+		childlistProperties.put(DataKey, Arrays.asList(children));
 		return this;
 	}
+	
+	public FragmentTemplate addChild(String key, Element child) {
+		List<Element> list = childlistProperties.get(key);
+		if (list==null) {
+			list = new ArrayList<Element>();
+			childlistProperties.put(key, list);
+		}
+		list.add(child);
+		return this;
+	}
+	
 	
 	public FragmentTemplate setField(Entity<?> entity, Attribute<?, ?, ?> attribute) {
 		this.field = new FieldFilter(entity, attribute);
@@ -167,7 +179,7 @@ public class FragmentTemplate extends Element {
 		for (Map.Entry<String, TextTemplate> entry : textProperties.entrySet()) {
 			result.put(entry.getKey(), entry.getValue().renderText(context));
 		}
-		for (Map.Entry<String, Element[]> entry : childlistProperties.entrySet()) {
+		for (Map.Entry<String, List<Element>> entry : childlistProperties.entrySet()) {
 			List<Map<String, Object>> fragments = new ArrayList<Map<String, Object>>();
 			for (Element template: entry.getValue()) {
 				template.render(context, fragments);
@@ -189,7 +201,7 @@ public class FragmentTemplate extends Element {
 	protected FlowEventOccurrence doSubmit(SubmitContext submitContext, String id) {
 		// This can be optimized by going to the right element straight away
 		FlowEventOccurrence result=null;
-		for (Element[] fragmentTemplates: childlistProperties.values()) {
+		for (List<Element> fragmentTemplates: childlistProperties.values()) {
 			for (Element template: fragmentTemplates) {
 				FlowEventOccurrence itemResult = template.submit(submitContext);
 				if (itemResult!=null) {
@@ -213,7 +225,7 @@ public class FragmentTemplate extends Element {
 	
 	public void doChange(ChangeContext changeContext, String id) {
 		// This can be optimized by going to the right element straight away
-		for (Element[] fragmentTemplates: childlistProperties.values()) {
+		for (List<Element> fragmentTemplates: childlistProperties.values()) {
 			for (Element template: fragmentTemplates) {
 				template.change(changeContext);
 			}

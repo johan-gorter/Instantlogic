@@ -13,6 +13,7 @@ package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.instantlogic.designer.codegenerator.classmodel.ContentModel;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionModel;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionModel.Parameter;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionSchemeModel;
@@ -120,5 +121,13 @@ public class AbstractBytecodeTemplate implements Opcodes {
 		} else {
 			mv.visitFieldInsn(GETSTATIC, packageInternalName + className, "INSTANCE", "L"+packageInternalName+className+";");
 		}
+	}
+
+	protected static void dumpContent(MethodVisitor mv, String className, ContentModel content) {
+		mv.visitTypeInsn(NEW, "org/instantlogic/interaction/page/FragmentTemplate");
+		mv.visitInsn(DUP);
+		mv.visitLdcInsn("Fragmnttmpltdsgn__000c");
+		mv.visitLdcInsn("Page");
+		mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/page/FragmentTemplate", "<init>", "(Ljava/lang/String;Ljava/lang/String;)V");
 	}
 }

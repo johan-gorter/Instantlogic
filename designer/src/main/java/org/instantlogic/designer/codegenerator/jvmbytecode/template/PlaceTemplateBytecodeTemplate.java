@@ -24,7 +24,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	public static final boolean TRACE = false;
+	public static final boolean TRACE = true;
 
 	public static byte[] generate(PlaceClassModel model) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
@@ -77,6 +77,10 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitFieldInsn(PUTSTATIC, className, "INSTANCE", "L"+concreteClassName+";");
 
 			// Phase 2
+			
+			dumpContent(mv, className, model.content);
+			mv.visitFieldInsn(PUTSTATIC, className, "CONTENT", "Lorg/instantlogic/interaction/page/FragmentTemplate;");
+
 
 			if (model.title!=null) {
 				// TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction3()).add("'s dashboard").getTextTemplate();
