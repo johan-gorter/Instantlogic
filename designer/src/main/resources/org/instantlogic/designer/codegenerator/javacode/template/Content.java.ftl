@@ -4,26 +4,26 @@
   <#if content.category=="Shared">
     new org.instantlogic.interaction.page.SharedElementHolder("${content.id}", ${rootPackageName}.sharedpagefragment.${content.name}PageFragment.INSTANCE)
   <#elseif content.category=="Selection">
-    new org.instantlogic.interaction.page.SelectionElement(createDeduction${content.deductionIndex}()<#lt>
-        <#list content.children as child>
-          ,<#t>
-          <@content_macro content=child depth=depth+2 />
-        </#list>
+    new org.instantlogic.interaction.page.SelectionElement(createDeduction${content.deductionIndex}(),<#lt>
+      <#if content.child??>
+        <@content_macro content=content.child depth=depth+2 />
+      <#else>
+        null
+      </#if>
     )<#lt>
   <#elseif content.category=="IfElse">
     new org.instantlogic.interaction.page.IfElseElement(createDeduction${content.deductionIndex}(),<#lt>
-        new org.instantlogic.interaction.page.Element[] {
-        <#list content.children as child>
-          <@content_macro content=child depth=depth+2 />
-          <#if child_has_next>,</#if><#t>
-        </#list>
-        },
-        new org.instantlogic.interaction.page.Element[] {
-        <#list content.elseChildren as child>
-          <@content_macro content=child depth=depth+2 />
-          <#if child_has_next>,</#if><#t>
-        </#list>
-        }
+        <#if content.child??>
+          <@content_macro content=content.child depth=depth+2 />
+        <#else>
+          null<#lt>
+        </#if>
+        ,<#lt>
+        <#if content.elseChild??>
+          <@content_macro content=content.elseChild depth=depth+2 />
+        <#else>
+          null<#lt>
+        </#if>
     )<#lt>
   <#elseif content.category=="Fragment">
     new org.instantlogic.interaction.page.FragmentTemplate("${content.id}", "${content.fragmentTypeName}")<#t>

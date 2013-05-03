@@ -44,8 +44,8 @@ public class ContentModel {
 	public boolean isCustomized;
 	public String[] styleNames;
 	public String[] fragmentFilters;
-	public final List<ContentModel> children = new ArrayList<ContentModel>();
-	public final List<ContentModel> elseChildren = new ArrayList<ContentModel>();
+	public ContentModel child;
+	public ContentModel elseChild;
 	public String implementationClassName;
 	
 	public final Map<String, Object> values = new HashMap<String, Object>();
@@ -67,9 +67,6 @@ public class ContentModel {
 		return relationName;
 	}
 
-	public List<ContentModel> getChildren() {
-		return children;
-	}
 	public TextModel getText() {
 		return text;
 	}
@@ -118,8 +115,11 @@ public class ContentModel {
 	public Map<String, TextModel> getTexts() {
 		return texts;
 	}
-	public List<ContentModel> getElseChildren() {
-		return elseChildren;
+	public ContentModel getChild() {
+		return child;
+	}
+	public ContentModel getElseChild() {
+		return elseChild;
 	}
 	public String[] getStyleNames() {
 		return styleNames;

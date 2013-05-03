@@ -53,8 +53,8 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
         new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0027", "Page")        
             .addChild("mainContent",
-                new org.instantlogic.interaction.page.SelectionElement(createDeduction0()
-,                            new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0005", org.instantlogic.designer.sharedpagefragment.EntityContextPageFragment.INSTANCE)
+                new org.instantlogic.interaction.page.SelectionElement(createDeduction0(),
+                            new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0005", org.instantlogic.designer.sharedpagefragment.EntityContextPageFragment.INSTANCE)
 )
         
             )        
@@ -74,8 +74,8 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data type").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.SelectionElement(createDeduction2()
-,                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002c", "Block")        
+                        new org.instantlogic.interaction.page.SelectionElement(createDeduction2(),
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002c", "Block")        
                                     .addChild("content",
                                         new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002d", "Input")      
                                             .setField(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE, org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory)        

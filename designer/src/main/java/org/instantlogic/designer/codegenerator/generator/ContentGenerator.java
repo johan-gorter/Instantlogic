@@ -83,17 +83,17 @@ public abstract class ContentGenerator extends AbstractGenerator {
 			SelectionDesign selection = (SelectionDesign) element;
 			model.deductionIndex = deductionHolder.addDeductionScheme(DeductionSchemeGenerator.generate(deductionHolder.rootPackageName, selection.getSelection()));
 			if (selection.getChild()!=null) {
-				model.children.add(generate(selection.getChild(), deductionHolder));
+				model.child = generate(selection.getChild(), deductionHolder);
 			}
 		} else if (element instanceof IfElseDesign) {
 			model.category = Category.IfElse;
 			IfElseDesign ifElse = (IfElseDesign) element;
 			model.deductionIndex = deductionHolder.addDeductionScheme(DeductionSchemeGenerator.generate(deductionHolder.rootPackageName, ifElse.getCondition()));
 			if (ifElse.getIfChild()!=null) {
-				model.children.add(generate(ifElse.getIfChild(), deductionHolder));
+				model.child = generate(ifElse.getIfChild(), deductionHolder);
 			}
 			if (ifElse.getElseChild()!=null) {
-				model.elseChildren.add(generate(ifElse.getElseChild(), deductionHolder));
+				model.elseChild = generate(ifElse.getElseChild(), deductionHolder);
 			}
 		} else {
 			throw new RuntimeException("What the");

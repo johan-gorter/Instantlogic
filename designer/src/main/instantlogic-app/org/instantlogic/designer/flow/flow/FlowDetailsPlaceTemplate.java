@@ -76,8 +76,8 @@ public class FlowDetailsPlaceTemplate extends org.instantlogic.interaction.flow.
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Nodes").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.SelectionElement(createDeduction1()
-,                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001e", "Link")      
+                        new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001e", "Link")      
                                     .setEvent(org.instantlogic.designer.event.FlowNodeDetailsEvent.INSTANCE)        
                                     .addChild("content",
                                         new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001f", "Block")        

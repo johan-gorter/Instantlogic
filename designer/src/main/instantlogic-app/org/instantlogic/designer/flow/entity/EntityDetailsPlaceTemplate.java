@@ -76,8 +76,8 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Attributes").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.SelectionElement(createDeduction1()
-,                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0015", "Link")      
+                        new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0015", "Link")      
                                     .setEvent(org.instantlogic.designer.event.AttributeDetailsEvent.INSTANCE)        
                                     .addChild("content",
                                         new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0016", "Block")        

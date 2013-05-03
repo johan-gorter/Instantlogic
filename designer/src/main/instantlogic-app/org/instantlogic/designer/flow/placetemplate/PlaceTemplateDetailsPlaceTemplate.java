@@ -53,8 +53,8 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
         new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0021", "Page")        
             .addChild("mainContent",
-                new org.instantlogic.interaction.page.SelectionElement(createDeduction0()
-,                            new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0003", org.instantlogic.designer.sharedpagefragment.FlowContextPageFragment.INSTANCE)
+                new org.instantlogic.interaction.page.SelectionElement(createDeduction0(),
+                            new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0003", org.instantlogic.designer.sharedpagefragment.FlowContextPageFragment.INSTANCE)
 )
         
             )        
@@ -74,8 +74,8 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Content").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.SelectionElement(createDeduction2()
-,                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0026", "ElementEditor")        
+                        new org.instantlogic.interaction.page.SelectionElement(createDeduction2(),
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0026", "ElementEditor")        
                                     .addChild("content",
                                             new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0004", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
         

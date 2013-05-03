@@ -82,8 +82,8 @@ public class WelcomePlaceTemplate extends org.instantlogic.interaction.flow.Plac
                                     .putText("header", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Entities").getTextTemplate())        
                             )        
                             .addChild("rows",
-                                new org.instantlogic.interaction.page.SelectionElement(createDeduction1()
-,                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0007", "Row")        
+                                new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0007", "Row")        
                                             .addChild("cells",
                                                 new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0008", "Cell")        
                                                     .addChild("content",
@@ -107,8 +107,8 @@ public class WelcomePlaceTemplate extends org.instantlogic.interaction.flow.Plac
                                     .putText("header", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Flows").getTextTemplate())        
                             )        
                             .addChild("rows",
-                                new org.instantlogic.interaction.page.SelectionElement(createDeduction3()
-,                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__000d", "Row")        
+                                new org.instantlogic.interaction.page.SelectionElement(createDeduction3(),
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__000d", "Row")        
                                             .addChild("cells",
                                                 new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__000e", "Cell")        
                                                     .addChild("content",

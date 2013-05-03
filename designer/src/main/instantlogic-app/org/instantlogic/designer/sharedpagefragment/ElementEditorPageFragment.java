@@ -117,9 +117,8 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
     new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0040", "Block")      
         .setStyleNames(new String[]{"element"})        
         .addChild("content",
-            new org.instantlogic.interaction.page.SelectionElement(createDeduction0()
-,                    new org.instantlogic.interaction.page.IfElseElement(createDeduction1(),
-        new org.instantlogic.interaction.page.Element[] {
+            new org.instantlogic.interaction.page.SelectionElement(createDeduction0(),
+                    new org.instantlogic.interaction.page.IfElseElement(createDeduction1(),
                             new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0041", "Block")      
                                 .setStyleNames(new String[]{"editor"})        
                                 .addChild("content",
@@ -128,7 +127,6 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
                                 )        
                                 .addChild("content",
                                     new org.instantlogic.interaction.page.IfElseElement(createDeduction2(),
-        new org.instantlogic.interaction.page.Element[] {
                                             new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0043", "Block")        
                                                 .addChild("content",
                                                     new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0044", "Input")      
@@ -136,7 +134,6 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
                                                 )        
                                                 .addChild("content",
                                                     new org.instantlogic.interaction.page.IfElseElement(createDeduction3(),
-        new org.instantlogic.interaction.page.Element[] {
                                                             new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0045", "Block")        
                                                                 .addChild("content",
                                                                     new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0046", "Input")      
@@ -146,19 +143,16 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
                                                                     new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0047", "Button")      
                                                                         .setEvent(org.instantlogic.designer.event.NewAttributeForFragmentTemplateEvent.INSTANCE)      
                                                                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("New attribute").getTextTemplate())        
-                                                                )        },
-        new org.instantlogic.interaction.page.Element[] {
-        }
+                                                                ),
+null
 )
         
-                                                )        },
-        new org.instantlogic.interaction.page.Element[] {
-        }
+                                                ),
+null
 )
         
-                                )        },
-        new org.instantlogic.interaction.page.Element[] {
-        }
+                                ),
+null
 )
 )
         
@@ -183,17 +177,14 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
                         )        
                         .addChild("content",
                             new org.instantlogic.interaction.page.IfElseElement(createDeduction6(),
-        new org.instantlogic.interaction.page.Element[] {
                                     new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004e", "Link")      
                                         .setStyleNames(new String[]{"editor-toggle"})      
                                         .setEvent(org.instantlogic.designer.event.CloseEditorEvent.INSTANCE)      
-                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Close editor").getTextTemplate())        },
-        new org.instantlogic.interaction.page.Element[] {
+                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Close editor").getTextTemplate()),
                                     new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004d", "Link")      
                                         .setStyleNames(new String[]{"editor-toggle"})      
                                         .setEvent(org.instantlogic.designer.event.OpenEditorEvent.INSTANCE)      
-                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Edit").getTextTemplate())        }
-)
+                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Edit").getTextTemplate()))
         
                         )        
                         .addChild("content",
@@ -205,9 +196,9 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
                         )        
                 )        
                 .addChild("content",
-                    new org.instantlogic.interaction.page.SelectionElement(createDeduction7()
-,                            new org.instantlogic.interaction.page.SelectionElement(createDeduction8()
-,                                        new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0008", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
+                    new org.instantlogic.interaction.page.SelectionElement(createDeduction7(),
+                            new org.instantlogic.interaction.page.SelectionElement(createDeduction8(),
+                                        new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0008", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
 )
 )
         

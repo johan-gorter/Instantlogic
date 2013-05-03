@@ -28,7 +28,7 @@ import org.instantlogic.interaction.util.RenderContext;
 public class SelectionElement extends Element {
 
 	private final Deduction<?> selection;
-	private final Element[] children;
+	private final Element[] children; // TODO: Single child
 	
 	public SelectionElement(Deduction<?> selection, Element... children) {
 		this.selection = selection;

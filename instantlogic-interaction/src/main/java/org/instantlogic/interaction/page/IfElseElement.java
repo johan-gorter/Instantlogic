@@ -28,12 +28,19 @@ public class IfElseElement extends Element {
 	private final Element[] ifElements;
 	private final Element[] elseElements;
 	
+	@Deprecated
 	public IfElseElement(Deduction<Boolean> selection, Element[] ifElements, Element[] elseElements) {
 		this.condition = selection;
 		this.ifElements = ifElements;
 		this.elseElements = elseElements;
 	}
 
+	public IfElseElement(Deduction<Boolean> selection, Element ifElement, Element elseElement) {
+		this.condition = selection;
+		this.ifElements = new Element[]{ifElement};
+		this.elseElements = new Element[]{elseElement};
+	}
+	
 	@Override
 	public void render(RenderContext context, List<Map<String, Object>> appendTo) {
 		ValueAndLevel<Boolean> valueAndLevel = condition.deduce(context);
