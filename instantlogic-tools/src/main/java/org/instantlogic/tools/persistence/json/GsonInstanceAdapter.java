@@ -183,7 +183,9 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 
 	private Instance createInstance(Instance caseInstance, JsonObject valueObject, String uniqueId) {
 		String entityName = valueObject.get("entityName").getAsString();
-		Instance target = caseInstance.getMetadata().getCaseAdministration().getAllEntities().get(entityName).createInstance();
+		Entity<?> entity = caseInstance.getMetadata().getCaseAdministration().getAllEntities().get(entityName);
+		if (entity==null) return null;
+		Instance target = entity.createInstance();
 		target.getMetadata().initUniqueId(uniqueId);
 		return target;
 	}
@@ -259,8 +261,12 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 			JsonObject valueObject = item.getAsJsonObject();
 			String newInstanceId = valueObject.get("instanceId").getAsString();
 			Instance target = createInstance(caseInstance, valueObject, newInstanceId);
-			deserializeFirstPass(item.getAsJsonObject(), target, newInstanceId, caseInstance, instances);
-			relationValue.addValue(target);
+			if (target!=null) {
+				deserializeFirstPass(item.getAsJsonObject(), target, newInstanceId, caseInstance, instances);
+				relationValue.addValue(target);
+			} else {
+				// Warning: could not deserialize instance
+			}
 		}
 	}
 

@@ -45,16 +45,16 @@ public class PlaceTemplateDesign extends AbstractPlaceTemplateDesign {
 			}
 		} else if (element instanceof SelectionDesign) {
 			SelectionDesign selection = (SelectionDesign)element;
-			for(ElementDesign child : selection.getChildren()) {
-				lookUpTypes(child);
+			if(selection.getChild()!=null) {
+				lookUpTypes(selection.getChild());
 			}
 		} else if (element instanceof IfElseDesign) {
 			IfElseDesign ifElse = (IfElseDesign)element;
-			for(ElementDesign child : ifElse.getIfChildren()) {
-				lookUpTypes(child);
+			if(ifElse.getIfChild()!=null) {
+				lookUpTypes(ifElse.getIfChild());
 			}
-			for(ElementDesign child : ifElse.getElseChildren()) {
-				lookUpTypes(child);
+			if(ifElse.getElseChild()!=null) {
+				lookUpTypes(ifElse.getElseChild());
 			}
 		} // SharedElements are not yet needed...
 	}

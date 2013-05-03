@@ -26,22 +26,23 @@ public class EntityContextPageFragment extends org.instantlogic.interaction.page
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0037", "Group")      
-        .putChildren("content",
-                    new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0006", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
-,
-                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0038", "Link")      .setEvent(org.instantlogic.designer.event.EntityDetailsEvent.INSTANCE)
-      
-                .putChildren("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0039", "Block")      .setStyleNames(new String[]{"inactive-card"})
-      
-                        .putChildren("content",
-                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__003a", "Heading3")      
-                                .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate(createDeduction0()),new org.instantlogic.fabric.text.StringTemplate(" (Entity)")))
-                        )
-                )
-        )
-; 
+    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0038", "Group")        
+        .addChild("content",
+                new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0006", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+        
+        )        
+        .addChild("content",
+            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0039", "Link")      
+                .setEvent(org.instantlogic.designer.event.EntityDetailsEvent.INSTANCE)        
+                .addChild("content",
+                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__003a", "Block")      
+                        .setStyleNames(new String[]{"inactive-card"})        
+                        .addChild("content",
+                            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__003b", "Heading3")      
+                                .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Entity)").getTextTemplate())        
+                        )        
+                )        
+        ); 
 
 	protected EntityContextPageFragment() {
 	    INSTANCE=this;

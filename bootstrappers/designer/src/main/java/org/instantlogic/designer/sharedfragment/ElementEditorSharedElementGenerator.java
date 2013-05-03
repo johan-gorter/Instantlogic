@@ -49,21 +49,21 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 			new FragmentTemplateDesign("Block").addToStyleNames("element")
 				.setChildren("content",
 					asFragmentTemplate = new SelectionDesign()
-						.addToChildren( // Editor
+						.setChild( // Editor
 							new IfElseDesign()
 								.setCondition(editorOpen1 = new DeductionSchemeDesign())
-								.addToIfChildren(
+								.setIfChild(
 									new FragmentTemplateDesign("Block").addToStyleNames("editor")
 										.setChildren("content", 
 											fragmentTypeInput = new FragmentTemplateDesign("Input"),
 											new IfElseDesign()
 												.setCondition(hasAttribute = new DeductionSchemeDesign())
-												.addToIfChildren(new FragmentTemplateDesign("Block")
+												.setIfChild(new FragmentTemplateDesign("Block")
 													.setChildren("content",
 														entityInput = new FragmentTemplateDesign("Input"),
 														new IfElseDesign()
 															.setCondition(entityHasValue = new DeductionSchemeDesign())
-															.addToIfChildren(new FragmentTemplateDesign("Block")
+															.setIfChild(new FragmentTemplateDesign("Block")
 																.setChildren("content",
 																	attributeInput = new FragmentTemplateDesign("Input"),
 																	newAttributeButton = new FragmentTemplateDesign("Button")
@@ -87,10 +87,10 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 										// TODO: put all other info on this line
 										new IfElseDesign()
 											.setCondition(editorOpen2 = new DeductionSchemeDesign())
-											.addToIfChildren(
+											.setIfChild(
 												closeEditorButton = new FragmentTemplateDesign("Link").setText("text", createConstantText("Close editor")).addToStyleNames("editor-toggle")
 											)
-											.addToElseChildren(
+											.setElseChild(
 												openEditorButton = new FragmentTemplateDesign("Link").setText("text", createConstantText("Edit")).addToStyleNames("editor-toggle")
 											),
 										new FragmentTemplateDesign("Preview") // Floats right
@@ -104,9 +104,9 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 //													.addToUntranslated(new StringTemplateDesign().setDeduction(propertyName = new DeductionSchemeDesign()))
 //												)
 //											)
-										.addToChildren(
+										.setChild(
 											selectPropertyChildren = new SelectionDesign()
-												.addToChildren(recursiveElementEditor = new SharedElementDesign()) // .element's
+												.setChild(recursiveElementEditor = new SharedElementDesign()) // .element's
 										)
 							)
 				)

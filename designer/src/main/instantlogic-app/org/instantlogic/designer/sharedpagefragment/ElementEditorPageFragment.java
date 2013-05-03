@@ -114,93 +114,105 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__003f", "Block")      .setStyleNames(new String[]{"element"})
-      
-        .putChildren("content",
-                new org.instantlogic.interaction.page.SelectionElement(createDeduction0()
-,                        new org.instantlogic.interaction.page.IfElseElement(createDeduction1(),
+    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0040", "Block")      
+        .setStyleNames(new String[]{"element"})        
+        .addChild("content",
+            new org.instantlogic.interaction.page.SelectionElement(createDeduction0()
+,                    new org.instantlogic.interaction.page.IfElseElement(createDeduction1(),
         new org.instantlogic.interaction.page.Element[] {
-                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0040", "Block")      .setStyleNames(new String[]{"editor"})
-      
-                                .putChildren("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0041", "Input")      .setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.type)
-,
-                                        new org.instantlogic.interaction.page.IfElseElement(createDeduction2(),
+                            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0041", "Block")      
+                                .setStyleNames(new String[]{"editor"})        
+                                .addChild("content",
+                                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0042", "Input")      
+                                        .setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.type)        
+                                )        
+                                .addChild("content",
+                                    new org.instantlogic.interaction.page.IfElseElement(createDeduction2(),
         new org.instantlogic.interaction.page.Element[] {
-                                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0042", "Block")      
-                                                .putChildren("content",
-                                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0043", "Input")      .setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity)
-,
-                                                        new org.instantlogic.interaction.page.IfElseElement(createDeduction3(),
+                                            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0043", "Block")        
+                                                .addChild("content",
+                                                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0044", "Input")      
+                                                        .setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity)        
+                                                )        
+                                                .addChild("content",
+                                                    new org.instantlogic.interaction.page.IfElseElement(createDeduction3(),
         new org.instantlogic.interaction.page.Element[] {
-                                                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0044", "Block")      
-                                                                .putChildren("content",
-                                                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0045", "Input")      .setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.attribute)
-,
-                                                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0046", "Button")      .setEvent(org.instantlogic.designer.event.NewAttributeForFragmentTemplateEvent.INSTANCE)
-      
-                                                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("New attribute")))
-                                                                )
-        },
-        new org.instantlogic.interaction.page.Element[] {
-        }
-)
-                                                )
-        },
-        new org.instantlogic.interaction.page.Element[] {
-        }
-)
-                                )
-        },
+                                                            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0045", "Block")        
+                                                                .addChild("content",
+                                                                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0046", "Input")      
+                                                                        .setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.attribute)        
+                                                                )        
+                                                                .addChild("content",
+                                                                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0047", "Button")      
+                                                                        .setEvent(org.instantlogic.designer.event.NewAttributeForFragmentTemplateEvent.INSTANCE)      
+                                                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("New attribute").getTextTemplate())        
+                                                                )        },
         new org.instantlogic.interaction.page.Element[] {
         }
 )
-)
-,
-                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0047", "Block")      .setStyleNames(new String[]{"collapsable-content"})
-      
-                .putChildren("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0048", "Link")      .setStyleNames(new String[]{"collapse-button"})
-      
-                        .putChildren("content",
-                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0049", "Icon")      .setStyleNames(new String[]{"icon-chevron-down"})
-                        )
-,
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004a", "PreviewLine")      
-                        .putValue("previewMode", createDeduction4())      
-                        .putChildren("content",
-                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004b", "Strong")      
-                                .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate(createDeduction5())))
-,
-                                new org.instantlogic.interaction.page.IfElseElement(createDeduction6(),
+        
+                                                )        },
         new org.instantlogic.interaction.page.Element[] {
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004d", "Link")      .setStyleNames(new String[]{"editor-toggle"})
-      .setEvent(org.instantlogic.designer.event.CloseEditorEvent.INSTANCE)
-      
-                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Close editor")))
-        },
-        new org.instantlogic.interaction.page.Element[] {
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004c", "Link")      .setStyleNames(new String[]{"editor-toggle"})
-      .setEvent(org.instantlogic.designer.event.OpenEditorEvent.INSTANCE)
-      
-                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Edit")))
         }
 )
-,
-                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004e", "Preview")      
-                                .putChildren("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004f", "PreviewPlaceholder")          .addCustomFilter(new org.instantlogic.designer.fragmentfilter.PreviewFragmentFilter())
-                                )
-                        )
-,
-                        new org.instantlogic.interaction.page.SelectionElement(createDeduction7()
-,                                new org.instantlogic.interaction.page.SelectionElement(createDeduction8()
-,                                            new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0008", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
+        
+                                )        },
+        new org.instantlogic.interaction.page.Element[] {
+        }
 )
 )
-                )
-        )
-; 
+        
+        )        
+        .addChild("content",
+            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0048", "Block")      
+                .setStyleNames(new String[]{"collapsable-content"})        
+                .addChild("content",
+                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0049", "Link")      
+                        .setStyleNames(new String[]{"collapse-button"})        
+                        .addChild("content",
+                            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004a", "Icon")      
+                                .setStyleNames(new String[]{"icon-chevron-down"})        
+                        )        
+                )        
+                .addChild("content",
+                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004b", "PreviewLine")      
+                        .putValue("previewMode", createDeduction4())        
+                        .addChild("content",
+                            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004c", "Strong")      
+                                .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction5()).getTextTemplate())        
+                        )        
+                        .addChild("content",
+                            new org.instantlogic.interaction.page.IfElseElement(createDeduction6(),
+        new org.instantlogic.interaction.page.Element[] {
+                                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004e", "Link")      
+                                        .setStyleNames(new String[]{"editor-toggle"})      
+                                        .setEvent(org.instantlogic.designer.event.CloseEditorEvent.INSTANCE)      
+                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Close editor").getTextTemplate())        },
+        new org.instantlogic.interaction.page.Element[] {
+                                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004d", "Link")      
+                                        .setStyleNames(new String[]{"editor-toggle"})      
+                                        .setEvent(org.instantlogic.designer.event.OpenEditorEvent.INSTANCE)      
+                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Edit").getTextTemplate())        }
+)
+        
+                        )        
+                        .addChild("content",
+                            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__004f", "Preview")        
+                                .addChild("content",
+                                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0050", "PreviewPlaceholder")      
+                                        .addCustomFilter(new org.instantlogic.designer.fragmentfilter.PreviewFragmentFilter())        
+                                )        
+                        )        
+                )        
+                .addChild("content",
+                    new org.instantlogic.interaction.page.SelectionElement(createDeduction7()
+,                            new org.instantlogic.interaction.page.SelectionElement(createDeduction8()
+,                                        new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0008", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
+)
+)
+        
+                )        
+        ); 
 
 	protected ElementEditorPageFragment() {
 	    INSTANCE=this;

@@ -90,7 +90,7 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 		$childOfSelection.reverse = true;
 		$childOfSelection.valueClass = org.instantlogic.designer.SelectionDesign.class;
 		$childOfSelection.to = org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE;
-		$childOfSelection.setReverseRelation(org.instantlogic.designer.entity.SelectionDesignEntity.children);
+		$childOfSelection.setReverseRelation(org.instantlogic.designer.entity.SelectionDesignEntity.child);
 		$childrenForFragment.reverse = true;
 		$childrenForFragment.valueClass = org.instantlogic.designer.PropertyDesign.class;
 		$childrenForFragment.to = org.instantlogic.designer.entity.PropertyDesignEntity.INSTANCE;

@@ -11,7 +11,6 @@
 package org.instantlogic.designer.flow.entity;
 
 import org.instantlogic.designer.AttributeDesignEntityGenerator;
-import org.instantlogic.designer.DeductionInputDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.DesignEntityGenerator;
 import org.instantlogic.designer.DesignerApplicationGenerator;
@@ -22,7 +21,6 @@ import org.instantlogic.designer.SelectionDesign;
 import org.instantlogic.designer.SharedElementDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
-import org.instantlogic.designer.deduction.CapitalizeFirstDeduction;
 import org.instantlogic.designer.event.AddAttributeEventGenerator;
 import org.instantlogic.designer.event.AttributeDetailsEventGenerator;
 import org.instantlogic.designer.sharedfragment.ApplicationContextSharedElementGenerator;
@@ -71,7 +69,7 @@ public class EntityDetailsPlaceGenerator extends PlaceTemplateDesign {
 						
 						new SelectionDesign()
 							.setSelection(attributes = new DeductionSchemeDesign())
-							.addToChildren(
+							.setChild(
 								attributeLink = new FragmentTemplateDesign("Link")
 									.setChildren("content", 
 										new FragmentTemplateDesign("Block")

@@ -26,17 +26,16 @@ public class ApplicationContextPageFragment extends org.instantlogic.interaction
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0050", "Link")      .setEvent(org.instantlogic.designer.event.HomeEvent.INSTANCE)
-      
-        .putChildren("content",
-                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0051", "Block")      .setStyleNames(new String[]{"inactive-card"})
-      
-                .putChildren("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0052", "Heading3")      
-                        .putText("text", new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate(createDeduction0()),new org.instantlogic.fabric.text.StringTemplate(" (Application)")))
-                )
-        )
-; 
+    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0051", "Link")      
+        .setEvent(org.instantlogic.designer.event.HomeEvent.INSTANCE)        
+        .addChild("content",
+            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0052", "Block")      
+                .setStyleNames(new String[]{"inactive-card"})        
+                .addChild("content",
+                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0053", "Heading3")      
+                        .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Application)").getTextTemplate())        
+                )        
+        ); 
 
 	protected ApplicationContextPageFragment() {
 	    INSTANCE=this;

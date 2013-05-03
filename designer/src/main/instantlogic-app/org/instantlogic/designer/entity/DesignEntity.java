@@ -44,12 +44,9 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 
 
 	// Title
-	private org.instantlogic.fabric.text.TextTemplate title;
+	private static final org.instantlogic.fabric.text.TextTemplate title;
 	@Override
 	public org.instantlogic.fabric.text.TextTemplate getTitle() {
-		if (title==null) {
-			title = new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate(createDeduction0()));
-		}
 		return title;
 	}
 	
@@ -109,6 +106,8 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 		$technicalName.rule = createDeduction3();
 
 
+
+		title = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).getTextTemplate();
 	}
 
 	@Override

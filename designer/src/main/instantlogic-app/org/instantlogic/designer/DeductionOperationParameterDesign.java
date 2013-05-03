@@ -41,19 +41,19 @@ public class DeductionOperationParameterDesign extends Design {
 	  // Phase 2
       attribute.setName("attribute");
       attribute.setValueClass("org.instantlogic.fabric.model.Attribute");
-	  attribute.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Attribute")));
+	  attribute.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Attribute").getTextTemplate());
       castToEntity.setName("toEntity");
       castToEntity.setValueClass("org.instantlogic.fabric.model.Entity");
-	  castToEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("To entity")));
+	  castToEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("To entity").getTextTemplate());
       constantValue.setName("value");
       constantValue.setValueClass("java.lang.Object");
-	  constantValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Value")));
+	  constantValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Value").getTextTemplate());
       selectedInstanceEntity.setName("ofEntity");
       selectedInstanceEntity.setValueClass("org.instantlogic.fabric.model.Entity");
-	  selectedInstanceEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Of entity")));
+	  selectedInstanceEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Of entity").getTextTemplate());
       reverseRelationRelation.setName("relation");
       reverseRelationRelation.setValueClass("org.instantlogic.fabric.model.Relation");
-	  reverseRelationRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Relation")));
+	  reverseRelationRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Relation").getTextTemplate());
 	}
 	
 	@Override

@@ -10,7 +10,6 @@
 
 package org.instantlogic.designer.flow.flow;
 
-import org.instantlogic.designer.DeductionInputDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.DesignEntityGenerator;
 import org.instantlogic.designer.DesignerApplicationGenerator;
@@ -22,7 +21,6 @@ import org.instantlogic.designer.SelectionDesign;
 import org.instantlogic.designer.SharedElementDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
-import org.instantlogic.designer.deduction.CapitalizeFirstDeduction;
 import org.instantlogic.designer.event.FlowNodeDetailsEventGenerator;
 import org.instantlogic.designer.sharedfragment.ApplicationContextSharedElementGenerator;
 
@@ -70,7 +68,7 @@ public class FlowDetailsPlaceGenerator extends PlaceTemplateDesign {
 						
 						new SelectionDesign()
 							.setSelection(nodes = new DeductionSchemeDesign())
-							.addToChildren(
+							.setChild(
 								nodeLink = new FragmentTemplateDesign("Link")
 									.setChildren("content", 
 										new FragmentTemplateDesign("Block")

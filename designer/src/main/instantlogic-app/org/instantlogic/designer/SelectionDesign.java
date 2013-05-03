@@ -40,37 +40,28 @@ public class SelectionDesign extends ElementDesign {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<SelectionDesign, ElementDesign> children
-		= createRelationValues(org.instantlogic.designer.entity.SelectionDesignEntity.children);
+	private final org.instantlogic.fabric.value.RelationValue<SelectionDesign, ElementDesign> child
+		= createRelationValue(org.instantlogic.designer.entity.SelectionDesignEntity.child);
 		
-	public org.instantlogic.fabric.value.RelationValues<SelectionDesign, ElementDesign> getChildrenRelationValue() {
-		return children;
+	public org.instantlogic.fabric.value.RelationValue<SelectionDesign, ElementDesign> getChildRelationValue() {
+		return child;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ElementDesign> getChildren() {
-		return children.getValue();
+	public org.instantlogic.designer.ElementDesign getChild() {
+		return child.getValue();
 	}
 	
-	public SelectionDesign addToChildren(ElementDesign item) {
-		children.addValue(item);
+	public SelectionDesign setChild(org.instantlogic.designer.ElementDesign newValue) {
+		child.setValue(newValue);
 		return (SelectionDesign)this;
 	}
 	
-	public SelectionDesign addToChildren(ElementDesign item, int index) {
-		children.insertValue(item, index);
-		return (SelectionDesign)this;
+	public org.instantlogic.designer.ElementDesign newChild() {
+		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
+		child.setValue(newValue);
+		return newValue;
 	}
-	
-	public SelectionDesign removeFromChildren(ElementDesign item) {
-		children.removeValue(item);
-		return (SelectionDesign)this;
-	}
-	
-	public SelectionDesign removeFromChildren(int index) {
-		children.removeValue(index);
-		return (SelectionDesign)this;
-	}
-	
+
 	
 	private final org.instantlogic.fabric.value.RelationValue<SelectionDesign, DeductionSchemeDesign> selection
 		= createRelationValue(org.instantlogic.designer.entity.SelectionDesignEntity.selection);

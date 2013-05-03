@@ -59,7 +59,7 @@ public class WelcomePlaceTemplateGenerator extends PlaceTemplateDesign {
 							.setChildren("rows",
 								new SelectionDesign()
 									.setSelection(entitiesDeduction = new DeductionSchemeDesign())
-									.addToChildren(
+									.setChild(
 										new FragmentTemplateDesign("Row")
 											.setChildren("cells",
 												new FragmentTemplateDesign("Cell")
@@ -86,7 +86,7 @@ public class WelcomePlaceTemplateGenerator extends PlaceTemplateDesign {
 								.setChildren("rows",
 									new SelectionDesign()
 										.setSelection(flowsDeduction = new DeductionSchemeDesign())
-										.addToChildren(
+										.setChild(
 											new FragmentTemplateDesign("Row")
 												.setChildren("cells",
 													new FragmentTemplateDesign("Cell")

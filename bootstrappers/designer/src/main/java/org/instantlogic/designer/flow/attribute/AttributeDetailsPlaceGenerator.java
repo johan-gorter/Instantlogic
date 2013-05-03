@@ -52,7 +52,7 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 
 				new SelectionDesign()
 					.setSelection(entity = new DeductionSchemeDesign())
-					.addToChildren(entityContext = new SharedElementDesign()),
+					.setChild(entityContext = new SharedElementDesign()),
 				
 				new FragmentTemplateDesign("Block")
 					.addToStyleNames("card")
@@ -66,12 +66,17 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 						
 						new FragmentTemplateDesign("Heading4").setText("text", createConstantText("Data type")),
 						selectDataType = new SelectionDesign()
-							.addToChildren(categoryInput = new FragmentTemplateDesign("Input"))
-							.addToChildren(multilineInput = new FragmentTemplateDesign("Input"))
-							.addToChildren(formattedInput = new FragmentTemplateDesign("Input"))
-							.addToChildren(percentageInput = new FragmentTemplateDesign("Input"))
-							.addToChildren(wholeNumberInput = new FragmentTemplateDesign("Input"))
-							.addToChildren(exactRoundingInput = new FragmentTemplateDesign("Input")),
+							.setChild(
+								new FragmentTemplateDesign("Block")
+									.setChildren("content", 
+										categoryInput = new FragmentTemplateDesign("Input"),
+										multilineInput = new FragmentTemplateDesign("Input"),
+										formattedInput = new FragmentTemplateDesign("Input"),
+										percentageInput = new FragmentTemplateDesign("Input"),
+										wholeNumberInput = new FragmentTemplateDesign("Input"),
+										exactRoundingInput = new FragmentTemplateDesign("Input")
+									)
+							),
 						new FragmentTemplateDesign("Heading4").setText("text", createConstantText("Value")),
 						hasRelevanceInput = new FragmentTemplateDesign("Input"),
 						hasRuleInput = new FragmentTemplateDesign("Input"),

@@ -50,7 +50,7 @@ public class PlaceTemplateDetailsPlaceGenerator extends PlaceTemplateDesign {
 			.setChildren("mainContent", 
 				new SelectionDesign()
 					.setSelection(flow = new DeductionSchemeDesign())
-					.addToChildren(flowContext = new SharedElementDesign()),
+					.setChild(flowContext = new SharedElementDesign()),
 				new FragmentTemplateDesign("Block")
 					.addToStyleNames("card")
 					.setChildren("content",
@@ -63,7 +63,7 @@ public class PlaceTemplateDetailsPlaceGenerator extends PlaceTemplateDesign {
 						
 						new FragmentTemplateDesign("Heading4").setText("text", createConstantText("Content")),
 						selectContent = new SelectionDesign()
-							.addToChildren(
+							.setChild(
 								new FragmentTemplateDesign("ElementEditor")
 									.setChildren("content", 
 											elementEditor = new SharedElementDesign()

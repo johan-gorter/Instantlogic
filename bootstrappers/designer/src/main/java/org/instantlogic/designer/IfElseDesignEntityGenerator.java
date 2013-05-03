@@ -25,7 +25,7 @@ public class IfElseDesignEntityGenerator extends EntityDesign {
     // Relations
     public static final RelationDesign condition = addRelation(ENTITY, "condition", RelationType.OneToOneAggregation, DeductionSchemeDesignEntityGenerator.ENTITY);
     
-    public static final RelationDesign ifChildren = addRelation(ENTITY, "ifChildren", RelationType.OneToManyAggregation, ElementDesignEntityGenerator.ENTITY); //TODO: Single value for making it easier to get animations right    
+    public static final RelationDesign ifChild = addRelation(ENTITY, "ifChild", RelationType.OneToZeroOrOneAggregation, ElementDesignEntityGenerator.ENTITY);    
 
-    public static final RelationDesign elseChildren = addRelation(ENTITY, "elseChildren", RelationType.OneToManyAggregation, ElementDesignEntityGenerator.ENTITY); //TODO: Single value for making it easier to get animations right    
+    public static final RelationDesign elseChild = addRelation(ENTITY, "elseChild", RelationType.OneToZeroOrOneAggregation, ElementDesignEntityGenerator.ENTITY);    
 }

@@ -1616,13 +1616,11 @@
                                   {
                                     "instanceId": "Selectiondesign__0001",
                                     "entityName": "SelectionDesign",
-                                    "children": [
-                                      {
-                                        "instanceId": "Sharedelemntdsgn__0001",
-                                        "entityName": "SharedElementDesign",
-                                        "definition": "Shrdlmntdfntndsg__0001"
-                                      }
-                                    ],
+                                    "child": {
+                                      "instanceId": "Sharedelemntdsgn__0001",
+                                      "entityName": "SharedElementDesign",
+                                      "definition": "Shrdlmntdfntndsg__0001"
+                                    },
                                     "selection": {
                                       "instanceId": "Deductinschmdsgn__000c",
                                       "entityName": "DeductionSchemeDesign",
@@ -1824,13 +1822,11 @@
                                   {
                                     "instanceId": "Selectiondesign__0002",
                                     "entityName": "SelectionDesign",
-                                    "children": [
-                                      {
-                                        "instanceId": "Sharedelemntdsgn__0002",
-                                        "entityName": "SharedElementDesign",
-                                        "definition": "Shrdlmntdfntndsg__0001"
-                                      }
-                                    ],
+                                    "child": {
+                                      "instanceId": "Sharedelemntdsgn__0002",
+                                      "entityName": "SharedElementDesign",
+                                      "definition": "Shrdlmntdfntndsg__0001"
+                                    },
                                     "selection": {
                                       "instanceId": "Deductinschmdsgn__000d",
                                       "entityName": "DeductionSchemeDesign",

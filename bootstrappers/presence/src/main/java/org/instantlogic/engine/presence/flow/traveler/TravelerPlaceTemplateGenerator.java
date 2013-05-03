@@ -44,48 +44,47 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 						.setChildren("content", new ElementDesign[]{
 							new IfElseDesign()
 								.setCondition(userHasValue = new DeductionSchemeDesign()) // Logged in
-								.addToIfChildren(
-									new SelectionDesign()
-										.setSelection(user = new DeductionSchemeDesign())
-										.addToChildren(
-											new FragmentTemplateDesign("Me")
-												.setValue("username", userUsername = new DeductionSchemeDesign())
-												.setValue("avatarUrl", userAvatarUrl = new DeductionSchemeDesign())
-												.setValue("name", userName = new DeductionSchemeDesign())
-										)
-								)
-								.addToIfChildren(
-									debugVisible = new FragmentTemplateDesign("DebugVisibleToggle")
-								)
-								.addToIfChildren(
-									new FragmentTemplateDesign("Communicator")
-										.setChildren("users", 
+								.setIfChild(
+									new FragmentTemplateDesign("Block")
+										.setChildren("content",
 											new SelectionDesign()
-												.setSelection(activeUsers = new DeductionSchemeDesign())
-												.addToChildren(new FragmentTemplateDesign("User")
-													.setValue("username", username = new DeductionSchemeDesign())
-													.setValue("avatarUrl", avatarUrl = new DeductionSchemeDesign())
-													.setValue("name", name = new DeductionSchemeDesign())
-													.setChildren("travelers", 
-														new SelectionDesign()
-															.setSelection(userTravelers = new DeductionSchemeDesign())
-															.addToChildren(new FragmentTemplateDesign("Traveler")
-																.setValue("travelerId", travelerId = new DeductionSchemeDesign())
-																.setValue("placeUrl", travelerPlaceUrl = new DeductionSchemeDesign())
-																.setValue("placeTitle", travelerPlaceTitle = new DeductionSchemeDesign())
+												.setSelection(user = new DeductionSchemeDesign())
+												.setChild(
+													new FragmentTemplateDesign("Me")
+														.setValue("username", userUsername = new DeductionSchemeDesign())
+														.setValue("avatarUrl", userAvatarUrl = new DeductionSchemeDesign())
+														.setValue("name", userName = new DeductionSchemeDesign())
+												),
+											debugVisible = new FragmentTemplateDesign("DebugVisibleToggle"),
+											new FragmentTemplateDesign("Communicator")
+												.setChildren("users", 
+													new SelectionDesign()
+														.setSelection(activeUsers = new DeductionSchemeDesign())
+														.setChild(new FragmentTemplateDesign("User")
+															.setValue("username", username = new DeductionSchemeDesign())
+															.setValue("avatarUrl", avatarUrl = new DeductionSchemeDesign())
+															.setValue("name", name = new DeductionSchemeDesign())
+															.setChildren("travelers", 
+																new SelectionDesign()
+																	.setSelection(userTravelers = new DeductionSchemeDesign())
+																	.setChild(new FragmentTemplateDesign("Traveler")
+																		.setValue("travelerId", travelerId = new DeductionSchemeDesign())
+																		.setValue("placeUrl", travelerPlaceUrl = new DeductionSchemeDesign())
+																		.setValue("placeTitle", travelerPlaceTitle = new DeductionSchemeDesign())
+																	)
 															)
-													)
+														)
 												)
 										)
 								)
-								.addToElseChildren(new FragmentTemplateDesign("Login"))
+								.setElseChild(new FragmentTemplateDesign("Login"))
 						}),
 						new SelectionDesign()
 							.setSelection(currentPlace = new DeductionSchemeDesign())
-							.addToChildren(
+							.setChild(
 								new SelectionDesign()
 									.setSelection(visitors = new DeductionSchemeDesign()) // Render avatars for everyone visiting this place
-									.addToChildren(
+									.setChild(
 										new FragmentTemplateDesign("Avatar")
 											.setValue("username", username2 = new DeductionSchemeDesign())
 											.setValue("name", name2 = new DeductionSchemeDesign())

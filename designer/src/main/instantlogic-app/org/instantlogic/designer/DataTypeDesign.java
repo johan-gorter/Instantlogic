@@ -34,9 +34,9 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
 	  text = addStaticInstance("text", new DataTypeDesign());
 	  // Phase 2
       _boolean.setDataCategory(org.instantlogic.designer.DataCategoryDesign._boolean);
-	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Boolean")));
+	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Boolean").getTextTemplate());
       text.setDataCategory(org.instantlogic.designer.DataCategoryDesign.text);
-	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Text")));
+	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Text").getTextTemplate());
 	}
 	
 	@Override

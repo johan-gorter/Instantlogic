@@ -304,7 +304,7 @@ public class IzzyGenerator extends Design {
 									.setChildren("rows",
 										new SelectionDesign()
 											.setSelection(assignedToMe = new DeductionSchemeDesign())
-											.addToChildren(
+											.setChild(
 												issueRow1 = new SharedElementDesign()
 											)
 									),
@@ -321,7 +321,7 @@ public class IzzyGenerator extends Design {
 									.setChildren("rows",
 										new SelectionDesign()
 											.setSelection(issues = new DeductionSchemeDesign())
-											.addToChildren(
+											.setChild(
 												issueRow2 = new SharedElementDesign()
 											)
 									)

@@ -31,7 +31,7 @@ public class DataTypeDesignDataCategoryRequiredValidation extends org.instantlog
 	@Override
 	public org.instantlogic.fabric.text.TextTemplate getMessage() {
 		if (message==null) {
-			message = new org.instantlogic.fabric.text.TextTemplate(new org.instantlogic.fabric.text.StringTemplate("Select a value"));
+			message = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Select a value").getTextTemplate();
 		}
 		return message;
 	}
