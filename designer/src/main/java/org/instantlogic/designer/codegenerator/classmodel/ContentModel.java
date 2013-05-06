@@ -11,7 +11,6 @@
 package org.instantlogic.designer.codegenerator.classmodel;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,9 +47,18 @@ public class ContentModel {
 	public ContentModel elseChild;
 	public String implementationClassName;
 	
-	public final Map<String, Object> values = new HashMap<String, Object>();
+	public final Map<String, Integer> values = new HashMap<String, Integer>();
 	public final Map<String, TextModel> texts = new HashMap<String, TextModel>();
 	public final Map<String, List<ContentModel>> childLists = new HashMap<String, List<ContentModel>>();
+	
+	private String rootPackageInternalPrefix;
+	
+	public String getRootPackageInternalPrefix() {
+		if (rootPackageInternalPrefix==null) {
+			rootPackageInternalPrefix = rootPackageName.replace(".", "/")+"/";
+		}
+		return rootPackageInternalPrefix;
+	}
 	
 	public boolean isRequired() {
 		return required;
@@ -109,7 +117,7 @@ public class ContentModel {
 	public Map<String, List<ContentModel>> getChildLists() {
 		return childLists;
 	}
-	public Map<String, Object> getValues() {
+	public Map<String, Integer> getValues() {
 		return values;
 	}
 	public Map<String, TextModel> getTexts() {

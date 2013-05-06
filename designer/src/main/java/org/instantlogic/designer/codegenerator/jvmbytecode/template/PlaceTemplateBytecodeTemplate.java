@@ -89,7 +89,7 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 			}
 			
 			mv.visitInsn(RETURN);
-			mv.visitMaxs(9, 99);
+			mv.visitMaxs(99, 9);
 			mv.visitEnd();
 		}
 		// Default synthetic constructor

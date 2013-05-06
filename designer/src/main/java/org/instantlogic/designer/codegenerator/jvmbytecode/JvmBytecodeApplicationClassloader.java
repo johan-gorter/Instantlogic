@@ -12,25 +12,27 @@ package org.instantlogic.designer.codegenerator.jvmbytecode;
 
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.HashMap;
-import java.util.Map;
 
-public class BytecodeClassloader extends URLClassLoader {
+public class JvmBytecodeApplicationClassloader extends URLClassLoader {
 
-	private Map<String, byte[]> bytecodeClasses = new HashMap<String, byte[]>();
+	private final JvmBytecodeApplication updateableApplication;
 	
-	public BytecodeClassloader(ClassLoader parentClassLoader, Map<String, byte[]> bytecodeClasses, URL... customizationUrls) {
+	public JvmBytecodeApplicationClassloader(ClassLoader parentClassLoader, JvmBytecodeApplication updateableApplication, URL... customizationUrls) {
 		super(customizationUrls, parentClassLoader);
-		this.bytecodeClasses = bytecodeClasses;
+		this.updateableApplication = updateableApplication;
 	}
 	
 	@Override
 	protected Class<?> findClass(String name) throws ClassNotFoundException {
-		byte[] bytes = bytecodeClasses.get(name);
+		byte[] bytes = updateableApplication.getClassBytes(name);
 		if (bytes!=null) {
 			return defineClass(name, bytes, 0, bytes.length);
 		}
 		return super.findClass(name); // Customizations last
 		// TODO: If not found, but abstract class is found, return an empty customization
+	}
+
+	public JvmBytecodeApplication getJvmBytecodeApplication() {
+		return updateableApplication;
 	}
 }

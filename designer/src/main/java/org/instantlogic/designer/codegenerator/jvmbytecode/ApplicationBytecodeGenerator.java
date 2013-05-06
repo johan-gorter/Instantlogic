@@ -16,6 +16,7 @@ import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.SharedPageFragmentClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SubFlowClassModel;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.ApplicationBytecodeTemplate;
@@ -24,73 +25,76 @@ import org.instantlogic.designer.codegenerator.jvmbytecode.template.EventBytecod
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.FlowBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.InstanceBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.PlaceTemplateBytecodeTemplate;
+import org.instantlogic.designer.codegenerator.jvmbytecode.template.SharedPageFragmentBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.SubFlowBytecodeTemplate;
 
-public class ApplicationBytecodeGenerator extends AbstractBytecodeGenerator {
+public class ApplicationBytecodeGenerator {
 
-	public static void generate(GeneratedClassModels classModels, Map<String, byte[]> bytecodeClasses) {
+	public static void update(GeneratedClassModels classModels, JvmBytecodeApplication updateableApplication) {
 		if (classModels.updatedApplication!=null) {
 			String fullApplicationClassName = classModels.rootPackageName+"." + classModels.updatedApplication.name+"Application";
-			remove(bytecodeClasses, fullApplicationClassName);
-			ApplicationBytecodeTemplate.generate(bytecodeClasses, classModels.updatedApplication, fullApplicationClassName);
+			updateableApplication.setClassBytes(fullApplicationClassName,
+				ApplicationBytecodeTemplate.generate(classModels.updatedApplication, fullApplicationClassName));
 		}
 		for (EntityClassModel entity: classModels.deletedEntities) {
 			//Instance
 			String fullInstanceClassName = classModels.rootPackageName+"." + (entity.isCustomized?"Abstract":"") + entity.technicalNameCapitalized;
-			remove(bytecodeClasses, fullInstanceClassName);
+			updateableApplication.removeClassBytes(fullInstanceClassName);
 			//Entity
 			String fullEntityClassName = classModels.rootPackageName+".entity." + entity.technicalNameCapitalized+"Entity";
-			remove(bytecodeClasses, fullEntityClassName);
+			updateableApplication.removeClassBytes(fullEntityClassName);
 		}
 		for (EntityClassModel entity: classModels.updatedEntities) {
 			//Instance
 			String fullInstanceClassName = classModels.rootPackageName+"." + (entity.isCustomized?"Abstract":"") + entity.technicalNameCapitalized;
-			remove(bytecodeClasses, fullInstanceClassName);
-			InstanceBytecodeTemplate.generate(bytecodeClasses, entity, fullInstanceClassName);
+			updateableApplication.setClassBytes(fullInstanceClassName,
+				InstanceBytecodeTemplate.generate(entity, fullInstanceClassName));
 			//Entity
 			String fullEntityClassName = classModels.rootPackageName+".entity." + entity.technicalNameCapitalized+"Entity";
-			remove(bytecodeClasses, fullEntityClassName);
-			EntityBytecodeTemplate.generate(bytecodeClasses, entity, fullEntityClassName);
+			updateableApplication.setClassBytes(fullEntityClassName,
+				EntityBytecodeTemplate.generate(entity, fullEntityClassName));
 		}
 
 		for (EventClassModel event: classModels.deletedEvents) {
-			remove(bytecodeClasses, event.getFullClassName());
+			updateableApplication.removeClassBytes(event.getFullClassName());
 		}
 		for (EventClassModel event: classModels.updatedEvents) {
-			remove(bytecodeClasses, event.getFullClassName());
-			bytecodeClasses.put(event.getFullClassName(), EventBytecodeTemplate.generate(event));
+			updateableApplication.setClassBytes(event.getFullClassName(),
+				EventBytecodeTemplate.generate(event));
 		}
 		
 		for (FlowClassModel flow: classModels.deletedFlows) {
-			remove(bytecodeClasses, flow.getFullClassName());
+			updateableApplication.removeClassBytes(flow.getFullClassName());
 		}
 		for (FlowClassModel flow: classModels.updatedFlows) {
-			remove(bytecodeClasses, flow.getFullClassName());
-			bytecodeClasses.put(flow.getFullClassName(), FlowBytecodeTemplate.generate(flow));
+			updateableApplication.setClassBytes(flow.getFullClassName(),
+				FlowBytecodeTemplate.generate(flow));
 		}
 		
 		for (PlaceClassModel placeTemplate: classModels.deletedPlaces) {
-			remove(bytecodeClasses, placeTemplate.getFullClassName());
+			updateableApplication.removeClassBytes(placeTemplate.getFullClassName());
 		}
 		for (PlaceClassModel placeTemplate: classModels.updatedPlaces) {
-			remove(bytecodeClasses, placeTemplate.getFullClassName());
-			bytecodeClasses.put(placeTemplate.getFullClassName(), PlaceTemplateBytecodeTemplate.generate(placeTemplate));
+			updateableApplication.setClassBytes(placeTemplate.getFullClassName(),
+				PlaceTemplateBytecodeTemplate.generate(placeTemplate));
 		}
 
 		for (SubFlowClassModel subFlowTemplate: classModels.deletedSubFlows) {
-			remove(bytecodeClasses, subFlowTemplate.getFullClassName());
+			updateableApplication.removeClassBytes(subFlowTemplate.getFullClassName());
 		}
 		for (SubFlowClassModel subFlowTemplate: classModels.updatedSubFlows) {
-			remove(bytecodeClasses, subFlowTemplate.getFullClassName());
-			bytecodeClasses.put(subFlowTemplate.getFullClassName(), SubFlowBytecodeTemplate.generate(subFlowTemplate));
+			updateableApplication.setClassBytes(subFlowTemplate.getFullClassName(),
+				SubFlowBytecodeTemplate.generate(subFlowTemplate));
 		}
-	}
-
-	protected static void remove(Map<String, byte[]> bytecodeClasses, String fullClassName) {
-		bytecodeClasses.remove(fullClassName);
-//		int i=1;
-//		while (bytecodeClasses.remove(fullClassName+"$"+i)!=null) {
-//			i++;
-//		}
+		
+		for (SharedPageFragmentClassModel sharedPageFragment: classModels.deletedSharedPageFragments) {
+			updateableApplication.removeClassBytes(sharedPageFragment.getFullClassName());
+		}
+		for (SharedPageFragmentClassModel sharedPageFragment: classModels.updatedSharedPageFragments) {
+			updateableApplication.setClassBytes(sharedPageFragment.getFullClassName(),
+				SharedPageFragmentBytecodeTemplate.generate(sharedPageFragment));
+		}
+		
+		
 	}
 }

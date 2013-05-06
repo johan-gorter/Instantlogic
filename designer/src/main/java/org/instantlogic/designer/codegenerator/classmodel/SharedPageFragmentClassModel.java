@@ -18,5 +18,9 @@ public class SharedPageFragmentClassModel extends AbstractClassModel {
 		return content;
 	}
 
+	public String getFullClassName() {
+		return rootPackageName+".sharedpagefragment." + (isCustomized?"Abstract":"") + technicalNameCapitalized + "PageFragment";
+	}
+
 
 }

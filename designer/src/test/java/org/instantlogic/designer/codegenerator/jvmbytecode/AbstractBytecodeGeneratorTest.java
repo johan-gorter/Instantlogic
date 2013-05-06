@@ -13,7 +13,7 @@ import org.junit.After;
 public abstract class AbstractBytecodeGeneratorTest {
 
 	private ClassLoader restoreClassLoader;
-	private BytecodeClassloader applicationClassLoader;
+	private JvmBytecodeApplicationClassloader applicationClassLoader;
 	
 	@After
 	public void tearDown() throws Exception {
@@ -32,10 +32,11 @@ public abstract class AbstractBytecodeGeneratorTest {
 		ApplicationGenerator applicationGenerator = applicationDesign.getApplicationGenerator();
 		applicationGenerator.resetClassModelUpdates();
 		GeneratedClassModels classModels = applicationGenerator.getClassModelUpdates();
-		Map<String, byte[]> bytecodeClasses = new HashMap<String, byte[]>();
-		ApplicationBytecodeGenerator.generate(classModels, bytecodeClasses);
+		JvmBytecodeApplication updateableApplication = new JvmBytecodeApplication();
+
+		ApplicationBytecodeGenerator.update(classModels, updateableApplication);
 		
-		applicationClassLoader = new BytecodeClassloader(getClass().getClassLoader(), bytecodeClasses, customizationUrls);
+		applicationClassLoader = new JvmBytecodeApplicationClassloader(getClass().getClassLoader(), updateableApplication, customizationUrls);
 		this.restoreClassLoader = Thread.currentThread().getContextClassLoader(); 
 		
 		Thread.currentThread().setContextClassLoader(applicationClassLoader);

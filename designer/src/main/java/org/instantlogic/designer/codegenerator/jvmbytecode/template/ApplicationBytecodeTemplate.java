@@ -1,18 +1,13 @@
 package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 
-import java.util.Map;
-
 import org.instantlogic.designer.codegenerator.classmodel.ApplicationClassModel;
-
-import org.objectweb.asm.*;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.FieldVisitor;
+import org.objectweb.asm.MethodVisitor;
 
 public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 
-	public static void generate(Map<String, byte[]> bytecodeClasses, ApplicationClassModel model, String fullApplicationClassName) {
-		bytecodeClasses.put(fullApplicationClassName, dump(model));	
-	}
-
-	public static byte[] dump(ApplicationClassModel model) {
+	public static byte[] generate(ApplicationClassModel model, String fullApplicationClassName) {
 		ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 		FieldVisitor fv;
 		MethodVisitor mv;
@@ -44,9 +39,10 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			// THEME_NAMES =
 			mv.visitIntInsn(BIPUSH, model.themeNames.length);
 			mv.visitTypeInsn(ANEWARRAY, "java/lang/String");
+			int index = 0;
 			for(String themeName : model.themeNames) { 
 				mv.visitInsn(DUP);
-				mv.visitInsn(ICONST_0);
+				mv.visitIntInsn(BIPUSH, index++);
 				mv.visitLdcInsn(themeName);
 				mv.visitInsn(AASTORE);
 			}

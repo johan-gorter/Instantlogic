@@ -33,11 +33,7 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 	
 	public static final boolean TRACE = false;
 
-	public static void generate(Map<String, byte[]> bytecodeClasses, EntityClassModel model, String fullName) {
-		bytecodeClasses.put(fullName, dump(model));
-	}
-
-	public static byte[] dump(EntityClassModel model) {
+	public static byte[] generate(EntityClassModel model, String fullName) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 
 		ClassVisitor cw;

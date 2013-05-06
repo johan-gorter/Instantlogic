@@ -11,9 +11,7 @@
 package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 
 import java.io.PrintWriter;
-import java.util.Map;
 
-import org.instantlogic.designer.DataCategoryDesign;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstance;
 import org.objectweb.asm.ClassVisitor;
@@ -27,11 +25,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 	
 	private static final boolean TRACE = false;
 
-	public static void generate(Map<String, byte[]> bytecodeClasses, EntityClassModel model, String fullInstanceClassName) {
-		bytecodeClasses.put(fullInstanceClassName, dump(model));	
-	}
-
-	public static byte[] dump(EntityClassModel model) {
+	public static byte[] generate(EntityClassModel model, String fullInstanceClassName) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 
 		ClassVisitor cw;

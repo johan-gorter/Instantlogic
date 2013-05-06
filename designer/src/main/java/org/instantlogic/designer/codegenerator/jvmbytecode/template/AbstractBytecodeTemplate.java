@@ -12,6 +12,7 @@ package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.instantlogic.designer.codegenerator.classmodel.ContentModel;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionModel;
@@ -122,12 +123,74 @@ public class AbstractBytecodeTemplate implements Opcodes {
 			mv.visitFieldInsn(GETSTATIC, packageInternalName + className, "INSTANCE", "L"+packageInternalName+className+";");
 		}
 	}
+	
+	protected static void dumpStringArray(MethodVisitor mv, String[] array) {
+		mv.visitIntInsn(BIPUSH, array.length);
+		mv.visitTypeInsn(ANEWARRAY, "java/lang/String");
+		for (int i = 0;i<array.length;i++) {
+			mv.visitInsn(DUP);
+			mv.visitIntInsn(BIPUSH, i);
+			mv.visitLdcInsn(array[i]);
+			mv.visitInsn(AASTORE);
+		}
+	}
 
 	protected static void dumpContent(MethodVisitor mv, String className, ContentModel content) {
-		mv.visitTypeInsn(NEW, "org/instantlogic/interaction/page/FragmentTemplate");
-		mv.visitInsn(DUP);
-		mv.visitLdcInsn("Fragmnttmpltdsgn__000c");
-		mv.visitLdcInsn("Page");
-		mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/page/FragmentTemplate", "<init>", "(Ljava/lang/String;Ljava/lang/String;)V");
+		switch (content.category) {
+			case Shared:
+				// new org.instantlogic.interaction.page.SharedElementHolder("${content.id}", ${rootPackageName}.sharedpagefragment.${content.name}PageFragment.INSTANCE)
+				mv.visitTypeInsn(NEW, "org/instantlogic/interaction/page/SharedElementHolder");
+				mv.visitInsn(DUP);
+				mv.visitLdcInsn("Sharedelemntdsgn__0001");
+				emitGetInstanceField(mv, content.getRootPackageInternalPrefix()+"sharedpagefragment/", content.name+"PageFragment");
+				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/page/SharedElementHolder", "<init>", "(Ljava/lang/String;Lorg/instantlogic/interaction/page/SharedElement;)V");
+				break;
+			case Selection:
+				mv.visitTypeInsn(NEW, "org/instantlogic/interaction/page/SelectionElement");
+				mv.visitInsn(DUP);
+				mv.visitMethodInsn(INVOKESTATIC, className, "createDeduction"+content.deductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
+				dumpContent(mv, className, content.child);
+				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/page/SelectionElement", "<init>", "(Lorg/instantlogic/fabric/deduction/Deduction;Lorg/instantlogic/interaction/page/Element;)V");
+				break;
+			case IfElse:
+				//TODO
+				throw new RuntimeException("TODO");
+				// break;
+			case Fragment:
+				// new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__000c", "Page")
+				mv.visitTypeInsn(NEW, "org/instantlogic/interaction/page/FragmentTemplate");
+				mv.visitInsn(DUP);
+				mv.visitLdcInsn(content.id);
+				mv.visitLdcInsn(content.fragmentTypeName);
+				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/page/FragmentTemplate", "<init>", "(Ljava/lang/String;Ljava/lang/String;)V");
+				// .setStyleNames(new String[]{"answer-span8"})
+				if (content.styleNames!=null) {
+					dumpStringArray(mv, content.styleNames);
+					mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "setStyleNames", "([Ljava/lang/String;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
+				}
+				// TODO: content.fragmentFilters
+				// TODO: content.event
+				// TODO: content.attribute
+				for (Map.Entry<String, Integer> entry : content.values.entrySet()) {
+					// .putValue("applicationName", createDeduction0()) 
+					mv.visitLdcInsn(entry.getKey());
+					mv.visitMethodInsn(INVOKESTATIC, className, "createDeduction"+entry.getValue(), "()Lorg/instantlogic/fabric/deduction/Deduction;");
+					mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "putValue", "(Ljava/lang/String;Lorg/instantlogic/fabric/deduction/Deduction;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
+				}
+				for (Map.Entry<String, TextModel> entry : content.texts.entrySet()) {
+					mv.visitLdcInsn(entry.getKey());
+					dumpText(mv, className, entry.getValue());
+					mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "putText", "(Ljava/lang/String;Lorg/instantlogic/fabric/text/TextTemplate;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
+				}
+				for (Map.Entry<String, List<ContentModel>> entry : content.childLists.entrySet()) {
+					for (ContentModel child : entry.getValue()) {
+			            // .addChild("mainContent",
+						mv.visitLdcInsn(entry.getKey());
+						dumpContent(mv, className, child);
+						mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "addChild", "(Ljava/lang/String;Lorg/instantlogic/interaction/page/Element;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
+					}
+				}
+				break;
+		}
 	}
 }

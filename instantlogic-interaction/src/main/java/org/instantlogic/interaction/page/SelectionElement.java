@@ -28,11 +28,11 @@ import org.instantlogic.interaction.util.RenderContext;
 public class SelectionElement extends Element {
 
 	private final Deduction<?> selection;
-	private final Element[] children; // TODO: Single child
+	private final Element child;
 	
-	public SelectionElement(Deduction<?> selection, Element... children) {
+	public SelectionElement(Deduction<?> selection, Element child) {
 		this.selection = selection;
-		this.children = children;
+		this.child = child;
 	}
 
 	@Override
@@ -58,9 +58,7 @@ public class SelectionElement extends Element {
 			Instance instance = (Instance) value;
 			context.enterScope(instance);
 			context.pushSelectedInstance(instance);
-			for (Element template: children) {
-				template.render(context, appendTo);
-			}
+			child.render(context, appendTo);
 			context.popSelectedInstance(instance);
 			context.exitScope();
 		} else {
@@ -97,15 +95,7 @@ public class SelectionElement extends Element {
 			Instance instance = (Instance) value;
 			submitContext.enterScope(instance);
 			submitContext.pushSelectedInstance(instance);
-			for (Element template: children) {
-				FlowEventOccurrence itemResult = template.submit(submitContext);
-				if (itemResult!=null) {
-					if (result!=null) { 
-						throw new RuntimeException("More than one FlowEventOccurrence");
-					}
-					result = itemResult;
-				}
-			}
+			result = child.submit(submitContext);
 			submitContext.popSelectedInstance(instance);
 			submitContext.exitScope();
 		} else {
@@ -134,9 +124,7 @@ public class SelectionElement extends Element {
 			Instance instance = (Instance) value;
 			changeContext.enterScope(instance);
 			changeContext.pushSelectedInstance(instance);
-			for (Element template: children) {
-				template.change(changeContext);
-			}
+			child.change(changeContext);
 			changeContext.popSelectedInstance(instance);
 			changeContext.exitScope();
 		} else {
