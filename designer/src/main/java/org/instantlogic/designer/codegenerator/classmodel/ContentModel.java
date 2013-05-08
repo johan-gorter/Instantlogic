@@ -35,6 +35,7 @@ public class ContentModel {
 	public int deductionIndex;
 	public String entity;
 	public String attribute;
+	public boolean attributeIsRelation;
 	public boolean required;
 	public boolean readOnly;
 	public String relationEntity;

@@ -153,9 +153,22 @@ public class AbstractBytecodeTemplate implements Opcodes {
 				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/page/SelectionElement", "<init>", "(Lorg/instantlogic/fabric/deduction/Deduction;Lorg/instantlogic/interaction/page/Element;)V");
 				break;
 			case IfElse:
-				//TODO
-				throw new RuntimeException("TODO");
-				// break;
+				// new org.instantlogic.interaction.page.IfElseElement(createDeduction2(), ... , ... )
+				mv.visitTypeInsn(NEW, "org/instantlogic/interaction/page/IfElseElement");
+				mv.visitInsn(DUP);
+				mv.visitMethodInsn(INVOKESTATIC, "org/instantlogic/designer/sharedpagefragment/ElementEditorPageFragment", "createDeduction"+content.deductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
+				if (content.child!=null) {
+					dumpContent(mv, className, content.child);
+				} else {
+					mv.visitInsn(ACONST_NULL);
+				}
+				if (content.elseChild!=null) {
+					dumpContent(mv, className, content.elseChild);
+				} else {
+					mv.visitInsn(ACONST_NULL);
+				}
+				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/page/IfElseElement", "<init>", "(Lorg/instantlogic/fabric/deduction/Deduction;Lorg/instantlogic/interaction/page/Element;Lorg/instantlogic/interaction/page/Element;)V");
+				break;
 			case Fragment:
 				// new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__000c", "Page")
 				mv.visitTypeInsn(NEW, "org/instantlogic/interaction/page/FragmentTemplate");
@@ -168,9 +181,27 @@ public class AbstractBytecodeTemplate implements Opcodes {
 					dumpStringArray(mv, content.styleNames);
 					mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "setStyleNames", "([Ljava/lang/String;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
 				}
-				// TODO: content.fragmentFilters
-				// TODO: content.event
-				// TODO: content.attribute
+			    if (content.fragmentFilters!=null) {
+			    	for (String fragmentFilter : content.fragmentFilters) {
+			    		// .addCustomFilter(new org.instantlogic.designer.fragmentfilter.PreviewFragmentFilter())
+			    		fragmentFilter = fragmentFilter.replace('.', '/');
+			    		mv.visitTypeInsn(NEW, fragmentFilter);
+			    		mv.visitInsn(DUP);
+			    		mv.visitMethodInsn(INVOKESPECIAL, fragmentFilter, "<init>", "()V");
+			    		mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "addCustomFilter", "(Lorg/instantlogic/interaction/page/FragmentFilter;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
+			    	}
+			    }
+			    if (content.event!=null) {
+			    	// .setEvent(org.instantlogic.designer.event.NewAttributeForFragmentTemplateEvent.INSTANCE)
+			    	emitGetInstanceField(mv, content.getRootPackageInternalPrefix()+"event/", content.event+"Event");
+			    	mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "setEvent", "(Lorg/instantlogic/interaction/flow/FlowEvent;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
+			    }
+			    if (content.attribute!=null) {
+			    	//.setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity)
+			    	emitGetInstanceField(mv, content.getRootPackageInternalPrefix()+"entity/", content.entity+"Entity");
+			    	mv.visitFieldInsn(GETSTATIC, content.getRootPackageInternalPrefix()+"entity/"+content.entity+"Entity", content.attribute, content.attributeIsRelation?"Lorg/instantlogic/fabric/model/Relation;":"Lorg/instantlogic/fabric/model/Attribute;");  
+                    mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "setField", "(Lorg/instantlogic/fabric/model/Entity;Lorg/instantlogic/fabric/model/Attribute;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
+			    }			    
 				for (Map.Entry<String, Integer> entry : content.values.entrySet()) {
 					// .putValue("applicationName", createDeduction0()) 
 					mv.visitLdcInsn(entry.getKey());

@@ -17,6 +17,7 @@ import org.instantlogic.designer.ElementDesign;
 import org.instantlogic.designer.FragmentTemplateDesign;
 import org.instantlogic.designer.IfElseDesign;
 import org.instantlogic.designer.PropertyDesign;
+import org.instantlogic.designer.RelationDesign;
 import org.instantlogic.designer.SelectionDesign;
 import org.instantlogic.designer.SharedElementDesign;
 import org.instantlogic.designer.codegenerator.classmodel.AbstractClassModel;
@@ -77,6 +78,7 @@ public abstract class ContentGenerator extends AbstractGenerator {
 			if (fragmentTemplate.getAttribute()!=null) {
 				model.entity = fragmentTemplate.getEntity().getTechnicalNameCapitalized();
 				model.attribute = fragmentTemplate.getAttribute().getTechnicalName();
+				model.attributeIsRelation = (fragmentTemplate.getAttribute() instanceof RelationDesign);
 			}
 		} else if (element instanceof SelectionDesign) {
 			model.category = Category.Selection;
