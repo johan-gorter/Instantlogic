@@ -58,21 +58,21 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 		<#list attributes as attribute>
 		org.instantlogic.fabric.model.impl.SimpleAttribute<${rootPackageName}.${technicalNameCapitalized}, ${attribute.className}, ${attribute.itemClassName}> $${attribute.javaIdentifier}
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<${rootPackageName}.${technicalNameCapitalized}, ${attribute.className}, ${attribute.itemClassName}>(
-				"${attribute.name}", INSTANCE, ${attribute.itemClassName}.class, "${attribute.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
+				"${attribute.id}", "${attribute.name}", INSTANCE, ${attribute.itemClassName}.class, "${attribute.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
 		${attribute.javaIdentifier} = $${attribute.javaIdentifier};
 		</#list>
 		// Relations
 		<#list relations as relation>
 		org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}> $${relation.javaIdentifier}
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}>(
-				"${relation.name}", INSTANCE, "${relation.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
+				"${relation.id}", "${relation.name}", INSTANCE, "${relation.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
 		${relation.javaIdentifier} = $${relation.javaIdentifier};
 		</#list>
 		// Reverse relations
 		<#list reverseRelations as relation>
 		org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}> $${relation.javaIdentifier}
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<${rootPackageName}.${technicalNameCapitalized}, ${relation.to}, ${rootPackageName}.${relation.item}>(
-				"${relation.name}", INSTANCE, "${relation.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
+				"${relation.id}", "${relation.name}", INSTANCE, "${relation.javaIdentifier}", ${rootPackageName}.<#if isCustomized>Abstract</#if>${technicalNameCapitalized}.class);
 		${relation.javaIdentifier} = $${relation.javaIdentifier};
 		</#list>
 		
@@ -177,6 +177,11 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 	@Override
 	public Class<${rootPackageName}.${technicalNameCapitalized}> getInstanceClass() {
 		return ${rootPackageName}.${technicalNameCapitalized}.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "${id}";
 	}
 	
 	@Override

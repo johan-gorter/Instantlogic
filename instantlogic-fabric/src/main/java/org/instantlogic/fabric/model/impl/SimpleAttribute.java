@@ -28,6 +28,7 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 	private static final Validation[] NO_VALIDATIONS = new Validation[0];
 	
 	private final String name;
+	private final String id;
 	private final Entity<I> entity;
 	private final Class<Item> javaClassName;
 
@@ -42,6 +43,11 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 	private Field instanceField; 
 	
 	public SimpleAttribute(String name, Entity<I> entity, Class<Item> javaClassName, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
+		this(null, name, entity, javaClassName, instanceFieldName, instanceFieldClass);
+	}
+	
+	public SimpleAttribute(String id, String name, Entity<I> entity, Class<Item> javaClassName, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
+		this.id = id;
 		this.name = name;
 		this.entity = entity;
 		this.javaClassName = javaClassName;
@@ -51,6 +57,11 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 		} catch (Exception e) {
 			throw new RuntimeException("Problem with field "+instanceFieldName+" from "+entity.getInstanceClass(), e);
 		}
+	}
+
+	@Override
+	public String getUniqueId() {
+		return id;
 	}
 
 	@Override

@@ -18,6 +18,10 @@ public abstract class Concept implements Comparable<Concept> {
 	
 	public abstract String getName();
 	
+	public String getUniqueId() {
+		throw new RuntimeException("TODO");
+	}
+	
 	@Override
 	public int compareTo(Concept o) {
 		String n1 = getName();

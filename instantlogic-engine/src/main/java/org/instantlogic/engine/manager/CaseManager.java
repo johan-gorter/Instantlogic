@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.instantlogic.engine.TravelerProxy;
+import org.instantlogic.engine.message.ApplicationUpdate;
 import org.instantlogic.engine.message.Message;
 import org.instantlogic.engine.presence.Presence;
 import org.instantlogic.engine.presence.Traveler;
@@ -21,34 +22,37 @@ import org.instantlogic.fabric.CaseInstanceTriggers;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.Operation;
+import org.instantlogic.interaction.Application;
 import org.instantlogic.tools.persistence.json.CasePersister;
 import org.instantlogic.tools.persistence.json.FileCasePersister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Only a single thread accesses the CaseManager at the same time.
+ * Only a single thread may access the CaseManager at the same time.
  */
 public class CaseManager {
 
 	private static final Logger logger = LoggerFactory.getLogger(CaseManager.class);
 	
 	private final String caseId;
-	private final Instance theCase;
+	private Instance theCase;
+	private Application application;
 	/**
 	 * Administration for users, travelers and places.
 	 */
 	private final Presence presence;
-	private final ApplicationManager application;
+	private final ApplicationManager applicationManager;
 	
-	public CaseManager(ApplicationManager application, String caseId) {
+	public CaseManager(ApplicationManager applicationManager, String caseId) {
 		if (caseId==null) caseId = FileCasePersister.uniqueId();
 		this.caseId = caseId;
-		this.application = application;
+		this.applicationManager = applicationManager;
 		this.presence = new Presence();
-		this.presence.setApplicationName(application.getApplication().getName());
+		this.presence.setApplicationName(applicationManager.getApplication().getName());
 		this.presence.setCaseName(caseId);
-		this.theCase = FileCasePersister.INSTANCE.loadOrCreate(caseId, application.getApplication().getCaseEntity().getInstanceClass());
+		this.application = applicationManager.getApplication();
+		this.theCase = FileCasePersister.INSTANCE.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass());
 	}
 
 	public void sendUpdates() {
@@ -86,7 +90,7 @@ public class CaseManager {
 			Operation presenceOperation = presenceCaseAdministration.startOperation();
 			try {
 				for (Message message:messages) {
-					message.execute(application.getApplication(), traveler, this.presence, this.theCase);
+					message.execute(application, traveler, this.presence, this.theCase);
 				}
 				operation.complete();
 				presenceOperation.complete();
@@ -111,7 +115,7 @@ public class CaseManager {
 	}
 
 	public ApplicationManager getApplicationManager() {
-		return application;
+		return applicationManager;
 	}
 	
 	public String getCaseId() {
@@ -130,4 +134,11 @@ public class CaseManager {
 		sb.append(CasePersister.gson.toJson(presence));
 	}
 
+	public void updateApplication(ApplicationUpdate applicationUpdateMessage) {
+		this.application = applicationUpdateMessage.application;
+		this.theCase = applicationUpdateMessage.loadFrom(this.theCase);
+		for (Traveler traveler: presence.getActiveTravelers()) {
+			traveler.applicationUpdated();
+		}
+	}
 }

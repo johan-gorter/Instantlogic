@@ -33,7 +33,8 @@ public class CaseAdministration {
 	private Observations currentObservations = null;
 	private IdGenerator idGenerator;
 	
-	private SortedMap<String, Entity<?>> allEntities;
+	private SortedMap<String, Entity<?>> allEntitiesByName;
+	private SortedMap<String, Entity<?>> allEntitiesById;
 	
 	private Map<String, Instance> instanceByUniqueId = new HashMap<String, Instance>();
 	
@@ -53,13 +54,38 @@ public class CaseAdministration {
 		}
 	}
 	
+	private static void addEntitiesById(Entity<?> entity, SortedMap<String, Entity<?>> all) {
+		if (all.containsKey(entity.getUniqueId())) {
+			return;
+		}
+		all.put(entity.getUniqueId(), entity);
+		if (entity.extendsEntity()!=null) {
+			addEntities(entity.extendsEntity(), all);
+		}
+		for (Entity<?> extension : entity.extensions()) {
+			addEntities(extension, all);
+		}
+		for (Relation<?, ?, ? extends Instance> relation : entity.getRelations()) {
+			addEntities(relation.getTo(), all);
+		}
+	}
+	
 	public SortedMap<String, Entity<?>> getAllEntities() {
-		if (allEntities==null) {
+		if (allEntitiesByName==null) {
 			TreeMap<String, Entity<?>> tempResult = new TreeMap<String, Entity<?>>();
 			addEntities(rootInstance.getMetadata().getEntity(), tempResult);
-			allEntities = tempResult;
+			allEntitiesByName = tempResult;
 		}
-		return allEntities;
+		return allEntitiesByName;
+	}
+
+	public SortedMap<String, Entity<?>> getAllEntitiesById() {
+		if (allEntitiesById==null) {
+			TreeMap<String, Entity<?>> tempResult = new TreeMap<String, Entity<?>>();
+			addEntitiesById(rootInstance.getMetadata().getEntity(), tempResult);
+			allEntitiesById = tempResult;
+		}
+		return allEntitiesById;
 	}
 	
 	// Convenience method

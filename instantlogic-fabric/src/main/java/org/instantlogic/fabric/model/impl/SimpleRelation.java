@@ -24,6 +24,7 @@ import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 
 public class SimpleRelation<I extends Instance, Value extends Object, To extends Instance> extends Relation<I, Value, To> {
 
+	private final String id;
 	private final String name;
 	private final Entity<I> entity;
 	private Field instanceField;
@@ -44,8 +45,12 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 	public TextTemplate question;
 	public Deduction<? extends Iterable<To>> options; 
 
-	// New constructor
 	public SimpleRelation(String name, Entity<I> entity, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
+		this(null, name, entity, instanceFieldName, instanceFieldClass);
+	}
+	
+	public SimpleRelation(String id, String name, Entity<I> entity, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
+		this.id = id;
 		this.name = name;
 		this.entity = entity;
 		try {

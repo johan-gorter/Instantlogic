@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.instantlogic.engine.TravelerProxy;
+import org.instantlogic.engine.message.ApplicationUpdate;
 import org.instantlogic.engine.message.Message;
 
 /**
@@ -24,11 +25,13 @@ public class CaseProcessor {
 	public static class QueueEntry {
 		public final TravelerProxy travelerProxy; 
 		public final List<Message> messages;
+		public final ApplicationUpdate applicationUpdate;
 		public final QueueEntry previousEntry;
 		
-		public QueueEntry(TravelerProxy travelerProxy, List<Message> messages, QueueEntry previousEntry) {
+		public QueueEntry(TravelerProxy travelerProxy, List<Message> messages, ApplicationUpdate applicationUpdate, QueueEntry previousEntry) {
 			this.travelerProxy = travelerProxy;
 			this.messages = messages;
+			this.applicationUpdate = applicationUpdate;
 			this.previousEntry = previousEntry;
 		}
 	}
@@ -42,16 +45,24 @@ public class CaseProcessor {
 	public CaseProcessor(ApplicationManager applicationManager, String caseId) {
 		this.caseManager = applicationManager.getOrCreateCase(caseId);
 	}
-
+	
+	public void processApplicationUpdate(ApplicationUpdate applicationUpdate) {
+		processMessagesAndSendUpdates(null, null, applicationUpdate);
+	}
+	
 	public void processMessagesAndSendUpdates(TravelerProxy travelerProxy, List<Message> messages) {
+		processMessagesAndSendUpdates(travelerProxy, messages, null);
+	}
+
+	private void processMessagesAndSendUpdates(TravelerProxy travelerProxy, List<Message> messages, ApplicationUpdate applicationUpdate) {
 		List<QueueEntry> processEntries;
 		synchronized (queueLock) {
 			if (queueBeingProcessed) {
-				queueHead = new QueueEntry(travelerProxy, messages, queueHead);
+				queueHead = new QueueEntry(travelerProxy, messages, applicationUpdate, queueHead);
 				return; // Another thread is doing the processing for us
 			} else {
 				processEntries = new ArrayList<QueueEntry>(); // Holds the incoming messages plus the queued ones
-				processEntries.add(new QueueEntry(travelerProxy, messages, queueHead));
+				processEntries.add(new QueueEntry(travelerProxy, messages, applicationUpdate, queueHead));
 				QueueEntry entry = queueHead;
 				while (entry!=null) {
 					processEntries.add(entry);
@@ -65,7 +76,11 @@ public class CaseProcessor {
 			do {
 				for (int i=processEntries.size()-1;i>=0;i--) {
 					QueueEntry entry = processEntries.get(i);
-					caseManager.processMessages(entry.travelerProxy, entry.messages);
+					if (entry.applicationUpdate==null) {
+						caseManager.processMessages(entry.travelerProxy, entry.messages);
+					} else {
+						caseManager.updateApplication(entry.applicationUpdate);
+					}
 				}
 				processEntries.clear();
 				synchronized (queueLock) {

@@ -69,6 +69,7 @@ public class EntityGenerator extends AbstractGenerator {
 			if (!attributeDesign.isValidForCodegeneration()) continue;
 			EntityClassModel.Attribute attribute = new EntityClassModel.Attribute();
 			attribute.name = attributeDesign.getName();
+			attribute.id = attributeDesign.getMetadata().getUniqueId();
 			attribute.technicalName = attributeDesign.getTechnicalName();
 			attribute.technicalNameCapitalized = attributeDesign.getTechnicalNameCapitalized();
 			attribute.javaIdentifier = attributeDesign.getJavaIdentifier();
@@ -110,6 +111,7 @@ public class EntityGenerator extends AbstractGenerator {
 			if (!relationDesign.isValidForCodegeneration()) continue;
 			EntityClassModel.Relation relation = new EntityClassModel.Relation();
 			relation.name = relationDesign.getName();
+			relation.id = relationDesign.getMetadata().getUniqueId();
 			relation.technicalName = relationDesign.getTechnicalName();
 			relation.technicalNameCapitalized = relationDesign.getTechnicalNameCapitalized();
 			relation.javaIdentifier = relationDesign.getJavaIdentifier();
@@ -145,6 +147,7 @@ public class EntityGenerator extends AbstractGenerator {
 				EntityClassModel.Relation relation = new EntityClassModel.Relation();
 				// Inversion takes place here
 				relation.name = relationDesign.getReverseName();
+				relation.id = relationDesign.getMetadata().getUniqueId();
 				relation.technicalName = relationDesign.getReverseTechnicalName();
 				relation.technicalNameCapitalized = TechnicalNameDeduction.capitalizeFirst(relationDesign.getReverseTechnicalName());
 				relation.javaIdentifier = relationDesign.getReverseJavaIdentifier();
@@ -234,6 +237,7 @@ public class EntityGenerator extends AbstractGenerator {
 	private EntityClassModel initModel() {
 		EntityClassModel model = new EntityClassModel();
 		model.name = entityDesign.getName();
+		model.id = entityDesign.getMetadata().getUniqueId();
 		model.technicalNameCapitalized = entityDesign.getTechnicalNameCapitalized();
 		model.isCustomized = entityDesign.getIsCustomized()==Boolean.TRUE;
 		return model;

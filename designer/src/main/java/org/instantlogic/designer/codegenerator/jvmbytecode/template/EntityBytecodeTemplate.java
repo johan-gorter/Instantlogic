@@ -132,12 +132,13 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 				//description = $description;
 				mv.visitTypeInsn(NEW, "org/instantlogic/fabric/model/impl/SimpleAttribute");
 				mv.visitInsn(DUP);
+				mv.visitLdcInsn(a.id);
 				mv.visitLdcInsn(a.name);
 				mv.visitFieldInsn(GETSTATIC, className, "INSTANCE", "L"+className+";");
 				mv.visitLdcInsn(Type.getType("L"+a.internalClassName+";"));
 				mv.visitLdcInsn(a.javaIdentifier);
 				mv.visitLdcInsn(Type.getType("L"+abstractInstanceClassName+";"));
-				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleAttribute", "<init>", "(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Class;)V");
+				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleAttribute", "<init>", "(Ljava/lang/String;Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Class;)V");
 				mv.visitVarInsn(ASTORE, localVariableIndex);
 				Label label = new Label();
 				mv.visitLabel(label);
@@ -152,11 +153,12 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 				//		"issues", INSTANCE, "issues", org.instantlogic.example.izzy.Project.class);
 				mv.visitTypeInsn(NEW, "org/instantlogic/fabric/model/impl/SimpleRelation");
 				mv.visitInsn(DUP);
+				mv.visitLdcInsn(r.id);
 				mv.visitLdcInsn(r.name);
 				mv.visitFieldInsn(GETSTATIC, className, "INSTANCE", "L"+className+";");
 				mv.visitLdcInsn(r.javaIdentifier);
 				mv.visitLdcInsn(Type.getType("L"+abstractInstanceClassName+";"));
-				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleRelation", "<init>", "(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/String;Ljava/lang/Class;)V");
+				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleRelation", "<init>", "(Ljava/lang/String;Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/String;Ljava/lang/Class;)V");
 				mv.visitVarInsn(ASTORE, localVariableIndex);
 				Label label = new Label();
 				mv.visitLabel(label);
@@ -172,11 +174,12 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 				//project = $project;
 				mv.visitTypeInsn(NEW, "org/instantlogic/fabric/model/impl/SimpleRelation");
 				mv.visitInsn(DUP);
+				mv.visitLdcInsn(r.id);
 				mv.visitLdcInsn(r.name);
 				mv.visitFieldInsn(GETSTATIC, className, "INSTANCE", "L"+className+";");
 				mv.visitLdcInsn(r.javaIdentifier);
 				mv.visitLdcInsn(Type.getType("L"+abstractInstanceClassName+";"));
-				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleRelation", "<init>", "(Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/String;Ljava/lang/Class;)V");
+				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleRelation", "<init>", "(Ljava/lang/String;Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/String;Ljava/lang/Class;)V");
 				mv.visitVarInsn(ASTORE, localVariableIndex);
 				Label label = new Label();
 				mv.visitLabel(label);
@@ -422,6 +425,18 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv = cw.visitMethod(ACC_PUBLIC, "getInstanceClass", "()Ljava/lang/Class;", "()Ljava/lang/Class<L"+instanceClassName+";>;", null);
 			mv.visitCode();
 			mv.visitLdcInsn(Type.getType("L"+instanceClassName+";"));
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}
+		//@Override
+		//public String getUniqueId() {
+		//	return "acb...";
+		//}
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "getUniqueId", "()Ljava/lang/String;", null, null);
+			mv.visitCode();
+			mv.visitLdcInsn(model.id);
 			mv.visitInsn(ARETURN);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();

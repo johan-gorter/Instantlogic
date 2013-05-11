@@ -214,4 +214,12 @@ public class Traveler extends AbstractTraveler {
 		}
 		this.proxy.sendUpdates(Collections.singletonList(new Update(exception, rendering)));
 	}
+
+	public void applicationUpdated() {
+		placeOutdated = true;
+		if (placeOutdatedObserver!=null) {
+			placeOutdatedObserver.remove();
+			placeOutdatedObserver = null;
+		}
+	}
 }

@@ -113,10 +113,6 @@ public abstract class Entity<I extends Instance> extends Concept {
 
 	public abstract I createInstance();
 	
-	public I createInstance(String uniqueId) {
-		throw new RuntimeException("");
-	}
-	
 	public abstract Class<I> getInstanceClass();
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -212,5 +208,25 @@ public abstract class Entity<I extends Instance> extends Concept {
 			return extendsEntity().getAttributeOrRelation(name);
 		}
 		throw new NoSuchElementException(name);
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Relation getRelationById(String relationId) {
+		for (Relation relation: getRelations()) {
+			if (relationId.equals(relation.getUniqueId())) {
+				return relation;
+			}
+		}
+		return null;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Attribute getAttributeById(String attributeId) {
+		for (Attribute attribute: getAttributes()) {
+			if (attributeId.equals(attribute.getUniqueId())) {
+				return attribute;
+			}
+		}
+		return null;
 	}
 }

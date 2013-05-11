@@ -32,6 +32,7 @@ public class EntityClassModel extends AbstractClassModel {
 		}
 		
 		public String name;
+		public String id;
 		public String technicalName;
 		public String technicalNameCapitalized;
 		public String javaIdentifier;
