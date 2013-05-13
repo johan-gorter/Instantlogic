@@ -28,8 +28,8 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
-import org.instantlogic.engine.manager.ApplicationManager;
-import org.instantlogic.engine.manager.EngineProcessor;
+import org.instantlogic.designer.DesignerApplication;
+import org.instantlogic.engine.manager.EngineManager;
 import org.instantlogic.engine.manager.Update;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
@@ -45,6 +45,9 @@ public class NettyServer {
 	private static final Update FILES_UPDATED = new Update("filesUpdated");
 	private static final Update CSS_FILES_UPDATED = new Update("cssFilesUpdated");
 
+	private static TravelersManagement travelersManagement;
+	private static EngineManager engineManager;
+	
 	private static Runnable fileWatcher = new Runnable() {
 		@Override
 		public void run() {
@@ -58,6 +61,51 @@ public class NettyServer {
 			watch("src/main/webroot/style");
 		}
 	};
+	
+	public static void main(String[] args) throws IOException {
+		DesignerApplicationManager.registerDesignerApplication();
+		engineManager = new EngineManager();
+		engineManager.registerApplication(DesignerApplication.INSTANCE);
+		engineManager.registerWebappsDirectory(new File("../webapps"));
+		
+		travelersManagement = new TravelersManagement(engineManager);
+		
+		ExecutorService executor = Executors.newCachedThreadPool(factory);
+		ServerBootstrap bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newSingleThreadExecutor(factory), executor));
+
+		// Set up the event pipeline factory.
+		bootstrap.setPipelineFactory(new InstantlogicPipelineFactory(travelersManagement));
+
+		if (WATCH_FILES) {
+			executor.execute(fileWatcher);
+			executor.execute(fileWatcherStyle);
+		}
+		
+		bootstrap.bind(new InetSocketAddress(8080));
+		logger.info("Server started");
+		
+		ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1,factory);
+		scheduler.scheduleWithFixedDelay(sweeper, 10, 10, TimeUnit.SECONDS); // This may be a bit short for mobile devices on the road
+
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		while (true) {
+			System.out.println("Enter a command");
+			final String command = in.readLine();
+			if ("quit".equalsIgnoreCase(command)) {
+				break;
+			} else if ("case".equalsIgnoreCase(command)) {
+				System.out.println(engineManager.printCaseDiagnostics());
+			} else if ("presence".equalsIgnoreCase(command)) {
+				System.out.println(engineManager.printPresenceDiagnostics());
+			} else if ("sweep".equalsIgnoreCase(command)){
+				travelersManagement.sweep();
+			} else {
+				executor.execute(filesUpdatedBroadcaster);
+			}
+		}
+		scheduler.shutdown();
+		executor.shutdown();
+	}	
 	
 	private static void watch(String dirPath) {
 		try {
@@ -79,7 +127,7 @@ public class NettyServer {
 						break;
 					}
 				}
-				NettyTraveler.broadcast(cssOnly?CSS_FILES_UPDATED:FILES_UPDATED);
+				travelersManagement.broadcast(cssOnly?CSS_FILES_UPDATED:FILES_UPDATED);
 				if (!key.reset()) break;
 			}
 		} catch (IOException e) {
@@ -90,14 +138,14 @@ public class NettyServer {
 	private static Runnable sweeper = new Runnable() {
 		@Override
 		public void run() {
-			NettyTraveler.sweep();
+			travelersManagement.sweep();
 		}
 	};
 
 	private static Runnable filesUpdatedBroadcaster = new Runnable() {
 		@Override
 		public void run() {
-			NettyTraveler.broadcast(FILES_UPDATED);
+			travelersManagement.broadcast(FILES_UPDATED);
 		}
 	};
 
@@ -118,46 +166,4 @@ public class NettyServer {
 	        return thread;
 		}
 	};
-
-	public static void main(String[] args) throws IOException {
-
-		DesignerApplicationManager.registerDesignerApplication();
-		ApplicationManager.registerWebappsDirectory(new File("../webapps"));
-		
-		ExecutorService executor = Executors.newCachedThreadPool(factory);
-		ServerBootstrap bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newSingleThreadExecutor(factory), executor));
-
-		// Set up the event pipeline factory.
-		bootstrap.setPipelineFactory(new InstantlogicPipelineFactory());
-
-		if (WATCH_FILES) {
-			executor.execute(fileWatcher);
-			executor.execute(fileWatcherStyle);
-		}
-		
-		bootstrap.bind(new InetSocketAddress(8080));
-		logger.info("Server started");
-		
-		ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1,factory);
-		scheduler.scheduleWithFixedDelay(sweeper, 10, 10, TimeUnit.SECONDS); // This may be a bit short for mobile devices on the road
-
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		while (true) {
-			System.out.println("Enter a command");
-			final String command = in.readLine();
-			if ("quit".equalsIgnoreCase(command)) {
-				break;
-			} else if ("case".equalsIgnoreCase(command)) {
-				System.out.println(EngineProcessor.printCaseDiagnostics());
-			} else if ("presence".equalsIgnoreCase(command)) {
-				System.out.println(EngineProcessor.printPresenceDiagnostics());
-			} else if ("sweep".equalsIgnoreCase(command)){
-				NettyTraveler.sweep();
-			} else {
-				executor.execute(filesUpdatedBroadcaster);
-			}
-		}
-		scheduler.shutdown();
-		executor.shutdown();
-	}
 }

@@ -33,6 +33,12 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
 
 	private static final Logger logger = LoggerFactory.getLogger(InstantlogicRequestHandler.class);
 	
+	private final TravelersManagement travelersManagement;
+	
+	public InstantlogicRequestHandler(TravelersManagement travelersManagement) {
+		this.travelersManagement = travelersManagement;
+	}
+
 	@Override
 	protected void handlePost(ChannelHandlerContext ctx, MessageEvent e, HttpRequest request) throws Exception {
 		if (HttpHeaders.is100ContinueExpected(request)) {
@@ -60,7 +66,7 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
 		}
 		String caseId = cases.get(0);
 		
-		NettyTraveler nettyTraveler = NettyTraveler.getOrCreate(travelerId, applicationName, caseId);
+		NettyTraveler nettyTraveler = travelersManagement.getOrCreate(travelerId, applicationName, caseId);
 		
 		nettyTraveler.verifyIncomingAuthentication(request);
 

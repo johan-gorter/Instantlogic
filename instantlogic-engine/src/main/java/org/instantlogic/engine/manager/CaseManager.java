@@ -23,7 +23,7 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.Operation;
 import org.instantlogic.interaction.Application;
-import org.instantlogic.tools.persistence.json.CasePersister;
+import org.instantlogic.interaction.PersistenceStrategy;
 import org.instantlogic.tools.persistence.json.FileCasePersister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,16 +43,18 @@ public class CaseManager {
 	 */
 	private final Presence presence;
 	private final ApplicationManager applicationManager;
+	private final PersistenceStrategy persistenceStrategy;
 	
-	public CaseManager(ApplicationManager applicationManager, String caseId) {
-		if (caseId==null) caseId = FileCasePersister.uniqueId();
+	public CaseManager(ApplicationManager applicationManager, String caseId, PersistenceStrategy persistenceStrategy) {
+		this.persistenceStrategy = persistenceStrategy;
+		if (caseId==null) caseId = persistenceStrategy.uniqueId();
 		this.caseId = caseId;
 		this.applicationManager = applicationManager;
 		this.presence = new Presence();
 		this.presence.setApplicationName(applicationManager.getApplication().getName());
 		this.presence.setCaseName(caseId);
 		this.application = applicationManager.getApplication();
-		this.theCase = FileCasePersister.INSTANCE.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass());
+		this.theCase = persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass());
 	}
 
 	public void sendUpdates() {
@@ -96,7 +98,7 @@ public class CaseManager {
 				presenceOperation.complete();
 				long version = caseAdministration.getVersion();
 				caseAdministration.setVersion(version+1);
-				FileCasePersister.INSTANCE.persist(this.caseId, this.theCase, (int)version);
+				persistenceStrategy.persist(this.caseId, this.theCase, (int)version); //TODO: provide a list of changed stored fields
 				if (this.theCase instanceof CaseInstanceTriggers) {
 					((CaseInstanceTriggers)this.theCase).afterPersist();
 				}
@@ -127,11 +129,11 @@ public class CaseManager {
 	}
 
 	public void printCaseDiagnostics(StringBuffer sb) {
-		sb.append(CasePersister.gson.toJson(theCase));
+		sb.append(FileCasePersister.gson.toJson(theCase));
 	}
 
 	public void printPresenceDiagnostics(StringBuffer sb) {
-		sb.append(CasePersister.gson.toJson(presence));
+		sb.append(FileCasePersister.gson.toJson(presence));
 	}
 
 	public void updateApplication(ApplicationUpdate applicationUpdateMessage) {

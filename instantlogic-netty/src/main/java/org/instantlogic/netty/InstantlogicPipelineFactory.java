@@ -20,6 +20,13 @@ import org.jboss.netty.handler.codec.http.HttpResponseEncoder;
 
 public class InstantlogicPipelineFactory implements ChannelPipelineFactory {
 
+	private final TravelersManagement travelersManagement;
+	
+	public InstantlogicPipelineFactory(TravelersManagement travelersManagement) {
+		this.travelersManagement = travelersManagement;
+	}
+
+
 	@Override
 	public ChannelPipeline getPipeline() throws Exception {
 		ChannelPipeline pipeline = Channels.pipeline();
@@ -34,7 +41,7 @@ public class InstantlogicPipelineFactory implements ChannelPipelineFactory {
 		pipeline.addLast("aggregator", new HttpChunkAggregator(1048576));
 		pipeline.addLast("encoder", new HttpResponseEncoder());
 		pipeline.addLast("deflater", new HttpContentCompressor());
-		pipeline.addLast("handler", new InstantlogicRequestHandler());
+		pipeline.addLast("handler", new InstantlogicRequestHandler(travelersManagement));
 		return pipeline;
 	}
 }

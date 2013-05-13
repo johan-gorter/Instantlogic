@@ -2,6 +2,7 @@
   "instanceId": "Applicationdesgn__0001",
   "entityName": "ApplicationDesign",
   "version": 0,
+  "isCustomized": true,
   "name": "Designer",
   "rootPackageName": "org.instantlogic.designer",
   "sourcePath": "target/generated-sources/instantlogic-app",

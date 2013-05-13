@@ -12,14 +12,15 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 		FieldVisitor fv;
 		MethodVisitor mv;
 		
-		String className = model.getRootPackageInternalPrefix()+model.name+"Application";
+		String concreteClassName = model.getRootPackageInternalPrefix()+model.name+"Application";
+		String className = model.isCustomized?model.getRootPackageInternalPrefix()+"Abstract"+model.name+"Application":concreteClassName;
 		
 		// public class ??Application extends org.instantlogic.interaction.Application
 		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className, null, "org/instantlogic/interaction/Application", null);
 
 		// public static final ??Application INSTANCE ...
 		{
-			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "INSTANCE", "L"+className+";", null, null);
+			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "INSTANCE", "L"+concreteClassName+";", null, null);
 			fv.visitEnd();
 		}
 		// private static final String[] THEME_NAMES ...
@@ -32,10 +33,10 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv = cw.visitMethod(ACC_STATIC, "<clinit>", "()V", null, null);
 			mv.visitCode();
 			// INSTANCE = 
-			mv.visitTypeInsn(NEW, className);
+			mv.visitTypeInsn(NEW, concreteClassName);
 			mv.visitInsn(DUP);
-			mv.visitMethodInsn(INVOKESPECIAL, className, "<init>", "()V");
-			mv.visitFieldInsn(PUTSTATIC, className, "INSTANCE", "L"+className+";");
+			mv.visitMethodInsn(INVOKESPECIAL, concreteClassName, "<init>", "()V");
+			mv.visitFieldInsn(PUTSTATIC, concreteClassName, "INSTANCE", "L"+concreteClassName+";");
 			// THEME_NAMES =
 			mv.visitIntInsn(BIPUSH, model.themeNames.length);
 			mv.visitTypeInsn(ANEWARRAY, "java/lang/String");

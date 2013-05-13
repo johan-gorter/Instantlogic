@@ -14,7 +14,7 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 
 	public static final ${technicalNameCapitalized}Application INSTANCE = new ${technicalNameCapitalized}Application();
 	
-	protected ${technicalNameCapitalized}Application() {
+	protected <#if isCustomized>Abstract</#if>${technicalNameCapitalized}Application() {
 	}
 	
 	@Override

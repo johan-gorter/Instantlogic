@@ -19,17 +19,18 @@ import java.io.OutputStreamWriter;
 import java.util.Random;
 
 import org.instantlogic.fabric.Instance;
+import org.instantlogic.interaction.PersistenceStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class FileCasePersister extends CasePersister {
+public class FileCasePersister extends CasePersister implements PersistenceStrategy {
 
 	private static final Logger logger = LoggerFactory.getLogger(FileCasePersister.class);
 	
 	public static final FileCasePersister INSTANCE = new FileCasePersister();
 	
-	private FileCasePersister() {
+	public FileCasePersister() {
 	}
 
 	public static final File casesDir;
@@ -73,7 +74,7 @@ public class FileCasePersister extends CasePersister {
 
 	private static final Random random = new Random();
 
-	public static String uniqueId() {
+	public String uniqueId() {
 		byte[] bytes = new byte[8];
 		random.nextBytes(bytes);
 		StringBuilder sb = new StringBuilder();

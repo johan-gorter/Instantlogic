@@ -25,7 +25,6 @@ public class CompleteScenario {
 
 	@Before
 	public void setUp() {
-		ApplicationManager.registerApplication(IzzyApplication.INSTANCE);
 		tim = new TravelerProxyStub("Tim1", "Tim");
 	}
 	

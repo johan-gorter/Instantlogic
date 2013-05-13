@@ -35,4 +35,8 @@ public abstract class Application {
 	public String[] getThemeNames() {
 		return NO_THEMES;
 	}
+
+	// Injected dependency
+	public void setEnvironment(ApplicationEnvironment environment) {
+	}
 }

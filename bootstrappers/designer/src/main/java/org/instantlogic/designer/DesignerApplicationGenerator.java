@@ -52,6 +52,7 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
         APPLICATION = this;
 		getMetadata().getCaseAdministration().setIdGenerator(new SequencePerLabelIdGenerator()); // predictable Id's for better source control
         setName("Designer");
+        setIsCustomized(true);
         setRootPackageName("org.instantlogic.designer");
         setSourcePath("target/generated-sources/instantlogic-app");
         addDeductionOperations();

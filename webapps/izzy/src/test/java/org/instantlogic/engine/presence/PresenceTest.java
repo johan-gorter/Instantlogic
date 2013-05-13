@@ -28,7 +28,6 @@ public class PresenceTest {
 
 	@Before
 	public void setUp() {
-		ApplicationManager.registerApplication(IzzyApplication.INSTANCE);
 		tim = new TravelerProxyStub("Tim1", "Tim");
 		bill = new TravelerProxyStub("Bill1", "Bill");
 	}
@@ -38,7 +37,7 @@ public class PresenceTest {
 	
 	@Test
 	public void test() {
-		ApplicationManager applicationManager = ApplicationManager.getManager("izzy");
+		ApplicationManager applicationManager = new ApplicationManager(IzzyApplication.INSTANCE);
 		CaseManager case1 = applicationManager.getOrCreateCase("PetStore");
 		
 		case1.processMessages(tim, new StartMessage(null, null));

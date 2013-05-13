@@ -28,7 +28,6 @@ public class PlaceManagerTest {
 
 	@Before
 	public void setUp() {
-		ApplicationManager.registerApplication(IzzyApplication.INSTANCE);
 		travelerInfo = new TravelerInfo("traveler1");
 		travelerInfo.setAuthenticatedUsername("user1");
 		traveler1 = new TravelerProxyStub(travelerInfo);
@@ -40,7 +39,7 @@ public class PlaceManagerTest {
 	
 	@Test
 	public void test() {
-		ApplicationManager applicationManager = ApplicationManager.getManager("izzy");
+		ApplicationManager applicationManager = new ApplicationManager(IzzyApplication.INSTANCE);
 		CaseManager case1 = applicationManager.getOrCreateCase("project1");
 		case1.processMessages(traveler1, Collections.singletonList((Message)new StartMessage(null, null)));
 		case1.sendUpdates();

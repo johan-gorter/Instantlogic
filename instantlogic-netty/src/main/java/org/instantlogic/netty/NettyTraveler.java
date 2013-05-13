@@ -20,13 +20,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.instantlogic.engine.TravelerProxy;
 import org.instantlogic.engine.manager.CaseProcessor;
-import org.instantlogic.engine.manager.EngineProcessor;
 import org.instantlogic.engine.manager.Update;
 import org.instantlogic.engine.message.ChangeMessage;
 import org.instantlogic.engine.message.EnterMessage;
@@ -67,36 +64,12 @@ public class NettyTraveler implements TravelerProxy {
 	
 	private static final Logger logger = LoggerFactory.getLogger(NettyTraveler.class);
 
-	private static final Map<String, NettyTraveler> nettyTravelers = new ConcurrentHashMap<String, NettyTraveler>();
-	private static Gson gson = new Gson();
+	private static final Gson gson = new Gson();
 
-	public static void broadcast(Update message) {
-		logger.info("broadcasting to all {} travelers", nettyTravelers.size());
-		for (NettyTraveler nettyTraveler : nettyTravelers.values()) {
-			nettyTraveler.sendMessage(message);
-		}
-	}
-	
-	public static synchronized NettyTraveler getOrCreate(String travelerId, String applicationName, String caseId) {
-		NettyTraveler result = nettyTravelers.get(travelerId);
-		if (result==null) {
-			logger.info("Registering new traveler {}", travelerId);
-			CaseProcessor caseProcessor = EngineProcessor.getCaseProcessor(applicationName, caseId);
-			result = new NettyTraveler(travelerId, caseProcessor);
-			nettyTravelers.put(travelerId, result);
-		}
-		return result;
-	}
-	
-	public static void sweep() {
-		for(NettyTraveler nettyTraveler : nettyTravelers.values()) {
-			nettyTraveler.check();
-		}
-	}
-	
 	private final TravelerInfo travelerInfo;
 	private final CaseProcessor caseProcessor;
-	
+	private final TravelersManagement travelersManagement;
+		
 	private List<MessageEvent> parkedRequests = new ArrayList<MessageEvent>();
 	private List<Update> updatesWaiting = new ArrayList<Update>();
 	private State state = State.ACTIVE;
@@ -107,10 +80,11 @@ public class NettyTraveler implements TravelerProxy {
 			removeParkedRequestForChannel(future.getChannel());
 		}
 	};
-	
-	private NettyTraveler(String travelerId, CaseProcessor caseProcessor) {
+
+	NettyTraveler(String travelerId, CaseProcessor caseProcessor, TravelersManagement travelersManagement) {
 		travelerInfo = new TravelerInfo(travelerId);
 		this.caseProcessor = caseProcessor;
+		this.travelersManagement = travelersManagement; 
 	}
 
 	/**
@@ -126,7 +100,7 @@ public class NettyTraveler implements TravelerProxy {
 		if (state==State.MAY_BE_OBANDONED) {
 			state = State.REMOVED;
 			logger.info("Removing traveler {}", travelerInfo.getTravelerId());
-			nettyTravelers.remove(travelerInfo.getTravelerId());
+			travelersManagement.removeTraveler(travelerInfo.getTravelerId());
 			this.caseProcessor.processMessagesAndSendUpdates(this, Collections.singletonList((Message)new LeaveMessage()));
 		}
 		if (state==State.ACTIVE && parkedRequests.size()==0) {

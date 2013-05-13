@@ -104,6 +104,9 @@ public class EntityClassModel extends AbstractClassModel {
 		public List<String> getValidations() {
 			return validations;
 		}
+		public String getId() {
+			return id;
+		}
 	}
 	
 	public static class Relation extends Attribute {
