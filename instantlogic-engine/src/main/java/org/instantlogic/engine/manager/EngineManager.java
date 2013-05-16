@@ -1,6 +1,7 @@
 package org.instantlogic.engine.manager;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
@@ -10,9 +11,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.instantlogic.engine.TravelerProxy;
+import org.instantlogic.engine.message.ApplicationUpdate;
 import org.instantlogic.engine.message.Message;
 import org.instantlogic.interaction.Application;
-import org.instantlogic.interaction.ApplicationEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +26,7 @@ public class EngineManager {
 	private Map<String, CaseProcessor> caseProcessors = new ConcurrentHashMap<String, CaseProcessor>();
 	
 	public void registerApplication(Application application) {
-		applicationManagers.put(application.getName(), new ApplicationManager(application));
+		applicationManagers.put(application.getName(), new ApplicationManager(application, this));
 	}
 	
 	public void registerWebappsDirectory(File dir) {
@@ -58,7 +59,7 @@ public class EngineManager {
 			Class<?> applicationClass = classLoader.loadClass(findApplicationClassName("",new File(appDir, "target/generated-classes")));
 			Application application = (Application)applicationClass.getField("INSTANCE").get(null);
 			logger.info("Application [{}] loaded", name);
-			ApplicationManager applicationManager = new ApplicationManager(application);
+			ApplicationManager applicationManager = new ApplicationManager(application, this);
 			application.setEnvironment(applicationManager);
 			applicationManagers.put(name, applicationManager);
 			return applicationManager;
@@ -111,6 +112,40 @@ public class EngineManager {
 			caseProcessor.printPresenceDiagnostics(sb);
 		}
 		return sb.toString();
+	}
+
+	// TODO: Locking is too heavy for this long-running method, use a synchronized method to return a list of keys to caseProcessors which should reload. 
+	public synchronized void updateApplication(Application updatedApplication) {
+		ApplicationManager applicationManager = applicationManagers.get(updatedApplication.getName());
+		if (applicationManager==null) {
+			// Application was not loaded, good for us
+			applicationManager = new ApplicationManager(updatedApplication, this);
+			applicationManagers.put(updatedApplication.getName(), applicationManager);
+		} else {
+			List<String> caseIds = applicationManager.applicationUpdated(updatedApplication);
+			ApplicationUpdate applicationUpdateMessage = new ApplicationUpdate(applicationManager.getApplication(), updatedApplication);
+			for (String caseId : caseIds) {
+				CaseProcessor caseProcessor = caseProcessors.get(updatedApplication.getName()+":"+caseId);
+				if (caseProcessor!=null) {
+					caseProcessor.processApplicationUpdate(applicationUpdateMessage);
+				}
+			}
+
+		}
+	}
+
+	public URL getCustomizationClassesUrl(String applicationName) {
+		for (File dir:webappsDirectories) {
+			File appDir = new File(dir, applicationName); 
+			if (appDir.isDirectory()) {
+				try {
+					return new File(appDir, "target/classes").toURI().toURL();
+				} catch (MalformedURLException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		}
+		return null;
 	}
 	
 }

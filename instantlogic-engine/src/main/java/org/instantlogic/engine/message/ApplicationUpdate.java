@@ -1,5 +1,7 @@
 package org.instantlogic.engine.message;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
@@ -16,8 +18,11 @@ import org.instantlogic.interaction.Application;
 public class ApplicationUpdate {
 
 	public final Application application;
+	public final Application oldApplication;
+	private final AtomicInteger tasksToComplete = new AtomicInteger();
 	
-	public ApplicationUpdate(Application application) {
+	public ApplicationUpdate(Application oldApplication, Application application) {
+		this.oldApplication = oldApplication;
 		this.application = application;
 	}
 
@@ -143,5 +148,19 @@ public class ApplicationUpdate {
 			return newInstance;
 		}
 		return null;
+	}
+
+	public void addTaskToComplete() {
+		tasksToComplete.incrementAndGet();
+	}
+	
+	public void taskCompleted() {
+		if (tasksToComplete.decrementAndGet()==0) {
+			try {
+				oldApplication.close();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
 	}
 }

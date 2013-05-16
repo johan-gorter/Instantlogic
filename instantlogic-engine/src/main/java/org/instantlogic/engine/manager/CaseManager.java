@@ -45,7 +45,7 @@ public class CaseManager {
 	private final ApplicationManager applicationManager;
 	private final PersistenceStrategy persistenceStrategy;
 	
-	public CaseManager(ApplicationManager applicationManager, String caseId, PersistenceStrategy persistenceStrategy) {
+	public CaseManager(ApplicationManager applicationManager, Application application, String caseId, PersistenceStrategy persistenceStrategy) {
 		this.persistenceStrategy = persistenceStrategy;
 		if (caseId==null) caseId = persistenceStrategy.uniqueId();
 		this.caseId = caseId;
@@ -53,7 +53,7 @@ public class CaseManager {
 		this.presence = new Presence();
 		this.presence.setApplicationName(applicationManager.getApplication().getName());
 		this.presence.setCaseName(caseId);
-		this.application = applicationManager.getApplication();
+		this.application = application;
 		this.theCase = persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass());
 	}
 

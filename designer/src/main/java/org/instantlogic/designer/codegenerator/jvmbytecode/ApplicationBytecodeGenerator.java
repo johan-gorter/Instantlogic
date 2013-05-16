@@ -10,7 +10,7 @@
 
 package org.instantlogic.designer.codegenerator.jvmbytecode;
 
-import java.util.Map;
+import java.net.URL;
 
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
@@ -19,6 +19,7 @@ import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SharedPageFragmentClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SubFlowClassModel;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
+import org.instantlogic.designer.codegenerator.generator.GeneratedClassModelsProcessor;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.ApplicationBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.EntityBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.EventBytecodeTemplate;
@@ -27,8 +28,10 @@ import org.instantlogic.designer.codegenerator.jvmbytecode.template.InstanceByte
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.PlaceTemplateBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.SharedPageFragmentBytecodeTemplate;
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.SubFlowBytecodeTemplate;
+import org.instantlogic.interaction.Application;
+import org.instantlogic.interaction.ApplicationEnvironment;
 
-public class ApplicationBytecodeGenerator {
+public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcessor {
 
 	public static void update(GeneratedClassModels classModels, JvmBytecodeApplication updateableApplication) {
 		if (classModels.updatedApplication!=null) {
@@ -96,5 +99,44 @@ public class ApplicationBytecodeGenerator {
 		}
 		
 		
+	}
+	
+	private final ApplicationEnvironment applicationEnvironment;
+	private JvmBytecodeApplication lastApplication;
+	private String applicationName;
+	private String applicationRootPackage;
+	
+	public ApplicationBytecodeGenerator(ApplicationEnvironment applicationEnvironment) {
+		this.applicationEnvironment = applicationEnvironment;
+	}
+
+	@Override
+	public void process(GeneratedClassModels models) {
+		if (models.updatedApplication!=null) {
+			this.applicationName = models.updatedApplication.name;
+			this.applicationRootPackage = models.updatedApplication.rootPackageName;
+		}
+		if (lastApplication!=null) {
+			lastApplication = new JvmBytecodeApplication(lastApplication);
+		} else {
+			lastApplication = new JvmBytecodeApplication();
+		}
+		update(models, lastApplication);
+		URL[] customizationUrls;
+		if (applicationName==null) {
+			customizationUrls = new URL[0];
+		} else {
+			customizationUrls = new URL[]{applicationEnvironment.getCustomizationClassesUrl(applicationName)};
+		}
+		JvmBytecodeApplicationClassloader jvmBytecodeApplicationClassloader = new JvmBytecodeApplicationClassloader(Application.class.getClassLoader(), lastApplication, customizationUrls);
+		Application application = jvmBytecodeApplicationClassloader.getApplication(applicationRootPackage, applicationName);
+		application.addCloseableResource(jvmBytecodeApplicationClassloader);
+		applicationEnvironment.updateApplication(application);
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

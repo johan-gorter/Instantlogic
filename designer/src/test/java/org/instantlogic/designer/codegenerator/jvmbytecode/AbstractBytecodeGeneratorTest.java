@@ -40,9 +40,7 @@ public abstract class AbstractBytecodeGeneratorTest {
 		this.restoreClassLoader = Thread.currentThread().getContextClassLoader(); 
 		
 		Thread.currentThread().setContextClassLoader(applicationClassLoader);
-		Class<?> applicationClass = applicationClassLoader.loadClass(applicationDesign.getRootPackageName()+"."+applicationDesign.getName()+"Application");
-		
-		Application application = (Application) applicationClass.getField("INSTANCE").get(null);
+		Application application = applicationClassLoader.getApplication(applicationDesign.getRootPackageName(), applicationDesign.getName());
 		return application;
 	}
 }

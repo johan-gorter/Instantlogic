@@ -27,14 +27,14 @@ import org.slf4j.LoggerFactory;
 public class FileCasePersister extends CasePersister implements PersistenceStrategy {
 
 	private static final Logger logger = LoggerFactory.getLogger(FileCasePersister.class);
-	
-	public static final FileCasePersister INSTANCE = new FileCasePersister();
-	
+
+	private File casesDir;
+
 	public FileCasePersister() {
+		init();
 	}
 
-	public static final File casesDir;
-	static {
+	protected void init() {
 		casesDir = new File("cases");
 		casesDir.mkdirs();
 	}

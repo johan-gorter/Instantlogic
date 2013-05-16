@@ -63,7 +63,6 @@ public class NettyServer {
 	};
 	
 	public static void main(String[] args) throws IOException {
-		DesignerApplicationManager.registerDesignerApplication();
 		engineManager = new EngineManager();
 		engineManager.registerApplication(DesignerApplication.INSTANCE);
 		engineManager.registerWebappsDirectory(new File("../webapps"));

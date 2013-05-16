@@ -13,6 +13,8 @@ package org.instantlogic.designer.codegenerator.jvmbytecode;
 import java.net.URL;
 import java.net.URLClassLoader;
 
+import org.instantlogic.interaction.Application;
+
 public class JvmBytecodeApplicationClassloader extends URLClassLoader {
 
 	private final JvmBytecodeApplication updateableApplication;
@@ -34,5 +36,14 @@ public class JvmBytecodeApplicationClassloader extends URLClassLoader {
 
 	public JvmBytecodeApplication getJvmBytecodeApplication() {
 		return updateableApplication;
+	}
+
+	public Application getApplication(String rootPackageName, String applicationName) {
+		try {
+			Class<?> applicationClass = loadClass(rootPackageName+"."+applicationName+"Application");
+			return (Application) applicationClass.getField("INSTANCE").get(null);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

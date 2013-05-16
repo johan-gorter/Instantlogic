@@ -10,11 +10,11 @@
 
 package org.instantlogic.designer;
 
-public class DesignerApplication extends org.instantlogic.interaction.Application {
+public class AbstractDesignerApplication extends org.instantlogic.interaction.Application {
 
 	public static final DesignerApplication INSTANCE = new DesignerApplication();
 	
-	protected DesignerApplication() {
+	protected AbstractDesignerApplication() {
 	}
 	
 	@Override

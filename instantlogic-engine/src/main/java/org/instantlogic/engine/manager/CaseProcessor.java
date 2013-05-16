@@ -46,20 +46,21 @@ public class CaseProcessor {
 		this.caseManager = applicationManager.getOrCreateCase(caseId);
 	}
 	
-	public void processApplicationUpdate(ApplicationUpdate applicationUpdate) {
-		processMessagesAndSendUpdates(null, null, applicationUpdate);
+	public boolean processApplicationUpdate(ApplicationUpdate applicationUpdate) {
+		return processMessagesAndSendUpdates(null, null, applicationUpdate);
 	}
 	
-	public void processMessagesAndSendUpdates(TravelerProxy travelerProxy, List<Message> messages) {
-		processMessagesAndSendUpdates(travelerProxy, messages, null);
+	public boolean processMessagesAndSendUpdates(TravelerProxy travelerProxy, List<Message> messages) {
+		return processMessagesAndSendUpdates(travelerProxy, messages, null);
 	}
 
-	private void processMessagesAndSendUpdates(TravelerProxy travelerProxy, List<Message> messages, ApplicationUpdate applicationUpdate) {
+	// Returns whether the message was processed synchronously.
+	private boolean processMessagesAndSendUpdates(TravelerProxy travelerProxy, List<Message> messages, ApplicationUpdate applicationUpdate) {
 		List<QueueEntry> processEntries;
 		synchronized (queueLock) {
 			if (queueBeingProcessed) {
 				queueHead = new QueueEntry(travelerProxy, messages, applicationUpdate, queueHead);
-				return; // Another thread is doing the processing for us
+				return false; // Another thread is doing the processing for us
 			} else {
 				processEntries = new ArrayList<QueueEntry>(); // Holds the incoming messages plus the queued ones
 				processEntries.add(new QueueEntry(travelerProxy, messages, applicationUpdate, queueHead));
@@ -80,6 +81,7 @@ public class CaseProcessor {
 						caseManager.processMessages(entry.travelerProxy, entry.messages);
 					} else {
 						caseManager.updateApplication(entry.applicationUpdate);
+						entry.applicationUpdate.taskCompleted();
 					}
 				}
 				processEntries.clear();
@@ -109,6 +111,7 @@ public class CaseProcessor {
 				}
 			}
 		} while (processEntries.size()>0);
+		return true;
 	}
 
 	public void printCaseDiagnostics(StringBuffer sb) {
