@@ -45,6 +45,7 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 	public TextTemplate question;
 	public Deduction<? extends Iterable<To>> options; 
 
+	@Deprecated
 	public SimpleRelation(String name, Entity<I> entity, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
 		this(null, name, entity, instanceFieldName, instanceFieldClass);
 	}
@@ -64,6 +65,10 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 	public String getName() {
 		return name;
 	}
+	
+	public String getUniqueId() {
+		return id;
+	};
 
 	@Override
 	public Entity<To> getTo() {

@@ -386,7 +386,7 @@
           "to": "Entitydesign__0002"
         },
         {
-          "instanceId": "Relationdesign__0005",
+          "instanceId": "Relationdesign__0006",
           "entityName": "RelationDesign",
           "name": "comments",
           "autoCreate": false,
@@ -628,7 +628,7 @@
       },
       "relations": [
         {
-          "instanceId": "Relationdesign__0006",
+          "instanceId": "Relationdesign__0005",
           "entityName": "RelationDesign",
           "name": "by",
           "autoCreate": false,

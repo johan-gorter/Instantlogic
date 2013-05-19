@@ -89,18 +89,15 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitEnd();
 			}
 		}
-		
 		// public org.instantlogic.interaction.flow.FlowEvent getStartEvent()
 		{
 			mv = cw.visitMethod(ACC_PUBLIC, "getStartEvent", "()Lorg/instantlogic/interaction/flow/FlowEvent;", null, null);
 			mv.visitCode();
-			throwUnsupported(mv);
-//			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/??/event/??Event", "INSTANCE", "Lorg/instantlogic/example/??/event/??Event;");
-//			mv.visitInsn(ARETURN);
-			mv.visitMaxs(0, 0);
+			emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"event/", model.startEvent+"Event");
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
 			mv.visitEnd();
 		}
-		
 		// public String[] getThemeNames()
 		{
 			mv = cw.visitMethod(ACC_PUBLIC, "getThemeNames", "()[Ljava/lang/String;", null, null);

@@ -13,13 +13,11 @@ package org.instantlogic.designer;
 import java.io.File;
 
 import org.instantlogic.designer.codegenerator.generator.ApplicationGenerator;
-import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModelsProcessor;
-import org.instantlogic.fabric.CaseInstanceTriggers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ApplicationDesign extends AbstractApplicationDesign implements CaseInstanceTriggers {
+public class ApplicationDesign extends AbstractApplicationDesign {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ApplicationDesign.class);
 	
@@ -30,19 +28,6 @@ public class ApplicationDesign extends AbstractApplicationDesign implements Case
 	}
 	
 	private GeneratedClassModelsProcessor generatedClassModelsProcessor; 
-	
-	@Override
-	public void afterPersist() {
-		if (generatedClassModelsProcessor!=null) {
-			GeneratedClassModels classModelUpdates = applicationGenerator.getClassModelUpdates();
-			int updates = classModelUpdates.countUpdates();
-			int deletes = classModelUpdates.countDeletes();
-			if (updates>0 || deletes>0) {
-				logger.info("Updated {} class models and deleted {} class models", updates, deletes);
-				generatedClassModelsProcessor.process(classModelUpdates);
-			}
-		}
-	}
 	
 	/**
 	 * Registers every entity reachable from caseEntity to application.entities. Also calls init() on every entity.

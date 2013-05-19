@@ -1,5 +1,5 @@
 {
-  "instanceId": "QdEOOujklydsUgAm_40918801_719c",
+  "instanceId": "eykbbwkxkaelqloy_c42709b0_00a5",
   "entityName": "ApplicationDesign",
   "version": 0,
   "name": "izzy",
@@ -1140,13 +1140,14 @@
                   {
                     "instanceId": "Fragmnttmpltdsgn__0015",
                     "entityName": "FragmentTemplateDesign",
+                    "editorOpen": true,
                     "fragmentFilters": [],
                     "fragmentTypeName": "Input",
                     "styleNames": [
                       "answer-span8",
                       "answer-height300"
                     ],
-                    "attribute": "Attributedesign__0005",
+                    "attribute": "Attributedesign__0003",
                     "entity": "Entitydesign__0003",
                     "properties": [],
                     "type": "Fragmenttypedsgn__0006"

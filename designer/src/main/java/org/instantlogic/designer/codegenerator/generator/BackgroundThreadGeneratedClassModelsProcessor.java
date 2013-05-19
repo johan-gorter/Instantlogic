@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 public class BackgroundThreadGeneratedClassModelsProcessor implements GeneratedClassModelsProcessor, AutoCloseable {
 
 	private static final Logger logger = LoggerFactory.getLogger(BackgroundThreadGeneratedClassModelsProcessor.class);
+	
 	private final GeneratedClassModelsProcessor delegate;
 	private final String name;
 	private LinkedBlockingQueue<GeneratedClassModels> queue;
@@ -35,12 +36,13 @@ public class BackgroundThreadGeneratedClassModelsProcessor implements GeneratedC
 					read.clear();
 					queue.drainTo(read);
 					if (read.size()==0) {
-						accumulated = queue.take();
+						accumulated = queue.take(); // Blocks
 					} else {
 						accumulated = GeneratedClassModels.merge(read);
 					}
 					logger.debug("Backgound thread [{}] started processing", name);
 					delegate.process(accumulated);
+					logger.debug("Backgound thread [{}] finished processing", name);
 				} catch (Exception e) {
 					if (e instanceof InterruptedException) {
 						return;

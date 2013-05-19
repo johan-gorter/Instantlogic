@@ -125,6 +125,9 @@ public class PreviewFragmentFilter implements FragmentFilter {
 			DeductionParameterDesign constantValue = scheme.getOutput().getParameters().iterator().next();
 			return constantValue.getValue();
 		}
+		if (scheme.getOutput().getDataType()==null) {
+			return "...";
+		}
 		return dummyValue(scheme.getOutput().getDataType());
 	}
 

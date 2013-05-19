@@ -42,6 +42,7 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 	public boolean readOnly;
 	private Field instanceField; 
 	
+	@Deprecated
 	public SimpleAttribute(String name, Entity<I> entity, Class<Item> javaClassName, String instanceFieldName, Class<? extends Instance> instanceFieldClass) {
 		this(null, name, entity, javaClassName, instanceFieldName, instanceFieldClass);
 	}

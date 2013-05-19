@@ -25,20 +25,13 @@ import org.instantlogic.interaction.util.SubmitContext;
  */
 public class IfElseElement extends Element {
 	private final Deduction<Boolean> condition;
-	private final Element[] ifElements;
-	private final Element[] elseElements;
+	private final Element ifElement;
+	private final Element elseElement;
 	
-	@Deprecated
-	public IfElseElement(Deduction<Boolean> selection, Element[] ifElements, Element[] elseElements) {
-		this.condition = selection;
-		this.ifElements = ifElements;
-		this.elseElements = elseElements;
-	}
-
 	public IfElseElement(Deduction<Boolean> selection, Element ifElement, Element elseElement) {
 		this.condition = selection;
-		this.ifElements = new Element[]{ifElement};
-		this.elseElements = new Element[]{elseElement};
+		this.ifElement = ifElement;
+		this.elseElement = elseElement;
 	}
 	
 	@Override
@@ -47,38 +40,34 @@ public class IfElseElement extends Element {
 		if (!valueAndLevel.hasValue()) {
 			return; // Render no If nor Else elements. This may be worth reconsidering
 		}
-		Element[] elements = valueAndLevel.getValue()==Boolean.TRUE?ifElements:elseElements;
-		for (Element template: elements) {
-			template.render(context, appendTo);
+		Element element = valueAndLevel.getValue()==Boolean.TRUE?ifElement:elseElement;
+		if (element!=null) {
+			element.render(context, appendTo);
 		}
 	}
 
 	@Override
 	public FlowEventOccurrence submit(SubmitContext submitContext) {
-		FlowEventOccurrence result = null;
 		ValueAndLevel<?> valueAndLevel = condition.deduce(submitContext);
 		if (!valueAndLevel.hasValue()) return null; 
-		Element[] elements = valueAndLevel.getValue()==Boolean.TRUE?ifElements:elseElements;
+		Element element = valueAndLevel.getValue()==Boolean.TRUE?ifElement:elseElement;
 
-		for (Element template: elements) {
-			FlowEventOccurrence itemResult = template.submit(submitContext);
+		if (element != null) {
+			FlowEventOccurrence itemResult = element.submit(submitContext);
 			if (itemResult!=null) {
-				if (result!=null) { 
-					throw new RuntimeException("More than one FlowEventOccurrence");
-				}
-				result = itemResult;
+				return itemResult;
 			}
 		}
-		return result;
+		return null;
 	}
 
 	@Override
 	public void change(ChangeContext changeContext) {
 		ValueAndLevel<?> valueAndLevel = condition.deduce(changeContext);
 		if (!valueAndLevel.hasValue()) return; // Depend on render() to handle this gracefully
-		Element[] elements = valueAndLevel.getValue()==Boolean.TRUE?ifElements:elseElements;
+		Element element = valueAndLevel.getValue()==Boolean.TRUE?ifElement:elseElement;
 		
-		for (Element element: elements) {
+		if (element!=null) {
 			element.change(changeContext);
 		}
 	}

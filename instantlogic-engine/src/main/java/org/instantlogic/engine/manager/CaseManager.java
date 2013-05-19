@@ -18,7 +18,6 @@ import org.instantlogic.engine.message.ApplicationUpdate;
 import org.instantlogic.engine.message.Message;
 import org.instantlogic.engine.presence.Presence;
 import org.instantlogic.engine.presence.Traveler;
-import org.instantlogic.fabric.CaseInstanceTriggers;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.Operation;
@@ -99,9 +98,6 @@ public class CaseManager {
 				long version = caseAdministration.getVersion();
 				caseAdministration.setVersion(version+1);
 				persistenceStrategy.persist(this.caseId, this.theCase, (int)version); //TODO: provide a list of changed stored fields
-				if (this.theCase instanceof CaseInstanceTriggers) {
-					((CaseInstanceTriggers)this.theCase).afterPersist();
-				}
 			} finally {
 				operation.close();
 				presenceOperation.close();

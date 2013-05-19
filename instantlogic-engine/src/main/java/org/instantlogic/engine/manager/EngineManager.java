@@ -25,8 +25,11 @@ public class EngineManager {
 	protected List<File> webappsDirectories = new ArrayList<File>();
 	private Map<String, CaseProcessor> caseProcessors = new ConcurrentHashMap<String, CaseProcessor>();
 	
-	public void registerApplication(Application application) {
-		applicationManagers.put(application.getName(), new ApplicationManager(application, this));
+	public synchronized ApplicationManager registerApplication(Application application) {
+		ApplicationManager applicationManager = new ApplicationManager(application, this);
+		application.setEnvironment(applicationManager);
+		applicationManagers.put(application.getName(), applicationManager);
+		return applicationManager;
 	}
 	
 	public void registerWebappsDirectory(File dir) {
@@ -59,10 +62,7 @@ public class EngineManager {
 			Class<?> applicationClass = classLoader.loadClass(findApplicationClassName("",new File(appDir, "target/generated-classes")));
 			Application application = (Application)applicationClass.getField("INSTANCE").get(null);
 			logger.info("Application [{}] loaded", name);
-			ApplicationManager applicationManager = new ApplicationManager(application, this);
-			application.setEnvironment(applicationManager);
-			applicationManagers.put(name, applicationManager);
-			return applicationManager;
+			return registerApplication(application);
 		} catch (Exception e) {
 			logger.error("Failed to load application "+name, e);
 			return null;
@@ -114,23 +114,29 @@ public class EngineManager {
 		return sb.toString();
 	}
 
-	// TODO: Locking is too heavy for this long-running method, use a synchronized method to return a list of keys to caseProcessors which should reload. 
-	public synchronized void updateApplication(Application updatedApplication) {
-		ApplicationManager applicationManager = applicationManagers.get(updatedApplication.getName());
-		if (applicationManager==null) {
-			// Application was not loaded, good for us
-			applicationManager = new ApplicationManager(updatedApplication, this);
-			applicationManagers.put(updatedApplication.getName(), applicationManager);
-		} else {
-			List<String> caseIds = applicationManager.applicationUpdated(updatedApplication);
+	public void updateApplication(Application updatedApplication) {
+		List<String> caseIds = null;
+		ApplicationManager applicationManager;
+		synchronized (this) {
+			applicationManager = applicationManagers.get(updatedApplication.getName());
+			if (applicationManager==null) {
+				// Application was not loaded, good for us
+				applicationManager = new ApplicationManager(updatedApplication, this);
+				applicationManagers.put(updatedApplication.getName(), applicationManager);
+			} else {
+				caseIds = applicationManager.applicationUpdated(updatedApplication);
+			}
+		}
+		if (caseIds!=null) {
 			ApplicationUpdate applicationUpdateMessage = new ApplicationUpdate(applicationManager.getApplication(), updatedApplication);
+			applicationUpdateMessage.addTaskToComplete();
 			for (String caseId : caseIds) {
 				CaseProcessor caseProcessor = caseProcessors.get(updatedApplication.getName()+":"+caseId);
 				if (caseProcessor!=null) {
 					caseProcessor.processApplicationUpdate(applicationUpdateMessage);
 				}
 			}
-
+			applicationUpdateMessage.taskCompleted(); // may clean up the old application
 		}
 	}
 
@@ -139,7 +145,7 @@ public class EngineManager {
 			File appDir = new File(dir, applicationName); 
 			if (appDir.isDirectory()) {
 				try {
-					return new File(appDir, "target/classes").toURI().toURL();
+					return new File(appDir, "target/classes").getAbsoluteFile().toURI().normalize().toURL();
 				} catch (MalformedURLException e) {
 					throw new RuntimeException(e);
 				}

@@ -24,7 +24,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class SharedPageFragmentBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	public static final boolean TRACE = true;
+	public static final boolean TRACE = false;
 
 	public static byte[] generate(SharedPageFragmentClassModel model) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);

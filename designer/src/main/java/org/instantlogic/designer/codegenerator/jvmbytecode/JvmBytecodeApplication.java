@@ -30,4 +30,8 @@ public class JvmBytecodeApplication {
 	public byte[] getClassBytes(String className) {
 		return bytecodeClasses.get(className);
 	}
+
+	public Object getClassCount() {
+		return bytecodeClasses.size();
+	}
 }
