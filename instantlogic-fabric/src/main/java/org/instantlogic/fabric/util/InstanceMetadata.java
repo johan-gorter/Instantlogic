@@ -300,8 +300,8 @@ public class InstanceMetadata {
 		if (this.uniqueId!=null) {
 			throw new RuntimeException("UniqueId was already initialized and cannot be changed");
 		}
-		getCaseAdministration().rememberInstanceWithUniqueId(this.uniqueId, this.instance);
 		this.uniqueId = uniqueId;
+		getCaseAdministration().rememberInstanceWithUniqueId(this.uniqueId, this.instance);
 	}
 
 	public String getUniqueId() {

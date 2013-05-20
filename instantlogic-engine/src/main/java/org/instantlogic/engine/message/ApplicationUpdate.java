@@ -67,13 +67,13 @@ public class ApplicationUpdate {
 	private void copyValue(Instance oldInstance, Attribute oldAttribute, Instance newInstance, Entity<?> newEntity) {
 		ReadOnlyAttributeValue attributeValue = oldAttribute.get(oldInstance);
 		if (attributeValue.hasStoredValue()) {
-			Attribute newAttribute = newEntity.getRelationById(oldAttribute.getUniqueId());
+			Attribute newAttribute = newEntity.getAttributeById(oldAttribute.getUniqueId());
 			if (newAttribute!=null && !newAttribute.isReadOnly()) {
 				if (oldAttribute.isMultivalue()) {
 					if (newAttribute.isMultivalue()) {
 						AttributeValues oldAttributeValues = (AttributeValues)oldAttribute.get(oldInstance);
 						AttributeValues newAttributeValues = (AttributeValues)newAttribute.get(newInstance);
-						for (Object oldValue : (Multi)oldAttributeValues.getValue()) {
+						for (Object oldValue : (Multi)oldAttributeValues.getStoredValue()) {
 							newAttributeValues.addValue(oldValue);
 						}
 					} else {
@@ -81,7 +81,7 @@ public class ApplicationUpdate {
 					}
 				} else {
 					if (!newAttribute.isMultivalue()) {
-						Object oldValue = oldAttribute.get(oldInstance).getValue();
+						Object oldValue = ((AttributeValue)oldAttribute.get(oldInstance)).getStoredValue();
 						((AttributeValue)newAttribute.get(newInstance)).setValue(oldValue);
 					} else {
 						// TODO single value becomes multivalue

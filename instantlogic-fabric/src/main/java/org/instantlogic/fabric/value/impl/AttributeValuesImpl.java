@@ -99,7 +99,7 @@ public class AttributeValuesImpl<I extends Instance, Item extends Object>
 	}
 	
 	@Override
-	protected Multi<Item> getStoredValue() {
+	public Multi<Item> getStoredValue() {
 		ensureStored();
 		return storedValue;
 	}

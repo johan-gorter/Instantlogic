@@ -60,13 +60,13 @@ public class CaseAdministration {
 		}
 		all.put(entity.getUniqueId(), entity);
 		if (entity.extendsEntity()!=null) {
-			addEntities(entity.extendsEntity(), all);
+			addEntitiesById(entity.extendsEntity(), all);
 		}
 		for (Entity<?> extension : entity.extensions()) {
-			addEntities(extension, all);
+			addEntitiesById(extension, all);
 		}
 		for (Relation<?, ?, ? extends Instance> relation : entity.getRelations()) {
-			addEntities(relation.getTo(), all);
+			addEntitiesById(relation.getTo(), all);
 		}
 	}
 	
@@ -209,6 +209,9 @@ public class CaseAdministration {
 	}
 
 	void rememberInstanceWithUniqueId(String uniqueId, Instance instance) {
+		if (uniqueId==null) {
+			throw new IllegalArgumentException();
+		}
 		Instance oldInstance = this.instanceByUniqueId.put(uniqueId, instance);
 		if (oldInstance!=null) {
 			this.instanceByUniqueId.put(uniqueId, oldInstance);

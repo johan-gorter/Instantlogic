@@ -56,7 +56,7 @@ public class EngineManager {
 		if (applicationManagers.containsKey(name)) return applicationManagers.get(name);
 		try {
 			logger.info("Loading application [{}] from {}", name, appDir.getAbsoluteFile());
-			URL customized = new File(appDir, "target/classes").toURI().toURL();
+			URL customized = new File(appDir, "target/classes/").toURI().toURL();
 			URL preGenerated = new File(appDir, "target/generated-classes").toURI().toURL();
 			URLClassLoader classLoader = new URLClassLoader(new URL[]{customized, preGenerated});
 			Class<?> applicationClass = classLoader.loadClass(findApplicationClassName("",new File(appDir, "target/generated-classes")));
@@ -117,6 +117,7 @@ public class EngineManager {
 	public void updateApplication(Application updatedApplication) {
 		List<String> caseIds = null;
 		ApplicationManager applicationManager;
+		Application oldApplication = null;
 		synchronized (this) {
 			applicationManager = applicationManagers.get(updatedApplication.getName());
 			if (applicationManager==null) {
@@ -124,11 +125,12 @@ public class EngineManager {
 				applicationManager = new ApplicationManager(updatedApplication, this);
 				applicationManagers.put(updatedApplication.getName(), applicationManager);
 			} else {
+				oldApplication = applicationManager.getApplication();
 				caseIds = applicationManager.applicationUpdated(updatedApplication);
 			}
 		}
-		if (caseIds!=null) {
-			ApplicationUpdate applicationUpdateMessage = new ApplicationUpdate(applicationManager.getApplication(), updatedApplication);
+		if (oldApplication!=null) {
+			ApplicationUpdate applicationUpdateMessage = new ApplicationUpdate(oldApplication, updatedApplication);
 			applicationUpdateMessage.addTaskToComplete();
 			for (String caseId : caseIds) {
 				CaseProcessor caseProcessor = caseProcessors.get(updatedApplication.getName()+":"+caseId);
@@ -145,7 +147,7 @@ public class EngineManager {
 			File appDir = new File(dir, applicationName); 
 			if (appDir.isDirectory()) {
 				try {
-					return new File(appDir, "target/classes").getAbsoluteFile().toURI().normalize().toURL();
+					return new File(appDir.getAbsoluteFile(), "target/classes/").toURI().normalize().toURL();
 				} catch (MalformedURLException e) {
 					throw new RuntimeException(e);
 				}

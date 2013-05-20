@@ -418,7 +418,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				//	return (Project)this;
 				//}
 				{
-					mv = cw.visitMethod(ACC_PUBLIC, "addTo"+r.technicalNameCapitalized, "(L"+r.internalTo+";)L"+concreteClassName+";", null, null);
+					mv = cw.visitMethod(ACC_PUBLIC, "addTo"+r.technicalNameCapitalized, "(L"+r.internalItemClassName+";)L"+concreteClassName+";", null, null);
 					mv.visitCode();
 					mv.visitVarInsn(ALOAD, 0);
 					mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValues;");
@@ -435,7 +435,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				//	return (Project)this;
 				//}
 				{
-					mv = cw.visitMethod(ACC_PUBLIC, "addTo"+r.technicalNameCapitalized, "(L"+r.internalTo+";I)L"+concreteClassName+";", null, null);
+					mv = cw.visitMethod(ACC_PUBLIC, "addTo"+r.technicalNameCapitalized, "(L"+r.internalItemClassName+";I)L"+concreteClassName+";", null, null);
 					mv.visitCode();
 					mv.visitVarInsn(ALOAD, 0);
 					mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValues;");
@@ -453,7 +453,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				//	return (Project)this;
 				//}
 				{
-					mv = cw.visitMethod(ACC_PUBLIC, "removeFrom"+r.technicalNameCapitalized, "(L"+r.internalTo+";)L"+concreteClassName+";", null, null);
+					mv = cw.visitMethod(ACC_PUBLIC, "removeFrom"+r.technicalNameCapitalized, "(L"+r.internalItemClassName+";)L"+concreteClassName+";", null, null);
 					mv.visitCode();
 					mv.visitVarInsn(ALOAD, 0);
 					mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValues;");
@@ -518,7 +518,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				//    return (User)this;
 				//}
 				{
-					mv = cw.visitMethod(ACC_PUBLIC, "addTo"+r.technicalNameCapitalized, "(L"+r.internalTo+";)L"+concreteClassName+";", null, null);
+					mv = cw.visitMethod(ACC_PUBLIC, "addTo"+r.technicalNameCapitalized, "(L"+r.internalItemClassName+";)L"+concreteClassName+";", null, null);
 					mv.visitCode();
 					mv.visitVarInsn(ALOAD, 0);
 					mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValues;");
@@ -535,7 +535,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				//    return (User)this;
 				//}
 				{
-					mv = cw.visitMethod(ACC_PUBLIC, "removeFrom"+r.technicalNameCapitalized, "(L"+r.internalTo+";)L"+concreteClassName+";", null, null);
+					mv = cw.visitMethod(ACC_PUBLIC, "removeFrom"+r.technicalNameCapitalized, "(L"+r.internalItemClassName+";)L"+concreteClassName+";", null, null);
 					mv.visitCode();
 					mv.visitVarInsn(ALOAD, 0);
 					mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValues;");

@@ -23,4 +23,6 @@ public interface AttributeValues<I extends Instance, Item extends Object>
 	public Item removeValue(int index);
 
 	public void removeValue(Item item);
+	
+	public Multi<Item> getStoredValue();
 }

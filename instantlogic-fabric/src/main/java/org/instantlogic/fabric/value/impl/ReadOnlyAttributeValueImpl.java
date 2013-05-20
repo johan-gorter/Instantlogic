@@ -293,7 +293,7 @@ public class ReadOnlyAttributeValueImpl<I extends Instance, Value extends Object
 		return getStoredValue()!=null;
 	}
 	
-	protected Value getStoredValue() {
+	public Value getStoredValue() {
 		return null;
 	}
 
