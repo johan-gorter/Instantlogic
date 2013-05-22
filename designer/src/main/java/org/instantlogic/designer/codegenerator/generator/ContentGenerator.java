@@ -71,6 +71,16 @@ public abstract class ContentGenerator extends AbstractGenerator {
 			}
 			if (fragmentTemplate.getStyleNames().size()>0) {
 				model.styleNames = fragmentTemplate.getStyleNames().asList().toArray(new String[fragmentTemplate.getStyleNames().size()]);
+				if (fragmentTemplate.getEditorOpen()) {
+					String[] newStyleNames = new String[model.styleNames.length+1];
+					System.arraycopy(model.styleNames, 0, newStyleNames, 0, model.styleNames.length);
+					newStyleNames[newStyleNames.length-1]="designer-editor-open";
+					model.styleNames = newStyleNames;
+				}
+			}
+			else if (fragmentTemplate.getEditorOpen())
+			{
+				model.styleNames = new String[]{"designer-editor-open"}; 
 			}
 			if (fragmentTemplate.getFragmentFilters().size()>0) {
 				model.fragmentFilters = fragmentTemplate.getFragmentFilters().asList().toArray(new String[fragmentTemplate.getFragmentFilters().size()]);

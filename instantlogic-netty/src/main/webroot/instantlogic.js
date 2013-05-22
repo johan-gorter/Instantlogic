@@ -397,6 +397,7 @@ YUI.add('instantlogic', function (Y) {
         },
 
         update: function (newModel, diff) {
+        	this.fragment.oldModel = this.fragment.model;
             if (this.fragmentType != newModel.type || !this.fragment.canUpdateFrom(newModel)) {
                 this.recreateFragment(newModel, diff);
             } else {
@@ -814,6 +815,7 @@ YUI.add('instantlogic', function (Y) {
     };
     
     ns.util = {
+    	// Shallow equals on all properties of an array
     	arrayEquals: function(a1, a2) {
     		if (a1==null) return (a2==null);
     		if (a2==null) return false;
@@ -822,7 +824,24 @@ YUI.add('instantlogic', function (Y) {
     			if (a1[i]!=a2[i]) return false;
     		}
     		return true;
-    	}
+    	},
+
+    	// Checks deep equality for two data(json) objects
+    	equals: function(x, y) {
+		  if(x === y) return true;
+		  if(!(x instanceof Object) || !(y instanceof Object)) return false;
+		  for(var p in x) {
+		    if(!x.hasOwnProperty(p)) continue;
+		    if(!y.hasOwnProperty(p)) return false;
+		    if(x[p] === y[p]) continue;
+		    if(typeof(x[p]) !== "object") return false;
+		    if(!ns.util.equals(x[p], y[p])) return false;
+		  }
+		  for(p in y) {
+		    if(y.hasOwnProperty(p) && !x.hasOwnProperty(p)) return false;
+		  }
+		  return true;
+		}
     };
     
 }, '0.7.0', { requires: ['io-base', 'node', 'oop', 'panel', 'json', 'event', 'html', 'history', 'overlay', 'transition'] });

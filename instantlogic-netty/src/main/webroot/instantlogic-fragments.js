@@ -95,6 +95,9 @@ YUI.add('instantlogic-fragments', function (Y) {
             },
             inputFocus: function() {
             	this.engine.enqueueMessage({message: 'presence', command: 'setFocus', value: this.model.id});
+            },
+            canUpdateFrom: function(newModel) {
+            	return (util.equals(this.model.dataType, newModel.dataType));
             }
     	}
     });
