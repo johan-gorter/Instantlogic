@@ -91,6 +91,9 @@ public class CaseManager {
 			Operation presenceOperation = presenceCaseAdministration.startOperation();
 			try {
 				for (Message message:messages) {
+					if (logger.isInfoEnabled()) {
+						logger.info("Executing message {} from traveler {}", message, travelerProxy.getTravelerInfo().getTravelerId());
+					}
 					message.execute(application, traveler, this.presence, this.theCase);
 				}
 				operation.complete();

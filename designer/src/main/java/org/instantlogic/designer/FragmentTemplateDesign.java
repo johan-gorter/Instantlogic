@@ -20,7 +20,13 @@ public class FragmentTemplateDesign extends AbstractFragmentTemplateDesign {
 	}
 	
 	public boolean isValidForCodegeneration() {
-		return (this.getType()!=null || this.getFragmentTypeName()!=null);
+		if (this.getType()==null && this.getFragmentTypeName()==null) {
+			return false;
+		}
+		if (this.getAttribute()!=null && !this.getAttribute().isValidForCodegeneration()) {
+			return false;
+		}
+		return true;
 	}
 
 	public FragmentTemplateDesign setText(String propertyName, TextTemplateDesign text) {

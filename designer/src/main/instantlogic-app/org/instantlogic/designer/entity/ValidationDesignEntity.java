@@ -30,20 +30,20 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> $displayWith
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign>(
-				"displayWith", INSTANCE, "displayWith", org.instantlogic.designer.AbstractValidationDesign.class);
+				"Relationdesign__0030", "displayWith", INSTANCE, "displayWith", org.instantlogic.designer.AbstractValidationDesign.class);
 		displayWith = $displayWith;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $message
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"message", INSTANCE, "message", org.instantlogic.designer.AbstractValidationDesign.class);
+				"Relationdesign__002e", "message", INSTANCE, "message", org.instantlogic.designer.AbstractValidationDesign.class);
 		message = $message;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $rule
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"rule", INSTANCE, "rule", org.instantlogic.designer.AbstractValidationDesign.class);
+				"Relationdesign__002f", "rule", INSTANCE, "rule", org.instantlogic.designer.AbstractValidationDesign.class);
 		rule = $rule;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $forEntity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"forEntity", INSTANCE, "forEntity", org.instantlogic.designer.AbstractValidationDesign.class);
+				"Relationdesign__000e", "forEntity", INSTANCE, "forEntity", org.instantlogic.designer.AbstractValidationDesign.class);
 		forEntity = $forEntity;
 		
 		// Phase 2
@@ -76,6 +76,11 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 	@Override
 	public Class<org.instantlogic.designer.ValidationDesign> getInstanceClass() {
 		return org.instantlogic.designer.ValidationDesign.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "Entitydesign__000c";
 	}
 	
 	@Override

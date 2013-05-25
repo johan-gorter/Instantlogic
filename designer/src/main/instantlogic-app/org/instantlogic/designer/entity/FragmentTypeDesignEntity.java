@@ -44,25 +44,25 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> $fragmentFilters
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
-				"fragmentFilters", INSTANCE, java.lang.String.class, "fragmentFilters", org.instantlogic.designer.FragmentTypeDesign.class);
+				"Attributedesign__0022", "fragmentFilters", INSTANCE, java.lang.String.class, "fragmentFilters", org.instantlogic.designer.FragmentTypeDesign.class);
 		fragmentFilters = $fragmentFilters;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean> $hasAttribute
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-				"hasAttribute", INSTANCE, java.lang.Boolean.class, "hasAttribute", org.instantlogic.designer.FragmentTypeDesign.class);
+				"Attributedesign__0023", "hasAttribute", INSTANCE, java.lang.Boolean.class, "hasAttribute", org.instantlogic.designer.FragmentTypeDesign.class);
 		hasAttribute = $hasAttribute;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean> $hasEvent
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-				"hasEvent", INSTANCE, java.lang.Boolean.class, "hasEvent", org.instantlogic.designer.FragmentTypeDesign.class);
+				"Attributedesign__0024", "hasEvent", INSTANCE, java.lang.Boolean.class, "hasEvent", org.instantlogic.designer.FragmentTypeDesign.class);
 		hasEvent = $hasEvent;
 		// Relations
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"application", INSTANCE, "application", org.instantlogic.designer.FragmentTypeDesign.class);
+				"Relationdesign__0006", "application", INSTANCE, "application", org.instantlogic.designer.FragmentTypeDesign.class);
 		application = $application;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $usages
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign>(
-				"usages", INSTANCE, "usages", org.instantlogic.designer.FragmentTypeDesign.class);
+				"Relationdesign__0042", "usages", INSTANCE, "usages", org.instantlogic.designer.FragmentTypeDesign.class);
 		usages = $usages;
 		
 		// Phase 2
@@ -93,6 +93,11 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 	@Override
 	public Class<org.instantlogic.designer.FragmentTypeDesign> getInstanceClass() {
 		return org.instantlogic.designer.FragmentTypeDesign.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "Entitydesign__0006";
 	}
 	
 	@Override

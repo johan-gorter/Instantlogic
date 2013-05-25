@@ -36,44 +36,44 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> $attributes
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign>(
-				"attributes", INSTANCE, "attributes", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__000c", "attributes", INSTANCE, "attributes", org.instantlogic.designer.AbstractEntityDesign.class);
 		attributes = $attributes;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__0010", "dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractEntityDesign.class);
 		dataType = $dataType;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $extendsFrom
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"extendsFrom", INSTANCE, "extendsFrom", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__000b", "extendsFrom", INSTANCE, "extendsFrom", org.instantlogic.designer.AbstractEntityDesign.class);
 		extendsFrom = $extendsFrom;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign> $relations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign>(
-				"relations", INSTANCE, "relations", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__000d", "relations", INSTANCE, "relations", org.instantlogic.designer.AbstractEntityDesign.class);
 		relations = $relations;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceDesign>, org.instantlogic.designer.StaticInstanceDesign> $staticInstances
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceDesign>, org.instantlogic.designer.StaticInstanceDesign>(
-				"staticInstances", INSTANCE, "staticInstances", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__000f", "staticInstances", INSTANCE, "staticInstances", org.instantlogic.designer.AbstractEntityDesign.class);
 		staticInstances = $staticInstances;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $title
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"title", INSTANCE, "title", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__000a", "title", INSTANCE, "title", org.instantlogic.designer.AbstractEntityDesign.class);
 		title = $title;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign> $validations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign>(
-				"validations", INSTANCE, "validations", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__000e", "validations", INSTANCE, "validations", org.instantlogic.designer.AbstractEntityDesign.class);
 		validations = $validations;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"application", INSTANCE, "application", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__0001", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEntityDesign.class);
 		application = $application;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> $extensions
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
-				"extensions", INSTANCE, "extensions", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__000b", "extensions", INSTANCE, "extensions", org.instantlogic.designer.AbstractEntityDesign.class);
 		extensions = $extensions;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign> $reverseRelations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign>(
-				"reverseRelations", INSTANCE, "reverseRelations", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__002b", "reverseRelations", INSTANCE, "reverseRelations", org.instantlogic.designer.AbstractEntityDesign.class);
 		reverseRelations = $reverseRelations;
 		
 		// Phase 2
@@ -135,6 +135,11 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 	@Override
 	public Class<org.instantlogic.designer.EntityDesign> getInstanceClass() {
 		return org.instantlogic.designer.EntityDesign.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "Entitydesign__0002";
 	}
 	
 	@Override

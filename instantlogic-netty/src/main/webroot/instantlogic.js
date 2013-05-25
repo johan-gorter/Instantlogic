@@ -378,14 +378,15 @@ YUI.add('instantlogic', function (Y) {
     };
 
     //FragmentHolder
-    ns.FragmentHolder = function (id, parentFragment, engine) {
+    ns.FragmentHolder = function (id, parentFragment, engine, options) {
     	if (!id) Y.error();
     	if (!engine) Y.error();
         this.id = id;
         this.engine = engine;
         this.parentFragment = parentFragment;
-        this.node = Y.html.span({ 'data-fragment-id': id, className: 'fragment' });
+        this.options = options || {};
         this.fragment = null;
+        this.node = Y.html[this.options.tagName || 'span']({ 'data-fragment-id': id, className: 'fragment' });
     };
 
     ns.FragmentHolder.prototype = {
@@ -408,10 +409,13 @@ YUI.add('instantlogic', function (Y) {
         recreateFragment: function (newModel, diff) {
             this.fragment.destroy();
             var oldNode = this.node;
-            this.node = Y.html.span({ 'data-fragment-id': newModel.id, className: 'fragment' });
-            oldNode.ancestor().insertBefore(this.node, oldNode); // oldNode can be removed using animation
-            diff.nodeToRemove(oldNode);
-            diff.nodeAdded(this.node);
+            this.node = Y.html[this.options.tagName || 'span']({ 'data-fragment-id': newModel.id, className: 'fragment' });
+            oldNode.ancestor().insertBefore(this.node, oldNode);
+            // Wrong visual effect:
+            //diff.nodeToRemove(oldNode);
+            //diff.nodeAdded(this.node);
+            diff.nodeUpdated(oldNode.ancestor());
+            oldNode.remove();
             this.fragment = this.engine.createFragment(newModel.type, this.node, this.parentFragment, this.engine);
             this.fragment.init(newModel);
         },
@@ -498,11 +502,12 @@ YUI.add('instantlogic', function (Y) {
     };
 
     // FragmentList
-    ns.FragmentList = function (parentNode, parentFragment, engine) {
+    ns.FragmentList = function (parentNode, parentFragment, engine, options) {
     	if (!engine) Y.error();
         this.engine = engine;
         this.parentFragment = parentFragment;
         this.parentNode = parentNode;
+        this.options = options || {};
     };
 
     ns.FragmentList.prototype = {
@@ -511,7 +516,7 @@ YUI.add('instantlogic', function (Y) {
             this.models = models;
             this.fragmentHolders = [];
             for (var i = 0; i < models.length; i++) {
-                var fragmentHolder = new ns.FragmentHolder(models[i].id, this.parentFragment, this.engine);
+                var fragmentHolder = new ns.FragmentHolder(models[i].id, this.parentFragment, this.engine, this.options.fragmentHolderOptions);
                 this.parentNode.appendChild(fragmentHolder.node);
                 fragmentHolder.init(models[i]);
                 this.fragmentHolders.push(fragmentHolder);
@@ -554,7 +559,7 @@ YUI.add('instantlogic', function (Y) {
                         this.fragmentHolders[newIndex].update(newModel, diff);
                     } else {
                         // New fragmentHolder
-                        var fragmentHolder = new ns.FragmentHolder(newModel.id, this.parentFragment, this.engine);
+                        var fragmentHolder = new ns.FragmentHolder(newModel.id, this.parentFragment, this.engine, this.options.fragmentHolderOptions);
                         this.fragmentHolders.splice(newIndex, 0, fragmentHolder);
                         if (this.fragmentHolders.length > newIndex + 1) {
                             this.parentNode.insertBefore(fragmentHolder.node, this.fragmentHolders[newIndex + 1].node);
@@ -608,7 +613,7 @@ YUI.add('instantlogic', function (Y) {
         },
 
         canUpdateFrom: function (newModel) {
-            return true;
+            return this.model.type == newModel.type;
         },
 
         update: function (newModel, diff) {
@@ -749,7 +754,7 @@ YUI.add('instantlogic', function (Y) {
     			state.fragmentLists = []; // Scope: this subclass only
     			var results = options.fragmentLists.call(this, model);
     			for (var i=0;i<results.length;i++) {
-    				var list = new ns.FragmentList(results[i][0], this, this.engine);
+    				var list = new ns.FragmentList(results[i][0], this, this.engine, results[i][2]);
     				list.init(results[i][1]);
     				state.fragmentLists.push(list);
     			}

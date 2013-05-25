@@ -19,6 +19,7 @@ import org.instantlogic.fabric.util.InstanceMetadata;
 import org.instantlogic.fabric.value.AttributeValue;
 import org.instantlogic.fabric.value.AttributeValues;
 import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.fabric.value.ReadOnlyRelationValue;
 import org.instantlogic.fabric.value.RelationValue;
 import org.instantlogic.fabric.value.RelationValues;
@@ -47,7 +48,7 @@ public abstract class Instance {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected<Value extends Object, I extends Instance> ReadOnlyAttributeValueImpl<I, Value> createReadOnlyAttributeValue(Attribute<I, Value, Value> attribute) {
+	protected<Value extends Object, I extends Instance> ReadOnlyAttributeValue<I, Value> createReadOnlyAttributeValue(Attribute<I, Value, Value> attribute) {
 		return new ReadOnlyAttributeValueImpl<I, Value>((I)this, attribute);
 	}
 	

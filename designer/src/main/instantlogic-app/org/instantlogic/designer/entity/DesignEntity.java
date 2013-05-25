@@ -65,19 +65,19 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> $isCustomized
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean>(
-				"isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractDesign.class);
+				"Attributedesign__0009", "isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractDesign.class);
 		isCustomized = $isCustomized;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $javaIdentifier
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"javaIdentifier", INSTANCE, java.lang.String.class, "javaIdentifier", org.instantlogic.designer.AbstractDesign.class);
+				"Attributedesign__0007", "javaIdentifier", INSTANCE, java.lang.String.class, "javaIdentifier", org.instantlogic.designer.AbstractDesign.class);
 		javaIdentifier = $javaIdentifier;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $name
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractDesign.class);
+				"Attributedesign__0006", "name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractDesign.class);
 		name = $name;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $technicalName
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"technicalName", INSTANCE, java.lang.String.class, "technicalName", org.instantlogic.designer.AbstractDesign.class);
+				"Attributedesign__0008", "technicalName", INSTANCE, java.lang.String.class, "technicalName", org.instantlogic.designer.AbstractDesign.class);
 		technicalName = $technicalName;
 		// Relations
 		// Reverse relations
@@ -118,6 +118,11 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	@Override
 	public Class<org.instantlogic.designer.Design> getInstanceClass() {
 		return org.instantlogic.designer.Design.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "Entitydesign__0008";
 	}
 	
 	@Override

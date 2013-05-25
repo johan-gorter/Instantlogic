@@ -12,7 +12,6 @@ package org.instantlogic.designer;
 
 import org.instantlogic.designer.codegenerator.classmodel.StaticFieldValueModel;
 import org.instantlogic.designer.codegenerator.classmodel.ValueModel;
-import org.instantlogic.fabric.model.Attribute;
 
 public class AttributeDesign extends AbstractAttributeDesign {
 	

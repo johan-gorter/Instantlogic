@@ -38,6 +38,11 @@ public class DataCategoryDesignEntity extends org.instantlogic.fabric.model.Enti
 	}
 	
 	@Override
+	public String getUniqueId() {
+		return "Entitydesign__0016";
+	}
+	
+	@Override
 	public String getName() {
 		return "DataCategoryDesign";
 	}

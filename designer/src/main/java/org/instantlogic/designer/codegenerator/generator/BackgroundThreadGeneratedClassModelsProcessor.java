@@ -58,6 +58,7 @@ public class BackgroundThreadGeneratedClassModelsProcessor implements GeneratedC
 		queue = new LinkedBlockingQueue<GeneratedClassModels>();
 		name = delegate.getName();
 		thread = new Thread(processor);
+		thread.setName(delegate.getName());
 		thread.start();
 	}
 

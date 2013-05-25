@@ -27,7 +27,7 @@ public class SubFlowDesignEntity extends org.instantlogic.fabric.model.Entity<or
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SubFlowDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> $flow
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SubFlowDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
-				"flow", INSTANCE, "flow", org.instantlogic.designer.SubFlowDesign.class);
+				"Relationdesign__004a", "flow", INSTANCE, "flow", org.instantlogic.designer.SubFlowDesign.class);
 		flow = $flow;
 		// Reverse relations
 		
@@ -47,6 +47,11 @@ public class SubFlowDesignEntity extends org.instantlogic.fabric.model.Entity<or
 	@Override
 	public Class<org.instantlogic.designer.SubFlowDesign> getInstanceClass() {
 		return org.instantlogic.designer.SubFlowDesign.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "Entitydesign__001f";
 	}
 	
 	@Override

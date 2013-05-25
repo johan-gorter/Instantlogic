@@ -34,4 +34,8 @@ public class ChangeMessage extends Message {
 		placeTemplate.change(changeContext);
 	}
 
+	@Override
+	public String toString() {
+		return "ChangeMessage [placeElementId=" + placeElementId + ", value=" + value + "]";
+	}
 }

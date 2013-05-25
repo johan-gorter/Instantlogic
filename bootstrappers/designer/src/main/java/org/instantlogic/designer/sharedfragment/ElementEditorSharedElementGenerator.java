@@ -25,6 +25,7 @@ import org.instantlogic.designer.SharedElementDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.event.CloseEditorEventGenerator;
+import org.instantlogic.designer.event.InsertFragmentTemplateBelowEventGenerator;
 import org.instantlogic.designer.event.NewAttributeForFragmentTemplateEventGenerator;
 import org.instantlogic.designer.event.OpenEditorEventGenerator;
 
@@ -42,7 +43,7 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 		DeductionSchemeDesign fragmentType, propertyName, editorOpen1, editorOpen2, hasAttribute, previewMode, entityHasValue;
 		SelectionDesign asFragmentTemplate, selectProperties, selectPropertyChildren;
 		FragmentTemplateDesign fragmentTypeInput, entityInput, attributeInput;
-		FragmentTemplateDesign openEditorButton, closeEditorButton, newAttributeButton;
+		FragmentTemplateDesign openEditorLink, closeEditorLink, newAttributeButton, insertBelowButton;
 		SharedElementDesign recursiveElementEditor;
 		
 		setFragment(
@@ -53,24 +54,28 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 							new IfElseDesign()
 								.setCondition(editorOpen1 = new DeductionSchemeDesign())
 								.setIfChild(
-									new FragmentTemplateDesign("Block").addToStyleNames("editor")
-										.setChildren("content", 
-											fragmentTypeInput = new FragmentTemplateDesign("Input"),
-											new IfElseDesign()
-												.setCondition(hasAttribute = new DeductionSchemeDesign())
-												.setIfChild(new FragmentTemplateDesign("Block")
-													.setChildren("content",
-														entityInput = new FragmentTemplateDesign("Input"),
-														new IfElseDesign()
-															.setCondition(entityHasValue = new DeductionSchemeDesign())
-															.setIfChild(new FragmentTemplateDesign("Block")
-																.setChildren("content",
-																	attributeInput = new FragmentTemplateDesign("Input"),
-																	newAttributeButton = new FragmentTemplateDesign("Button")
-																		.setText("text", createConstantText("New attribute"))
-																)
+									new FragmentTemplateDesign("Block")
+										.setChildren("content", // necessary for animation
+											new FragmentTemplateDesign("Block").addToStyleNames("editor").addToStyleNames("popover").addToStyleNames("top")
+												.setChildren("content", 
+													new FragmentTemplateDesign("Block").addToStyleNames("arrow"),
+													fragmentTypeInput = new FragmentTemplateDesign("Input"),
+													new IfElseDesign()
+														.setCondition(hasAttribute = new DeductionSchemeDesign())
+														.setIfChild(new FragmentTemplateDesign("Block")
+															.setChildren("content",
+																entityInput = new FragmentTemplateDesign("Input"),
+																new IfElseDesign()
+																	.setCondition(entityHasValue = new DeductionSchemeDesign())
+																	.setIfChild(new FragmentTemplateDesign("Block")
+																		.setChildren("content",
+																			attributeInput = new FragmentTemplateDesign("Input"),
+																			newAttributeButton = new FragmentTemplateDesign("Button")
+																				.setText("text", createConstantText("New attribute"))
+																		)
+																	)
 															)
-													)
+														)
 												)
 										)
 								)
@@ -85,13 +90,20 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 										new FragmentTemplateDesign("Strong")
 											.setText("text", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(fragmentType = new DeductionSchemeDesign()))),
 										// TODO: put all other info on this line
-										new IfElseDesign()
-											.setCondition(editorOpen2 = new DeductionSchemeDesign())
-											.setIfChild(
-												closeEditorButton = new FragmentTemplateDesign("Link").setText("text", createConstantText("Close editor")).addToStyleNames("editor-toggle")
-											)
-											.setElseChild(
-												openEditorButton = new FragmentTemplateDesign("Link").setText("text", createConstantText("Edit")).addToStyleNames("editor-toggle")
+										new FragmentTemplateDesign("Block").addToStyleNames("btn-group").addToStyleNames("element-edit-options")
+											.setChildren("content", 
+												new IfElseDesign()
+													.setCondition(editorOpen2 = new DeductionSchemeDesign())
+													.setIfChild(
+														closeEditorLink = new FragmentTemplateDesign("Button").addToStyleNames("btn-small").addToStyleNames("active")
+															.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-pencil"))
+													)
+													.setElseChild(
+														openEditorLink = new FragmentTemplateDesign("Button").addToStyleNames("btn-small")
+															.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-pencil"))
+													),
+												insertBelowButton = new FragmentTemplateDesign("Button").addToStyleNames("btn-small")
+													.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-hand-down"))
 											),
 										new FragmentTemplateDesign("Preview") // Floats right
 											.setChildren("content",
@@ -126,8 +138,9 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 		attributeInput.setEntity(FragmentTemplateDesignEntityGenerator.ENTITY).setAttribute(FragmentTemplateDesignEntityGenerator.attribute);
 		newAttributeButton.setEvent(NewAttributeForFragmentTemplateEventGenerator.EVENT);
 		
-		closeEditorButton.setEvent(CloseEditorEventGenerator.EVENT);
-		openEditorButton.setEvent(OpenEditorEventGenerator.EVENT);
+		closeEditorLink.setEvent(CloseEditorEventGenerator.EVENT);
+		openEditorLink.setEvent(OpenEditorEventGenerator.EVENT);
+		insertBelowButton.setEvent(InsertFragmentTemplateBelowEventGenerator.EVENT);
 		
 		fragmentType.deduceAttribute(DesignEntityGenerator.name, fragmentType.deduceRelation(FragmentTemplateDesignEntityGenerator.type));
 		selectProperties.newSelection().deduceAttribute(FragmentTemplateDesignEntityGenerator.properties);

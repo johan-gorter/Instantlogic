@@ -29,20 +29,20 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String> $javaClassName
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String>(
-				"javaClassName", INSTANCE, java.lang.String.class, "javaClassName", org.instantlogic.designer.DeductionOperationDesign.class);
+				"Attributedesign__000b", "javaClassName", INSTANCE, java.lang.String.class, "javaClassName", org.instantlogic.designer.DeductionOperationDesign.class);
 		javaClassName = $javaClassName;
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign> $inputs
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign>(
-				"inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionOperationDesign.class);
+				"Relationdesign__001a", "inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionOperationDesign.class);
 		inputs = $inputs;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $outputDataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"outputDataType", INSTANCE, "outputDataType", org.instantlogic.designer.DeductionOperationDesign.class);
+				"Relationdesign__0019", "outputDataType", INSTANCE, "outputDataType", org.instantlogic.designer.DeductionOperationDesign.class);
 		outputDataType = $outputDataType;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign> $parameters
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign>(
-				"parameters", INSTANCE, "parameters", org.instantlogic.designer.DeductionOperationDesign.class);
+				"Relationdesign__001b", "parameters", INSTANCE, "parameters", org.instantlogic.designer.DeductionOperationDesign.class);
 		parameters = $parameters;
 		// Reverse relations
 		
@@ -72,6 +72,11 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 	@Override
 	public Class<org.instantlogic.designer.DeductionOperationDesign> getInstanceClass() {
 		return org.instantlogic.designer.DeductionOperationDesign.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "Entitydesign__0003";
 	}
 	
 	@Override

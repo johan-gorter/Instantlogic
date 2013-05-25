@@ -43,21 +43,23 @@ public class ApplicationUpdate {
 		}
 		for (Relation oldRelation : oldEntity.getRelations()) {
 			Relation newRelation = newEntity.getRelationById(oldRelation.getUniqueId());
-			if (!oldRelation.isOwner()) {
-				if (!newRelation.isOwner()) {
-					copyValue(oldInstance, oldRelation, newInstance, newEntity);
-				}
-			} else {
-				if (newRelation.isMultivalue()) {
-					RelationValues relationValues = (RelationValues)newRelation.get(newInstance);
-					for (Instance newChildInstance : (Multi<? extends Instance>)relationValues.getValue()) {
+			if (newRelation!=null) {
+				if (!oldRelation.isOwner()) {
+					if (!newRelation.isOwner()) {
+						copyValue(oldInstance, oldRelation, newInstance, newEntity);
+					}
+				} else {
+					if (newRelation.isMultivalue()) {
+						RelationValues relationValues = (RelationValues)newRelation.get(newInstance);
+						for (Instance newChildInstance : (Multi<? extends Instance>)relationValues.getValue()) {
+							Instance oldChildInstance = oldInstance.getMetadata().getCaseAdministration().getInstanceByUniqueId(newChildInstance.getMetadata().getUniqueId());
+							copyData(newChildInstance, oldChildInstance, newCaseAdministration);
+						}
+					} else {
+						Instance newChildInstance = (Instance)newRelation.get(newInstance).getValue();
 						Instance oldChildInstance = oldInstance.getMetadata().getCaseAdministration().getInstanceByUniqueId(newChildInstance.getMetadata().getUniqueId());
 						copyData(newChildInstance, oldChildInstance, newCaseAdministration);
 					}
-				} else {
-					Instance newChildInstance = (Instance)newRelation.get(newInstance).getValue();
-					Instance oldChildInstance = oldInstance.getMetadata().getCaseAdministration().getInstanceByUniqueId(newChildInstance.getMetadata().getUniqueId());
-					copyData(newChildInstance, oldChildInstance, newCaseAdministration);
 				}
 			}
 		}

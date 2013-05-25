@@ -35,17 +35,17 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean> $multivalue
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean>(
-				"multivalue", INSTANCE, java.lang.Boolean.class, "multivalue", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"Attributedesign__0013", "multivalue", INSTANCE, java.lang.Boolean.class, "multivalue", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		multivalue = $multivalue;
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"dataType", INSTANCE, "dataType", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"Relationdesign__001e", "dataType", INSTANCE, "dataType", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		dataType = $dataType;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
-				"operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"Relationdesign__001a", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		operation = $operation;
 		
 		// Phase 2
@@ -68,6 +68,11 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 	@Override
 	public Class<org.instantlogic.designer.DeductionOperationInputDesign> getInstanceClass() {
 		return org.instantlogic.designer.DeductionOperationInputDesign.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "Entitydesign__0014";
 	}
 	
 	@Override

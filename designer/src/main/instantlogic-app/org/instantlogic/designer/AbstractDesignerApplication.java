@@ -10,7 +10,7 @@
 
 package org.instantlogic.designer;
 
-public class AbstractDesignerApplication extends org.instantlogic.interaction.Application {
+public abstract class AbstractDesignerApplication extends org.instantlogic.interaction.Application {
 
 	public static final DesignerApplication INSTANCE = new DesignerApplication();
 	

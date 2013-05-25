@@ -44,4 +44,9 @@ public class SubmitMessage extends Message {
 		}
 		traveler.getPresence().enter(traveler, flowContext.getFlowStack().toPath());
 	}
+
+	@Override
+	public String toString() {
+		return "SubmitMessage [placeElementId=" + placeElementId + "]";
+	}
 }

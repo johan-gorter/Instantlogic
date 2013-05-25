@@ -254,6 +254,13 @@ YUI.add('instantlogic-fragments', function (Y) {
     	}
     });
 
+    // WorkInProgress: Renders a question mark
+    ns.WorkInProgress = createFragment({
+    	createMarkup: function() {
+    		return html.div({className: 'work-in-progress animate-vertically'}, "?");
+		}
+    });
+
     ns.PresenceIndicator = createFragment({
     	createMarkup: function() {
     		return html.div({className: 'presence-indicator'});

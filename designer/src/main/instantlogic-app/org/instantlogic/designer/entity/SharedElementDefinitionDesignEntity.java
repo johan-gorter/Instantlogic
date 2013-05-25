@@ -29,16 +29,16 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $fragment
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"fragment", INSTANCE, "fragment", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+				"Relationdesign__003c", "fragment", INSTANCE, "fragment", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
 		fragment = $fragment;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"application", INSTANCE, "application", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+				"Relationdesign__0009", "application", INSTANCE, "application", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
 		application = $application;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign> $usages
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign>(
-				"usages", INSTANCE, "usages", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+				"Relationdesign__004b", "usages", INSTANCE, "usages", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
 		usages = $usages;
 		
 		// Phase 2
@@ -67,6 +67,11 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 	@Override
 	public Class<org.instantlogic.designer.SharedElementDefinitionDesign> getInstanceClass() {
 		return org.instantlogic.designer.SharedElementDefinitionDesign.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "Entitydesign__0007";
 	}
 	
 	@Override

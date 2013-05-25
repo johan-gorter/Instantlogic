@@ -35,15 +35,14 @@ public abstract class ContentGenerator extends AbstractGenerator {
 			model.category = Category.Shared;
 			model.name = ((SharedElementDesign) element).getDefinition().getName();
 		} else if (element instanceof FragmentTemplateDesign) {
+			model.category = Category.Fragment;
 			FragmentTemplateDesign fragmentTemplate = (FragmentTemplateDesign) element;
 			if (!fragmentTemplate.isValidForCodegeneration()) {
-				return null;
-			}
-			model.category = Category.Fragment;
-			if (fragmentTemplate.getType()!=null) {
+				model.fragmentTypeName = "WorkInProgress";
+			} else if (fragmentTemplate.getType()!=null) {
 				model.fragmentTypeName = fragmentTemplate.getType().getName(); // Official way
 			} else {
-				model.fragmentTypeName= fragmentTemplate.getFragmentTypeName(); // Unofficial way				
+				model.fragmentTypeName = fragmentTemplate.getFragmentTypeName(); // Unofficial way				
 			}
 			for (PropertyDesign property:fragmentTemplate.getProperties()) {
 				String propertyName = property.getPropertyName();
@@ -85,7 +84,7 @@ public abstract class ContentGenerator extends AbstractGenerator {
 			if (fragmentTemplate.getFragmentFilters().size()>0) {
 				model.fragmentFilters = fragmentTemplate.getFragmentFilters().asList().toArray(new String[fragmentTemplate.getFragmentFilters().size()]);
 			}
-			if (fragmentTemplate.getAttribute()!=null) {
+			if (fragmentTemplate.getAttribute()!=null && fragmentTemplate.getAttribute().isValidForCodegeneration()) {
 				model.entity = fragmentTemplate.getEntity().getTechnicalNameCapitalized();
 				model.attribute = fragmentTemplate.getAttribute().getTechnicalName();
 				model.attributeIsRelation = (fragmentTemplate.getAttribute() instanceof RelationDesign);

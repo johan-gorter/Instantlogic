@@ -36,15 +36,15 @@ public class FlowNodeBaseDesignEntity extends org.instantlogic.fabric.model.Enti
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign> $incomingEdges
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign>(
-				"incomingEdges", INSTANCE, "incomingEdges", org.instantlogic.designer.FlowNodeBaseDesign.class);
+				"Relationdesign__003a", "incomingEdges", INSTANCE, "incomingEdges", org.instantlogic.designer.FlowNodeBaseDesign.class);
 		incomingEdges = $incomingEdges;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign> $outgoingEdges
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign>(
-				"outgoingEdges", INSTANCE, "outgoingEdges", org.instantlogic.designer.FlowNodeBaseDesign.class);
+				"Relationdesign__0038", "outgoingEdges", INSTANCE, "outgoingEdges", org.instantlogic.designer.FlowNodeBaseDesign.class);
 		outgoingEdges = $outgoingEdges;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> $owner
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
-				"owner", INSTANCE, "owner", org.instantlogic.designer.FlowNodeBaseDesign.class);
+				"Relationdesign__0035", "owner", INSTANCE, "owner", org.instantlogic.designer.FlowNodeBaseDesign.class);
 		owner = $owner;
 		
 		// Phase 2
@@ -78,6 +78,11 @@ public class FlowNodeBaseDesignEntity extends org.instantlogic.fabric.model.Enti
 	@Override
 	public Class<org.instantlogic.designer.FlowNodeBaseDesign> getInstanceClass() {
 		return org.instantlogic.designer.FlowNodeBaseDesign.class;
+	}
+	
+	@Override
+	public String getUniqueId() {
+		return "Entitydesign__0018";
 	}
 	
 	@Override
