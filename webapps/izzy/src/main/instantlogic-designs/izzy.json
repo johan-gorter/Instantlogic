@@ -1,5 +1,5 @@
 {
-  "instanceId": "Applicationdesgn__0001",
+  "instanceId": "ogykjjzoqIeaUowj_568302bc_1650",
   "entityName": "ApplicationDesign",
   "version": 0,
   "name": "izzy",
@@ -658,7 +658,9 @@
       "instanceId": "Eventdesign__0002",
       "entityName": "EventDesign",
       "name": "delete issue",
-      "parameters": []
+      "parameters": [
+        "Entitydesign__0003"
+      ]
     },
     {
       "instanceId": "Eventdesign__0003",
@@ -711,16 +713,22 @@
           "instanceId": "Flowedgedesign__0003",
           "entityName": "FlowEdgeDesign",
           "endNode": "Subflowdesign__0003",
-          "event": "Eventdesign__0001"
+          "event": "Eventdesign__0002"
         },
         {
           "instanceId": "Flowedgedesign__0004",
           "entityName": "FlowEdgeDesign",
           "endNode": "Subflowdesign__0004",
-          "event": "Eventdesign__0005"
+          "event": "Eventdesign__0001"
         },
         {
           "instanceId": "Flowedgedesign__0005",
+          "entityName": "FlowEdgeDesign",
+          "endNode": "Subflowdesign__0005",
+          "event": "Eventdesign__0005"
+        },
+        {
+          "instanceId": "Flowedgedesign__0006",
           "entityName": "FlowEdgeDesign",
           "endNode": "Placetemplatdsgn__0001",
           "event": "Eventdesign__0006"
@@ -791,14 +799,20 @@
         {
           "instanceId": "Subflowdesign__0003",
           "entityName": "SubFlowDesign",
-          "name": "select dashboard",
+          "name": "delete issue",
           "flow": "Flowdesign__0004"
         },
         {
           "instanceId": "Subflowdesign__0004",
           "entityName": "SubFlowDesign",
-          "name": "dashboard",
+          "name": "select dashboard",
           "flow": "Flowdesign__0005"
+        },
+        {
+          "instanceId": "Subflowdesign__0005",
+          "entityName": "SubFlowDesign",
+          "name": "dashboard",
+          "flow": "Flowdesign__0006"
         }
       ],
       "parameters": []
@@ -809,7 +823,7 @@
       "name": "issue",
       "edges": [
         {
-          "instanceId": "Flowedgedesign__0006",
+          "instanceId": "Flowedgedesign__0007",
           "entityName": "FlowEdgeDesign",
           "endNode": "issueDetails",
           "event": "Eventdesign__0004"
@@ -1302,12 +1316,23 @@
       "parameters": []
     },
     {
-      "instanceId": "Flowdesign__0005",
+      "instanceId": "Flowdesign__0004",
+      "entityName": "FlowDesign",
+      "isCustomized": true,
+      "name": "delete issue",
+      "edges": [],
+      "nodes": [],
+      "parameters": [
+        "Entitydesign__0003"
+      ]
+    },
+    {
+      "instanceId": "Flowdesign__0006",
       "entityName": "FlowDesign",
       "name": "dashboard",
       "edges": [
         {
-          "instanceId": "Flowedgedesign__0007",
+          "instanceId": "Flowedgedesign__0008",
           "entityName": "FlowEdgeDesign",
           "endNode": "Placetemplatdsgn__0002",
           "event": "Eventdesign__0005"
@@ -1983,7 +2008,7 @@
       ]
     },
     {
-      "instanceId": "Flowdesign__0004",
+      "instanceId": "Flowdesign__0005",
       "entityName": "FlowDesign",
       "isCustomized": true,
       "name": "select dashboard",

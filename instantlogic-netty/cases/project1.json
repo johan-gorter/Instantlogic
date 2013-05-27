@@ -1,8 +1,8 @@
 {
-  "instanceId": "NApilcphlIbmqeie_f1d2cfc1_a7eb",
+  "instanceId": "LvuiibEydycsm_mm_9f80600f_9486",
   "entityName": "project",
-  "version": 1,
-  "last issue number": 17,
+  "version": 0,
+  "last issue number": 19,
   "issues": [
     {
       "instanceId": "I1",
@@ -10,9 +10,7 @@
       "description": "The interface should behave like POJO\u0027s for programmers",
       "headline": "Design an entity-attribute-relation model, called Fabric",
       "number": 1,
-      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "I2",
@@ -20,7 +18,6 @@
       "description": "Add observers that are notified once and observers that are constantly being notified",
       "headline": "Make the Fabric observable",
       "number": 2,
-      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
       "comments": []
     },
     {
@@ -29,9 +26,7 @@
       "description": "Only implement Atomic and Consistent, not Isolated and Durable.\n\nListeners that observe a change that is rolled back should receive the opposite change event with a flag.",
       "headline": "Make the Fabric transactional",
       "number": 3,
-      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "6f86ecaf-6e76-455b-854f-910639d16462",
@@ -39,9 +34,7 @@
       "description": "We knew this was coming.",
       "headline": "Make the Fabric rule-based",
       "number": 4,
-      "assignee": "U4",
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "be35693d-8eae-4cad-b818-4e118ea1dfc4",
@@ -49,9 +42,7 @@
       "description": "Create one mechanism that is source control friendly.\nAdd another that is fast and efficient.",
       "headline": "Add persistence mechanisms",
       "number": 5,
-      "assignee": "bc0bae0c-081b-41f4-8ba1-10feb60b93f2",
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "7c57e731-209d-4123-be23-bdba9dd96c74",
@@ -59,9 +50,7 @@
       "description": "Basic flow, event, page(\u003dplace) stuff",
       "headline": "Extend the fabric with a framework to create web applications, called Interaction",
       "number": 6,
-      "assignee": "U4",
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "b83ca3f9-5bbc-4a1e-8c53-61ccb0b99f96",
@@ -69,8 +58,7 @@
       "description": "Test one two tree",
       "headline": "Add places and flows to Interaction",
       "number": 7,
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "5b3fde85-c4e0-422e-ba64-e85dc3d0705d",
@@ -78,48 +66,42 @@
       "description": "call them SharedElements",
       "headline": "Add reusable place-elements to Interaction",
       "number": 8,
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "9fbad877-15ad-48ff-adea-c322aa7083c4",
       "entityName": "issue",
       "headline": "Make a runtime engine for Interaction",
       "number": 9,
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "4810d3f1-d1e2-453e-93fd-35a04a4ca1ae",
       "entityName": "issue",
       "headline": "Add functionality which allows users to see and interact with each other",
       "number": 10,
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "63c09d1c-d57c-4918-a8df-671de11642ed",
       "entityName": "issue",
       "headline": "Make a tool which generates code for the Fabric and Interaction, called Designer",
       "number": 11,
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "439723d4-3e23-495e-bda5-5a1e91d7f3fe",
       "entityName": "issue",
       "headline": "Add a API interface for the Designer",
       "number": 12,
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "34d768cf-07bd-4d00-9d07-24f0349f67af",
       "entityName": "issue",
       "headline": "Add a graphical user interface for the Designer",
       "number": 13,
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "3bafb53d-1f90-4a1f-945d-3409fae627bd",
@@ -127,8 +109,7 @@
       "description": "Todo: think of a good metaphore, like a construction helmet.",
       "headline": "Add a debugging option which aids in application development",
       "number": 14,
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "b6e7113a-2d74-4402-b9d6-cd62f3cc2585",
@@ -136,8 +117,7 @@
       "description": "This will be the killer feature",
       "headline": "Generate bytecode on the fly to allow changes from the designer to be visible immediately in the application",
       "number": 15,
-      "comments": [],
-      "reporter": "U4"
+      "comments": []
     },
     {
       "instanceId": "ba9c7233-8e55-4416-870c-bf5a2c600704",
@@ -145,16 +125,7 @@
       "description": "Make the application ready to be used for rapid prototyping.",
       "headline": "Rapid prototyping",
       "number": 16,
-      "comments": [],
-      "reporter": "U4"
-    },
-    {
-      "instanceId": "LoUjszwtaeaEA_ya_77df3004_487e",
-      "entityName": "issue",
-      "headline": "New issue",
-      "number": 17,
-      "comments": [],
-      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8"
+      "comments": []
     }
   ],
   "users": [

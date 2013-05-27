@@ -21,6 +21,7 @@ import org.instantlogic.designer.SelectionDesign;
 import org.instantlogic.designer.SharedElementDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
+import org.instantlogic.designer.event.RemoveAttributeEventGenerator;
 import org.instantlogic.designer.sharedfragment.EntityContextSharedElementGenerator;
 
 public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
@@ -36,7 +37,8 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 		DeductionSchemeDesign attributeName, entity;
 		FragmentTemplateDesign nameInput, categoryInput, multilineInput, formattedInput,
 			percentageInput, exactRoundingInput, wholeNumberInput,
-			hasRelevanceInput, hasRuleInput, writeableInput, hasDefaultInput;
+			hasRelevanceInput, hasRuleInput, writeableInput, hasDefaultInput,
+			deleteButton;
 		SharedElementDesign entityContext;
 		SelectionDesign selectDataType;
 
@@ -62,6 +64,10 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 							.addToUntranslated(new StringTemplateDesign().setConstantText(" (Attribute)"))
 						),
 					
+						deleteButton = new FragmentTemplateDesign("Button").addToStyleNames("btn")
+							.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-remove"))
+							.setText("text", createConstantText("Delete")),
+						
 						nameInput = new FragmentTemplateDesign("Input"),
 						
 						new FragmentTemplateDesign("Heading4").setText("text", createConstantText("Data type")),
@@ -85,6 +91,8 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 					)
 			)
 		);
+		
+		deleteButton.setEvent(RemoveAttributeEventGenerator.EVENT);
 		
 		entity.deduceReverseRelation(EntityDesignEntityGenerator.attributes, entity.deduceSelectedInstance(AttributeDesignEntityGenerator.ENTITY));
 		entityContext.setDefinition(EntityContextSharedElementGenerator.DEFINITION);

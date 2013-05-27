@@ -4625,13 +4625,29 @@
     {
       "instanceId": "Eventdesign__000b",
       "entityName": "EventDesign",
+      "name": "RemoveAttribute",
+      "parameters": [
+        "Entitydesign__000a"
+      ]
+    },
+    {
+      "instanceId": "Eventdesign__000c",
+      "entityName": "EventDesign",
+      "name": "RemoveFragmentTemplate",
+      "parameters": [
+        "Entitydesign__001d"
+      ]
+    },
+    {
+      "instanceId": "Eventdesign__000d",
+      "entityName": "EventDesign",
       "name": "CloseEditor",
       "parameters": [
         "Entitydesign__001a"
       ]
     },
     {
-      "instanceId": "Eventdesign__000c",
+      "instanceId": "Eventdesign__000e",
       "entityName": "EventDesign",
       "name": "InsertFragmentTemplateBelow",
       "parameters": [
@@ -5938,6 +5954,17 @@
       "parameters": []
     },
     {
+      "instanceId": "Flowdesign__000b",
+      "entityName": "FlowDesign",
+      "isCustomized": true,
+      "name": "RemoveFragmentTemplate",
+      "edges": [],
+      "nodes": [],
+      "parameters": [
+        "Entitydesign__001d"
+      ]
+    },
+    {
       "instanceId": "Flowdesign__0004",
       "entityName": "FlowDesign",
       "isCustomized": true,
@@ -6436,7 +6463,7 @@
           "instanceId": "Subflowdesign__0008",
           "entityName": "SubFlowDesign",
           "name": "FlowNodeChoice",
-          "flow": "Flowdesign__000b"
+          "flow": "Flowdesign__000c"
         }
       ],
       "parameters": [
@@ -6444,7 +6471,7 @@
       ]
     },
     {
-      "instanceId": "Flowdesign__000c",
+      "instanceId": "Flowdesign__000d",
       "entityName": "FlowDesign",
       "isCustomized": true,
       "name": "CloseEditor",
@@ -6453,7 +6480,16 @@
       "parameters": []
     },
     {
-      "instanceId": "Flowdesign__000d",
+      "instanceId": "Flowdesign__000e",
+      "entityName": "FlowDesign",
+      "isCustomized": true,
+      "name": "RemoveAttribute",
+      "edges": [],
+      "nodes": [],
+      "parameters": []
+    },
+    {
+      "instanceId": "Flowdesign__000f",
       "entityName": "FlowDesign",
       "isCustomized": true,
       "name": "OpenEditor",
@@ -6490,14 +6526,14 @@
           "instanceId": "Flowedgedesign__000f",
           "entityName": "FlowEdgeDesign",
           "endNode": "Subflowdesign__000a",
-          "event": "Eventdesign__000b",
+          "event": "Eventdesign__000d",
           "startNode": "Placetemplatdsgn__0004"
         },
         {
           "instanceId": "Flowedgedesign__0010",
           "entityName": "FlowEdgeDesign",
           "endNode": "Placetemplatdsgn__0004",
-          "event": "Eventdesign__000b",
+          "event": "Eventdesign__000d",
           "startNode": "Subflowdesign__000a"
         },
         {
@@ -6511,15 +6547,29 @@
           "instanceId": "Flowedgedesign__0012",
           "entityName": "FlowEdgeDesign",
           "endNode": "Subflowdesign__000c",
-          "event": "Eventdesign__000c",
+          "event": "Eventdesign__000e",
           "startNode": "Placetemplatdsgn__0004"
         },
         {
           "instanceId": "Flowedgedesign__0013",
           "entityName": "FlowEdgeDesign",
           "endNode": "Placetemplatdsgn__0004",
-          "event": "Eventdesign__000c",
+          "event": "Eventdesign__000e",
           "startNode": "Subflowdesign__000c"
+        },
+        {
+          "instanceId": "Flowedgedesign__0014",
+          "entityName": "FlowEdgeDesign",
+          "endNode": "Subflowdesign__000d",
+          "event": "Eventdesign__000c",
+          "startNode": "Placetemplatdsgn__0004"
+        },
+        {
+          "instanceId": "Flowedgedesign__0015",
+          "entityName": "FlowEdgeDesign",
+          "endNode": "Placetemplatdsgn__0004",
+          "event": "Eventdesign__000c",
+          "startNode": "Subflowdesign__000d"
         }
       ],
       "nodes": [
@@ -6917,13 +6967,13 @@
           "instanceId": "Subflowdesign__0009",
           "entityName": "SubFlowDesign",
           "name": "OpenEditor",
-          "flow": "Flowdesign__000d"
+          "flow": "Flowdesign__000f"
         },
         {
           "instanceId": "Subflowdesign__000a",
           "entityName": "SubFlowDesign",
           "name": "CloseEditor",
-          "flow": "Flowdesign__000c"
+          "flow": "Flowdesign__000d"
         },
         {
           "instanceId": "Subflowdesign__000b",
@@ -6936,6 +6986,12 @@
           "entityName": "SubFlowDesign",
           "name": "InsertFragmentTemplateBelow",
           "flow": "Flowdesign__0008"
+        },
+        {
+          "instanceId": "Subflowdesign__000d",
+          "entityName": "SubFlowDesign",
+          "name": "RemoveFragmentTemplate",
+          "flow": "Flowdesign__000b"
         }
       ],
       "parameters": [
@@ -6948,10 +7004,16 @@
       "name": "Attribute",
       "edges": [
         {
-          "instanceId": "Flowedgedesign__0014",
+          "instanceId": "Flowedgedesign__0016",
           "entityName": "FlowEdgeDesign",
           "endNode": "Placetemplatdsgn__0005",
           "event": "Eventdesign__0005"
+        },
+        {
+          "instanceId": "Flowedgedesign__0017",
+          "entityName": "FlowEdgeDesign",
+          "endNode": "Subflowdesign__000e",
+          "event": "Eventdesign__000b"
         }
       ],
       "nodes": [
@@ -7146,21 +7208,31 @@
                             "instanceId": "Fragmnttmpltdsgn__002a",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
-                            "fragmentTypeName": "Input",
-                            "styleNames": [],
-                            "attribute": "Attributedesign__0006",
-                            "entity": "Entitydesign__0008",
-                            "properties": []
-                          },
-                          {
-                            "instanceId": "Fragmnttmpltdsgn__002b",
-                            "entityName": "FragmentTemplateDesign",
-                            "fragmentFilters": [],
-                            "fragmentTypeName": "Heading4",
-                            "styleNames": [],
+                            "fragmentTypeName": "Button",
+                            "styleNames": [
+                              "btn"
+                            ],
+                            "event": "Eventdesign__000b",
                             "properties": [
                               {
                                 "instanceId": "Propertydesign__0029",
+                                "entityName": "PropertyDesign",
+                                "propertyName": "content",
+                                "children": [
+                                  {
+                                    "instanceId": "Fragmnttmpltdsgn__002b",
+                                    "entityName": "FragmentTemplateDesign",
+                                    "fragmentFilters": [],
+                                    "fragmentTypeName": "Icon",
+                                    "styleNames": [
+                                      "icon-remove"
+                                    ],
+                                    "properties": []
+                                  }
+                                ]
+                              },
+                              {
+                                "instanceId": "Propertydesign__002a",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "text",
                                 "children": [],
@@ -7170,6 +7242,42 @@
                                   "untranslated": [
                                     {
                                       "instanceId": "Stringtempltdsgn__003f",
+                                      "entityName": "StringTemplateDesign",
+                                      "constantText": "Delete"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "instanceId": "Fragmnttmpltdsgn__002c",
+                            "entityName": "FragmentTemplateDesign",
+                            "fragmentFilters": [],
+                            "fragmentTypeName": "Input",
+                            "styleNames": [],
+                            "attribute": "Attributedesign__0006",
+                            "entity": "Entitydesign__0008",
+                            "properties": []
+                          },
+                          {
+                            "instanceId": "Fragmnttmpltdsgn__002d",
+                            "entityName": "FragmentTemplateDesign",
+                            "fragmentFilters": [],
+                            "fragmentTypeName": "Heading4",
+                            "styleNames": [],
+                            "properties": [
+                              {
+                                "instanceId": "Propertydesign__002b",
+                                "entityName": "PropertyDesign",
+                                "propertyName": "text",
+                                "children": [],
+                                "text": {
+                                  "instanceId": "Texttemplatedsgn__0038",
+                                  "entityName": "TextTemplateDesign",
+                                  "untranslated": [
+                                    {
+                                      "instanceId": "Stringtempltdsgn__0040",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Data type"
                                     }
@@ -7182,19 +7290,19 @@
                             "instanceId": "Selectiondesign__0008",
                             "entityName": "SelectionDesign",
                             "child": {
-                              "instanceId": "Fragmnttmpltdsgn__002c",
+                              "instanceId": "Fragmnttmpltdsgn__002e",
                               "entityName": "FragmentTemplateDesign",
                               "fragmentFilters": [],
                               "fragmentTypeName": "Block",
                               "styleNames": [],
                               "properties": [
                                 {
-                                  "instanceId": "Propertydesign__002a",
+                                  "instanceId": "Propertydesign__002c",
                                   "entityName": "PropertyDesign",
                                   "propertyName": "content",
                                   "children": [
                                     {
-                                      "instanceId": "Fragmnttmpltdsgn__002d",
+                                      "instanceId": "Fragmnttmpltdsgn__002f",
                                       "entityName": "FragmentTemplateDesign",
                                       "fragmentFilters": [],
                                       "fragmentTypeName": "Input",
@@ -7204,7 +7312,7 @@
                                       "properties": []
                                     },
                                     {
-                                      "instanceId": "Fragmnttmpltdsgn__002e",
+                                      "instanceId": "Fragmnttmpltdsgn__0030",
                                       "entityName": "FragmentTemplateDesign",
                                       "fragmentFilters": [],
                                       "fragmentTypeName": "Input",
@@ -7214,7 +7322,7 @@
                                       "properties": []
                                     },
                                     {
-                                      "instanceId": "Fragmnttmpltdsgn__002f",
+                                      "instanceId": "Fragmnttmpltdsgn__0031",
                                       "entityName": "FragmentTemplateDesign",
                                       "fragmentFilters": [],
                                       "fragmentTypeName": "Input",
@@ -7224,7 +7332,7 @@
                                       "properties": []
                                     },
                                     {
-                                      "instanceId": "Fragmnttmpltdsgn__0030",
+                                      "instanceId": "Fragmnttmpltdsgn__0032",
                                       "entityName": "FragmentTemplateDesign",
                                       "fragmentFilters": [],
                                       "fragmentTypeName": "Input",
@@ -7234,7 +7342,7 @@
                                       "properties": []
                                     },
                                     {
-                                      "instanceId": "Fragmnttmpltdsgn__0031",
+                                      "instanceId": "Fragmnttmpltdsgn__0033",
                                       "entityName": "FragmentTemplateDesign",
                                       "fragmentFilters": [],
                                       "fragmentTypeName": "Input",
@@ -7244,7 +7352,7 @@
                                       "properties": []
                                     },
                                     {
-                                      "instanceId": "Fragmnttmpltdsgn__0032",
+                                      "instanceId": "Fragmnttmpltdsgn__0034",
                                       "entityName": "FragmentTemplateDesign",
                                       "fragmentFilters": [],
                                       "fragmentTypeName": "Input",
@@ -7318,23 +7426,23 @@
                             }
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0033",
+                            "instanceId": "Fragmnttmpltdsgn__0035",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Heading4",
                             "styleNames": [],
                             "properties": [
                               {
-                                "instanceId": "Propertydesign__002b",
+                                "instanceId": "Propertydesign__002d",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "text",
                                 "children": [],
                                 "text": {
-                                  "instanceId": "Texttemplatedsgn__0038",
+                                  "instanceId": "Texttemplatedsgn__0039",
                                   "entityName": "TextTemplateDesign",
                                   "untranslated": [
                                     {
-                                      "instanceId": "Stringtempltdsgn__0040",
+                                      "instanceId": "Stringtempltdsgn__0041",
                                       "entityName": "StringTemplateDesign",
                                       "constantText": "Value"
                                     }
@@ -7344,7 +7452,7 @@
                             ]
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0034",
+                            "instanceId": "Fragmnttmpltdsgn__0036",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Input",
@@ -7354,7 +7462,7 @@
                             "properties": []
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0035",
+                            "instanceId": "Fragmnttmpltdsgn__0037",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Input",
@@ -7364,7 +7472,7 @@
                             "properties": []
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0036",
+                            "instanceId": "Fragmnttmpltdsgn__0038",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Input",
@@ -7374,7 +7482,7 @@
                             "properties": []
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0037",
+                            "instanceId": "Fragmnttmpltdsgn__0039",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Input",
@@ -7392,11 +7500,11 @@
             ]
           },
           "title": {
-            "instanceId": "Texttemplatedsgn__0039",
+            "instanceId": "Texttemplatedsgn__003a",
             "entityName": "TextTemplateDesign",
             "untranslated": [
               {
-                "instanceId": "Stringtempltdsgn__0041",
+                "instanceId": "Stringtempltdsgn__0042",
                 "entityName": "StringTemplateDesign",
                 "deduction": {
                   "instanceId": "Deductinschmdsgn__003a",
@@ -7459,12 +7567,18 @@
                 }
               },
               {
-                "instanceId": "Stringtempltdsgn__0042",
+                "instanceId": "Stringtempltdsgn__0043",
                 "entityName": "StringTemplateDesign",
                 "constantText": " (Attribute)"
               }
             ]
           }
+        },
+        {
+          "instanceId": "Subflowdesign__000e",
+          "entityName": "SubFlowDesign",
+          "name": "RemoveAttribute",
+          "flow": "Flowdesign__000e"
         }
       ],
       "parameters": [
@@ -7472,7 +7586,7 @@
       ]
     },
     {
-      "instanceId": "Flowdesign__000b",
+      "instanceId": "Flowdesign__000c",
       "entityName": "FlowDesign",
       "isCustomized": true,
       "name": "FlowNodeChoice",
@@ -7489,14 +7603,14 @@
       "entityName": "SharedElementDefinitionDesign",
       "name": "EntityContext",
       "fragment": {
-        "instanceId": "Fragmnttmpltdsgn__0038",
+        "instanceId": "Fragmnttmpltdsgn__003a",
         "entityName": "FragmentTemplateDesign",
         "fragmentFilters": [],
         "fragmentTypeName": "Group",
         "styleNames": [],
         "properties": [
           {
-            "instanceId": "Propertydesign__002c",
+            "instanceId": "Propertydesign__002e",
             "entityName": "PropertyDesign",
             "propertyName": "content",
             "children": [
@@ -7506,7 +7620,7 @@
                 "definition": "Shrdlmntdfntndsg__0001"
               },
               {
-                "instanceId": "Fragmnttmpltdsgn__0039",
+                "instanceId": "Fragmnttmpltdsgn__003b",
                 "entityName": "FragmentTemplateDesign",
                 "fragmentFilters": [],
                 "fragmentTypeName": "Link",
@@ -7514,12 +7628,12 @@
                 "event": "Eventdesign__0008",
                 "properties": [
                   {
-                    "instanceId": "Propertydesign__002d",
+                    "instanceId": "Propertydesign__002f",
                     "entityName": "PropertyDesign",
                     "propertyName": "content",
                     "children": [
                       {
-                        "instanceId": "Fragmnttmpltdsgn__003a",
+                        "instanceId": "Fragmnttmpltdsgn__003c",
                         "entityName": "FragmentTemplateDesign",
                         "fragmentFilters": [],
                         "fragmentTypeName": "Block",
@@ -7528,28 +7642,28 @@
                         ],
                         "properties": [
                           {
-                            "instanceId": "Propertydesign__002e",
+                            "instanceId": "Propertydesign__0030",
                             "entityName": "PropertyDesign",
                             "propertyName": "content",
                             "children": [
                               {
-                                "instanceId": "Fragmnttmpltdsgn__003b",
+                                "instanceId": "Fragmnttmpltdsgn__003d",
                                 "entityName": "FragmentTemplateDesign",
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Heading3",
                                 "styleNames": [],
                                 "properties": [
                                   {
-                                    "instanceId": "Propertydesign__002f",
+                                    "instanceId": "Propertydesign__0031",
                                     "entityName": "PropertyDesign",
                                     "propertyName": "text",
                                     "children": [],
                                     "text": {
-                                      "instanceId": "Texttemplatedsgn__003a",
+                                      "instanceId": "Texttemplatedsgn__003b",
                                       "entityName": "TextTemplateDesign",
                                       "untranslated": [
                                         {
-                                          "instanceId": "Stringtempltdsgn__0043",
+                                          "instanceId": "Stringtempltdsgn__0044",
                                           "entityName": "StringTemplateDesign",
                                           "deduction": {
                                             "instanceId": "Deductinschmdsgn__003b",
@@ -7612,7 +7726,7 @@
                                           }
                                         },
                                         {
-                                          "instanceId": "Stringtempltdsgn__0044",
+                                          "instanceId": "Stringtempltdsgn__0045",
                                           "entityName": "StringTemplateDesign",
                                           "constantText": " (Entity)"
                                         }
@@ -7639,14 +7753,14 @@
       "entityName": "SharedElementDefinitionDesign",
       "name": "FlowContext",
       "fragment": {
-        "instanceId": "Fragmnttmpltdsgn__003c",
+        "instanceId": "Fragmnttmpltdsgn__003e",
         "entityName": "FragmentTemplateDesign",
         "fragmentFilters": [],
         "fragmentTypeName": "Group",
         "styleNames": [],
         "properties": [
           {
-            "instanceId": "Propertydesign__0030",
+            "instanceId": "Propertydesign__0032",
             "entityName": "PropertyDesign",
             "propertyName": "content",
             "children": [
@@ -7656,7 +7770,7 @@
                 "definition": "Shrdlmntdfntndsg__0001"
               },
               {
-                "instanceId": "Fragmnttmpltdsgn__003d",
+                "instanceId": "Fragmnttmpltdsgn__003f",
                 "entityName": "FragmentTemplateDesign",
                 "fragmentFilters": [],
                 "fragmentTypeName": "Link",
@@ -7664,12 +7778,12 @@
                 "event": "Eventdesign__0009",
                 "properties": [
                   {
-                    "instanceId": "Propertydesign__0031",
+                    "instanceId": "Propertydesign__0033",
                     "entityName": "PropertyDesign",
                     "propertyName": "content",
                     "children": [
                       {
-                        "instanceId": "Fragmnttmpltdsgn__003e",
+                        "instanceId": "Fragmnttmpltdsgn__0040",
                         "entityName": "FragmentTemplateDesign",
                         "fragmentFilters": [],
                         "fragmentTypeName": "Block",
@@ -7678,28 +7792,28 @@
                         ],
                         "properties": [
                           {
-                            "instanceId": "Propertydesign__0032",
+                            "instanceId": "Propertydesign__0034",
                             "entityName": "PropertyDesign",
                             "propertyName": "content",
                             "children": [
                               {
-                                "instanceId": "Fragmnttmpltdsgn__003f",
+                                "instanceId": "Fragmnttmpltdsgn__0041",
                                 "entityName": "FragmentTemplateDesign",
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Heading3",
                                 "styleNames": [],
                                 "properties": [
                                   {
-                                    "instanceId": "Propertydesign__0033",
+                                    "instanceId": "Propertydesign__0035",
                                     "entityName": "PropertyDesign",
                                     "propertyName": "text",
                                     "children": [],
                                     "text": {
-                                      "instanceId": "Texttemplatedsgn__003b",
+                                      "instanceId": "Texttemplatedsgn__003c",
                                       "entityName": "TextTemplateDesign",
                                       "untranslated": [
                                         {
-                                          "instanceId": "Stringtempltdsgn__0045",
+                                          "instanceId": "Stringtempltdsgn__0046",
                                           "entityName": "StringTemplateDesign",
                                           "deduction": {
                                             "instanceId": "Deductinschmdsgn__003c",
@@ -7762,7 +7876,7 @@
                                           }
                                         },
                                         {
-                                          "instanceId": "Stringtempltdsgn__0046",
+                                          "instanceId": "Stringtempltdsgn__0047",
                                           "entityName": "StringTemplateDesign",
                                           "constantText": " (Flow)"
                                         }
@@ -7789,7 +7903,7 @@
       "entityName": "SharedElementDefinitionDesign",
       "name": "ElementEditor",
       "fragment": {
-        "instanceId": "Fragmnttmpltdsgn__0040",
+        "instanceId": "Fragmnttmpltdsgn__0042",
         "entityName": "FragmentTemplateDesign",
         "fragmentFilters": [],
         "fragmentTypeName": "Block",
@@ -7798,7 +7912,7 @@
         ],
         "properties": [
           {
-            "instanceId": "Propertydesign__0034",
+            "instanceId": "Propertydesign__0036",
             "entityName": "PropertyDesign",
             "propertyName": "content",
             "children": [
@@ -7868,19 +7982,19 @@
                     "output": "Deductiondesign__0072"
                   },
                   "ifChild": {
-                    "instanceId": "Fragmnttmpltdsgn__0041",
+                    "instanceId": "Fragmnttmpltdsgn__0043",
                     "entityName": "FragmentTemplateDesign",
                     "fragmentFilters": [],
                     "fragmentTypeName": "Block",
                     "styleNames": [],
                     "properties": [
                       {
-                        "instanceId": "Propertydesign__0035",
+                        "instanceId": "Propertydesign__0037",
                         "entityName": "PropertyDesign",
                         "propertyName": "content",
                         "children": [
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0042",
+                            "instanceId": "Fragmnttmpltdsgn__0044",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Block",
@@ -7891,12 +8005,12 @@
                             ],
                             "properties": [
                               {
-                                "instanceId": "Propertydesign__0036",
+                                "instanceId": "Propertydesign__0038",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "content",
                                 "children": [
                                   {
-                                    "instanceId": "Fragmnttmpltdsgn__0043",
+                                    "instanceId": "Fragmnttmpltdsgn__0045",
                                     "entityName": "FragmentTemplateDesign",
                                     "fragmentFilters": [],
                                     "fragmentTypeName": "Block",
@@ -7906,7 +8020,7 @@
                                     "properties": []
                                   },
                                   {
-                                    "instanceId": "Fragmnttmpltdsgn__0044",
+                                    "instanceId": "Fragmnttmpltdsgn__0046",
                                     "entityName": "FragmentTemplateDesign",
                                     "fragmentFilters": [],
                                     "fragmentTypeName": "Input",
@@ -8010,19 +8124,19 @@
                                       "output": "Deductiondesign__0075"
                                     },
                                     "ifChild": {
-                                      "instanceId": "Fragmnttmpltdsgn__0045",
+                                      "instanceId": "Fragmnttmpltdsgn__0047",
                                       "entityName": "FragmentTemplateDesign",
                                       "fragmentFilters": [],
                                       "fragmentTypeName": "Block",
                                       "styleNames": [],
                                       "properties": [
                                         {
-                                          "instanceId": "Propertydesign__0037",
+                                          "instanceId": "Propertydesign__0039",
                                           "entityName": "PropertyDesign",
                                           "propertyName": "content",
                                           "children": [
                                             {
-                                              "instanceId": "Fragmnttmpltdsgn__0046",
+                                              "instanceId": "Fragmnttmpltdsgn__0048",
                                               "entityName": "FragmentTemplateDesign",
                                               "fragmentFilters": [],
                                               "fragmentTypeName": "Input",
@@ -8116,19 +8230,19 @@
                                                 "output": "Deductiondesign__0078"
                                               },
                                               "ifChild": {
-                                                "instanceId": "Fragmnttmpltdsgn__0047",
+                                                "instanceId": "Fragmnttmpltdsgn__0049",
                                                 "entityName": "FragmentTemplateDesign",
                                                 "fragmentFilters": [],
                                                 "fragmentTypeName": "Block",
                                                 "styleNames": [],
                                                 "properties": [
                                                   {
-                                                    "instanceId": "Propertydesign__0038",
+                                                    "instanceId": "Propertydesign__003a",
                                                     "entityName": "PropertyDesign",
                                                     "propertyName": "content",
                                                     "children": [
                                                       {
-                                                        "instanceId": "Fragmnttmpltdsgn__0048",
+                                                        "instanceId": "Fragmnttmpltdsgn__004a",
                                                         "entityName": "FragmentTemplateDesign",
                                                         "fragmentFilters": [],
                                                         "fragmentTypeName": "Input",
@@ -8138,24 +8252,26 @@
                                                         "properties": []
                                                       },
                                                       {
-                                                        "instanceId": "Fragmnttmpltdsgn__0049",
+                                                        "instanceId": "Fragmnttmpltdsgn__004b",
                                                         "entityName": "FragmentTemplateDesign",
                                                         "fragmentFilters": [],
                                                         "fragmentTypeName": "Button",
-                                                        "styleNames": [],
+                                                        "styleNames": [
+                                                          "after-previous-field"
+                                                        ],
                                                         "event": "Eventdesign__0002",
                                                         "properties": [
                                                           {
-                                                            "instanceId": "Propertydesign__0039",
+                                                            "instanceId": "Propertydesign__003b",
                                                             "entityName": "PropertyDesign",
                                                             "propertyName": "text",
                                                             "children": [],
                                                             "text": {
-                                                              "instanceId": "Texttemplatedsgn__003c",
+                                                              "instanceId": "Texttemplatedsgn__003d",
                                                               "entityName": "TextTemplateDesign",
                                                               "untranslated": [
                                                                 {
-                                                                  "instanceId": "Stringtempltdsgn__0047",
+                                                                  "instanceId": "Stringtempltdsgn__0048",
                                                                   "entityName": "StringTemplateDesign",
                                                                   "constantText": "New attribute"
                                                                 }
@@ -8244,7 +8360,7 @@
                 }
               },
               {
-                "instanceId": "Fragmnttmpltdsgn__004a",
+                "instanceId": "Fragmnttmpltdsgn__004c",
                 "entityName": "FragmentTemplateDesign",
                 "fragmentFilters": [],
                 "fragmentTypeName": "Block",
@@ -8253,12 +8369,12 @@
                 ],
                 "properties": [
                   {
-                    "instanceId": "Propertydesign__003a",
+                    "instanceId": "Propertydesign__003c",
                     "entityName": "PropertyDesign",
                     "propertyName": "content",
                     "children": [
                       {
-                        "instanceId": "Fragmnttmpltdsgn__004b",
+                        "instanceId": "Fragmnttmpltdsgn__004d",
                         "entityName": "FragmentTemplateDesign",
                         "fragmentFilters": [],
                         "fragmentTypeName": "Link",
@@ -8267,12 +8383,12 @@
                         ],
                         "properties": [
                           {
-                            "instanceId": "Propertydesign__003b",
+                            "instanceId": "Propertydesign__003d",
                             "entityName": "PropertyDesign",
                             "propertyName": "content",
                             "children": [
                               {
-                                "instanceId": "Fragmnttmpltdsgn__004c",
+                                "instanceId": "Fragmnttmpltdsgn__004e",
                                 "entityName": "FragmentTemplateDesign",
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Icon",
@@ -8286,14 +8402,14 @@
                         ]
                       },
                       {
-                        "instanceId": "Fragmnttmpltdsgn__004d",
+                        "instanceId": "Fragmnttmpltdsgn__004f",
                         "entityName": "FragmentTemplateDesign",
                         "fragmentFilters": [],
                         "fragmentTypeName": "PreviewLine",
                         "styleNames": [],
                         "properties": [
                           {
-                            "instanceId": "Propertydesign__003c",
+                            "instanceId": "Propertydesign__003e",
                             "entityName": "PropertyDesign",
                             "propertyName": "previewMode",
                             "children": [],
@@ -8358,28 +8474,28 @@
                             }
                           },
                           {
-                            "instanceId": "Propertydesign__003d",
+                            "instanceId": "Propertydesign__003f",
                             "entityName": "PropertyDesign",
                             "propertyName": "content",
                             "children": [
                               {
-                                "instanceId": "Fragmnttmpltdsgn__004e",
+                                "instanceId": "Fragmnttmpltdsgn__0050",
                                 "entityName": "FragmentTemplateDesign",
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Strong",
                                 "styleNames": [],
                                 "properties": [
                                   {
-                                    "instanceId": "Propertydesign__003e",
+                                    "instanceId": "Propertydesign__0040",
                                     "entityName": "PropertyDesign",
                                     "propertyName": "text",
                                     "children": [],
                                     "text": {
-                                      "instanceId": "Texttemplatedsgn__003d",
+                                      "instanceId": "Texttemplatedsgn__003e",
                                       "entityName": "TextTemplateDesign",
                                       "untranslated": [
                                         {
-                                          "instanceId": "Stringtempltdsgn__0048",
+                                          "instanceId": "Stringtempltdsgn__0049",
                                           "entityName": "StringTemplateDesign",
                                           "deduction": {
                                             "instanceId": "Deductinschmdsgn__0042",
@@ -8479,7 +8595,7 @@
                                 ]
                               },
                               {
-                                "instanceId": "Fragmnttmpltdsgn__004f",
+                                "instanceId": "Fragmnttmpltdsgn__0051",
                                 "entityName": "FragmentTemplateDesign",
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Block",
@@ -8489,7 +8605,7 @@
                                 ],
                                 "properties": [
                                   {
-                                    "instanceId": "Propertydesign__003f",
+                                    "instanceId": "Propertydesign__0041",
                                     "entityName": "PropertyDesign",
                                     "propertyName": "content",
                                     "children": [
@@ -8556,7 +8672,7 @@
                                           "output": "Deductiondesign__0081"
                                         },
                                         "elseChild": {
-                                          "instanceId": "Fragmnttmpltdsgn__0050",
+                                          "instanceId": "Fragmnttmpltdsgn__0052",
                                           "entityName": "FragmentTemplateDesign",
                                           "fragmentFilters": [],
                                           "fragmentTypeName": "Button",
@@ -8566,37 +8682,7 @@
                                           "event": "Eventdesign__0006",
                                           "properties": [
                                             {
-                                              "instanceId": "Propertydesign__0040",
-                                              "entityName": "PropertyDesign",
-                                              "propertyName": "content",
-                                              "children": [
-                                                {
-                                                  "instanceId": "Fragmnttmpltdsgn__0051",
-                                                  "entityName": "FragmentTemplateDesign",
-                                                  "fragmentFilters": [],
-                                                  "fragmentTypeName": "Icon",
-                                                  "styleNames": [
-                                                    "icon-pencil"
-                                                  ],
-                                                  "properties": []
-                                                }
-                                              ]
-                                            }
-                                          ]
-                                        },
-                                        "ifChild": {
-                                          "instanceId": "Fragmnttmpltdsgn__0052",
-                                          "entityName": "FragmentTemplateDesign",
-                                          "fragmentFilters": [],
-                                          "fragmentTypeName": "Button",
-                                          "styleNames": [
-                                            "btn-small",
-                                            "active"
-                                          ],
-                                          "event": "Eventdesign__000b",
-                                          "properties": [
-                                            {
-                                              "instanceId": "Propertydesign__0041",
+                                              "instanceId": "Propertydesign__0042",
                                               "entityName": "PropertyDesign",
                                               "propertyName": "content",
                                               "children": [
@@ -8613,30 +8699,91 @@
                                               ]
                                             }
                                           ]
+                                        },
+                                        "ifChild": {
+                                          "instanceId": "Fragmnttmpltdsgn__0054",
+                                          "entityName": "FragmentTemplateDesign",
+                                          "fragmentFilters": [],
+                                          "fragmentTypeName": "Button",
+                                          "styleNames": [
+                                            "btn-small",
+                                            "active"
+                                          ],
+                                          "event": "Eventdesign__000d",
+                                          "properties": [
+                                            {
+                                              "instanceId": "Propertydesign__0043",
+                                              "entityName": "PropertyDesign",
+                                              "propertyName": "content",
+                                              "children": [
+                                                {
+                                                  "instanceId": "Fragmnttmpltdsgn__0055",
+                                                  "entityName": "FragmentTemplateDesign",
+                                                  "fragmentFilters": [],
+                                                  "fragmentTypeName": "Icon",
+                                                  "styleNames": [
+                                                    "icon-pencil"
+                                                  ],
+                                                  "properties": []
+                                                }
+                                              ]
+                                            }
+                                          ]
                                         }
                                       },
                                       {
-                                        "instanceId": "Fragmnttmpltdsgn__0054",
+                                        "instanceId": "Fragmnttmpltdsgn__0056",
                                         "entityName": "FragmentTemplateDesign",
                                         "fragmentFilters": [],
                                         "fragmentTypeName": "Button",
                                         "styleNames": [
-                                          "btn-small"
+                                          "btn-small",
+                                          "btn-success"
                                         ],
-                                        "event": "Eventdesign__000c",
+                                        "event": "Eventdesign__000e",
                                         "properties": [
                                           {
-                                            "instanceId": "Propertydesign__0042",
+                                            "instanceId": "Propertydesign__0044",
                                             "entityName": "PropertyDesign",
                                             "propertyName": "content",
                                             "children": [
                                               {
-                                                "instanceId": "Fragmnttmpltdsgn__0055",
+                                                "instanceId": "Fragmnttmpltdsgn__0057",
                                                 "entityName": "FragmentTemplateDesign",
                                                 "fragmentFilters": [],
                                                 "fragmentTypeName": "Icon",
                                                 "styleNames": [
                                                   "icon-hand-down"
+                                                ],
+                                                "properties": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "instanceId": "Fragmnttmpltdsgn__0058",
+                                        "entityName": "FragmentTemplateDesign",
+                                        "fragmentFilters": [],
+                                        "fragmentTypeName": "Button",
+                                        "styleNames": [
+                                          "btn-small",
+                                          "btn-danger"
+                                        ],
+                                        "event": "Eventdesign__000c",
+                                        "properties": [
+                                          {
+                                            "instanceId": "Propertydesign__0045",
+                                            "entityName": "PropertyDesign",
+                                            "propertyName": "content",
+                                            "children": [
+                                              {
+                                                "instanceId": "Fragmnttmpltdsgn__0059",
+                                                "entityName": "FragmentTemplateDesign",
+                                                "fragmentFilters": [],
+                                                "fragmentTypeName": "Icon",
+                                                "styleNames": [
+                                                  "icon-remove"
                                                 ],
                                                 "properties": []
                                               }
@@ -8649,19 +8796,19 @@
                                 ]
                               },
                               {
-                                "instanceId": "Fragmnttmpltdsgn__0056",
+                                "instanceId": "Fragmnttmpltdsgn__005a",
                                 "entityName": "FragmentTemplateDesign",
                                 "fragmentFilters": [],
                                 "fragmentTypeName": "Preview",
                                 "styleNames": [],
                                 "properties": [
                                   {
-                                    "instanceId": "Propertydesign__0043",
+                                    "instanceId": "Propertydesign__0046",
                                     "entityName": "PropertyDesign",
                                     "propertyName": "content",
                                     "children": [
                                       {
-                                        "instanceId": "Fragmnttmpltdsgn__0057",
+                                        "instanceId": "Fragmnttmpltdsgn__005b",
                                         "entityName": "FragmentTemplateDesign",
                                         "fragmentFilters": [
                                           "org.instantlogic.designer.fragmentfilter.PreviewFragmentFilter"
@@ -8823,7 +8970,7 @@
       "entityName": "SharedElementDefinitionDesign",
       "name": "ApplicationContext",
       "fragment": {
-        "instanceId": "Fragmnttmpltdsgn__0058",
+        "instanceId": "Fragmnttmpltdsgn__005c",
         "entityName": "FragmentTemplateDesign",
         "fragmentFilters": [],
         "fragmentTypeName": "Link",
@@ -8831,12 +8978,12 @@
         "event": "Eventdesign__0001",
         "properties": [
           {
-            "instanceId": "Propertydesign__0044",
+            "instanceId": "Propertydesign__0047",
             "entityName": "PropertyDesign",
             "propertyName": "content",
             "children": [
               {
-                "instanceId": "Fragmnttmpltdsgn__0059",
+                "instanceId": "Fragmnttmpltdsgn__005d",
                 "entityName": "FragmentTemplateDesign",
                 "fragmentFilters": [],
                 "fragmentTypeName": "Block",
@@ -8845,28 +8992,28 @@
                 ],
                 "properties": [
                   {
-                    "instanceId": "Propertydesign__0045",
+                    "instanceId": "Propertydesign__0048",
                     "entityName": "PropertyDesign",
                     "propertyName": "content",
                     "children": [
                       {
-                        "instanceId": "Fragmnttmpltdsgn__005a",
+                        "instanceId": "Fragmnttmpltdsgn__005e",
                         "entityName": "FragmentTemplateDesign",
                         "fragmentFilters": [],
                         "fragmentTypeName": "Heading3",
                         "styleNames": [],
                         "properties": [
                           {
-                            "instanceId": "Propertydesign__0046",
+                            "instanceId": "Propertydesign__0049",
                             "entityName": "PropertyDesign",
                             "propertyName": "text",
                             "children": [],
                             "text": {
-                              "instanceId": "Texttemplatedsgn__003e",
+                              "instanceId": "Texttemplatedsgn__003f",
                               "entityName": "TextTemplateDesign",
                               "untranslated": [
                                 {
-                                  "instanceId": "Stringtempltdsgn__0049",
+                                  "instanceId": "Stringtempltdsgn__004a",
                                   "entityName": "StringTemplateDesign",
                                   "deduction": {
                                     "instanceId": "Deductinschmdsgn__0046",
@@ -8929,7 +9076,7 @@
                                   }
                                 },
                                 {
-                                  "instanceId": "Stringtempltdsgn__004a",
+                                  "instanceId": "Stringtempltdsgn__004b",
                                   "entityName": "StringTemplateDesign",
                                   "constantText": " (Application)"
                                 }

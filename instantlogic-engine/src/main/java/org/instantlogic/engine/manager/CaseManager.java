@@ -53,7 +53,7 @@ public class CaseManager {
 		this.presence.setApplicationName(applicationManager.getApplication().getName());
 		this.presence.setCaseName(caseId);
 		this.application = application;
-		this.theCase = persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass());
+		this.theCase = persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass(), applicationManager.getApplication());
 	}
 
 	public void sendUpdates() {
@@ -100,7 +100,7 @@ public class CaseManager {
 				presenceOperation.complete();
 				long version = caseAdministration.getVersion();
 				caseAdministration.setVersion(version+1);
-				persistenceStrategy.persist(this.caseId, this.theCase, (int)version); //TODO: provide a list of changed stored fields
+				persistenceStrategy.persist(this.caseId, this.theCase, (int)version, application); //TODO: provide a list of changed stored fields
 			} finally {
 				operation.close();
 				presenceOperation.close();

@@ -21,6 +21,7 @@ public class PlaceTemplateFlow extends org.instantlogic.interaction.flow.Flow {
 		org.instantlogic.designer.flow.placetemplate.CloseEditorSubFlow.INSTANCE,
 		org.instantlogic.designer.flow.placetemplate.NewAttributeForFragmentTemplateSubFlow.INSTANCE,
 		org.instantlogic.designer.flow.placetemplate.InsertFragmentTemplateBelowSubFlow.INSTANCE,
+		org.instantlogic.designer.flow.placetemplate.RemoveFragmentTemplateSubFlow.INSTANCE,
 	};
 	
 	private static final org.instantlogic.interaction.flow.FlowEdge[] EDGES = new org.instantlogic.interaction.flow.FlowEdge[]{
@@ -62,6 +63,16 @@ public class PlaceTemplateFlow extends org.instantlogic.interaction.flow.Flow {
 		new org.instantlogic.interaction.flow.FlowEdge(
 			org.instantlogic.designer.flow.placetemplate.InsertFragmentTemplateBelowSubFlow.INSTANCE, 
 			org.instantlogic.designer.event.InsertFragmentTemplateBelowEvent.INSTANCE,
+			org.instantlogic.designer.flow.placetemplate.PlaceTemplateDetailsPlaceTemplate.INSTANCE
+		),
+		new org.instantlogic.interaction.flow.FlowEdge(
+			org.instantlogic.designer.flow.placetemplate.PlaceTemplateDetailsPlaceTemplate.INSTANCE, 
+			org.instantlogic.designer.event.RemoveFragmentTemplateEvent.INSTANCE,
+			org.instantlogic.designer.flow.placetemplate.RemoveFragmentTemplateSubFlow.INSTANCE
+		),
+		new org.instantlogic.interaction.flow.FlowEdge(
+			org.instantlogic.designer.flow.placetemplate.RemoveFragmentTemplateSubFlow.INSTANCE, 
+			org.instantlogic.designer.event.RemoveFragmentTemplateEvent.INSTANCE,
 			org.instantlogic.designer.flow.placetemplate.PlaceTemplateDetailsPlaceTemplate.INSTANCE
 		),
 	};

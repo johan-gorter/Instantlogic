@@ -28,6 +28,7 @@ import org.instantlogic.designer.event.CloseEditorEventGenerator;
 import org.instantlogic.designer.event.InsertFragmentTemplateBelowEventGenerator;
 import org.instantlogic.designer.event.NewAttributeForFragmentTemplateEventGenerator;
 import org.instantlogic.designer.event.OpenEditorEventGenerator;
+import org.instantlogic.designer.event.RemoveFragmentTemplateEventGenerator;
 
 public class ElementEditorSharedElementGenerator extends SharedElementDefinitionDesign {
 
@@ -43,7 +44,7 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 		DeductionSchemeDesign fragmentType, propertyName, editorOpen1, editorOpen2, hasAttribute, previewMode, entityHasValue;
 		SelectionDesign asFragmentTemplate, selectProperties, selectPropertyChildren;
 		FragmentTemplateDesign fragmentTypeInput, entityInput, attributeInput;
-		FragmentTemplateDesign openEditorLink, closeEditorLink, newAttributeButton, insertBelowButton;
+		FragmentTemplateDesign openEditorLink, closeEditorLink, newAttributeButton, insertBelowButton, removeButton;
 		SharedElementDesign recursiveElementEditor;
 		
 		setFragment(
@@ -72,6 +73,7 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 																			attributeInput = new FragmentTemplateDesign("Input"),
 																			newAttributeButton = new FragmentTemplateDesign("Button")
 																				.setText("text", createConstantText("New attribute"))
+																				.addToStyleNames("after-previous-field")
 																		)
 																	)
 															)
@@ -102,8 +104,10 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 														openEditorLink = new FragmentTemplateDesign("Button").addToStyleNames("btn-small")
 															.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-pencil"))
 													),
-												insertBelowButton = new FragmentTemplateDesign("Button").addToStyleNames("btn-small")
-													.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-hand-down"))
+												insertBelowButton = new FragmentTemplateDesign("Button").addToStyleNames("btn-small").addToStyleNames("btn-success")
+													.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-hand-down")),
+												removeButton = new FragmentTemplateDesign("Button").addToStyleNames("btn-small").addToStyleNames("btn-danger")
+													.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-remove"))
 											),
 										new FragmentTemplateDesign("Preview") // Floats right
 											.setChildren("content",
@@ -141,6 +145,7 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 		closeEditorLink.setEvent(CloseEditorEventGenerator.EVENT);
 		openEditorLink.setEvent(OpenEditorEventGenerator.EVENT);
 		insertBelowButton.setEvent(InsertFragmentTemplateBelowEventGenerator.EVENT);
+		removeButton.setEvent(RemoveFragmentTemplateEventGenerator.EVENT);
 		
 		fragmentType.deduceAttribute(DesignEntityGenerator.name, fragmentType.deduceRelation(FragmentTemplateDesignEntityGenerator.type));
 		selectProperties.newSelection().deduceAttribute(FragmentTemplateDesignEntityGenerator.properties);

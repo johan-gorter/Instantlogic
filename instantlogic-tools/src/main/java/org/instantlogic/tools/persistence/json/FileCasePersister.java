@@ -19,6 +19,7 @@ import java.io.OutputStreamWriter;
 import java.util.Random;
 
 import org.instantlogic.fabric.Instance;
+import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.PersistenceStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,16 +39,21 @@ public class FileCasePersister extends CasePersister implements PersistenceStrat
 		casesDir = new File("cases");
 		casesDir.mkdirs();
 	}
+	
+	protected File getCaseDir(Application application, String caseId) {
+		return casesDir;
+	}
 
-	public void persist(String id, Instance caseInstance, int version) {
+	@Override
+	public void persist(String id, Instance caseInstance, int version, Application application) {
 		try {
 			caseInstance.getMetadata().getCaseAdministration().setVersion(version);
-			File file = new File(casesDir, id + ".tmp");
+			File file = new File(getCaseDir(application, id), id + ".tmp");
 			FileOutputStream stream = new FileOutputStream(file);
 			OutputStreamWriter writer = new OutputStreamWriter(stream, "UTF-8");
 			save(caseInstance, writer);
 			writer.close();
-			File targetFile = new File(casesDir, id + ".json");
+			File targetFile = new File(getCaseDir(application, id), id + ".json");
 			if (targetFile.exists()) {
 				targetFile.delete();
 			}
@@ -58,10 +64,10 @@ public class FileCasePersister extends CasePersister implements PersistenceStrat
 		}
 	}
 	
-	public <T extends Instance> T load(String id, Class<T> ofType) {
+	public <T extends Instance> T load(String id, Class<T> ofType, Application application) {
 		T result = null;
 		try {
-			File file = new File(casesDir, id + ".json");
+			File file = new File(getCaseDir(application, id), id + ".json");
 			FileInputStream stream = new FileInputStream(file);
 			InputStreamReader reader = new InputStreamReader(stream, "UTF-8");
 			result = load(ofType, reader);
@@ -85,14 +91,14 @@ public class FileCasePersister extends CasePersister implements PersistenceStrat
 		return sb.toString();
 	}
 
-	public Instance loadOrCreate(String caseId, Class<? extends Instance> ofType) {
-		File file = new File(casesDir, caseId + ".json");
+	public Instance loadOrCreate(String caseId, Class<? extends Instance> ofType, Application application) {
+		File file = new File(getCaseDir(application, caseId), caseId + ".json");
 		if (file.exists()) {
-			return load(caseId, ofType);
+			return load(caseId, ofType, application);
 		} else {
 			try {
 				Instance result = ofType.newInstance();
-				persist(caseId, result, 1);
+				persist(caseId, result, 1, application);
 				return result;
 			} catch (InstantiationException | IllegalAccessException e) {
 				throw new RuntimeException(e);

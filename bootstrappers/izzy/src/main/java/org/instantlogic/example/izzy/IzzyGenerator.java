@@ -72,6 +72,7 @@ public class IzzyGenerator extends Design {
 	private static FlowDesign mainFlow;
 	private static FlowDesign issueFlow;
 	private static FlowDesign createIssueFlow;
+	private static FlowDesign deleteIssueFlow;
 	private static FlowDesign dashboardFlow;
 	private static FlowDesign selectDashboardFlow;
 	private static AttributeDesign issueDescription;
@@ -123,7 +124,7 @@ public class IzzyGenerator extends Design {
 		izzy.addToThemeNames("margin").addToThemeNames("izzy");
 		
 		homeEvent = new EventDesign("home").setApplication(izzy);
-		deleteIssueEvent = new EventDesign("delete issue").setApplication(izzy);
+		deleteIssueEvent = new EventDesign("delete issue").setApplication(izzy).addToParameters(issue);
 		createIssueEvent = new EventDesign("create issue").setApplication(izzy);
 		issueDetailsEvent = new EventDesign("issue details").setApplication(izzy).addToParameters(issue);
 		dashboardEvent = new EventDesign("dashboard").setApplication(izzy).addToParameters(user);
@@ -133,6 +134,9 @@ public class IzzyGenerator extends Design {
 		issueFlow = new FlowDesign("issue").setApplication(izzy).addToParameters(issue);
 		createIssueFlow = new FlowDesign("create issue").setApplication(izzy);
 		createIssueFlow.setIsCustomized(true);
+		deleteIssueFlow = new FlowDesign("delete issue").setApplication(izzy);
+		deleteIssueFlow.addToParameters(issue);
+		deleteIssueFlow.setIsCustomized(true);
 		dashboardFlow = new FlowDesign("dashboard").setApplication(izzy).addToParameters(user);
 		selectDashboardFlow = new FlowDesign("select dashboard").setApplication(izzy);
 		selectDashboardFlow.setIsCustomized(true);
@@ -203,11 +207,13 @@ public class IzzyGenerator extends Design {
 	private static void initMainFlow() {
 		SubFlowDesign mainFlowIssueSubFlow = mainFlow.addSubFlow(issueFlow);
 		SubFlowDesign mainFlowCreateIssueSubFlow = mainFlow.addSubFlow(createIssueFlow);
+		SubFlowDesign mainFlowDeleteIssueSubFlow = mainFlow.addSubFlow(deleteIssueFlow);
 		SubFlowDesign selectDashboard = mainFlow.addSubFlow(selectDashboardFlow);
 		SubFlowDesign dashboard = mainFlow.addSubFlow(dashboardFlow);
 		
 		mainFlow.newEdge().setEvent(issueDetailsEvent).setEndNode(mainFlowIssueSubFlow);
 		mainFlow.newEdge().setEvent(createIssueEvent).setEndNode(mainFlowCreateIssueSubFlow);
+		mainFlow.newEdge().setEvent(deleteIssueEvent).setEndNode(mainFlowDeleteIssueSubFlow);
 		
 		mainFlow.newEdge().setEvent(homeEvent).setEndNode(selectDashboard);
 		mainFlow.newEdge().setEvent(dashboardEvent).setEndNode(dashboard);

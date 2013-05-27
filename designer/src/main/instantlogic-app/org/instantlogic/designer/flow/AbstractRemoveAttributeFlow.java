@@ -11,35 +11,22 @@
 package org.instantlogic.designer.flow;
 
 @SuppressWarnings({"unchecked","rawtypes"})
-public class AttributeFlow extends org.instantlogic.interaction.flow.Flow {
+public abstract class AbstractRemoveAttributeFlow extends org.instantlogic.interaction.flow.Flow {
 
-	public static final AttributeFlow INSTANCE = new AttributeFlow();
+	public static final RemoveAttributeFlow INSTANCE = new RemoveAttributeFlow();
 	
 	private static final org.instantlogic.interaction.flow.FlowNodeBase[] NODES = new org.instantlogic.interaction.flow.FlowNodeBase[]{
-		org.instantlogic.designer.flow.attribute.AttributeDetailsPlaceTemplate.INSTANCE,
-		org.instantlogic.designer.flow.attribute.RemoveAttributeSubFlow.INSTANCE,
 	};
 	
 	private static final org.instantlogic.interaction.flow.FlowEdge[] EDGES = new org.instantlogic.interaction.flow.FlowEdge[]{
-		new org.instantlogic.interaction.flow.FlowEdge(
-			null, 
-			org.instantlogic.designer.event.AttributeDetailsEvent.INSTANCE,
-			org.instantlogic.designer.flow.attribute.AttributeDetailsPlaceTemplate.INSTANCE
-		),
-		new org.instantlogic.interaction.flow.FlowEdge(
-			null, 
-			org.instantlogic.designer.event.RemoveAttributeEvent.INSTANCE,
-			org.instantlogic.designer.flow.attribute.RemoveAttributeSubFlow.INSTANCE
-		),
 	};
 	
 	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
-		org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE,
 	};
 	
 	@Override
 	public String getName() {
-		return "Attribute";
+		return "RemoveAttribute";
 	}
 
 	@Override

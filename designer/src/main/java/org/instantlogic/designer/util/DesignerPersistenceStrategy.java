@@ -9,6 +9,7 @@ import org.instantlogic.designer.codegenerator.generator.GeneratedClassModelsPro
 import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGenerator;
 import org.instantlogic.designer.codegenerator.jvmbytecode.ApplicationBytecodeGenerator;
 import org.instantlogic.fabric.Instance;
+import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.ApplicationEnvironment;
 import org.instantlogic.tools.persistence.json.FileCasePersister;
 import org.slf4j.Logger;
@@ -24,10 +25,14 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		this.applicationEnvironment = applicationEnvironment;
 	}
 
+	@Override
+	protected File getCaseDir(Application application, String caseId) {
+		return new File(new File("../webapps", caseId), "src/main/instantlogic-designs");
+	}
 
 	@Override
-	public Instance loadOrCreate(String caseId, Class<? extends Instance> ofType) {
-		Instance result = super.loadOrCreate(caseId, ofType);
+	public Instance loadOrCreate(String caseId, Class<? extends Instance> ofType, Application application) {
+		Instance result = super.loadOrCreate(caseId, ofType, application);
 
 		ApplicationDesign applicationDesign = (ApplicationDesign)result;
 		applicationDesign.setGeneratedClassModelsProcessor(
@@ -45,8 +50,8 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 	}
 	
 	@Override
-	public void persist(String id, Instance caseInstance, int version) {
-		super.persist(id, caseInstance, version);
+	public void persist(String id, Instance caseInstance, int version, Application application) {
+		super.persist(id, caseInstance, version, application);
 		ApplicationDesign applicationDesign = (ApplicationDesign)caseInstance;
 		GeneratedClassModelsProcessor generatedClassModelsProcessor = applicationDesign.getGeneratedClassModelsProcessor();
 		if (generatedClassModelsProcessor!=null) {
