@@ -29,7 +29,7 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $fragment
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"Relationdesign__003c", "fragment", INSTANCE, "fragment", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+				"Relationdesign__003d", "fragment", INSTANCE, "fragment", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
 		fragment = $fragment;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
@@ -38,7 +38,7 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 		application = $application;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign> $usages
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign>(
-				"Relationdesign__004b", "usages", INSTANCE, "usages", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+				"Relationdesign__004c", "usages", INSTANCE, "usages", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
 		usages = $usages;
 		
 		// Phase 2

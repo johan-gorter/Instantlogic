@@ -44,6 +44,8 @@ public class DeductionSchemeGenerator {
 						parameterModel.value = parameter.getEntityValue().asStaticFieldValue();
 					} else if (parameter.getAttributeValue()!=null) {
 						parameterModel.value = parameter.getAttributeValue().asStaticFieldValue();
+					} else if (parameter.getStaticInstanceValue()!=null) {
+						parameterModel.value = parameter.getStaticInstanceValue().asStaticFieldValue();
 					} else {
 						parameterModel.value = new ConstantValueModel(parameter.getValue());
 					}

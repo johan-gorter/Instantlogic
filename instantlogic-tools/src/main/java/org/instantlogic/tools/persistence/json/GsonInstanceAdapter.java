@@ -213,10 +213,10 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 						} else {
 							if (value instanceof JsonObject) {
 								((RelationValue)relationValue).setValue(deserializeStaticInstance((JsonObject)value, result.getMetadata().getCaseAdministration()));
-							} else {
+							} else if (value.isJsonPrimitive()) {
 								String itemId = value.getAsString();
 								((RelationValue)relationValue).setValue(instances.get(itemId));
-							}
+							} // TODO else if (value.isJsonArray()) {
 						}
 					} else {
 						// Recurse

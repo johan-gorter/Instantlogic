@@ -6,5 +6,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/instantlogic-engine"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/instantlogic-fabric"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/instantlogic-tools"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/izzy"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

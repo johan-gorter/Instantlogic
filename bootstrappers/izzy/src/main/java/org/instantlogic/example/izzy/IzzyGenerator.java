@@ -26,11 +26,13 @@ import org.instantlogic.designer.EventDesign;
 import org.instantlogic.designer.FlowDesign;
 import org.instantlogic.designer.FragmentTemplateDesign;
 import org.instantlogic.designer.FragmentTypeDesign;
+import org.instantlogic.designer.IfElseDesign;
 import org.instantlogic.designer.PlaceTemplateDesign;
 import org.instantlogic.designer.RelationDesign;
 import org.instantlogic.designer.SelectionDesign;
 import org.instantlogic.designer.SharedElementDefinitionDesign;
 import org.instantlogic.designer.SharedElementDesign;
+import org.instantlogic.designer.StaticInstanceDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.SubFlowDesign;
 import org.instantlogic.designer.TextTemplateDesign;
@@ -49,10 +51,12 @@ public class IzzyGenerator extends Design {
 	private static EntityDesign user;
 	private static EntityDesign issue;
 	private static EntityDesign comment;
+	private static EntityDesign issueStatus;
 	
 	private static RelationDesign projectIssues;
 	private static RelationDesign issueReporter;
 	private static RelationDesign issueAssignee;
+	private static RelationDesign issueIssueStatus;
 	
 	private static AttributeDesign issueHeadline;
 	private static AttributeDesign issueNumber;
@@ -64,6 +68,9 @@ public class IzzyGenerator extends Design {
 	private static EventDesign homeEvent;
 	private static EventDesign deleteIssueEvent;
 	private static EventDesign notLoggedInEvent;
+	private static EventDesign openIssueEvent;
+	private static EventDesign resolveIssueEvent;
+	private static EventDesign closeIssueEvent;
 	
 	private static PlaceTemplateDesign notLoggedInPlaceTemplate;
 	private static PlaceTemplateDesign dashboardPlaceTemplate;
@@ -75,7 +82,15 @@ public class IzzyGenerator extends Design {
 	private static FlowDesign deleteIssueFlow;
 	private static FlowDesign dashboardFlow;
 	private static FlowDesign selectDashboardFlow;
+	private static FlowDesign openIssueFlow;
+	private static FlowDesign resolveIssueFlow;
+	private static FlowDesign closeIssueFlow;
 	private static AttributeDesign issueDescription;
+	
+	private static StaticInstanceDesign draft;
+	private static StaticInstanceDesign open;
+	private static StaticInstanceDesign resolved;
+	private static StaticInstanceDesign closed;
 
 	private static SharedElementDefinitionDesign issueRow;
 
@@ -94,6 +109,11 @@ public class IzzyGenerator extends Design {
 		DeductionSchemeDesign usernameTitle;
 		user.setTitle(new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(usernameTitle = new DeductionSchemeDesign())));
 		usernameTitle.deduceAttribute(userUsername);
+		issueStatus = new EntityDesign("issueStatus").setApplication(izzy);
+		issueStatus.addToStaticInstances(draft = (StaticInstanceDesign)new StaticInstanceDesign().setDescription(createConstantText("Draft")).setName("draft"));
+		issueStatus.addToStaticInstances(open = (StaticInstanceDesign)new StaticInstanceDesign().setDescription(createConstantText("Open")).setName("open"));
+		issueStatus.addToStaticInstances(resolved = (StaticInstanceDesign)new StaticInstanceDesign().setDescription(createConstantText("Resolved")).setName("resolved"));
+		issueStatus.addToStaticInstances(closed = (StaticInstanceDesign)new StaticInstanceDesign().setDescription(createConstantText("Closed")).setName("closed"));
 		issue = new EntityDesign("issue").setApplication(izzy);
 		issueNumber = issue.addAttribute("number", Integer.class);
 		issueHeadline = issue.addAttribute("headline", DataCategoryDesign.text);
@@ -112,6 +132,7 @@ public class IzzyGenerator extends Design {
 		comment.addRelation("by", RelationType.OneToZeroOrOne, user).setReverseName("comments");
 		issueReporter.newOptions().deduceRelation(projectUsers);
 		issueAssignee.newOptions().deduceRelation(projectUsers);
+		issueIssueStatus = issue.addRelation("status", RelationType.ManyToZeroOrOne, issueStatus);
 		
 		// Validations
     	issue.newValidation("HeadlineRequired","Enter a value", issueHeadline).deduceAttributeHasValue(issueHeadline);
@@ -129,6 +150,9 @@ public class IzzyGenerator extends Design {
 		issueDetailsEvent = new EventDesign("issue details").setApplication(izzy).addToParameters(issue);
 		dashboardEvent = new EventDesign("dashboard").setApplication(izzy).addToParameters(user);
 		notLoggedInEvent = new EventDesign("not logged in").setApplication(izzy);
+		openIssueEvent = new EventDesign("open issue").setApplication(izzy);
+		resolveIssueEvent = new EventDesign("resolve issue").setApplication(izzy);
+		closeIssueEvent = new EventDesign("close issue").setApplication(izzy);
 		
 		mainFlow = new FlowDesign("main").setApplication(izzy);
 		issueFlow = new FlowDesign("issue").setApplication(izzy).addToParameters(issue);
@@ -197,7 +221,19 @@ public class IzzyGenerator extends Design {
 	}
 
 	private static void initIssueFlow() {
+		openIssueFlow = new FlowDesign("open issue").setApplication(izzy);
+		openIssueFlow.setIsCustomized(true);
+		resolveIssueFlow = new FlowDesign("resolve issue").setApplication(izzy);
+		resolveIssueFlow.setIsCustomized(true);
+		closeIssueFlow = new FlowDesign("close issue").setApplication(izzy);
+		closeIssueFlow.setIsCustomized(true);
+		SubFlowDesign openIssueSubFlow = issueFlow.addSubFlow(openIssueFlow);
+		SubFlowDesign resolveIssueSubFlow = issueFlow.addSubFlow(resolveIssueFlow);
+		SubFlowDesign closeIssueSubFlow = issueFlow.addSubFlow(closeIssueFlow);
 		issueFlow.newEdge().setEvent(issueDetailsEvent).setEndNode(issueDetailsPlaceTemplate);
+		issueFlow.newEdge().setEvent(openIssueEvent).setEndNode(openIssueSubFlow);
+		issueFlow.newEdge().setEvent(resolveIssueEvent).setEndNode(resolveIssueSubFlow);
+		issueFlow.newEdge().setEvent(closeIssueEvent).setEndNode(closeIssueSubFlow);
 	}
 
 	private static void initDashboardFlow() {
@@ -340,6 +376,7 @@ public class IzzyGenerator extends Design {
 		issueRow1.setDefinition(issueRow);
 		issueRow2.setDefinition(issueRow);
 		createButton.setEvent(createIssueEvent);
+		
 		//Title
 		dashboardPlaceTemplate.newTitle()
 			.addToUntranslated(new StringTemplateDesign().setDeduction(username = new DeductionSchemeDesign()))
@@ -348,8 +385,11 @@ public class IzzyGenerator extends Design {
 	}
 	
 	private static void createIssueDetailsPlaceTemplate() {
-		DeductionSchemeDesign number, headline;
-		FragmentTemplateDesign headlineInput, descriptionInput, homeLink, deleteButton, reporterInput, assigneeInput;
+		DeductionSchemeDesign number, headline, issueStatusDeduction;
+		FragmentTemplateDesign headlineInput, descriptionInput, homeLink, deleteButton, reporterInput, assigneeInput,
+			submitButton, resolveButton, reopenButton, closeButton, reopenClosedButton;
+		DeductionSchemeDesign statusDraft, statusOpen, statusResolved, statusClosed;
+		
 		issueDetailsPlaceTemplate = new PlaceTemplateDesign("issueDetails")
 			.setOwner(issueFlow)
 			.setContent(new FragmentTemplateDesign("Page")
@@ -366,13 +406,36 @@ public class IzzyGenerator extends Design {
 							.addToUntranslated(new StringTemplateDesign().setDeduction(number = new DeductionSchemeDesign()))
 							.addToUntranslated(new StringTemplateDesign().setConstantText(": "))
 							.addToUntranslated(new StringTemplateDesign().setDeduction(headline = new DeductionSchemeDesign()))
+							.addToUntranslated(new StringTemplateDesign().setConstantText(" ("))
+							.addToUntranslated(new StringTemplateDesign().setDeduction(issueStatusDeduction = new DeductionSchemeDesign()))
+							.addToUntranslated(new StringTemplateDesign().setConstantText(")"))
 						),
 					headlineInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span8"),
 					reporterInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span4"),
 					assigneeInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span4"),
-					descriptionInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span8").addToStyleNames("answer-height300")
+					descriptionInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span8").addToStyleNames("answer-height300"),
+					new IfElseDesign().setCondition(statusDraft = new DeductionSchemeDesign())
+						.setIfChild(new FragmentTemplateDesign("Block")
+							.setChildren("content", submitButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Submit")).addToStyleNames("btn-primary"))
+						),
+					new IfElseDesign().setCondition(statusOpen = new DeductionSchemeDesign())
+						.setIfChild(new FragmentTemplateDesign("Block")
+							.setChildren("content", resolveButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Resolve")).addToStyleNames("btn-primary"))
+						),
+					new IfElseDesign().setCondition(statusResolved = new DeductionSchemeDesign())
+						.setIfChild(new FragmentTemplateDesign("Block")
+							.setChildren("content", 
+								reopenButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Re-open")),
+								closeButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Close")).addToStyleNames("btn-primary")
+							)
+						),
+					new IfElseDesign().setCondition(statusClosed = new DeductionSchemeDesign())
+						.setIfChild(new FragmentTemplateDesign("Block")
+							.setChildren("content", reopenClosedButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Re-open")))
+						)
 				)
 			);
+		
 		issueDetailsPlaceTemplate.getMetadata().initUniqueId("issueDetails");// Keep this one fixed
 		homeLink.setEvent(homeEvent);
 		deleteButton.setEvent(deleteIssueEvent);
@@ -382,6 +445,18 @@ public class IzzyGenerator extends Design {
 		reporterInput.setEntity(issue).setAttribute(issueReporter);
 		assigneeInput.setEntity(issue).setAttribute(issueAssignee);
 		descriptionInput.setEntity(issue).setAttribute(issueDescription);
+		submitButton.setEvent(openIssueEvent);
+		reopenButton.setEvent(openIssueEvent);
+		reopenClosedButton.setEvent(openIssueEvent);
+		resolveButton.setEvent(resolveIssueEvent);
+		closeButton.setEvent(closeIssueEvent);
+		
+		issueStatusDeduction.deduceAttribute(issueIssueStatus);
+		statusDraft.deduceEquals(statusDraft.deduceAttribute(issueIssueStatus), statusDraft.deduceStaticInstance(draft));
+		statusOpen.deduceEquals(statusOpen.deduceAttribute(issueIssueStatus), statusOpen.deduceStaticInstance(open));
+		statusResolved.deduceEquals(statusResolved.deduceAttribute(issueIssueStatus), statusResolved.deduceStaticInstance(resolved));
+		statusClosed.deduceEquals(statusClosed.deduceAttribute(issueIssueStatus), statusClosed.deduceStaticInstance(closed));
+		
 		// Title
 		issueDetailsPlaceTemplate.newTitle()
 			.addToUntranslated(new StringTemplateDesign().setConstantText("Issue "))

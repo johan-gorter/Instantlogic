@@ -11,6 +11,7 @@
 package org.instantlogic.example.izzy.flow;
 
 import org.instantlogic.example.izzy.Issue;
+import org.instantlogic.example.izzy.IssueStatus;
 import org.instantlogic.example.izzy.Project;
 import org.instantlogic.example.izzy.User;
 import org.instantlogic.example.izzy.entity.ProjectEntity;
@@ -30,6 +31,7 @@ public class CreateIssueFlow extends AbstractCreateIssueFlow {
 		issue.setNumber(lastIssueNumber+1);
 		issue.setHeadline("New issue");
 		issue.setReporter(findUser(project, context.getTraveler().getAuthenticatedUsername()));
+		issue.setStatus(IssueStatus.draft);
 		return new FlowEventOccurrence(IssueDetailsEvent.INSTANCE, issue);
 	}
 

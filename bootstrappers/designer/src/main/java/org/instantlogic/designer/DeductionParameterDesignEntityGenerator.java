@@ -30,4 +30,5 @@ public class DeductionParameterDesignEntityGenerator extends EntityDesign {
     // Relations
     public static final RelationDesign entityValue = addRelation(ENTITY, "entityValue", RelationType.ManyToZeroOrOne, EntityDesignEntityGenerator.ENTITY);
     public static final RelationDesign attributeValue = addRelation(ENTITY, "attributeValue", RelationType.ManyToZeroOrOne, AttributeDesignEntityGenerator.ENTITY);
+    public static final RelationDesign staticInstanceValue = addRelation(ENTITY, "staticInstanceValue", RelationType.ManyToZeroOrOne, StaticInstanceDesignEntityGenerator.ENTITY);
 }

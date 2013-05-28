@@ -73,7 +73,7 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		extensions = $extensions;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign> $reverseRelations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign>(
-				"Relationdesign__002b", "reverseRelations", INSTANCE, "reverseRelations", org.instantlogic.designer.AbstractEntityDesign.class);
+				"Relationdesign__0030", "reverseRelations", INSTANCE, "reverseRelations", org.instantlogic.designer.AbstractEntityDesign.class);
 		reverseRelations = $reverseRelations;
 		
 		// Phase 2

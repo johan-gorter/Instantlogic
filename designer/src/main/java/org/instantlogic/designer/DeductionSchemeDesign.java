@@ -70,6 +70,21 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		return deduceRelation(relation, null);
 	}
 	
+	public <V> DeductionDesign deduceStaticInstance(StaticInstanceDesign staticInstance) {
+		DeductionDesign deductionDesign = new DeductionDesign();
+
+		addToDeductions(deductionDesign);
+		setOutput(deductionDesign);
+		
+		deductionDesign.setOperation(DeductionOperationDesign.constant);
+
+		DeductionParameterDesign parameter = new DeductionParameterDesign().setOperationParameter(DeductionOperationParameterDesign.constantValue);
+		deductionDesign.addToParameters(parameter);
+		parameter.setStaticInstanceValue(staticInstance);
+		
+		return deductionDesign;
+	}
+	
 	public <V> DeductionDesign deduceConstant(Class<V> className, V value) {
 		DeductionDesign deductionDesign = new DeductionDesign();
 

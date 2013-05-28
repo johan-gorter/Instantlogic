@@ -10,8 +10,10 @@
 
 package org.instantlogic.fabric.text;
 
+import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.util.DeductionContext;
+import org.instantlogic.fabric.util.SingleInstanceDeductionContext;
 import org.instantlogic.fabric.util.ValueAndLevel;
 
 public class StringTemplate {
@@ -38,6 +40,12 @@ public class StringTemplate {
 		}
 		ValueAndLevel<?> result =  deduction.deduce(context);
 		if (result.hasValue()) {
+			if (result.getValue() instanceof Instance) {
+				Instance instance = (Instance) result.getValue();
+				if (instance.getMetadata().getStaticDescription()!=null) {
+					return instance.getMetadata().getStaticDescription().renderText(new SingleInstanceDeductionContext(instance));
+				}
+			}
 			return result.getValue().toString();
 		}
 		return "";

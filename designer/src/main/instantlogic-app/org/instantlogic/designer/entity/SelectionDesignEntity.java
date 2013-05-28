@@ -28,11 +28,11 @@ public class SelectionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $child
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"Relationdesign__004d", "child", INSTANCE, "child", org.instantlogic.designer.SelectionDesign.class);
+				"Relationdesign__004e", "child", INSTANCE, "child", org.instantlogic.designer.SelectionDesign.class);
 		child = $child;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $selection
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"Relationdesign__004c", "selection", INSTANCE, "selection", org.instantlogic.designer.SelectionDesign.class);
+				"Relationdesign__004d", "selection", INSTANCE, "selection", org.instantlogic.designer.SelectionDesign.class);
 		selection = $selection;
 		// Reverse relations
 		

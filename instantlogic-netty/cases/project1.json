@@ -1,8 +1,8 @@
 {
-  "instanceId": "LvuiibEydycsm_mm_9f80600f_9486",
+  "instanceId": "QhwtclggyyazAktU_42c5b900_704f",
   "entityName": "project",
   "version": 0,
-  "last issue number": 19,
+  "last issue number": 21,
   "issues": [
     {
       "instanceId": "I1",
@@ -126,6 +126,32 @@
       "headline": "Rapid prototyping",
       "number": 16,
       "comments": []
+    },
+    {
+      "instanceId": "SdjAqrygnaeOsmet_bc6c1a87_8bff",
+      "entityName": "issue",
+      "headline": "New issues",
+      "number": 20,
+      "assignee": "9cb1319d-cc85-4283-8be8-c18914062a74",
+      "comments": [],
+      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
+      "status": {
+        "instanceName": "draft",
+        "entityName": "issueStatus"
+      }
+    },
+    {
+      "instanceId": "uitutqE_mygakbzp_30b7f2a0_9009",
+      "entityName": "issue",
+      "description": "Submitted",
+      "headline": "New issue",
+      "number": 21,
+      "comments": [],
+      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
+      "status": {
+        "instanceName": "draft",
+        "entityName": "issueStatus"
+      }
     }
   ],
   "users": [

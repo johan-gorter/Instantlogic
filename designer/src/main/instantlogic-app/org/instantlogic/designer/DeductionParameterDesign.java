@@ -110,6 +110,24 @@ public class DeductionParameterDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 
+	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionParameterDesign, StaticInstanceDesign> staticInstanceValue
+		= createRelationValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.staticInstanceValue);
+		
+	public org.instantlogic.fabric.value.RelationValue<DeductionParameterDesign, StaticInstanceDesign> getStaticInstanceValueRelationValue() {
+		return staticInstanceValue;
+	}
+
+	public org.instantlogic.designer.StaticInstanceDesign getStaticInstanceValue() {
+		return staticInstanceValue.getValue();
+	}
+	
+	public DeductionParameterDesign setStaticInstanceValue(org.instantlogic.designer.StaticInstanceDesign newValue) {
+		staticInstanceValue.setValue(newValue);
+		return (DeductionParameterDesign)this;
+	}
+	
+
 
 	// Reverse relations
 	

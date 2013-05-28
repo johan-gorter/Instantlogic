@@ -30,11 +30,11 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $description
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"Relationdesign__0031", "description", INSTANCE, "description", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"Relationdesign__002c", "description", INSTANCE, "description", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		description = $description;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> $values
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
-				"Relationdesign__0032", "values", INSTANCE, "values", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"Relationdesign__002d", "values", INSTANCE, "values", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		values = $values;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $entity
@@ -43,7 +43,7 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 		entity = $entity;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> $valueOfStaticInstances
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
-				"Relationdesign__0033", "valueOfStaticInstances", INSTANCE, "valueOfStaticInstances", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"Relationdesign__002e", "valueOfStaticInstances", INSTANCE, "valueOfStaticInstances", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		valueOfStaticInstances = $valueOfStaticInstances;
 		
 		// Phase 2

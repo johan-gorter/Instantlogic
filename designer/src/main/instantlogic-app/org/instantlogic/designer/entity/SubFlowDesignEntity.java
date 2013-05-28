@@ -27,7 +27,7 @@ public class SubFlowDesignEntity extends org.instantlogic.fabric.model.Entity<or
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SubFlowDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> $flow
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SubFlowDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
-				"Relationdesign__004a", "flow", INSTANCE, "flow", org.instantlogic.designer.SubFlowDesign.class);
+				"Relationdesign__004b", "flow", INSTANCE, "flow", org.instantlogic.designer.SubFlowDesign.class);
 		flow = $flow;
 		// Reverse relations
 		

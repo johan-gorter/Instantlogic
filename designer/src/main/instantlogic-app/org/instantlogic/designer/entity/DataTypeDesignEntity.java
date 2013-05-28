@@ -185,7 +185,7 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> $attribute
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
-				"Relationdesign__0024", "attribute", INSTANCE, "attribute", org.instantlogic.designer.DataTypeDesign.class);
+				"Relationdesign__0025", "attribute", INSTANCE, "attribute", org.instantlogic.designer.DataTypeDesign.class);
 		attribute = $attribute;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $forEntity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
@@ -193,7 +193,7 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		forEntity = $forEntity;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign, org.instantlogic.designer.RelationDesign> $reverseRelation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign, org.instantlogic.designer.RelationDesign>(
-				"Relationdesign__002c", "reverseRelation", INSTANCE, "reverseRelation", org.instantlogic.designer.DataTypeDesign.class);
+				"Relationdesign__0031", "reverseRelation", INSTANCE, "reverseRelation", org.instantlogic.designer.DataTypeDesign.class);
 		reverseRelation = $reverseRelation;
 		
 		// Phase 2
