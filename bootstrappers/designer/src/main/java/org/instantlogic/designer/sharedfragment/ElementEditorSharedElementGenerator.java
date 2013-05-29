@@ -130,7 +130,7 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 		
 		asFragmentTemplate.newSelection()
 			.deduceCastInstance(asFragmentTemplate.getSelection()
-				.deduceSelectedInstance(ElementDesignEntityGenerator.ENTITY), FragmentTemplateDesignEntityGenerator.ENTITY);
+					.deduceSelectedInstance(ElementDesignEntityGenerator.ENTITY), FragmentTemplateDesignEntityGenerator.ENTITY);
 		editorOpen1.deduceAttribute(ElementDesignEntityGenerator.editorOpen);
 		editorOpen2.deduceAttribute(ElementDesignEntityGenerator.editorOpen);
 		previewMode.deduceAttribute(ElementDesignEntityGenerator.previewMode);
@@ -148,7 +148,12 @@ public class ElementEditorSharedElementGenerator extends SharedElementDefinition
 		removeButton.setEvent(RemoveFragmentTemplateEventGenerator.EVENT);
 		
 		fragmentType.deduceAttribute(DesignEntityGenerator.name, fragmentType.deduceRelation(FragmentTemplateDesignEntityGenerator.type));
-		selectProperties.newSelection().deduceAttribute(FragmentTemplateDesignEntityGenerator.properties);
+		selectProperties.newSelection()
+			.deduceAttribute(FragmentTemplateDesignEntityGenerator.properties, selectProperties.getSelection()
+				.deduceCastInstance(selectProperties.getSelection()
+					.deduceSelectedInstance(ElementDesignEntityGenerator.ENTITY), FragmentTemplateDesignEntityGenerator.ENTITY
+				)
+			);
 //		propertyName.deduceAttribute(PropertyDesignEntityGenerator.propertyName);
 		selectPropertyChildren.newSelection().deduceRelation(PropertyDesignEntityGenerator.children);
 		

@@ -156,7 +156,7 @@ public class AbstractBytecodeTemplate implements Opcodes {
 				// new org.instantlogic.interaction.page.IfElseElement(createDeduction2(), ... , ... )
 				mv.visitTypeInsn(NEW, "org/instantlogic/interaction/page/IfElseElement");
 				mv.visitInsn(DUP);
-				mv.visitMethodInsn(INVOKESTATIC, "org/instantlogic/designer/sharedpagefragment/ElementEditorPageFragment", "createDeduction"+content.deductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
+				mv.visitMethodInsn(INVOKESTATIC, className, "createDeduction"+content.deductionIndex, "()Lorg/instantlogic/fabric/deduction/Deduction;");
 				if (content.child!=null) {
 					dumpContent(mv, className, content.child);
 				} else {

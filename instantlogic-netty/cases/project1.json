@@ -1,5 +1,5 @@
 {
-  "instanceId": "MUEjsctdbiegcjqc_e69442e6_1e8d",
+  "instanceId": "Lruwoktaxucicnhv_cfa4d5c2_0295",
   "entityName": "project",
   "version": 0,
   "last issue number": 23,
@@ -233,6 +233,11 @@
       "entityName": "user",
       "name": "Bob",
       "username": "bob@instantlogic.org"
+    },
+    {
+      "instanceId": "WInftOmUaaczsnkk_63ecb5bb_e7a4",
+      "entityName": "user",
+      "username": "johan@johangorter.com"
     }
   ]
 }

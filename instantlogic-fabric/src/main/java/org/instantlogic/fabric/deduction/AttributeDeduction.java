@@ -41,7 +41,7 @@ public class AttributeDeduction<V> extends Deduction<V> {
 		ValueAndLevel<? extends Instance> instanceValue = instance.deduce(context);
 		if (instanceValue.getValue()==null) {
 			//TODO: think carefully before throwing this out: throw new RuntimeException("No instance while getting value for attribute "+attribute+" on entity "+attribute.getEntity()+", context: "+context.printDiagnostics());
-			return ValueAndLevel.inconclusive();
+			return (ValueAndLevel<V>) (instanceValue.isConclusive()?ValueAndLevel.rule(null):ValueAndLevel.inconclusive());
 		}
 		return ((Attribute)attribute).get(instanceValue.getValue()).getValueAndLevel();
 	}
