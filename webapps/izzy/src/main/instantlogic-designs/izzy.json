@@ -117,6 +117,19 @@
               "entityName": "DataCategoryDesign"
             }
           }
+        },
+        {
+          "instanceId": "Attributedesign__0003",
+          "entityName": "AttributeDesign",
+          "name": "name",
+          "dataType": {
+            "instanceId": "Datatypedesign__0005",
+            "entityName": "DataTypeDesign",
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
+          }
         }
       ],
       "relations": [],
@@ -176,7 +189,7 @@
                     {
                       "instanceId": "Deductnprmtrdsgn__0003",
                       "entityName": "DeductionParameterDesign",
-                      "attributeValue": "Attributedesign__0002",
+                      "attributeValue": "Attributedesign__0003",
                       "operationParameter": {
                         "instanceName": "attribute",
                         "entityName": "DeductionOperationParameterDesign"
@@ -276,21 +289,21 @@
       "name": "issue",
       "attributes": [
         {
-          "instanceId": "Attributedesign__0003",
+          "instanceId": "Attributedesign__0004",
           "entityName": "AttributeDesign",
           "name": "number",
           "dataType": {
-            "instanceId": "Datatypedesign__0005",
+            "instanceId": "Datatypedesign__0006",
             "entityName": "DataTypeDesign",
             "javaClassName": "java.lang.Integer"
           }
         },
         {
-          "instanceId": "Attributedesign__0004",
+          "instanceId": "Attributedesign__0005",
           "entityName": "AttributeDesign",
           "name": "headline",
           "dataType": {
-            "instanceId": "Datatypedesign__0006",
+            "instanceId": "Datatypedesign__0007",
             "entityName": "DataTypeDesign",
             "dataCategory": {
               "instanceName": "text",
@@ -299,11 +312,11 @@
           }
         },
         {
-          "instanceId": "Attributedesign__0005",
+          "instanceId": "Attributedesign__0006",
           "entityName": "AttributeDesign",
           "name": "description",
           "dataType": {
-            "instanceId": "Datatypedesign__0007",
+            "instanceId": "Datatypedesign__0008",
             "entityName": "DataTypeDesign",
             "formatted": true,
             "multiLine": true,
@@ -324,7 +337,7 @@
           "reverseMultivalue": true,
           "reverseName": "reported issues",
           "dataType": {
-            "instanceId": "Datatypedesign__0008",
+            "instanceId": "Datatypedesign__0009",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -398,7 +411,7 @@
           "reverseMultivalue": true,
           "reverseName": "assigned issues",
           "dataType": {
-            "instanceId": "Datatypedesign__0009",
+            "instanceId": "Datatypedesign__000a",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -472,7 +485,7 @@
           "reverseMultivalue": false,
           "reverseName": "issue",
           "dataType": {
-            "instanceId": "Datatypedesign__000a",
+            "instanceId": "Datatypedesign__000b",
             "entityName": "DataTypeDesign",
             "multivalue": true
           },
@@ -486,7 +499,7 @@
           "owner": false,
           "reverseMultivalue": true,
           "dataType": {
-            "instanceId": "Datatypedesign__000b",
+            "instanceId": "Datatypedesign__000c",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -499,7 +512,7 @@
           "instanceId": "HeadlineRequired",
           "entityName": "ValidationDesign",
           "displayWith": [
-            "Attributedesign__0004"
+            "Attributedesign__0005"
           ],
           "message": {
             "instanceId": "Texttemplatedsgn__0006",
@@ -560,7 +573,7 @@
                   {
                     "instanceId": "Deductnprmtrdsgn__0009",
                     "entityName": "DeductionParameterDesign",
-                    "attributeValue": "Attributedesign__0004",
+                    "attributeValue": "Attributedesign__0005",
                     "operationParameter": {
                       "instanceName": "attribute",
                       "entityName": "DeductionOperationParameterDesign"
@@ -598,7 +611,7 @@
           "instanceId": "DescriptionRequired",
           "entityName": "ValidationDesign",
           "displayWith": [
-            "Attributedesign__0005"
+            "Attributedesign__0006"
           ],
           "message": {
             "instanceId": "Texttemplatedsgn__0007",
@@ -659,7 +672,7 @@
                   {
                     "instanceId": "Deductnprmtrdsgn__000b",
                     "entityName": "DeductionParameterDesign",
-                    "attributeValue": "Attributedesign__0005",
+                    "attributeValue": "Attributedesign__0006",
                     "operationParameter": {
                       "instanceName": "attribute",
                       "entityName": "DeductionOperationParameterDesign"
@@ -701,11 +714,11 @@
       "name": "comment",
       "attributes": [
         {
-          "instanceId": "Attributedesign__0006",
+          "instanceId": "Attributedesign__0007",
           "entityName": "AttributeDesign",
           "name": "text",
           "dataType": {
-            "instanceId": "Datatypedesign__000c",
+            "instanceId": "Datatypedesign__000d",
             "entityName": "DataTypeDesign",
             "dataCategory": {
               "instanceName": "text",
@@ -715,7 +728,7 @@
         }
       ],
       "dataType": {
-        "instanceId": "Datatypedesign__000d",
+        "instanceId": "Datatypedesign__000e",
         "entityName": "DataTypeDesign"
       },
       "relations": [
@@ -728,7 +741,7 @@
           "reverseMultivalue": false,
           "reverseName": "comments",
           "dataType": {
-            "instanceId": "Datatypedesign__000e",
+            "instanceId": "Datatypedesign__000f",
             "entityName": "DataTypeDesign",
             "multivalue": false
           },
@@ -786,19 +799,25 @@
       "instanceId": "Eventdesign__0007",
       "entityName": "EventDesign",
       "name": "open issue",
-      "parameters": []
+      "parameters": [
+        "Entitydesign__0004"
+      ]
     },
     {
       "instanceId": "Eventdesign__0008",
       "entityName": "EventDesign",
       "name": "resolve issue",
-      "parameters": []
+      "parameters": [
+        "Entitydesign__0004"
+      ]
     },
     {
       "instanceId": "Eventdesign__0009",
       "entityName": "EventDesign",
       "name": "close issue",
-      "parameters": []
+      "parameters": [
+        "Entitydesign__0004"
+      ]
     }
   ],
   "flows": [
@@ -1142,7 +1161,7 @@
                                       {
                                         "instanceId": "Deductnprmtrdsgn__000d",
                                         "entityName": "DeductionParameterDesign",
-                                        "attributeValue": "Attributedesign__0003",
+                                        "attributeValue": "Attributedesign__0004",
                                         "operationParameter": {
                                           "instanceName": "attribute",
                                           "entityName": "DeductionOperationParameterDesign"
@@ -1210,7 +1229,7 @@
                                       {
                                         "instanceId": "Deductnprmtrdsgn__000f",
                                         "entityName": "DeductionParameterDesign",
-                                        "attributeValue": "Attributedesign__0004",
+                                        "attributeValue": "Attributedesign__0005",
                                         "operationParameter": {
                                           "instanceName": "attribute",
                                           "entityName": "DeductionOperationParameterDesign"
@@ -1309,7 +1328,7 @@
                     "styleNames": [
                       "answer-span8"
                     ],
-                    "attribute": "Attributedesign__0004",
+                    "attribute": "Attributedesign__0005",
                     "entity": "Entitydesign__0004",
                     "properties": [],
                     "type": "Fragmenttypedsgn__0006"
@@ -1349,7 +1368,7 @@
                       "answer-span8",
                       "answer-height300"
                     ],
-                    "attribute": "Attributedesign__0005",
+                    "attribute": "Attributedesign__0006",
                     "entity": "Entitydesign__0004",
                     "properties": [],
                     "type": "Fragmenttypedsgn__0006"
@@ -2057,7 +2076,7 @@
                         {
                           "instanceId": "Deductnprmtrdsgn__001f",
                           "entityName": "DeductionParameterDesign",
-                          "attributeValue": "Attributedesign__0003",
+                          "attributeValue": "Attributedesign__0004",
                           "operationParameter": {
                             "instanceName": "attribute",
                             "entityName": "DeductionOperationParameterDesign"
@@ -2125,7 +2144,7 @@
                         {
                           "instanceId": "Deductnprmtrdsgn__0021",
                           "entityName": "DeductionParameterDesign",
-                          "attributeValue": "Attributedesign__0004",
+                          "attributeValue": "Attributedesign__0005",
                           "operationParameter": {
                             "instanceName": "attribute",
                             "entityName": "DeductionOperationParameterDesign"
@@ -2339,7 +2358,7 @@
                                               {
                                                 "instanceId": "Deductnprmtrdsgn__0023",
                                                 "entityName": "DeductionParameterDesign",
-                                                "attributeValue": "Attributedesign__0002",
+                                                "attributeValue": "Attributedesign__0003",
                                                 "operationParameter": {
                                                   "instanceName": "attribute",
                                                   "entityName": "DeductionOperationParameterDesign"
@@ -2839,7 +2858,7 @@
                         {
                           "instanceId": "Deductnprmtrdsgn__0029",
                           "entityName": "DeductionParameterDesign",
-                          "attributeValue": "Attributedesign__0002",
+                          "attributeValue": "Attributedesign__0003",
                           "operationParameter": {
                             "instanceName": "attribute",
                             "entityName": "DeductionOperationParameterDesign"
@@ -3096,7 +3115,7 @@
                                           {
                                             "instanceId": "Deductnprmtrdsgn__002b",
                                             "entityName": "DeductionParameterDesign",
-                                            "attributeValue": "Attributedesign__0003",
+                                            "attributeValue": "Attributedesign__0004",
                                             "operationParameter": {
                                               "instanceName": "attribute",
                                               "entityName": "DeductionOperationParameterDesign"
@@ -3196,7 +3215,7 @@
                                                   {
                                                     "instanceId": "Deductnprmtrdsgn__002d",
                                                     "entityName": "DeductionParameterDesign",
-                                                    "attributeValue": "Attributedesign__0004",
+                                                    "attributeValue": "Attributedesign__0005",
                                                     "operationParameter": {
                                                       "instanceName": "attribute",
                                                       "entityName": "DeductionOperationParameterDesign"
@@ -3355,7 +3374,7 @@
                                                   {
                                                     "instanceId": "Deductnprmtrdsgn__0030",
                                                     "entityName": "DeductionParameterDesign",
-                                                    "attributeValue": "Attributedesign__0002",
+                                                    "attributeValue": "Attributedesign__0003",
                                                     "operationParameter": {
                                                       "instanceName": "attribute",
                                                       "entityName": "DeductionOperationParameterDesign"

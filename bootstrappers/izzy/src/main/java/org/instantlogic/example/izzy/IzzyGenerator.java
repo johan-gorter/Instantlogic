@@ -61,6 +61,7 @@ public class IzzyGenerator extends Design {
 	private static AttributeDesign issueHeadline;
 	private static AttributeDesign issueNumber;
 	private static AttributeDesign userUsername;
+	private static AttributeDesign userName;
 	
 	private static EventDesign createIssueEvent;
 	private static EventDesign issueDetailsEvent;
@@ -106,9 +107,10 @@ public class IzzyGenerator extends Design {
 		project.addAttribute("last issue number", Integer.class).setDefault(new DeductionSchemeDesign().deduceConstant(Integer.class, 0).getScheme());
 		user = new EntityDesign("user").setApplication(izzy);
 		userUsername = user.addAttribute("username", DataCategoryDesign.text);
+		userName = user.addAttribute("name", DataCategoryDesign.text);
 		DeductionSchemeDesign usernameTitle;
 		user.setTitle(new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(usernameTitle = new DeductionSchemeDesign())));
-		usernameTitle.deduceAttribute(userUsername);
+		usernameTitle.deduceAttribute(userName);
 		issueStatus = new EntityDesign("issueStatus").setApplication(izzy);
 		issueStatus.addToStaticInstances(draft = (StaticInstanceDesign)new StaticInstanceDesign().setDescription(createConstantText("Draft")).setName("draft"));
 		issueStatus.addToStaticInstances(open = (StaticInstanceDesign)new StaticInstanceDesign().setDescription(createConstantText("Open")).setName("open"));
@@ -150,9 +152,9 @@ public class IzzyGenerator extends Design {
 		issueDetailsEvent = new EventDesign("issue details").setApplication(izzy).addToParameters(issue);
 		dashboardEvent = new EventDesign("dashboard").setApplication(izzy).addToParameters(user);
 		notLoggedInEvent = new EventDesign("not logged in").setApplication(izzy);
-		openIssueEvent = new EventDesign("open issue").setApplication(izzy);
-		resolveIssueEvent = new EventDesign("resolve issue").setApplication(izzy);
-		closeIssueEvent = new EventDesign("close issue").setApplication(izzy);
+		openIssueEvent = new EventDesign("open issue").setApplication(izzy).addToParameters(issue);
+		resolveIssueEvent = new EventDesign("resolve issue").setApplication(izzy).addToParameters(issue);
+		closeIssueEvent = new EventDesign("close issue").setApplication(izzy).addToParameters(issue);
 		
 		mainFlow = new FlowDesign("main").setApplication(izzy);
 		issueFlow = new FlowDesign("issue").setApplication(izzy).addToParameters(issue);
@@ -296,7 +298,7 @@ public class IzzyGenerator extends Design {
 		number.deduceAttribute(issueNumber);
 		headline.deduceAttribute(issueHeadline);
 		preview.deduceCustom(issuePreviewDeduction);
-		assignee.deduceAttribute(userUsername, assignee.deduceRelation(issueAssignee));
+		assignee.deduceAttribute(userName, assignee.deduceRelation(issueAssignee));
 		detailsLink.setEvent(issueDetailsEvent);
 	}
 
@@ -370,7 +372,7 @@ public class IzzyGenerator extends Design {
 							)
 					)
 			);
-		username.deduceAttribute(userUsername);
+		username.deduceAttribute(userName);
 		issues.deduceAttribute(projectIssues);
 		assignedToMe.deduceReverseRelation(issueAssignee, assignedToMe.deduceSelectedInstance(user));
 		issueRow1.setDefinition(issueRow);
@@ -381,7 +383,7 @@ public class IzzyGenerator extends Design {
 		dashboardPlaceTemplate.newTitle()
 			.addToUntranslated(new StringTemplateDesign().setDeduction(username = new DeductionSchemeDesign()))
 			.addToUntranslated(new StringTemplateDesign().setConstantText("'s dashboard"));
-		username.deduceAttribute(userUsername);	
+		username.deduceAttribute(userName);	
 	}
 	
 	private static void createIssueDetailsPlaceTemplate() {

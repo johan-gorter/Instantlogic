@@ -29,6 +29,13 @@ public class SelectDashboardFlow extends AbstractSelectDashboardFlow {
 		for (User candidateUser : project.getUsers()) {
 			if (candidateUser.getUsername().equals(username)) {
 				user = candidateUser;
+				if (user.getName()==null) {
+					if (username.contains("@")) {
+						user.setName(Character.toUpperCase(username.charAt(0))+username.substring(1, username.indexOf('@')));
+					} else {
+						user.setName(username);
+					}
+				}
 				break;
 			}
 		}
