@@ -46,7 +46,7 @@ public class ApplicationUpdate {
 			if (newRelation!=null) {
 				if (!oldRelation.isOwner()) {
 					if (!newRelation.isOwner()) {
-						copyValue(oldInstance, oldRelation, newInstance, newEntity);
+						copyRelationValue(oldInstance, oldRelation, newInstance, newEntity, newCaseAdministration);
 					}
 				} else {
 					if (newRelation.isMultivalue()) {
@@ -63,6 +63,48 @@ public class ApplicationUpdate {
 				}
 			}
 		}
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private void copyRelationValue(Instance oldInstance, Relation oldRelation, Instance newInstance, Entity<?> newEntity, CaseAdministration newCaseAdministration) {
+		ReadOnlyAttributeValue relationValue = oldRelation.get(oldInstance);
+		if (relationValue.hasStoredValue()) {
+			Relation newRelation = newEntity.getRelationById(oldRelation.getUniqueId());
+			if (newRelation!=null && !newRelation.isReadOnly()) {
+				if (oldRelation.isMultivalue()) {
+					if (newRelation.isMultivalue()) {
+						RelationValues oldRelationValues = (RelationValues)oldRelation.get(oldInstance);
+						RelationValues newRelationValues = (RelationValues)newRelation.get(newInstance);
+						for (Instance oldValue : (Multi<Instance>)oldRelationValues.getStoredValue()) {
+							Instance newValue = findInstance(oldValue, newCaseAdministration);
+							newRelationValues.addValue(newValue);
+						}
+					} else {
+						// TODO multivalue to single value (use only first instance)
+					}
+				} else {
+					if (!newRelation.isMultivalue()) {
+						Instance oldValue = (Instance)((RelationValue)oldRelation.get(oldInstance)).getStoredValue();
+						Instance newValue = findInstance(oldValue, newCaseAdministration);
+						((AttributeValue)newRelation.get(newInstance)).setValue(newValue);
+					} else {
+						// TODO single value becomes multivalue
+					}
+				}
+			} else {
+				// TODO: Remember value
+			}
+		}
+	}
+
+	private Instance findInstance(Instance oldValue, CaseAdministration newCaseAdministration) {
+		if (oldValue.getMetadata().isStatic()) {
+			Entity newEntity = newCaseAdministration.getAllEntitiesById().get(oldValue.getMetadata().getEntity().getUniqueId());
+			if (newEntity!=null) {
+				return (Instance)newEntity.getStaticInstances().get(oldValue.getMetadata().getStaticName());
+			}
+		}
+		return newCaseAdministration.getInstanceByUniqueId(oldValue.getMetadata().getUniqueId());
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

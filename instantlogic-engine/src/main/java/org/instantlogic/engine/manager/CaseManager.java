@@ -98,9 +98,7 @@ public class CaseManager {
 				}
 				operation.complete();
 				presenceOperation.complete();
-				long version = caseAdministration.getVersion();
-				caseAdministration.setVersion(version+1);
-				persistenceStrategy.persist(this.caseId, this.theCase, (int)version, application); //TODO: provide a list of changed stored fields
+				persist(caseAdministration);
 			} finally {
 				operation.close();
 				presenceOperation.close();
@@ -109,6 +107,12 @@ public class CaseManager {
 			logger.error("Exception processing messages from traveler " + traveler.getId(), e);
 			traveler.sendException(e, false);
 		}
+	}
+
+	private void persist(CaseAdministration caseAdministration) {
+		long version = caseAdministration.getVersion();
+		caseAdministration.setVersion(version+1);
+		persistenceStrategy.persist(this.caseId, this.theCase, (int)version, application); //TODO: provide a list of changed stored fields
 	}
 	
 	public Instance getCase() {
@@ -138,6 +142,7 @@ public class CaseManager {
 	public void updateApplication(ApplicationUpdate applicationUpdateMessage) {
 		this.application = applicationUpdateMessage.application;
 		this.theCase = applicationUpdateMessage.loadFrom(this.theCase);
+		persist(this.theCase.getMetadata().getCaseAdministration());
 		for (Traveler traveler: presence.getActiveTravelers()) {
 			traveler.applicationUpdated();
 		}

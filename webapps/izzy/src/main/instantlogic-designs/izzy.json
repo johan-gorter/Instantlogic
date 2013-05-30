@@ -1323,6 +1323,7 @@
                   {
                     "instanceId": "Fragmnttmpltdsgn__0012",
                     "entityName": "FragmentTemplateDesign",
+                    "editorOpen": false,
                     "fragmentFilters": [],
                     "fragmentTypeName": "Input",
                     "styleNames": [
@@ -1362,6 +1363,7 @@
                   {
                     "instanceId": "Fragmnttmpltdsgn__0015",
                     "entityName": "FragmentTemplateDesign",
+                    "editorOpen": false,
                     "fragmentFilters": [],
                     "fragmentTypeName": "Input",
                     "styleNames": [

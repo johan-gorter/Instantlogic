@@ -208,6 +208,29 @@ public abstract class Entity<I extends Instance> extends Concept {
 			return extendsEntity().getAttributeOrRelation(name);
 		}
 		throw new NoSuchElementException(name);
+	}	
+	
+	@SuppressWarnings("rawtypes")
+	public Attribute getAttributeOrRelationById(String id) {
+		for (Attribute attribute: getLocalAttributes()) {
+			if (id.equals(attribute.getUniqueId())) {
+				return attribute;
+			}
+		}
+		for (Attribute attribute: getLocalRelations()) {
+			if (id.equals(attribute.getUniqueId())) {
+				return attribute;
+			}
+		}
+		for (Attribute attribute: getLocalReverseRelations()) {
+			if (id.equals(attribute.getUniqueId())) {
+				return attribute;
+			}
+		}
+		if (extendsEntity()!=null) {
+			return extendsEntity().getAttributeOrRelationById(id);
+		}
+		throw new NoSuchElementException(id);
 	}
 
 	@SuppressWarnings("rawtypes")

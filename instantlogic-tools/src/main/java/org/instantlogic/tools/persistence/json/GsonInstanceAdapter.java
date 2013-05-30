@@ -135,6 +135,7 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 			throw new RuntimeException(e);
 		}
 		JsonObject data = json.getAsJsonObject();
+		result.getMetadata().initUniqueId(data.get("instanceId").getAsString());
 		result.getMetadata().getCaseAdministration().setVersion(data.get("version").getAsInt());
 		// Id -> Instance
 		Map<String, Instance> instances = new HashMap<String, Instance>();
