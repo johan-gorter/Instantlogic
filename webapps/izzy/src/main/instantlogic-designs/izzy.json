@@ -1,5 +1,5 @@
 {
-  "instanceId": "IfEctEbamqbeAjIg_b9ab2001_c0d5",
+  "instanceId": "Applicationdesgn__0001",
   "entityName": "ApplicationDesign",
   "version": 0,
   "name": "izzy",
@@ -322,19 +322,6 @@
             "multiLine": true,
             "dataCategory": {
               "instanceName": "text",
-              "entityName": "DataCategoryDesign"
-            }
-          }
-        },
-        {
-          "instanceId": "_qzzvevjEidkmfg_d1073873_cecc",
-          "entityName": "AttributeDesign",
-          "name": "Priority",
-          "dataType": {
-            "instanceId": "WAsvcgOtmegbakgi_cb52d4ad_9c2e",
-            "entityName": "DataTypeDesign",
-            "dataCategory": {
-              "instanceName": "boolean",
               "entityName": "DataCategoryDesign"
             }
           }
@@ -1355,17 +1342,6 @@
                       "answer-span4"
                     ],
                     "attribute": "Relationdesign__0003",
-                    "entity": "Entitydesign__0004",
-                    "properties": [],
-                    "type": "Fragmenttypedsgn__0006"
-                  },
-                  {
-                    "instanceId": "Vthoyirxqebigfjv_c18b15aa_8bfd",
-                    "entityName": "FragmentTemplateDesign",
-                    "editorOpen": true,
-                    "fragmentFilters": [],
-                    "styleNames": [],
-                    "attribute": "Attributedesign__0001",
                     "entity": "Entitydesign__0004",
                     "properties": [],
                     "type": "Fragmenttypedsgn__0006"
