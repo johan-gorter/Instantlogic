@@ -99,7 +99,7 @@ public class ApplicationUpdate {
 
 	private Instance findInstance(Instance oldValue, CaseAdministration newCaseAdministration) {
 		if (oldValue.getMetadata().isStatic()) {
-			Entity newEntity = newCaseAdministration.getAllEntitiesById().get(oldValue.getMetadata().getEntity().getUniqueId());
+			Entity<?> newEntity = newCaseAdministration.getAllEntitiesById().get(oldValue.getMetadata().getEntity().getUniqueId());
 			if (newEntity!=null) {
 				return (Instance)newEntity.getStaticInstances().get(oldValue.getMetadata().getStaticName());
 			}

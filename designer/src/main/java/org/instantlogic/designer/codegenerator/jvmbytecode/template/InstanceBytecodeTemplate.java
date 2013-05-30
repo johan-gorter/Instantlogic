@@ -106,6 +106,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitMethodInsn(INVOKESPECIAL, "java/util/LinkedHashMap", "<init>", "()V");
 			mv.visitFieldInsn(PUTSTATIC, className, "_staticInstances", "Ljava/util/Map;");
 			
+			// Phase 1
 			for (EntityClassModel.StaticInstance staticInstance : model.staticInstances)
 			{
 				//   _boolean = addStaticInstance("boolean", new DataTypeDesign());
@@ -116,24 +117,17 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitMethodInsn(INVOKESPECIAL, concreteClassName, "<init>", "()V");
 				mv.visitMethodInsn(INVOKESTATIC, className, "addStaticInstance", "(Ljava/lang/String;L"+concreteClassName+";)L"+concreteClassName+";");
 				mv.visitFieldInsn(PUTSTATIC, className, staticInstance.javaIdentifier, "L"+concreteClassName+";");
-				
-				/*
-				mv.visitFieldInsn(GETSTATIC, className, staticInstance.javaIdentifier, "L"+concreteClassName+";");
-				mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/designer/DataTypeDesign", "getMetadata", "()Lorg/instantlogic/fabric/util/InstanceMetadata;");
-				mv.visitTypeInsn(NEW, "org/instantlogic/fabric/text/TextTemplate");
-				mv.visitInsn(DUP);
-				mv.visitInsn(ICONST_1);
-				mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/text/StringTemplate");
-				mv.visitInsn(DUP);
-				mv.visitInsn(ICONST_0);
-				mv.visitTypeInsn(NEW, "org/instantlogic/fabric/text/StringTemplate");
-				mv.visitInsn(DUP);
-				mv.visitLdcInsn("TODO"); // TODO: text macro
-				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/text/StringTemplate", "<init>", "(Ljava/lang/String;)V");
-				mv.visitInsn(AASTORE);
-				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/text/TextTemplate", "<init>", "([Lorg/instantlogic/fabric/text/StringTemplate;)V");
-				mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/fabric/util/InstanceMetadata", "setStaticDescription", "(Lorg/instantlogic/fabric/text/TextTemplate;)V");
-				*/
+			}
+			
+			// Phase 2
+			for (EntityClassModel.StaticInstance staticInstance : model.staticInstances) {
+				if (staticInstance.getDescription()!=null) {
+					// draft.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Draft").getTextTemplate());
+					mv.visitFieldInsn(GETSTATIC, className, staticInstance.javaIdentifier, "L"+concreteClassName+";");
+					mv.visitMethodInsn(INVOKEVIRTUAL, concreteClassName, "getMetadata", "()Lorg/instantlogic/fabric/util/InstanceMetadata;");
+					dumpText(mv, className, staticInstance.getDescription());
+					mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/fabric/util/InstanceMetadata", "setStaticDescription", "(Lorg/instantlogic/fabric/text/TextTemplate;)V");
+				}
 			}
 			
 			mv.visitInsn(RETURN);

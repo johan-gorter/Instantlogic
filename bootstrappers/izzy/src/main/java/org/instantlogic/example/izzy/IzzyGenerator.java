@@ -266,6 +266,7 @@ public class IzzyGenerator extends Design {
 		DeductionSchemeDesign headline;
 		DeductionSchemeDesign preview;
 		DeductionSchemeDesign assignee;
+		DeductionSchemeDesign isDraft;
 		issueRow = new SharedElementDefinitionDesign()
 			.setApplication(izzy)
 			.setFragment(new FragmentTemplateDesign("Row")
@@ -277,6 +278,11 @@ public class IzzyGenerator extends Design {
 									new StringTemplateDesign().setDeduction(number = new DeductionSchemeDesign()))),
 							new FragmentTemplateDesign("Cell").addToStyleNames("issueDetails")
 								.setChildren("content",
+									new IfElseDesign()
+										.setCondition(isDraft = new DeductionSchemeDesign())
+										.setIfChild(new FragmentTemplateDesign("Text")
+											.setText("text", createConstantText("[Draft] "))
+											.addToStyleNames("draft-label")),
 									new FragmentTemplateDesign("Text").addToStyleNames("headline")
 										.setText("text", new TextTemplateDesign().addToUntranslated(
 											new StringTemplateDesign().setDeduction(headline = new DeductionSchemeDesign()))),									
@@ -294,6 +300,7 @@ public class IzzyGenerator extends Design {
 						)
 					)
 				);
+		isDraft.deduceEquals(isDraft.deduceAttribute(issueIssueStatus), isDraft.deduceStaticInstance(draft));
 		issueRow.setName("IssueRow");
 		number.deduceAttribute(issueNumber);
 		headline.deduceAttribute(issueHeadline);
@@ -412,11 +419,7 @@ public class IzzyGenerator extends Design {
 							.addToUntranslated(new StringTemplateDesign().setDeduction(issueStatusDeduction = new DeductionSchemeDesign()))
 							.addToUntranslated(new StringTemplateDesign().setConstantText(")"))
 						),
-					headlineInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span8"),
-					reporterInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span4"),
-					assigneeInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span4"),
-					descriptionInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span8").addToStyleNames("answer-height300"),
-					new IfElseDesign().setCondition(statusDraft = new DeductionSchemeDesign())
+						new IfElseDesign().setCondition(statusDraft = new DeductionSchemeDesign())
 						.setIfChild(new FragmentTemplateDesign("Block")
 							.setChildren("content", submitButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Submit")).addToStyleNames("btn-primary"))
 						),
@@ -434,7 +437,11 @@ public class IzzyGenerator extends Design {
 					new IfElseDesign().setCondition(statusClosed = new DeductionSchemeDesign())
 						.setIfChild(new FragmentTemplateDesign("Block")
 							.setChildren("content", reopenClosedButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Re-open")))
-						)
+						),
+					headlineInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span8"),
+					reporterInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span4"),
+					assigneeInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span4"),
+					descriptionInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span8").addToStyleNames("answer-height300")
 				)
 			);
 		

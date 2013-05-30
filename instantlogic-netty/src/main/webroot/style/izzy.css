@@ -8,4 +8,6 @@
 .divtable .issueDetails {width:800px;overflow:hidden;position:relative;}
 .divtable .issueDetails .preview {color:#888888}
 .divtable .issueDetails .headline {display:inline-block;font-weight:bold;padding-right:7px;}
-.divtable .issueDetails .assignee {position:absolute;top:0px;right:0px;width:auto;z-index:1;font-weight:bold;background-color:white;padding-left:5px;} 
+.divtable .issueDetails .assignee {position:absolute;top:0px;right:0px;width:auto;z-index:1;font-weight:bold;background-color:white;padding-left:5px;}
+
+.draft-label {color: #DF3030}
