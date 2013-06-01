@@ -11,7 +11,7 @@
 package org.instantlogic.designer.flow;
 
 @SuppressWarnings({"unchecked","rawtypes"})
-public abstract class AbstractInsertFragmentTemplateBelowFlow extends org.instantlogic.interaction.flow.Flow {
+public abstract class AbstractInsertFragmentTemplateBelowFlow extends org.instantlogic.interaction.flow.impl.SimpleFlow {
 
 	public static final InsertFragmentTemplateBelowFlow INSTANCE = new InsertFragmentTemplateBelowFlow();
 	

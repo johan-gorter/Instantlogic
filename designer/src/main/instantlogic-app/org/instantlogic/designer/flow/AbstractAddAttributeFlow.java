@@ -11,7 +11,7 @@
 package org.instantlogic.designer.flow;
 
 @SuppressWarnings({"unchecked","rawtypes"})
-public abstract class AbstractAddAttributeFlow extends org.instantlogic.interaction.flow.Flow {
+public abstract class AbstractAddAttributeFlow extends org.instantlogic.interaction.flow.impl.SimpleFlow {
 
 	public static final AddAttributeFlow INSTANCE = new AddAttributeFlow();
 	

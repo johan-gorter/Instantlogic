@@ -19,6 +19,7 @@ import org.instantlogic.fabric.util.DeductionContext;
 import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowNodeBase;
 import org.instantlogic.interaction.flow.PlaceTemplate;
+import org.instantlogic.interaction.flow.impl.SimpleFlow;
 
 
 public class FlowContext extends DeductionContext {
@@ -95,7 +96,7 @@ public class FlowContext extends DeductionContext {
 		}
 	}
 	
-	public void pushFlowContext(Flow flow) {
+	public void pushFlowContext(SimpleFlow flow) {
 		flowStack = new FlowStack(flowStack, flow);
 	}
 	

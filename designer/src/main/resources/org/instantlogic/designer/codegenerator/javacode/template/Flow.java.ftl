@@ -11,7 +11,7 @@
 package ${rootPackageName}.flow;
 
 @SuppressWarnings({"unchecked","rawtypes"})
-public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${technicalNameCapitalized}Flow extends org.instantlogic.interaction.flow.Flow {
+public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${technicalNameCapitalized}Flow extends org.instantlogic.interaction.flow.impl.SimpleFlow {
 
 	public static final ${technicalNameCapitalized}Flow INSTANCE = new <#if customization??>${customization}<#else>${technicalNameCapitalized}Flow</#if>();
 	

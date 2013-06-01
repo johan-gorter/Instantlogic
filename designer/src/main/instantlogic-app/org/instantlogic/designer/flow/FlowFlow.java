@@ -11,7 +11,7 @@
 package org.instantlogic.designer.flow;
 
 @SuppressWarnings({"unchecked","rawtypes"})
-public class FlowFlow extends org.instantlogic.interaction.flow.Flow {
+public class FlowFlow extends org.instantlogic.interaction.flow.impl.SimpleFlow {
 
 	public static final FlowFlow INSTANCE = new FlowFlow();
 	

@@ -5,7 +5,7 @@ public class RemoveAttributeSubFlow extends org.instantlogic.interaction.flow.Su
 	public static final RemoveAttributeSubFlow INSTANCE = new RemoveAttributeSubFlow();
 	
 	@Override
-	public org.instantlogic.interaction.flow.Flow getFlow() {
+	public org.instantlogic.interaction.flow.impl.SimpleFlow getFlow() {
 		return org.instantlogic.designer.flow.RemoveAttributeFlow.INSTANCE;
 	}
 	

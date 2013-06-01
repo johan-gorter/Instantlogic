@@ -5,7 +5,7 @@ public class InsertFragmentTemplateBelowSubFlow extends org.instantlogic.interac
 	public static final InsertFragmentTemplateBelowSubFlow INSTANCE = new InsertFragmentTemplateBelowSubFlow();
 	
 	@Override
-	public org.instantlogic.interaction.flow.Flow getFlow() {
+	public org.instantlogic.interaction.flow.impl.SimpleFlow getFlow() {
 		return org.instantlogic.designer.flow.InsertFragmentTemplateBelowFlow.INSTANCE;
 	}
 	

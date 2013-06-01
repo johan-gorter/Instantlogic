@@ -45,7 +45,7 @@ public class FlowBytecodeTemplate extends AbstractBytecodeTemplate {
 		String className = model.isCustomized?model.getRootPackageInternalPrefix()+"flow/Abstract" + model.technicalNameCapitalized+"Flow":concreteClassName;
 		String flowPackage = model.getRootPackageInternalPrefix()+"flow/"+model.technicalNameCapitalized.toLowerCase()+"/";
 
-		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className, null, "org/instantlogic/interaction/flow/Flow", null);
+		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className, null, "org/instantlogic/interaction/flow/impl/SimpleFlow", null);
 
 		//public static final MainFlow INSTANCE = new MainFlow();
 		{
@@ -120,14 +120,13 @@ public class FlowBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitMaxs(8, 0);
 			mv.visitEnd();
 		}
-
 		
 		// Default synthetic constructor
 		{
 			mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
 			mv.visitCode();
 			mv.visitVarInsn(ALOAD, 0);
-			mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/flow/Flow", "<init>", "()V");
+			mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/flow/impl/SimpleFlow", "<init>", "()V");
 			mv.visitInsn(RETURN);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();

@@ -17,6 +17,7 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEvent;
+import org.instantlogic.interaction.flow.impl.SimpleFlow;
 
 
 public abstract class Application implements AutoCloseable {

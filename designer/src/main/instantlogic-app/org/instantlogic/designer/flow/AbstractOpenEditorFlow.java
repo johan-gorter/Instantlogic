@@ -11,7 +11,7 @@
 package org.instantlogic.designer.flow;
 
 @SuppressWarnings({"unchecked","rawtypes"})
-public abstract class AbstractOpenEditorFlow extends org.instantlogic.interaction.flow.Flow {
+public abstract class AbstractOpenEditorFlow extends org.instantlogic.interaction.flow.impl.SimpleFlow {
 
 	public static final OpenEditorFlow INSTANCE = new OpenEditorFlow();
 	

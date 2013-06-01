@@ -20,6 +20,7 @@ import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEdge;
 import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.FlowNodeBase;
+import org.instantlogic.interaction.flow.impl.SimpleFlow;
 
 public class FlowStack extends AbstractDeductionContext {
 	
@@ -82,10 +83,9 @@ public class FlowStack extends AbstractDeductionContext {
 	}
 
 	public FlowEvent findEvent(String eventName) {
-		for (FlowEdge edge : flow.getEdges()) {
-			if (edge.getEvent()!=null && edge.getEvent().getName().equals(eventName)) {
-				return edge.getEvent();
-			}
+		FlowEvent result = flow.findEvent(eventName);
+		if (result!=null) {
+			return result;
 		}
 		if (parent==null) throw new NoSuchElementException("Event not found from this flow: "+eventName);
 		return parent.findEvent(eventName);
