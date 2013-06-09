@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine.message;
 
 import org.instantlogic.engine.presence.Presence;

@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine.presence.flow;
 
 import org.instantlogic.designer.FlowDesign;

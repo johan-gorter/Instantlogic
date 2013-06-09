@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.codegenerator.generator;
 
 import org.instantlogic.designer.ValidationDesign;

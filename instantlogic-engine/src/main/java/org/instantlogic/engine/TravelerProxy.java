@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine;
 
 import java.util.List;

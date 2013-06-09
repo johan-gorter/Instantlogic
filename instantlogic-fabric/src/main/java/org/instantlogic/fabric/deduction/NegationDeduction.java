@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric.deduction;
 
 import org.instantlogic.fabric.util.DeductionContext;

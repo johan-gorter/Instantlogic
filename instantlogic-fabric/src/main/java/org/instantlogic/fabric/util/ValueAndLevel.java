@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric.util;
 
 public class ValueAndLevel<V extends Object> {

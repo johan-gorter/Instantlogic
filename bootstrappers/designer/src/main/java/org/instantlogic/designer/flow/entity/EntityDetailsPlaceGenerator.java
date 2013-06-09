@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.flow.entity;
 
 import org.instantlogic.designer.AttributeDesignEntityGenerator;

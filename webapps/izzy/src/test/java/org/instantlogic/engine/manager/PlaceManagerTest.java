@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine.manager;
 
 import java.util.Collections;

@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer;
 
 import java.util.Iterator;

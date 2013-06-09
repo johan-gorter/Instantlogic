@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.deduction;
 
 import java.util.Arrays;

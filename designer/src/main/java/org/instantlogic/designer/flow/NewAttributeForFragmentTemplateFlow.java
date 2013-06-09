@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.flow;
 
 import org.instantlogic.designer.AttributeDesign;

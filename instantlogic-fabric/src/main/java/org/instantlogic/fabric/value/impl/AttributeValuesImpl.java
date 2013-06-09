@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric.value.impl;
 
 import java.util.ArrayList;

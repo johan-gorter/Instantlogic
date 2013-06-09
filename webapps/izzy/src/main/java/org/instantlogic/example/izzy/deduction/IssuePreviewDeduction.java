@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.example.izzy.deduction;
 
 import org.instantlogic.example.izzy.Issue;

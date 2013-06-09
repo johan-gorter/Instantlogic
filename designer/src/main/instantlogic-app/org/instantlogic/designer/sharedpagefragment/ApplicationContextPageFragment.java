@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.sharedpagefragment;
 
 public class ApplicationContextPageFragment extends org.instantlogic.interaction.page.SharedElement {

@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine.message;
 
 import java.util.Map;

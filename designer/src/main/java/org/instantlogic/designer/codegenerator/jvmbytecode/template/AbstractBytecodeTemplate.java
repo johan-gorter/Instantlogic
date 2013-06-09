@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 
 import java.util.ArrayList;

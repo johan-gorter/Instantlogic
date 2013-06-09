@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.flow.placetemplate;
 
 import org.instantlogic.designer.DeductionSchemeDesign;

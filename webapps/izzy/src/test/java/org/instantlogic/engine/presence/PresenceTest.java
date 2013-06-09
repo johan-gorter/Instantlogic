@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine.presence;
 
 import java.util.Map;

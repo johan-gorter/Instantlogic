@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.example.izzy.flow;
 
 import org.instantlogic.example.izzy.Issue;

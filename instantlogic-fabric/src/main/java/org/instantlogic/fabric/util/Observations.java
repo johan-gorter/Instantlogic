@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric.util;
 
 import java.util.HashSet;

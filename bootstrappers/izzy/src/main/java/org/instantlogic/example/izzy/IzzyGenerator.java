@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.example.izzy;
 
 import java.io.File;

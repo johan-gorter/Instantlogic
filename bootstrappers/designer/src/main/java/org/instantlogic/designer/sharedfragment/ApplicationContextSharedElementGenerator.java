@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.sharedfragment;
 
 import org.instantlogic.designer.ApplicationDesignEntityGenerator;

@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer;
 
 import org.instantlogic.designer.deduction.TechnicalNameDeduction;

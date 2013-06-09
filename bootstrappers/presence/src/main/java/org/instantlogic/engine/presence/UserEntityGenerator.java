@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine.presence;
 
 import org.instantlogic.designer.AttributeDesign;

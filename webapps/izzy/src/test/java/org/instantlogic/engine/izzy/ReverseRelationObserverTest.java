@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine.izzy;
 
 import static org.junit.Assert.*;

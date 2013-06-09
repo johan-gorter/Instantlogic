@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.netty;
 
 import org.jboss.netty.channel.ChannelPipeline;

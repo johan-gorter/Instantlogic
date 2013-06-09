@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric;
 
 import org.instantlogic.fabric.model.Attribute;

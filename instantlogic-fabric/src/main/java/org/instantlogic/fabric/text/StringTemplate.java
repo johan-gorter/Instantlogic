@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric.text;
 
 import org.instantlogic.fabric.Instance;

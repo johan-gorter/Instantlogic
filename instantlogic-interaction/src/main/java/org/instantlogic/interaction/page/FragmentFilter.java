@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.interaction.page;
 
 import java.util.Map;

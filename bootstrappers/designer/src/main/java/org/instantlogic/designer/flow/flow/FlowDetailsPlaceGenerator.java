@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.flow.flow;
 
 import org.instantlogic.designer.DeductionSchemeDesign;

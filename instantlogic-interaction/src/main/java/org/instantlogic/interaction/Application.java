@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.interaction;
 
 import java.util.ArrayList;

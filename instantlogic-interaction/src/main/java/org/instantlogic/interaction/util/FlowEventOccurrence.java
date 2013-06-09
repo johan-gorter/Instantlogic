@@ -1,11 +1,9 @@
-
-
 package org.instantlogic.interaction.util;
 
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.interaction.flow.FlowEvent;
 
-
+// TODO: Rename to FlowEvent
 public class FlowEventOccurrence {
 
 	private FlowEvent event;

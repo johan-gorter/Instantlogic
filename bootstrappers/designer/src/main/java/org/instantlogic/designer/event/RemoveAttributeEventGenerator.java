@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.event;
 
 import org.instantlogic.designer.AttributeDesignEntityGenerator;

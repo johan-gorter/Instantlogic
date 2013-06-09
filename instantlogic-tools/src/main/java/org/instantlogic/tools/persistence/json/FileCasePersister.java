@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.tools.persistence.json;
 
 import java.io.File;

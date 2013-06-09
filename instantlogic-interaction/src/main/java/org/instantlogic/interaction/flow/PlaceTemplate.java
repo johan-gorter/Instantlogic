@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.interaction.flow;
 
 import java.util.ArrayList;

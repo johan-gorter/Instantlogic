@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.fragmentfilter;
 
 import java.util.Collections;

@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.codegenerator.classmodel;
 
 public class SubFlowClassModel extends AbstractClassModel {

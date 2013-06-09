@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric.model;
 
 import org.instantlogic.fabric.Instance;

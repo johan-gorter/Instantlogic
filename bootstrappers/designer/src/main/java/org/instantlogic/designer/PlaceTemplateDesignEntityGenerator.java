@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer;
 
 public class PlaceTemplateDesignEntityGenerator extends EntityDesign {

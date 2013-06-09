@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer;
 
 public abstract class AbstractDesignerApplication extends org.instantlogic.interaction.Application {

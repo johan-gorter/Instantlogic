@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.codegenerator.jvmbytecode;
 
 import java.net.URL;

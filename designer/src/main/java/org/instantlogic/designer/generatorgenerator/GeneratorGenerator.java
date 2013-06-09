@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.generatorgenerator;
 
 import java.io.File;

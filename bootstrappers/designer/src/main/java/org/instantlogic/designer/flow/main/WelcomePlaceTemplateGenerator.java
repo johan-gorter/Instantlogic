@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.flow.main;
 
 import org.instantlogic.designer.ApplicationDesignEntityGenerator;

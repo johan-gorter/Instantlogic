@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine.izzy;
 
 import org.instantlogic.example.izzy.Comment;

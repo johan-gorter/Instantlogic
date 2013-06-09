@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.validation;
 
 public class DataTypeDesignDataCategoryRequiredValidation extends org.instantlogic.fabric.model.Validation {

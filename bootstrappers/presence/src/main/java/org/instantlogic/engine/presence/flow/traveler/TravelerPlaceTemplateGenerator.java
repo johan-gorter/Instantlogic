@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.engine.presence.flow.traveler;
 
 import org.instantlogic.designer.DeductionSchemeDesign;

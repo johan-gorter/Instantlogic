@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.flow;
 
 @SuppressWarnings({"unchecked","rawtypes"})

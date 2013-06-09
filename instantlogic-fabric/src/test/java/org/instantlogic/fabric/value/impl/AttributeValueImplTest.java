@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric.value.impl;
 
 import static org.junit.Assert.*;

@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric.text;
 
 import java.util.HashMap;

@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.designer.deduction;
 
 import org.instantlogic.designer.Design;

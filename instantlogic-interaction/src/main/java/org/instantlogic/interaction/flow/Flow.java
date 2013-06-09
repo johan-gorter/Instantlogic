@@ -8,6 +8,7 @@ import org.instantlogic.interaction.util.FlowContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.FlowStack;
 
+//TODO: Rename to FlowTemplate
 public abstract class Flow extends Concept {
 
 	public abstract PlaceTemplate getPage(String[] path, int pathIndex);

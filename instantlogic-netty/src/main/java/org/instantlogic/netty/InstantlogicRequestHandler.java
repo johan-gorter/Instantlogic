@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.netty;
 
 import static org.jboss.netty.handler.codec.http.HttpResponseStatus.CONTINUE;

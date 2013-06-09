@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.netty;
 
 import java.io.BufferedReader;

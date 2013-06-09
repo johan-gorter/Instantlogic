@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.fabric.model.impl;
 
 import java.lang.reflect.Field;

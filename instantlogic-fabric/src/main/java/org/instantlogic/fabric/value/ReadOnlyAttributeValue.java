@@ -1,14 +1,10 @@
-
-
 package org.instantlogic.fabric.value;
-
 
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.util.ValueAndLevel;
 import org.instantlogic.fabric.util.ValueChangeObserver;
 
-// TODO: Rename AttributeValue to InstanceValue everywhere
 public interface ReadOnlyAttributeValue<I extends Instance, Value extends Object> extends ObservableValue<Value> {
 
 	Attribute<I, Value, ? extends Object> getModel();

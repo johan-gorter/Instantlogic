@@ -1,5 +1,3 @@
-
-
 package org.instantlogic.interaction.flow.impl;
 
 import org.instantlogic.fabric.Instance;
