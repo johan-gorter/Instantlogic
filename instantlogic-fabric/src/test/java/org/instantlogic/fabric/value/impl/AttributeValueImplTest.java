@@ -1,12 +1,4 @@
-/* Copyright 2013, Johan Gorter
- * This file is part of Instantlogic.
- * Instantlogic is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General
- * Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option)
- * any later version. Instantlogic is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser 
- * General Public License for more details. You should have received a copy of the GNU Lesser General Public License
- * along with Instantlogic. If not, see <http://www.gnu.org/licenses/>.
- */
+
 
 package org.instantlogic.fabric.value.impl;
 
@@ -15,6 +7,7 @@ import static org.junit.Assert.*;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.instantlogic.fabric.util.Operation;
 import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.fabric.util.ValueChangeObserver;
 import org.instantlogic.testset.Period;
@@ -40,16 +33,34 @@ public class AttributeValueImplTest {
 	public void deductionTest() {
 		assertEquals(366, period.getDaysBetween().intValue());
 	}
+
+	@Test()
+	public void transactionCommitTest() {
+		try (Operation operation = period.getMetadata().getCaseAdministration().startOperation()) {
+			period.setTo(date(2014, 1, 1));
+			operation.complete();
+		}
+		assertEquals(date(2014,1,1), period.getTo());
+	}
 	
+	@Test()
+	public void transactionRollbackTest() {
+		try (Operation operation = period.getMetadata().getCaseAdministration().startOperation()) {
+			period.setTo(date(2015, 1, 1));
+			// No operation.complete() -> the operation will rollback
+			assertEquals(date(2015,1,1), period.getTo());
+		}
+		assertEquals(date(2013,1,1), period.getTo());
+	}
 	
 	@Test()
 	public void listenerTest() {
 		PrintListener listener1 = new PrintListener("Listener1", period.getDaysBetween());
 		PrintListener listener2 = new PrintListener("Listener2", period.getDaysBetween());
 		try {
-			period.getDaysBetweenAttribute().addValueChangeObserver(listener1);
-			period.getDaysBetweenAttribute().addValueChangeObserver(new PeriodsPerYearReporter());
-			period.getDaysBetweenAttribute().addValueChangeObserver(listener2);
+			period.getDaysBetweenAttributeValue().addValueChangeObserver(listener1);
+			period.getDaysBetweenAttributeValue().addValueChangeObserver(new PeriodsPerYearReporter());
+			period.getDaysBetweenAttributeValue().addValueChangeObserver(listener2);
 			
 			period.setTo(date(2012,2,1));
 			assertEquals(1, listener1.getNrOfUpdates());
@@ -72,8 +83,8 @@ public class AttributeValueImplTest {
 		}
 	}
 
+	// Hazardous implementation which can cause an exception (division by zero)
 	public static class PeriodsPerYearReporter implements ValueChangeObserver {
-
 		@Override
 		public void valueChanged(ValueChangeEvent event) {
 			if (event.getNewValue().hasValue()) {

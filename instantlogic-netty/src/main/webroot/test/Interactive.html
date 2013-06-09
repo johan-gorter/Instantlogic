@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FragmentList Test</title>
+
+<script type="text/javascript" src="/webjars/yui/3.7.3/yui/yui.js"></script>
+<script src="../html.js"></script>
+<script src="../instantlogic.js"></script>
+<script src="../instantlogic-presence.js"></script>
+<script src="../instantlogic-fragments.js"></script>
+<script src="../instantlogic-answers.js"></script>
+<script src="../instantlogic-designer.js"></script>
+
+    <script>
+        YUI({
+            useBrowserConsole: true, filter: 'RAW', throwFail: true, errorFn: function () { return false; }
+        }).use('test', 'node', 'instantlogic', 'instantlogic-presence', 'instantlogic-fragments', 'instantlogic-answers', 'instantlogic-designer', function (Y) {
+
+            var model = {
+                "type": "Page",
+                "id": "F40P1F1",
+                "headerContent": [{ "type": "Heading1", "id": "F40P1F1-F40P1F1F1F1", "text": "Welcome"}],
+                "mainContent": [{ "type": "Paragraph", "id": "F40P1F1-F40P1F1F2F1", "text": "Welcome to the Designer"}]
+            };
+            var configuration = Y.instantlogic.createBaseConfiguration(Y); 
+
+            Y.one('#testarea').setContent('');
+            var engine = new Y.instantlogic.Engine('dummyApplication','dummyCaseId','dummyTravelerId', null, Y.one('#testarea'), configuration);
+
+            engine.updatePlace(model);
+        });
+    </script>
+
+</head>
+<body>
+    <div id="testarea">
+    </div>
+</body>
+</html>
