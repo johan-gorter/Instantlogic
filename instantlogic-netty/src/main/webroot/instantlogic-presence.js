@@ -193,6 +193,9 @@ YUI.add('instantlogic-presence', function (Y) {
     		this.updateAvatarImage(model);
     		var me = this;
     		setTimeout(function(){me.positionAvatar(false);})
+    		this.resizeSubscription = Y.on('windowresize', function(e) {
+    			me.positionAvatar(false);
+    		});
     	},
     	postUpdate: function(newModel, diff) {
     		if (this.oldModel.username != newModel.username) {
@@ -200,6 +203,9 @@ YUI.add('instantlogic-presence', function (Y) {
     		}
     		var me = this;
     		setTimeout(function(){me.positionAvatar(true);})
+    	},
+    	destroy: function() {
+    		this.resizeSubscription.detach();
     	},
     	overrides: {
     		updateAvatarImage: function(model) {

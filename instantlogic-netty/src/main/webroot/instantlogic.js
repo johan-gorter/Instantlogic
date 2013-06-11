@@ -157,7 +157,7 @@ YUI.add('instantlogic', function (Y) {
                 			s=a[i];
                 			if(s.rel.toLowerCase().indexOf('stylesheet')>=0&&s.href) {
                 				var h=s.href.replace(/(&|%5C?)forceReload=\d+/,'');
-                				s.href=h+(h.indexOf('?')>=0?'&':'?')+'forceReload='+(new Date().valueOf())
+                				s.href=h+(h.indexOf('?')>=0?'&':'?')+'forceReload='+(new Date().valueOf());
                 			}
                 		}
                         break;
@@ -727,6 +727,7 @@ YUI.add('instantlogic', function (Y) {
      * and [1]: the list of elements in the model to render there
      * - postInit: function(model), optional, runs after the init phase has been completed
      * - postUpdate: function(newModel, diff), optional, runs after the update phase has been completed
+     * - destroy: function(), called when the fragment is destoyed
      * */
     ns.createFragment = function(options) {
     	var constructor = function(parentNode, parentFragment, engine) {
@@ -807,6 +808,9 @@ YUI.add('instantlogic', function (Y) {
     	}
 
     	constructor.prototype.destroy = function(nextState) {
+    		if (options.destroy) {
+    			options.destroy.call(this);
+    		}    		
     		var state = nextState || this.statePerSubclass;
     		constructor.superclass.destroy.call(this, state.next);
     		if (state.fragmentLists) {

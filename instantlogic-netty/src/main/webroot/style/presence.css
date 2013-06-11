@@ -18,7 +18,7 @@
 
 .floating-avatar {position:absolute; left:600px; background-color:#222222;z-index:11}
 .floating-pointer {position:absolute; left:600px; width:54px; height:54px; background-color:#222222; z-index:10}
-.floating-pointer .arrow-top {position:absolute;left:-10px;top:0px;border-left:solid 10px transparent;border-bottom:solid 26px #222222}
+.floating-pointer .arrow-top {position:absolute;left:-10px;top:0px;border-left:solid 10px transparent;border-bottom:solid 27px #222222}
 .floating-pointer .arrow-bottom {position:absolute;left:-10px;top:26px;border-left:solid 10px transparent;border-top:solid 26px #222222}
 
 .login {position:fixed; top: 200px; width:100%; }
