@@ -8,3 +8,8 @@ div.navbar-fixed-top {margin:0;}
 .banner p {font-size: 32px; line-height:1.25;}
 .footer {display:block; text-align:center; padding:30px 0; margin-top:70px; border-top:1px solid #A65200; background-color: #FFB873;}
 .footer a {color: #BF7730}
+
+#tiles .row {padding-top: 20px;}
+.tile  > img {box-shadow: 0 0 5px #888;border-radius:4px;}
+.tile  > .tile-text {display:block; width:420px;height:200px;box-shadow: 0 0 5px #FFF;border-radius:4px;font-size:20px;padding:10px 10px;}
+.tile  > .tile-text > p {padding-top:40px;text-align:center;}

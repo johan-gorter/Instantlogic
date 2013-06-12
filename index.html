@@ -13,6 +13,17 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41657892-1', 'instantlogic.org');
+  ga('send', 'pageview');
+</script>
+
   </head>
 
   <body>
@@ -23,8 +34,11 @@
           <a class="brand" href="./index.html">Instantlogic</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="">
+              <li class="active">
                 <a href="./index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="./about.html">About</a>
               </li>
             </ul>
           </div>
@@ -40,56 +54,77 @@
       <div class="container">
         <h1><em>Instant</em>logic</h1>
         <p class="lead">Experimental framework for creating real-time, collaborative web applications.</p>
-      </div>
+
+        <p style="text-align:center;font-size:18px;">
+        <i>Stop thinking about your web application as a data processor
+        <br />
+        Start thinking about your web application as a virtual reality</i>
+        </p>
+        </div>
     </header>
 
     <div class="container">
       <div class="span12">
 
-        <section id="intro">
-		<p>
-		<i>Stop thinking about your web application as a data processor
-		<br />
-		Start thinking about your web application as a virtual reality</i>
-		</p>
-		<p>When using web applications built using instantlogic:</p>
-        <ol>
-			<li style="color:red">Your changes are propagated real-time to everyone else's browser.</li>
-			<li style="color:green">You can see where other people are inside the application</li>
-        </ol>
-		<img src="art/IzzyUserInteraction.png" alt="screenshot" style="width:531px;height:404px" />
-        </section>
+        <br />
+	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://instantlogic.org" data-text="Experimental framework for creating real-time, collaborative web applications" data-via="inlgc" data-size="large" data-count="none">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        
+        <section id="tiles">
 
-	<section id="video">
-		<h2>Demonstration</h2>
-		<i>Please take the time to watch this 3-minute demonstration.</i>
-		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/ijyhiA7hzjo" frameborder="0" allowfullscreen></iframe>
-		</p>
-	</section>
-	  
-        <section id="goal">
-        <h2>Goal</h2>
+          <div class="row">
+            <div class="span6 tile">
+              <div class="tile-text">
+              <p>
+                When you are using a webapplication built with instantlogic, avatars mark the current location of every person using the application.
+              </p>
+              </div>
+            </div>
+            <div class="span3 tile"><img src="art/avatars1.png" alt="avatars1" /></div>
+            <div class="span3 tile"><img src="art/avatars2.png" alt="avatars2" /></div>
+          </div>
+
+          <div class="row">
+            <div class="span3 tile"><img src="art/realtime1.png" alt="realtime1" /></div>
+            <div class="span6 tile">
+              <div class="tile-text">
+              <p>
+                Every field you change is effective instantly. 
+                This means your data is always saved. There are also no 'ok' and 'cancel' buttons. 
+              </p>
+              </div>
+            </div>
+            <div class="span3 tile"><img src="art/realtime2.png" alt="realtime2" /></div>
+          </div>
+
+          <div class="row">
+            <div class="span3 tile"><img src="art/edit1.png" alt="edit1" /></div>
+            <div class="span3 tile"><img src="art/edit2.png" alt="edit2" /></div>
+            <div class="span6 tile">
+              <div class="tile-text">
+              <p>
+                You can also make changes to the application itself.
+                These changes are also effective immediately. 
+                The users (or testers) of your application even see your changes while you are editing.
+              </p>
+                </div>
+            </div>
+          </div>
+         </section>
+        
+      <section id="video">
+        <h2>Demonstration</h2>
+        <i>Please take the time to watch this 2-minute demonstration.</i>
         <p>
-            The main goals for instantlogic are:
+        <iframe width="853" height="480" src="http://www.youtube.com/embed/qd0H3wTIFdc?rel=0" frameborder="0" allowfullscreen></iframe>
         </p>
-        <ol>
-			<li>Create real-time, collaborative web applications</li>
-			<li>Make web application creation as non-technical as possible by using modeling techniques and business-rules</li>
-			<li>Allow pain-free integration between modeling and programming</li>
-        </ol>
-        </section>
+      </section>
 
-        <section id="roadmap">
-        <h2>Roadmap</h2>
-        <p>
-            Instantlogic is still in its early stages of development. 
-			Just enough has been implemented to be able to give demonstrations.
-			The next aim is to be able to create web application prototypes.
-        </p>
-        </section>
-
-		</div>
+      <section id="next">
+	    <a href="about.html" class="btn btn-primary btn-large">Read more</a>
+      </section>
+      
+      </div>
     </div>
   
     <footer class="footer">
@@ -99,4 +134,5 @@
     </footer>
 
   </body>
+  
 </html>
