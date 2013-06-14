@@ -1,0 +1,24 @@
+/webapps/izzy/cases
+target/
+
+# Useful suggestions from GitHub for windows
+
+#################
+## Eclipse
+#################
+
+RemoteSystemsTempFiles
+.metadata
+bin/
+tmp/
+local.properties
+.settings/
+
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+Desktop.ini
+
