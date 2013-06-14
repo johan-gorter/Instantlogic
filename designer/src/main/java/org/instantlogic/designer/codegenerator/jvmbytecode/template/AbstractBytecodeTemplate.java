@@ -131,7 +131,7 @@ public class AbstractBytecodeTemplate implements Opcodes {
 				// new org.instantlogic.interaction.page.SharedElementHolder("${content.id}", ${rootPackageName}.sharedpagefragment.${content.name}PageFragment.INSTANCE)
 				mv.visitTypeInsn(NEW, "org/instantlogic/interaction/page/SharedElementHolder");
 				mv.visitInsn(DUP);
-				mv.visitLdcInsn("Sharedelemntdsgn__0001");
+				mv.visitLdcInsn(content.id);
 				emitGetInstanceField(mv, content.getRootPackageInternalPrefix()+"sharedpagefragment/", content.name+"PageFragment");
 				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/interaction/page/SharedElementHolder", "<init>", "(Ljava/lang/String;Lorg/instantlogic/interaction/page/SharedElement;)V");
 				break;
