@@ -197,6 +197,7 @@ public class IzzyGenerator extends Design {
 	private static void createFragmentTypes() {
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Page"));
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Block"));
+		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Group"));
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Paragraph"));
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Heading1"));
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Heading2"));
@@ -399,6 +400,22 @@ public class IzzyGenerator extends Design {
 					deleteButton = new FragmentTemplateDesign("Button").addToStyleNames("btn")
 						.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-remove"))
 						.setText("text", createConstantText("Delete")),
+					new IfElseDesign().setCondition(statusOpen = new DeductionSchemeDesign())
+						.setIfChild(resolveButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Resolve")).addToStyleNames("btn-primary")
+						),
+					new IfElseDesign().setCondition(statusResolved = new DeductionSchemeDesign())
+						.setIfChild(new FragmentTemplateDesign("Group")
+							.setChildren("content", 
+								reopenButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Re-open")),
+								closeButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Close")).addToStyleNames("btn-primary")
+							)
+						),
+					new IfElseDesign().setCondition(statusClosed = new DeductionSchemeDesign())
+						.setIfChild(reopenClosedButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Re-open"))),
+					new IfElseDesign().setCondition(statusDraft = new DeductionSchemeDesign())
+					.setIfChild(
+							submitButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Ready")).addToStyleNames("btn-primary")
+					),
 					new FragmentTemplateDesign("Heading2")
 						.setText("text", new TextTemplateDesign()
 							.addToUntranslated(new StringTemplateDesign().setConstantText("Issue "))
@@ -408,25 +425,6 @@ public class IzzyGenerator extends Design {
 							.addToUntranslated(new StringTemplateDesign().setConstantText(" ("))
 							.addToUntranslated(new StringTemplateDesign().setDeduction(issueStatusDeduction = new DeductionSchemeDesign()))
 							.addToUntranslated(new StringTemplateDesign().setConstantText(")"))
-						),
-						new IfElseDesign().setCondition(statusDraft = new DeductionSchemeDesign())
-						.setIfChild(new FragmentTemplateDesign("Block")
-							.setChildren("content", submitButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Ready")).addToStyleNames("btn-primary"))
-						),
-					new IfElseDesign().setCondition(statusOpen = new DeductionSchemeDesign())
-						.setIfChild(new FragmentTemplateDesign("Block")
-							.setChildren("content", resolveButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Resolve")).addToStyleNames("btn-primary"))
-						),
-					new IfElseDesign().setCondition(statusResolved = new DeductionSchemeDesign())
-						.setIfChild(new FragmentTemplateDesign("Block")
-							.setChildren("content", 
-								reopenButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Re-open")),
-								closeButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Close")).addToStyleNames("btn-primary")
-							)
-						),
-					new IfElseDesign().setCondition(statusClosed = new DeductionSchemeDesign())
-						.setIfChild(new FragmentTemplateDesign("Block")
-							.setChildren("content", reopenClosedButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Re-open")))
 						),
 					headlineInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span8"),
 					reporterInput = new FragmentTemplateDesign("Input").addToStyleNames("answer-span4"),

@@ -15,3 +15,5 @@
 
 .designer-editor-open {outline:red dotted thick;outline-offset:-4px}
 .controls .designer-editor-open {outline:0}
+.btn {margin-right:4px;}
+.btn-group .btn {margin-right:auto;}

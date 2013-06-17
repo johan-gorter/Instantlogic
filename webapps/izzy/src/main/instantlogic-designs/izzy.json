@@ -1090,245 +1090,331 @@
                     "type": "Fragmenttypedsgn__0004"
                   },
                   {
-                    "instanceId": "Fragmnttmpltdsgn__0012",
-                    "entityName": "FragmentTemplateDesign",
-                    "fragmentFilters": [],
-                    "fragmentTypeName": "Heading2",
-                    "styleNames": [],
-                    "properties": [
-                      {
-                        "instanceId": "Propertydesign__0008",
-                        "entityName": "PropertyDesign",
-                        "propertyName": "text",
-                        "children": [],
-                        "text": {
-                          "instanceId": "Texttemplatedsgn__000b",
-                          "entityName": "TextTemplateDesign",
-                          "untranslated": [
-                            {
-                              "instanceId": "Stringtempltdsgn__000b",
-                              "entityName": "StringTemplateDesign",
-                              "constantText": "Issue "
-                            },
-                            {
-                              "instanceId": "Stringtempltdsgn__000c",
-                              "entityName": "StringTemplateDesign",
-                              "deduction": {
-                                "instanceId": "Deductinschmdsgn__0007",
-                                "entityName": "DeductionSchemeDesign",
-                                "deductions": [
-                                  {
-                                    "instanceId": "Deductiondesign__000e",
-                                    "entityName": "DeductionDesign",
-                                    "inputs": [],
-                                    "operation": {
-                                      "instanceName": "selectedInstance",
-                                      "entityName": "DeductionOperationDesign"
-                                    },
-                                    "parameters": [
-                                      {
-                                        "instanceId": "Deductnprmtrdsgn__000c",
-                                        "entityName": "DeductionParameterDesign",
-                                        "entityValue": "Entitydesign__0004",
-                                        "operationParameter": {
-                                          "instanceName": "selectedInstanceEntity",
-                                          "entityName": "DeductionOperationParameterDesign"
-                                        }
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "instanceId": "Deductiondesign__000f",
-                                    "entityName": "DeductionDesign",
-                                    "inputs": [
-                                      {
-                                        "instanceId": "Deductionnptdsgn__0008",
-                                        "entityName": "DeductionInputDesign",
-                                        "inputs": [
-                                          "Deductiondesign__000e"
-                                        ],
-                                        "operationInput": {
-                                          "instanceName": "attributeInstance",
-                                          "entityName": "DeductionOperationInputDesign"
-                                        }
-                                      }
-                                    ],
-                                    "operation": {
-                                      "instanceName": "attribute",
-                                      "entityName": "DeductionOperationDesign"
-                                    },
-                                    "parameters": [
-                                      {
-                                        "instanceId": "Deductnprmtrdsgn__000d",
-                                        "entityName": "DeductionParameterDesign",
-                                        "attributeValue": "Attributedesign__0004",
-                                        "operationParameter": {
-                                          "instanceName": "attribute",
-                                          "entityName": "DeductionOperationParameterDesign"
-                                        }
-                                      }
-                                    ]
-                                  }
-                                ],
-                                "output": "Deductiondesign__000f"
-                              }
-                            },
-                            {
-                              "instanceId": "Stringtempltdsgn__000d",
-                              "entityName": "StringTemplateDesign",
-                              "constantText": ": "
-                            },
-                            {
-                              "instanceId": "Stringtempltdsgn__000e",
-                              "entityName": "StringTemplateDesign",
-                              "deduction": {
-                                "instanceId": "Deductinschmdsgn__0008",
-                                "entityName": "DeductionSchemeDesign",
-                                "deductions": [
-                                  {
-                                    "instanceId": "Deductiondesign__0010",
-                                    "entityName": "DeductionDesign",
-                                    "inputs": [],
-                                    "operation": {
-                                      "instanceName": "selectedInstance",
-                                      "entityName": "DeductionOperationDesign"
-                                    },
-                                    "parameters": [
-                                      {
-                                        "instanceId": "Deductnprmtrdsgn__000e",
-                                        "entityName": "DeductionParameterDesign",
-                                        "entityValue": "Entitydesign__0004",
-                                        "operationParameter": {
-                                          "instanceName": "selectedInstanceEntity",
-                                          "entityName": "DeductionOperationParameterDesign"
-                                        }
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "instanceId": "Deductiondesign__0011",
-                                    "entityName": "DeductionDesign",
-                                    "inputs": [
-                                      {
-                                        "instanceId": "Deductionnptdsgn__0009",
-                                        "entityName": "DeductionInputDesign",
-                                        "inputs": [
-                                          "Deductiondesign__0010"
-                                        ],
-                                        "operationInput": {
-                                          "instanceName": "attributeInstance",
-                                          "entityName": "DeductionOperationInputDesign"
-                                        }
-                                      }
-                                    ],
-                                    "operation": {
-                                      "instanceName": "attribute",
-                                      "entityName": "DeductionOperationDesign"
-                                    },
-                                    "parameters": [
-                                      {
-                                        "instanceId": "Deductnprmtrdsgn__000f",
-                                        "entityName": "DeductionParameterDesign",
-                                        "attributeValue": "Attributedesign__0005",
-                                        "operationParameter": {
-                                          "instanceName": "attribute",
-                                          "entityName": "DeductionOperationParameterDesign"
-                                        }
-                                      }
-                                    ]
-                                  }
-                                ],
-                                "output": "Deductiondesign__0011"
-                              }
-                            },
-                            {
-                              "instanceId": "Stringtempltdsgn__000f",
-                              "entityName": "StringTemplateDesign",
-                              "constantText": " ("
-                            },
-                            {
-                              "instanceId": "Stringtempltdsgn__0010",
-                              "entityName": "StringTemplateDesign",
-                              "deduction": {
-                                "instanceId": "Deductinschmdsgn__0009",
-                                "entityName": "DeductionSchemeDesign",
-                                "deductions": [
-                                  {
-                                    "instanceId": "Deductiondesign__0012",
-                                    "entityName": "DeductionDesign",
-                                    "inputs": [],
-                                    "operation": {
-                                      "instanceName": "selectedInstance",
-                                      "entityName": "DeductionOperationDesign"
-                                    },
-                                    "parameters": [
-                                      {
-                                        "instanceId": "Deductnprmtrdsgn__0010",
-                                        "entityName": "DeductionParameterDesign",
-                                        "entityValue": "Entitydesign__0004",
-                                        "operationParameter": {
-                                          "instanceName": "selectedInstanceEntity",
-                                          "entityName": "DeductionOperationParameterDesign"
-                                        }
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "instanceId": "Deductiondesign__0013",
-                                    "entityName": "DeductionDesign",
-                                    "inputs": [
-                                      {
-                                        "instanceId": "Deductionnptdsgn__000a",
-                                        "entityName": "DeductionInputDesign",
-                                        "inputs": [
-                                          "Deductiondesign__0012"
-                                        ],
-                                        "operationInput": {
-                                          "instanceName": "attributeInstance",
-                                          "entityName": "DeductionOperationInputDesign"
-                                        }
-                                      }
-                                    ],
-                                    "operation": {
-                                      "instanceName": "attribute",
-                                      "entityName": "DeductionOperationDesign"
-                                    },
-                                    "parameters": [
-                                      {
-                                        "instanceId": "Deductnprmtrdsgn__0011",
-                                        "entityName": "DeductionParameterDesign",
-                                        "attributeValue": "Relationdesign__0007",
-                                        "operationParameter": {
-                                          "instanceName": "attribute",
-                                          "entityName": "DeductionOperationParameterDesign"
-                                        }
-                                      }
-                                    ]
-                                  }
-                                ],
-                                "output": "Deductiondesign__0013"
-                              }
-                            },
-                            {
-                              "instanceId": "Stringtempltdsgn__0011",
-                              "entityName": "StringTemplateDesign",
-                              "constantText": ")"
-                            }
-                          ]
-                        }
-                      }
-                    ],
-                    "type": "Fragmenttypedsgn__0005"
-                  },
-                  {
                     "instanceId": "Ifelsedesign__0002",
                     "entityName": "IfElseDesign",
                     "condition": {
-                      "instanceId": "Deductinschmdsgn__000a",
+                      "instanceId": "Deductinschmdsgn__0007",
                       "entityName": "DeductionSchemeDesign",
                       "deductions": [
                         {
+                          "instanceId": "Deductiondesign__000e",
+                          "entityName": "DeductionDesign",
+                          "inputs": [],
+                          "operation": {
+                            "instanceName": "selectedInstance",
+                            "entityName": "DeductionOperationDesign"
+                          },
+                          "parameters": [
+                            {
+                              "instanceId": "Deductnprmtrdsgn__000c",
+                              "entityName": "DeductionParameterDesign",
+                              "entityValue": "Entitydesign__0004",
+                              "operationParameter": {
+                                "instanceName": "selectedInstanceEntity",
+                                "entityName": "DeductionOperationParameterDesign"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "instanceId": "Deductiondesign__000f",
+                          "entityName": "DeductionDesign",
+                          "inputs": [
+                            {
+                              "instanceId": "Deductionnptdsgn__0008",
+                              "entityName": "DeductionInputDesign",
+                              "inputs": [
+                                "Deductiondesign__000e"
+                              ],
+                              "operationInput": {
+                                "instanceName": "attributeInstance",
+                                "entityName": "DeductionOperationInputDesign"
+                              }
+                            }
+                          ],
+                          "operation": {
+                            "instanceName": "attribute",
+                            "entityName": "DeductionOperationDesign"
+                          },
+                          "parameters": [
+                            {
+                              "instanceId": "Deductnprmtrdsgn__000d",
+                              "entityName": "DeductionParameterDesign",
+                              "attributeValue": "Relationdesign__0007",
+                              "operationParameter": {
+                                "instanceName": "attribute",
+                                "entityName": "DeductionOperationParameterDesign"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "instanceId": "Deductiondesign__0010",
+                          "entityName": "DeductionDesign",
+                          "inputs": [],
+                          "operation": {
+                            "instanceName": "constant",
+                            "entityName": "DeductionOperationDesign"
+                          },
+                          "parameters": [
+                            {
+                              "instanceId": "Deductnprmtrdsgn__000e",
+                              "entityName": "DeductionParameterDesign",
+                              "operationParameter": {
+                                "instanceName": "constantValue",
+                                "entityName": "DeductionOperationParameterDesign"
+                              },
+                              "staticInstanceValue": "Staticinstncdsgn__0002"
+                            }
+                          ]
+                        },
+                        {
+                          "instanceId": "Deductiondesign__0011",
+                          "entityName": "DeductionDesign",
+                          "inputs": [
+                            {
+                              "instanceId": "Deductionnptdsgn__0009",
+                              "entityName": "DeductionInputDesign",
+                              "inputs": [
+                                "Deductiondesign__000f",
+                                "Deductiondesign__0010"
+                              ],
+                              "operationInput": {
+                                "instanceName": "equalsOperands",
+                                "entityName": "DeductionOperationInputDesign"
+                              }
+                            }
+                          ],
+                          "operation": {
+                            "instanceName": "equals",
+                            "entityName": "DeductionOperationDesign"
+                          },
+                          "parameters": []
+                        }
+                      ],
+                      "output": "Deductiondesign__0011"
+                    },
+                    "ifChild": {
+                      "instanceId": "Fragmnttmpltdsgn__0012",
+                      "entityName": "FragmentTemplateDesign",
+                      "fragmentFilters": [],
+                      "fragmentTypeName": "Button",
+                      "styleNames": [
+                        "btn-primary"
+                      ],
+                      "event": "Eventdesign__0008",
+                      "properties": [
+                        {
+                          "instanceId": "Propertydesign__0008",
+                          "entityName": "PropertyDesign",
+                          "propertyName": "text",
+                          "children": [],
+                          "text": {
+                            "instanceId": "Texttemplatedsgn__000b",
+                            "entityName": "TextTemplateDesign",
+                            "untranslated": [
+                              {
+                                "instanceId": "Stringtempltdsgn__000b",
+                                "entityName": "StringTemplateDesign",
+                                "constantText": "Resolve"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "type": "Fragmenttypedsgn__0004"
+                    }
+                  },
+                  {
+                    "instanceId": "Ifelsedesign__0003",
+                    "entityName": "IfElseDesign",
+                    "condition": {
+                      "instanceId": "Deductinschmdsgn__0008",
+                      "entityName": "DeductionSchemeDesign",
+                      "deductions": [
+                        {
+                          "instanceId": "Deductiondesign__0012",
+                          "entityName": "DeductionDesign",
+                          "inputs": [],
+                          "operation": {
+                            "instanceName": "selectedInstance",
+                            "entityName": "DeductionOperationDesign"
+                          },
+                          "parameters": [
+                            {
+                              "instanceId": "Deductnprmtrdsgn__000f",
+                              "entityName": "DeductionParameterDesign",
+                              "entityValue": "Entitydesign__0004",
+                              "operationParameter": {
+                                "instanceName": "selectedInstanceEntity",
+                                "entityName": "DeductionOperationParameterDesign"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "instanceId": "Deductiondesign__0013",
+                          "entityName": "DeductionDesign",
+                          "inputs": [
+                            {
+                              "instanceId": "Deductionnptdsgn__000a",
+                              "entityName": "DeductionInputDesign",
+                              "inputs": [
+                                "Deductiondesign__0012"
+                              ],
+                              "operationInput": {
+                                "instanceName": "attributeInstance",
+                                "entityName": "DeductionOperationInputDesign"
+                              }
+                            }
+                          ],
+                          "operation": {
+                            "instanceName": "attribute",
+                            "entityName": "DeductionOperationDesign"
+                          },
+                          "parameters": [
+                            {
+                              "instanceId": "Deductnprmtrdsgn__0010",
+                              "entityName": "DeductionParameterDesign",
+                              "attributeValue": "Relationdesign__0007",
+                              "operationParameter": {
+                                "instanceName": "attribute",
+                                "entityName": "DeductionOperationParameterDesign"
+                              }
+                            }
+                          ]
+                        },
+                        {
                           "instanceId": "Deductiondesign__0014",
+                          "entityName": "DeductionDesign",
+                          "inputs": [],
+                          "operation": {
+                            "instanceName": "constant",
+                            "entityName": "DeductionOperationDesign"
+                          },
+                          "parameters": [
+                            {
+                              "instanceId": "Deductnprmtrdsgn__0011",
+                              "entityName": "DeductionParameterDesign",
+                              "operationParameter": {
+                                "instanceName": "constantValue",
+                                "entityName": "DeductionOperationParameterDesign"
+                              },
+                              "staticInstanceValue": "Staticinstncdsgn__0003"
+                            }
+                          ]
+                        },
+                        {
+                          "instanceId": "Deductiondesign__0015",
+                          "entityName": "DeductionDesign",
+                          "inputs": [
+                            {
+                              "instanceId": "Deductionnptdsgn__000b",
+                              "entityName": "DeductionInputDesign",
+                              "inputs": [
+                                "Deductiondesign__0013",
+                                "Deductiondesign__0014"
+                              ],
+                              "operationInput": {
+                                "instanceName": "equalsOperands",
+                                "entityName": "DeductionOperationInputDesign"
+                              }
+                            }
+                          ],
+                          "operation": {
+                            "instanceName": "equals",
+                            "entityName": "DeductionOperationDesign"
+                          },
+                          "parameters": []
+                        }
+                      ],
+                      "output": "Deductiondesign__0015"
+                    },
+                    "ifChild": {
+                      "instanceId": "Fragmnttmpltdsgn__0013",
+                      "entityName": "FragmentTemplateDesign",
+                      "fragmentFilters": [],
+                      "fragmentTypeName": "Group",
+                      "styleNames": [],
+                      "properties": [
+                        {
+                          "instanceId": "Propertydesign__0009",
+                          "entityName": "PropertyDesign",
+                          "propertyName": "content",
+                          "children": [
+                            {
+                              "instanceId": "Fragmnttmpltdsgn__0014",
+                              "entityName": "FragmentTemplateDesign",
+                              "fragmentFilters": [],
+                              "fragmentTypeName": "Button",
+                              "styleNames": [],
+                              "event": "Eventdesign__0007",
+                              "properties": [
+                                {
+                                  "instanceId": "Propertydesign__000a",
+                                  "entityName": "PropertyDesign",
+                                  "propertyName": "text",
+                                  "children": [],
+                                  "text": {
+                                    "instanceId": "Texttemplatedsgn__000c",
+                                    "entityName": "TextTemplateDesign",
+                                    "untranslated": [
+                                      {
+                                        "instanceId": "Stringtempltdsgn__000c",
+                                        "entityName": "StringTemplateDesign",
+                                        "constantText": "Re-open"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "type": "Fragmenttypedsgn__0004"
+                            },
+                            {
+                              "instanceId": "Fragmnttmpltdsgn__0015",
+                              "entityName": "FragmentTemplateDesign",
+                              "fragmentFilters": [],
+                              "fragmentTypeName": "Button",
+                              "styleNames": [
+                                "btn-primary"
+                              ],
+                              "event": "Eventdesign__0009",
+                              "properties": [
+                                {
+                                  "instanceId": "Propertydesign__000b",
+                                  "entityName": "PropertyDesign",
+                                  "propertyName": "text",
+                                  "children": [],
+                                  "text": {
+                                    "instanceId": "Texttemplatedsgn__000d",
+                                    "entityName": "TextTemplateDesign",
+                                    "untranslated": [
+                                      {
+                                        "instanceId": "Stringtempltdsgn__000d",
+                                        "entityName": "StringTemplateDesign",
+                                        "constantText": "Close"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "type": "Fragmenttypedsgn__0004"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "Fragmenttypedsgn__0005"
+                    }
+                  },
+                  {
+                    "instanceId": "Ifelsedesign__0004",
+                    "entityName": "IfElseDesign",
+                    "condition": {
+                      "instanceId": "Deductinschmdsgn__0009",
+                      "entityName": "DeductionSchemeDesign",
+                      "deductions": [
+                        {
+                          "instanceId": "Deductiondesign__0016",
                           "entityName": "DeductionDesign",
                           "inputs": [],
                           "operation": {
@@ -1348,14 +1434,14 @@
                           ]
                         },
                         {
-                          "instanceId": "Deductiondesign__0015",
+                          "instanceId": "Deductiondesign__0017",
                           "entityName": "DeductionDesign",
                           "inputs": [
                             {
-                              "instanceId": "Deductionnptdsgn__000b",
+                              "instanceId": "Deductionnptdsgn__000c",
                               "entityName": "DeductionInputDesign",
                               "inputs": [
-                                "Deductiondesign__0014"
+                                "Deductiondesign__0016"
                               ],
                               "operationInput": {
                                 "instanceName": "attributeInstance",
@@ -1380,7 +1466,7 @@
                           ]
                         },
                         {
-                          "instanceId": "Deductiondesign__0016",
+                          "instanceId": "Deductiondesign__0018",
                           "entityName": "DeductionDesign",
                           "inputs": [],
                           "operation": {
@@ -1395,20 +1481,20 @@
                                 "instanceName": "constantValue",
                                 "entityName": "DeductionOperationParameterDesign"
                               },
-                              "staticInstanceValue": "Staticinstncdsgn__0001"
+                              "staticInstanceValue": "Staticinstncdsgn__0004"
                             }
                           ]
                         },
                         {
-                          "instanceId": "Deductiondesign__0017",
+                          "instanceId": "Deductiondesign__0019",
                           "entityName": "DeductionDesign",
                           "inputs": [
                             {
-                              "instanceId": "Deductionnptdsgn__000c",
+                              "instanceId": "Deductionnptdsgn__000d",
                               "entityName": "DeductionInputDesign",
                               "inputs": [
-                                "Deductiondesign__0015",
-                                "Deductiondesign__0016"
+                                "Deductiondesign__0017",
+                                "Deductiondesign__0018"
                               ],
                               "operationInput": {
                                 "instanceName": "equalsOperands",
@@ -1423,65 +1509,46 @@
                           "parameters": []
                         }
                       ],
-                      "output": "Deductiondesign__0017"
+                      "output": "Deductiondesign__0019"
                     },
                     "ifChild": {
-                      "instanceId": "Fragmnttmpltdsgn__0013",
+                      "instanceId": "Fragmnttmpltdsgn__0016",
                       "entityName": "FragmentTemplateDesign",
                       "fragmentFilters": [],
-                      "fragmentTypeName": "Block",
+                      "fragmentTypeName": "Button",
                       "styleNames": [],
+                      "event": "Eventdesign__0007",
                       "properties": [
                         {
-                          "instanceId": "Propertydesign__0009",
+                          "instanceId": "Propertydesign__000c",
                           "entityName": "PropertyDesign",
-                          "propertyName": "content",
-                          "children": [
-                            {
-                              "instanceId": "Fragmnttmpltdsgn__0014",
-                              "entityName": "FragmentTemplateDesign",
-                              "fragmentFilters": [],
-                              "fragmentTypeName": "Button",
-                              "styleNames": [
-                                "btn-primary"
-                              ],
-                              "event": "Eventdesign__0007",
-                              "properties": [
-                                {
-                                  "instanceId": "Propertydesign__000a",
-                                  "entityName": "PropertyDesign",
-                                  "propertyName": "text",
-                                  "children": [],
-                                  "text": {
-                                    "instanceId": "Texttemplatedsgn__000c",
-                                    "entityName": "TextTemplateDesign",
-                                    "untranslated": [
-                                      {
-                                        "instanceId": "Stringtempltdsgn__0012",
-                                        "entityName": "StringTemplateDesign",
-                                        "constantText": "Ready"
-                                      }
-                                    ]
-                                  }
-                                }
-                              ],
-                              "type": "Fragmenttypedsgn__0004"
-                            }
-                          ]
+                          "propertyName": "text",
+                          "children": [],
+                          "text": {
+                            "instanceId": "Texttemplatedsgn__000e",
+                            "entityName": "TextTemplateDesign",
+                            "untranslated": [
+                              {
+                                "instanceId": "Stringtempltdsgn__000e",
+                                "entityName": "StringTemplateDesign",
+                                "constantText": "Re-open"
+                              }
+                            ]
+                          }
                         }
                       ],
-                      "type": "Fragmenttypedsgn__0006"
+                      "type": "Fragmenttypedsgn__0004"
                     }
                   },
                   {
-                    "instanceId": "Ifelsedesign__0003",
+                    "instanceId": "Ifelsedesign__0005",
                     "entityName": "IfElseDesign",
                     "condition": {
-                      "instanceId": "Deductinschmdsgn__000b",
+                      "instanceId": "Deductinschmdsgn__000a",
                       "entityName": "DeductionSchemeDesign",
                       "deductions": [
                         {
-                          "instanceId": "Deductiondesign__0018",
+                          "instanceId": "Deductiondesign__001a",
                           "entityName": "DeductionDesign",
                           "inputs": [],
                           "operation": {
@@ -1501,14 +1568,14 @@
                           ]
                         },
                         {
-                          "instanceId": "Deductiondesign__0019",
+                          "instanceId": "Deductiondesign__001b",
                           "entityName": "DeductionDesign",
                           "inputs": [
                             {
-                              "instanceId": "Deductionnptdsgn__000d",
+                              "instanceId": "Deductionnptdsgn__000e",
                               "entityName": "DeductionInputDesign",
                               "inputs": [
-                                "Deductiondesign__0018"
+                                "Deductiondesign__001a"
                               ],
                               "operationInput": {
                                 "instanceName": "attributeInstance",
@@ -1533,7 +1600,7 @@
                           ]
                         },
                         {
-                          "instanceId": "Deductiondesign__001a",
+                          "instanceId": "Deductiondesign__001c",
                           "entityName": "DeductionDesign",
                           "inputs": [],
                           "operation": {
@@ -1548,108 +1615,7 @@
                                 "instanceName": "constantValue",
                                 "entityName": "DeductionOperationParameterDesign"
                               },
-                              "staticInstanceValue": "Staticinstncdsgn__0002"
-                            }
-                          ]
-                        },
-                        {
-                          "instanceId": "Deductiondesign__001b",
-                          "entityName": "DeductionDesign",
-                          "inputs": [
-                            {
-                              "instanceId": "Deductionnptdsgn__000e",
-                              "entityName": "DeductionInputDesign",
-                              "inputs": [
-                                "Deductiondesign__0019",
-                                "Deductiondesign__001a"
-                              ],
-                              "operationInput": {
-                                "instanceName": "equalsOperands",
-                                "entityName": "DeductionOperationInputDesign"
-                              }
-                            }
-                          ],
-                          "operation": {
-                            "instanceName": "equals",
-                            "entityName": "DeductionOperationDesign"
-                          },
-                          "parameters": []
-                        }
-                      ],
-                      "output": "Deductiondesign__001b"
-                    },
-                    "ifChild": {
-                      "instanceId": "Fragmnttmpltdsgn__0015",
-                      "entityName": "FragmentTemplateDesign",
-                      "fragmentFilters": [],
-                      "fragmentTypeName": "Block",
-                      "styleNames": [],
-                      "properties": [
-                        {
-                          "instanceId": "Propertydesign__000b",
-                          "entityName": "PropertyDesign",
-                          "propertyName": "content",
-                          "children": [
-                            {
-                              "instanceId": "Fragmnttmpltdsgn__0016",
-                              "entityName": "FragmentTemplateDesign",
-                              "fragmentFilters": [],
-                              "fragmentTypeName": "Button",
-                              "styleNames": [
-                                "btn-primary"
-                              ],
-                              "event": "Eventdesign__0008",
-                              "properties": [
-                                {
-                                  "instanceId": "Propertydesign__000c",
-                                  "entityName": "PropertyDesign",
-                                  "propertyName": "text",
-                                  "children": [],
-                                  "text": {
-                                    "instanceId": "Texttemplatedsgn__000d",
-                                    "entityName": "TextTemplateDesign",
-                                    "untranslated": [
-                                      {
-                                        "instanceId": "Stringtempltdsgn__0013",
-                                        "entityName": "StringTemplateDesign",
-                                        "constantText": "Resolve"
-                                      }
-                                    ]
-                                  }
-                                }
-                              ],
-                              "type": "Fragmenttypedsgn__0004"
-                            }
-                          ]
-                        }
-                      ],
-                      "type": "Fragmenttypedsgn__0006"
-                    }
-                  },
-                  {
-                    "instanceId": "Ifelsedesign__0004",
-                    "entityName": "IfElseDesign",
-                    "condition": {
-                      "instanceId": "Deductinschmdsgn__000c",
-                      "entityName": "DeductionSchemeDesign",
-                      "deductions": [
-                        {
-                          "instanceId": "Deductiondesign__001c",
-                          "entityName": "DeductionDesign",
-                          "inputs": [],
-                          "operation": {
-                            "instanceName": "selectedInstance",
-                            "entityName": "DeductionOperationDesign"
-                          },
-                          "parameters": [
-                            {
-                              "instanceId": "Deductnprmtrdsgn__0018",
-                              "entityName": "DeductionParameterDesign",
-                              "entityValue": "Entitydesign__0004",
-                              "operationParameter": {
-                                "instanceName": "selectedInstanceEntity",
-                                "entityName": "DeductionOperationParameterDesign"
-                              }
+                              "staticInstanceValue": "Staticinstncdsgn__0001"
                             }
                           ]
                         },
@@ -1661,60 +1627,8 @@
                               "instanceId": "Deductionnptdsgn__000f",
                               "entityName": "DeductionInputDesign",
                               "inputs": [
+                                "Deductiondesign__001b",
                                 "Deductiondesign__001c"
-                              ],
-                              "operationInput": {
-                                "instanceName": "attributeInstance",
-                                "entityName": "DeductionOperationInputDesign"
-                              }
-                            }
-                          ],
-                          "operation": {
-                            "instanceName": "attribute",
-                            "entityName": "DeductionOperationDesign"
-                          },
-                          "parameters": [
-                            {
-                              "instanceId": "Deductnprmtrdsgn__0019",
-                              "entityName": "DeductionParameterDesign",
-                              "attributeValue": "Relationdesign__0007",
-                              "operationParameter": {
-                                "instanceName": "attribute",
-                                "entityName": "DeductionOperationParameterDesign"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "instanceId": "Deductiondesign__001e",
-                          "entityName": "DeductionDesign",
-                          "inputs": [],
-                          "operation": {
-                            "instanceName": "constant",
-                            "entityName": "DeductionOperationDesign"
-                          },
-                          "parameters": [
-                            {
-                              "instanceId": "Deductnprmtrdsgn__001a",
-                              "entityName": "DeductionParameterDesign",
-                              "operationParameter": {
-                                "instanceName": "constantValue",
-                                "entityName": "DeductionOperationParameterDesign"
-                              },
-                              "staticInstanceValue": "Staticinstncdsgn__0003"
-                            }
-                          ]
-                        },
-                        {
-                          "instanceId": "Deductiondesign__001f",
-                          "entityName": "DeductionDesign",
-                          "inputs": [
-                            {
-                              "instanceId": "Deductionnptdsgn__0010",
-                              "entityName": "DeductionInputDesign",
-                              "inputs": [
-                                "Deductiondesign__001d",
-                                "Deductiondesign__001e"
                               ],
                               "operationInput": {
                                 "instanceName": "equalsOperands",
@@ -1729,237 +1643,272 @@
                           "parameters": []
                         }
                       ],
-                      "output": "Deductiondesign__001f"
+                      "output": "Deductiondesign__001d"
                     },
                     "ifChild": {
                       "instanceId": "Fragmnttmpltdsgn__0017",
                       "entityName": "FragmentTemplateDesign",
                       "fragmentFilters": [],
-                      "fragmentTypeName": "Block",
-                      "styleNames": [],
+                      "fragmentTypeName": "Button",
+                      "styleNames": [
+                        "btn-primary"
+                      ],
+                      "event": "Eventdesign__0007",
                       "properties": [
                         {
                           "instanceId": "Propertydesign__000d",
                           "entityName": "PropertyDesign",
-                          "propertyName": "content",
-                          "children": [
+                          "propertyName": "text",
+                          "children": [],
+                          "text": {
+                            "instanceId": "Texttemplatedsgn__000f",
+                            "entityName": "TextTemplateDesign",
+                            "untranslated": [
+                              {
+                                "instanceId": "Stringtempltdsgn__000f",
+                                "entityName": "StringTemplateDesign",
+                                "constantText": "Ready"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "type": "Fragmenttypedsgn__0004"
+                    }
+                  },
+                  {
+                    "instanceId": "Fragmnttmpltdsgn__0018",
+                    "entityName": "FragmentTemplateDesign",
+                    "fragmentFilters": [],
+                    "fragmentTypeName": "Heading2",
+                    "styleNames": [],
+                    "properties": [
+                      {
+                        "instanceId": "Propertydesign__000e",
+                        "entityName": "PropertyDesign",
+                        "propertyName": "text",
+                        "children": [],
+                        "text": {
+                          "instanceId": "Texttemplatedsgn__0010",
+                          "entityName": "TextTemplateDesign",
+                          "untranslated": [
                             {
-                              "instanceId": "Fragmnttmpltdsgn__0018",
-                              "entityName": "FragmentTemplateDesign",
-                              "fragmentFilters": [],
-                              "fragmentTypeName": "Button",
-                              "styleNames": [],
-                              "event": "Eventdesign__0007",
-                              "properties": [
-                                {
-                                  "instanceId": "Propertydesign__000e",
-                                  "entityName": "PropertyDesign",
-                                  "propertyName": "text",
-                                  "children": [],
-                                  "text": {
-                                    "instanceId": "Texttemplatedsgn__000e",
-                                    "entityName": "TextTemplateDesign",
-                                    "untranslated": [
-                                      {
-                                        "instanceId": "Stringtempltdsgn__0014",
-                                        "entityName": "StringTemplateDesign",
-                                        "constantText": "Re-open"
-                                      }
-                                    ]
-                                  }
-                                }
-                              ],
-                              "type": "Fragmenttypedsgn__0004"
+                              "instanceId": "Stringtempltdsgn__0010",
+                              "entityName": "StringTemplateDesign",
+                              "constantText": "Issue "
                             },
                             {
-                              "instanceId": "Fragmnttmpltdsgn__0019",
-                              "entityName": "FragmentTemplateDesign",
-                              "fragmentFilters": [],
-                              "fragmentTypeName": "Button",
-                              "styleNames": [
-                                "btn-primary"
-                              ],
-                              "event": "Eventdesign__0009",
-                              "properties": [
-                                {
-                                  "instanceId": "Propertydesign__000f",
-                                  "entityName": "PropertyDesign",
-                                  "propertyName": "text",
-                                  "children": [],
-                                  "text": {
-                                    "instanceId": "Texttemplatedsgn__000f",
-                                    "entityName": "TextTemplateDesign",
-                                    "untranslated": [
+                              "instanceId": "Stringtempltdsgn__0011",
+                              "entityName": "StringTemplateDesign",
+                              "deduction": {
+                                "instanceId": "Deductinschmdsgn__000b",
+                                "entityName": "DeductionSchemeDesign",
+                                "deductions": [
+                                  {
+                                    "instanceId": "Deductiondesign__001e",
+                                    "entityName": "DeductionDesign",
+                                    "inputs": [],
+                                    "operation": {
+                                      "instanceName": "selectedInstance",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
                                       {
-                                        "instanceId": "Stringtempltdsgn__0015",
-                                        "entityName": "StringTemplateDesign",
-                                        "constantText": "Close"
+                                        "instanceId": "Deductnprmtrdsgn__0018",
+                                        "entityName": "DeductionParameterDesign",
+                                        "entityValue": "Entitydesign__0004",
+                                        "operationParameter": {
+                                          "instanceName": "selectedInstanceEntity",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "instanceId": "Deductiondesign__001f",
+                                    "entityName": "DeductionDesign",
+                                    "inputs": [
+                                      {
+                                        "instanceId": "Deductionnptdsgn__0010",
+                                        "entityName": "DeductionInputDesign",
+                                        "inputs": [
+                                          "Deductiondesign__001e"
+                                        ],
+                                        "operationInput": {
+                                          "instanceName": "attributeInstance",
+                                          "entityName": "DeductionOperationInputDesign"
+                                        }
+                                      }
+                                    ],
+                                    "operation": {
+                                      "instanceName": "attribute",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
+                                      {
+                                        "instanceId": "Deductnprmtrdsgn__0019",
+                                        "entityName": "DeductionParameterDesign",
+                                        "attributeValue": "Attributedesign__0004",
+                                        "operationParameter": {
+                                          "instanceName": "attribute",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
                                       }
                                     ]
                                   }
-                                }
-                              ],
-                              "type": "Fragmenttypedsgn__0004"
-                            }
-                          ]
-                        }
-                      ],
-                      "type": "Fragmenttypedsgn__0006"
-                    }
-                  },
-                  {
-                    "instanceId": "Ifelsedesign__0005",
-                    "entityName": "IfElseDesign",
-                    "condition": {
-                      "instanceId": "Deductinschmdsgn__000d",
-                      "entityName": "DeductionSchemeDesign",
-                      "deductions": [
-                        {
-                          "instanceId": "Deductiondesign__0020",
-                          "entityName": "DeductionDesign",
-                          "inputs": [],
-                          "operation": {
-                            "instanceName": "selectedInstance",
-                            "entityName": "DeductionOperationDesign"
-                          },
-                          "parameters": [
-                            {
-                              "instanceId": "Deductnprmtrdsgn__001b",
-                              "entityName": "DeductionParameterDesign",
-                              "entityValue": "Entitydesign__0004",
-                              "operationParameter": {
-                                "instanceName": "selectedInstanceEntity",
-                                "entityName": "DeductionOperationParameterDesign"
+                                ],
+                                "output": "Deductiondesign__001f"
                               }
-                            }
-                          ]
-                        },
-                        {
-                          "instanceId": "Deductiondesign__0021",
-                          "entityName": "DeductionDesign",
-                          "inputs": [
+                            },
                             {
-                              "instanceId": "Deductionnptdsgn__0011",
-                              "entityName": "DeductionInputDesign",
-                              "inputs": [
-                                "Deductiondesign__0020"
-                              ],
-                              "operationInput": {
-                                "instanceName": "attributeInstance",
-                                "entityName": "DeductionOperationInputDesign"
-                              }
-                            }
-                          ],
-                          "operation": {
-                            "instanceName": "attribute",
-                            "entityName": "DeductionOperationDesign"
-                          },
-                          "parameters": [
+                              "instanceId": "Stringtempltdsgn__0012",
+                              "entityName": "StringTemplateDesign",
+                              "constantText": ": "
+                            },
                             {
-                              "instanceId": "Deductnprmtrdsgn__001c",
-                              "entityName": "DeductionParameterDesign",
-                              "attributeValue": "Relationdesign__0007",
-                              "operationParameter": {
-                                "instanceName": "attribute",
-                                "entityName": "DeductionOperationParameterDesign"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "instanceId": "Deductiondesign__0022",
-                          "entityName": "DeductionDesign",
-                          "inputs": [],
-                          "operation": {
-                            "instanceName": "constant",
-                            "entityName": "DeductionOperationDesign"
-                          },
-                          "parameters": [
-                            {
-                              "instanceId": "Deductnprmtrdsgn__001d",
-                              "entityName": "DeductionParameterDesign",
-                              "operationParameter": {
-                                "instanceName": "constantValue",
-                                "entityName": "DeductionOperationParameterDesign"
-                              },
-                              "staticInstanceValue": "Staticinstncdsgn__0004"
-                            }
-                          ]
-                        },
-                        {
-                          "instanceId": "Deductiondesign__0023",
-                          "entityName": "DeductionDesign",
-                          "inputs": [
-                            {
-                              "instanceId": "Deductionnptdsgn__0012",
-                              "entityName": "DeductionInputDesign",
-                              "inputs": [
-                                "Deductiondesign__0021",
-                                "Deductiondesign__0022"
-                              ],
-                              "operationInput": {
-                                "instanceName": "equalsOperands",
-                                "entityName": "DeductionOperationInputDesign"
-                              }
-                            }
-                          ],
-                          "operation": {
-                            "instanceName": "equals",
-                            "entityName": "DeductionOperationDesign"
-                          },
-                          "parameters": []
-                        }
-                      ],
-                      "output": "Deductiondesign__0023"
-                    },
-                    "ifChild": {
-                      "instanceId": "Fragmnttmpltdsgn__001a",
-                      "entityName": "FragmentTemplateDesign",
-                      "fragmentFilters": [],
-                      "fragmentTypeName": "Block",
-                      "styleNames": [],
-                      "properties": [
-                        {
-                          "instanceId": "Propertydesign__0010",
-                          "entityName": "PropertyDesign",
-                          "propertyName": "content",
-                          "children": [
-                            {
-                              "instanceId": "Fragmnttmpltdsgn__001b",
-                              "entityName": "FragmentTemplateDesign",
-                              "fragmentFilters": [],
-                              "fragmentTypeName": "Button",
-                              "styleNames": [],
-                              "event": "Eventdesign__0007",
-                              "properties": [
-                                {
-                                  "instanceId": "Propertydesign__0011",
-                                  "entityName": "PropertyDesign",
-                                  "propertyName": "text",
-                                  "children": [],
-                                  "text": {
-                                    "instanceId": "Texttemplatedsgn__0010",
-                                    "entityName": "TextTemplateDesign",
-                                    "untranslated": [
+                              "instanceId": "Stringtempltdsgn__0013",
+                              "entityName": "StringTemplateDesign",
+                              "deduction": {
+                                "instanceId": "Deductinschmdsgn__000c",
+                                "entityName": "DeductionSchemeDesign",
+                                "deductions": [
+                                  {
+                                    "instanceId": "Deductiondesign__0020",
+                                    "entityName": "DeductionDesign",
+                                    "inputs": [],
+                                    "operation": {
+                                      "instanceName": "selectedInstance",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
                                       {
-                                        "instanceId": "Stringtempltdsgn__0016",
-                                        "entityName": "StringTemplateDesign",
-                                        "constantText": "Re-open"
+                                        "instanceId": "Deductnprmtrdsgn__001a",
+                                        "entityName": "DeductionParameterDesign",
+                                        "entityValue": "Entitydesign__0004",
+                                        "operationParameter": {
+                                          "instanceName": "selectedInstanceEntity",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "instanceId": "Deductiondesign__0021",
+                                    "entityName": "DeductionDesign",
+                                    "inputs": [
+                                      {
+                                        "instanceId": "Deductionnptdsgn__0011",
+                                        "entityName": "DeductionInputDesign",
+                                        "inputs": [
+                                          "Deductiondesign__0020"
+                                        ],
+                                        "operationInput": {
+                                          "instanceName": "attributeInstance",
+                                          "entityName": "DeductionOperationInputDesign"
+                                        }
+                                      }
+                                    ],
+                                    "operation": {
+                                      "instanceName": "attribute",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
+                                      {
+                                        "instanceId": "Deductnprmtrdsgn__001b",
+                                        "entityName": "DeductionParameterDesign",
+                                        "attributeValue": "Attributedesign__0005",
+                                        "operationParameter": {
+                                          "instanceName": "attribute",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
                                       }
                                     ]
                                   }
-                                }
-                              ],
-                              "type": "Fragmenttypedsgn__0004"
+                                ],
+                                "output": "Deductiondesign__0021"
+                              }
+                            },
+                            {
+                              "instanceId": "Stringtempltdsgn__0014",
+                              "entityName": "StringTemplateDesign",
+                              "constantText": " ("
+                            },
+                            {
+                              "instanceId": "Stringtempltdsgn__0015",
+                              "entityName": "StringTemplateDesign",
+                              "deduction": {
+                                "instanceId": "Deductinschmdsgn__000d",
+                                "entityName": "DeductionSchemeDesign",
+                                "deductions": [
+                                  {
+                                    "instanceId": "Deductiondesign__0022",
+                                    "entityName": "DeductionDesign",
+                                    "inputs": [],
+                                    "operation": {
+                                      "instanceName": "selectedInstance",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
+                                      {
+                                        "instanceId": "Deductnprmtrdsgn__001c",
+                                        "entityName": "DeductionParameterDesign",
+                                        "entityValue": "Entitydesign__0004",
+                                        "operationParameter": {
+                                          "instanceName": "selectedInstanceEntity",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "instanceId": "Deductiondesign__0023",
+                                    "entityName": "DeductionDesign",
+                                    "inputs": [
+                                      {
+                                        "instanceId": "Deductionnptdsgn__0012",
+                                        "entityName": "DeductionInputDesign",
+                                        "inputs": [
+                                          "Deductiondesign__0022"
+                                        ],
+                                        "operationInput": {
+                                          "instanceName": "attributeInstance",
+                                          "entityName": "DeductionOperationInputDesign"
+                                        }
+                                      }
+                                    ],
+                                    "operation": {
+                                      "instanceName": "attribute",
+                                      "entityName": "DeductionOperationDesign"
+                                    },
+                                    "parameters": [
+                                      {
+                                        "instanceId": "Deductnprmtrdsgn__001d",
+                                        "entityName": "DeductionParameterDesign",
+                                        "attributeValue": "Relationdesign__0007",
+                                        "operationParameter": {
+                                          "instanceName": "attribute",
+                                          "entityName": "DeductionOperationParameterDesign"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "output": "Deductiondesign__0023"
+                              }
+                            },
+                            {
+                              "instanceId": "Stringtempltdsgn__0016",
+                              "entityName": "StringTemplateDesign",
+                              "constantText": ")"
                             }
                           ]
                         }
-                      ],
-                      "type": "Fragmenttypedsgn__0006"
-                    }
+                      }
+                    ],
+                    "type": "Fragmenttypedsgn__0006"
                   },
                   {
-                    "instanceId": "Fragmnttmpltdsgn__001c",
+                    "instanceId": "Fragmnttmpltdsgn__0019",
                     "entityName": "FragmentTemplateDesign",
                     "fragmentFilters": [],
                     "fragmentTypeName": "Input",
@@ -1972,7 +1921,7 @@
                     "type": "Fragmenttypedsgn__0007"
                   },
                   {
-                    "instanceId": "Fragmnttmpltdsgn__001d",
+                    "instanceId": "Fragmnttmpltdsgn__001a",
                     "entityName": "FragmentTemplateDesign",
                     "fragmentFilters": [],
                     "fragmentTypeName": "Input",
@@ -1985,7 +1934,7 @@
                     "type": "Fragmenttypedsgn__0007"
                   },
                   {
-                    "instanceId": "Fragmnttmpltdsgn__001e",
+                    "instanceId": "Fragmnttmpltdsgn__001b",
                     "entityName": "FragmentTemplateDesign",
                     "fragmentFilters": [],
                     "fragmentTypeName": "Input",
@@ -1998,7 +1947,7 @@
                     "type": "Fragmenttypedsgn__0007"
                   },
                   {
-                    "instanceId": "Fragmnttmpltdsgn__001f",
+                    "instanceId": "Fragmnttmpltdsgn__001c",
                     "entityName": "FragmentTemplateDesign",
                     "fragmentFilters": [],
                     "fragmentTypeName": "Input",
@@ -2220,19 +2169,19 @@
           "entityName": "PlaceTemplateDesign",
           "name": "dashboard",
           "content": {
-            "instanceId": "Fragmnttmpltdsgn__0020",
+            "instanceId": "Fragmnttmpltdsgn__001d",
             "entityName": "FragmentTemplateDesign",
             "fragmentFilters": [],
             "fragmentTypeName": "Page",
             "styleNames": [],
             "properties": [
               {
-                "instanceId": "Propertydesign__0012",
+                "instanceId": "Propertydesign__000f",
                 "entityName": "PropertyDesign",
                 "propertyName": "mainContent",
                 "children": [
                   {
-                    "instanceId": "Fragmnttmpltdsgn__0021",
+                    "instanceId": "Fragmnttmpltdsgn__001e",
                     "entityName": "FragmentTemplateDesign",
                     "fragmentFilters": [],
                     "fragmentTypeName": "Block",
@@ -2241,12 +2190,12 @@
                     ],
                     "properties": [
                       {
-                        "instanceId": "Propertydesign__0013",
+                        "instanceId": "Propertydesign__0010",
                         "entityName": "PropertyDesign",
                         "propertyName": "content",
                         "children": [
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0022",
+                            "instanceId": "Fragmnttmpltdsgn__001f",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Button",
@@ -2254,12 +2203,12 @@
                             "event": "Eventdesign__0003",
                             "properties": [
                               {
-                                "instanceId": "Propertydesign__0014",
+                                "instanceId": "Propertydesign__0011",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "content",
                                 "children": [
                                   {
-                                    "instanceId": "Fragmnttmpltdsgn__0023",
+                                    "instanceId": "Fragmnttmpltdsgn__0020",
                                     "entityName": "FragmentTemplateDesign",
                                     "fragmentFilters": [],
                                     "fragmentTypeName": "Icon",
@@ -2272,7 +2221,7 @@
                                 ]
                               },
                               {
-                                "instanceId": "Propertydesign__0015",
+                                "instanceId": "Propertydesign__0012",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "text",
                                 "children": [],
@@ -2292,14 +2241,14 @@
                             "type": "Fragmenttypedsgn__0004"
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0024",
+                            "instanceId": "Fragmnttmpltdsgn__0021",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Heading2",
                             "styleNames": [],
                             "properties": [
                               {
-                                "instanceId": "Propertydesign__0016",
+                                "instanceId": "Propertydesign__0013",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "text",
                                 "children": [],
@@ -2379,17 +2328,17 @@
                                 }
                               }
                             ],
-                            "type": "Fragmenttypedsgn__0005"
+                            "type": "Fragmenttypedsgn__0006"
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0025",
+                            "instanceId": "Fragmnttmpltdsgn__0022",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Heading4",
                             "styleNames": [],
                             "properties": [
                               {
-                                "instanceId": "Propertydesign__0017",
+                                "instanceId": "Propertydesign__0014",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "text",
                                 "children": [],
@@ -2409,19 +2358,19 @@
                             "type": "Fragmenttypedsgn__0008"
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__0026",
+                            "instanceId": "Fragmnttmpltdsgn__0023",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Table",
                             "styleNames": [],
                             "properties": [
                               {
-                                "instanceId": "Propertydesign__0018",
+                                "instanceId": "Propertydesign__0015",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "columns",
                                 "children": [
                                   {
-                                    "instanceId": "Fragmnttmpltdsgn__0027",
+                                    "instanceId": "Fragmnttmpltdsgn__0024",
                                     "entityName": "FragmentTemplateDesign",
                                     "fragmentFilters": [],
                                     "fragmentTypeName": "Column",
@@ -2430,7 +2379,7 @@
                                     ],
                                     "properties": [
                                       {
-                                        "instanceId": "Propertydesign__0019",
+                                        "instanceId": "Propertydesign__0016",
                                         "entityName": "PropertyDesign",
                                         "propertyName": "header",
                                         "children": [],
@@ -2450,7 +2399,7 @@
                                     "type": "Fragmenttypedsgn__0009"
                                   },
                                   {
-                                    "instanceId": "Fragmnttmpltdsgn__0028",
+                                    "instanceId": "Fragmnttmpltdsgn__0025",
                                     "entityName": "FragmentTemplateDesign",
                                     "fragmentFilters": [],
                                     "fragmentTypeName": "Column",
@@ -2459,7 +2408,7 @@
                                     ],
                                     "properties": [
                                       {
-                                        "instanceId": "Propertydesign__001a",
+                                        "instanceId": "Propertydesign__0017",
                                         "entityName": "PropertyDesign",
                                         "propertyName": "header",
                                         "children": [],
@@ -2479,7 +2428,7 @@
                                     "type": "Fragmenttypedsgn__0009"
                                   },
                                   {
-                                    "instanceId": "Fragmnttmpltdsgn__0029",
+                                    "instanceId": "Fragmnttmpltdsgn__0026",
                                     "entityName": "FragmentTemplateDesign",
                                     "fragmentFilters": [],
                                     "fragmentTypeName": "Column",
@@ -2488,7 +2437,7 @@
                                     ],
                                     "properties": [
                                       {
-                                        "instanceId": "Propertydesign__001b",
+                                        "instanceId": "Propertydesign__0018",
                                         "entityName": "PropertyDesign",
                                         "propertyName": "header",
                                         "children": [],
@@ -2510,7 +2459,7 @@
                                 ]
                               },
                               {
-                                "instanceId": "Propertydesign__001c",
+                                "instanceId": "Propertydesign__0019",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "rows",
                                 "children": [
@@ -2588,14 +2537,14 @@
                             "type": "Fragmenttypedsgn__000a"
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__002a",
+                            "instanceId": "Fragmnttmpltdsgn__0027",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Heading4",
                             "styleNames": [],
                             "properties": [
                               {
-                                "instanceId": "Propertydesign__001d",
+                                "instanceId": "Propertydesign__001a",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "text",
                                 "children": [],
@@ -2615,19 +2564,19 @@
                             "type": "Fragmenttypedsgn__0008"
                           },
                           {
-                            "instanceId": "Fragmnttmpltdsgn__002b",
+                            "instanceId": "Fragmnttmpltdsgn__0028",
                             "entityName": "FragmentTemplateDesign",
                             "fragmentFilters": [],
                             "fragmentTypeName": "Table",
                             "styleNames": [],
                             "properties": [
                               {
-                                "instanceId": "Propertydesign__001e",
+                                "instanceId": "Propertydesign__001b",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "columns",
                                 "children": [
                                   {
-                                    "instanceId": "Fragmnttmpltdsgn__002c",
+                                    "instanceId": "Fragmnttmpltdsgn__0029",
                                     "entityName": "FragmentTemplateDesign",
                                     "fragmentFilters": [],
                                     "fragmentTypeName": "Column",
@@ -2636,7 +2585,7 @@
                                     ],
                                     "properties": [
                                       {
-                                        "instanceId": "Propertydesign__001f",
+                                        "instanceId": "Propertydesign__001c",
                                         "entityName": "PropertyDesign",
                                         "propertyName": "header",
                                         "children": [],
@@ -2656,7 +2605,7 @@
                                     "type": "Fragmenttypedsgn__0009"
                                   },
                                   {
-                                    "instanceId": "Fragmnttmpltdsgn__002d",
+                                    "instanceId": "Fragmnttmpltdsgn__002a",
                                     "entityName": "FragmentTemplateDesign",
                                     "fragmentFilters": [],
                                     "fragmentTypeName": "Column",
@@ -2665,7 +2614,7 @@
                                     ],
                                     "properties": [
                                       {
-                                        "instanceId": "Propertydesign__0020",
+                                        "instanceId": "Propertydesign__001d",
                                         "entityName": "PropertyDesign",
                                         "propertyName": "header",
                                         "children": [],
@@ -2685,7 +2634,7 @@
                                     "type": "Fragmenttypedsgn__0009"
                                   },
                                   {
-                                    "instanceId": "Fragmnttmpltdsgn__002e",
+                                    "instanceId": "Fragmnttmpltdsgn__002b",
                                     "entityName": "FragmentTemplateDesign",
                                     "fragmentFilters": [],
                                     "fragmentTypeName": "Column",
@@ -2694,7 +2643,7 @@
                                     ],
                                     "properties": [
                                       {
-                                        "instanceId": "Propertydesign__0021",
+                                        "instanceId": "Propertydesign__001e",
                                         "entityName": "PropertyDesign",
                                         "propertyName": "header",
                                         "children": [],
@@ -2716,7 +2665,7 @@
                                 ]
                               },
                               {
-                                "instanceId": "Propertydesign__0022",
+                                "instanceId": "Propertydesign__001f",
                                 "entityName": "PropertyDesign",
                                 "propertyName": "rows",
                                 "children": [
@@ -2796,7 +2745,7 @@
                         ]
                       }
                     ],
-                    "type": "Fragmenttypedsgn__0006"
+                    "type": "Fragmenttypedsgn__000b"
                   }
                 ]
               }
@@ -2928,9 +2877,15 @@
       "fragmentFilters": []
     },
     {
-      "instanceId": "Fragmenttypedsgn__0006",
+      "instanceId": "Fragmenttypedsgn__000b",
       "entityName": "FragmentTypeDesign",
       "name": "Block",
+      "fragmentFilters": []
+    },
+    {
+      "instanceId": "Fragmenttypedsgn__0005",
+      "entityName": "FragmentTypeDesign",
+      "name": "Group",
       "fragmentFilters": []
     },
     {
@@ -2940,19 +2895,19 @@
       "fragmentFilters": []
     },
     {
-      "instanceId": "Fragmenttypedsgn__000b",
+      "instanceId": "Fragmenttypedsgn__000c",
       "entityName": "FragmentTypeDesign",
       "name": "Heading1",
       "fragmentFilters": []
     },
     {
-      "instanceId": "Fragmenttypedsgn__0005",
+      "instanceId": "Fragmenttypedsgn__0006",
       "entityName": "FragmentTypeDesign",
       "name": "Heading2",
       "fragmentFilters": []
     },
     {
-      "instanceId": "Fragmenttypedsgn__000c",
+      "instanceId": "Fragmenttypedsgn__000d",
       "entityName": "FragmentTypeDesign",
       "name": "Heading3",
       "fragmentFilters": []
@@ -2983,7 +2938,7 @@
       "fragmentFilters": []
     },
     {
-      "instanceId": "Fragmenttypedsgn__000d",
+      "instanceId": "Fragmenttypedsgn__000e",
       "entityName": "FragmentTypeDesign",
       "name": "Row",
       "fragmentFilters": []
@@ -2995,13 +2950,13 @@
       "fragmentFilters": []
     },
     {
-      "instanceId": "Fragmenttypedsgn__000e",
+      "instanceId": "Fragmenttypedsgn__000f",
       "entityName": "FragmentTypeDesign",
       "name": "Cell",
       "fragmentFilters": []
     },
     {
-      "instanceId": "Fragmenttypedsgn__000f",
+      "instanceId": "Fragmenttypedsgn__0010",
       "entityName": "FragmentTypeDesign",
       "name": "Link",
       "fragmentFilters": [],
@@ -3029,7 +2984,7 @@
         "styleNames": [],
         "properties": [
           {
-            "instanceId": "Propertydesign__0023",
+            "instanceId": "Propertydesign__0020",
             "entityName": "PropertyDesign",
             "propertyName": "cells",
             "children": [
@@ -3042,7 +2997,7 @@
                 "event": "Eventdesign__0004",
                 "properties": [
                   {
-                    "instanceId": "Propertydesign__0024",
+                    "instanceId": "Propertydesign__0021",
                     "entityName": "PropertyDesign",
                     "propertyName": "content",
                     "children": [
@@ -3056,7 +3011,7 @@
                         ],
                         "properties": [
                           {
-                            "instanceId": "Propertydesign__0025",
+                            "instanceId": "Propertydesign__0022",
                             "entityName": "PropertyDesign",
                             "propertyName": "text",
                             "children": [],
@@ -3142,7 +3097,7 @@
                         ],
                         "properties": [
                           {
-                            "instanceId": "Propertydesign__0026",
+                            "instanceId": "Propertydesign__0023",
                             "entityName": "PropertyDesign",
                             "propertyName": "content",
                             "children": [
@@ -3261,7 +3216,7 @@
                                   ],
                                   "properties": [
                                     {
-                                      "instanceId": "Propertydesign__0027",
+                                      "instanceId": "Propertydesign__0024",
                                       "entityName": "PropertyDesign",
                                       "propertyName": "text",
                                       "children": [],
@@ -3290,7 +3245,7 @@
                                 ],
                                 "properties": [
                                   {
-                                    "instanceId": "Propertydesign__0028",
+                                    "instanceId": "Propertydesign__0025",
                                     "entityName": "PropertyDesign",
                                     "propertyName": "text",
                                     "children": [],
@@ -3376,7 +3331,7 @@
                                 ],
                                 "properties": [
                                   {
-                                    "instanceId": "Propertydesign__0029",
+                                    "instanceId": "Propertydesign__0026",
                                     "entityName": "PropertyDesign",
                                     "propertyName": "text",
                                     "children": [],
@@ -3417,7 +3372,7 @@
                                 ],
                                 "properties": [
                                   {
-                                    "instanceId": "Propertydesign__002a",
+                                    "instanceId": "Propertydesign__0027",
                                     "entityName": "PropertyDesign",
                                     "propertyName": "text",
                                     "children": [],
@@ -3539,7 +3494,7 @@
                         ],
                         "properties": [
                           {
-                            "instanceId": "Propertydesign__002b",
+                            "instanceId": "Propertydesign__0028",
                             "entityName": "PropertyDesign",
                             "propertyName": "content",
                             "children": [
