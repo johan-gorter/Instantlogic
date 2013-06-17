@@ -13,7 +13,7 @@ public abstract class AbstractDesignerApplication extends org.instantlogic.inter
 	}
 
 	@Override
-	public org.instantlogic.interaction.flow.impl.SimpleFlow getMainFlow() {
+	public org.instantlogic.interaction.flow.Flow getMainFlow() {
 		return org.instantlogic.designer.flow.MainFlow.INSTANCE;
 	}
 

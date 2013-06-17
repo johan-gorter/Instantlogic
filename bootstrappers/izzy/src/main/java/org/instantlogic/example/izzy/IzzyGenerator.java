@@ -411,7 +411,7 @@ public class IzzyGenerator extends Design {
 						),
 						new IfElseDesign().setCondition(statusDraft = new DeductionSchemeDesign())
 						.setIfChild(new FragmentTemplateDesign("Block")
-							.setChildren("content", submitButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Submit")).addToStyleNames("btn-primary"))
+							.setChildren("content", submitButton = new FragmentTemplateDesign("Button").setText("text", createConstantText("Ready")).addToStyleNames("btn-primary"))
 						),
 					new IfElseDesign().setCondition(statusOpen = new DeductionSchemeDesign())
 						.setIfChild(new FragmentTemplateDesign("Block")

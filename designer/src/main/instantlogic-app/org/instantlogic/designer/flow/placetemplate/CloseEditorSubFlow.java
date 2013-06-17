@@ -5,7 +5,7 @@ public class CloseEditorSubFlow extends org.instantlogic.interaction.flow.SubFlo
 	public static final CloseEditorSubFlow INSTANCE = new CloseEditorSubFlow();
 	
 	@Override
-	public org.instantlogic.interaction.flow.impl.SimpleFlow getFlow() {
+	public org.instantlogic.interaction.flow.Flow getFlow() {
 		return org.instantlogic.designer.flow.CloseEditorFlow.INSTANCE;
 	}
 	

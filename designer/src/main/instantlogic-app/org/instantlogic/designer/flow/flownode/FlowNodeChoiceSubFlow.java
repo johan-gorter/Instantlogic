@@ -5,7 +5,7 @@ public class FlowNodeChoiceSubFlow extends org.instantlogic.interaction.flow.Sub
 	public static final FlowNodeChoiceSubFlow INSTANCE = new FlowNodeChoiceSubFlow();
 	
 	@Override
-	public org.instantlogic.interaction.flow.impl.SimpleFlow getFlow() {
+	public org.instantlogic.interaction.flow.Flow getFlow() {
 		return org.instantlogic.designer.flow.FlowNodeChoiceFlow.INSTANCE;
 	}
 	

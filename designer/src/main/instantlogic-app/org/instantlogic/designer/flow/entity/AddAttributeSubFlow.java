@@ -5,7 +5,7 @@ public class AddAttributeSubFlow extends org.instantlogic.interaction.flow.SubFl
 	public static final AddAttributeSubFlow INSTANCE = new AddAttributeSubFlow();
 	
 	@Override
-	public org.instantlogic.interaction.flow.impl.SimpleFlow getFlow() {
+	public org.instantlogic.interaction.flow.Flow getFlow() {
 		return org.instantlogic.designer.flow.AddAttributeFlow.INSTANCE;
 	}
 	

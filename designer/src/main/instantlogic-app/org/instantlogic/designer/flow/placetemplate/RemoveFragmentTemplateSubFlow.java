@@ -5,7 +5,7 @@ public class RemoveFragmentTemplateSubFlow extends org.instantlogic.interaction.
 	public static final RemoveFragmentTemplateSubFlow INSTANCE = new RemoveFragmentTemplateSubFlow();
 	
 	@Override
-	public org.instantlogic.interaction.flow.impl.SimpleFlow getFlow() {
+	public org.instantlogic.interaction.flow.Flow getFlow() {
 		return org.instantlogic.designer.flow.RemoveFragmentTemplateFlow.INSTANCE;
 	}
 	

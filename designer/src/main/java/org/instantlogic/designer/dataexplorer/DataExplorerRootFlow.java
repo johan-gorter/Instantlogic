@@ -52,10 +52,15 @@ public class DataExplorerRootFlow extends Flow {
 
 	@Override
 	public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
-		if (occurrence.getParameters().length!=1) {
+		if (occurrence.getParameters().length>1) {
 			throw new RuntimeException("Illegal number of parameters "+occurrence.getParameters());
 		}
-		Instance instanceToExplore = occurrence.getParameters()[0];
+		Instance instanceToExplore;
+		if (occurrence.getParameters().length==1) { 
+			instanceToExplore = occurrence.getParameters()[0];
+		} else {
+			instanceToExplore = context.getCaseInstance();
+		}
 		String entityId = instanceToExplore.getMetadata().getEntity().getUniqueId();
 		
 		context.pushFlowContext(this);

@@ -5,7 +5,7 @@ public class OpenEditorSubFlow extends org.instantlogic.interaction.flow.SubFlow
 	public static final OpenEditorSubFlow INSTANCE = new OpenEditorSubFlow();
 	
 	@Override
-	public org.instantlogic.interaction.flow.impl.SimpleFlow getFlow() {
+	public org.instantlogic.interaction.flow.Flow getFlow() {
 		return org.instantlogic.designer.flow.OpenEditorFlow.INSTANCE;
 	}
 	

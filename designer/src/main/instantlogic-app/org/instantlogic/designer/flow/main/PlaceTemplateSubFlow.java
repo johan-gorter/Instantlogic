@@ -5,7 +5,7 @@ public class PlaceTemplateSubFlow extends org.instantlogic.interaction.flow.SubF
 	public static final PlaceTemplateSubFlow INSTANCE = new PlaceTemplateSubFlow();
 	
 	@Override
-	public org.instantlogic.interaction.flow.impl.SimpleFlow getFlow() {
+	public org.instantlogic.interaction.flow.Flow getFlow() {
 		return org.instantlogic.designer.flow.PlaceTemplateFlow.INSTANCE;
 	}
 	

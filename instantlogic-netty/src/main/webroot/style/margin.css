@@ -13,5 +13,5 @@
 .divtable-cells {display:inline-block;border-bottom: solid 1px black;}
 .divtable-header, .divtable-cell {display:inline-block; width:180px;height:20px;vertical-align:top; overflow:hidden;white-space:nowrap;}
 
-.designer-editor-open {outline:red dotted thick}
+.designer-editor-open {outline:red dotted thick;outline-offset:-4px}
 .controls .designer-editor-open {outline:0}

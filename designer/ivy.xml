@@ -26,7 +26,7 @@
 		<exclude org="dom4j" />
 		<exclude org="com.h2database" />
 		<exclude org="com.icegreen" />
-		<exclude org="mysql" />
+		<exclude org="mysql" /> 
 		<exclude artifact="groovy-all" />
 		<exclude artifact="janino" />
 		<exclude org="org.scala-lang" />

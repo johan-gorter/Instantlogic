@@ -5,7 +5,7 @@ public class NewAttributeForFragmentTemplateSubFlow extends org.instantlogic.int
 	public static final NewAttributeForFragmentTemplateSubFlow INSTANCE = new NewAttributeForFragmentTemplateSubFlow();
 	
 	@Override
-	public org.instantlogic.interaction.flow.impl.SimpleFlow getFlow() {
+	public org.instantlogic.interaction.flow.Flow getFlow() {
 		return org.instantlogic.designer.flow.NewAttributeForFragmentTemplateFlow.INSTANCE;
 	}
 	

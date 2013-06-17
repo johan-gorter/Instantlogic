@@ -63,17 +63,24 @@ public class EntityGenerator extends AbstractGenerator {
 			attribute.technicalName = attributeDesign.getTechnicalName();
 			attribute.technicalNameCapitalized = attributeDesign.getTechnicalNameCapitalized();
 			attribute.javaIdentifier = attributeDesign.getJavaIdentifier();
-			setDatatype(attribute, attributeDesign.getDataType());
-			attribute.itemClassName = attributeDesign.getDataType().getJavaClassName();
-			attribute.internalItemClassName = attribute.itemClassName.replace('.', '/');
+			if (attribute.getDataType()!=null && attributeDesign.getDataType().getJavaClassName()!=null) {
+				setDatatype(attribute, attributeDesign.getDataType());
+				attribute.itemClassName = attributeDesign.getDataType().getJavaClassName();
+				attribute.internalClassName = attribute.itemClassName.replace('.', '/');
+			} else {
+				// Work in progress, just do not crash
+				attribute.dataType.put("category", "text");
+				attribute.itemClassName = "java.lang.String";
+				attribute.internalClassName = attribute.itemClassName.replace('.', '/');
+			}
 			attribute.multivalue = (attributeDesign.getDataType().getMultivalue()==Boolean.TRUE);
 			if (attribute.multivalue) {
 				attribute.className="org.instantlogic.fabric.value.Multi<"+attribute.itemClassName+">";
 				attribute.internalClassName = "org/instantlogic/fabric/value/Multi";
 			} else {
 				attribute.className=attribute.itemClassName;
-				attribute.internalClassName = attribute.itemClassName.replace('.', '/');
 			}
+			attribute.internalItemClassName = attribute.itemClassName.replace('.', '/');
 			attribute.readonly = (attributeDesign.getWriteable()==Boolean.FALSE);
 			TextTemplateDesign question = attributeDesign.getQuestion();
 			if (question!=null) {
