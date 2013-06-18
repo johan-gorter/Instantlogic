@@ -42,4 +42,9 @@ public class StartMessage extends Message {
 		}
 		traveler.getPresence().enter(traveler, flowContext.getFlowStack().toPath());
 	}
+
+	@Override
+	public String toString() {
+		return "StartMessage [location=" + location + ", event=" + event + "]";
+	}
 }

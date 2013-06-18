@@ -222,10 +222,10 @@ YUI.add('instantlogic', function (Y) {
         	if (this.location && !event) {
         		this.enqueueMessage({message:'enter', location: this.location});
         	} else {
-	    		this.enqueueMessage({message:'start', event: event, location: this.location});
+	    		this.enqueueMessage({message:'start', event: event, location: this.history.get('location')});
         	}
     		if (event) {
-    			this.history.replaceValue('event', '');
+    			this.history.replaceValue('event', null);
     		}
         },
         

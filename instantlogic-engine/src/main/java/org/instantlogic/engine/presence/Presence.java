@@ -22,12 +22,13 @@ public class Presence extends AbstractPresence {
 		for (Place place : getActivePlaces()) {
 			if (place.getUrl().equals(url)) {
 				traveler.setCurrentPlace(place);
+				logger.debug("Entering place {}", place.getUrl());
 				return place;
 			}
 		}
 		Place place = new Place();
 		place.setUrl(url);
-		logger.debug("Activating place {}", place.getUrl());
+		logger.debug("Activating and entering place {}", place.getUrl());
 		addToActivePlaces(place);
 		traveler.setCurrentPlace(place);
 		return place;

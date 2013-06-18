@@ -77,7 +77,9 @@ public class FlowStack extends AbstractDeductionContext {
 		if (result!=null) {
 			return result;
 		}
-		if (parent==null) throw new NoSuchElementException("Event not found from this flow: "+eventName);
+		if (parent==null) {
+			throw new NoSuchElementException("Event not found from this flow: "+eventName);
+		}
 		return parent.findEvent(eventName);
 	}
 }

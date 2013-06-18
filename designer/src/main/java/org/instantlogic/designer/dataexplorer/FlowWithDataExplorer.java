@@ -6,11 +6,15 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEvent;
+import org.instantlogic.interaction.flow.FlowNodeBase;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.flow.SubFlow;
+import org.instantlogic.interaction.util.FlowContext;
+import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.FlowStack;
 
-// Contains the dataExplorer flow
+// Wraps the main flow of an application to add
+// a DataExplorer subflow
 public class FlowWithDataExplorer extends FlowWrapper {
 	
 	private final DataExplorerRootFlow dataExplorerRootFlow;
@@ -58,5 +62,13 @@ public class FlowWithDataExplorer extends FlowWrapper {
 		return super.getPage(path, pathIndex);
 	}
 	
-	// TODO: enter and step
+	@Override
+	public FlowEventOccurrence step(FlowNodeBase currentNode, FlowEventOccurrence occurrence, FlowContext flowContext) {
+		if ("ExploreData".equals(occurrence.getEvent().getName())) {
+			flowContext.getFlowStack().setCurrentNode(dataExplorerRootSubFlow);
+			flowContext.logOccurrence(occurrence);
+			return dataExplorerRootFlow.enter(occurrence, flowContext);
+		}
+		return super.step(currentNode, occurrence, flowContext);
+	}
 }

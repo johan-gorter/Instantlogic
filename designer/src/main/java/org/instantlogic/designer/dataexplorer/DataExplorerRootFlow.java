@@ -17,7 +17,7 @@ import org.instantlogic.interaction.util.FlowContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.FlowStack;
 
-// This flow creates DataExplorerEntityFlows for every Entity
+// This flow has DataExplorerEntityFlows subFlows for every Entity
 public class DataExplorerRootFlow extends Flow {
 
 	private Map<String, DataExplorerEntityFlow> entityFlows = new HashMap<String, DataExplorerEntityFlow>();
@@ -64,10 +64,19 @@ public class DataExplorerRootFlow extends Flow {
 		String entityId = instanceToExplore.getMetadata().getEntity().getUniqueId();
 		
 		context.pushFlowContext(this);
-		context.getFlowStack().pushSelectedInstance(instanceToExplore);
+		context.getFlowStack().setCurrentNode(fakeSubFlow(entityId));
 		
 		FlowEventOccurrence newOccurrance = new FlowEventOccurrence(ExploreDataEvent.INSTANCE, instanceToExplore);
 		return getEntityFlow(entityId).enter(newOccurrance, context);
+	}
+
+	private FlowNodeBase fakeSubFlow(final String entityId) {
+		return new FlowNodeBase() {
+			@Override
+			public String getName() {
+				return entityId;
+			}
+		};
 	}
 
 	@Override
