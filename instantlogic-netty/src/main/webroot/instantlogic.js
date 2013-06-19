@@ -60,6 +60,7 @@ YUI.add('instantlogic', function (Y) {
         start: function () {
         	this.history = new Y.HistoryHash();
         	this.history.on('locationChange', this.onLocationChange, this);
+        	this.history.on('locationRemove', this.onLocationChange, this);
         	this.history.on('eventChange', this.onEventChange, this);
             this.location = this.history.get('location');
             this.presenceNode.setContent('One moment...');
@@ -85,14 +86,15 @@ YUI.add('instantlogic', function (Y) {
         },
         
         onLocationChange: function(e) {
-        	if (e.src !== Y.HistoryBase.SRC_ADD) {
+        	if (e.src !== Y.HistoryBase.SRC_ADD && !this.history.get('event') && this.location != this.history.get('location')) {
         		this.location = e.newVal;
         		this.sendEnter();
         	}
         },
 
         onEventChange: function(e) {
-        	if (e.src !== Y.HistoryBase.SRC_ADD) {
+        	if (e.src !== Y.HistoryBase.SRC_ADD && e.src !== Y.HistoryBase.SRC_REPLACE) {
+        		this.location = this.history.get('location');
         		this.sendEnter();
         	}
         },
@@ -222,7 +224,7 @@ YUI.add('instantlogic', function (Y) {
         	if (this.location && !event) {
         		this.enqueueMessage({message:'enter', location: this.location});
         	} else {
-	    		this.enqueueMessage({message:'start', event: event, location: this.history.get('location')});
+	    		this.enqueueMessage({message:'start', event: event, location: this.location});
         	}
     		if (event) {
     			this.history.replaceValue('event', null);

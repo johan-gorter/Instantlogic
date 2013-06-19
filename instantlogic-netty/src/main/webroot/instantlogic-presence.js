@@ -122,7 +122,7 @@ YUI.add('instantlogic-presence', function (Y) {
         			var user = this.model.users[i];
         			for (var ii=0;ii<user.travelers.length;ii++) {
         				var traveler = user.travelers[ii];
-        				if (traveler.placeUrl.indexOf(placeUrlSubstring)>=0) {
+        				if (traveler.placeUrl && traveler.placeUrl.indexOf(placeUrlSubstring)>=0) {
         					result.push({username: user.username, name: user.name, avatarUrl: user.avatarUrl});
         				}
         			}
