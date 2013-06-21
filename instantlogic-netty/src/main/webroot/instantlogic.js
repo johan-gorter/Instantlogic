@@ -86,7 +86,8 @@ YUI.add('instantlogic', function (Y) {
         },
         
         onLocationChange: function(e) {
-        	if (e.src !== Y.HistoryBase.SRC_ADD && !this.history.get('event') && this.location != this.history.get('location')) {
+        	if (e.src !== Y.HistoryBase.SRC_ADD && e.src !== Y.HistoryBase.SRC_REPLACE && 
+        			!this.history.get('event') && this.location != this.history.get('location')) {
         		this.location = e.newVal;
         		this.sendEnter();
         	}
@@ -451,6 +452,19 @@ YUI.add('instantlogic', function (Y) {
         			button = h.div({className: 'fragment-debug-button'}, this.fragmentType.substr(0,1).toLowerCase())
         		);
         	this.node.appendChild(debugTool);
+        	if (this.fragmentType === 'Page') {
+        		var engine = this.engine;
+        		var dataExplorer = h.div({className: 'explore-data-button'}, h.span({className: 'inner'}, 'Explore data'));
+        		dataExplorer.on('click', function(e) {
+        			e.preventDefault();
+        			e.stopPropagation();
+        			engine.history.replaceValue('event', 'ExploreData/' + engine.location);
+        			engine.location = null;
+        			engine.history.replaceValue('location', null);
+        			engine.sendEnter();
+        		});
+        		this.node.appendChild(dataExplorer);
+        	}
         	button.on('hover', function() {debugTool.addClass('hover')}, function() {debugTool.removeClass('hover');checkMenuClose()});
         	button.on('click', function(e) {
     			e.preventDefault();

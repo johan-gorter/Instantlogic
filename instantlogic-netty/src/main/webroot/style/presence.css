@@ -30,8 +30,8 @@
 #presence .fragment-debug {display:none;}
 .fragment-debug-holder {position:absolute; display:inline-block; width:8px; height:14px; }
 .fragment-debug {position:absolute;display:inline-block; margin-top:-0px;width:8px;height:14px;z-index:9000;color:#FFFFFF;font-size:93%;line-height:11px;}
-.fragment-debug .fragment-debug-button {position:absolute;right:0px;top:0px;width:8px;height:14px;background:rgba(255,128,128,0.8); border:solid 1px transparent; border-radius: 0 0 5px 5px; text-align:center;cursor:pointer;box-shadow: 0 1px 2px 1px #AAA;} 
-.fragment-debug .fragment-debug-info-outer {position:absolute;right:0px;top:0px;height:16px;background:rgba(255,128,128,0.8);border:solid 1px #FF0000; border-top-color: #000000; border-radius: 0 0 4px 4px; display:none;box-shadow: 0 1px 2px 1px #AAA;}
+.fragment-debug .fragment-debug-button {position:absolute;right:0px;top:0px;width:8px;height:14px;background:rgba(255,128,128,0.8); border:solid 1px transparent; border-radius: 0 0 5px 5px; text-align:center;cursor:pointer} 
+.fragment-debug .fragment-debug-info-outer {position:absolute;right:0px;top:0px;height:16px;background:rgba(255,128,128,0.8);border:solid 1px #FF0000; border-top-color: #000000; border-radius: 0 0 4px 4px; display:none;}
 .fragment-debug .fragment-debug-info {margin:2px 12px 0 3px;}
 
 .fragment-debug.hover, .fragment-debug.openMenu {z-Index:9001}
@@ -53,3 +53,5 @@
 .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:160px;}
 .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:180px;}
 .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:200px;}
+
+.explore-data-button {position:absolute;top:50px;right:20px;background:rgba(255,128,128,0.8);border:solid 1px #FF0000; border-radius: 5px; 5px 5px 5px; color:#FFFFFF;cursor:pointer;padding:0 4px;}

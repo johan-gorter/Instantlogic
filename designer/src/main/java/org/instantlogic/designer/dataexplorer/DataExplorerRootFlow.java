@@ -52,15 +52,7 @@ public class DataExplorerRootFlow extends Flow {
 
 	@Override
 	public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
-		if (occurrence.getParameters().length>1) {
-			throw new RuntimeException("Illegal number of parameters "+occurrence.getParameters());
-		}
-		Instance instanceToExplore;
-		if (occurrence.getParameters().length==1) { 
-			instanceToExplore = occurrence.getParameters()[0];
-		} else {
-			instanceToExplore = context.getCaseInstance();
-		}
+		Instance instanceToExplore = findInstanceToExplore(occurrence, context);
 		String entityId = instanceToExplore.getMetadata().getEntity().getUniqueId();
 		
 		context.pushFlowContext(this);
@@ -68,6 +60,17 @@ public class DataExplorerRootFlow extends Flow {
 		
 		FlowEventOccurrence newOccurrance = new FlowEventOccurrence(ExploreDataEvent.INSTANCE, instanceToExplore);
 		return getEntityFlow(entityId).enter(newOccurrance, context);
+	}
+
+	// Effectively scans the url back to front to find an instance, if none is found, the caseinstance is returned.
+	private Instance findInstanceToExplore(FlowEventOccurrence occurrence, FlowContext context) {
+		for (int i=occurrence.getParameters().length-1;i>=0;i--) {
+			Instance candidate = occurrence.getParameters()[i];
+			if (candidate!=null) {
+				return candidate;
+			}
+		}
+		return context.getCaseInstance();
 	}
 
 	private FlowNodeBase fakeSubFlow(final String entityId) {
