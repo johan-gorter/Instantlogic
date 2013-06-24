@@ -11,6 +11,7 @@ import org.instantlogic.designer.codegenerator.jvmbytecode.ApplicationBytecodeGe
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.ApplicationEnvironment;
+import org.instantlogic.interaction.DesignerApplicationEnvironment;
 import org.instantlogic.tools.persistence.json.FileCasePersister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,13 +36,19 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		Instance result = super.loadOrCreate(caseId, ofType, application);
 
 		ApplicationDesign applicationDesign = (ApplicationDesign)result;
+		
+		ApplicationBytecodeGenerator applicationBytecodeGenerator = new ApplicationBytecodeGenerator((DesignerApplicationEnvironment)applicationEnvironment, // Generate bytecode 
+			new BackgroundThreadGeneratedClassModelsProcessor(
+				new ApplicationJavacodeGenerator(new File(new File("../webapps", result.getName()), "target/generated-sources/instantlogic-app").getAbsoluteFile()) // Generate java code
+			)
+		);
+		
+		// Generate bytecode once synchronously, and afterward asynchronously
+		applicationBytecodeGenerator.process(applicationDesign.getApplicationGenerator().getClassModelUpdates());
+		
 		applicationDesign.setGeneratedClassModelsProcessor(
 			new BackgroundThreadGeneratedClassModelsProcessor(
-				new ApplicationBytecodeGenerator(applicationEnvironment, // Generate bytecode 
-					new BackgroundThreadGeneratedClassModelsProcessor(
-						new ApplicationJavacodeGenerator(new File(new File("../webapps", result.getName()), "target/generated-sources/instantlogic-app").getAbsoluteFile()) // Generate java code
-					)
-				)
+				applicationBytecodeGenerator
 			)
 		);
 		

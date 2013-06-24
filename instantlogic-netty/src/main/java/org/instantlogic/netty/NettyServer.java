@@ -19,6 +19,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 import org.instantlogic.designer.DesignerApplication;
+import org.instantlogic.engine.manager.DesignerEngineManager;
 import org.instantlogic.engine.manager.EngineManager;
 import org.instantlogic.engine.manager.Update;
 import org.jboss.netty.bootstrap.ServerBootstrap;
@@ -53,8 +54,7 @@ public class NettyServer {
 	};
 	
 	public static void main(String[] args) throws IOException {
-		engineManager = new EngineManager();
-		engineManager.registerApplication(DesignerApplication.INSTANCE);
+		engineManager = new DesignerEngineManager();
 		engineManager.registerWebappsDirectory(new File("../webapps"));
 		
 		travelersManagement = new TravelersManagement(engineManager);

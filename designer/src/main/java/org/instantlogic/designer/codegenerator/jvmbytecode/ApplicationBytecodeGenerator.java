@@ -22,6 +22,7 @@ import org.instantlogic.designer.dataexplorer.ApplicationWithDataExplorer;
 import org.instantlogic.designer.util.DesignerPersistenceStrategy;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.ApplicationEnvironment;
+import org.instantlogic.interaction.DesignerApplicationEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,13 +98,13 @@ public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcess
 		
 	}
 	
-	private final ApplicationEnvironment applicationEnvironment;
+	private final DesignerApplicationEnvironment applicationEnvironment;
 	private final GeneratedClassModelsProcessor next;
 	private JvmBytecodeApplication lastApplication;
 	private String applicationName;
 	private String applicationRootPackage;
 	
-	public ApplicationBytecodeGenerator(ApplicationEnvironment applicationEnvironment, GeneratedClassModelsProcessor next) {
+	public ApplicationBytecodeGenerator(DesignerApplicationEnvironment applicationEnvironment, GeneratedClassModelsProcessor next) {
 		this.applicationEnvironment = applicationEnvironment;
 		this.next = next;
 	}

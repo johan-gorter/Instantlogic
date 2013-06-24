@@ -24,7 +24,7 @@ public class EngineManager {
 	protected Map<String, ApplicationManager> applicationManagers = new HashMap<String, ApplicationManager>();
 	protected List<File> webappsDirectories = new ArrayList<File>();
 	private Map<String, CaseProcessor> caseProcessors = new ConcurrentHashMap<String, CaseProcessor>();
-	
+
 	public synchronized ApplicationManager registerApplication(Application application) {
 		ApplicationManager applicationManager = new ApplicationManager(application, this);
 		application.setEnvironment(applicationManager);
@@ -55,18 +55,23 @@ public class EngineManager {
 	private synchronized ApplicationManager loadApplication(File appDir, String name) {
 		if (applicationManagers.containsKey(name)) return applicationManagers.get(name);
 		try {
-			logger.info("Loading application [{}] from {}", name, appDir.getAbsoluteFile());
-			URL customized = new File(appDir, "target/classes/").toURI().toURL();
-			URL preGenerated = new File(appDir, "target/generated-classes").toURI().toURL();
-			URLClassLoader classLoader = new URLClassLoader(new URL[]{customized, preGenerated});
-			Class<?> applicationClass = classLoader.loadClass(findApplicationClassName("",new File(appDir, "target/generated-classes")));
-			Application application = (Application)applicationClass.getField("INSTANCE").get(null);
-			logger.info("Application [{}] loaded", name);
-			return registerApplication(application);
+			return doLoadApplication(appDir, name);
 		} catch (Exception e) {
 			logger.error("Failed to load application "+name, e);
 			return null;
 		}
+	}
+
+	// Is overridden in DesignerEngineManager
+	protected ApplicationManager doLoadApplication(File appDir, String name) throws Exception {
+		logger.info("Loading application [{}] from {}", name, appDir.getAbsoluteFile());
+		URL customized = new File(appDir, "target/classes/").toURI().toURL();
+		URL preGenerated = new File(appDir, "target/generated-classes").toURI().toURL();
+		URLClassLoader classLoader = new URLClassLoader(new URL[]{customized, preGenerated});
+		Class<?> applicationClass = classLoader.loadClass(findApplicationClassName("",new File(appDir, "target/generated-classes")));
+		logger.info("Application [{}] loaded", name);
+		Application application = (Application)applicationClass.getField("INSTANCE").get(null);
+		return registerApplication(application);
 	}
 
 	private String findApplicationClassName(String classNamePrefix, File file) {
@@ -155,5 +160,4 @@ public class EngineManager {
 		}
 		return null;
 	}
-	
 }

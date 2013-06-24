@@ -5,13 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.instantlogic.engine.message.ApplicationUpdate;
 import org.instantlogic.interaction.Application;
-import org.instantlogic.interaction.ApplicationEnvironment;
+import org.instantlogic.interaction.DesignerApplicationEnvironment;
 import org.instantlogic.interaction.PersistenceStrategy;
 import org.instantlogic.tools.persistence.json.FileCasePersister;
 
-public class ApplicationManager implements ApplicationEnvironment {
+public class ApplicationManager implements DesignerApplicationEnvironment {
 
 
 	private Application application;
@@ -67,5 +66,4 @@ public class ApplicationManager implements ApplicationEnvironment {
 		this.application = updatedApplication;
 		return new ArrayList<String>(activeCases.keySet());
 	}
-
 }
