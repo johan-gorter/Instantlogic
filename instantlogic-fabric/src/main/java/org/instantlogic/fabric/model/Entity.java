@@ -77,9 +77,10 @@ public abstract class Entity<I extends Instance> extends Concept {
 			throw new UnsupportedOperationException("Not implemented");
 		}
 	}
+	private final TextTemplate defaultTitle = new TextTemplate().getUntranslated().add(getName()).getTextTemplate();
 	
 	public TextTemplate getTitle() {
-		return null;
+		return defaultTitle;
 	}
 	
 	// TODO: Allow multiple inheritance (Java code generation: generate Instance classes + interfaces and implement all baseclass-interfaces instead of extending baseclass)

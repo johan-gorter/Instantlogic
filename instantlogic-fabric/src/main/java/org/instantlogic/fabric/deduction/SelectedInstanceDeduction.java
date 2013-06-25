@@ -22,7 +22,6 @@ public class SelectedInstanceDeduction<I extends Instance> extends Deduction<I>{
 	{
 	}
 
-	@Deprecated
 	public SelectedInstanceDeduction(Entity<I> entity) {
 		this.ofEntity = entity;
 	}

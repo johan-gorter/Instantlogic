@@ -28,9 +28,10 @@ public class SelectionElement extends Element {
 	@Override
 	public void render(RenderContext context, List<Map<String, Object>> appendTo) {
 		ValueAndLevel<?> valueAndLevel = selection.deduce(context);
-		if (!valueAndLevel.isConclusive()) {
-			throw new RuntimeException("Selection did not yield a conclusive result"); // TODO: render an error
-		}
+// This code is problematic in the DataExplorer rendering issue.assignee
+//		if (!valueAndLevel.isConclusive()) {
+//			throw new RuntimeException("Selection did not yield a conclusive result"); // TODO: render an error
+//		}
 		if (valueAndLevel.hasValue()) {
 			Object value = valueAndLevel.getValue();
 			if (value instanceof Multi<?>) {

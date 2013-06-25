@@ -13,6 +13,7 @@ import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.FlowNodeBase;
 import org.instantlogic.interaction.flow.PlaceTemplate;
+import org.instantlogic.interaction.flow.impl.SimpleFlowEvent;
 import org.instantlogic.interaction.util.FlowContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.FlowStack;
@@ -21,11 +22,17 @@ import org.instantlogic.interaction.util.FlowStack;
 public class DataExplorerRootFlow extends Flow {
 
 	private Map<String, DataExplorerEntityFlow> entityFlows = new HashMap<String, DataExplorerEntityFlow>();
+	private Map<String, SimpleFlowEvent> entityDetailsEvents = new HashMap<String, SimpleFlowEvent>();
+	private Map<SimpleFlowEvent, DataExplorerEntityFlow> detailEventToFlow = new HashMap<SimpleFlowEvent, DataExplorerEntityFlow>();
 	
 	public DataExplorerRootFlow(Application application) {
 		SortedMap<String,Entity<?>> allEntitiesById = CaseAdministration.getAllEntitiesById(application.getCaseEntity());
 		for (Entity<?> entity : allEntitiesById.values()) {
-			entityFlows.put(entity.getUniqueId(), new DataExplorerEntityFlow(entity));
+			SimpleFlowEvent detailsEvent = new SimpleFlowEvent(entity.getUniqueId()+"-details", entity);
+			DataExplorerEntityFlow entityFlow = new DataExplorerEntityFlow(entity, detailsEvent);
+			entityFlows.put(entity.getUniqueId(), entityFlow);
+			entityDetailsEvents.put(entity.getUniqueId(), detailsEvent);
+			detailEventToFlow.put(detailsEvent, entityFlow);
 		}
 	}
 
@@ -46,19 +53,23 @@ public class DataExplorerRootFlow extends Flow {
 
 	@Override
 	public FlowStack createFlowStack(FlowStack parentStack, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
-		String next = moreCoordinates.next();
-		return getEntityFlow(next).createFlowStack(parentStack, next, moreCoordinates, caseInstance);
+		FlowStack result = new FlowStack(parentStack, this);
+		String entityId = moreCoordinates.next();
+		result.setCurrentNode(fakeSubFlow(entityId));
+		return getEntityFlow(entityId).createFlowStack(result, entityId, moreCoordinates, caseInstance);
 	}
 
+	// ExploreDataEvent gets translated to a more specific entityDetailsEvent
 	@Override
 	public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
+		// Handles only ExploreData-like events
 		Instance instanceToExplore = findInstanceToExplore(occurrence, context);
 		String entityId = instanceToExplore.getMetadata().getEntity().getUniqueId();
 		
 		context.pushFlowContext(this);
 		context.getFlowStack().setCurrentNode(fakeSubFlow(entityId));
 		
-		FlowEventOccurrence newOccurrance = new FlowEventOccurrence(ExploreDataEvent.INSTANCE, instanceToExplore);
+		FlowEventOccurrence newOccurrance = new FlowEventOccurrence(entityDetailsEvents.get(entityId), instanceToExplore);
 		return getEntityFlow(entityId).enter(newOccurrance, context);
 	}
 
@@ -84,7 +95,16 @@ public class DataExplorerRootFlow extends Flow {
 
 	@Override
 	public FlowEventOccurrence step(FlowNodeBase currentNode, FlowEventOccurrence occurrence, FlowContext flowContext) {
-		throw new RuntimeException("Not supported");
+		DataExplorerEntityFlow entityFlow = detailEventToFlow.get(occurrence.getEvent()); // Handles EntityDetailsEvents
+		if (entityFlow==null) {
+			// ExploreDataEvent
+			Instance instanceToExplore = findInstanceToExplore(occurrence, flowContext);
+			String entityId = instanceToExplore.getMetadata().getEntity().getUniqueId();
+			entityFlow = entityFlows.get(entityId);
+			occurrence = new FlowEventOccurrence(this.entityDetailsEvents.get(entityId), instanceToExplore);
+		}
+		flowContext.getFlowStack().setCurrentNode(fakeSubFlow(entityFlow.getEntity().getUniqueId()));
+		return entityFlow.enter(occurrence, flowContext);
 	}
 
 	@Override

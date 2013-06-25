@@ -6,6 +6,7 @@ import org.instantlogic.interaction.flow.FlowEdge;
 import org.instantlogic.interaction.flow.FlowNodeBase;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.flow.impl.SimpleFlow;
+import org.instantlogic.interaction.flow.impl.SimpleFlowEvent;
 
 public class DataExplorerEntityFlow extends SimpleFlow {
 
@@ -16,13 +17,13 @@ public class DataExplorerEntityFlow extends SimpleFlow {
 	private final FlowEdge[] edges;
 	private final Entity<?>[] parameters;
 	
-	public DataExplorerEntityFlow(Entity<?> entity) {
+	public DataExplorerEntityFlow(Entity<?> entity, SimpleFlowEvent detailsEvent) {
 		this.entity = entity;
 		this.detailsPlaceTemplate = new DataExplorerEntityDetailsPlaceTemplate(entity);
 		this.parameters = new Entity<?>[]{entity};
 		this.nodes = new FlowNodeBase[]{detailsPlaceTemplate};
 		this.edges = new FlowEdge[]{
-			new FlowEdge(null, ExploreDataEvent.INSTANCE, detailsPlaceTemplate)
+			new FlowEdge(null, detailsEvent, detailsPlaceTemplate)
 		};
 	}
 
@@ -52,5 +53,9 @@ public class DataExplorerEntityFlow extends SimpleFlow {
 	@Override
 	public Entity<? extends Instance>[] getParameters() {
 		return parameters;
+	}
+
+	public Entity<?> getEntity() {
+		return entity;
 	}
 }

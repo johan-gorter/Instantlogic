@@ -482,7 +482,7 @@ YUI.add('instantlogic', function (Y) {
         		if (id.lastIndexOf('+')>=0) {
         			id = id.substr(id.lastIndexOf('+')+1);
         		}
-        		var placeTemplateId = me.parentFragment.findAncestor('Page').model.placeTemplateId;
+        		var placeTemplateId = me.fragment.findAncestor('Page').model.placeTemplateId;
         		var placeTemplateDetailsUrl = designerUrl+'PlaceTemplate/'+placeTemplateId+'/PlaceTemplateDetails';
         		openMenu = new Y.Overlay({
         			bodyContent:
