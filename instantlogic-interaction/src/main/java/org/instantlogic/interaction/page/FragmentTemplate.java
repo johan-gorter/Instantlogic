@@ -92,26 +92,31 @@ public class FragmentTemplate extends Element {
 	}
 	
 	public FragmentTemplate addCustomFilter(FragmentFilter filter) {
+		if (filter==null) throw new IllegalArgumentException();
 		customFilters.add(filter);
 		return this;
 	}
 
 	public FragmentTemplate putValue(String DataKey, Deduction<?> value) {
+		if (value==null) throw new IllegalArgumentException();
 		valueProperties.put(DataKey, value);
 		return this;
 	}
 	
 	public FragmentTemplate putText(String DataKey, TextTemplate value) {
+		if (value==null) throw new IllegalArgumentException();
 		textProperties.put(DataKey, value);
 		return this;
 	}
 	
 	public FragmentTemplate putChildren(String DataKey, Element... children) {
+		if (children==null) throw new IllegalArgumentException();
 		childlistProperties.put(DataKey, Arrays.asList(children));
 		return this;
 	}
 	
 	public FragmentTemplate addChild(String key, Element child) {
+		if (child==null) throw new IllegalArgumentException();
 		List<Element> list = childlistProperties.get(key);
 		if (list==null) {
 			list = new ArrayList<Element>();
@@ -120,7 +125,6 @@ public class FragmentTemplate extends Element {
 		list.add(child);
 		return this;
 	}
-	
 	
 	public FragmentTemplate setField(Entity<?> entity, Attribute<?, ?, ?> attribute) {
 		this.field = new FieldFilter(entity, attribute);
@@ -133,6 +137,7 @@ public class FragmentTemplate extends Element {
 	}
 	
 	public FragmentTemplate setStyleNames(String[] styleNames) {
+		if (styleNames==null) throw new IllegalArgumentException();
 		this.styleNames = styleNames;
 		return this;
 	}

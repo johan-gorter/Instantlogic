@@ -24,7 +24,14 @@ public class EntityDesign extends AbstractEntityDesign {
 	public EntityDesign(String name) {
 		setName(name);
 	}
-	
+
+	/**
+	 * Always try to use addAttribute with DataCategoryDesign instead!
+	 * @param from
+	 * @param name
+	 * @param type
+	 * @return
+	 */
 	protected static AttributeDesign addAttribute(EntityDesign from, String name, Class<?> type) {
 		return from.addAttribute(name,  type);
 	}

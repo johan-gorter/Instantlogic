@@ -49,6 +49,7 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 		operation = $operation;
 		
 		// Phase 2
+		$multivalue.dataType.put("category", "boolean");
 		$multivalue._default = createDeduction0();
 
 		$dataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;

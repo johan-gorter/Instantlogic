@@ -14,13 +14,13 @@ public class RelationDesignEntityGenerator extends EntityDesign {
     }
 
     // Attributes
-    public static final AttributeDesign owner = addAttribute(ENTITY, "owner", java.lang.Boolean.class);
-    public static final AttributeDesign autoCreate = addAttribute(ENTITY, "autoCreate", java.lang.Boolean.class);
-    public static final AttributeDesign reverseMultivalue = addAttribute(ENTITY, "reverseMultivalue", java.lang.Boolean.class);
-    public static final AttributeDesign reverseName = addAttribute(ENTITY, "reverseName", java.lang.String.class);
-    public static final AttributeDesign reverseTechnicalName = addAttribute(ENTITY, "reverseTechnicalName", java.lang.String.class);
-    public static final AttributeDesign reverseJavaIdentifier = addAttribute(ENTITY, "reverseJavaIdentifier", java.lang.String.class);
-    public static final AttributeDesign hasOptions = addAttribute(ENTITY, "hasOptions", java.lang.Boolean.class);
+    public static final AttributeDesign owner = addAttribute(ENTITY, "owner", DataCategoryDesign._boolean);
+    public static final AttributeDesign autoCreate = addAttribute(ENTITY, "autoCreate", DataCategoryDesign._boolean);
+    public static final AttributeDesign reverseMultivalue = addAttribute(ENTITY, "reverseMultivalue", DataCategoryDesign._boolean);
+    public static final AttributeDesign reverseName = addAttribute(ENTITY, "reverseName", DataCategoryDesign.text);
+    public static final AttributeDesign reverseTechnicalName = addAttribute(ENTITY, "reverseTechnicalName", DataCategoryDesign.text);
+    public static final AttributeDesign reverseJavaIdentifier = addAttribute(ENTITY, "reverseJavaIdentifier", DataCategoryDesign.text);
+    public static final AttributeDesign hasOptions = addAttribute(ENTITY, "hasOptions", DataCategoryDesign._boolean);
 
     // Relations
     public static final RelationDesign to = addRelation(ENTITY, "to", RelationType.ManyToZeroOrOne, EntityDesignEntityGenerator.ENTITY)

@@ -94,8 +94,15 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		from = $from;
 		
 		// Phase 2
+		$autoCreate.dataType.put("category", "boolean");
+		$hasOptions.dataType.put("category", "boolean");
+		$owner.dataType.put("category", "boolean");
+		$reverseJavaIdentifier.dataType.put("category", "text");
 		$reverseJavaIdentifier.readOnly = true;
 		$reverseJavaIdentifier.rule = createDeduction1();
+		$reverseMultivalue.dataType.put("category", "boolean");
+		$reverseName.dataType.put("category", "text");
+		$reverseTechnicalName.dataType.put("category", "text");
 		$reverseTechnicalName.readOnly = true;
 		$reverseTechnicalName.rule = createDeduction0();
 

@@ -132,6 +132,10 @@
           }
         }
       ],
+      "dataType": {
+        "instanceId": "ubqdvdwiIigcgljg_424fff2a_f111",
+        "entityName": "DataTypeDesign"
+      },
       "relations": [],
       "staticInstances": [],
       "title": {
@@ -327,6 +331,10 @@
           }
         }
       ],
+      "dataType": {
+        "instanceId": "Qhncgglx_ufkccsi_d0915cd3_182f",
+        "entityName": "DataTypeDesign"
+      },
       "relations": [
         {
           "instanceId": "Relationdesign__0003",
@@ -488,6 +496,10 @@
             "instanceId": "Datatypedesign__000b",
             "entityName": "DataTypeDesign",
             "multivalue": true
+          },
+          "reverseDataType": {
+            "instanceId": "Onbjlg_fgu_dalcf_0bc566cf_6d1f",
+            "entityName": "DataTypeDesign"
           },
           "to": "Entitydesign__0005"
         },

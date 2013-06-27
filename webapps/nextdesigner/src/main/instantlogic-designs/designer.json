@@ -133,7 +133,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0001",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -143,7 +146,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0002",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -153,7 +159,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0003",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -163,7 +172,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0004",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.Boolean"
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -173,8 +185,11 @@
           "dataType": {
             "instanceId": "Datatypedesign__0005",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String",
-            "multivalue": true
+            "multivalue": true,
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         }
       ],
@@ -444,7 +459,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0016",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           },
           "default": {
             "instanceId": "Deductinschmdsgn__0001",
@@ -469,7 +487,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0017",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           },
           "rule": {
             "instanceId": "Deductinschmdsgn__0002",
@@ -494,7 +515,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0018",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           },
           "rule": {
             "instanceId": "Deductinschmdsgn__0003",
@@ -518,7 +542,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0019",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.Boolean"
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
           }
         }
       ],
@@ -633,7 +660,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__001b",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         }
       ],
@@ -2254,7 +2284,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0030",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.Boolean"
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
           },
           "default": {
             "instanceId": "Deductinschmdsgn__0013",
@@ -2498,7 +2531,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0032",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         }
       ],
@@ -3319,7 +3355,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__004a",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.Boolean"
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -3329,7 +3368,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__004b",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.Boolean"
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -3339,7 +3381,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__004c",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.Boolean"
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -3349,7 +3394,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__004d",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -3360,7 +3408,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__004e",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           },
           "rule": {
             "instanceId": "Deductinschmdsgn__001b",
@@ -3385,7 +3436,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__004f",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           },
           "rule": {
             "instanceId": "Deductinschmdsgn__001c",
@@ -3409,7 +3463,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0050",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.Boolean"
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
           }
         }
       ],
@@ -3870,7 +3927,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0062",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.Boolean"
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
           },
           "default": {
             "instanceId": "Deductinschmdsgn__0020",
@@ -3907,7 +3967,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0063",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           },
           "default": {
             "instanceId": "Deductinschmdsgn__0021",
@@ -3956,7 +4019,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__0064",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -3966,8 +4032,11 @@
           "dataType": {
             "instanceId": "Datatypedesign__0065",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String",
-            "multivalue": true
+            "multivalue": true,
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -3977,8 +4046,11 @@
           "dataType": {
             "instanceId": "Datatypedesign__0066",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String",
-            "multivalue": true
+            "multivalue": true,
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         }
       ],
@@ -4281,7 +4353,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__006c",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.String"
+            "dataCategory": {
+              "instanceName": "text",
+              "entityName": "DataCategoryDesign"
+            }
           }
         },
         {
@@ -4291,7 +4366,10 @@
           "dataType": {
             "instanceId": "Datatypedesign__006d",
             "entityName": "DataTypeDesign",
-            "javaClassName": "java.lang.Boolean"
+            "dataCategory": {
+              "instanceName": "boolean",
+              "entityName": "DataCategoryDesign"
+            }
           },
           "default": {
             "instanceId": "Deductinschmdsgn__0025",

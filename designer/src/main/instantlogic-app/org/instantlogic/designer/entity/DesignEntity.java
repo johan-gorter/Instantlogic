@@ -99,9 +99,13 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 			org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE
 		};
+		$isCustomized.dataType.put("category", "boolean");
+		$javaIdentifier.dataType.put("category", "text");
 		$javaIdentifier.readOnly = true;
 		$javaIdentifier.rule = createDeduction2();
+		$name.dataType.put("category", "text");
 		$name._default = createDeduction1();
+		$technicalName.dataType.put("category", "text");
 		$technicalName.readOnly = true;
 		$technicalName.rule = createDeduction3();
 

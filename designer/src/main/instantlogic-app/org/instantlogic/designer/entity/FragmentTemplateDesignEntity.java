@@ -100,7 +100,10 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 		// Reverse relations
 		
 		// Phase 2
+		$fragmentFilters.dataType.put("category", "text");
 		$fragmentFilters.multivalue = true;
+		$fragmentTypeName.dataType.put("category", "text");
+		$styleNames.dataType.put("category", "text");
 		$styleNames.multivalue = true;
 
 		$attribute.valueClass = org.instantlogic.designer.AttributeDesign.class;

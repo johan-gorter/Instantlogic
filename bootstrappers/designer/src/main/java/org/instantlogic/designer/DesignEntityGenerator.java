@@ -13,10 +13,10 @@ public class DesignEntityGenerator extends EntityDesign {
     }
 
     // Attributes
-    public static final AttributeDesign name = addAttribute(ENTITY, "name", java.lang.String.class);
-    public static final AttributeDesign javaIdentifier = addAttribute(ENTITY, "javaIdentifier", java.lang.String.class);
-    public static final AttributeDesign technicalName = addAttribute(ENTITY, "technicalName", java.lang.String.class);
-    public static final AttributeDesign isCustomized = addAttribute(ENTITY, "isCustomized", java.lang.Boolean.class);
+    public static final AttributeDesign name = addAttribute(ENTITY, "name", DataCategoryDesign.text);
+    public static final AttributeDesign javaIdentifier = addAttribute(ENTITY, "javaIdentifier", DataCategoryDesign.text);
+    public static final AttributeDesign technicalName = addAttribute(ENTITY, "technicalName", DataCategoryDesign.text);
+    public static final AttributeDesign isCustomized = addAttribute(ENTITY, "isCustomized", DataCategoryDesign._boolean);
 
     // Relations
 

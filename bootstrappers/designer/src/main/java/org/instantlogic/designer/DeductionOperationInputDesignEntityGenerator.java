@@ -12,7 +12,7 @@ public class DeductionOperationInputDesignEntityGenerator extends EntityDesign {
     }
 
     // Attributes
-    public static final AttributeDesign multivalue = addAttribute(ENTITY, "multivalue", java.lang.Boolean.class);
+    public static final AttributeDesign multivalue = addAttribute(ENTITY, "multivalue", DataCategoryDesign._boolean);
     
     // Relations
     public static final RelationDesign dataType = addRelation(ENTITY, "dataType", RelationType.ManyToZeroOrOne, DataTypeDesignEntityGenerator.ENTITY);

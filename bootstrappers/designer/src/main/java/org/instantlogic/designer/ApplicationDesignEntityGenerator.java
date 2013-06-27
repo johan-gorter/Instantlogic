@@ -13,11 +13,11 @@ public class ApplicationDesignEntityGenerator extends EntityDesign {
     }
 
     // Attributes
-    public static final AttributeDesign name = addAttribute(ENTITY, "name", java.lang.String.class);
-    public static final AttributeDesign rootPackageName = addAttribute(ENTITY, "rootPackageName", java.lang.String.class);
-    public static final AttributeDesign sourcePath = addAttribute(ENTITY, "sourcePath", java.lang.String.class);
-    public static final AttributeDesign isCustomized = addAttribute(ENTITY, "isCustomized", java.lang.Boolean.class);
-    public static final AttributeDesign themeNames = addAttribute(ENTITY, "themeNames", java.lang.String.class);
+    public static final AttributeDesign name = addAttribute(ENTITY, "name", DataCategoryDesign.text);
+    public static final AttributeDesign rootPackageName = addAttribute(ENTITY, "rootPackageName", DataCategoryDesign.text);
+    public static final AttributeDesign sourcePath = addAttribute(ENTITY, "sourcePath", DataCategoryDesign.text);
+    public static final AttributeDesign isCustomized = addAttribute(ENTITY, "isCustomized", DataCategoryDesign._boolean);
+    public static final AttributeDesign themeNames = addAttribute(ENTITY, "themeNames", DataCategoryDesign.text);
 
     // Relations
     public static final RelationDesign entities = addRelation(ENTITY, "entities", RelationType.OneToManyAggregation, EntityDesignEntityGenerator.ENTITY)

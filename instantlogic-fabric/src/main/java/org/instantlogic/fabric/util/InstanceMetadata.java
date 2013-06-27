@@ -275,6 +275,10 @@ public class InstanceMetadata {
 	}
 
 	public void makeStatic(String name) {
+		if (this.uniqueId!=null) {
+			throw new IllegalStateException();
+		}
+		this.uniqueId = name; //TODO: Replace spaces and other non-name characters
 		this.staticName = name;
 	}
 	

@@ -663,6 +663,7 @@ YUI.add('instantlogic', function (Y) {
     		if (!this.markup) Y.error('no markup');
     		this.parentNode.appendChild(this.markup);
         	this.updateValue(model.value); // Convenient
+        	if (model.readOnly) this.updateReadOnly(true);
     		if (model.styleNames) {
     			for (var i=0;i<model.styleNames.length;i++) {
     				var name = model.styleNames[i];
@@ -677,6 +678,9 @@ YUI.add('instantlogic', function (Y) {
     		ns.Answer.superclass.update.call(this, newModel, diff);
     		if (this.oldModel.value!=newModel.value) {
     			this.updateValue(newModel.value);
+    		}
+    		if (this.oldModel.readOnly!=newModel.readOnly) {
+    			this.updateReadOnly(newModel.readOnly);
     		}
     		if (!ns.util.arrayEquals(this.oldModel.styleNames, newModel.styleNames)) {
 	    		if (this.oldModel.styleNames) {
@@ -697,6 +701,16 @@ YUI.add('instantlogic', function (Y) {
 	    			}
 	    		}
 	    		diff.nodeUpdated(this.markup);
+    		}
+    	},
+    	updateReadOnly:function(readOnly) {
+    		// only works if this.input is set to an input node, otherwise, override this method
+    		if (this.input && this.input.set) {
+    			if (readOnly) {
+    				this.input.set("disabled", "disabled");
+    			} else {
+    				this.input.set("disabled", null);
+    			}
     		}
     	},
     	createMarkup: function() {

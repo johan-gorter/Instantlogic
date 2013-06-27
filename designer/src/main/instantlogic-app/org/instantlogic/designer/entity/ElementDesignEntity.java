@@ -83,7 +83,9 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 			org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.SharedElementDesignEntity.INSTANCE
 		};
+		$editorOpen.dataType.put("category", "boolean");
 		$editorOpen._default = createDeduction0();
+		$previewMode.dataType.put("category", "text");
 		$previewMode._default = createDeduction1();
 
 

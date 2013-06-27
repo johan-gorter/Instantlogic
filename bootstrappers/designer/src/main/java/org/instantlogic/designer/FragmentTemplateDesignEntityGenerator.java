@@ -13,9 +13,9 @@ public class FragmentTemplateDesignEntityGenerator extends EntityDesign {
     }
 
     // Attributes
-    public static final AttributeDesign fragmentTypeName = addAttribute(ENTITY, "fragmentTypeName", java.lang.String.class); // To be replaced by 'type'
-    public static final AttributeDesign styleNames = addAttribute(ENTITY, "styleNames", java.lang.String.class);
-    public static final AttributeDesign fragmentFilters = addAttribute(ENTITY, "fragmentFilters", java.lang.String.class);
+    public static final AttributeDesign fragmentTypeName = addAttribute(ENTITY, "fragmentTypeName", DataCategoryDesign.text); // To be replaced by 'type'
+    public static final AttributeDesign styleNames = addAttribute(ENTITY, "styleNames", DataCategoryDesign.text);
+    public static final AttributeDesign fragmentFilters = addAttribute(ENTITY, "fragmentFilters", DataCategoryDesign.text);
 
     // Relations
     public static final RelationDesign type = addRelation(ENTITY, "type", RelationType.ManyToZeroOrOne, FragmentTypeDesignEntityGenerator.ENTITY)

@@ -60,7 +60,9 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		fragment = $fragment;
 		
 		// Phase 2
+		$collapsed.dataType.put("category", "boolean");
 		$collapsed._default = createDeduction0();
+		$propertyName.dataType.put("category", "text");
 
 		$children.valueClass = org.instantlogic.designer.ElementDesign.class;
 		$children.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;

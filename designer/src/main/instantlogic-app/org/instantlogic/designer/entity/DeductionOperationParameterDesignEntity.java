@@ -37,6 +37,7 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 		operation = $operation;
 		
 		// Phase 2
+		$valueClass.dataType.put("category", "text");
 
 
 		$operation.reverse = true;

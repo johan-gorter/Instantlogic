@@ -135,6 +135,22 @@ YUI.add('instantlogic-fragments', function (Y) {
             }
     	}
     });
+
+    // Div (contains content + text)
+    ns.Div = createFragment({
+    	createMarkup: function() {
+            return this.node = html.div(
+            	this.contentSpan = html.span(),
+            	this.textSpan = html.span()
+            )
+    	},
+    	texts: function(model) {
+    		return [[this.textSpan, model.text]];
+    	},
+    	fragmentLists: function(model) {
+    		return [[this.contentSpan, model.content]];
+    	}
+    });
     
     // Button
     ns.Button = createFragment({

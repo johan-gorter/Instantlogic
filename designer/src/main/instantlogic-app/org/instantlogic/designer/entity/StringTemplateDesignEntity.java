@@ -38,6 +38,7 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 		untranslatedInTemplate = $untranslatedInTemplate;
 		
 		// Phase 2
+		$constantText.dataType.put("category", "text");
 
 		$deduction.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
 		$deduction.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;

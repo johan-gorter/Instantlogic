@@ -11,7 +11,7 @@ public class StringTemplateDesignEntityGenerator extends EntityDesign {
     }
 
     // Attributes
-    public static final AttributeDesign constantText = addAttribute(ENTITY, "constantText", java.lang.String.class);
+    public static final AttributeDesign constantText = addAttribute(ENTITY, "constantText", DataCategoryDesign.text);
 
     // Relations
     public static final RelationDesign deduction = addRelation(ENTITY, "deduction", RelationType.OneToOneAggregation, DeductionSchemeDesignEntityGenerator.ENTITY);

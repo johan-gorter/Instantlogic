@@ -11,7 +11,7 @@ public class DeductionOperationParameterDesignEntityGenerator extends EntityDesi
         setExtendsFrom(DesignEntityGenerator.ENTITY);
     }
 
-    public static final AttributeDesign valueClass = addAttribute(ENTITY, "valueClass", String.class);
+    public static final AttributeDesign valueClass = addAttribute(ENTITY, "valueClass", DataCategoryDesign.text);
 
     // Static instances
     public static final StaticInstanceDesign attribute = addStaticInstance(ENTITY, "attribute", createConstantText("Attribute"));

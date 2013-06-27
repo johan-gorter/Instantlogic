@@ -13,8 +13,8 @@ public class PropertyDesignEntityGenerator extends EntityDesign {
     }
 
     // Attributes
-    public static final AttributeDesign propertyName = addAttribute(ENTITY, "propertyName", java.lang.String.class);
-    public static final AttributeDesign collapsed = addAttribute(ENTITY, "collapsed", java.lang.Boolean.class); // Used in the editor, does not affect code generation
+    public static final AttributeDesign propertyName = addAttribute(ENTITY, "propertyName", DataCategoryDesign.text);
+    public static final AttributeDesign collapsed = addAttribute(ENTITY, "collapsed", DataCategoryDesign._boolean); // Used in the editor, does not affect code generation
 
     // Relations
     public static final RelationDesign children = addRelation(ENTITY, "children", RelationType.OneToManyAggregation, ElementDesignEntityGenerator.ENTITY).setReverseName("childrenForFragment");

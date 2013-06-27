@@ -93,6 +93,11 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		// Reverse relations
 		
 		// Phase 2
+		$isCustomized.dataType.put("category", "boolean");
+		$name.dataType.put("category", "text");
+		$rootPackageName.dataType.put("category", "text");
+		$sourcePath.dataType.put("category", "text");
+		$themeNames.dataType.put("category", "text");
 		$themeNames.multivalue = true;
 
 		$caseEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
