@@ -68,68 +68,78 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
                     .addChild("content",
                         new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0013", "Button")      
                             .setStyleNames(new String[]{"btn"})      
+                            .setEvent(org.instantlogic.designer.event.DataEvent.INSTANCE)      
+                            .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
+                            .addChild("content",
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0014", "Icon")      
+                                    .setStyleNames(new String[]{"icon-wrench"})        
+                            )        
+                    )        
+                    .addChild("content",
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0015", "Button")      
+                            .setStyleNames(new String[]{"btn"})      
                             .setEvent(org.instantlogic.designer.event.RemoveAttributeEvent.INSTANCE)      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Delete").getTextTemplate())        
                             .addChild("content",
-                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0014", "Icon")      
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0016", "Icon")      
                                     .setStyleNames(new String[]{"icon-remove"})        
                             )        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0015", "Input")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0017", "Input")      
                             .setField(org.instantlogic.designer.entity.DesignEntity.INSTANCE, org.instantlogic.designer.entity.DesignEntity.name)        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0016", "Heading4")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0018", "Heading4")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data type").getTextTemplate())        
                     )        
                     .addChild("content",
                         new org.instantlogic.interaction.page.SelectionElement(createDeduction2(),
-                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0017", "Block")        
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0019", "Block")        
                                     .addChild("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0018", "Input")      
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001a", "Input")      
                                             .setField(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE, org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory)        
                                     )        
                                     .addChild("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0019", "Input")      
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001b", "Input")      
                                             .setField(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE, org.instantlogic.designer.entity.DataTypeDesignEntity.multiLine)        
                                     )        
                                     .addChild("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001a", "Input")      
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001c", "Input")      
                                             .setField(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE, org.instantlogic.designer.entity.DataTypeDesignEntity.formatted)        
                                     )        
                                     .addChild("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001b", "Input")      
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001d", "Input")      
                                             .setField(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE, org.instantlogic.designer.entity.DataTypeDesignEntity.percentage)        
                                     )        
                                     .addChild("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001c", "Input")      
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001e", "Input")      
                                             .setField(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE, org.instantlogic.designer.entity.DataTypeDesignEntity.wholeNumber)        
                                     )        
                                     .addChild("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001d", "Input")      
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001f", "Input")      
                                             .setField(org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE, org.instantlogic.designer.entity.DataTypeDesignEntity.exactRounding)        
                                     ))
         
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001e", "Heading4")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0020", "Heading4")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Value").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001f", "Input")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0021", "Input")      
                             .setField(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.hasRelevance)        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0020", "Input")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0022", "Input")      
                             .setField(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.hasRule)        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0021", "Input")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0023", "Input")      
                             .setField(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.writeable)        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0022", "Input")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0024", "Input")      
                             .setField(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.hasDefault)        
                     )        
             ); 

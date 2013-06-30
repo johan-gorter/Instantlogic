@@ -55,41 +55,41 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
 
 	
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
-        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0023", "Page")        
+        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0025", "Page")        
             .addChild("mainContent",
                     new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0002", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
             )        
             .addChild("mainContent",
-                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0024", "Block")      
+                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0026", "Block")      
                     .setStyleNames(new String[]{"card"})        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0025", "Heading3")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0027", "Heading3")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Entity)").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0026", "Input")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0028", "Input")      
                             .setField(org.instantlogic.designer.entity.DesignEntity.INSTANCE, org.instantlogic.designer.entity.DesignEntity.name)        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0027", "Heading4")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0029", "Heading4")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Attributes").getTextTemplate())        
                     )        
                     .addChild("content",
                         new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
-                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0028", "Link")      
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002a", "Link")      
                                     .setEvent(org.instantlogic.designer.event.AttributeDetailsEvent.INSTANCE)        
                                     .addChild("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0029", "Block")        
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002b", "Block")        
                                             .addChild("content",
-                                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002a", "Strong")      
+                                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002c", "Strong")      
                                                     .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction2()).getTextTemplate())        
                                             )        
                                     ))
         
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002b", "Button")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002d", "Button")      
                             .setEvent(org.instantlogic.designer.event.AddAttributeEvent.INSTANCE)      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Add attribute").getTextTemplate())        
                     )        

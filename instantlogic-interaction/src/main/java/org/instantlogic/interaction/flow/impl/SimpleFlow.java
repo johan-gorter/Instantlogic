@@ -101,8 +101,8 @@ public abstract class SimpleFlow extends Flow {
 		}
 	}
 
-	public FlowStack createFlowStack(FlowStack parentStack, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
-		FlowStack result = new FlowStack(parentStack, this);
+	public FlowStack createFlowStack(FlowStack parentStack, Flow thisOrWrapper, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
+		FlowStack result = new FlowStack(parentStack, thisOrWrapper);
 		for (Entity<? extends Instance> entity: this.getParameters()) {
 			if (!moreCoordinates.hasNext()) throw new InvalidFlowCoordinatesException("Not enough parameters for flow "+getName());
 			String instanceId = moreCoordinates.next();
@@ -123,7 +123,7 @@ public abstract class SimpleFlow extends Flow {
 		result.setCurrentNode(nextNode);
 		if (nextNode instanceof SubFlow) {
 			Flow flow = ((SubFlow)nextNode).getFlow(); 
-			result = flow.createFlowStack(result, next, moreCoordinates, caseInstance);
+			result = flow.createFlowStack(result, flow, next, moreCoordinates, caseInstance);
 			return result;
 		} else {
 			// Ends on a page

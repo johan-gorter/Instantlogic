@@ -64,23 +64,6 @@ public class TextTemplateDesign extends Design {
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, ValidationDesign> messageOfValidation
-		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.messageOfValidation);
-
-	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, ValidationDesign> getMessageOfValidationRelationValue() {
-		return messageOfValidation;
-	}
-
-	public org.instantlogic.designer.ValidationDesign getMessageOfValidation() {
-		return messageOfValidation.getValue();
-	}
-
-    public TextTemplateDesign setMessageOfValidation(org.instantlogic.designer.ValidationDesign newValue) {
-        messageOfValidation.setValue(newValue);
-        return (TextTemplateDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, EntityDesign> titleOfEntity
 		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfEntity);
 
@@ -94,6 +77,23 @@ public class TextTemplateDesign extends Design {
 
     public TextTemplateDesign setTitleOfEntity(org.instantlogic.designer.EntityDesign newValue) {
         titleOfEntity.setValue(newValue);
+        return (TextTemplateDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, ValidationDesign> messageOfValidation
+		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.messageOfValidation);
+
+	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, ValidationDesign> getMessageOfValidationRelationValue() {
+		return messageOfValidation;
+	}
+
+	public org.instantlogic.designer.ValidationDesign getMessageOfValidation() {
+		return messageOfValidation.getValue();
+	}
+
+    public TextTemplateDesign setMessageOfValidation(org.instantlogic.designer.ValidationDesign newValue) {
+        messageOfValidation.setValue(newValue);
         return (TextTemplateDesign)this;
     }
 

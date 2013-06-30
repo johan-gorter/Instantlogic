@@ -30,10 +30,10 @@ public class FlowWrapper extends Flow {
 	}
 
 	@Override
-	public FlowStack createFlowStack(FlowStack parentStack, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
-		return delegate.createFlowStack(parentStack, current, moreCoordinates, caseInstance);
+	public FlowStack createFlowStack(FlowStack parentStack, Flow thisOrWrapper, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
+		return delegate.createFlowStack(parentStack, this /*We are the wrapper*/, current, moreCoordinates, caseInstance);
 	}
-
+	
 	@Override
 	public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
 		return delegate.enter(occurrence, context);

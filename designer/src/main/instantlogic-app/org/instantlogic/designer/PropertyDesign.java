@@ -28,23 +28,6 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> collapsed
-		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.collapsed);
-	
-	public java.lang.Boolean getCollapsed() {
-		return collapsed.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> getCollapsedAttributeValue() {
-		return collapsed;
-	}
-
-	public PropertyDesign setCollapsed(java.lang.Boolean newValue) {
-		collapsed.setValue(newValue);
-		return (PropertyDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> propertyName
 		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.propertyName);
 	
@@ -58,6 +41,23 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 
 	public PropertyDesign setPropertyName(java.lang.String newValue) {
 		propertyName.setValue(newValue);
+		return (PropertyDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> collapsed
+		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.collapsed);
+	
+	public java.lang.Boolean getCollapsed() {
+		return collapsed.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> getCollapsedAttributeValue() {
+		return collapsed;
+	}
+
+	public PropertyDesign setCollapsed(java.lang.Boolean newValue) {
+		collapsed.setValue(newValue);
 		return (PropertyDesign)this;
 	}
 	

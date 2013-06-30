@@ -17,9 +17,9 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 	// Attributes
 	
 	// Relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> displayWith;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> message;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> rule;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> displayWith;
 	
 	// Reverse relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> forEntity;
@@ -28,10 +28,6 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 		// Phase 1
 		// Attributes
 		// Relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> $displayWith
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign>(
-				"Relationdesign__0035", "displayWith", INSTANCE, "displayWith", org.instantlogic.designer.AbstractValidationDesign.class);
-		displayWith = $displayWith;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $message
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
 				"Relationdesign__0033", "message", INSTANCE, "message", org.instantlogic.designer.AbstractValidationDesign.class);
@@ -40,6 +36,10 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"Relationdesign__0034", "rule", INSTANCE, "rule", org.instantlogic.designer.AbstractValidationDesign.class);
 		rule = $rule;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> $displayWith
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign>(
+				"Relationdesign__0035", "displayWith", INSTANCE, "displayWith", org.instantlogic.designer.AbstractValidationDesign.class);
+		displayWith = $displayWith;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $forEntity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
@@ -48,10 +48,6 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 		
 		// Phase 2
 
-		$displayWith.valueClass = org.instantlogic.designer.AttributeDesign.class;
-		$displayWith.to = org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE;
-		$displayWith.setReverseRelation(org.instantlogic.designer.entity.AttributeDesignEntity.validations);
-		$displayWith.multivalue = true;
 		$message.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
 		$message.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
 		$message.setReverseRelation(org.instantlogic.designer.entity.TextTemplateDesignEntity.messageOfValidation);
@@ -61,6 +57,10 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 		$rule.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.ruleForValidation);
 		$rule.owner = true;
 		$rule.autoCreate = true;
+		$displayWith.valueClass = org.instantlogic.designer.AttributeDesign.class;
+		$displayWith.to = org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE;
+		$displayWith.setReverseRelation(org.instantlogic.designer.entity.AttributeDesignEntity.validations);
+		$displayWith.multivalue = true;
 
 		$forEntity.reverse = true;
 		$forEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
@@ -91,9 +91,9 @@ public class ValidationDesignEntity extends org.instantlogic.fabric.model.Entity
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		displayWith,
 		message,
 		rule,
+		displayWith,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		forEntity,

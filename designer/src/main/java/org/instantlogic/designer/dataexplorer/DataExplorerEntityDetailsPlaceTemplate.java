@@ -1,9 +1,7 @@
 package org.instantlogic.designer.dataexplorer;
 
-import org.instantlogic.designer.IfElseDesign;
 import org.instantlogic.fabric.deduction.AttributeDeduction;
 import org.instantlogic.fabric.deduction.Deduction;
-import org.instantlogic.fabric.deduction.HasValueDeduction;
 import org.instantlogic.fabric.deduction.ReverseRelationDeduction;
 import org.instantlogic.fabric.deduction.SelectedInstanceDeduction;
 import org.instantlogic.fabric.model.Attribute;
@@ -12,7 +10,6 @@ import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.page.FragmentTemplate;
-import org.instantlogic.interaction.page.IfElseElement;
 import org.instantlogic.interaction.page.SelectionElement;
 
 public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
@@ -85,6 +82,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 		return page;
 	}
 
+	@SuppressWarnings("rawtypes")
 	private FragmentTemplate relationAsField(String id, Relation relation, Deduction selectValue) {
 		return new FragmentTemplate(id, "Block").setStyleNames(new String[]{"control-group", "form-horizontal"})
 			.addChild("content",
@@ -103,8 +101,8 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	}
 
 	// Traverses to super-entities and provides a fallback
-	private TextTemplate getEntityTitle(Entity entity) {
-		Entity currentEntity = entity;
+	private TextTemplate getEntityTitle(Entity<?> entity) {
+		Entity<?> currentEntity = entity;
 		while (currentEntity!=null) {
 			if (currentEntity.getTitle()!=null) {
 				return currentEntity.getTitle();
@@ -114,6 +112,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 		return new TextTemplate().getUntranslated().add(entity.getName()).getTextTemplate();
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private AttributeDeduction createSelectRelationDeduction(Relation relation) {
 		SelectedInstanceDeduction selectedInstance = new SelectedInstanceDeduction(this.entity);
 		AttributeDeduction result = new AttributeDeduction(relation);
@@ -121,6 +120,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 		return result;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private ReverseRelationDeduction createSelectReverseRelationDeduction(Relation reverseRelation) {
 		SelectedInstanceDeduction selectedInstance = new SelectedInstanceDeduction(this.entity);
 		ReverseRelationDeduction result = new ReverseRelationDeduction(reverseRelation.getReverseRelation());

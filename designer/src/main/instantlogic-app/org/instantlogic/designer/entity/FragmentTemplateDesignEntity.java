@@ -48,26 +48,22 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 
 	
 	// Attributes
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> fragmentFilters; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String, java.lang.String> fragmentTypeName; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> styleNames; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> fragmentFilters; 
 	
 	// Relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> type;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> attribute;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> entity;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> event;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign> properties;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> type;
 	
 	// Reverse relations
 
 	static {
 		// Phase 1
 		// Attributes
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> $fragmentFilters
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
-				"Attributedesign__0029", "fragmentFilters", INSTANCE, java.lang.String.class, "fragmentFilters", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
-		fragmentFilters = $fragmentFilters;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String, java.lang.String> $fragmentTypeName
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, java.lang.String, java.lang.String>(
 				"Attributedesign__0027", "fragmentTypeName", INSTANCE, java.lang.String.class, "fragmentTypeName", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
@@ -76,7 +72,15 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
 				"Attributedesign__0028", "styleNames", INSTANCE, java.lang.String.class, "styleNames", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
 		styleNames = $styleNames;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String> $fragmentFilters
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<java.lang.String>, java.lang.String>(
+				"Attributedesign__0029", "fragmentFilters", INSTANCE, java.lang.String.class, "fragmentFilters", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		fragmentFilters = $fragmentFilters;
 		// Relations
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> $type
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign>(
+				"Relationdesign__003e", "type", INSTANCE, "type", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		type = $type;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> $attribute
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
 				"Relationdesign__003f", "attribute", INSTANCE, "attribute", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
@@ -93,19 +97,19 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign>(
 				"Relationdesign__0042", "properties", INSTANCE, "properties", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
 		properties = $properties;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> $type
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign>(
-				"Relationdesign__003e", "type", INSTANCE, "type", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
-		type = $type;
 		// Reverse relations
 		
 		// Phase 2
-		$fragmentFilters.dataType.put("category", "text");
-		$fragmentFilters.multivalue = true;
 		$fragmentTypeName.dataType.put("category", "text");
 		$styleNames.dataType.put("category", "text");
 		$styleNames.multivalue = true;
+		$fragmentFilters.dataType.put("category", "text");
+		$fragmentFilters.multivalue = true;
 
+		$type.valueClass = org.instantlogic.designer.FragmentTypeDesign.class;
+		$type.to = org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE;
+		$type.setReverseRelation(org.instantlogic.designer.entity.FragmentTypeDesignEntity.usages);
+		$type.options = (org.instantlogic.fabric.deduction.Deduction)createDeduction0();
 		$attribute.valueClass = org.instantlogic.designer.AttributeDesign.class;
 		$attribute.to = org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE;
 		$attribute.options = (org.instantlogic.fabric.deduction.Deduction)createDeduction1();
@@ -119,10 +123,6 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 		$properties.setReverseRelation(org.instantlogic.designer.entity.PropertyDesignEntity.fragment);
 		$properties.owner = true;
 		$properties.multivalue = true;
-		$type.valueClass = org.instantlogic.designer.FragmentTypeDesign.class;
-		$type.to = org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE;
-		$type.setReverseRelation(org.instantlogic.designer.entity.FragmentTypeDesignEntity.usages);
-		$type.options = (org.instantlogic.fabric.deduction.Deduction)createDeduction0();
 
 	}
 
@@ -147,16 +147,16 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
-		fragmentFilters,
 		fragmentTypeName,
 		styleNames,
+		fragmentFilters,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
+		type,
 		attribute,
 		entity,
 		event,
 		properties,
-		type,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};

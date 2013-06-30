@@ -30,19 +30,19 @@ public class FlowEdgeDesign extends org.instantlogic.fabric.Instance {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<FlowEdgeDesign, FlowNodeBaseDesign> endNode
-		= createRelationValue(org.instantlogic.designer.entity.FlowEdgeDesignEntity.endNode);
+	private final org.instantlogic.fabric.value.RelationValue<FlowEdgeDesign, FlowNodeBaseDesign> startNode
+		= createRelationValue(org.instantlogic.designer.entity.FlowEdgeDesignEntity.startNode);
 		
-	public org.instantlogic.fabric.value.RelationValue<FlowEdgeDesign, FlowNodeBaseDesign> getEndNodeRelationValue() {
-		return endNode;
+	public org.instantlogic.fabric.value.RelationValue<FlowEdgeDesign, FlowNodeBaseDesign> getStartNodeRelationValue() {
+		return startNode;
 	}
 
-	public org.instantlogic.designer.FlowNodeBaseDesign getEndNode() {
-		return endNode.getValue();
+	public org.instantlogic.designer.FlowNodeBaseDesign getStartNode() {
+		return startNode.getValue();
 	}
 	
-	public FlowEdgeDesign setEndNode(org.instantlogic.designer.FlowNodeBaseDesign newValue) {
-		endNode.setValue(newValue);
+	public FlowEdgeDesign setStartNode(org.instantlogic.designer.FlowNodeBaseDesign newValue) {
+		startNode.setValue(newValue);
 		return (FlowEdgeDesign)this;
 	}
 	
@@ -66,19 +66,19 @@ public class FlowEdgeDesign extends org.instantlogic.fabric.Instance {
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<FlowEdgeDesign, FlowNodeBaseDesign> startNode
-		= createRelationValue(org.instantlogic.designer.entity.FlowEdgeDesignEntity.startNode);
+	private final org.instantlogic.fabric.value.RelationValue<FlowEdgeDesign, FlowNodeBaseDesign> endNode
+		= createRelationValue(org.instantlogic.designer.entity.FlowEdgeDesignEntity.endNode);
 		
-	public org.instantlogic.fabric.value.RelationValue<FlowEdgeDesign, FlowNodeBaseDesign> getStartNodeRelationValue() {
-		return startNode;
+	public org.instantlogic.fabric.value.RelationValue<FlowEdgeDesign, FlowNodeBaseDesign> getEndNodeRelationValue() {
+		return endNode;
 	}
 
-	public org.instantlogic.designer.FlowNodeBaseDesign getStartNode() {
-		return startNode.getValue();
+	public org.instantlogic.designer.FlowNodeBaseDesign getEndNode() {
+		return endNode.getValue();
 	}
 	
-	public FlowEdgeDesign setStartNode(org.instantlogic.designer.FlowNodeBaseDesign newValue) {
-		startNode.setValue(newValue);
+	public FlowEdgeDesign setEndNode(org.instantlogic.designer.FlowNodeBaseDesign newValue) {
+		endNode.setValue(newValue);
 		return (FlowEdgeDesign)this;
 	}
 	

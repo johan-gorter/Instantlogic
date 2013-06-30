@@ -11,6 +11,7 @@ import org.instantlogic.designer.SelectionDesign;
 import org.instantlogic.designer.SharedElementDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
+import org.instantlogic.designer.event.DataEventGenerator;
 import org.instantlogic.designer.event.RemoveAttributeEventGenerator;
 import org.instantlogic.designer.sharedfragment.EntityContextSharedElementGenerator;
 
@@ -28,7 +29,7 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 		FragmentTemplateDesign nameInput, categoryInput, multilineInput, formattedInput,
 			percentageInput, exactRoundingInput, wholeNumberInput,
 			hasRelevanceInput, hasRuleInput, writeableInput, hasDefaultInput,
-			deleteButton;
+			deleteButton, exploreButton;
 		SharedElementDesign entityContext;
 		SelectionDesign selectDataType;
 
@@ -53,6 +54,10 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 							.addToUntranslated(new StringTemplateDesign().setDeduction(attributeName = new DeductionSchemeDesign()))
 							.addToUntranslated(new StringTemplateDesign().setConstantText(" (Attribute)"))
 						),
+						
+						exploreButton = new FragmentTemplateDesign("Button").addToStyleNames("btn")
+							.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-wrench"))
+							.setText("text", createConstantText("Data")),
 					
 						deleteButton = new FragmentTemplateDesign("Button").addToStyleNames("btn")
 							.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-remove"))
@@ -83,6 +88,7 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 		);
 		
 		deleteButton.setEvent(RemoveAttributeEventGenerator.EVENT);
+		exploreButton.setEvent(DataEventGenerator.EVENT);
 		
 		entity.deduceReverseRelation(EntityDesignEntityGenerator.attributes, entity.deduceSelectedInstance(AttributeDesignEntityGenerator.ENTITY));
 		entityContext.setDefinition(EntityContextSharedElementGenerator.DEFINITION);

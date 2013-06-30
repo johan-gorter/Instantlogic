@@ -30,38 +30,6 @@ public abstract class AbstractFlowDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> edges
-		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.edges);
-		
-	public org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> getEdgesRelationValue() {
-		return edges;
-	}
-
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign> getEdges() {
-		return edges.getValue();
-	}
-	
-	public FlowDesign addToEdges(FlowEdgeDesign item) {
-		edges.addValue(item);
-		return (FlowDesign)this;
-	}
-	
-	public FlowDesign addToEdges(FlowEdgeDesign item, int index) {
-		edges.insertValue(item, index);
-		return (FlowDesign)this;
-	}
-	
-	public FlowDesign removeFromEdges(FlowEdgeDesign item) {
-		edges.removeValue(item);
-		return (FlowDesign)this;
-	}
-	
-	public FlowDesign removeFromEdges(int index) {
-		edges.removeValue(index);
-		return (FlowDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowNodeBaseDesign> nodes
 		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.nodes);
 		
@@ -90,6 +58,38 @@ public abstract class AbstractFlowDesign extends Design {
 	
 	public FlowDesign removeFromNodes(int index) {
 		nodes.removeValue(index);
+		return (FlowDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> edges
+		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.edges);
+		
+	public org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> getEdgesRelationValue() {
+		return edges;
+	}
+
+	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign> getEdges() {
+		return edges.getValue();
+	}
+	
+	public FlowDesign addToEdges(FlowEdgeDesign item) {
+		edges.addValue(item);
+		return (FlowDesign)this;
+	}
+	
+	public FlowDesign addToEdges(FlowEdgeDesign item, int index) {
+		edges.insertValue(item, index);
+		return (FlowDesign)this;
+	}
+	
+	public FlowDesign removeFromEdges(FlowEdgeDesign item) {
+		edges.removeValue(item);
+		return (FlowDesign)this;
+	}
+	
+	public FlowDesign removeFromEdges(int index) {
+		edges.removeValue(index);
 		return (FlowDesign)this;
 	}
 	

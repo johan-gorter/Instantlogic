@@ -111,6 +111,24 @@ public class DeductionOperationDesign extends Design {
 	
 	// Relations
 	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionOperationDesign, DataTypeDesign> outputDataType
+		= createRelationValue(org.instantlogic.designer.entity.DeductionOperationDesignEntity.outputDataType);
+		
+	public org.instantlogic.fabric.value.RelationValue<DeductionOperationDesign, DataTypeDesign> getOutputDataTypeRelationValue() {
+		return outputDataType;
+	}
+
+	public org.instantlogic.designer.DataTypeDesign getOutputDataType() {
+		return outputDataType.getValue();
+	}
+	
+	public DeductionOperationDesign setOutputDataType(org.instantlogic.designer.DataTypeDesign newValue) {
+		outputDataType.setValue(newValue);
+		return (DeductionOperationDesign)this;
+	}
+	
+
+	
 	private final org.instantlogic.fabric.value.RelationValues<DeductionOperationDesign, DeductionOperationInputDesign> inputs
 		= createRelationValues(org.instantlogic.designer.entity.DeductionOperationDesignEntity.inputs);
 		
@@ -142,24 +160,6 @@ public class DeductionOperationDesign extends Design {
 		return (DeductionOperationDesign)this;
 	}
 	
-	
-	private final org.instantlogic.fabric.value.RelationValue<DeductionOperationDesign, DataTypeDesign> outputDataType
-		= createRelationValue(org.instantlogic.designer.entity.DeductionOperationDesignEntity.outputDataType);
-		
-	public org.instantlogic.fabric.value.RelationValue<DeductionOperationDesign, DataTypeDesign> getOutputDataTypeRelationValue() {
-		return outputDataType;
-	}
-
-	public org.instantlogic.designer.DataTypeDesign getOutputDataType() {
-		return outputDataType.getValue();
-	}
-	
-	public DeductionOperationDesign setOutputDataType(org.instantlogic.designer.DataTypeDesign newValue) {
-		outputDataType.setValue(newValue);
-		return (DeductionOperationDesign)this;
-	}
-	
-
 	
 	private final org.instantlogic.fabric.value.RelationValues<DeductionOperationDesign, DeductionOperationParameterDesign> parameters
 		= createRelationValues(org.instantlogic.designer.entity.DeductionOperationDesignEntity.parameters);

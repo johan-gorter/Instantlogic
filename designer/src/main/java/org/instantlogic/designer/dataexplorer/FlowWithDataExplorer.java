@@ -36,14 +36,14 @@ public class FlowWithDataExplorer extends FlowWrapper {
 	}
 	
 	@Override
-	public FlowStack createFlowStack(FlowStack parentStack, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
+	public FlowStack createFlowStack(FlowStack parentStack, Flow thisOrWrapper, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
 		if ("dataExplorer".equals(current)) {
 			FlowStack result = new FlowStack(parentStack, this);
 			String next = moreCoordinates.next();
 			result.setCurrentNode(dataExplorerRootSubFlow);
-			return dataExplorerRootFlow.createFlowStack(result, next, moreCoordinates, caseInstance);
+			return dataExplorerRootFlow.createFlowStack(result, dataExplorerRootFlow, next, moreCoordinates, caseInstance);
 		}
-		return super.createFlowStack(parentStack, current, moreCoordinates, caseInstance);
+		return super.createFlowStack(parentStack, thisOrWrapper, current, moreCoordinates, caseInstance);
 	}
 	
 	@Override
@@ -70,5 +70,10 @@ public class FlowWithDataExplorer extends FlowWrapper {
 			return dataExplorerRootFlow.enter(occurrence, flowContext);
 		}
 		return super.step(currentNode, occurrence, flowContext);
+	}
+	
+	@Override
+	public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
+		return super.enter(occurrence, context);
 	}
 }

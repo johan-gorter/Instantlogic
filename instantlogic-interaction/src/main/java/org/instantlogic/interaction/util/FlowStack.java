@@ -18,7 +18,7 @@ public class FlowStack extends AbstractDeductionContext {
 		if (path==null) return new FlowStack(null, mainFlow);
 		String[] pathElements = path.split("/");
 		Iterator<String> iterator = Arrays.asList(pathElements).iterator();
-		return mainFlow.createFlowStack(null, pathElements[0], iterator, caseInstance);
+		return mainFlow.createFlowStack(null, mainFlow, pathElements[0], iterator, caseInstance);
 	}
 	
 	private final FlowStack parent;

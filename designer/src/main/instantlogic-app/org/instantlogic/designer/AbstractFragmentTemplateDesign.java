@@ -28,38 +28,6 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValues<FragmentTemplateDesign, java.lang.String> fragmentFilters
-		= createAttributeValues(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.fragmentFilters);
-	
-	public org.instantlogic.fabric.value.Multi<java.lang.String> getFragmentFilters() {
-		return fragmentFilters.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValues<FragmentTemplateDesign, java.lang.String> getFragmentFiltersAttributeValue() {
-		return fragmentFilters;
-	}
-
-	public FragmentTemplateDesign addToFragmentFilters(java.lang.String item) {
-		fragmentFilters.addValue(item);
-		return (FragmentTemplateDesign)this;
-	}
-	
-	public FragmentTemplateDesign addToFragmentFilters(java.lang.String item, int index) {
-		fragmentFilters.insertValue(item, index);
-		return (FragmentTemplateDesign)this;
-	}
-	
-	public FragmentTemplateDesign removeFromFragmentFilters(java.lang.String item) {
-		fragmentFilters.removeValue(item);
-		return (FragmentTemplateDesign)this;
-	}
-	
-	public FragmentTemplateDesign removeFromFragmentFilters(int index) {
-		fragmentFilters.removeValue(index);
-		return (FragmentTemplateDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<FragmentTemplateDesign, java.lang.String> fragmentTypeName
 		= createAttributeValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.fragmentTypeName);
 	
@@ -109,7 +77,57 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	}
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValues<FragmentTemplateDesign, java.lang.String> fragmentFilters
+		= createAttributeValues(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.fragmentFilters);
+	
+	public org.instantlogic.fabric.value.Multi<java.lang.String> getFragmentFilters() {
+		return fragmentFilters.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValues<FragmentTemplateDesign, java.lang.String> getFragmentFiltersAttributeValue() {
+		return fragmentFilters;
+	}
+
+	public FragmentTemplateDesign addToFragmentFilters(java.lang.String item) {
+		fragmentFilters.addValue(item);
+		return (FragmentTemplateDesign)this;
+	}
+	
+	public FragmentTemplateDesign addToFragmentFilters(java.lang.String item, int index) {
+		fragmentFilters.insertValue(item, index);
+		return (FragmentTemplateDesign)this;
+	}
+	
+	public FragmentTemplateDesign removeFromFragmentFilters(java.lang.String item) {
+		fragmentFilters.removeValue(item);
+		return (FragmentTemplateDesign)this;
+	}
+	
+	public FragmentTemplateDesign removeFromFragmentFilters(int index) {
+		fragmentFilters.removeValue(index);
+		return (FragmentTemplateDesign)this;
+	}
+	
+	
 	// Relations
+	
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, FragmentTypeDesign> type
+		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.type);
+		
+	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, FragmentTypeDesign> getTypeRelationValue() {
+		return type;
+	}
+
+	public org.instantlogic.designer.FragmentTypeDesign getType() {
+		return type.getValue();
+	}
+	
+	public FragmentTemplateDesign setType(org.instantlogic.designer.FragmentTypeDesign newValue) {
+		type.setValue(newValue);
+		return (FragmentTemplateDesign)this;
+	}
+	
+
 	
 	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, AttributeDesign> attribute
 		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.attribute);
@@ -196,24 +214,6 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 		return (FragmentTemplateDesign)this;
 	}
 	
-	
-	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, FragmentTypeDesign> type
-		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.type);
-		
-	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, FragmentTypeDesign> getTypeRelationValue() {
-		return type;
-	}
-
-	public org.instantlogic.designer.FragmentTypeDesign getType() {
-		return type.getValue();
-	}
-	
-	public FragmentTemplateDesign setType(org.instantlogic.designer.FragmentTypeDesign newValue) {
-		type.setValue(newValue);
-		return (FragmentTemplateDesign)this;
-	}
-	
-
 
 	// Reverse relations
 

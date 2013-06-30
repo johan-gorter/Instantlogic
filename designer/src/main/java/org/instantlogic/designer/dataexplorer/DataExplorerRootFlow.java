@@ -52,11 +52,12 @@ public class DataExplorerRootFlow extends Flow {
 	}
 
 	@Override
-	public FlowStack createFlowStack(FlowStack parentStack, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
+	public FlowStack createFlowStack(FlowStack parentStack, Flow thisOrWrapper, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
 		FlowStack result = new FlowStack(parentStack, this);
 		String entityId = moreCoordinates.next();
 		result.setCurrentNode(fakeSubFlow(entityId));
-		return getEntityFlow(entityId).createFlowStack(result, entityId, moreCoordinates, caseInstance);
+		DataExplorerEntityFlow entityFlow = getEntityFlow(entityId);
+		return entityFlow.createFlowStack(result, entityFlow, entityId, moreCoordinates, caseInstance);
 	}
 
 	// ExploreDataEvent gets translated to a more specific entityDetailsEvent

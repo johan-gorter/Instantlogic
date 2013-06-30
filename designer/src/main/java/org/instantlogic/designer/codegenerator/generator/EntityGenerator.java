@@ -225,10 +225,11 @@ public class EntityGenerator extends AbstractGenerator {
 	}
 
 	private void sortNames(EntityClassModel model) {
-		Collections.sort(model.attributes);
-		Collections.sort(model.relations);
-		Collections.sort(model.reverseRelations);
-		Collections.sort(model.validations);
+// The order should be the same as in the design
+//		Collections.sort(model.attributes);
+//		Collections.sort(model.relations);
+//		Collections.sort(model.reverseRelations);
+//		Collections.sort(model.validations);
 	}
 
 	private EntityClassModel initModel() {

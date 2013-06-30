@@ -47,24 +47,6 @@ public class StaticInstanceValueDesign extends org.instantlogic.fabric.Instance 
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceValueDesign, AttributeDesign> attribute
-		= createRelationValue(org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.attribute);
-		
-	public org.instantlogic.fabric.value.RelationValue<StaticInstanceValueDesign, AttributeDesign> getAttributeRelationValue() {
-		return attribute;
-	}
-
-	public org.instantlogic.designer.AttributeDesign getAttribute() {
-		return attribute.getValue();
-	}
-	
-	public StaticInstanceValueDesign setAttribute(org.instantlogic.designer.AttributeDesign newValue) {
-		attribute.setValue(newValue);
-		return (StaticInstanceValueDesign)this;
-	}
-	
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceValueDesign, StaticInstanceDesign> relationValue
 		= createRelationValue(org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.relationValue);
 		
@@ -78,6 +60,24 @@ public class StaticInstanceValueDesign extends org.instantlogic.fabric.Instance 
 	
 	public StaticInstanceValueDesign setRelationValue(org.instantlogic.designer.StaticInstanceDesign newValue) {
 		relationValue.setValue(newValue);
+		return (StaticInstanceValueDesign)this;
+	}
+	
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceValueDesign, AttributeDesign> attribute
+		= createRelationValue(org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.attribute);
+		
+	public org.instantlogic.fabric.value.RelationValue<StaticInstanceValueDesign, AttributeDesign> getAttributeRelationValue() {
+		return attribute;
+	}
+
+	public org.instantlogic.designer.AttributeDesign getAttribute() {
+		return attribute.getValue();
+	}
+	
+	public StaticInstanceValueDesign setAttribute(org.instantlogic.designer.AttributeDesign newValue) {
+		attribute.setValue(newValue);
 		return (StaticInstanceValueDesign)this;
 	}
 	

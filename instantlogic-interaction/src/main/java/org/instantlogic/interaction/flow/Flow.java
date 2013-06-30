@@ -15,7 +15,7 @@ public abstract class Flow extends Concept {
 
 	public abstract FlowEvent findEvent(String eventName);
 	
-	public abstract FlowStack createFlowStack(FlowStack parentStack, String current, Iterator<String> moreCoordinates, Instance caseInstance);
+	public abstract FlowStack createFlowStack(FlowStack parentStack, Flow thisOrWrapper, String current, Iterator<String> moreCoordinates, Instance caseInstance);
 
 	public abstract FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context);
 
