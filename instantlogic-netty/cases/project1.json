@@ -3,16 +3,36 @@
   "entityName": "project",
   "version": 0,
   "last issue number": 23,
+  "users": [
+    {
+      "instanceId": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
+      "entityName": "user",
+      "username": "johan@instantlogic.org",
+      "name": "Johan"
+    },
+    {
+      "instanceId": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "entityName": "user",
+      "username": "alice@instantlogic.org",
+      "name": "Alice"
+    },
+    {
+      "instanceId": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
+      "entityName": "user",
+      "username": "bob@instantlogic.org",
+      "name": "Bob"
+    }
+  ],
   "issues": [
     {
       "instanceId": "I1",
       "entityName": "issue",
-      "description": "The interface should behave like POJO\u0027s for programmers",
-      "headline": "Design an entity-attribute-relation model, called Fabric",
       "number": 1,
+      "headline": "Design an entity-attribute-relation model, called Fabric",
+      "description": "The interface should behave like POJO\u0027s for programmers",
+      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "assignee": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "comments": [],
-      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -21,12 +41,12 @@
     {
       "instanceId": "I2",
       "entityName": "issue",
-      "description": "Add observers that are notified once and observers that are constantly being notified",
-      "headline": "Make the Fabric observable",
       "number": 2,
+      "headline": "Make the Fabric observable",
+      "description": "Add observers that are notified once and observers that are constantly being notified",
+      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
       "comments": [],
-      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "status": {
         "instanceName": "resolved",
         "entityName": "issueStatus"
@@ -35,12 +55,12 @@
     {
       "instanceId": "I3",
       "entityName": "issue",
-      "description": "Only implement Atomic and Consistent, not Isolated and Durable.\n\nListeners that observe a change that is rolled back should receive the opposite change event with a flag.",
-      "headline": "Make the Fabric transactional",
       "number": 3,
+      "headline": "Make the Fabric transactional",
+      "description": "Only implement Atomic and Consistent, not Isolated and Durable.\n\nListeners that observe a change that is rolled back should receive the opposite change event with a flag.",
+      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "assignee": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "comments": [],
-      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -49,11 +69,11 @@
     {
       "instanceId": "6f86ecaf-6e76-455b-854f-910639d16462",
       "entityName": "issue",
-      "description": "We knew this was coming.",
-      "headline": "Make the Fabric rule-based",
       "number": 4,
-      "comments": [],
+      "headline": "Make the Fabric rule-based",
+      "description": "We knew this was coming.",
       "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "comments": [],
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -62,11 +82,11 @@
     {
       "instanceId": "be35693d-8eae-4cad-b818-4e118ea1dfc4",
       "entityName": "issue",
-      "description": "Create one mechanism that is source control friendly.\nAdd another that is fast and efficient.",
-      "headline": "Add persistence mechanisms",
       "number": 5,
-      "comments": [],
+      "headline": "Add persistence mechanisms",
+      "description": "Create one mechanism that is source control friendly.\nAdd another that is fast and efficient.",
       "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
+      "comments": [],
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -75,12 +95,12 @@
     {
       "instanceId": "7c57e731-209d-4123-be23-bdba9dd96c74",
       "entityName": "issue",
-      "description": "Basic flow, event, page(\u003dplace) stuff",
-      "headline": "Extend the fabric with a framework to create web applications, called Interaction",
       "number": 6,
+      "headline": "Extend the fabric with a framework to create web applications, called Interaction",
+      "description": "Basic flow, event, page(\u003dplace) stuff",
+      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
       "comments": [],
-      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -89,11 +109,11 @@
     {
       "instanceId": "b83ca3f9-5bbc-4a1e-8c53-61ccb0b99f96",
       "entityName": "issue",
-      "description": "Test one two tree",
-      "headline": "Add places and flows to Interaction",
       "number": 7,
-      "comments": [],
+      "headline": "Add places and flows to Interaction",
+      "description": "Test one two tree",
       "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "comments": [],
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -102,12 +122,12 @@
     {
       "instanceId": "5b3fde85-c4e0-422e-ba64-e85dc3d0705d",
       "entityName": "issue",
-      "description": "call them SharedElements",
-      "headline": "Add reusable place-elements to Interaction",
       "number": 8,
+      "headline": "Add reusable place-elements to Interaction",
+      "description": "call them SharedElements",
+      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "assignee": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "comments": [],
-      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -116,8 +136,8 @@
     {
       "instanceId": "9fbad877-15ad-48ff-adea-c322aa7083c4",
       "entityName": "issue",
-      "headline": "Make a runtime engine for Interaction",
       "number": 9,
+      "headline": "Make a runtime engine for Interaction",
       "comments": [],
       "status": {
         "instanceName": "open",
@@ -127,11 +147,11 @@
     {
       "instanceId": "4810d3f1-d1e2-453e-93fd-35a04a4ca1ae",
       "entityName": "issue",
-      "headline": "Add functionality which allows users to see and interact with each other",
       "number": 10,
+      "headline": "Add functionality which allows users to see and interact with each other",
+      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
       "comments": [],
-      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -140,10 +160,10 @@
     {
       "instanceId": "63c09d1c-d57c-4918-a8df-671de11642ed",
       "entityName": "issue",
-      "headline": "Make a tool which generates code for the Fabric and Interaction, called Designer",
       "number": 11,
-      "comments": [],
+      "headline": "Make a tool which generates code for the Fabric and Interaction, called Designer",
       "reporter": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
+      "comments": [],
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -152,11 +172,11 @@
     {
       "instanceId": "439723d4-3e23-495e-bda5-5a1e91d7f3fe",
       "entityName": "issue",
-      "headline": "Add a API interface for the Designer",
       "number": 12,
+      "headline": "Add a API interface for the Designer",
+      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "assignee": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "comments": [],
-      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -165,10 +185,10 @@
     {
       "instanceId": "34d768cf-07bd-4d00-9d07-24f0349f67af",
       "entityName": "issue",
-      "headline": "Add a graphical user interface for the Designer",
       "number": 13,
-      "comments": [],
+      "headline": "Add a graphical user interface for the Designer",
       "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "comments": [],
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -177,12 +197,12 @@
     {
       "instanceId": "3bafb53d-1f90-4a1f-945d-3409fae627bd",
       "entityName": "issue",
-      "description": "Todo: think of a good metaphore, like a construction helmet.",
-      "headline": "Add a debugging option which aids in application development",
       "number": 14,
+      "headline": "Add a debugging option which aids in application development",
+      "description": "Todo: think of a good metaphore, like a construction helmet.",
+      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
       "comments": [],
-      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -191,11 +211,11 @@
     {
       "instanceId": "b6e7113a-2d74-4402-b9d6-cd62f3cc2585",
       "entityName": "issue",
-      "description": "This will be the killer feature",
-      "headline": "Generate bytecode on the fly to allow changes from the designer to be visible immediately in the application",
       "number": 15,
-      "comments": [],
+      "headline": "Generate bytecode on the fly to allow changes from the designer to be visible immediately in the application",
+      "description": "This will be the killer feature",
       "reporter": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
+      "comments": [],
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
@@ -204,35 +224,15 @@
     {
       "instanceId": "ba9c7233-8e55-4416-870c-bf5a2c600704",
       "entityName": "issue",
-      "description": "Make the application ready to be used for rapid prototyping.",
-      "headline": "Rapid prototyping",
       "number": 16,
-      "comments": [],
+      "headline": "Rapid prototyping",
+      "description": "Make the application ready to be used for rapid prototyping.",
       "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
+      "comments": [],
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
       }
-    }
-  ],
-  "users": [
-    {
-      "instanceId": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
-      "entityName": "user",
-      "name": "Johan",
-      "username": "johan@instantlogic.org"
-    },
-    {
-      "instanceId": "a63e47f6-839d-452e-85e3-7d754d304ec3",
-      "entityName": "user",
-      "name": "Alice",
-      "username": "alice@instantlogic.org"
-    },
-    {
-      "instanceId": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
-      "entityName": "user",
-      "name": "Bob",
-      "username": "bob@instantlogic.org"
     }
   ]
 }

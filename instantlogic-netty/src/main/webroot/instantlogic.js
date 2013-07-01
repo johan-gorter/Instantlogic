@@ -7,7 +7,7 @@ YUI.add('instantlogic', function (Y) {
 
     ns.createBaseConfiguration = function(YUI) {
     	return {
-    		fragmentNamespaces: [YUI.instantlogic.fragments, YUI.instantlogic.presence, YUI.instantlogic.designer],
+    		fragmentNamespaces: [YUI.instantlogic.fragments, YUI.instantlogic.presence, YUI.instantlogic.designer, YUI.instantlogic.designer.diagram],
     		createAnswer: YUI.instantlogic.answers.createAnswer
     	}
     }

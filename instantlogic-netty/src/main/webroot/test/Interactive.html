@@ -10,29 +10,66 @@
 <script src="../instantlogic-fragments.js"></script>
 <script src="../instantlogic-answers.js"></script>
 <script src="../instantlogic-designer.js"></script>
+<script type="text/javascript" src="/instantlogic-designer-diagram.js"></script>
+
 
     <script>
         YUI({
             useBrowserConsole: true, filter: 'RAW', throwFail: true, errorFn: function () { return false; }
-        }).use('test', 'node', 'instantlogic', 'instantlogic-presence', 'instantlogic-fragments', 'instantlogic-answers', 'instantlogic-designer', function (Y) {
+        }).use('test', 'node', 'instantlogic', 'instantlogic-presence', 'instantlogic-fragments', 'instantlogic-answers', 'instantlogic-designer', 'instantlogic-designer-diagram', function (Y) {
 
-            var model = {
-                "type": "Page",
-                "id": "F40P1F1",
-                "headerContent": [{ "type": "Heading1", "id": "F40P1F1-F40P1F1F1F1", "text": "Welcome"}],
-                "mainContent": [{ "type": "Paragraph", "id": "F40P1F1-F40P1F1F2F1", "text": "Welcome to the Designer"}]
-            };
+        	var modelJson = window.localStorage["interactiveModel"];
+        	var model = null;
+        	if (modelJson) {
+				model = JSON.parse(modelJson);        		
+        	} else {
+	            model = {
+	                "type": "Page",
+	                "id": "F40P1F1",
+	                "headerContent": [{ "type": "Heading1", "id": "F40P1F1-F40P1F1F1F1", "text": "Welcome"}],
+	                "mainContent": [{ "type": "Paragraph", "id": "F40P1F1-F40P1F1F2F1", "text": "Welcome to the Designer"}]
+	            };
+	            modelJson = JSON.stringify(model, null, " ");
+        	}
+        	Y.one('#input').set("value", modelJson);
+        	
             var configuration = Y.instantlogic.createBaseConfiguration(Y); 
 
+            window.onbeforeunload = function() {
+            	window.localStorage["interactiveModel"] = Y.one('#input').get("value");
+            }
+            
             Y.one('#testarea').setContent('');
             var engine = new Y.instantlogic.Engine('dummyApplication','dummyCaseId','dummyTravelerId', null, Y.one('#testarea'), configuration);
 
             engine.updatePlace(model);
+            
+            var update = function() {
+            	var modelJson = Y.one('#input').get("value");
+            	var newModel = JSON.parse(modelJson);
+            	engine.updatePlace(newModel);
+            };
+            
+            Y.one('#test').on('click', function(){
+            	update();
+            });
+            Y.one('#input').on('key', function(){
+            	update();
+            	return false;
+            }, 'enter+ctrl');
+            
+            setTimeout(function(){
+            	Y.one('#input').focus();
+            });
         });
+        
     </script>
 
 </head>
 <body>
+	<textarea rows="20" cols="120" id="input">
+	</textarea><br />
+	<button id="test">Test</button>
     <div id="testarea">
     </div>
 </body>
