@@ -42,6 +42,26 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.AttributeDesignEntity.rule);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction4() {
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.AttributeDesignEntity._default);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction5() {
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.DesignEntity.INSTANCE);
@@ -135,16 +155,32 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
                             .setField(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.hasRule)        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0023", "Input")      
-                            .setField(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.writeable)        
+                        new org.instantlogic.interaction.page.SelectionElement(createDeduction3(),
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0023", "Button")      
+                                    .setStyleNames(new String[]{"btn"})      
+                                    .setEvent(org.instantlogic.designer.event.DeductionSchemeDetailsEvent.INSTANCE)      
+                                    .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Deduction scheme").getTextTemplate()))
+        
                     )        
                     .addChild("content",
                         new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0024", "Input")      
+                            .setField(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.writeable)        
+                    )        
+                    .addChild("content",
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0025", "Input")      
                             .setField(org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE, org.instantlogic.designer.entity.AttributeDesignEntity.hasDefault)        
+                    )        
+                    .addChild("content",
+                        new org.instantlogic.interaction.page.SelectionElement(createDeduction4(),
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0026", "Button")      
+                                    .setStyleNames(new String[]{"btn"})      
+                                    .setEvent(org.instantlogic.designer.event.DeductionSchemeDetailsEvent.INSTANCE)      
+                                    .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Deduction scheme").getTextTemplate()))
+        
                     )        
             ); 
 	
-	private static final org.instantlogic.fabric.text.TextTemplate TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction3()).add(" (Attribute)").getTextTemplate();
+	private static final org.instantlogic.fabric.text.TextTemplate TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction5()).add(" (Attribute)").getTextTemplate();
 	@Override
 	protected org.instantlogic.fabric.text.TextTemplate getTitle() {
 		return TITLE;

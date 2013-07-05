@@ -125,6 +125,10 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 //		deductionInput.addToInputs(input);
 //		return result;
 	}
+	
+	public DeductionDesign deduceId(DeductionDesign instance) {
+		return deduceCustom(DeductionOperationDesign.id, DeductionOperationInputDesign.idOfInstance, instance);
+	}
 
 	public DeductionDesign deduceAttributeHasValue(AttributeDesign attribute) {
 //		DeductionDesign result = new DeductionDesign();

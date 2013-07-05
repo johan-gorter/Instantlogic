@@ -22,6 +22,7 @@ public class DeductionOperationInputDesignEntityGenerator extends EntityDesign {
     public static final StaticInstanceDesign castInstance = addStaticInstance(ENTITY, "castInstance", createConstantText("Instance"));
     public static final StaticInstanceDesign equalsOperands = addStaticInstance(ENTITY, "equalsOperands", createConstantText("Operands"));
     public static final StaticInstanceDesign hasValueInput = addStaticInstance(ENTITY, "hasValueInput", createConstantText("Input"));
+    public static final StaticInstanceDesign idOfInstance = addStaticInstance(ENTITY, "idOfInstance", createConstantText("Id of instance"));
     public static final StaticInstanceDesign negationInput = addStaticInstance(ENTITY, "negationInput", createConstantText("Input"));
     public static final StaticInstanceDesign reverseRelationToInstance = addStaticInstance(ENTITY, "reverseRelationToInstance", createConstantText("To instance"));
     public static final StaticInstanceDesign sumOperands = addStaticInstance(ENTITY, "sumOperands", createConstantText("Operands"));
@@ -34,6 +35,7 @@ public class DeductionOperationInputDesignEntityGenerator extends EntityDesign {
     	addStaticInstanceValue(castInstance, DesignEntityGenerator.name, "instance");
     	addStaticInstanceValue(equalsOperands, DesignEntityGenerator.name, "operands");
     	addStaticInstanceValue(hasValueInput, DesignEntityGenerator.name, "input");
+    	addStaticInstanceValue(idOfInstance, DesignEntityGenerator.name, "idOfInstance");
     	addStaticInstanceValue(negationInput, DesignEntityGenerator.name, "input");
     	addStaticInstanceValue(reverseRelationToInstance, DesignEntityGenerator.name, "toInstance");
     	addStaticInstanceValue(sumOperands, DesignEntityGenerator.name, "operands");

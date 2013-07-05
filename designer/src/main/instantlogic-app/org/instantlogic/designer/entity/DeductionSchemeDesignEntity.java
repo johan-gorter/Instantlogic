@@ -71,6 +71,7 @@ public class DeductionSchemeDesignEntity extends org.instantlogic.fabric.model.E
 		$deductions.multivalue = true;
 		$output.valueClass = org.instantlogic.designer.DeductionDesign.class;
 		$output.to = org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE;
+		$output.setReverseRelation(org.instantlogic.designer.entity.DeductionDesignEntity.outputOfScheme);
 
 		$relevanceOfAttribute.reverse = true;
 		$relevanceOfAttribute.valueClass = org.instantlogic.designer.AttributeDesign.class;

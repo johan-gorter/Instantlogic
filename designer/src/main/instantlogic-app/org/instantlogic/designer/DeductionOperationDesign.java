@@ -22,6 +22,7 @@ public class DeductionOperationDesign extends Design {
 	public static final DeductionOperationDesign equals;
 	public static final DeductionOperationDesign first;
 	public static final DeductionOperationDesign hasValue;
+	public static final DeductionOperationDesign id;
 	public static final DeductionOperationDesign negation;
 	public static final DeductionOperationDesign reverseRelation;
 	public static final DeductionOperationDesign selectedInstance;
@@ -36,6 +37,7 @@ public class DeductionOperationDesign extends Design {
 	  equals = addStaticInstance("equals", new DeductionOperationDesign());
 	  first = addStaticInstance("first", new DeductionOperationDesign());
 	  hasValue = addStaticInstance("hasValue", new DeductionOperationDesign());
+	  id = addStaticInstance("id", new DeductionOperationDesign());
 	  negation = addStaticInstance("negation", new DeductionOperationDesign());
 	  reverseRelation = addStaticInstance("reverseRelation", new DeductionOperationDesign());
 	  selectedInstance = addStaticInstance("selectedInstance", new DeductionOperationDesign());
@@ -67,6 +69,10 @@ public class DeductionOperationDesign extends Design {
       hasValue.setName("hasValue");
       hasValue.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.hasValueInput);
 	  hasValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Has value").getTextTemplate());
+      id.setJavaClassName("org.instantlogic.fabric.deduction.IdDeduction");
+      id.setName("id");
+      id.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.idOfInstance);
+	  id.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Id").getTextTemplate());
       negation.setJavaClassName("org.instantlogic.fabric.deduction.NegationDeduction");
       negation.setName("negation");
       negation.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.negationInput);

@@ -12,6 +12,7 @@ public class MainFlow extends org.instantlogic.interaction.flow.impl.SimpleFlow 
 		org.instantlogic.designer.flow.main.FlowNodeSubFlow.INSTANCE,
 		org.instantlogic.designer.flow.main.PlaceTemplateSubFlow.INSTANCE,
 		org.instantlogic.designer.flow.main.AttributeSubFlow.INSTANCE,
+		org.instantlogic.designer.flow.main.DeductionSchemeSubFlow.INSTANCE,
 		org.instantlogic.designer.flow.main.WelcomePlaceTemplate.INSTANCE,
 	};
 	
@@ -50,6 +51,11 @@ public class MainFlow extends org.instantlogic.interaction.flow.impl.SimpleFlow 
 			null, 
 			org.instantlogic.designer.event.PlaceTemplateDetailsEvent.INSTANCE,
 			org.instantlogic.designer.flow.main.PlaceTemplateSubFlow.INSTANCE
+		),
+		new org.instantlogic.interaction.flow.FlowEdge(
+			null, 
+			org.instantlogic.designer.event.DeductionSchemeDetailsEvent.INSTANCE,
+			org.instantlogic.designer.flow.main.DeductionSchemeSubFlow.INSTANCE
 		),
 	};
 	

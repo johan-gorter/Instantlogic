@@ -30,6 +30,7 @@ public class DeductionOperationDesignEntityGenerator extends EntityDesign {
     public static final StaticInstanceDesign equals = addStaticInstance(ENTITY, "equals", createConstantText("Equals"));
     public static final StaticInstanceDesign first = addStaticInstance(ENTITY, "first", createConstantText("First"));
     public static final StaticInstanceDesign hasValue = addStaticInstance(ENTITY, "hasValue", createConstantText("Has value"));
+    public static final StaticInstanceDesign id = addStaticInstance(ENTITY, "id", createConstantText("Id"));
     public static final StaticInstanceDesign negation = addStaticInstance(ENTITY, "negation", createConstantText("Negation"));
     public static final StaticInstanceDesign reverseRelation = addStaticInstance(ENTITY, "reverseRelation", createConstantText("Reverse relation"));
     public static final StaticInstanceDesign selectedInstance = addStaticInstance(ENTITY, "selectedInstance", createConstantText("Selected instance"));
@@ -62,6 +63,10 @@ public class DeductionOperationDesignEntityGenerator extends EntityDesign {
     	addStaticInstanceValue(hasValue, javaClassName, "org.instantlogic.fabric.deduction.HasValueDeduction");
     	addStaticInstanceValue(hasValue, DesignEntityGenerator.name, "hasValue");
     	addStaticInstanceRelationValue(hasValue, inputs, DeductionOperationInputDesignEntityGenerator.hasValueInput);
+    	
+    	addStaticInstanceValue(id, javaClassName, "org.instantlogic.fabric.deduction.IdDeduction");
+    	addStaticInstanceValue(id, DesignEntityGenerator.name, "id");
+    	addStaticInstanceRelationValue(id, inputs, DeductionOperationInputDesignEntityGenerator.idOfInstance);
     	
     	addStaticInstanceValue(negation, javaClassName, "org.instantlogic.fabric.deduction.NegationDeduction");
     	addStaticInstanceValue(negation, DesignEntityGenerator.name, "negation");

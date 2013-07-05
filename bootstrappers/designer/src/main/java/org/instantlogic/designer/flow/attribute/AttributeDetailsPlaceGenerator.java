@@ -12,6 +12,7 @@ import org.instantlogic.designer.SharedElementDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.event.DataEventGenerator;
+import org.instantlogic.designer.event.DeductionSchemeDetailsEventGenerator;
 import org.instantlogic.designer.event.RemoveAttributeEventGenerator;
 import org.instantlogic.designer.sharedfragment.EntityContextSharedElementGenerator;
 
@@ -25,11 +26,11 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 	
 	@Override
 	public void init() {
-		DeductionSchemeDesign attributeName, entity;
+		DeductionSchemeDesign attributeName, entity, selectRule, selectDefault;
 		FragmentTemplateDesign nameInput, categoryInput, multilineInput, formattedInput,
 			percentageInput, exactRoundingInput, wholeNumberInput,
 			hasRelevanceInput, hasRuleInput, writeableInput, hasDefaultInput,
-			deleteButton, exploreButton;
+			deleteButton, exploreButton, ruleDetailsButton, defaultDetailsButton;
 		SharedElementDesign entityContext;
 		SelectionDesign selectDataType;
 
@@ -81,18 +82,30 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 						new FragmentTemplateDesign("Heading4").setText("text", createConstantText("Value")),
 						hasRelevanceInput = new FragmentTemplateDesign("Input"),
 						hasRuleInput = new FragmentTemplateDesign("Input"),
+						new SelectionDesign().setSelection(selectRule = new DeductionSchemeDesign())
+							.setChild(ruleDetailsButton = new FragmentTemplateDesign("Button").addToStyleNames("btn")
+								.setText("text", createConstantText("Deduction scheme"))
+							),
 						writeableInput = new FragmentTemplateDesign("Input"),
-						hasDefaultInput = new FragmentTemplateDesign("Input")
+						hasDefaultInput = new FragmentTemplateDesign("Input"),
+						new SelectionDesign().setSelection(selectDefault = new DeductionSchemeDesign())
+							.setChild(defaultDetailsButton = new FragmentTemplateDesign("Button").addToStyleNames("btn")
+								.setText("text", createConstantText("Deduction scheme"))
+							)
 					)
 			)
 		);
 		
 		deleteButton.setEvent(RemoveAttributeEventGenerator.EVENT);
 		exploreButton.setEvent(DataEventGenerator.EVENT);
+		ruleDetailsButton.setEvent(DeductionSchemeDetailsEventGenerator.EVENT);
+		defaultDetailsButton.setEvent(DeductionSchemeDetailsEventGenerator.EVENT);
 		
 		entity.deduceReverseRelation(EntityDesignEntityGenerator.attributes, entity.deduceSelectedInstance(AttributeDesignEntityGenerator.ENTITY));
 		entityContext.setDefinition(EntityContextSharedElementGenerator.DEFINITION);
 		attributeName.deduceAttribute(DesignEntityGenerator.name);
+		selectRule.deduceRelation(AttributeDesignEntityGenerator.rule);
+		selectDefault.deduceRelation(AttributeDesignEntityGenerator._default);
 		
 		nameInput.setEntity(DesignEntityGenerator.ENTITY).setAttribute(DesignEntityGenerator.name);
 		
@@ -112,5 +125,6 @@ public class AttributeDetailsPlaceGenerator extends PlaceTemplateDesign {
 		hasRuleInput.setEntity(AttributeDesignEntityGenerator.ENTITY).setAttribute(AttributeDesignEntityGenerator.hasRule);
 		writeableInput.setEntity(AttributeDesignEntityGenerator.ENTITY).setAttribute(AttributeDesignEntityGenerator.writeable);
 		hasDefaultInput.setEntity(AttributeDesignEntityGenerator.ENTITY).setAttribute(AttributeDesignEntityGenerator.hasDefault);
+		
 	}
 }

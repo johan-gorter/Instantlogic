@@ -35,7 +35,7 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean> $multivalue
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean>(
-				"Attributedesign__0013", "multivalue", INSTANCE, java.lang.Boolean.class, "multivalue", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"Attributedesign__0016", "multivalue", INSTANCE, java.lang.Boolean.class, "multivalue", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		multivalue = $multivalue;
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType

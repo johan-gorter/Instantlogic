@@ -9,8 +9,31 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	
 	// Deductions
 
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
+		  	org.instantlogic.designer.deduction.DeductionDiagramPositionDefaultDeduction d0 = new org.instantlogic.designer.deduction.DeductionDiagramPositionDefaultDeduction();
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		    d0.setValue(8.0);
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
+		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
+		    d0.setValue(4.0);
+		return d0;
+	}
+
+
 	
 	// Attributes
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.util.diagram.Point2d, org.instantlogic.designer.util.diagram.Point2d> diagramPosition; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> diagramWidth; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> diagramHeight; 
 	
 	// Relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> operation;
@@ -20,11 +43,24 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	
 	// Reverse relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> scheme;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> outputOfScheme;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> outputs;
 
 	static {
 		// Phase 1
 		// Attributes
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.util.diagram.Point2d, org.instantlogic.designer.util.diagram.Point2d> $diagramPosition
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.util.diagram.Point2d, org.instantlogic.designer.util.diagram.Point2d>(
+				"Attributedesign__000b", "diagramPosition", INSTANCE, org.instantlogic.designer.util.diagram.Point2d.class, "diagramPosition", org.instantlogic.designer.AbstractDeductionDesign.class);
+		diagramPosition = $diagramPosition;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> $diagramWidth
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double>(
+				"Attributedesign__000c", "diagramWidth", INSTANCE, java.lang.Double.class, "diagramWidth", org.instantlogic.designer.AbstractDeductionDesign.class);
+		diagramWidth = $diagramWidth;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> $diagramHeight
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double>(
+				"Attributedesign__000d", "diagramHeight", INSTANCE, java.lang.Double.class, "diagramHeight", org.instantlogic.designer.AbstractDeductionDesign.class);
+		diagramHeight = $diagramHeight;
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
@@ -47,12 +83,19 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"Relationdesign__0013", "scheme", INSTANCE, "scheme", org.instantlogic.designer.AbstractDeductionDesign.class);
 		scheme = $scheme;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $outputOfScheme
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
+				"Relationdesign__0014", "outputOfScheme", INSTANCE, "outputOfScheme", org.instantlogic.designer.AbstractDeductionDesign.class);
+		outputOfScheme = $outputOfScheme;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $outputs
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
 				"Relationdesign__0020", "outputs", INSTANCE, "outputs", org.instantlogic.designer.AbstractDeductionDesign.class);
 		outputs = $outputs;
 		
 		// Phase 2
+		$diagramPosition._default = createDeduction0();
+		$diagramWidth._default = createDeduction1();
+		$diagramHeight._default = createDeduction2();
 
 		$operation.valueClass = org.instantlogic.designer.DeductionOperationDesign.class;
 		$operation.to = org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE;
@@ -73,6 +116,10 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		$scheme.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
 		$scheme.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
 		$scheme.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.deductions);
+		$outputOfScheme.reverse = true;
+		$outputOfScheme.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
+		$outputOfScheme.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
+		$outputOfScheme.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.output);
 		$outputs.reverse = true;
 		$outputs.valueClass = org.instantlogic.designer.DeductionInputDesign.class;
 		$outputs.to = org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE;
@@ -101,6 +148,9 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
+		diagramPosition,
+		diagramWidth,
+		diagramHeight,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		operation,
@@ -110,6 +160,7 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		scheme,
+		outputOfScheme,
 		outputs,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{

@@ -5,6 +5,7 @@ import org.instantlogic.designer.FlowDesign;
 import org.instantlogic.designer.SubFlowDesign;
 import org.instantlogic.designer.event.AddEntityEventGenerator;
 import org.instantlogic.designer.event.AttributeDetailsEventGenerator;
+import org.instantlogic.designer.event.DeductionSchemeDetailsEventGenerator;
 import org.instantlogic.designer.event.EntityDetailsEventGenerator;
 import org.instantlogic.designer.event.FlowDetailsEventGenerator;
 import org.instantlogic.designer.event.FlowNodeDetailsEventGenerator;
@@ -29,6 +30,7 @@ public class MainFlowGenerator extends FlowDesign {
 		SubFlowDesign flowNodeSubFlow = addSubFlow(FlowNodeFlowGenerator.FLOW);
 		SubFlowDesign placeTemplateSubFlow = addSubFlow(PlaceTemplateFlowGenerator.FLOW);
 		SubFlowDesign attributeSubFlow = addSubFlow(AttributeFlowGenerator.FLOW);
+		SubFlowDesign deductionSchemeSubFlow = addSubFlow(DeductionSchemeFlowGenerator.FLOW);
 
 		addToNodes(WelcomePlaceTemplateGenerator.PLACE);
 
@@ -58,7 +60,11 @@ public class MainFlowGenerator extends FlowDesign {
 		newEdge()
 			.setEvent(PlaceTemplateDetailsEventGenerator.EVENT)
 			.setEndNode(placeTemplateSubFlow);
-		
+	
+		newEdge()
+			.setEvent(DeductionSchemeDetailsEventGenerator.EVENT)
+			.setEndNode(deductionSchemeSubFlow);
+	
 		super.init();
 	}
 }

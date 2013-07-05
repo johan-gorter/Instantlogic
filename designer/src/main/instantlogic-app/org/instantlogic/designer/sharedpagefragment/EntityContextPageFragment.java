@@ -16,19 +16,19 @@ public class EntityContextPageFragment extends org.instantlogic.interaction.page
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0064", "Group")        
+    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__006d", "Group")        
         .addChild("content",
                 new org.instantlogic.interaction.page.SharedElementHolder("Sharedelemntdsgn__0007", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
         )        
         .addChild("content",
-            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0065", "Link")      
+            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__006e", "Link")      
                 .setEvent(org.instantlogic.designer.event.EntityDetailsEvent.INSTANCE)        
                 .addChild("content",
-                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0066", "Block")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__006f", "Block")      
                         .setStyleNames(new String[]{"inactive-card"})        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0067", "Heading3")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0070", "Heading3")      
                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Entity)").getTextTemplate())        
                         )        
                 )        

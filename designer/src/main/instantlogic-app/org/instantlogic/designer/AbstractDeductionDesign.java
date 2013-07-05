@@ -28,6 +28,57 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 
 	// Attributes
 	
+	private final org.instantlogic.fabric.value.AttributeValue<DeductionDesign, org.instantlogic.designer.util.diagram.Point2d> diagramPosition
+		= createAttributeValue(org.instantlogic.designer.entity.DeductionDesignEntity.diagramPosition);
+	
+	public org.instantlogic.designer.util.diagram.Point2d getDiagramPosition() {
+		return diagramPosition.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<DeductionDesign, org.instantlogic.designer.util.diagram.Point2d> getDiagramPositionAttributeValue() {
+		return diagramPosition;
+	}
+
+	public DeductionDesign setDiagramPosition(org.instantlogic.designer.util.diagram.Point2d newValue) {
+		diagramPosition.setValue(newValue);
+		return (DeductionDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<DeductionDesign, java.lang.Double> diagramWidth
+		= createAttributeValue(org.instantlogic.designer.entity.DeductionDesignEntity.diagramWidth);
+	
+	public java.lang.Double getDiagramWidth() {
+		return diagramWidth.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<DeductionDesign, java.lang.Double> getDiagramWidthAttributeValue() {
+		return diagramWidth;
+	}
+
+	public DeductionDesign setDiagramWidth(java.lang.Double newValue) {
+		diagramWidth.setValue(newValue);
+		return (DeductionDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<DeductionDesign, java.lang.Double> diagramHeight
+		= createAttributeValue(org.instantlogic.designer.entity.DeductionDesignEntity.diagramHeight);
+	
+	public java.lang.Double getDiagramHeight() {
+		return diagramHeight.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<DeductionDesign, java.lang.Double> getDiagramHeightAttributeValue() {
+		return diagramHeight;
+	}
+
+	public DeductionDesign setDiagramHeight(java.lang.Double newValue) {
+		diagramHeight.setValue(newValue);
+		return (DeductionDesign)this;
+	}
+	
+	
 	// Relations
 	
 	private final org.instantlogic.fabric.value.RelationValue<DeductionDesign, DeductionOperationDesign> operation
@@ -145,6 +196,23 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 
     public DeductionDesign setScheme(org.instantlogic.designer.DeductionSchemeDesign newValue) {
         scheme.setValue(newValue);
+        return (DeductionDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionDesign, DeductionSchemeDesign> outputOfScheme
+		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionDesignEntity.outputOfScheme);
+
+	public org.instantlogic.fabric.value.RelationValue<DeductionDesign, DeductionSchemeDesign> getOutputOfSchemeRelationValue() {
+		return outputOfScheme;
+	}
+
+	public org.instantlogic.designer.DeductionSchemeDesign getOutputOfScheme() {
+		return outputOfScheme.getValue();
+	}
+
+    public DeductionDesign setOutputOfScheme(org.instantlogic.designer.DeductionSchemeDesign newValue) {
+        outputOfScheme.setValue(newValue);
         return (DeductionDesign)this;
     }
 

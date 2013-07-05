@@ -1,5 +1,9 @@
 package org.instantlogic.designer;
 
+import java.awt.geom.Point2D;
+
+import org.instantlogic.designer.util.diagram.Point2d;
+
 
 
 public class DeductionDesignEntityGenerator extends EntityDesign {
@@ -11,7 +15,11 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
         setName("DeductionDesign");
         setIsCustomized(true);
     }
-
+    
+    public static final AttributeDesign diagramPosition = addAttribute(ENTITY, "diagramPosition", Point2d.class);
+    public static final AttributeDesign diagramWidth = addAttribute(ENTITY, "diagramWidth", java.lang.Double.class);
+    public static final AttributeDesign diagramHeight = addAttribute(ENTITY, "diagramHeight", java.lang.Double.class);
+    
     // Relations
     public static final RelationDesign operation = addRelation(ENTITY, "operation", RelationType.ManyToZeroOrOne, DeductionOperationDesignEntityGenerator.ENTITY);
 
@@ -25,5 +33,8 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
 
     @Override
     public void init() {
+    	diagramHeight.newDefault().deduceConstant(java.lang.Double.class, 4.0);
+    	diagramWidth.newDefault().deduceConstant(java.lang.Double.class, 8.0);
+    	diagramPosition.newDefault().deduceCustom(DesignerApplicationGenerator.DeductionDiagramPositionDefaultDeduction);
     }
 }

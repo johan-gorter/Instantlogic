@@ -37,6 +37,7 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
     public static DeductionOperationDesign ReverseJavaIdentifierDeduction;
     public static DeductionOperationDesign ReverseTechnicalNameDeduction;
     public static DeductionOperationDesign TechnicalNameDeduction;
+    public static DeductionOperationDesign DeductionDiagramPositionDefaultDeduction;
     
     public DesignerApplicationGenerator() {
         APPLICATION = this;
@@ -121,6 +122,11 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
     	addToCustomDeductionOperations(TechnicalNameDeduction);
     	TechnicalNameDeduction.setName("TechnicalName");
     	TechnicalNameDeduction.setJavaClassName("org.instantlogic.designer.deduction.TechnicalNameDeduction");
+    	
+    	DeductionDiagramPositionDefaultDeduction = new DeductionOperationDesign();
+    	addToCustomDeductionOperations(DeductionDiagramPositionDefaultDeduction);
+    	DeductionDiagramPositionDefaultDeduction.setName("DeductionDiagramPositionDefault");
+    	DeductionDiagramPositionDefaultDeduction.setJavaClassName("org.instantlogic.designer.deduction.DeductionDiagramPositionDefaultDeduction");
 	}
 
 	private void addFragmentTypes() {

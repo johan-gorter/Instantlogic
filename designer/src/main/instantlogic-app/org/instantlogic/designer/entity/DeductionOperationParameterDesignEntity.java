@@ -27,7 +27,7 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationParameterDesign, java.lang.String, java.lang.String> $valueClass
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationParameterDesign, java.lang.String, java.lang.String>(
-				"Attributedesign__0014", "valueClass", INSTANCE, java.lang.String.class, "valueClass", org.instantlogic.designer.DeductionOperationParameterDesign.class);
+				"Attributedesign__0017", "valueClass", INSTANCE, java.lang.String.class, "valueClass", org.instantlogic.designer.DeductionOperationParameterDesign.class);
 		valueClass = $valueClass;
 		// Relations
 		// Reverse relations
