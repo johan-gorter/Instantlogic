@@ -15,9 +15,11 @@ import org.instantlogic.interaction.page.SelectionElement;
 public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
+	private DataExplorerEntityFlow entityFlow;
 
-	public DataExplorerEntityDetailsPlaceTemplate(Entity<?> entity) {
-		this.entity = entity;
+	public DataExplorerEntityDetailsPlaceTemplate(DataExplorerEntityFlow entityFlow) {
+		this.entity = entityFlow.getEntity();
+		this.entityFlow = entityFlow;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -90,13 +92,20 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 					.addChild("content", 
 						new FragmentTemplate(id+"label", "Div").setStyleNames(new String[]{"control-label"}).addChild("content", 
 							new FragmentTemplate(id+"-text", "Text").putText("text", new TextTemplate().getUntranslated().add(relation.getName()).getTextTemplate()))
-			)
-			.addChild("content", new FragmentTemplate(id+"controls relations", "Div").setStyleNames(new String[]{"controls"}).addChild("content", 
-				new SelectionElement(selectValue, 
-					new FragmentTemplate(id+"-link", "Link")
-						.putText("text", getEntityTitle(relation.getTo()))
-						.setEvent(ExploreDataEvent.INSTANCE))
-			))
+					)
+					.addChild("content", new FragmentTemplate(id+"controls relations", "Div").setStyleNames(new String[]{"controls"})
+						.addChild("content", 
+							new SelectionElement(selectValue, 
+								new FragmentTemplate(id+"-link", "Link")
+									.putText("text", getEntityTitle(relation.getTo()))
+									.setEvent(ExploreDataEvent.INSTANCE))
+						)
+						.addChild("content", 
+							new FragmentTemplate(id+"detailsButton", "Button").setStyleNames(new String[]{"btn"})
+								.putText("text", new TextTemplate().getUntranslated().add("Details").getTextTemplate())
+								.setEvent(entityFlow.getRelationDetailsEvent(relation))
+						)
+					)
 		);
 	}
 

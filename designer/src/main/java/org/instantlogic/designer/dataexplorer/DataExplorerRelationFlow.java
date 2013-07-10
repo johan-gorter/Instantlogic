@@ -14,20 +14,24 @@ import org.instantlogic.interaction.flow.FlowNodeBase;
 import org.instantlogic.interaction.flow.impl.SimpleFlow;
 import org.instantlogic.interaction.flow.impl.SimpleFlowEvent;
 
-public class DataExplorerEntityFlow extends SimpleFlow {
+public class DataExplorerRelationFlow extends SimpleFlow {
 
 	private final Entity<?> entity;
-	private final DataExplorerEntityDetailsPlaceTemplate detailsPlaceTemplate;
+	private final Relation relation;
 	
+	private final DataExplorerRelationDetailsPlaceTemplate relationPlaceTemplate;
+	
+	// Place, addsubflow for each extesions of relation.to, removesubflow, moveup/down subflows
 	private final FlowNodeBase[] nodes;
 	private final FlowEdge[] edges;
 	private final Entity<?>[] parameters;
+	
 	@SuppressWarnings("rawtypes")
 	private final Map<Relation, FlowEvent> relationDetailsEvents = new HashMap<Relation, FlowEvent>();
 	
-	public DataExplorerEntityFlow(Entity<?> entity, SimpleFlowEvent entityDetailsEvent) {
+	public DataExplorerRelationFlow(Entity<?> entity, SimpleFlowEvent entityDetailsEvent) {
 		this.entity = entity;
-		this.detailsPlaceTemplate = new DataExplorerEntityDetailsPlaceTemplate(this);
+		this.relationPlaceTemplate = new DataExplorerRelationDetailsPlaceTemplate(this);
 		this.parameters = new Entity<?>[]{entity};
 		
 		ArrayList<FlowNodeBase> nodeList = new ArrayList<FlowNodeBase>();

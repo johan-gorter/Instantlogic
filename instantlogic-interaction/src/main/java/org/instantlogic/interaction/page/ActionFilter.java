@@ -9,6 +9,8 @@ public class ActionFilter extends AbstractFragmentFilter {
 	private final FlowEvent event;
 	
 	public ActionFilter(FlowEvent event) {
+		if (event==null) 
+			throw new IllegalArgumentException("event");
 		this.event = event;
 	}
 	
