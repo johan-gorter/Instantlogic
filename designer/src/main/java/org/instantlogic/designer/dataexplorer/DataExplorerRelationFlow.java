@@ -8,73 +8,110 @@ import java.util.Map;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
+import org.instantlogic.fabric.value.RelationValue;
+import org.instantlogic.fabric.value.RelationValues;
+import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEdge;
 import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.FlowNodeBase;
+import org.instantlogic.interaction.flow.impl.ProcessingFlow;
 import org.instantlogic.interaction.flow.impl.SimpleFlow;
 import org.instantlogic.interaction.flow.impl.SimpleFlowEvent;
+import org.instantlogic.interaction.flow.impl.SimpleSubFlow;
+import org.instantlogic.interaction.util.FlowContext;
+import org.instantlogic.interaction.util.FlowEventOccurrence;
 
+@SuppressWarnings("rawtypes")
 public class DataExplorerRelationFlow extends SimpleFlow {
+	
+	public final FlowEvent removeInstanceEvent;
 
 	private final Entity<?> entity;
 	private final Relation relation;
 	
 	private final DataExplorerRelationDetailsPlaceTemplate relationPlaceTemplate;
 	
-	// Place, addsubflow for each extesions of relation.to, removesubflow, moveup/down subflows
+	// Place, addsubflow for each extensions of relation.to, removesubflow, moveup/down subflows
 	private final FlowNodeBase[] nodes;
 	private final FlowEdge[] edges;
 	private final Entity<?>[] parameters;
 	
-	@SuppressWarnings("rawtypes")
-	private final Map<Relation, FlowEvent> relationDetailsEvents = new HashMap<Relation, FlowEvent>();
+	// For all add buttons
+	private final Map<Entity, FlowEvent> addNewEvents = new HashMap<Entity, FlowEvent>();
 	
-	public DataExplorerRelationFlow(Entity<?> entity, SimpleFlowEvent entityDetailsEvent) {
-		this.entity = entity;
+	public DataExplorerRelationFlow(final DataExplorerEntityFlow parentFlow, final Relation relation, final SimpleFlowEvent relationDetailsEvent) {
+		this.entity = parentFlow.getEntity();
+		removeInstanceEvent = new SimpleFlowEvent("remove-instance", relation.getTo());
+		this.relation = relation;
 		this.relationPlaceTemplate = new DataExplorerRelationDetailsPlaceTemplate(this);
-		this.parameters = new Entity<?>[]{entity};
+		this.parameters = new Entity<?>[]{};
 		
 		ArrayList<FlowNodeBase> nodeList = new ArrayList<FlowNodeBase>();
-		nodeList.add(detailsPlaceTemplate);
+		nodeList.add(relationPlaceTemplate);
 		
 		ArrayList<FlowEdge> edgeList = new ArrayList<FlowEdge>();
-		edgeList.add(new FlowEdge(null, entityDetailsEvent, detailsPlaceTemplate));
+		edgeList.add(new FlowEdge(null, relationDetailsEvent, relationPlaceTemplate));
 		
-		for (Relation<?, ? extends Object, ? extends Instance> relation : entity.getRelations()) {
-			addRelationDetails(relation, nodeList, edgeList);
+		if (relation.isOwner()) {
+			List<Entity> entitiesToBeAdded = new ArrayList<Entity>();
+			addExtensions(relation.getTo(), entitiesToBeAdded);
+			for (final Entity entityToBeAdded : entitiesToBeAdded) {
+				SimpleFlowEvent addEvent = new SimpleFlowEvent(entity.getName()+"-"+relation.getName()+"-add-"+entityToBeAdded.getName());
+				addNewEvents.put(entityToBeAdded, addEvent);
+				Flow addFlow = new ProcessingFlow() {
+					@SuppressWarnings("unchecked")
+					@Override
+					public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
+						Instance instance = context.getSelectedInstance(entity);
+						Instance newInstance = entityToBeAdded.createInstance();
+						if (relation.isMultivalue()) {
+							((RelationValues)relation.get(instance)).addValue(newInstance);
+						} else {
+							((RelationValue)relation.get(instance)).setValue(newInstance);
+						}
+						return new FlowEventOccurrence(relationDetailsEvent);
+					}
+				};
+				SimpleSubFlow subFlow = new SimpleSubFlow(addFlow);
+				nodeList.add(subFlow);
+				edgeList.add(new FlowEdge(null, addEvent, subFlow));
+			}
 		}
-		for (Relation<?, ? extends Object, ? extends Instance> relation : entity.getReverseRelations()) {
-			addRelationDetails(relation, nodeList, edgeList);
-		}
+		
+		Flow removeFlow = new ProcessingFlow() {
+			@SuppressWarnings("unchecked")
+			@Override
+			public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
+				Instance instance = context.getSelectedInstance(entity);
+				Instance instanceToRemove = occurrence.getParameters()[0];
+				if (relation.isMultivalue()) {
+					((RelationValues)relation.get(instance)).removeValue(instanceToRemove);
+				} else {
+					((RelationValue)relation.get(instance)).setValue(null);
+				}
+				return new FlowEventOccurrence(relationDetailsEvent);
+			}
+		};
+		
+		SimpleSubFlow removeSubFlow = new SimpleSubFlow(removeFlow);
+		nodeList.add(removeSubFlow);
+		edgeList.add(new FlowEdge(null, removeInstanceEvent, removeSubFlow));
 		
 		this.nodes = nodeList.toArray(new FlowNodeBase[nodeList.size()]);
 		this.edges = edgeList.toArray(new FlowEdge[edgeList.size()]);
 	}
 
-	private void addRelationDetails(Relation<?, ?, ?> relation, List<FlowNodeBase> nodeList, List<FlowEdge> edgeList) {
-		DataExplorerRelationDetailsPlaceTemplate relationPlace = new DataExplorerRelationDetailsPlaceTemplate(entity, relation);
-		FlowEvent relationDetailsEvent = new SimpleFlowEvent(entity.getName()+"-"+relation.getName()+"-details");
-		relationDetailsEvents.put(relation, relationDetailsEvent);
-		nodeList.add(relationPlace);
-		edgeList.add(new FlowEdge(detailsPlaceTemplate, relationDetailsEvent, relationPlace));
+	private void addExtensions(Entity from, List<Entity> result) {
+		result.add(from);
+		for (Entity entity:from.extensions()) {
+			addExtensions(entity, result);
+		}
 	}
+
 	
-	@SuppressWarnings("rawtypes")
-	public FlowEvent getRelationDetailsEvent(Relation relation) {
-		return relationDetailsEvents.get(relation);
-	}
-
-//	@Override
-//	public PlaceTemplate getPage(String[] path, int pathIndex) {
-//		if ("details".equals(path[pathIndex])) {
-//			return this.detailsPlaceTemplate;
-//		}
-//		return null;
-//	}
-
 	@Override
 	public String getName() {
-		return "DataExplorer"+entity.getUniqueId();
+		return relation.getName();
 	}
 
 	@Override
@@ -94,5 +131,13 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 
 	public Entity<?> getEntity() {
 		return entity;
+	}
+
+	public Relation getRelation() {
+		return relation;
+	}
+
+	public Map<Entity, FlowEvent> getAddNewEvents() {
+		return addNewEvents;
 	}
 }

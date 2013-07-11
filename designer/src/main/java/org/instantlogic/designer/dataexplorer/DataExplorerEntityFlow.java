@@ -13,6 +13,7 @@ import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.FlowNodeBase;
 import org.instantlogic.interaction.flow.impl.SimpleFlow;
 import org.instantlogic.interaction.flow.impl.SimpleFlowEvent;
+import org.instantlogic.interaction.flow.impl.SimpleSubFlow;
 
 public class DataExplorerEntityFlow extends SimpleFlow {
 
@@ -48,25 +49,18 @@ public class DataExplorerEntityFlow extends SimpleFlow {
 	}
 
 	private void addRelationDetails(Relation<?, ?, ?> relation, List<FlowNodeBase> nodeList, List<FlowEdge> edgeList) {
-		DataExplorerRelationDetailsPlaceTemplate relationPlace = new DataExplorerRelationDetailsPlaceTemplate(entity, relation);
-		FlowEvent relationDetailsEvent = new SimpleFlowEvent(entity.getName()+"-"+relation.getName()+"-details");
+		SimpleFlowEvent relationDetailsEvent = new SimpleFlowEvent(entity.getName()+"-"+relation.getName()+"-details");
+		DataExplorerRelationFlow relationFlow = new DataExplorerRelationFlow(this, relation, relationDetailsEvent);
 		relationDetailsEvents.put(relation, relationDetailsEvent);
-		nodeList.add(relationPlace);
-		edgeList.add(new FlowEdge(detailsPlaceTemplate, relationDetailsEvent, relationPlace));
+		SimpleSubFlow relationSubFlow = new SimpleSubFlow(relationFlow);
+		nodeList.add(relationSubFlow);
+		edgeList.add(new FlowEdge(detailsPlaceTemplate, relationDetailsEvent, relationSubFlow));
 	}
 	
 	@SuppressWarnings("rawtypes")
 	public FlowEvent getRelationDetailsEvent(Relation relation) {
 		return relationDetailsEvents.get(relation);
 	}
-
-//	@Override
-//	public PlaceTemplate getPage(String[] path, int pathIndex) {
-//		if ("details".equals(path[pathIndex])) {
-//			return this.detailsPlaceTemplate;
-//		}
-//		return null;
-//	}
 
 	@Override
 	public String getName() {

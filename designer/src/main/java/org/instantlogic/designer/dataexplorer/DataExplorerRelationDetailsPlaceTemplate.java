@@ -1,7 +1,6 @@
 package org.instantlogic.designer.dataexplorer;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map.Entry;
 
 import org.instantlogic.designer.deduction.EntityNameDeduction;
 import org.instantlogic.fabric.deduction.AttributeDeduction;
@@ -10,27 +9,24 @@ import org.instantlogic.fabric.deduction.SelectedInstanceDeduction;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
+import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.page.FragmentTemplate;
 import org.instantlogic.interaction.page.SelectionElement;
 
+@SuppressWarnings("rawtypes")
 public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
 	private Relation<?, ?, ?> relation;
+	private DataExplorerRelationFlow flow;
 
-	public DataExplorerRelationDetailsPlaceTemplate(Entity<?> entity, Relation<?, ?, ?> relation) {
-		this.entity = entity;
-		this.relation = relation;
+	public DataExplorerRelationDetailsPlaceTemplate(DataExplorerRelationFlow flow) {
+		this.entity = flow.getEntity();
+		this.relation = flow.getRelation();
+		this.flow = flow;
 	}
 	
-	private void addExtensions(Entity from, List<Entity> result) {
-		result.add(from);
-		for (Entity entity:from.extensions()) {
-			addExtensions(entity, result);
-		}
-	}
-
 	@Override
 	public FragmentTemplate getRootContainer() {
 		FragmentTemplate page = new FragmentTemplate(relation.getUniqueId()+"-details", "Page")
@@ -45,14 +41,12 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 				.setEvent(ExploreDataEvent.INSTANCE)
 		);
 		
-		// Add buttons
-		List<Entity> entities = new ArrayList<Entity>();
-		addExtensions(relation.getTo(), entities);
-		for (Entity entity : entities) {
+		for (Entry<Entity, FlowEvent> entry : flow.getAddNewEvents().entrySet()) {
+			Entity entity = entry.getKey();
 			page.addChild("mainContent",
 				new FragmentTemplate("add-"+entity.getUniqueId(), "Button")
 					.putText("text", new TextTemplate().getUntranslated().add("Add new "+entity.getName()).getTextTemplate())
-					// TODO: .setEvent(event)
+					.setEvent(entry.getValue())
 			);
 		}
 		
@@ -79,7 +73,16 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 								new FragmentTemplate("cell-id", "Cell")
 									.putText("text", new TextTemplate().getUntranslated().add(createSelectInstanceIdDeduction()).getTextTemplate()),
 								new FragmentTemplate("cell-title", "Cell")
-									.putText("text", getEntityTitle(relation.getTo()))
+									.addChild("content", 
+										new FragmentTemplate("toInstance", "Link")
+											.putText("text", getEntityTitle(relation.getTo()))
+											.setEvent(ExploreDataEvent.INSTANCE)
+									),
+								new FragmentTemplate("cell-operations", "Cell")
+									.addChild("content", new FragmentTemplate("delete", "Button").setStyleNames(new String[]{"btn-small", "btn-danger"})
+										.addChild("content", new FragmentTemplate("delete-icon","Icon").setStyleNames(new String[]{"icon-remove"}))
+										.setEvent(flow.removeInstanceEvent)
+									)
 							)
 					)
 				)
@@ -102,7 +105,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 		return new TextTemplate().getUntranslated().add(entity.getName()).getTextTemplate();
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	private AttributeDeduction createSelectRelationDeduction(Relation relation) {
 		SelectedInstanceDeduction selectedInstance = new SelectedInstanceDeduction(this.entity);
 		AttributeDeduction result = new AttributeDeduction(relation);
@@ -110,7 +113,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 		return result;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	private IdDeduction createSelectInstanceIdDeduction() {
 		SelectedInstanceDeduction selectedInstance = new SelectedInstanceDeduction(this.relation.getTo());
 		IdDeduction result = new IdDeduction();
@@ -118,14 +121,13 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 		return result;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	private EntityNameDeduction createSelectEntityNameDeduction() {
 		SelectedInstanceDeduction selectedInstance = new SelectedInstanceDeduction(this.relation.getTo());
 		EntityNameDeduction result = new EntityNameDeduction();
 		result.setEntityOfInstance(selectedInstance);
 		return result;
 	}
-
 
 	@Override
 	public String getId() {
@@ -134,7 +136,6 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getName() {
-		return "relation-"+relation.getUniqueId();
+		return "details";
 	}
-
 }
