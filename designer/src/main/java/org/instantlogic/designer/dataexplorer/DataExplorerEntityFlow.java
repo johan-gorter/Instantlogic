@@ -26,9 +26,9 @@ public class DataExplorerEntityFlow extends SimpleFlow {
 	@SuppressWarnings("rawtypes")
 	private final Map<Relation, FlowEvent> relationDetailsEvents = new HashMap<Relation, FlowEvent>();
 	
-	public DataExplorerEntityFlow(Entity<?> entity, SimpleFlowEvent entityDetailsEvent) {
+	public DataExplorerEntityFlow(Entity<?> entity, SimpleFlowEvent entityDetailsEvent, List<FlowEvent> directEvents) {
 		this.entity = entity;
-		this.detailsPlaceTemplate = new DataExplorerEntityDetailsPlaceTemplate(this);
+		this.detailsPlaceTemplate = new DataExplorerEntityDetailsPlaceTemplate(this, directEvents);
 		this.parameters = new Entity<?>[]{entity};
 		
 		ArrayList<FlowNodeBase> nodeList = new ArrayList<FlowNodeBase>();

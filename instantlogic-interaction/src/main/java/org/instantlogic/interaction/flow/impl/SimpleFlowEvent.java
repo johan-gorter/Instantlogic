@@ -17,7 +17,7 @@ public class SimpleFlowEvent extends FlowEvent {
 		this.parameterTypes = parameterTypes;
 	}
 	
-	protected Entity<?>[] getParameterTypes() {
+	public Entity<?>[] getParameterTypes() {
 		return parameterTypes;
 	}
 

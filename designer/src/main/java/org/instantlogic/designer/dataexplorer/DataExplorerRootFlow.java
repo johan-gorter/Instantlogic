@@ -24,12 +24,14 @@ public class DataExplorerRootFlow extends Flow {
 	private Map<String, DataExplorerEntityFlow> entityFlows = new HashMap<String, DataExplorerEntityFlow>();
 	private Map<String, SimpleFlowEvent> entityDetailsEvents = new HashMap<String, SimpleFlowEvent>();
 	private Map<SimpleFlowEvent, DataExplorerEntityFlow> detailEventToFlow = new HashMap<SimpleFlowEvent, DataExplorerEntityFlow>();
+	private FlowWithDataExplorer flowWithDataExplorer;
 	
-	public DataExplorerRootFlow(Application application) {
+	public DataExplorerRootFlow(Application application, FlowWithDataExplorer flowWithDataExplorer) {
+		this.flowWithDataExplorer = flowWithDataExplorer;
 		SortedMap<String,Entity<?>> allEntitiesById = CaseAdministration.getAllEntitiesById(application.getCaseEntity());
 		for (Entity<?> entity : allEntitiesById.values()) {
 			SimpleFlowEvent detailsEvent = new SimpleFlowEvent(entity.getUniqueId()+"-details", entity);
-			DataExplorerEntityFlow entityFlow = new DataExplorerEntityFlow(entity, detailsEvent);
+			DataExplorerEntityFlow entityFlow = new DataExplorerEntityFlow(entity, detailsEvent, flowWithDataExplorer.getDirectEvents(entity));
 			entityFlows.put(entity.getUniqueId(), entityFlow);
 			entityDetailsEvents.put(entity.getUniqueId(), detailsEvent);
 			detailEventToFlow.put(detailsEvent, entityFlow);
@@ -96,14 +98,21 @@ public class DataExplorerRootFlow extends Flow {
 
 	@Override
 	public FlowEventOccurrence step(FlowNodeBase currentNode, FlowEventOccurrence occurrence, FlowContext flowContext) {
-		DataExplorerEntityFlow entityFlow = detailEventToFlow.get(occurrence.getEvent()); // Handles EntityDetailsEvents
+		DataExplorerEntityFlow entityFlow = detailEventToFlow.get(occurrence.getEvent()); 
 		if (entityFlow==null) {
-			// ExploreDataEvent
-			Instance instanceToExplore = findInstanceToExplore(occurrence, flowContext);
-			String entityId = instanceToExplore.getMetadata().getEntity().getUniqueId();
-			entityFlow = entityFlows.get(entityId);
-			occurrence = new FlowEventOccurrence(this.entityDetailsEvents.get(entityId), instanceToExplore);
+			if (occurrence.getEvent().getName().equals("ExploreData")) {
+				// ExploreDataEvent
+				Instance instanceToExplore = findInstanceToExplore(occurrence, flowContext);
+				String entityId = instanceToExplore.getMetadata().getEntity().getUniqueId();
+				entityFlow = entityFlows.get(entityId);
+				occurrence = new FlowEventOccurrence(this.entityDetailsEvents.get(entityId), instanceToExplore);
+			} else {
+				// Normal flow
+				flowContext.popFlowContext();
+				return occurrence;
+			}
 		}
+		// EntityDetailsEvents
 		flowContext.getFlowStack().setCurrentNode(fakeSubFlow(entityFlow.getEntity().getUniqueId()));
 		return entityFlow.enter(occurrence, flowContext);
 	}

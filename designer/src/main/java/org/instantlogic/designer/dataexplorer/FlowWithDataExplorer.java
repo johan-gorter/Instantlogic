@@ -1,14 +1,23 @@
 package org.instantlogic.designer.dataexplorer;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import org.instantlogic.fabric.Instance;
+import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.flow.Flow;
+import org.instantlogic.interaction.flow.FlowEdge;
 import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.FlowNodeBase;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.flow.SubFlow;
+import org.instantlogic.interaction.flow.impl.SimpleFlow;
+import org.instantlogic.interaction.flow.impl.SimpleFlowEvent;
 import org.instantlogic.interaction.util.FlowContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.FlowStack;
@@ -19,10 +28,21 @@ public class FlowWithDataExplorer extends FlowWrapper {
 	
 	private final DataExplorerRootFlow dataExplorerRootFlow;
 	private final SubFlow dataExplorerRootSubFlow;
+	private final Map<Entity<?>, List<FlowEvent>> directEvents = new HashMap<Entity<?>, List<FlowEvent>>();
 
 	public FlowWithDataExplorer(Flow delegate, Application application) {
 		super(delegate);
-		dataExplorerRootFlow = new DataExplorerRootFlow(application);
+		if (delegate instanceof SimpleFlow) {
+			for (FlowEdge edge : ((SimpleFlow)delegate).getEdges()) {
+				if (edge.getEvent() instanceof SimpleFlowEvent) {
+					Entity<?>[] parameterTypes = ((SimpleFlowEvent)edge.getEvent()).getParameterTypes();
+					if (parameterTypes.length==1) {
+						addDirectEvent(parameterTypes[0], edge.getEvent());
+					}
+				}
+			}
+		}
+		dataExplorerRootFlow = new DataExplorerRootFlow(application, this);
 		dataExplorerRootSubFlow = new SubFlow(){
 			@Override
 			public Flow getFlow() {
@@ -35,6 +55,24 @@ public class FlowWithDataExplorer extends FlowWrapper {
 		};
 	}
 	
+	private void addDirectEvent(Entity<?> entity, FlowEvent event) {
+		List<FlowEvent> list = directEvents.get(entity);
+		if (list==null) {
+			list = new ArrayList<FlowEvent>();
+			directEvents.put(entity, list);
+		}
+		list.add(event);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<FlowEvent> getDirectEvents(Entity<?> entity) {
+		List<FlowEvent> result = directEvents.get(entity);
+		if (result==null) {
+			return Collections.EMPTY_LIST;
+		}
+		return result;
+	}
+
 	@Override
 	public FlowStack createFlowStack(FlowStack parentStack, Flow thisOrWrapper, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
 		if ("dataExplorer".equals(current)) {

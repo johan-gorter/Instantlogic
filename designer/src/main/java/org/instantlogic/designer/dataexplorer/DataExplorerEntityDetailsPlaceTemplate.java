@@ -1,5 +1,7 @@
 package org.instantlogic.designer.dataexplorer;
 
+import java.util.List;
+
 import org.instantlogic.fabric.deduction.AttributeDeduction;
 import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.deduction.ReverseRelationDeduction;
@@ -8,6 +10,7 @@ import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
+import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.page.FragmentTemplate;
 import org.instantlogic.interaction.page.SelectionElement;
@@ -16,10 +19,12 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
 	private DataExplorerEntityFlow entityFlow;
+	private List<FlowEvent> directEvents;
 
-	public DataExplorerEntityDetailsPlaceTemplate(DataExplorerEntityFlow entityFlow) {
+	public DataExplorerEntityDetailsPlaceTemplate(DataExplorerEntityFlow entityFlow, List<FlowEvent> directEvents) {
 		this.entity = entityFlow.getEntity();
 		this.entityFlow = entityFlow;
+		this.directEvents = directEvents;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -31,6 +36,14 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
                 new org.instantlogic.interaction.page.FragmentTemplate("h1", "Heading1")      
                     .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(entity.getName() + " details").getTextTemplate())        
             );
+		// DirectEvent buttons
+		for (FlowEvent directEvent : directEvents) {
+			page.addChild("mainContent", new FragmentTemplate("direct-"+directEvent.getName(), "Button")
+				.putText("text", new TextTemplate().getUntranslated().add(directEvent.getName()).getTextTemplate())
+				.setEvent(directEvent)
+			);
+		}
+		
 		// Owner (relationname + link)
 		for (Relation reverseRelation : entity.getReverseRelations()) {
 			if (reverseRelation.getReverseRelation().isOwner()) {
