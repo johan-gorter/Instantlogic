@@ -176,11 +176,11 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataCategoryDesign> $dataCategory
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataCategoryDesign>(
-				"Relationdesign__001c", "dataCategory", INSTANCE, "dataCategory", org.instantlogic.designer.DataTypeDesign.class);
+				"Relationdesign__001d", "dataCategory", INSTANCE, "dataCategory", org.instantlogic.designer.DataTypeDesign.class);
 		dataCategory = $dataCategory;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $entity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"Relationdesign__001d", "entity", INSTANCE, "entity", org.instantlogic.designer.DataTypeDesign.class);
+				"Relationdesign__001e", "entity", INSTANCE, "entity", org.instantlogic.designer.DataTypeDesign.class);
 		entity = $entity;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $forEntity

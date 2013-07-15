@@ -1,6 +1,7 @@
 package org.instantlogic.designer.flow.deductionscheme;
 
 import org.instantlogic.designer.DeductionDesignEntityGenerator;
+import org.instantlogic.designer.DeductionInputDesignEntityGenerator;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.DeductionSchemeDesignEntityGenerator;
 import org.instantlogic.designer.FragmentTemplateDesign;
@@ -20,27 +21,21 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 	
 	@Override
 	public void init() {
-		DeductionSchemeDesign schemeOutput, selectDeductions, deductionId, deductionXY;
-		//SharedElementDesign entityContext;
+		DeductionSchemeDesign schemeOutput, selectDeductions, selectInputs, deductionId, deductionXY, deductionOperation,
+			deductionInputId, deductionOperationInput, selectOutputs, toDeductionInputId;
 		FragmentTemplateDesign exploreButton;
 
 		setTitle(new TextTemplateDesign()
-//			.addToUntranslated(new StringTemplateDesign().setDeduction(attributeName = new DeductionSchemeDesign()))
 			.addToUntranslated(new StringTemplateDesign().setConstantText("DeductionScheme"))
 		);
 		
 		setContent(new FragmentTemplateDesign("Page")
 			.setChildren("mainContent",
 
-//				new SelectionDesign()
-//					.setSelection(entity = new DeductionSchemeDesign())
-//					.setChild(entityContext = new SharedElementDesign()),
-				
 				new FragmentTemplateDesign("Block")
 					.addToStyleNames("card")
 					.setChildren("content",
 						createText("Heading3", new TextTemplateDesign()
-//							.addToUntranslated(new StringTemplateDesign().setDeduction(attributeName = new DeductionSchemeDesign()))
 							.addToUntranslated(new StringTemplateDesign().setConstantText("DeductionScheme"))
 						),
 						
@@ -53,8 +48,22 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 							.setChildren("deductions",
 								new SelectionDesign().setSelection(selectDeductions = new DeductionSchemeDesign())
 									.setChild(new FragmentTemplateDesign("Deduction")
-										.setValue("id", deductionId = new DeductionSchemeDesign())
+										.setValue("deductionId", deductionId = new DeductionSchemeDesign())
 										.setValue("xy", deductionXY = new DeductionSchemeDesign())
+										.setText("operationName", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(deductionOperation = new DeductionSchemeDesign())))
+										.setChildren("inputs", 
+											new SelectionDesign().setSelection(selectInputs = new DeductionSchemeDesign())
+												.setChild(new FragmentTemplateDesign("DeductionInput")
+													.setValue("deductionInputId", deductionInputId = new DeductionSchemeDesign())
+													.setText("operationInputName", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(deductionOperationInput = new DeductionSchemeDesign())))
+												)
+										)
+										.setChildren("outputs",
+											new SelectionDesign().setSelection(selectOutputs = new DeductionSchemeDesign())
+												.setChild(new FragmentTemplateDesign("Output")
+													.setValue("toDeductionInputId", toDeductionInputId = new DeductionSchemeDesign())
+												)
+										)
 									)
 							)
 					)
@@ -66,7 +75,16 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 		schemeOutput.deduceId(schemeOutput.deduceRelation(DeductionSchemeDesignEntityGenerator.output));
 		deductionId.deduceId(deductionId.deduceSelectedInstance(DeductionDesignEntityGenerator.ENTITY));
 		deductionXY.deduceAttribute(DeductionDesignEntityGenerator.diagramPosition);
+		deductionOperation.deduceRelation(DeductionDesignEntityGenerator.operation);
+		
 		selectDeductions.deduceRelation(DeductionSchemeDesignEntityGenerator.deductions);
+		selectInputs.deduceRelation(DeductionDesignEntityGenerator.inputs);
+		
+		deductionInputId.deduceId(deductionInputId.deduceSelectedInstance(DeductionInputDesignEntityGenerator.ENTITY));
+		deductionOperationInput.deduceRelation(DeductionInputDesignEntityGenerator.operationInput);
+		
+		selectOutputs.deduceRelation(DeductionDesignEntityGenerator.outputs);
+		toDeductionInputId.deduceId(toDeductionInputId.deduceSelectedInstance(DeductionInputDesignEntityGenerator.ENTITY));
 	}
 }
 

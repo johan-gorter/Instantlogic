@@ -40,11 +40,11 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> dataType;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> inputs;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> parameters;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> outputs;
 	
 	// Reverse relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> scheme;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> outputOfScheme;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> outputs;
 
 	static {
 		// Phase 1
@@ -78,6 +78,10 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
 				"Relationdesign__0018", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractDeductionDesign.class);
 		parameters = $parameters;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $outputs
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
+				"Relationdesign__0019", "outputs", INSTANCE, "outputs", org.instantlogic.designer.AbstractDeductionDesign.class);
+		outputs = $outputs;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $scheme
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
@@ -87,10 +91,6 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
 				"Relationdesign__0014", "outputOfScheme", INSTANCE, "outputOfScheme", org.instantlogic.designer.AbstractDeductionDesign.class);
 		outputOfScheme = $outputOfScheme;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $outputs
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
-				"Relationdesign__0020", "outputs", INSTANCE, "outputs", org.instantlogic.designer.AbstractDeductionDesign.class);
-		outputs = $outputs;
 		
 		// Phase 2
 		$diagramPosition._default = createDeduction0();
@@ -111,6 +111,10 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		$parameters.setReverseRelation(org.instantlogic.designer.entity.DeductionParameterDesignEntity.deduction);
 		$parameters.owner = true;
 		$parameters.multivalue = true;
+		$outputs.valueClass = org.instantlogic.designer.DeductionInputDesign.class;
+		$outputs.to = org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE;
+		$outputs.setReverseRelation(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
+		$outputs.multivalue = true;
 
 		$scheme.reverse = true;
 		$scheme.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
@@ -120,11 +124,6 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		$outputOfScheme.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
 		$outputOfScheme.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
 		$outputOfScheme.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.output);
-		$outputs.reverse = true;
-		$outputs.valueClass = org.instantlogic.designer.DeductionInputDesign.class;
-		$outputs.to = org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE;
-		$outputs.setReverseRelation(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
-		$outputs.multivalue = true;
 	}
 
 	@Override
@@ -157,11 +156,11 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		dataType,
 		inputs,
 		parameters,
+		outputs,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		scheme,
 		outputOfScheme,
-		outputs,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

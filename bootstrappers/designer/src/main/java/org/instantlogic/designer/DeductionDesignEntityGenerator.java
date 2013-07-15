@@ -1,7 +1,5 @@
 package org.instantlogic.designer;
 
-import java.awt.geom.Point2D;
-
 import org.instantlogic.designer.util.diagram.Point2d;
 
 
@@ -30,6 +28,10 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
 
     public static final RelationDesign parameters = addRelation(ENTITY, "parameters", RelationType.OneToManyAggregation, DeductionParameterDesignEntityGenerator.ENTITY)
         	.setReverseName("deduction");
+    
+    public static final RelationDesign outputs = addRelation(ENTITY, "outputs", RelationType.ManyToMany, DeductionInputDesignEntityGenerator.ENTITY)
+        	.setReverseName("inputs");
+
 
     @Override
     public void init() {

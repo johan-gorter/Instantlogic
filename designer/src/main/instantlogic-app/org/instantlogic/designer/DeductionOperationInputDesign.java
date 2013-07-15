@@ -20,6 +20,7 @@ public class DeductionOperationInputDesign extends Design {
 	public static final DeductionOperationInputDesign equalsOperands;
 	public static final DeductionOperationInputDesign hasValueInput;
 	public static final DeductionOperationInputDesign idOfInstance;
+	public static final DeductionOperationInputDesign titleOfInstance;
 	public static final DeductionOperationInputDesign negationInput;
 	public static final DeductionOperationInputDesign reverseRelationToInstance;
 	public static final DeductionOperationInputDesign sumOperands;
@@ -31,6 +32,7 @@ public class DeductionOperationInputDesign extends Design {
 	  equalsOperands = addStaticInstance("equalsOperands", new DeductionOperationInputDesign());
 	  hasValueInput = addStaticInstance("hasValueInput", new DeductionOperationInputDesign());
 	  idOfInstance = addStaticInstance("idOfInstance", new DeductionOperationInputDesign());
+	  titleOfInstance = addStaticInstance("titleOfInstance", new DeductionOperationInputDesign());
 	  negationInput = addStaticInstance("negationInput", new DeductionOperationInputDesign());
 	  reverseRelationToInstance = addStaticInstance("reverseRelationToInstance", new DeductionOperationInputDesign());
 	  sumOperands = addStaticInstance("sumOperands", new DeductionOperationInputDesign());
@@ -46,6 +48,8 @@ public class DeductionOperationInputDesign extends Design {
 	  hasValueInput.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Input").getTextTemplate());
       idOfInstance.setName("idOfInstance");
 	  idOfInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Id of instance").getTextTemplate());
+      titleOfInstance.setName("titleOfInstance");
+	  titleOfInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Title of instance").getTextTemplate());
       negationInput.setName("input");
 	  negationInput.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Input").getTextTemplate());
       reverseRelationToInstance.setName("toInstance");

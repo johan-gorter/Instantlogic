@@ -40,7 +40,7 @@ public class AttributeDesign extends AbstractAttributeDesign {
 	
 	public ValueModel asStaticFieldValue() {
 		EntityDesign entity = getBelongsToEntity();
-		return new StaticFieldValueModel(entity.getApplication().getRootPackageName()+".entity."+entity.getTechnicalNameCapitalized()+"Entity", getTechnicalName(), 
+		return new StaticFieldValueModel(entity.getApplication().getRootPackageName()+".entity."+entity.getTechnicalNameCapitalized()+"Entity", getJavaIdentifier(), 
 			(this instanceof RelationDesign)?"org.instantlogic.fabric.model.Relation":"org.instantlogic.fabric.model.Attribute");
 	}
 

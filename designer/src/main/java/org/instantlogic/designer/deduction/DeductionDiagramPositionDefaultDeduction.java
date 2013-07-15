@@ -35,7 +35,7 @@ public class DeductionDiagramPositionDefaultDeduction extends Deduction<Point2d>
 				parentInputCount++;
 			}
 		}
-		double absoluteOffset = ABSOLUTE_SPREAD * (-0.5 + (childIndex+1)* (parentInputCount+1));
+		double absoluteOffset = ABSOLUTE_SPREAD * (childIndex+1) / (parentInputCount+1) - 0.5 * ABSOLUTE_SPREAD;
 		Point2d parentPosition = parent.getDiagramPosition();
 		return ValueAndLevel.rule(new Point2d(parentPosition.getLeft()*RELATIVE_SPREAD+absoluteOffset,parentPosition.getTop()+10));
 	}

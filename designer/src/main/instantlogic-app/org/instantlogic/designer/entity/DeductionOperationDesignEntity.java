@@ -34,15 +34,15 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $outputDataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"Relationdesign__0019", "outputDataType", INSTANCE, "outputDataType", org.instantlogic.designer.DeductionOperationDesign.class);
+				"Relationdesign__001a", "outputDataType", INSTANCE, "outputDataType", org.instantlogic.designer.DeductionOperationDesign.class);
 		outputDataType = $outputDataType;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign> $inputs
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign>(
-				"Relationdesign__001a", "inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionOperationDesign.class);
+				"Relationdesign__001b", "inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionOperationDesign.class);
 		inputs = $inputs;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign> $parameters
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign>(
-				"Relationdesign__001b", "parameters", INSTANCE, "parameters", org.instantlogic.designer.DeductionOperationDesign.class);
+				"Relationdesign__001c", "parameters", INSTANCE, "parameters", org.instantlogic.designer.DeductionOperationDesign.class);
 		parameters = $parameters;
 		// Reverse relations
 		
