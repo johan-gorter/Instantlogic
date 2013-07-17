@@ -181,7 +181,7 @@ YUI.add('instantlogic-presence', function (Y) {
     // Avatar
     ns.Avatar = Y.instantlogic.createFragment({
     	createMarkup: function() {
-    		return html.span(
+    		return this.focusBar = html.div({className:'focus-bar'},
     			this.avatarDiv = html.div({className:'floating-avatar'}),
     			this.pointerDiv = html.div({className:'floating-pointer'},
         			html.div({className:'arrow-top'}),
@@ -190,6 +190,9 @@ YUI.add('instantlogic-presence', function (Y) {
     		);
     	},
     	postInit: function(model) {
+    		if (model.isMe === true) {
+    			this.focusBar.addClass('me');
+    		}
     		this.updateAvatarImage(model);
     		var me = this;
     		setTimeout(function(){me.positionAvatar(false);})
@@ -232,13 +235,15 @@ YUI.add('instantlogic-presence', function (Y) {
     			}
     			// TODO: change X if other avatars are also at the same Y
     			if (useAnimation) {
-    				this.avatarDiv.transition({duration:0.5, easing:'ease-out', left: (x+2)+'px', top: (y-10)+'px'});    				
-    				this.pointerDiv.transition({duration:0.5, easing:'ease-out', left: x+'px', top: (y-12)+'px'});    				
+    				this.focusBar.transition({duration:0.3, easing:'ease-out', top: (y-14)+'px'})
+    				this.avatarDiv.transition({duration:0.3, easing:'ease-out', left: (x+2)+'px' /*, top: (y-10)+'px' */});    				
+    				this.pointerDiv.transition({duration:0.3, easing:'ease-out', left: x+'px' /*, top: (y-12)+'px' */});    				
     			} else {
+    				this.focusBar.setStyle('top', (y-14)+'px');
 					this.avatarDiv.setStyle('left',(x+2)+'px');
-					this.avatarDiv.setStyle('top', (y-10)+'px');
+//					this.avatarDiv.setStyle('top', (y-10)+'px');
 					this.pointerDiv.setStyle('left',x+'px');
-					this.pointerDiv.setStyle('top',(y-12)+'px');
+//					this.pointerDiv.setStyle('top',(y-12)+'px');
     			}
     		}
     	}

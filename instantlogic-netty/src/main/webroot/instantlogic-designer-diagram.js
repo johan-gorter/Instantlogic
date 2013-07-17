@@ -8,6 +8,10 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
   var ns = Y.namespace('instantlogic.designer.diagram');
   var html = Y.html;
 
+  var svg = {
+    
+  };
+
   var sqr = function (a) {
     return a * a;
   };

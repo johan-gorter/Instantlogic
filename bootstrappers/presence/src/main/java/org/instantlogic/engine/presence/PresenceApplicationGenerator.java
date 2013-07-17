@@ -14,6 +14,7 @@ public class PresenceApplicationGenerator extends ApplicationDesign {
 
 	public static final DeductionOperationDesign UserNameDefaultDeduction = new DeductionOperationDesign();
 	public static final DeductionOperationDesign UserAvatarUrlDefaultDeduction  = new DeductionOperationDesign();
+	public static final DeductionOperationDesign IsMeDeduction  = new DeductionOperationDesign();
     
 	public static PresenceApplicationGenerator APPLICATION = new PresenceApplicationGenerator();
 
@@ -24,6 +25,8 @@ public class PresenceApplicationGenerator extends ApplicationDesign {
 		UserNameDefaultDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction");
 		addToCustomDeductionOperations(UserAvatarUrlDefaultDeduction);
 		UserAvatarUrlDefaultDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.UserAvatarUrlDefaultDeduction");
+		addToCustomDeductionOperations(IsMeDeduction);
+		IsMeDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.IsMeDeduction");
         setName("Presence");
         setRootPackageName("org.instantlogic.engine.presence");
         setSourcePath("target/generated-sources/instantlogic-app");

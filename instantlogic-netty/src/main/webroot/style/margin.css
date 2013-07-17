@@ -17,3 +17,5 @@
 .controls .designer-editor-open {outline:0}
 .btn {margin-right:4px;}
 .btn-group .btn {margin-right:auto;}
+
+.controls textarea, .controls input, .controls select {background-color: rgba(255,255,255,0.7);}

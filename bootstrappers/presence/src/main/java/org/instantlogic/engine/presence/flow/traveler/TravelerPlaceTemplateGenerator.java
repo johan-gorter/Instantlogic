@@ -1,5 +1,6 @@
 package org.instantlogic.engine.presence.flow.traveler;
 
+import org.instantlogic.designer.DeductionOperationDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.ElementDesign;
 import org.instantlogic.designer.FragmentTemplateDesign;
@@ -7,6 +8,7 @@ import org.instantlogic.designer.IfElseDesign;
 import org.instantlogic.designer.PlaceTemplateDesign;
 import org.instantlogic.designer.SelectionDesign;
 import org.instantlogic.engine.presence.PlaceEntityGenerator;
+import org.instantlogic.engine.presence.PresenceApplicationGenerator;
 import org.instantlogic.engine.presence.PresenceEntityGenerator;
 import org.instantlogic.engine.presence.TravelerEntityGenerator;
 import org.instantlogic.engine.presence.UserEntityGenerator;
@@ -22,7 +24,7 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 	@Override
 	public void init() {
 		DeductionSchemeDesign applicationNameDeduction, caseNameDeduction, userHasValue, user, userUsername, userAvatarUrl, userName, 
-			activeUsers, username, avatarUrl, name, userTravelers, travelerId, travelerPlaceUrl, travelerPlaceTitle, visitors, username2, name2, avatarUrl2, focus, currentPlace;
+			activeUsers, username, avatarUrl, name, userTravelers, travelerId, travelerPlaceUrl, travelerPlaceTitle, visitors, username2, name2, avatarUrl2, focus, isMe, currentPlace;
 		FragmentTemplateDesign debugVisible;
 		
 		setContent(
@@ -80,6 +82,7 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 											.setValue("name", name2 = new DeductionSchemeDesign())
 											.setValue("avatarUrl", avatarUrl2 = new DeductionSchemeDesign())
 											.setValue("focus", focus = new DeductionSchemeDesign())
+											.setValue("isMe", isMe = new DeductionSchemeDesign())
 									)
 							)
 				)
@@ -118,6 +121,7 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 		
 		currentPlace.deduceRelation(TravelerEntityGenerator.currentPlace);
 		focus.deduceAttribute(TravelerEntityGenerator.focus);
+		isMe.deduceCustom(PresenceApplicationGenerator.IsMeDeduction);
 		
 		debugVisible.setEntity(TravelerEntityGenerator.ENTITY).setAttribute(TravelerEntityGenerator.debugVisible);
 	}
