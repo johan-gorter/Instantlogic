@@ -177,6 +177,7 @@ public class IzzyGenerator extends Design {
 		izzy.setSourcePath("../izzy/target/generated-sources/instantlogic-app");
 		izzy.setMainFlow(mainFlow);
 		izzy.setStartEvent(homeEvent);
+		izzy.setLoggedInEvent(homeEvent);
 
 		// Finished with the design, what to do next
 		
@@ -211,6 +212,7 @@ public class IzzyGenerator extends Design {
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Cell"));
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setHasEvent(true).setName("Link"));
 		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setHasEvent(true).setName("Button"));
+		izzy.addToFragmentTypes((FragmentTypeDesign) new FragmentTypeDesign().setName("Login"));
 	}
 
 	private static void initIssueFlow() {
@@ -309,7 +311,15 @@ public class IzzyGenerator extends Design {
 				new FragmentTemplateDesign("Page")
 					.setChildren("mainContent",
 						new FragmentTemplateDesign("Paragraph")
-							.setText("text", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setConstantText("Please log in.")))
+							.setText("text", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign()
+								.setConstantText("In order to access your dashboard, you need to log in."))),
+						new FragmentTemplateDesign("Paragraph")
+							.setText("text", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign()
+								.setConstantText("In order to see your avatar picture, you can supply an e-mail address registered with Gravatar."))),
+						new FragmentTemplateDesign("Login"),
+						new FragmentTemplateDesign("Paragraph")
+							.setText("text", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign()
+								.setConstantText("Note: There is no security.")))
 					)
 			);
 	}

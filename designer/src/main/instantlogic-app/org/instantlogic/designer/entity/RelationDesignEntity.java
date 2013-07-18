@@ -77,20 +77,20 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $to
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"Relationdesign__0030", "to", INSTANCE, "to", org.instantlogic.designer.RelationDesign.class);
+				"Relationdesign__0031", "to", INSTANCE, "to", org.instantlogic.designer.RelationDesign.class);
 		to = $to;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $reverseDataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"Relationdesign__0031", "reverseDataType", INSTANCE, "reverseDataType", org.instantlogic.designer.RelationDesign.class);
+				"Relationdesign__0032", "reverseDataType", INSTANCE, "reverseDataType", org.instantlogic.designer.RelationDesign.class);
 		reverseDataType = $reverseDataType;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $options
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"Relationdesign__0032", "options", INSTANCE, "options", org.instantlogic.designer.RelationDesign.class);
+				"Relationdesign__0033", "options", INSTANCE, "options", org.instantlogic.designer.RelationDesign.class);
 		options = $options;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $from
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"Relationdesign__000d", "from", INSTANCE, "from", org.instantlogic.designer.RelationDesign.class);
+				"Relationdesign__000e", "from", INSTANCE, "from", org.instantlogic.designer.RelationDesign.class);
 		from = $from;
 		
 		// Phase 2

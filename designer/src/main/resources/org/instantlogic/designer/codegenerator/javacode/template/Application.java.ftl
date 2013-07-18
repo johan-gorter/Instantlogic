@@ -26,6 +26,13 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 	}
 	</#if>
 
+    <#if loggedInEvent??>	
+	@Override
+	public org.instantlogic.interaction.flow.FlowEvent getLoggedInEvent() {
+		return ${rootPackageName}.event.${loggedInEvent}Event.INSTANCE;
+	}
+	</#if>
+
     <#if themeNames??>
     private static final String[] THEME_NAMES = new String[]{<#list themeNames as name>"${name}"<#if name_has_next>, </#if></#list>};	
 	@Override

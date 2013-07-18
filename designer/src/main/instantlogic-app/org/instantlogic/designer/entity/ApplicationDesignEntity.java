@@ -26,6 +26,7 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign> fragmentTypes;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> mainFlow;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> startEvent;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> loggedInEvent;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign> sharedElements;
 	
 	// Reverse relations
@@ -86,9 +87,13 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
 				"Relationdesign__0008", "startEvent", INSTANCE, "startEvent", org.instantlogic.designer.AbstractApplicationDesign.class);
 		startEvent = $startEvent;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $loggedInEvent
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
+				"Relationdesign__0009", "loggedInEvent", INSTANCE, "loggedInEvent", org.instantlogic.designer.AbstractApplicationDesign.class);
+		loggedInEvent = $loggedInEvent;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign> $sharedElements
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign>(
-				"Relationdesign__0009", "sharedElements", INSTANCE, "sharedElements", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"Relationdesign__000a", "sharedElements", INSTANCE, "sharedElements", org.instantlogic.designer.AbstractApplicationDesign.class);
 		sharedElements = $sharedElements;
 		// Reverse relations
 		
@@ -130,6 +135,8 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		$mainFlow.to = org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE;
 		$startEvent.valueClass = org.instantlogic.designer.EventDesign.class;
 		$startEvent.to = org.instantlogic.designer.entity.EventDesignEntity.INSTANCE;
+		$loggedInEvent.valueClass = org.instantlogic.designer.EventDesign.class;
+		$loggedInEvent.to = org.instantlogic.designer.entity.EventDesignEntity.INSTANCE;
 		$sharedElements.valueClass = org.instantlogic.designer.SharedElementDefinitionDesign.class;
 		$sharedElements.to = org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE;
 		$sharedElements.setReverseRelation(org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.application);
@@ -174,6 +181,7 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		fragmentTypes,
 		mainFlow,
 		startEvent,
+		loggedInEvent,
 		sharedElements,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{

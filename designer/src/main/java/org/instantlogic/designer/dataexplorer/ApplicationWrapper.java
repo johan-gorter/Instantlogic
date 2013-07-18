@@ -24,6 +24,10 @@ public class ApplicationWrapper extends Application {
 		return delegate.getStartEvent();
 	}
 	
+	public FlowEvent getLoggedInEvent() {
+		return delegate.getLoggedInEvent();
+	}
+	
 	public String[] getThemeNames() {
 		return delegate.getThemeNames();
 	}

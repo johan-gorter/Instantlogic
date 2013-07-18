@@ -344,6 +344,24 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 
 	
+	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> loggedInEvent
+		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.loggedInEvent);
+		
+	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> getLoggedInEventRelationValue() {
+		return loggedInEvent;
+	}
+
+	public org.instantlogic.designer.EventDesign getLoggedInEvent() {
+		return loggedInEvent.getValue();
+	}
+	
+	public ApplicationDesign setLoggedInEvent(org.instantlogic.designer.EventDesign newValue) {
+		loggedInEvent.setValue(newValue);
+		return (ApplicationDesign)this;
+	}
+	
+
+	
 	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, SharedElementDefinitionDesign> sharedElements
 		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.sharedElements);
 		

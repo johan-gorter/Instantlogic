@@ -28,7 +28,7 @@ public class PresenceMessage extends Message {
 
 	@Override
 	public void execute(Application application, Traveler traveler, Presence presence, Instance theCase) {
-		presence.executeCommand(traveler, command, id, value);
+		presence.executeCommand(application, traveler, command, id, value, theCase);
 	}
 
 }

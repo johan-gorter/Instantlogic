@@ -287,13 +287,14 @@ YUI.add('instantlogic-presence', function (Y) {
     
     // Login
     ns.Login = Y.instantlogic.createFragment({
-    	createMarkup: function(model) {
+    	createMarkup: function() {
     		var markup = html.form({ action: '.', className: 'form-inline' },
 //    			html.div({className:'input-append'},
 					this.usernameInput = html.input({type:'text'}),
 					this.loginButton = html.button({className:'btn'}, 'Login')
 //				)
     		);
+    		this.usernameInput.on('focus', this.inputFocus, this);
     		this.loginButton.on('click', this.loginClick, this);
     		return markup;
     	},
@@ -301,7 +302,10 @@ YUI.add('instantlogic-presence', function (Y) {
         	loginClick: function(evt) {
         		this.engine.enqueueMessage({message: 'presence', command: 'login', value: this.usernameInput.get('value')});
         		evt.preventDefault();
-        	}
+        	},
+            inputFocus: function() {
+            	this.engine.enqueueMessage({message: 'presence', command: 'setFocus', value: this.model.id});
+            }
     	}
     });
 

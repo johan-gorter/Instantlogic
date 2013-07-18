@@ -2,6 +2,10 @@ package org.instantlogic.engine.presence;
 
 import org.instantlogic.engine.TravelerProxy;
 import org.instantlogic.engine.manager.CaseManager;
+import org.instantlogic.fabric.Instance;
+import org.instantlogic.interaction.Application;
+import org.instantlogic.interaction.util.FlowContext;
+import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.TravelerInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +38,7 @@ public class Presence extends AbstractPresence {
 		return place;
 	}
 
-	public void executeCommand(Traveler traveler, String command, String id, Object value) {
+	public void executeCommand(Application application, Traveler traveler, String command, String id, Object value, Instance theCase) {
 		switch (command) {
 			case "login":
 				String login = (String)value;
@@ -44,6 +48,16 @@ public class Presence extends AbstractPresence {
 				}
 				traveler.getTravelerInfo().setAuthenticatedUsername(login);
 				traveler.setUser(findOrActivateUser((String)value));
+
+				if (application.getLoggedInEvent()!=null) {
+					FlowContext flowContext = FlowContext.create(application.getMainFlow(), null, theCase, getCaseName(), traveler.getTravelerInfo());
+					FlowEventOccurrence eventOccurrence = new FlowEventOccurrence(application.getLoggedInEvent());
+					while (eventOccurrence!=null) {
+						eventOccurrence = flowContext.step(eventOccurrence);
+					}
+					traveler.getPresence().enter(traveler, flowContext.getFlowStack().toPath());
+				}
+
 				break;
 			case "logout":
 				traveler.getTravelerInfo().setAuthenticatedUsername(null);

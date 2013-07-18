@@ -199,6 +199,7 @@ YUI.add('instantlogic', function (Y) {
                 diff.nodeAdded(this.placeFragmentHolder.node);
                 this.placeFragmentHolder.init(model);
                 diff.apply(false);
+                this.initializeFocus(this.placeFragmentHolder.node);
             } else {
                 this.placeFragmentHolder.update(model, diff);
                 diff.apply(!this.configuration.noAnimation);
@@ -218,6 +219,13 @@ YUI.add('instantlogic', function (Y) {
         
         createAnswer: function(model, parentNode, parentFragment, engine) {
         	return this.createAnswerFunction(model, parentNode, parentFragment, engine);
+        },
+        
+        initializeFocus: function(node) {
+        	var firstNode = node.one("input, select, textarea");
+        	if (firstNode) {
+        		firstNode.focus();
+        	}
         },
         
         sendEnter: function() {

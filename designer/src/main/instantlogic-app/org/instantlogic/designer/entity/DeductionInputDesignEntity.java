@@ -25,16 +25,16 @@ public class DeductionInputDesignEntity extends org.instantlogic.fabric.model.En
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationInputDesign> $operationInput
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationInputDesign>(
-				"Relationdesign__0020", "operationInput", INSTANCE, "operationInput", org.instantlogic.designer.DeductionInputDesign.class);
+				"Relationdesign__0021", "operationInput", INSTANCE, "operationInput", org.instantlogic.designer.DeductionInputDesign.class);
 		operationInput = $operationInput;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign> $deduction
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign>(
-				"Relationdesign__0017", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionInputDesign.class);
+				"Relationdesign__0018", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionInputDesign.class);
 		deduction = $deduction;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign> $inputs
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign>(
-				"Relationdesign__0019", "inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionInputDesign.class);
+				"Relationdesign__001a", "inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionInputDesign.class);
 		inputs = $inputs;
 		
 		// Phase 2

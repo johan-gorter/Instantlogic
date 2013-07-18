@@ -78,6 +78,9 @@ public class ApplicationGenerator extends AbstractGenerator{
 		if (applicationInstance.getStartEvent()!=null) {
 			model.startEvent = applicationInstance.getStartEvent().getTechnicalNameCapitalized();
 		}
+		if (applicationInstance.getLoggedInEvent()!=null) {
+			model.loggedInEvent = applicationInstance.getLoggedInEvent().getTechnicalNameCapitalized();
+		}
 		if (applicationInstance.getThemeNames().size()>0) {
 			model.themeNames = applicationInstance.getThemeNames().asList().toArray(new String[applicationInstance.getThemeNames().size()]);
 		} else {

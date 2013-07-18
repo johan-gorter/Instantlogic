@@ -27,6 +27,10 @@ public abstract class Application implements AutoCloseable {
 		return null;
 	}
 	
+	public FlowEvent getLoggedInEvent() {
+		return null;
+	}
+	
 	public String[] getThemeNames() {
 		return NO_THEMES;
 	}

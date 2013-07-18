@@ -89,14 +89,27 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitEnd();
 			}
 		}
-		// public org.instantlogic.interaction.flow.FlowEvent getStartEvent()
-		{
-			mv = cw.visitMethod(ACC_PUBLIC, "getStartEvent", "()Lorg/instantlogic/interaction/flow/FlowEvent;", null, null);
-			mv.visitCode();
-			emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"event/", model.startEvent+"Event");
-			mv.visitInsn(ARETURN);
-			mv.visitMaxs(1, 1);
-			mv.visitEnd();
+		if (model.startEvent!=null) {
+			// public org.instantlogic.interaction.flow.FlowEvent getStartEvent()
+			{
+				mv = cw.visitMethod(ACC_PUBLIC, "getStartEvent", "()Lorg/instantlogic/interaction/flow/FlowEvent;", null, null);
+				mv.visitCode();
+				emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"event/", model.startEvent+"Event");
+				mv.visitInsn(ARETURN);
+				mv.visitMaxs(1, 1);
+				mv.visitEnd();
+			}
+		}
+		if (model.loggedInEvent!=null) {
+			// public org.instantlogic.interaction.flow.FlowEvent getLoggedInEvent()
+			{
+				mv = cw.visitMethod(ACC_PUBLIC, "getLoggedInEvent", "()Lorg/instantlogic/interaction/flow/FlowEvent;", null, null);
+				mv.visitCode();
+				emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"event/", model.loggedInEvent+"Event");
+				mv.visitInsn(ARETURN);
+				mv.visitMaxs(1, 1);
+				mv.visitEnd();
+			}
 		}
 		// public String[] getThemeNames()
 		{
