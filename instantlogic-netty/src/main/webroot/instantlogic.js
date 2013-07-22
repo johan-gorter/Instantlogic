@@ -5,12 +5,12 @@ YUI.add('instantlogic', function (Y) {
 	
     var ns = Y.namespace('instantlogic');
 
-    ns.createBaseConfiguration = function(YUI) {
-    	return {
-    		fragmentNamespaces: [YUI.instantlogic.fragments, YUI.instantlogic.presence, YUI.instantlogic.designer, YUI.instantlogic.designer.diagram],
-    		createAnswer: YUI.instantlogic.answers.createAnswer
-    	}
-    }
+  ns.createBaseConfiguration = function (YUI) {
+    return {
+      fragmentNamespaces: [YUI.instantlogic.fragments, YUI.instantlogic.presence, YUI.instantlogic.designer, YUI.instantlogic.designer.diagram],
+      createAnswer: YUI.instantlogic.answers.createAnswer
+    };
+  };
     
     ns.Engine = function (application, caseId, travelerId, presenceNode, placeNode, configuration) {
     	this.configuration = configuration;
@@ -72,7 +72,7 @@ YUI.add('instantlogic', function (Y) {
             };
             window.onerror = function(e) {
             	alert('Unexpected javascript error '+e);
-            	debugger
+              debugger;
             };
         },
         
@@ -371,7 +371,7 @@ YUI.add('instantlogic', function (Y) {
         	if (node.hasClass('animate-vertically')) {
         		var height = node.get('clientHeight');
         		var oldHeight = node.getStyle('height');
-        		node.setStyle('height', '0px')
+        	  node.setStyle('height', '0px');
         		node.transition({duration:1, eading:'ease-out', height:height+'px'}, function() {
         			node.setStyle('height', null);
         		});
@@ -473,7 +473,7 @@ YUI.add('instantlogic', function (Y) {
         		});
         		this.node.appendChild(dataExplorer);
         	}
-        	button.on('hover', function() {debugTool.addClass('hover')}, function() {debugTool.removeClass('hover');checkMenuClose()});
+        	button.on('hover', function() { debugTool.addClass('hover'); }, function() { debugTool.removeClass('hover'); checkMenuClose();});
         	button.on('click', function(e) {
     			e.preventDefault();
     			e.stopPropagation();
@@ -508,11 +508,11 @@ YUI.add('instantlogic', function (Y) {
 	        		zIndex: 10001
 	        	});
         		openMenu.render();
-        		menuBody.on('hover', function(){hoverMenu=true}, function(){hoverMenu=false;checkMenuClose();});
-    			logLink.on('click', function(e){
+        		menuBody.on('hover', function() { hoverMenu = true; }, function(){hoverMenu=false;checkMenuClose();});
+    			logLink.on('click', function(ev){
     				window.console.log('Fragment:', me.fragment.model);
     				window.console.log(JSON.stringify(me.fragment.model, null, ' '));
-    				e.preventDefault();
+    				ev.preventDefault();
     				hoverMenu=false;
     				checkMenuClose();
     			});
@@ -768,10 +768,10 @@ YUI.add('instantlogic', function (Y) {
      * - destroy: function(), called when the fragment is destoyed
      * */
     ns.createFragment = function(options) {
-    	var constructor = function(parentNode, parentFragment, engine) {
-    		constructor.superclass.constructor.apply(this, arguments);
-    		this.statePerSubclass = { next: this.statePerSubclass };
-    	}
+      var constructor = function (parentNode, parentFragment, engine) {
+        constructor.superclass.constructor.apply(this, arguments);
+        this.statePerSubclass = { next: this.statePerSubclass };
+      };
     	Y.extend(constructor, options.baseClass || Y.instantlogic.Fragment, options.overrides);
     	
     	constructor.prototype.init = function(model, nextState) {
@@ -808,42 +808,42 @@ YUI.add('instantlogic', function (Y) {
     			options.postInit.call(this, model);
     		}
     	};
-    	
-    	constructor.prototype.update = function(newModel, diff, nextState) {
-    		var state = nextState || this.statePerSubclass;
-    		constructor.superclass.update.call(this, newModel, diff, state.next);
-    		if (state.fragmentLists) {
-    			var results = options.fragmentLists.call(this, newModel);
-    			for (var i=0;i<results.length;i++) {
-    				state.fragmentLists[i].update(results[i][1], diff);
-    			}
-    		}
-    		if (options.texts) {
-    			var newResults = options.texts.call(this, newModel);
-    			var oldResults = options.texts.call(this, this.oldModel);
-    			for (var i=0;i<newResults.length;i++) {
-    				if (newResults[i][1]!=oldResults[i][1]) {
-    					newResults[i][0].set('text', newResults[i][1] || '');
-    				}
-    			}
-    		}
-    		if (!ns.util.arrayEquals(this.oldModel.styleNames, newModel.styleNames)) {
-	    		if (this.oldModel.styleNames) {
-	    			for (var i=0;i<this.oldModel.styleNames.length;i++) {
-	    				this.markup.removeClass(this.oldModel.styleNames[i]);
-	    			}
-	    		}
-	    		if (newModel.styleNames) {
-	    			for (var i=0;i<newModel.styleNames.length;i++) {
-	    				this.markup.addClass(newModel.styleNames[i]);
-	    			}
-	    		}
-	    		diff.nodeUpdated(this.markup);
-    		}
-    		if (options.postUpdate) {
-    			options.postUpdate.call(this, newModel, diff);
-    		}
-    	}
+
+      constructor.prototype.update = function (newModel, diff, nextState) {
+        var state = nextState || this.statePerSubclass;
+        constructor.superclass.update.call(this, newModel, diff, state.next);
+        if(state.fragmentLists) {
+          var results = options.fragmentLists.call(this, newModel);
+          for(var i = 0; i < results.length; i++) {
+            state.fragmentLists[i].update(results[i][1], diff);
+          }
+        }
+        if(options.texts) {
+          var newResults = options.texts.call(this, newModel);
+          var oldResults = options.texts.call(this, this.oldModel);
+          for(var i = 0; i < newResults.length; i++) {
+            if(newResults[i][1] != oldResults[i][1]) {
+              newResults[i][0].set('text', newResults[i][1] || '');
+            }
+          }
+        }
+        if(!ns.util.arrayEquals(this.oldModel.styleNames, newModel.styleNames)) {
+          if(this.oldModel.styleNames) {
+            for(var i = 0; i < this.oldModel.styleNames.length; i++) {
+              this.markup.removeClass(this.oldModel.styleNames[i]);
+            }
+          }
+          if(newModel.styleNames) {
+            for(var i = 0; i < newModel.styleNames.length; i++) {
+              this.markup.addClass(newModel.styleNames[i]);
+            }
+          }
+          diff.nodeUpdated(this.markup);
+        }
+        if(options.postUpdate) {
+          options.postUpdate.call(this, newModel, diff);
+        }
+      };
 
     	constructor.prototype.destroy = function(nextState) {
     		if (options.destroy) {

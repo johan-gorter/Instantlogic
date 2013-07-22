@@ -38,6 +38,7 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 	
 	// For all add buttons
 	private final Map<Entity, FlowEvent> addNewEvents = new HashMap<Entity, FlowEvent>();
+	private final FlowEvent shopForInstancesEvent;
 	
 	public DataExplorerRelationFlow(final DataExplorerEntityFlow parentFlow, final Relation relation, final SimpleFlowEvent relationDetailsEvent) {
 		this.entity = parentFlow.getEntity();
@@ -53,6 +54,7 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 		edgeList.add(new FlowEdge(null, relationDetailsEvent, relationPlaceTemplate));
 		
 		if (relation.isOwner()) {
+			shopForInstancesEvent = null;
 			List<Entity> entitiesToBeAdded = new ArrayList<Entity>();
 			addExtensions(relation.getTo(), entitiesToBeAdded);
 			for (final Entity entityToBeAdded : entitiesToBeAdded) {
@@ -76,6 +78,21 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 				nodeList.add(subFlow);
 				edgeList.add(new FlowEdge(null, addEvent, subFlow));
 			}
+		} else {
+			shopForInstancesEvent = new SimpleFlowEvent(entity.getName()+"-"+relation.getName()+"-shopping");
+			Flow shoppingFlow = new ProcessingFlow() {
+
+				@Override
+				public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
+					List<RelationInstanceShopping> shoppingFor = context.getTraveler().getOrCreateExtension(RelationInstanceShopping.TravelerExtension.class).getCurrentlyShoppingFor();
+					shoppingFor.add(new RelationInstanceShopping(relation, context.getSelectedInstance(entity)));
+					return new FlowEventOccurrence(relationDetailsEvent);
+				}
+				
+			};
+			SimpleSubFlow subFlow = new SimpleSubFlow(shoppingFlow);
+			nodeList.add(subFlow);
+			edgeList.add(new FlowEdge(null, shopForInstancesEvent, subFlow));
 		}
 		
 		Flow removeFlow = new ProcessingFlow() {
@@ -139,5 +156,9 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 
 	public Map<Entity, FlowEvent> getAddNewEvents() {
 		return addNewEvents;
+	}
+
+	public FlowEvent getShopForInstancesEvent() {
+		return shopForInstancesEvent;
 	}
 }

@@ -37,9 +37,11 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 
 		page.addChild("mainContent", 
 			new FragmentTemplate(entity.getUniqueId()+"-link", "Link")
-				.putText("text", getEntityTitle(entity))
+				.putText("text", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(entity))
 				.setEvent(ExploreDataEvent.INSTANCE)
 		);
+		
+		page.addChild("mainContent", new ShoppingElement());
 		
 		for (Entry<Entity, FlowEvent> entry : flow.getAddNewEvents().entrySet()) {
 			Entity entity = entry.getKey();
@@ -47,6 +49,18 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 				new FragmentTemplate("add-"+entity.getUniqueId(), "Button")
 					.putText("text", new TextTemplate().getUntranslated().add("Add new "+entity.getName()).getTextTemplate())
 					.setEvent(entry.getValue())
+			);
+		}
+		
+		if (flow.getShopForInstancesEvent()!=null) {
+			page.addChild("mainContent",
+				new FragmentTemplate("shopForInstancesOuter", "Block")
+					.addChild("content", 
+						new FragmentTemplate("shopForInstances", "Button")
+							.addChild("content", new FragmentTemplate("shopping-icon","Icon").setStyleNames(new String[]{"icon-shopping-cart"}))
+							.putText("text", new TextTemplate().getUntranslated().add("Start shopping for instances").getTextTemplate())
+							.setEvent(flow.getShopForInstancesEvent())
+					)
 			);
 		}
 		
@@ -75,7 +89,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 								new FragmentTemplate("cell-title", "Cell")
 									.addChild("content", 
 										new FragmentTemplate("toInstance", "Link")
-											.putText("text", getEntityTitle(relation.getTo()))
+											.putText("text", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(relation.getTo()))
 											.setEvent(ExploreDataEvent.INSTANCE)
 									),
 								new FragmentTemplate("cell-operations", "Cell")
@@ -90,19 +104,6 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 		
 		// TODO: Once finished developing, cache this page in order to increase performance.
 		return page;
-	}
-
-	// Warning: copy-pasted from EntityDetailsPlaceTemplate
-	// Traverses to super-entities and provides a fallback
-	private TextTemplate getEntityTitle(Entity<?> entity) {
-		Entity<?> currentEntity = entity;
-		while (currentEntity!=null) {
-			if (currentEntity.getTitle()!=null) {
-				return currentEntity.getTitle();
-			}
-			currentEntity = currentEntity.extendsEntity();
-		}
-		return new TextTemplate().getUntranslated().add(entity.getName()).getTextTemplate();
 	}
 
 	@SuppressWarnings({ "unchecked" })

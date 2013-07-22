@@ -57,13 +57,14 @@ public class RenderContext extends AbstractDeductionContext {
 	}
 
 	public String enterScope(SharedElementHolder sharedElementHolder) {
-		String id = makeId(sharedElementHolder.getId());
-		prefixes.add(id);
-		return id;
+		return enterScope(makeId(sharedElementHolder.getId()));
 	}
 	
 	public String enterScope(Instance forInstance) {
-		String id = makeId(forInstance);
+		return enterScope(makeId(forInstance));
+	}
+	
+	public String enterScope(String id) {
 		prefixes.add(id);
 		return id;
 	}
@@ -82,5 +83,9 @@ public class RenderContext extends AbstractDeductionContext {
 
 	public FlowContext getFlowContext() {
 		return flowContext;
+	}
+	
+	public TravelerInfo getTraveler() {
+		return flowContext.getTraveler();
 	}
 }

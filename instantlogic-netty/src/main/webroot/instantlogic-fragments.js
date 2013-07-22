@@ -111,10 +111,10 @@ YUI.add('instantlogic-fragments', function (Y) {
     // Link
     ns.Link = createFragment({
     	createMarkup: function() {
-            return this.node = html.a({href:'#', className: this.cssClassName()},
-            	this.contentSpan = html.span(),
-            	this.textSpan = html.span()
-            )
+    	  return this.node = html.a({ href: '#', className: this.cssClassName() },
+    	    this.contentSpan = html.span(),
+    	    this.textSpan = html.span()
+    	  );
     	},
     	texts: function(model) {
     		return [[this.textSpan, model.text]];
@@ -139,10 +139,10 @@ YUI.add('instantlogic-fragments', function (Y) {
     // Div (contains content + text)
     ns.Div = createFragment({
     	createMarkup: function() {
-            return this.node = html.div(
-            	this.contentSpan = html.span(),
-            	this.textSpan = html.span()
-            )
+    	  return this.node = html.div(
+    	    this.contentSpan = html.span(),
+    	    this.textSpan = html.span()
+    	  );
     	},
     	texts: function(model) {
     		return [[this.textSpan, model.text]];
@@ -287,9 +287,9 @@ YUI.add('instantlogic-fragments', function (Y) {
     		this.lastInstanceId = this.lastInstanceId.substr(0, this.lastInstanceId.indexOf('+'));
     		this.updateImages();
     		var me = this;
-    		this.onTravelersUpdate = function() {
-    			me.updateImages();
-    		}
+    	  this.onTravelersUpdate = function () {
+    	    me.updateImages();
+    	  };
     		this.engine.communicator.subscribe(this.onTravelersUpdate);
     	},
     	overrides: {
@@ -364,10 +364,10 @@ YUI.add('instantlogic-fragments', function (Y) {
     // Column
     ns.Column = createFragment({
     	createMarkup: function() {
-            return this.node = html.div({className:'divtable-header'},
-            	this.contentSpan = html.span(),
-            	this.textSpan = html.span()
-            )
+    	  return this.node = html.div({ className: 'divtable-header' },
+    	    this.contentSpan = html.span(),
+    	    this.textSpan = html.span()
+    	  );
     	},
     	texts: function(model) {
     		return [[this.textSpan, model.header]];
@@ -380,10 +380,10 @@ YUI.add('instantlogic-fragments', function (Y) {
     // Cell
     ns.Cell = createFragment({
     	createMarkup: function() {
-            return this.node = html.div({className:'divtable-cell'},
-            	this.contentSpan = html.span(),
-            	this.textSpan = html.span()
-            )
+    	  return this.node = html.div({ className: 'divtable-cell' },
+    	    this.contentSpan = html.span(),
+    	    this.textSpan = html.span()
+    	  );
     	},
     	texts: function(model) {
     		return [[this.textSpan, model.text]];

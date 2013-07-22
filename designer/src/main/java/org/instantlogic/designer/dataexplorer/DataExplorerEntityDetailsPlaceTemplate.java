@@ -2,6 +2,7 @@ package org.instantlogic.designer.dataexplorer;
 
 import java.util.List;
 
+import org.instantlogic.designer.dataexplorer.RelationInstanceShopping.TravelerExtension;
 import org.instantlogic.fabric.deduction.AttributeDeduction;
 import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.deduction.ReverseRelationDeduction;
@@ -10,10 +11,14 @@ import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
+import org.instantlogic.fabric.util.DeductionContext;
+import org.instantlogic.fabric.util.ValueAndLevel;
+import org.instantlogic.fabric.value.Multi;
 import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.page.FragmentTemplate;
 import org.instantlogic.interaction.page.SelectionElement;
+import org.instantlogic.interaction.util.RenderContext;
 
 public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 
@@ -36,6 +41,9 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
                 new org.instantlogic.interaction.page.FragmentTemplate("h1", "Heading1")      
                     .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(entity.getName() + " details").getTextTemplate())        
             );
+		
+		page.addChild("mainContent", new ShoppingElement(entity));
+		
 		// DirectEvent buttons
 		for (FlowEvent directEvent : directEvents) {
 			page.addChild("mainContent", new FragmentTemplate("direct-"+directEvent.getName(), "Button")
@@ -123,7 +131,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	}
 
 	// Traverses to super-entities and provides a fallback
-	private TextTemplate getEntityTitle(Entity<?> entity) {
+	static TextTemplate getEntityTitle(Entity<?> entity) {
 		Entity<?> currentEntity = entity;
 		while (currentEntity!=null) {
 			if (currentEntity.getTitle()!=null) {

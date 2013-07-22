@@ -67,4 +67,32 @@ YUI.add('instantlogic-designer', function (Y) {
     	}
     });
     
+    // Shopping (shops for instances to add to a relation in the data-explorer)
+    ns.Shopping = Y.instantlogic.createFragment({
+    	createMarkup: function() {
+    		return html.div({className: 'shopping animate-vertically'},
+    			html.span('Shopping for '),
+    			this.relationName = html.span(),
+    			html.span(' (on '),
+    			this.instanceName = html.span(),
+    			html.span(')'),
+    			this.addButton = html.button('add to cart'),
+    			this.readyButton = html.button('ready')
+    		);
+    	},
+    	postInit: function(model) {
+    	},
+    	postUpdate: function(newModel) {
+    		
+    	},
+    	overrides: {
+    		addClicked: function(evt) {
+    			
+    		},
+			readyClicked: function(evt) {
+				
+			}
+    	}
+    });
+    
 }, '0.7.0', { requires: ['instantlogic', 'html', 'instantlogic-fragments'] });

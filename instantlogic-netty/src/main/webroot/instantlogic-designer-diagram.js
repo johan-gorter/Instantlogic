@@ -7,24 +7,54 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
 
   var ns = Y.namespace('instantlogic.designer.diagram');
   var html = Y.html;
+  var createFragment = Y.instantlogic.createFragment;
 
-  var svg = {
-    
-  };
+  var svg = Y.svg;
 
   var sqr = function (a) {
     return a * a;
   };
 
-  ns.DeductionScheme = function(parentNode, parentFragment, engine) {
+  ns.DeductionScheme = createFragment({
+    createMarkup: function() {
+      return this.node = svg.svg({ className: 'deduction-scheme' });
+    },
+    fragmentLists: function(model) {
+      return [[this.node, model.deductions]];
+    }
+  });
+
+  ns.Deduction = createFragment({
+    createMarkup: function() {
+      return this.node = svg.g(
+        this.outputsGroup = svg.g(),
+        this.circle = svg.circle(),
+        this.nameText = svg.text()
+      );
+    },
+    texts: function(model) {
+      return [[this.nameText, model.operationName]];
+    },
+    fragmentLists: function(model) {
+      return [[this.outputsGroup, model.outputs]];
+    }
+  });
+
+  ns.Output = createFragment({
+    createMarkup: function() {
+      return this.node = svg.path();
+    }
+  });
+
+  ns.DeductionSchemeOld = function(parentNode, parentFragment, engine) {
     ns.DeductionScheme.superclass.constructor.apply(this, arguments);
   };
 
-  Y.extend(ns.DeductionScheme, Y.instantlogic.Fragment, {
+  Y.extend(ns.DeductionSchemeOld, Y.instantlogic.Fragment, {
 
     init: function(model) {
       ns.DeductionScheme.superclass.init.call(this, model);
-      var markup = Y.Node.one(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
+      var markup = svg.svg();
       markup.set('version', '1.1');
       
       this.parentNode.appendChild(markup);

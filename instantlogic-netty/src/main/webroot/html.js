@@ -73,15 +73,23 @@ YUI.add('html', function(Y) {
         // - Other HTMLElements
         // - String, will be converted to a textNode
         // - Array, will be recursed
-        createElementFactory: function(tagName) {
-            return function() {
-                var result = Y.Node.one(currentDocument.createElement(tagName));
-                result = addChildNodes(result, arguments, true);
-                return result;
-            };
-        },
-        
-        pushDocument: function(doc) {
+	  createElementFactory: function(tagName) {
+	    return function() {
+	      var result = Y.Node.one(currentDocument.createElement(tagName));
+	      result = addChildNodes(result, arguments, true);
+	      return result;
+	    };
+	  },
+
+	  createElementFactoryNS: function(namespaceURI, tagName) {
+	    return function() {
+	      var result = Y.Node.one(currentDocument.createElementNS(namespaceURI, tagName));
+	      result = addChildNodes(result, arguments, true);
+	      return result;
+	    };
+	  },
+
+	  pushDocument: function(doc) {
         	previousDocumentStack.push(currentDocument);
         	currentDocument = doc;
         },
@@ -91,11 +99,20 @@ YUI.add('html', function(Y) {
         }
 	};
 	
-	var attributeNames = ['a','abbr','acronym','address','area','b','base','bdo','big','blockquote','body','br','button','caption','cite','code','col','colgroup','dd','del','dfn','div','dl','dt','em','fieldset','form','frame','frameset','h1','h2','h3','h4','h5','h6','head','hr','html','i','iframe','img','input','ins','kbd','label','legend','li','link','map','meta','noframes','noscript','object','ol','optgroup','option','p','param','pre','q','samp','script','select','small','span','strong','style','sub','sup','table','tbody','td','textarea','tfoot','th','thead','title','tr','tt','u','ul','var'];
+	var tagNames = ['a','abbr','acronym','address','area','b','base','bdo','big','blockquote','body','br','button','caption','cite','code','col','colgroup','dd','del','dfn','div','dl','dt','em','fieldset','form','frame','frameset','h1','h2','h3','h4','h5','h6','head','hr','html','i','iframe','img','input','ins','kbd','label','legend','li','link','map','meta','noframes','noscript','object','ol','optgroup','option','p','param','pre','q','samp','script','select','small','span','strong','style','sub','sup','table','tbody','td','textarea','tfoot','th','thead','title','tr','tt','u','ul','var'];
 	
-	for (var i=0;i<attributeNames.length;i++) {
-		var name = attributeNames[i];
+	for (var i=0;i<tagNames.length;i++) {
+		var name = tagNames[i];
 		Y.html[name] = Y.html.createElementFactory(name);
 	}
-	
+
+  var svgTagNames = ['svg', 'circle', 'g', 'path'];
+
+  Y.svg = {};
+  
+  for(var ii = 0; ii < svgTagNames.length; ii++) {
+    var svgName = svgTagNames[ii];
+    Y.svg[svgName] = Y.html.createElementFactoryNS('http://www.w3.org/2000/svg', svgName);
+  }
+
 }, '0.7.0', {requires: ['node']});
