@@ -106,7 +106,7 @@ YUI.add('html', function(Y) {
 		Y.html[name] = Y.html.createElementFactory(name);
 	}
 
-  var svgTagNames = ['svg', 'circle', 'g', 'path'];
+  var svgTagNames = ['svg', 'circle', 'ellipse', 'g', 'path', 'text'];
 
   Y.svg = {};
   

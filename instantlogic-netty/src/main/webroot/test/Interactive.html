@@ -2,8 +2,16 @@
 <html>
 <head>
 <title>FragmentList Test</title>
+
+<link href="../bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+
+<link rel="stylesheet" type="text/css" href="../style/presence.css">
+<link rel="stylesheet" type="text/css" href="../style/margin.css">
+<link rel="stylesheet" type="text/css" href="../style/designer.css">
+<link rel="stylesheet" type="text/css" href="../style/izzy.css">
+
   
-<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui.js"></script>
+  <script src="http://yui.yahooapis.com/3.10.3/build/yui/yui.js"></script>
 <!--  <script type="text/javascript" src="/webjars/yui/3.7.3/yui/yui.js"></script> -->
 
 <script src="../html.js"></script>
@@ -38,8 +46,8 @@
             var configuration = Y.instantlogic.createBaseConfiguration(Y); 
 
             window.onbeforeunload = function() {
-            	window.localStorage["interactiveModel"] = Y.one('#input').get("value");
-            }
+              window.localStorage["interactiveModel"] = Y.one('#input').get("value");
+            };
             
             Y.one('#testarea').setContent('');
             var engine = new Y.instantlogic.Engine('dummyApplication','dummyCaseId','dummyTravelerId', null, Y.one('#testarea'), configuration);
@@ -69,7 +77,7 @@
 
 </head>
 <body>
-	<textarea rows="20" cols="120" id="input">
+	<textarea rows="20" cols="120" id="input" style="width: 800px;height: 400px;">
 	</textarea><br />
 	<button id="test">Test</button>
     <div id="testarea">

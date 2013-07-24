@@ -17,10 +17,12 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
 
   ns.DeductionScheme = createFragment({
     createMarkup: function() {
-      return this.node = svg.svg({ className: 'deduction-scheme' });
+      return html.div({ className: 'deduction-scheme'},
+        this.node = svg.svg({ viewBox: '-50 0 50 50' })
+      );
     },
     fragmentLists: function(model) {
-      return [[this.node, model.deductions]];
+      return [[this.node, model.deductions, { fragmentHolderOptions: { elementFactory: svg.g } }]];
     }
   });
 
@@ -28,7 +30,7 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
     createMarkup: function() {
       return this.node = svg.g(
         this.outputsGroup = svg.g(),
-        this.circle = svg.circle(),
+        this.circle = svg.ellipse({fill:'red'}),
         this.nameText = svg.text()
       );
     },
@@ -37,6 +39,25 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
     },
     fragmentLists: function(model) {
       return [[this.outputsGroup, model.outputs]];
+    },
+    postInit: function(model) {
+      this.setDimensions(model);
+    },
+    postUpdate: function(newModel, diff) {
+      if(
+        newModel.xy.left != this.oldModel.xy.left ||
+        newModel.xy.top != this.oldModel.xy.top
+      ) {
+        this.setDimensions(newModel);
+      }
+    },
+    overrides: {
+      setDimensions: function (model) {
+        this.circle.setAttribute('cx', model.xy.left);
+        this.circle.setAttribute('cy', model.xy.top);
+        this.circle.setAttribute('rx', 8.0);
+        this.circle.setAttribute('ry', 4.0);
+      }
     }
   });
 

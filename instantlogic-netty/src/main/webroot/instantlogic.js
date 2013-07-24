@@ -397,7 +397,7 @@ YUI.add('instantlogic', function (Y) {
         this.parentFragment = parentFragment;
         this.options = options || {};
         this.fragment = null;
-        this.node = Y.html[this.options.tagName || 'span']({ 'data-fragment-id': id, className: 'fragment' });
+        this.node =  (this.options.elementFactory ||  Y.html.span)({ 'data-fragment-id': id, className: 'fragment' });
     };
 
     ns.FragmentHolder.prototype = {
@@ -420,7 +420,7 @@ YUI.add('instantlogic', function (Y) {
         recreateFragment: function (newModel, diff) {
             this.fragment.destroy();
             var oldNode = this.node;
-            this.node = Y.html[this.options.tagName || 'span']({ 'data-fragment-id': newModel.id, className: 'fragment' });
+            this.node = (this.options.elementFactory ||  Y.html.span)({ 'data-fragment-id': newModel.id, className: 'fragment' });
             oldNode.ancestor().insertBefore(this.node, oldNode);
             // Wrong visual effect:
             //diff.nodeToRemove(oldNode);
