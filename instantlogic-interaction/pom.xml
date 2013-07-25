@@ -12,6 +12,11 @@
     <name>Instantlogic Interaction</name>
 
     <dependencies>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-fabric</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
     </dependencies>
 
 </project>

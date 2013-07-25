@@ -11,6 +11,7 @@ import org.instantlogic.example.izzy.flow.dashboard.DashboardPlaceTemplate;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.CaseAdministration;
+import org.instantlogic.fabric.util.TestDeductionContext;
 import org.instantlogic.fabric.value.Multi;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.util.RenderContext;
@@ -60,5 +61,12 @@ public class ReverseRelationTest {
 		assertEquals(project, get(issue, "project"));
 		assertEquals(user, get(issue, "reporter"));
 		assertTrue(((Multi)get(user, "assigned issues")).contains(issue));
+	}
+	
+	@Test
+	public void testTitle() {
+		User user = new User();
+		user.setName("John");
+		assertEquals("John", user.renderTitle(new TestDeductionContext()));
 	}
 }

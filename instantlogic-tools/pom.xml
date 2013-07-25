@@ -12,6 +12,28 @@
     <name>Instantlogic Tools</name>
 
     <dependencies>
+      <!-- Instantlogic dependencies -->
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-fabric</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-interaction</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+	  
+	  <!-- External dependencies -->
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+	  </dependency>
+	  <dependency>
+		<groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+	  </dependency>
+	  
     </dependencies>
 
 </project>

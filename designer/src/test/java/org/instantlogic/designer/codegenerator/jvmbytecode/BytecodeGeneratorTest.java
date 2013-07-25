@@ -64,7 +64,7 @@ public class BytecodeGeneratorTest extends AbstractBytecodeGeneratorTest {
 		CaseAdministration caseAdministration = project.getMetadata().getCaseAdministration();
 		Instance user = caseAdministration.createInstance("user");
 		
-		set(user, "username", "John");
+		set(user, "name", "John");
 		
 		assertEquals("John", user.renderTitle(new TestDeductionContext()));
 	}

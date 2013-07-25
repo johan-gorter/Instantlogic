@@ -12,6 +12,82 @@
     <name>Instantlogic Designer</name>
 
     <dependencies>
-    </dependencies>
+      <!-- Instantlogic dependencies -->
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-fabric</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-interaction</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-tools</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+	  
+	  <!-- External dependencies -->
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+	  </dependency>
+	  <dependency>
+		<groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+	  </dependency>
 
+	  <dependency>
+		<groupId>org.ow2.asm</groupId>
+        <artifactId>asm</artifactId>
+      </dependency>
+
+	  <!-- These can be removed when a few lines are commented out in the source -->
+	  <dependency>
+		<groupId>org.ow2.asm</groupId>
+        <artifactId>asm-util</artifactId>
+      </dependency>
+	  <dependency>
+		<groupId>org.ow2.asm</groupId>
+        <artifactId>asm-tree</artifactId>
+      </dependency>
+	  <dependency>
+		<groupId>org.ow2.asm</groupId>
+        <artifactId>asm-analysis</artifactId>
+      </dependency>
+
+	  <dependency>
+		<groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+        <version>2.3.19</version>
+      </dependency>
+	  
+    </dependencies>
+    
+    <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/main/instantlogic-app</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+    
 </project>

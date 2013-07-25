@@ -173,15 +173,15 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     	if (lastUnderscoreIndex<0) throw new IllegalArgumentException("Invalid Uid string: "+uidString);
     	String sequenceNrString = uidString.substring(lastUnderscoreIndex+1);
     	uidString = uidString.substring(0, lastUnderscoreIndex);
-    	lo = Integer.parseInt(sequenceNrString);
+    	lo = sequenceNrString.length()==0?0:Integer.parseInt(sequenceNrString,16);
     	// RunId
     	lastUnderscoreIndex = uidString.lastIndexOf('_');
     	if (lastUnderscoreIndex<0) throw new IllegalArgumentException("Invalid Uid string: "+uidString);
     	String runIdString = uidString.substring(lastUnderscoreIndex+1);
     	uidString = uidString.substring(0, lastUnderscoreIndex);
     	if (runIdString.length()!=0) {
-    		if (runIdString.length()!=6) throw new IllegalArgumentException("Invalid Uid string: "+uidString);
-    		lo = lo | (Integer.parseInt(runIdString, 16) << 24);
+    		if (runIdString.length()!=8) throw new IllegalArgumentException("Invalid Uid string: "+uidString);
+    		lo = lo | (Long.parseLong(runIdString, 16) << 16);
     	}
         // Label
     	if (uidString.length()>16) throw new IllegalArgumentException("Invalid Uid string: "+uidString);
@@ -219,7 +219,7 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     		chars[i] = LabelChars[(int)((bits >> (20-(i-11)*5)) & 0x0000001f)];
     	}
     	int labelLength = 16;
-    	while (chars[labelLength-1]=='_') labelLength--;
+    	while (labelLength>0 && chars[labelLength-1]=='_') labelLength--;
     	long sequenceNr = loBits & 0x0000ffff;
     	long runId = (loBits >> 16) & 0xffffffff;
     	StringBuffer sb = new StringBuffer();

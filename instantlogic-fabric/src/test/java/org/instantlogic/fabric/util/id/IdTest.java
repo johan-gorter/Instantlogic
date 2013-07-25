@@ -9,10 +9,11 @@ public class IdTest {
 
 	@Test
 	public void testOnes() {
-		Id ones = Id.parse("zZZZZZZZZZZZZZZZ_ffffffff_ffff");
+		System.out.println(new Id(0xffffffff, 0xffffffff).toString());
+		Id ones = Id.parse("uUUUUUUUUUUUUUUU_ffffffff_ffff");
 		assertEquals(0xffffffff, ones.getHiBits());
 		assertEquals(0xffffffff, ones.getLoBits());
-		assertEquals("zZZZZZZZZZZZZZZZ_ffffffff_ffff", ones.toString());
+		assertEquals("uUUUUUUUUUUUUUUU_ffffffff_ffff", ones.toString());
 	}
 
 	@Test
