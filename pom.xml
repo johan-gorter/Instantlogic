@@ -9,6 +9,8 @@
         <module>instantlogic-interaction</module>
         <module>instantlogic-tools</module>
         <module>designer</module>
+        <module>instantlogic-maven-plugin</module>
+        <module>webapps/izzy</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -19,7 +21,7 @@
 		Experimental framework for creating real-time, collaborative web applications.
     </description>
     <inceptionYear>2011</inceptionYear>
-    <url>http://www.instantlogic.org</url>
+    <url>http://instantlogic.org</url>
     <licenses>
         <license>
             <name>MIT</name>
