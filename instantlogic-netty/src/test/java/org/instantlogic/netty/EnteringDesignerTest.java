@@ -28,9 +28,10 @@ public class EnteringDesignerTest {
 		testCase.processMessages(travelerProxy, Collections.singletonList((Message)new EnterMessage("Welcome")));
 		testCase.sendUpdates();
 
-		Assert.assertEquals(1, travelerProxy.getLastUpdates().size());
+		Assert.assertEquals(2, travelerProxy.getLastUpdates().size());
 		
 		System.out.println(new Gson().toJson(travelerProxy.getLastUpdates().get(0)));
+		System.out.println(new Gson().toJson(travelerProxy.getLastUpdates().get(1)));
 	}
 	
 }

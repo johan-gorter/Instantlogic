@@ -8,8 +8,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>instantlogic-designer</artifactId>
-    <name>Instantlogic Designer</name>
+    <artifactId>instantlogic-netty</artifactId>
+    <name>Instantlogic Netty Server</name>
 
     <dependencies>
       <!-- Instantlogic dependencies -->
@@ -25,7 +25,17 @@
 	  </dependency>
       <dependency>
     	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-designer</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
         <artifactId>instantlogic-tools</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-engine</artifactId>
     	<version>${project.version}</version>
 	  </dependency>
 	  
@@ -38,55 +48,41 @@
 		<groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
 	  </dependency>
-
 	  <dependency>
-		<groupId>org.ow2.asm</groupId>
-        <artifactId>asm</artifactId>
-      </dependency>
-
-	  <!-- These can be removed when a few lines are commented out in the source -->
+		<groupId>io.netty</groupId>
+        <artifactId>netty</artifactId>
+	  </dependency>
 	  <dependency>
-		<groupId>org.ow2.asm</groupId>
-        <artifactId>asm-util</artifactId>
-      </dependency>
-	  <dependency>
-		<groupId>org.ow2.asm</groupId>
-        <artifactId>asm-tree</artifactId>
-      </dependency>
-	  <dependency>
-		<groupId>org.ow2.asm</groupId>
-        <artifactId>asm-analysis</artifactId>
-      </dependency>
-
-	  <dependency>
-		<groupId>org.freemarker</groupId>
-        <artifactId>freemarker</artifactId>
-      </dependency>
-	  
+		<groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+	  </dependency>
     </dependencies>
-    
-    <build>
+
+  <build>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-            <id>add-source</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>src/main/instantlogic-app</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
+          <artifactId>appassembler-maven-plugin</artifactId>
+          <version>1.4</version>
+          <configuration> 
+            <assembleDirectory>target</assembleDirectory> 
+            <programs>
+                <program>
+                    <mainClass>org.instantlogic.netty.NettyServer</mainClass>
+                    <name>instantlogic-server</name>
+                </program>
+            </programs>
+          </configuration>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                  	<goal>assemble</goal>
+                  </goals>
+              </execution>            
+          </executions>
       </plugin>
     </plugins>
-  </build>
+  </build>      
     
 </project>

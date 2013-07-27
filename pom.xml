@@ -10,7 +10,15 @@
         <module>instantlogic-tools</module>
         <module>designer</module>
         <module>instantlogic-maven-plugin</module>
+        <module>instantlogic-engine</module>
+		<module>instantlogic-netty</module>
+		
         <module>webapps/izzy</module>
+        <module>webapps/nextdesigner</module>
+		
+        <module>bootstrappers/izzy</module>
+        <module>bootstrappers/designer</module>
+        <module>bootstrappers/presence</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -90,6 +98,11 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.6.4</version>
           </dependency>
+		  <dependency>
+			<groupId>io.netty</groupId>
+            <artifactId>netty</artifactId>
+            <version>3.3.1.Final</version>
+          </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -155,6 +168,34 @@
             </plugin>
         </plugins>
     </build>
+	
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+          <artifactId>appassembler-maven-plugin</artifactId>
+          <version>1.4</version>
+          <configuration> 
+            <assembleDirectory>target</assembleDirectory> 
+            <programs>
+                <program>
+                    <mainClass>org.instantlogic.netty.NettyServer</mainClass>
+                    <name>instantlogic-server</name>
+                </program>
+            </programs>
+          </configuration>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                  	<goal>assemble</goal>
+                  </goals>
+              </execution>            
+          </executions>
+      </plugin>
+    </plugins>
+  </build>      
+	
 
     <scm>
         <connection>scm:git:git://github.com/johan-gorter/Instantlogic.git</connection>

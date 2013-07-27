@@ -8,8 +8,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>izzy</artifactId>
-    <name>Izzy demo</name>
+    <artifactId>instantlogic-engine</artifactId>
+    <name>Instantlogic engine</name>
 
     <dependencies>
       <!-- Instantlogic dependencies -->
@@ -23,22 +23,27 @@
         <artifactId>instantlogic-interaction</artifactId>
     	<version>${project.version}</version>
 	  </dependency>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-designer</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-tools</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
 	  
 	  <!-- External dependencies -->
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+	  </dependency>
 	  <dependency>
 		<groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
 	  </dependency>
 
-
-	  <!--  Testing -->
-	  <dependency>
-    	<groupId>org.instantlogic</groupId>
-        <artifactId>instantlogic-engine</artifactId>
-    	<version>${project.version}</version>
-    	<scope>test</scope>
-	  </dependency>
-	  
     </dependencies>
     
     <build>
@@ -70,7 +75,7 @@
             </goals>
             <configuration>
               <sources>
-                <source>target/generated-sources/instantlogic-app/izzy/</source>
+                <source>target/generated-sources/instantlogic-app/presence/</source>
               </sources>
             </configuration>
           </execution>
