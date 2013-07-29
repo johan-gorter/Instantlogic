@@ -3,6 +3,7 @@ package org.instantlogic.netty;
 import static org.jboss.netty.handler.codec.http.HttpResponseStatus.CONTINUE;
 import static org.jboss.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +26,8 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
 	
 	private final TravelersManagement travelersManagement;
 	
-	public InstantlogicRequestHandler(TravelersManagement travelersManagement) {
+	public InstantlogicRequestHandler(TravelersManagement travelersManagement, File staticRoot) {
+		super(staticRoot);
 		this.travelersManagement = travelersManagement;
 	}
 

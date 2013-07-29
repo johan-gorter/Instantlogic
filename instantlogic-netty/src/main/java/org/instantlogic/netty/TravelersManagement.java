@@ -9,8 +9,6 @@ import org.instantlogic.engine.manager.Update;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
-
 public class TravelersManagement {
 
 	private static final Logger logger = LoggerFactory.getLogger(NettyTraveler.class);

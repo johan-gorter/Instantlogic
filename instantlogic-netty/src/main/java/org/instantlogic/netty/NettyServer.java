@@ -18,7 +18,13 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
-import org.instantlogic.designer.DesignerApplication;
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.instantlogic.engine.manager.DesignerEngineManager;
 import org.instantlogic.engine.manager.EngineManager;
 import org.instantlogic.engine.manager.Update;
@@ -38,24 +44,55 @@ public class NettyServer {
 
 	private static TravelersManagement travelersManagement;
 	private static EngineManager engineManager;
+	private static File webroot;
+	private static File webapps;
+	private static int port = 8080;
+	
 	
 	private static Runnable fileWatcher = new Runnable() {
 		@Override
 		public void run() {
-			watch("src/main/webroot");
+			watch(webroot);
 		}
 	};
 	
 	private static Runnable fileWatcherStyle = new Runnable() {
 		@Override
 		public void run() {
-			watch("src/main/webroot/style");
+			watch(new File(webroot, "style"));
 		}
 	};
-	
-	public static void main(String[] args) throws IOException {
+
+	public static void main(String[] args) throws IOException, ParseException {
+		Options options = new Options();
+		options.addOption(new Option("help", "Print this message"));
+		options.addOption("webapps", true, "Folder which contains the web applications to run");
+		options.addOption("port", true, "The port to run the webserver on");
+		CommandLineParser parser = new BasicParser();
+		CommandLine cmd = parser.parse( options, args);
+		if (cmd.hasOption("help")) {
+			HelpFormatter formatter = new HelpFormatter();
+			formatter.printHelp( "instantlogic-server", options );
+			return;
+		}
+		webapps = new File(cmd.hasOption("webapps")?cmd.getOptionValue("webapps"):"../webapps");
+		if (!webapps.isDirectory()) {
+			throw new RuntimeException("Webapps folder not found: "+webapps.getAbsolutePath());
+		}
+		if (cmd.hasOption("port")) {
+			port = Integer.parseInt(cmd.getOptionValue("port"));
+		}
+		
 		engineManager = new DesignerEngineManager();
-		engineManager.registerWebappsDirectory(new File("../webapps"));
+		engineManager.registerWebappsDirectory(webapps);
+		
+		webroot = new File("../web");
+		if (!webroot.isDirectory()) {
+			webroot = new File("src/main/webroot");
+			if (!webroot.isDirectory()) {
+				throw new RuntimeException("Web root folder not found");
+			}
+		}
 		
 		travelersManagement = new TravelersManagement(engineManager);
 		
@@ -63,15 +100,15 @@ public class NettyServer {
 		ServerBootstrap bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newSingleThreadExecutor(factory), executor));
 
 		// Set up the event pipeline factory.
-		bootstrap.setPipelineFactory(new InstantlogicPipelineFactory(travelersManagement));
+		bootstrap.setPipelineFactory(new InstantlogicPipelineFactory(travelersManagement, webroot));
 
 		if (WATCH_FILES) {
 			executor.execute(fileWatcher);
 			executor.execute(fileWatcherStyle);
 		}
 		
-		bootstrap.bind(new InetSocketAddress(8080));
-		logger.info("Server started");
+		bootstrap.bind(new InetSocketAddress(port));
+		logger.info("Server started at port "+port);
 		
 		ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1,factory);
 		scheduler.scheduleWithFixedDelay(sweeper, 10, 10, TimeUnit.SECONDS); // This may be a bit short for mobile devices on the road
@@ -94,12 +131,13 @@ public class NettyServer {
 		}
 		scheduler.shutdown();
 		executor.shutdown();
+		System.exit(0);
 	}	
 	
-	private static void watch(String dirPath) {
+	private static void watch(File dirFile) {
 		try {
 			WatchService watcher = FileSystems.getDefault().newWatchService();
-			Path dir = new File(dirPath).toPath();
+			Path dir = dirFile.toPath();
 			WatchKey key = dir.register(watcher, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);				
 			while (true) {
 				try {

@@ -58,7 +58,12 @@ public class HttpStaticFileServerHandler extends SimpleChannelUpstreamHandler {
 
 	private static final Logger logger = LoggerFactory.getLogger(HttpStaticFileServerHandler.class);
     private static final MimetypesFileTypeMap fileTypeMap = new MimetypesFileTypeMap();
+	private File root;
 	
+    public HttpStaticFileServerHandler(File root) {
+    	this.root = root;
+    }
+    
 	private boolean sendingError = false;
 	
 	@Override
@@ -111,7 +116,7 @@ public class HttpStaticFileServerHandler extends SimpleChannelUpstreamHandler {
 				return;
 	        }
 		} else {
-			String path = new File(".").getAbsolutePath() + ("/src/main/webroot/" + uri).replace('/', File.separatorChar);
+			String path = (root.getAbsolutePath() + uri).replace('/', File.separatorChar);
 			
 			File file = new File(path);
 			if (file.isHidden() || !file.exists()) {
