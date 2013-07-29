@@ -1,5 +1,6 @@
 package org.instantlogic.engine.manager;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,6 +55,11 @@ public class ApplicationManager implements DesignerApplicationEnvironment {
 	@Override
 	public URL getCustomizationClassesUrl(String applicationName) {
 		return engineManager.getCustomizationClassesUrl(applicationName);
+	}
+	
+	@Override
+	public File getApplicationRoot(String caseId) {
+		return engineManager.getApplicationRoot(caseId);
 	}
 
 	@Override

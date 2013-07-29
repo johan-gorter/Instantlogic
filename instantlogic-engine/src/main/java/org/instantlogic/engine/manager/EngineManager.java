@@ -160,4 +160,14 @@ public class EngineManager {
 		}
 		return null;
 	}
+
+	public File getApplicationRoot(String applicationName) {
+		for (File dir:webappsDirectories) {
+			File appDir = new File(dir, applicationName); 
+			if (appDir.isDirectory()) {
+				return appDir;
+			}
+		}
+		return null;
+	}
 }

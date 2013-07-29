@@ -10,7 +10,6 @@ import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGener
 import org.instantlogic.designer.codegenerator.jvmbytecode.ApplicationBytecodeGenerator;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.interaction.Application;
-import org.instantlogic.interaction.ApplicationEnvironment;
 import org.instantlogic.interaction.DesignerApplicationEnvironment;
 import org.instantlogic.tools.persistence.json.FileCasePersister;
 import org.slf4j.Logger;
@@ -20,15 +19,15 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DesignerPersistenceStrategy.class);
 
-	private ApplicationEnvironment applicationEnvironment;
+	private DesignerApplicationEnvironment applicationEnvironment;
 	
-	public DesignerPersistenceStrategy(ApplicationEnvironment applicationEnvironment) {
+	public DesignerPersistenceStrategy(DesignerApplicationEnvironment applicationEnvironment) {
 		this.applicationEnvironment = applicationEnvironment;
 	}
 
 	@Override
 	protected File getCaseDir(Application application, String caseId) {
-		return new File(new File("../webapps", caseId), "src/main/instantlogic-designs");
+		return new File(applicationEnvironment.getApplicationRoot(caseId), "src/main/instantlogic-designs");
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public class DesignerApplication extends AbstractDesignerApplication {
 
 	@Override
 	public void setEnvironment(ApplicationEnvironment environment) {
-		DesignerPersistenceStrategy designerPersistenceStrategy = new DesignerPersistenceStrategy(environment);
+		DesignerPersistenceStrategy designerPersistenceStrategy = new DesignerPersistenceStrategy((DesignerApplicationEnvironment) environment);
 		environment.setPersistenceStrategy(designerPersistenceStrategy);
 	}
 }
