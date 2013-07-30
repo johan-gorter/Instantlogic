@@ -1,0 +1,1 @@
+cd instantlogic-netty/target/dist/bin && ./instantlogic-server -webapps ../../../../webapps -port 5000
