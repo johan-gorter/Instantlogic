@@ -33,7 +33,7 @@
 	  </dependency>
       <dependency>
     	<groupId>org.instantlogic</groupId>
-        <artifactId>designer</artifactId>
+        <artifactId>instantlogic-designer</artifactId>
     	<version>${project.version}</version>
 	  </dependency>
 	      
