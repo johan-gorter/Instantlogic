@@ -20,10 +20,12 @@ import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.util.RenderContext;
 import org.instantlogic.interaction.util.TravelerInfo;
 import org.instantlogic.tools.persistence.json.CasePersister;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class BytecodeGeneratorTest extends AbstractBytecodeGeneratorTest {
 
+	@Ignore("Only runs if izzy is compiled first")
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test
 	public void testReverseRelation() throws Exception {
