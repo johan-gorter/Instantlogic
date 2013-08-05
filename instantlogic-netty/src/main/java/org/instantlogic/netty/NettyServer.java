@@ -25,6 +25,7 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.instantlogic.engine.agent.Animals;
 import org.instantlogic.engine.manager.DesignerEngineManager;
 import org.instantlogic.engine.manager.EngineManager;
 import org.instantlogic.engine.manager.Update;
@@ -63,11 +64,14 @@ public class NettyServer {
 		}
 	};
 
+	private static Animals animals;
+
 	public static void main(String[] args) throws IOException, ParseException {
 		Options options = new Options();
 		options.addOption(new Option("help", "Print this message"));
 		options.addOption("webapps", true, "Folder which contains the web applications to run");
 		options.addOption("port", true, "The port to run the webserver on");
+		options.addOption("animals", false, "Have a bunch of animals run around in the applications while creating testdata");
 		CommandLineParser parser = new BasicParser();
 		CommandLine cmd = parser.parse( options, args);
 		if (cmd.hasOption("help")) {
@@ -85,6 +89,10 @@ public class NettyServer {
 		
 		engineManager = new DesignerEngineManager();
 		engineManager.registerWebappsDirectory(webapps);
+		
+		if (cmd.hasOption("animals")) {
+			startAnimals();
+		}
 		
 		webroot = new File("../web");
 		if (!webroot.isDirectory()) {
@@ -125,6 +133,10 @@ public class NettyServer {
 				System.out.println(engineManager.printPresenceDiagnostics());
 			} else if ("sweep".equalsIgnoreCase(command)){
 				travelersManagement.sweep();
+			} else if ("stopanimals".equalsIgnoreCase(command)){
+				stopAnimals();
+			} else if ("startanimals".equalsIgnoreCase(command)){
+				startAnimals();
 			} else {
 				executor.execute(filesUpdatedBroadcaster);
 			}
@@ -134,6 +146,20 @@ public class NettyServer {
 		System.exit(0);
 	}	
 	
+	private static void startAnimals() {
+		if (animals==null) {
+			animals = new Animals();
+			engineManager.addPlugin(animals);
+		} else  {
+			stopAnimals();
+			animals.restart();
+		}
+	}
+
+	private static void stopAnimals() {
+		animals.stop();
+	}
+
 	private static void watch(File dirFile) {
 		try {
 			WatchService watcher = FileSystems.getDefault().newWatchService();

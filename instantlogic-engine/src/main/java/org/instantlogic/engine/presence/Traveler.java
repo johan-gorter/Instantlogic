@@ -19,6 +19,7 @@ import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.fabric.util.ValueChangeObserver;
 import org.instantlogic.interaction.Application;
+import org.instantlogic.interaction.flow.InvalidFlowCoordinatesException;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.util.FlowContext;
 import org.instantlogic.interaction.util.FlowStack;
@@ -172,6 +173,8 @@ public class Traveler extends AbstractTraveler {
 			Application application = this.caseManager.getApplicationManager().getApplication();
 			return RenderContext.create(application.getMainFlow(), getCurrentPlace().getUrl(), caseManager.getCase(), caseManager.getCaseId(), travelerInfo);
 		} catch (NoSuchElementException e) {
+			return null;
+		} catch (InvalidFlowCoordinatesException e2) {
 			return null;
 		}
 	}

@@ -24,7 +24,12 @@ public class EngineManager {
 	protected Map<String, ApplicationManager> applicationManagers = new HashMap<String, ApplicationManager>();
 	protected List<File> webappsDirectories = new ArrayList<File>();
 	private Map<String, CaseProcessor> caseProcessors = new ConcurrentHashMap<String, CaseProcessor>();
+	public Map<String, CaseProcessor> getCaseProcessors() {
+		return caseProcessors;
+	}
 
+	private List<EnginePlugin> plugins = new ArrayList<EnginePlugin>();
+	
 	public synchronized ApplicationManager registerApplication(Application application) {
 		ApplicationManager applicationManager = new ApplicationManager(application, this);
 		application.setEnvironment(applicationManager);
@@ -94,6 +99,9 @@ public class EngineManager {
 			ApplicationManager applicationManager = getManager(application);
 			result = new CaseProcessor(applicationManager, caseId);
 			caseProcessors.put(key, result);
+			for (EnginePlugin plugin : plugins) {
+				plugin.caseCreated(result);
+			}
 		}
 		return result;
 	}
@@ -169,5 +177,10 @@ public class EngineManager {
 			}
 		}
 		return null;
+	}
+
+	public void addPlugin(EnginePlugin plugin) {
+		plugins.add(plugin);
+		plugin.pluggedIn(this);
 	}
 }

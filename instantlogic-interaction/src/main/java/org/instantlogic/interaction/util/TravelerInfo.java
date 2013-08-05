@@ -18,6 +18,11 @@ public final class TravelerInfo {
 		this.travelerId = travelerId;
 	}
 
+	public TravelerInfo(String travelerId, String authenticatedUsername) {
+		this.travelerId = travelerId;
+		this.authenticatedUsername = authenticatedUsername;
+	}
+
 	public String getTravelerId() {
 		return travelerId;
 	}
