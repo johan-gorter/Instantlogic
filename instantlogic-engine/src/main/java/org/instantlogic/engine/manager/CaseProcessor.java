@@ -6,6 +6,7 @@ import java.util.List;
 import org.instantlogic.engine.TravelerProxy;
 import org.instantlogic.engine.message.ApplicationUpdate;
 import org.instantlogic.engine.message.Message;
+import org.instantlogic.interaction.Application;
 
 /**
  *	This class makes sure the CaseManager is only accessed by one thread at a time. 
@@ -34,6 +35,15 @@ public class CaseProcessor {
 	
 	public CaseProcessor(ApplicationManager applicationManager, String caseId) {
 		this.caseManager = applicationManager.getOrCreateCase(caseId);
+	}
+	
+	/**
+	 * Returns the application that is currently running this case.
+	 * Note: The application may be changed during application updates.
+	 * @return the application.
+	 */
+	public Application getApplication() {
+		return this.caseManager.getApplicationManager().getApplication();
 	}
 	
 	public boolean processApplicationUpdate(ApplicationUpdate applicationUpdate) {

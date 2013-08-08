@@ -70,8 +70,14 @@ public class RandomAgent extends Agent {
 	}
 	
 	protected PresenceMessage setFocus(Map<String, Object> element) {
-		focussedElementId = (String) element.get("id");
-		return new PresenceMessage("setFocus", null, element.get("id"));
+		if (element!=null) {
+			focussedElementId = (String) element.get("id");
+			return new PresenceMessage("setFocus", null, element.get("id"));
+		} else {
+			// Do not focus anything (when the last element was reached for example)
+			focussedElementId = null;
+			return new PresenceMessage("setFocus", null, null);
+		}
 	}
 	
 
@@ -97,6 +103,24 @@ public class RandomAgent extends Agent {
 	}
 
 	protected Object provideValue(Map<String, Object> focussedElement) {
-		return "1";
+		Object[] options = (Object[]) focussedElement.get("options");
+		if (options!=null) {
+			int index = (int)(Math.random()*options.length);
+			Map option = (Map) options[index];
+			return option.get("id");
+		}
+		Map dataType = (Map)focussedElement.get("dataType");
+		if (dataType!=null) {
+			String category = (String)dataType.get("category");
+			if (category!=null) {
+				switch (category) {
+				case "text" :
+					boolean multiLine = (Boolean.TRUE == dataType.get("multiLine"));
+					//provideTextValue(multiLine);
+					return "X";
+				}
+			}
+		}
+		return null;
 	}
 }

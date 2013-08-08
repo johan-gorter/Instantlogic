@@ -60,8 +60,10 @@ public class Animals implements EnginePlugin {
 	}
 
 	private void addAgents(CaseProcessor caseProcessor) {
-		this.agent1 = new RandomAgent("monkey@instantlogic.org");
-		agent1.start(caseProcessor);
+		if (!"Designer".equals(caseProcessor.getApplication().getName())) {
+			this.agent1 = new RandomAgent("monkey@instantlogic.org");
+			agent1.start(caseProcessor);
+		}
 	}
 
 	@Override
