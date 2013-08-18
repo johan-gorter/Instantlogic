@@ -72,25 +72,35 @@ YUI.add('instantlogic-designer', function (Y) {
     	createMarkup: function() {
     		return html.div({className: 'shopping animate-vertically'},
     			html.span('Shopping for '),
-    			this.relationName = html.span(),
-    			html.span(' (on '),
-    			this.instanceName = html.span(),
-    			html.span(')'),
+    			this.relationNameSpan = html.span(),
+    			html.span(' (for '),
+    			this.instanceNameSpan = html.span(),
+    			html.span('), items: '),
+    			this.itemCountSpan = html.span(),
     			this.addButton = html.button('add to cart'),
     			this.readyButton = html.button('ready')
     		);
     	},
     	postInit: function(model) {
+    		this.addButton.on('click', this.addClicked, this);
+    		this.readyButton.on('click', this.readyClicked, this);
+    		if (!model.addCurrent) {
+    			this.addButton.hide();
+    		}
     	},
     	postUpdate: function(newModel) {
-    		
+    	},
+    	texts: function(model) {
+    		return [[this.relationNameSpan, model.relationName], [this.instanceNameSpan, model.instanceName], [this.itemCountSpan, model.itemCount]];
     	},
     	overrides: {
     		addClicked: function(evt) {
-    			
+                evt.preventDefault();
+                this.engine.sendSubmit(this.model.id+'-addItem');
     		},
 			readyClicked: function(evt) {
-				
+                evt.preventDefault();
+                this.engine.sendSubmit(this.model.id+'-finished');
 			}
     	}
     });

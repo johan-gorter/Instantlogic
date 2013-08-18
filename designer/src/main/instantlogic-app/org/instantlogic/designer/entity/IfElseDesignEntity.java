@@ -29,15 +29,15 @@ public class IfElseDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $condition
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"Relationdesign__0049", "condition", INSTANCE, "condition", org.instantlogic.designer.IfElseDesign.class);
+				"Relationdesign__0041", "condition", INSTANCE, "condition", org.instantlogic.designer.IfElseDesign.class);
 		condition = $condition;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $ifChild
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"Relationdesign__004a", "ifChild", INSTANCE, "ifChild", org.instantlogic.designer.IfElseDesign.class);
+				"Relationdesign__0042", "ifChild", INSTANCE, "ifChild", org.instantlogic.designer.IfElseDesign.class);
 		ifChild = $ifChild;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $elseChild
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"Relationdesign__004b", "elseChild", INSTANCE, "elseChild", org.instantlogic.designer.IfElseDesign.class);
+				"Relationdesign__0043", "elseChild", INSTANCE, "elseChild", org.instantlogic.designer.IfElseDesign.class);
 		elseChild = $elseChild;
 		// Reverse relations
 		
@@ -68,7 +68,7 @@ public class IfElseDesignEntity extends org.instantlogic.fabric.model.Entity<org
 	
 	@Override
 	public String getUniqueId() {
-		return "Entitydesign__001e";
+		return "Entitydesign__001c";
 	}
 	
 	@Override

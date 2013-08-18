@@ -24,6 +24,10 @@ public class DeductionOperationInputDesign extends Design {
 	public static final DeductionOperationInputDesign negationInput;
 	public static final DeductionOperationInputDesign reverseRelationToInstance;
 	public static final DeductionOperationInputDesign sumOperands;
+	public static final DeductionOperationInputDesign concatenateStrings;
+	public static final DeductionOperationInputDesign ifCondition;
+	public static final DeductionOperationInputDesign ifTrueValue;
+	public static final DeductionOperationInputDesign ifFalseValue;
 	
 	static {
 	  // Phase 1
@@ -36,6 +40,10 @@ public class DeductionOperationInputDesign extends Design {
 	  negationInput = addStaticInstance("negationInput", new DeductionOperationInputDesign());
 	  reverseRelationToInstance = addStaticInstance("reverseRelationToInstance", new DeductionOperationInputDesign());
 	  sumOperands = addStaticInstance("sumOperands", new DeductionOperationInputDesign());
+	  concatenateStrings = addStaticInstance("concatenateStrings", new DeductionOperationInputDesign());
+	  ifCondition = addStaticInstance("ifCondition", new DeductionOperationInputDesign());
+	  ifTrueValue = addStaticInstance("ifTrueValue", new DeductionOperationInputDesign());
+	  ifFalseValue = addStaticInstance("ifFalseValue", new DeductionOperationInputDesign());
 	  // Phase 2
       attributeInstance.setName("instance");
 	  attributeInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Instance").getTextTemplate());
@@ -56,7 +64,17 @@ public class DeductionOperationInputDesign extends Design {
 	  reverseRelationToInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("To instance").getTextTemplate());
       sumOperands.setName("operands");
       sumOperands.setMultivalue(true);
+      sumOperands.setMultivalue(true);
 	  sumOperands.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Operands").getTextTemplate());
+      concatenateStrings.setName("strings");
+      concatenateStrings.setMultivalue(true);
+	  concatenateStrings.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Strings").getTextTemplate());
+      ifCondition.setName("condition");
+	  ifCondition.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Condition").getTextTemplate());
+      ifTrueValue.setName("trueValue");
+	  ifTrueValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("trueValue").getTextTemplate());
+      ifFalseValue.setName("falseValue");
+	  ifFalseValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("falseValue").getTextTemplate());
 	}
 	
 	@Override

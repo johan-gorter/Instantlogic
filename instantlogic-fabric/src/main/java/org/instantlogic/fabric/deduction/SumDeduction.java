@@ -10,6 +10,10 @@ public class SumDeduction<V extends Number> extends Deduction<V> {
 
 	private List<Deduction<? extends Number>> operands = new ArrayList<Deduction<? extends Number>>();
 
+	public void addToOperands(Deduction<? extends Number> operand) {
+		operands.add(operand);
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public ValueAndLevel<V> execute(DeductionContext context) {

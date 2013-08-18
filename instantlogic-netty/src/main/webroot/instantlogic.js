@@ -801,7 +801,9 @@ YUI.add('instantlogic', function (Y) {
     		if (options.texts) {
     			var results = options.texts.call(this, model);
     			for (var i=0;i<results.length;i++) {
-    				results[i][0].set('text', results[i][1] || '');
+    				var text = results[i][1];
+    				if (text==null) text = '';
+    				results[i][0].set('text', text);
     			}
     		}
     		if (options.postInit) {

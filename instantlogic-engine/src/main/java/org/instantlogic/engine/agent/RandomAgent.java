@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.instantlogic.engine.message.ChangeMessage;
-import org.instantlogic.engine.message.LeaveMessage;
 import org.instantlogic.engine.message.PresenceMessage;
 import org.instantlogic.engine.message.StartMessage;
 import org.instantlogic.engine.message.SubmitMessage;
@@ -57,6 +56,8 @@ public class RandomAgent extends Agent {
 				if (focussedElement!=null) {
 					nextElement = element;
 					break;
+				} else if (nextElement==null) {
+					nextElement = element; // set nextElement to the first element
 				}
 				if (focussedElementId.equals(element.get("id"))) {
 					focussedElement = element;
@@ -98,10 +99,16 @@ public class RandomAgent extends Agent {
 		if ("Input".equals(element.get("type"))) {
 			setFocus(element);
 		} else {
+			String text = ((String)element.get("text"));
+			if (text!=null && text.toLowerCase().contains("delete") && Math.random()<0.8) {
+				setFocus(nextElement);
+				return; // Rethink before doing a delete
+			}
 			sendMessages(new SubmitMessage((String) element.get("id")));
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	protected Object provideValue(Map<String, Object> focussedElement) {
 		Object[] options = (Object[]) focussedElement.get("options");
 		if (options!=null) {
@@ -116,11 +123,16 @@ public class RandomAgent extends Agent {
 				switch (category) {
 				case "text" :
 					boolean multiLine = (Boolean.TRUE == dataType.get("multiLine"));
-					//provideTextValue(multiLine);
-					return "X";
+					String currentValue = (String)focussedElement.get("value");
+					return provideText(multiLine, currentValue);
 				}
 			}
 		}
+		// TODO: number etc...
 		return null;
+	}
+
+	protected String provideText(boolean multiLine, String currentValue) {
+		return "X";
 	}
 }

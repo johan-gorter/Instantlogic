@@ -43,6 +43,8 @@ public class ConstantValueModel extends ValueModel {
 				mv.visitIntInsn(Opcodes.BIPUSH, (Integer)constantValue);
 			}
 			mv.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;");
+		} else if (constantValue instanceof String) {
+			mv.visitLdcInsn(constantValue);
 		} else {
 			throw new RuntimeException("Unsupported value "+constantValue);
 		}

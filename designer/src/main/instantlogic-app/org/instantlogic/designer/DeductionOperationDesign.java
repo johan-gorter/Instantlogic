@@ -27,6 +27,8 @@ public class DeductionOperationDesign extends Design {
 	public static final DeductionOperationDesign reverseRelation;
 	public static final DeductionOperationDesign selectedInstance;
 	public static final DeductionOperationDesign sum;
+	public static final DeductionOperationDesign concatenate;
+	public static final DeductionOperationDesign _if;
 	
 	static {
 	  // Phase 1
@@ -42,6 +44,8 @@ public class DeductionOperationDesign extends Design {
 	  reverseRelation = addStaticInstance("reverseRelation", new DeductionOperationDesign());
 	  selectedInstance = addStaticInstance("selectedInstance", new DeductionOperationDesign());
 	  sum = addStaticInstance("sum", new DeductionOperationDesign());
+	  concatenate = addStaticInstance("concatenate", new DeductionOperationDesign());
+	  _if = addStaticInstance("if", new DeductionOperationDesign());
 	  // Phase 2
       attribute.setJavaClassName("org.instantlogic.fabric.deduction.AttributeDeduction");
       attribute.setName("attribute");
@@ -89,6 +93,16 @@ public class DeductionOperationDesign extends Design {
       sum.setName("sum");
       sum.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.sumOperands);
 	  sum.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Sum").getTextTemplate());
+      concatenate.setJavaClassName("org.instantlogic.fabric.deduction.ConcatenateDeduction");
+      concatenate.setName("concatenate");
+      concatenate.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.concatenateStrings);
+	  concatenate.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Concatenate").getTextTemplate());
+      _if.setJavaClassName("org.instantlogic.fabric.deduction.IfDeduction");
+      _if.setName("if");
+      _if.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.ifCondition);
+      _if.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.ifTrueValue);
+      _if.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.ifFalseValue);
+	  _if.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("If").getTextTemplate());
 	}
 	
 	@Override

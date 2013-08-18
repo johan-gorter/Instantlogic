@@ -22,6 +22,7 @@ public abstract class AbstractDesignerApplication extends org.instantlogic.inter
 		return org.instantlogic.designer.event.HomeEvent.INSTANCE;
 	}
 
+
     private static final String[] THEME_NAMES = new String[]{"margin", "designer"};	
 	@Override
 	public String[] getThemeNames() {

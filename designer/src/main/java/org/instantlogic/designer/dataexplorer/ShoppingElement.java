@@ -8,6 +8,7 @@ import org.instantlogic.designer.dataexplorer.RelationInstanceShopping.TravelerE
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.SingleInstanceDeductionContext;
 import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.RelationValue;
 import org.instantlogic.fabric.value.RelationValues;
 import org.instantlogic.interaction.page.Element;
 import org.instantlogic.interaction.util.ChangeContext;
@@ -42,11 +43,16 @@ public class ShoppingElement extends Element {
 			result.put("relationName", cart.getRelation().getName());
 			result.put("instanceName", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(entity).renderText(
 				new SingleInstanceDeductionContext(cart.getInstance())));
-			Multi<?> items = (Multi<?>) cart.getRelation().get(cart.getInstance()).getValue();
-			result.put("itemCount", items.size());
+			if (cart.getRelation().isMultivalue()) {
+				Multi<?> items = (Multi<?>) cart.getRelation().get(cart.getInstance()).getValue();
+				result.put("itemCount", items.size());
+			} else {
+				result.put("itemCount", (cart.getRelation().get(cart.getInstance())).getValue()==null?0:1);
+			}
 			if (Entity.extendsFrom(potentialCandidateEntity, cart.getRelation().getTo())) {
 				result.put("addCurrent", true);
 			}
+			appendTo.add(result);
 			context.exitScope();
 		}
 	}
@@ -58,8 +64,13 @@ public class ShoppingElement extends Element {
 		for (RelationInstanceShopping cart : extension.getCurrentlyShoppingFor()) {
 			String id = context.enterScope(Integer.toHexString(cart.hashCode()));
 			if ((id+"-addItem").equals(context.getPageElementId())) {
-				RelationValues values = (RelationValues) cart.getRelation().get(cart.getInstance());
-				values.addValue(context.getSelectedInstance(null));
+				if (cart.getRelation().isMultivalue()) {
+					RelationValues values = (RelationValues) cart.getRelation().get(cart.getInstance());
+					values.addValue(context.getSelectedInstance(null));
+				} else {
+					RelationValue value = (RelationValue) cart.getRelation().get(cart.getInstance());
+					value.setValue(context.getSelectedInstance(null));
+				}
 			}
 			if ((id+"-finished").equals(context.getPageElementId())) {
 				cartToRemove = cart;

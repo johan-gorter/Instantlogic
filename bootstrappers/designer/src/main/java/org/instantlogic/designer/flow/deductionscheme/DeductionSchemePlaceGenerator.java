@@ -83,7 +83,7 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 		deductionInputId.deduceId(deductionInputId.deduceSelectedInstance(DeductionInputDesignEntityGenerator.ENTITY));
 		deductionOperationInput.deduceRelation(DeductionInputDesignEntityGenerator.operationInput);
 		
-		selectOutputs.deduceRelation(DeductionDesignEntityGenerator.outputs);
+		selectOutputs.deduceReverseRelation(DeductionInputDesignEntityGenerator.inputs, selectOutputs.deduceSelectedInstance(DeductionDesignEntityGenerator.ENTITY));
 		toDeductionInputId.deduceId(toDeductionInputId.deduceSelectedInstance(DeductionInputDesignEntityGenerator.ENTITY));
 	}
 }

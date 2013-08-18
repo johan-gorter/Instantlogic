@@ -7,7 +7,9 @@ import java.io.IOException;
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.AttributeDesign;
 import org.instantlogic.designer.DataCategoryDesign;
+import org.instantlogic.designer.DeductionDesign;
 import org.instantlogic.designer.DeductionOperationDesign;
+import org.instantlogic.designer.DeductionOperationInputDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.Design;
 import org.instantlogic.designer.EntityDesign;
@@ -26,8 +28,6 @@ import org.instantlogic.designer.StaticInstanceDesign;
 import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.SubFlowDesign;
 import org.instantlogic.designer.TextTemplateDesign;
-import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
-import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGenerator;
 import org.instantlogic.designer.tools.Generator;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
 import org.instantlogic.tools.persistence.json.CasePersister;
@@ -111,6 +111,9 @@ public class IzzyGenerator extends Design {
 		issueHeadline = issue.addAttribute("headline", DataCategoryDesign.text);
 		issueDescription = issue.addAttribute("description", DataCategoryDesign.text);
 		issueDescription.getDataType().setMultiLine(true).setFormatted(true);
+		DeductionSchemeDesign issueTitle;
+		issue.setTitle(new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(issueTitle = new DeductionSchemeDesign())));
+		initializeIssueTitleDeduction(issueTitle);
 		comment = new EntityDesign("comment").setApplication(izzy);
 		comment.addAttribute("text", DataCategoryDesign.text);
 		comment.getDataType().setMultiLine(true).setFormatted(true);
@@ -181,11 +184,7 @@ public class IzzyGenerator extends Design {
 
 		// Finished with the design, what to do next
 		
-		// Generate java code
-		GeneratedClassModels classModelUpdates = izzy.getApplicationGenerator().getClassModelUpdates();
-		ApplicationJavacodeGenerator.generate(classModelUpdates, new File(izzy.getSourcePath()));
-		
-		// Display the design in json format
+		// Write the design in json format
 		try (FileWriter fileWriter = new FileWriter(new File("../../webapps/izzy/src/main/instantlogic-designs/izzy.json"))) {
 			new CasePersister().save(izzy, fileWriter);
 		}
@@ -193,6 +192,28 @@ public class IzzyGenerator extends Design {
 		Generator.scanForInstantlogicDesigns(new File("../../webapps/izzy"));
 	}
 	
+	private static void initializeIssueTitleDeduction(DeductionSchemeDesign scheme) {
+		DeductionDesign issueInstance = scheme.deduceSelectedInstance(issue);
+		DeductionDesign number = scheme.deduceAttribute(issueNumber, issueInstance);
+		DeductionDesign headline = scheme.deduceAttribute(issueHeadline, issueInstance);
+		DeductionDesign hasValue = new DeductionDesign();
+		scheme.addToDeductions(hasValue);
+		hasValue.setOperation(DeductionOperationDesign.hasValue);
+		hasValue.addInput(DeductionOperationInputDesign.hasValueInput, headline);
+		DeductionDesign separator = scheme.deduceConstant(String.class, ": ");
+		DeductionDesign conditionalSeparator = new DeductionDesign();
+		scheme.addToDeductions(conditionalSeparator);
+		conditionalSeparator.setOperation(DeductionOperationDesign._if);
+		conditionalSeparator.addInput(DeductionOperationInputDesign.ifCondition, hasValue);
+		conditionalSeparator.addInput(DeductionOperationInputDesign.ifTrueValue, separator);
+		
+		DeductionDesign concatenate = new DeductionDesign();
+		scheme.addToDeductions(concatenate);
+		scheme.setOutput(concatenate);
+		concatenate.setOperation(DeductionOperationDesign.concatenate);
+		concatenate.addInput(DeductionOperationInputDesign.concatenateStrings, number, conditionalSeparator, headline);
+	}
+
 	// Flows
 
 	private static void createFragmentTypes() {

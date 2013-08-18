@@ -35,6 +35,8 @@ public class DeductionOperationDesignEntityGenerator extends EntityDesign {
     public static final StaticInstanceDesign reverseRelation = addStaticInstance(ENTITY, "reverseRelation", createConstantText("Reverse relation"));
     public static final StaticInstanceDesign selectedInstance = addStaticInstance(ENTITY, "selectedInstance", createConstantText("Selected instance"));
     public static final StaticInstanceDesign sum = addStaticInstance(ENTITY, "sum", createConstantText("Sum"));
+    public static final StaticInstanceDesign concatenate = addStaticInstance(ENTITY, "concatenate", createConstantText("Concatenate"));
+    public static final StaticInstanceDesign _if = addStaticInstance(ENTITY, "if", createConstantText("If"));
     		
     @Override
     public void init() {
@@ -83,5 +85,15 @@ public class DeductionOperationDesignEntityGenerator extends EntityDesign {
     	addStaticInstanceValue(sum, javaClassName, "org.instantlogic.fabric.deduction.SumDeduction");
     	addStaticInstanceValue(sum, DesignEntityGenerator.name, "sum");
     	addStaticInstanceRelationValue(sum, inputs, DeductionOperationInputDesignEntityGenerator.sumOperands);
+
+    	addStaticInstanceValue(concatenate, javaClassName, "org.instantlogic.fabric.deduction.ConcatenateDeduction");
+    	addStaticInstanceValue(concatenate, DesignEntityGenerator.name, "concatenate");
+    	addStaticInstanceRelationValue(concatenate, inputs, DeductionOperationInputDesignEntityGenerator.concatenateStrings);
+    
+    	addStaticInstanceValue(_if, javaClassName, "org.instantlogic.fabric.deduction.IfDeduction");
+    	addStaticInstanceValue(_if, DesignEntityGenerator.name, "if");
+    	addStaticInstanceRelationValue(_if, inputs, DeductionOperationInputDesignEntityGenerator.ifCondition);
+    	addStaticInstanceRelationValue(_if, inputs, DeductionOperationInputDesignEntityGenerator.ifTrueValue);
+    	addStaticInstanceRelationValue(_if, inputs, DeductionOperationInputDesignEntityGenerator.ifFalseValue);
     }
 }

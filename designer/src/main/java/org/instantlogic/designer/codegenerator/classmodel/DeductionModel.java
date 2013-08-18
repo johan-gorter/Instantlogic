@@ -11,15 +11,14 @@ public class DeductionModel {
 		public boolean multivalue;
 
 		public String getInputName() {
+			if (inputName.equals("Strings")) {
+				System.out.println("strings-"+deductionIndex);
+			}
 			return inputName;
 		}
 
 		public boolean isMultivalue() {
 			return multivalue;
-		}
-
-		public void setDeductionIndex(int deductionIndex) {
-			this.deductionIndex = deductionIndex;
 		}
 
 		public int getDeductionIndex() {

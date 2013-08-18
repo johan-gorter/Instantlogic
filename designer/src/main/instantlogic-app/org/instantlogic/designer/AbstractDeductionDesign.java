@@ -180,38 +180,6 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 		return (DeductionDesign)this;
 	}
 	
-	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> outputs
-		= createRelationValues(org.instantlogic.designer.entity.DeductionDesignEntity.outputs);
-		
-	public org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> getOutputsRelationValue() {
-		return outputs;
-	}
-
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign> getOutputs() {
-		return outputs.getValue();
-	}
-	
-	public DeductionDesign addToOutputs(DeductionInputDesign item) {
-		outputs.addValue(item);
-		return (DeductionDesign)this;
-	}
-	
-	public DeductionDesign addToOutputs(DeductionInputDesign item, int index) {
-		outputs.insertValue(item, index);
-		return (DeductionDesign)this;
-	}
-	
-	public DeductionDesign removeFromOutputs(DeductionInputDesign item) {
-		outputs.removeValue(item);
-		return (DeductionDesign)this;
-	}
-	
-	public DeductionDesign removeFromOutputs(int index) {
-		outputs.removeValue(index);
-		return (DeductionDesign)this;
-	}
-	
 
 	// Reverse relations
 	
@@ -245,6 +213,28 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 
     public DeductionDesign setOutputOfScheme(org.instantlogic.designer.DeductionSchemeDesign newValue) {
         outputOfScheme.setValue(newValue);
+        return (DeductionDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> outputs
+		= createReverseRelationValues(org.instantlogic.designer.entity.DeductionDesignEntity.outputs);
+
+	public org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> getOutputsRelationValue() {
+		return outputs;
+	}
+
+	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign> getOutputs() {
+		return outputs.getValue();
+	}
+
+    public DeductionDesign addToOutputs(DeductionInputDesign item) {
+        outputs.addValue(item);
+        return (DeductionDesign)this;
+    }
+
+    public DeductionDesign removeFromOutputs(DeductionInputDesign item) {
+        outputs.removeValue(item);
         return (DeductionDesign)this;
     }
 

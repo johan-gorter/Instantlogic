@@ -91,11 +91,11 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction8() {
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
-		    d0.setAttribute(org.instantlogic.designer.entity.DeductionDesignEntity.outputs);
+		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 = new org.instantlogic.fabric.deduction.ReverseRelationDeduction();
+		    d0.setRelation(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
-		    d0.setInstance(d1);
+		    d0.setToInstance(d1);
 		return d0;
 	}
 
@@ -110,43 +110,43 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
 
 	
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
-        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0027", "Page")        
+        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0019", "Page")        
             .addChild("mainContent",
-                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0028", "Block")      
+                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001a", "Block")      
                     .setStyleNames(new String[]{"card"})        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0029", "Heading3")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001b", "Heading3")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("DeductionScheme").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002a", "Button")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001c", "Button")      
                             .setStyleNames(new String[]{"btn"})      
                             .setEvent(org.instantlogic.designer.event.DataEvent.INSTANCE)      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
                             .addChild("content",
-                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002b", "Icon")      
+                                new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001d", "Icon")      
                                     .setStyleNames(new String[]{"icon-wrench"})        
                             )        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002c", "DeductionScheme")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001e", "DeductionScheme")      
                             .putValue("output", createDeduction0())        
                             .addChild("deductions",
                                 new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002d", "Deduction")      
+                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__001f", "Deduction")      
                                             .putValue("deductionId", createDeduction2())      
                                             .putValue("xy", createDeduction3())      
                                             .putText("operationName", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction4()).getTextTemplate())        
                                             .addChild("inputs",
                                                 new org.instantlogic.interaction.page.SelectionElement(createDeduction5(),
-                                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002e", "DeductionInput")      
+                                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0020", "DeductionInput")      
                                                             .putValue("deductionInputId", createDeduction6())      
                                                             .putText("operationInputName", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction7()).getTextTemplate()))
         
                                             )        
                                             .addChild("outputs",
                                                 new org.instantlogic.interaction.page.SelectionElement(createDeduction8(),
-                                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__002f", "Output")      
+                                                        new org.instantlogic.interaction.page.FragmentTemplate("Fragmnttmpltdsgn__0021", "Output")      
                                                             .putValue("toDeductionInputId", createDeduction9()))
         
                                             ))
