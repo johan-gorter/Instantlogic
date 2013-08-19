@@ -5,12 +5,13 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class Multi<T> implements Iterable<T> {
+public class ValueList<T> extends Values<T> {
 
 	protected List<T> items = new ArrayList<T>();
 	private List<T> readOnlyItems;
 
-	public Multi(List<T> items) {
+	public ValueList(List<T> items) {
+		super(items);
 		this.items = items;
 		this.readOnlyItems = Collections.unmodifiableList(items);
 	}

@@ -274,7 +274,7 @@ public abstract class AbstractAttributeDesign extends Design {
 		return validations;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ValidationDesign> getValidations() {
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign> getValidations() {
 		return validations.getValue();
 	}
 

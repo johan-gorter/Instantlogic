@@ -53,14 +53,14 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 	}
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> values
-		= createRelationValues(org.instantlogic.designer.entity.StaticInstanceDesignEntity.values);
+	private final org.instantlogic.fabric.value.RelationValueList<StaticInstanceDesign, StaticInstanceValueDesign> values
+		= createRelationValueList(org.instantlogic.designer.entity.StaticInstanceDesignEntity.values);
 		
-	public org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> getValuesRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<StaticInstanceDesign, StaticInstanceValueDesign> getValuesRelationValue() {
 		return values;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign> getValues() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.StaticInstanceValueDesign> getValues() {
 		return values.getValue();
 	}
 	
@@ -111,7 +111,7 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 		return valueOfStaticInstances;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StaticInstanceValueDesign> getValueOfStaticInstances() {
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign> getValueOfStaticInstances() {
 		return valueOfStaticInstances.getValue();
 	}
 

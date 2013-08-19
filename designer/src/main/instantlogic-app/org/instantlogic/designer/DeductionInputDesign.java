@@ -48,14 +48,14 @@ public class DeductionInputDesign extends org.instantlogic.fabric.Instance {
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionInputDesign, DeductionDesign> inputs
-		= createRelationValues(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
+	private final org.instantlogic.fabric.value.RelationValueList<DeductionInputDesign, DeductionDesign> inputs
+		= createRelationValueList(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
 		
-	public org.instantlogic.fabric.value.RelationValues<DeductionInputDesign, DeductionDesign> getInputsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<DeductionInputDesign, DeductionDesign> getInputsRelationValue() {
 		return inputs;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionDesign> getInputs() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionDesign> getInputs() {
 		return inputs.getValue();
 	}
 	

@@ -56,7 +56,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				fv = cw.visitField(
 						ACC_PRIVATE + ACC_FINAL, 
 						a.javaIdentifier, 
-						"Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+(a.isMultivalue()?"s":"")+";",
+						"Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+a.getValueSuffix()+";",
 						null,//"Lorg/instantlogic/fabric/value/AttributeValue<Lorg/instantlogic/example/izzy/User;Ljava/lang/String;>;", 
 						null);
 				fv.visitEnd();
@@ -68,7 +68,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				fv = cw.visitField(
 						ACC_PRIVATE + ACC_FINAL, 
 						r.javaIdentifier, 
-						"Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+(r.isMultivalue()?"s":"")+";",
+						"Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+r.getValueSuffix()+";",
 						null,//"Lorg/instantlogic/fabric/value/AttributeValue<Lorg/instantlogic/example/izzy/User;Ljava/lang/String;>;", 
 						null);
 				fv.visitEnd();
@@ -80,7 +80,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				fv = cw.visitField(
 						ACC_PRIVATE + ACC_FINAL, 
 						r.javaIdentifier, 
-						"Lorg/instantlogic/fabric/value/RelationValue"+(r.isMultivalue()?"s":"")+";",
+						"Lorg/instantlogic/fabric/value/RelationValue"+r.getValueSuffix()+";",
 						null,//"Lorg/instantlogic/fabric/value/AttributeValue<Lorg/instantlogic/example/izzy/User;Ljava/lang/String;>;", 
 						null);
 				fv.visitEnd();
@@ -135,24 +135,24 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitVarInsn(ALOAD, 0);
 				mv.visitVarInsn(ALOAD, 0);
 				mv.visitFieldInsn(GETSTATIC, model.getInternalEntityName(), a.javaIdentifier, "Lorg/instantlogic/fabric/model/Attribute;");
-				mv.visitMethodInsn(INVOKEVIRTUAL, className, "create"+(a.readonly?"ReadOnly":"")+"AttributeValue"+(a.multivalue?"s":""), "(Lorg/instantlogic/fabric/model/Attribute;)Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+(a.multivalue?"s":"")+";");
-				mv.visitFieldInsn(PUTFIELD, className, a.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+(a.multivalue?"s":"")+";");
+				mv.visitMethodInsn(INVOKEVIRTUAL, className, "create"+(a.readonly?"ReadOnly":"")+"AttributeValue"+a.getValueSuffix(), "(Lorg/instantlogic/fabric/model/Attribute;)Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+a.getValueSuffix()+";");
+				mv.visitFieldInsn(PUTFIELD, className, a.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+a.getValueSuffix()+";");
 			}
 			for (EntityClassModel.Relation r : model.relations) {
 				// activePlaces = createRelationValues(org.instantlogic.engine.presence.entity.PresenceEntity.activePlaces)
 				mv.visitVarInsn(ALOAD, 0);
 				mv.visitVarInsn(ALOAD, 0);
 				mv.visitFieldInsn(GETSTATIC, model.getInternalEntityName(), r.javaIdentifier, "Lorg/instantlogic/fabric/model/Relation;");
-				mv.visitMethodInsn(INVOKEVIRTUAL, className, "create"+(r.readonly?"ReadOnly":"")+"RelationValue"+(r.multivalue?"s":""), "(Lorg/instantlogic/fabric/model/Relation;)Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+(r.multivalue?"s":"")+";");
-				mv.visitFieldInsn(PUTFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+(r.multivalue?"s":"")+";");
+				mv.visitMethodInsn(INVOKEVIRTUAL, className, "create"+(r.readonly?"ReadOnly":"")+"RelationValue"+r.getValueSuffix(), "(Lorg/instantlogic/fabric/model/Relation;)Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+r.getValueSuffix()+";");
+				mv.visitFieldInsn(PUTFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+r.getValueSuffix()+";");
 			}
 			for (EntityClassModel.Relation r : model.reverseRelations) {
 				// presence = createReverseRelationValue(org.instantlogic.engine.presence.entity.TravelerEntity.presence)
 				mv.visitVarInsn(ALOAD, 0);
 				mv.visitVarInsn(ALOAD, 0);
 				mv.visitFieldInsn(GETSTATIC, model.getInternalEntityName(), r.javaIdentifier, "Lorg/instantlogic/fabric/model/Relation;");
-				mv.visitMethodInsn(INVOKEVIRTUAL, className, "createReverseRelationValue"+(r.multivalue?"s":""), "(Lorg/instantlogic/fabric/model/Relation;)Lorg/instantlogic/fabric/value/RelationValue"+(r.multivalue?"s":"")+";");
-				mv.visitFieldInsn(PUTFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValue"+(r.multivalue?"s":"")+";");
+				mv.visitMethodInsn(INVOKEVIRTUAL, className, "createReverseRelationValue"+r.getValueSuffix(), "(Lorg/instantlogic/fabric/model/Relation;)Lorg/instantlogic/fabric/value/RelationValue"+r.getValueSuffix()+";");
+				mv.visitFieldInsn(PUTFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValue"+r.getValueSuffix()+";");
 			}
 			mv.visitInsn(RETURN);
 			mv.visitMaxs(3, 1);
@@ -226,10 +226,10 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 			//	return username;
 			//}
 			{
-				mv = cw.visitMethod(ACC_PUBLIC, "get"+a.technicalNameCapitalized+"AttributeValue", "()Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+(a.multivalue?"s":"")+";", null /* "()Lorg/instantlogic/fabric/value/AttributeValue<Lorg/instantlogic/example/izzy/User;Ljava/lang/String;>;"*/, null);
+				mv = cw.visitMethod(ACC_PUBLIC, "get"+a.technicalNameCapitalized+"AttributeValue", "()Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+a.getValueSuffix()+";", null /* "()Lorg/instantlogic/fabric/value/AttributeValue<Lorg/instantlogic/example/izzy/User;Ljava/lang/String;>;"*/, null);
 				mv.visitCode();
 				mv.visitVarInsn(ALOAD, 0);
-				mv.visitFieldInsn(GETFIELD, className, a.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+(a.multivalue?"s":"")+";");
+				mv.visitFieldInsn(GETFIELD, className, a.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue"+a.getValueSuffix()+";");
 				mv.visitInsn(ARETURN);
 				mv.visitMaxs(1, 1);
 				mv.visitEnd();
@@ -275,6 +275,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				//	themeNames.insertValue(item, index);
 				//	return (ApplicationDesign)this;
 				//}
+				if (a.ordered)
 				{
 					mv = cw.visitMethod(ACC_PUBLIC, "addTo"+a.technicalNameCapitalized, "(L"+a.internalItemClassName+";I)L"+concreteClassName+";", null, null);
 					mv.visitCode();
@@ -310,6 +311,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				//	themeNames.removeValue(index);
 				//	return (ApplicationDesign)this;
 				//}
+				if (a.ordered)
 				{
 					mv = cw.visitMethod(ACC_PUBLIC, "removeFrom"+a.technicalNameCapitalized, "(I)L"+a.internalItemClassName+";", null, null);
 					mv.visitCode();
@@ -332,10 +334,10 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 			//	return caseEntity;
 			//}
 			{
-				mv = cw.visitMethod(ACC_PUBLIC, "get"+r.technicalNameCapitalized+"RelationValue", "()Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+(r.multivalue?"s":"")+";", null /* "()Lorg/instantlogic/fabric/value/RelationValue<Lorg/instantlogic/designer/ApplicationDesign;Lorg/instantlogic/designer/EntityDesign;>;"*/, null);
+				mv = cw.visitMethod(ACC_PUBLIC, "get"+r.technicalNameCapitalized+"RelationValue", "()Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+r.getValueSuffix()+";", null /* "()Lorg/instantlogic/fabric/value/RelationValue<Lorg/instantlogic/designer/ApplicationDesign;Lorg/instantlogic/designer/EntityDesign;>;"*/, null);
 				mv.visitCode();
 				mv.visitVarInsn(ALOAD, 0);
-				mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+(r.multivalue?"s":"")+";");
+				mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+r.getValueSuffix()+";");
 				mv.visitInsn(ARETURN);
 				mv.visitMaxs(1, 1);
 				mv.visitEnd();
@@ -347,8 +349,8 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv = cw.visitMethod(ACC_PUBLIC, "get"+r.technicalNameCapitalized, "()L"+r.internalTo+";", null, null);
 				mv.visitCode();
 				mv.visitVarInsn(ALOAD, 0);
-				mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+(r.multivalue?"s":"")+";");
-				mv.visitMethodInsn(INVOKEINTERFACE, "org/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+(r.multivalue?"s":""), "getValue", "()Ljava/lang/Object;");
+				mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+r.getValueSuffix()+";");
+				mv.visitMethodInsn(INVOKEINTERFACE, "org/instantlogic/fabric/value/"+(r.readonly?"ReadOnly":"")+"RelationValue"+r.getValueSuffix(), "getValue", "()Ljava/lang/Object;");
 				mv.visitTypeInsn(CHECKCAST, r.internalTo);
 				mv.visitInsn(ARETURN);
 				mv.visitMaxs(1, 1);
@@ -418,6 +420,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				//	issues.insertValue(item, index);
 				//	return (Project)this;
 				//}
+				if (r.ordered)
 				{
 					mv = cw.visitMethod(ACC_PUBLIC, "addTo"+r.technicalNameCapitalized, "(L"+r.internalItemClassName+";I)L"+concreteClassName+";", null, null);
 					mv.visitCode();
@@ -453,6 +456,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				//	issues.removeValue(index);
 				//	return (Project)this;
 				//}
+				if (r.ordered)
 				{
 					mv = cw.visitMethod(ACC_PUBLIC, "removeFrom"+r.technicalNameCapitalized, "(I)L"+concreteClassName+";", null, null);
 					mv.visitCode();
@@ -474,10 +478,10 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 			//	return presence;
 			//}
 			{
-				mv = cw.visitMethod(ACC_PUBLIC, "get"+r.technicalNameCapitalized+"RelationValue", "()Lorg/instantlogic/fabric/value/RelationValue"+(r.multivalue?"s":"")+";", null /* "()Lorg/instantlogic/fabric/value/RelationValue<Lorg/instantlogic/engine/presence/User;Lorg/instantlogic/engine/presence/Presence;>;"*/, null);
+				mv = cw.visitMethod(ACC_PUBLIC, "get"+r.technicalNameCapitalized+"RelationValue", "()Lorg/instantlogic/fabric/value/RelationValue"+r.getValueSuffix()+";", null /* "()Lorg/instantlogic/fabric/value/RelationValue<Lorg/instantlogic/engine/presence/User;Lorg/instantlogic/engine/presence/Presence;>;"*/, null);
 				mv.visitCode();
 				mv.visitVarInsn(ALOAD, 0);
-				mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValue"+(r.multivalue?"s":"")+";");
+				mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValue"+r.getValueSuffix()+";");
 				mv.visitInsn(ARETURN);
 				mv.visitMaxs(1, 1);
 				mv.visitEnd();
@@ -489,7 +493,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv = cw.visitMethod(ACC_PUBLIC, "get"+r.technicalNameCapitalized, "()L"+r.internalTo+";", null, null);
 				mv.visitCode();
 				mv.visitVarInsn(ALOAD, 0);
-				mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValue"+(r.multivalue?"s":"")+";");
+				mv.visitFieldInsn(GETFIELD, className, r.javaIdentifier, "Lorg/instantlogic/fabric/value/RelationValue"+r.getValueSuffix()+";");
 				mv.visitMethodInsn(INVOKEINTERFACE, "org/instantlogic/fabric/value/RelationValue", "getValue", "()Ljava/lang/Object;");
 				mv.visitTypeInsn(CHECKCAST, r.internalTo);
 				mv.visitInsn(ARETURN);

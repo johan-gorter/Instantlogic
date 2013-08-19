@@ -117,14 +117,14 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> inputs
-		= createRelationValues(org.instantlogic.designer.entity.DeductionDesignEntity.inputs);
+	private final org.instantlogic.fabric.value.RelationValueList<DeductionDesign, DeductionInputDesign> inputs
+		= createRelationValueList(org.instantlogic.designer.entity.DeductionDesignEntity.inputs);
 		
-	public org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionInputDesign> getInputsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<DeductionDesign, DeductionInputDesign> getInputsRelationValue() {
 		return inputs;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign> getInputs() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionInputDesign> getInputs() {
 		return inputs.getValue();
 	}
 	
@@ -149,14 +149,14 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 	}
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionParameterDesign> parameters
-		= createRelationValues(org.instantlogic.designer.entity.DeductionDesignEntity.parameters);
+	private final org.instantlogic.fabric.value.RelationValueList<DeductionDesign, DeductionParameterDesign> parameters
+		= createRelationValueList(org.instantlogic.designer.entity.DeductionDesignEntity.parameters);
 		
-	public org.instantlogic.fabric.value.RelationValues<DeductionDesign, DeductionParameterDesign> getParametersRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<DeductionDesign, DeductionParameterDesign> getParametersRelationValue() {
 		return parameters;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionParameterDesign> getParameters() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionParameterDesign> getParameters() {
 		return parameters.getValue();
 	}
 	
@@ -224,7 +224,7 @@ public abstract class AbstractDeductionDesign extends org.instantlogic.fabric.In
 		return outputs;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionInputDesign> getOutputs() {
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign> getOutputs() {
 		return outputs.getValue();
 	}
 

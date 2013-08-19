@@ -6,7 +6,7 @@ import java.util.Map;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.util.ValueAndLevel;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.interaction.util.ChangeContext;
 import org.instantlogic.interaction.util.SubmitContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
@@ -34,8 +34,8 @@ public class SelectionElement extends Element {
 //		}
 		if (valueAndLevel.hasValue()) {
 			Object value = valueAndLevel.getValue();
-			if (value instanceof Multi<?>) {
-				for (Object item: (Multi<?>)value) {
+			if (value instanceof ValueList<?>) {
+				for (Object item: (ValueList<?>)value) {
 					renderWith(item, context, appendTo);
 				}
 			} else  {
@@ -63,8 +63,8 @@ public class SelectionElement extends Element {
 		ValueAndLevel<?> valueAndLevel = selection.deduce(submitContext);
 		if (valueAndLevel.hasValue()) {
 			Object value = valueAndLevel.getValue();
-			if (value instanceof Multi<?>) {
-				for (Object item: (Multi<?>)value) {
+			if (value instanceof ValueList<?>) {
+				for (Object item: (ValueList<?>)value) {
 					FlowEventOccurrence itemResult = submitWith(item, submitContext);
 					if (itemResult!=null) {
 						if (result!=null) { 
@@ -100,8 +100,8 @@ public class SelectionElement extends Element {
 		ValueAndLevel<?> valueAndLevel = selection.deduce(changeContext);
 		if (valueAndLevel.hasValue()) {
 			Object value = valueAndLevel.getValue();
-			if (value instanceof Multi<?>) {
-				for (Object item: (Multi<?>)value) {
+			if (value instanceof ValueList<?>) {
+				for (Object item: (ValueList<?>)value) {
 					changeWith(item, changeContext);
 				}
 			} else  {

@@ -1,8 +1,7 @@
 package org.instantlogic.fabric.value.impl;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.TreeSet;
 
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
@@ -10,17 +9,17 @@ import org.instantlogic.fabric.util.Operation;
 import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.fabric.util.ValueChangeEvent.MultiValueUpdateType;
 import org.instantlogic.fabric.value.AttributeValues;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.Values;
 
 
 public class AttributeValuesImpl<I extends Instance, Item extends Object> 
 	extends ReadOnlyAttributeValuesImpl<I, Item>
 	implements AttributeValues<I, Item>{
 
-	private List<Item> storedValues;
-	private Multi<Item> storedValue;
+	private TreeSet<Item> storedValues;
+	private Values<Item> storedValue;
 	
-	public AttributeValuesImpl(I forInstance, Attribute<I, Multi<Item>, Item> model) {
+	public AttributeValuesImpl(I forInstance, Attribute<I, Values<Item>, Item> model) {
 		super(forInstance, model);
 	}
 	
@@ -31,8 +30,8 @@ public class AttributeValuesImpl<I extends Instance, Item extends Object>
 
 	private void ensureStored() {
 		if (storedValues==null) {
-			storedValues = new ArrayList<Item>();
-			storedValue = new Multi<Item>(storedValues);
+			storedValues = new TreeSet<Item>();
+			storedValue = new Values<Item>(storedValues);
 		}
 	}
 
@@ -41,34 +40,8 @@ public class AttributeValuesImpl<I extends Instance, Item extends Object>
 		Operation operation = startOperation();
 		try {
 			storedValues.add(item);
-			int index = storedValues.size()-1;
-			fireChange(ValueChangeEvent.MultiValueUpdateType.INSERT, index, item, operation);
+			fireChange(ValueChangeEvent.MultiValueUpdateType.INSERT, item, operation);
 			operation.complete();
-		} finally {
-			operation.close();
-		}
-	}
-	
-	@Override
-	public void insertValue(Item item, int index) {
-		Operation operation = startOperation();
-		try {
-			storedValues.add(index, item);
-			fireChange(ValueChangeEvent.MultiValueUpdateType.INSERT, index, item, operation);
-			operation.complete();
-		} finally {
-			operation.close();
-		}
-	}
-
-	@Override
-	public Item removeValue(int index) {
-		Operation operation = startOperation();
-		try {
-			Item item = storedValues.remove(index);
-			fireChange(ValueChangeEvent.MultiValueUpdateType.DELETE, index, item, operation);
-			operation.complete();
-			return item;
 		} finally {
 			operation.close();
 		}
@@ -77,19 +50,27 @@ public class AttributeValuesImpl<I extends Instance, Item extends Object>
 	@Override
 	public void removeValue(Item item) {
 		if (storedValues==null) throw new NoSuchElementException("Item: "+item);
-		int index = storedValues.indexOf(item);
-		if (index<0) throw new NoSuchElementException("Item: "+item);
-		removeValue(index);
+		Operation operation = startOperation();
+		try {
+			boolean success = storedValues.remove(item);
+			if (!success) {
+				throw new NoSuchElementException("Item: "+item);
+			}
+			fireChange(ValueChangeEvent.MultiValueUpdateType.DELETE, item, operation);
+			operation.complete();
+		} finally {
+			operation.close();
+		}
 	}
 
 	
-	protected void fireChange(MultiValueUpdateType type, int index, Item item, Operation operation) {
-		ValueChangeEvent event = new ValueChangeEvent(this, getValueAndLevel(), type, index, item, operation);
+	protected void fireChange(MultiValueUpdateType type, Item item, Operation operation) {
+		ValueChangeEvent event = new ValueChangeEvent(this, getValueAndLevel(), type, item, operation);
 		fireEvent(event);
 	}
 	
 	@Override
-	public Multi<Item> getStoredValue() {
+	public Values<Item> getStoredValue() {
 		ensureStored();
 		return storedValue;
 	}

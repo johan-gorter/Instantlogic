@@ -79,7 +79,7 @@ public abstract class AbstractSharedElementDefinitionDesign extends Design {
 		return usages;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDesign> getUsages() {
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.SharedElementDesign> getUsages() {
 		return usages.getValue();
 	}
 

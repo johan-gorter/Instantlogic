@@ -8,7 +8,7 @@ import java.io.Writer;
 
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.EntityDesign;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.ValueList;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -27,8 +27,8 @@ public class GeneratorGenerator {
 		@SuppressWarnings("rawtypes")
 		@Override
 		public TemplateModel wrap(Object obj) throws TemplateModelException {
-			if (obj instanceof Multi) {
-				return super.wrap(((Multi)obj).asList());
+			if (obj instanceof ValueList) {
+				return super.wrap(((ValueList)obj).asList());
 			}
 			return super.wrap(obj);
 		}

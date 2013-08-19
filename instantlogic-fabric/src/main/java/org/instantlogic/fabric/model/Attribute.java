@@ -29,6 +29,8 @@ public abstract class Attribute<I extends Instance, Value extends Object, Item e
 	
 	public abstract boolean isMultivalue();
 
+	public abstract boolean isOrderedMultivalue();
+	
 	/**
 	 * @return a list of data type characteristics, like [category = number, exactRounding = true, decimalPlaces = 2, unitPrefix = $] or [category = text, multiline = true, formatted = true]
 	 */

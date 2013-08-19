@@ -42,14 +42,14 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 	// Attributes
 	<#list attributes as attribute>
 	
-	private final org.instantlogic.fabric.value.<#if attribute.readonly>ReadOnly</#if>AttributeValue<#if attribute.multivalue>s</#if><${technicalNameCapitalized}, ${attribute.itemClassName}> ${attribute.javaIdentifier}
-		= create<#if attribute.readonly>ReadOnly</#if>AttributeValue<#if attribute.multivalue>s</#if>(${rootPackageName}.entity.${technicalNameCapitalized}Entity.${attribute.javaIdentifier});
+	private final org.instantlogic.fabric.value.<#if attribute.readonly>ReadOnly</#if>AttributeValue${attribute.valueSuffix}<${technicalNameCapitalized}, ${attribute.itemClassName}> ${attribute.javaIdentifier}
+		= create<#if attribute.readonly>ReadOnly</#if>AttributeValue${attribute.valueSuffix}(${rootPackageName}.entity.${technicalNameCapitalized}Entity.${attribute.javaIdentifier});
 	
 	public ${attribute.className} get${attribute.technicalName?cap_first}() {
 		return ${attribute.javaIdentifier}.getValue();
 	}
 
-	public org.instantlogic.fabric.value.<#if attribute.readonly>ReadOnly</#if>AttributeValue<#if attribute.multivalue>s</#if><${technicalNameCapitalized}, ${attribute.itemClassName}> get${attribute.technicalName?cap_first}AttributeValue() {
+	public org.instantlogic.fabric.value.<#if attribute.readonly>ReadOnly</#if>AttributeValue${attribute.valueSuffix}<${technicalNameCapitalized}, ${attribute.itemClassName}> get${attribute.technicalName?cap_first}AttributeValue() {
 		return ${attribute.javaIdentifier};
 	}
 
@@ -66,13 +66,14 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 		return (${technicalNameCapitalized})this;
 	}
 	
-	public ${technicalNameCapitalized} addTo${attribute.technicalName?cap_first}(${attribute.itemClassName} item, int index) {
-		${attribute.javaIdentifier}.insertValue(item, index);
+	public ${technicalNameCapitalized} removeFrom${attribute.technicalName?cap_first}(${attribute.itemClassName} item) {
+		${attribute.javaIdentifier}.removeValue(item);
 		return (${technicalNameCapitalized})this;
 	}
 	
-	public ${technicalNameCapitalized} removeFrom${attribute.technicalName?cap_first}(${attribute.itemClassName} item) {
-		${attribute.javaIdentifier}.removeValue(item);
+	<#if attribute.ordered>
+	public ${technicalNameCapitalized} addTo${attribute.technicalName?cap_first}(${attribute.itemClassName} item, int index) {
+		${attribute.javaIdentifier}.insertValue(item, index);
 		return (${technicalNameCapitalized})this;
 	}
 	
@@ -80,6 +81,7 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 		${attribute.javaIdentifier}.removeValue(index);
 		return (${technicalNameCapitalized})this;
 	}
+	</#if>
 	
 	</#if>
 	</#list>
@@ -119,20 +121,22 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 		return (${technicalNameCapitalized})this;
 	}
 	
-	public ${technicalNameCapitalized} addTo${relation.technicalName?cap_first}(${relation.item} item, int index) {
-		${relation.javaIdentifier}.insertValue(item, index);
-		return (${technicalNameCapitalized})this;
-	}
-	
 	public ${technicalNameCapitalized} removeFrom${relation.technicalName?cap_first}(${relation.item} item) {
 		${relation.javaIdentifier}.removeValue(item);
 		return (${technicalNameCapitalized})this;
 	}
 	
+	<#if attribute.ordered>
 	public ${technicalNameCapitalized} removeFrom${relation.technicalName?cap_first}(int index) {
 		${relation.javaIdentifier}.removeValue(index);
 		return (${technicalNameCapitalized})this;
 	}
+
+	public ${technicalNameCapitalized} addTo${relation.technicalName?cap_first}(${relation.item} item, int index) {
+		${relation.javaIdentifier}.insertValue(item, index);
+		return (${technicalNameCapitalized})this;
+	}	
+	</#if>
 	
 	</#if>
 	</#list>

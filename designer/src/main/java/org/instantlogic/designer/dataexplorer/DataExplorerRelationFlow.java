@@ -9,7 +9,7 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.value.RelationValue;
-import org.instantlogic.fabric.value.RelationValues;
+import org.instantlogic.fabric.value.RelationValueList;
 import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEdge;
 import org.instantlogic.interaction.flow.FlowEvent;
@@ -67,7 +67,7 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 						Instance instance = context.getSelectedInstance(entity);
 						Instance newInstance = entityToBeAdded.createInstance();
 						if (relation.isMultivalue()) {
-							((RelationValues)relation.get(instance)).addValue(newInstance);
+							((RelationValueList)relation.get(instance)).addValue(newInstance);
 						} else {
 							((RelationValue)relation.get(instance)).setValue(newInstance);
 						}
@@ -102,7 +102,7 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 				Instance instance = context.getSelectedInstance(entity);
 				Instance instanceToRemove = occurrence.getParameters()[0];
 				if (relation.isMultivalue()) {
-					((RelationValues)relation.get(instance)).removeValue(instanceToRemove);
+					((RelationValueList)relation.get(instance)).removeValue(instanceToRemove);
 				} else {
 					((RelationValue)relation.get(instance)).setValue(null);
 				}

@@ -4,7 +4,7 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.value.AttributeValue;
-import org.instantlogic.fabric.value.AttributeValues;
+import org.instantlogic.fabric.value.AttributeValueList;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 
 /**
@@ -30,7 +30,7 @@ public class InstanceUtil {
 		Entity<?> entity = instance.getMetadata().getEntity();
 		Attribute attribute = entity.getAttributeOrRelation(attributeOrRelationName);
 		ReadOnlyAttributeValue attributeValue = attribute.get(instance);
-		((AttributeValues)attributeValue).addValue(value);
+		((AttributeValueList)attributeValue).addValue(value);
 	}
 
 }

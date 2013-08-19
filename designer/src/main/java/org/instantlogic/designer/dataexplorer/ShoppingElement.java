@@ -7,9 +7,9 @@ import java.util.Map;
 import org.instantlogic.designer.dataexplorer.RelationInstanceShopping.TravelerExtension;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.SingleInstanceDeductionContext;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.fabric.value.RelationValue;
-import org.instantlogic.fabric.value.RelationValues;
+import org.instantlogic.fabric.value.RelationValueList;
 import org.instantlogic.interaction.page.Element;
 import org.instantlogic.interaction.util.ChangeContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
@@ -44,7 +44,7 @@ public class ShoppingElement extends Element {
 			result.put("instanceName", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(entity).renderText(
 				new SingleInstanceDeductionContext(cart.getInstance())));
 			if (cart.getRelation().isMultivalue()) {
-				Multi<?> items = (Multi<?>) cart.getRelation().get(cart.getInstance()).getValue();
+				ValueList<?> items = (ValueList<?>) cart.getRelation().get(cart.getInstance()).getValue();
 				result.put("itemCount", items.size());
 			} else {
 				result.put("itemCount", (cart.getRelation().get(cart.getInstance())).getValue()==null?0:1);
@@ -65,7 +65,7 @@ public class ShoppingElement extends Element {
 			String id = context.enterScope(Integer.toHexString(cart.hashCode()));
 			if ((id+"-addItem").equals(context.getPageElementId())) {
 				if (cart.getRelation().isMultivalue()) {
-					RelationValues values = (RelationValues) cart.getRelation().get(cart.getInstance());
+					RelationValueList values = (RelationValueList) cart.getRelation().get(cart.getInstance());
 					values.addValue(context.getSelectedInstance(null));
 				} else {
 					RelationValue value = (RelationValue) cart.getRelation().get(cart.getInstance());

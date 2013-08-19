@@ -6,14 +6,14 @@ import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.codegenerator.classmodel.AbstractClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.TextModel;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.ValueList;
 
 public abstract class TextGenerator extends AbstractGenerator {
 
 	public static TextModel generate(TextTemplateDesign text, AbstractClassModel deductionSchemeHolder) {
 		if (text==null) return null;
 		TextModel model = new TextModel();
-		Multi<StringTemplateDesign> list = text.getUntranslated();
+		ValueList<StringTemplateDesign> list = text.getUntranslated();
 		for (StringTemplateDesign spInstance : list) {
 			TextModel.StringTemplate result = new TextModel.StringTemplate();
 			if (spInstance.getConstantText()!=null) {

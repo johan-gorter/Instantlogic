@@ -12,7 +12,7 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.TestDeductionContext;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.util.RenderContext;
 import org.instantlogic.interaction.util.TravelerInfo;
@@ -60,7 +60,7 @@ public class ReverseRelationTest {
 		
 		assertEquals(project, get(issue, "project"));
 		assertEquals(user, get(issue, "reporter"));
-		assertTrue(((Multi)get(user, "assigned issues")).contains(issue));
+		assertTrue(((ValueList)get(user, "assigned issues")).contains(issue));
 	}
 	
 	@Test

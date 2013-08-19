@@ -9,7 +9,7 @@ import org.instantlogic.fabric.util.ValueAndLevel;
 import org.instantlogic.fabric.value.AttributeValue;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.fabric.value.RelationValue;
-import org.instantlogic.fabric.value.RelationValues;
+import org.instantlogic.fabric.value.RelationValueList;
 
 
 public class ReverseRelationValueImpl<I extends Instance, From extends Instance>
@@ -49,7 +49,7 @@ public class ReverseRelationValueImpl<I extends Instance, From extends Instance>
 			// Remove forInstance from the old relation
 			ReadOnlyAttributeValue<From, ? extends Object> value = relation.get(reverseValue);
 			if (relation.isMultivalue()) {
-				((RelationValues)value).removeValue(forInstance);
+				((RelationValueList)value).removeValue(forInstance);
 			} else {
 				if (((AttributeValue)value).getStoredValue()!=forInstance) {
 					throw new RuntimeException("Reverse value not in sync while changing reverse relation");
@@ -64,7 +64,7 @@ public class ReverseRelationValueImpl<I extends Instance, From extends Instance>
 			// Add forInstance to the new entity
 			ReadOnlyAttributeValue<From, ? extends Object> value = (ReadOnlyAttributeValue<From, ? extends Object>)relation.get(newEntity);
 			if (relation.isMultivalue()) {
-				((RelationValues)value).addValue(forInstance);
+				((RelationValueList)value).addValue(forInstance);
 			} else {
 				((AttributeValue)value).setValue(forInstance);
 			}

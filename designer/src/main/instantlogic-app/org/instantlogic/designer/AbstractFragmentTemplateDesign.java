@@ -45,14 +45,14 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.AttributeValues<FragmentTemplateDesign, java.lang.String> styleNames
-		= createAttributeValues(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.styleNames);
+	private final org.instantlogic.fabric.value.AttributeValueList<FragmentTemplateDesign, java.lang.String> styleNames
+		= createAttributeValueList(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.styleNames);
 	
-	public org.instantlogic.fabric.value.Multi<java.lang.String> getStyleNames() {
+	public org.instantlogic.fabric.value.ValueList<java.lang.String> getStyleNames() {
 		return styleNames.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValues<FragmentTemplateDesign, java.lang.String> getStyleNamesAttributeValue() {
+	public org.instantlogic.fabric.value.AttributeValueList<FragmentTemplateDesign, java.lang.String> getStyleNamesAttributeValue() {
 		return styleNames;
 	}
 
@@ -77,14 +77,14 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.AttributeValues<FragmentTemplateDesign, java.lang.String> fragmentFilters
-		= createAttributeValues(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.fragmentFilters);
+	private final org.instantlogic.fabric.value.AttributeValueList<FragmentTemplateDesign, java.lang.String> fragmentFilters
+		= createAttributeValueList(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.fragmentFilters);
 	
-	public org.instantlogic.fabric.value.Multi<java.lang.String> getFragmentFilters() {
+	public org.instantlogic.fabric.value.ValueList<java.lang.String> getFragmentFilters() {
 		return fragmentFilters.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValues<FragmentTemplateDesign, java.lang.String> getFragmentFiltersAttributeValue() {
+	public org.instantlogic.fabric.value.AttributeValueList<FragmentTemplateDesign, java.lang.String> getFragmentFiltersAttributeValue() {
 		return fragmentFilters;
 	}
 
@@ -183,14 +183,14 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<FragmentTemplateDesign, PropertyDesign> properties
-		= createRelationValues(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.properties);
+	private final org.instantlogic.fabric.value.RelationValueList<FragmentTemplateDesign, PropertyDesign> properties
+		= createRelationValueList(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.properties);
 		
-	public org.instantlogic.fabric.value.RelationValues<FragmentTemplateDesign, PropertyDesign> getPropertiesRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<FragmentTemplateDesign, PropertyDesign> getPropertiesRelationValue() {
 		return properties;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.PropertyDesign> getProperties() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.PropertyDesign> getProperties() {
 		return properties.getValue();
 	}
 	

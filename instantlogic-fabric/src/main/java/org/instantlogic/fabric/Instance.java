@@ -7,17 +7,22 @@ import org.instantlogic.fabric.text.TextTemplate;
 import org.instantlogic.fabric.util.AbstractDeductionContext;
 import org.instantlogic.fabric.util.InstanceMetadata;
 import org.instantlogic.fabric.value.AttributeValue;
+import org.instantlogic.fabric.value.AttributeValueList;
 import org.instantlogic.fabric.value.AttributeValues;
-import org.instantlogic.fabric.value.Multi;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.fabric.value.ReadOnlyRelationValue;
 import org.instantlogic.fabric.value.RelationValue;
+import org.instantlogic.fabric.value.RelationValueList;
 import org.instantlogic.fabric.value.RelationValues;
+import org.instantlogic.fabric.value.ValueList;
+import org.instantlogic.fabric.value.Values;
 import org.instantlogic.fabric.value.impl.AttributeValueImpl;
+import org.instantlogic.fabric.value.impl.AttributeValueListImpl;
 import org.instantlogic.fabric.value.impl.AttributeValuesImpl;
 import org.instantlogic.fabric.value.impl.ReadOnlyAttributeValueImpl;
 import org.instantlogic.fabric.value.impl.ReadOnlyRelationValueImpl;
 import org.instantlogic.fabric.value.impl.RelationValueImpl;
+import org.instantlogic.fabric.value.impl.RelationValueListImpl;
 import org.instantlogic.fabric.value.impl.RelationValuesImpl;
 import org.instantlogic.fabric.value.impl.ReverseRelationValueImpl;
 import org.instantlogic.fabric.value.impl.ReverseRelationValuesImpl;
@@ -48,7 +53,12 @@ public abstract class Instance {
 	}
 	
 	@SuppressWarnings("unchecked")
-	protected<Value extends Object, I extends Instance> AttributeValues<I, Value> createAttributeValues(Attribute<I, Multi<Value>, Value> attribute) {
+	protected<Value extends Object, I extends Instance> AttributeValueList<I, Value> createAttributeValueList(Attribute<I, ValueList<Value>, Value> attribute) {
+		return new AttributeValueListImpl<I, Value>((I)this, attribute);
+	}
+
+	@SuppressWarnings("unchecked")
+	protected<Value extends Object, I extends Instance> AttributeValues<I, Value> createAttributeValues(Attribute<I, Values<Value>, Value> attribute) {
 		return new AttributeValuesImpl<I, Value>((I)this, attribute);
 	}
 
@@ -63,17 +73,23 @@ public abstract class Instance {
 	}
 	
 	@SuppressWarnings("unchecked")
-	protected<To extends Instance, I extends Instance> RelationValues<I, To> createRelationValues(Relation<I, Multi<To>, To> relation) {
+	protected<To extends Instance, I extends Instance> RelationValueList<I, To> createRelationValueList(Relation<I, ValueList<To>, To> relation) {
+		return new RelationValueListImpl<I, To>((I)this, relation);
+	}
+
+	@SuppressWarnings("unchecked")
+	protected<To extends Instance, I extends Instance> RelationValues<I, To> createRelationValues(Relation<I, Values<To>, To> relation) {
 		return new RelationValuesImpl<I, To>((I)this, relation);
 	}
 
+	
 	@SuppressWarnings("unchecked")
 	protected<To extends Instance, I extends Instance> RelationValue<I, To> createReverseRelationValue(Relation<I, To, To> relation) {
 		return new ReverseRelationValueImpl<I, To>((I)this, relation);
 	}
 	
 	@SuppressWarnings("unchecked")
-	protected<To extends Instance, I extends Instance> RelationValues<I, To> createReverseRelationValues(Relation<I, Multi<To>, To> relation) {
+	protected<To extends Instance, I extends Instance> RelationValues<I, To> createReverseRelationValues(Relation<I, Values<To>, To> relation) {
 		return new ReverseRelationValuesImpl<I, To>((I)this, relation);
 	}
 	

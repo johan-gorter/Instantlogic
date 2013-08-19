@@ -14,10 +14,10 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.fabric.value.RelationValue;
-import org.instantlogic.fabric.value.RelationValues;
+import org.instantlogic.fabric.value.RelationValueList;
 
 public class InstanceMetadata {
 
@@ -214,9 +214,9 @@ public class InstanceMetadata {
 		for (Relation relation : getEntity().getRelations()) {
 			if (!relation.isReadOnly() && !relation.isOwner()) { 
 				if (relation.isMultivalue()) {
-					RelationValues values = ((RelationValues)relation.get(instance));
+					RelationValueList values = ((RelationValueList)relation.get(instance));
 					if (values.hasStoredValue()) { // No default
-						Multi<? extends Instance> multi = (Multi<? extends Instance>)values.getValue();
+						ValueList<? extends Instance> multi = (ValueList<? extends Instance>)values.getValue();
 						for (int i=multi.size()-1;i>=0;i--) {
 							if (multi.get(i).getMetadata().getCase()!=newCase) {
 								values.removeValue(i);
@@ -236,8 +236,8 @@ public class InstanceMetadata {
 		for (Relation relation : getEntity().getReverseRelations()) {
 			if (!relation.getReverseRelation().isOwner()) {
 				if (relation.isMultivalue()) {
-					RelationValues values = ((RelationValues)relation.get(instance));
-					Multi<? extends Instance> multi = (Multi<? extends Instance>)values.getValue();
+					RelationValueList values = ((RelationValueList)relation.get(instance));
+					ValueList<? extends Instance> multi = (ValueList<? extends Instance>)values.getValue();
 					for (int i=multi.size()-1;i>=0;i--) {
 						if (multi.get(i).getMetadata().getCase()!=newCase) {
 							values.removeValue(i);

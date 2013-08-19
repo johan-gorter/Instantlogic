@@ -7,7 +7,7 @@ import org.instantlogic.designer.util.diagram.Point2d;
 import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.util.DeductionContext;
 import org.instantlogic.fabric.util.ValueAndLevel;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.Values;
 
 public class DeductionDiagramPositionDefaultDeduction extends Deduction<Point2d> {
 
@@ -20,11 +20,11 @@ public class DeductionDiagramPositionDefaultDeduction extends Deduction<Point2d>
 		if (deductionDesign.getOutputOfScheme()!=null) {
 			return ValueAndLevel.rule(new Point2d(0, 10));
 		}
-		Multi<DeductionInputDesign> outputs = deductionDesign.getOutputs();
+		Values<DeductionInputDesign> outputs = deductionDesign.getOutputs();
 		if (outputs.size()==0) {
 			return ValueAndLevel.rule(new Point2d(10, 10));
 		}
-		DeductionDesign parent = outputs.get(0).getDeduction();
+		DeductionDesign parent = outputs.iterator().next().getDeduction();
 		int parentInputCount = 0;
 		int childIndex = -1;
 		for(DeductionInputDesign input : parent.getInputs()) {

@@ -96,14 +96,14 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	}
 	
 	
-	private final org.instantlogic.fabric.value.AttributeValues<ApplicationDesign, java.lang.String> themeNames
-		= createAttributeValues(org.instantlogic.designer.entity.ApplicationDesignEntity.themeNames);
+	private final org.instantlogic.fabric.value.AttributeValueList<ApplicationDesign, java.lang.String> themeNames
+		= createAttributeValueList(org.instantlogic.designer.entity.ApplicationDesignEntity.themeNames);
 	
-	public org.instantlogic.fabric.value.Multi<java.lang.String> getThemeNames() {
+	public org.instantlogic.fabric.value.ValueList<java.lang.String> getThemeNames() {
 		return themeNames.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValues<ApplicationDesign, java.lang.String> getThemeNamesAttributeValue() {
+	public org.instantlogic.fabric.value.AttributeValueList<ApplicationDesign, java.lang.String> getThemeNamesAttributeValue() {
 		return themeNames;
 	}
 
@@ -130,14 +130,14 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> entities
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
+	private final org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, EntityDesign> entities
+		= createRelationValueList(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> getEntitiesRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, EntityDesign> getEntitiesRelationValue() {
 		return entities;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign> getEntities() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.EntityDesign> getEntities() {
 		return entities.getValue();
 	}
 	
@@ -180,14 +180,14 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> customDeductionOperations
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.customDeductionOperations);
+	private final org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, DeductionOperationDesign> customDeductionOperations
+		= createRelationValueList(org.instantlogic.designer.entity.ApplicationDesignEntity.customDeductionOperations);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> getCustomDeductionOperationsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, DeductionOperationDesign> getCustomDeductionOperationsRelationValue() {
 		return customDeductionOperations;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationDesign> getCustomDeductionOperations() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionOperationDesign> getCustomDeductionOperations() {
 		return customDeductionOperations.getValue();
 	}
 	
@@ -212,14 +212,14 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	}
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> flows
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.flows);
+	private final org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, FlowDesign> flows
+		= createRelationValueList(org.instantlogic.designer.entity.ApplicationDesignEntity.flows);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> getFlowsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, FlowDesign> getFlowsRelationValue() {
 		return flows;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowDesign> getFlows() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.FlowDesign> getFlows() {
 		return flows.getValue();
 	}
 	
@@ -244,14 +244,14 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	}
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EventDesign> events
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.events);
+	private final org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, EventDesign> events
+		= createRelationValueList(org.instantlogic.designer.entity.ApplicationDesignEntity.events);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EventDesign> getEventsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, EventDesign> getEventsRelationValue() {
 		return events;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EventDesign> getEvents() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.EventDesign> getEvents() {
 		return events.getValue();
 	}
 	
@@ -276,14 +276,14 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	}
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FragmentTypeDesign> fragmentTypes
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.fragmentTypes);
+	private final org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, FragmentTypeDesign> fragmentTypes
+		= createRelationValueList(org.instantlogic.designer.entity.ApplicationDesignEntity.fragmentTypes);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FragmentTypeDesign> getFragmentTypesRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, FragmentTypeDesign> getFragmentTypesRelationValue() {
 		return fragmentTypes;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTypeDesign> getFragmentTypes() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.FragmentTypeDesign> getFragmentTypes() {
 		return fragmentTypes.getValue();
 	}
 	
@@ -362,14 +362,14 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, SharedElementDefinitionDesign> sharedElements
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.sharedElements);
+	private final org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, SharedElementDefinitionDesign> sharedElements
+		= createRelationValueList(org.instantlogic.designer.entity.ApplicationDesignEntity.sharedElements);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, SharedElementDefinitionDesign> getSharedElementsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<ApplicationDesign, SharedElementDefinitionDesign> getSharedElementsRelationValue() {
 		return sharedElements;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.SharedElementDefinitionDesign> getSharedElements() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.SharedElementDefinitionDesign> getSharedElements() {
 		return sharedElements.getValue();
 	}
 	

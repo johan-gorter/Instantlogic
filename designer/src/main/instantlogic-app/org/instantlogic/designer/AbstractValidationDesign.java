@@ -76,14 +76,14 @@ public abstract class AbstractValidationDesign extends Design {
 	}
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<ValidationDesign, AttributeDesign> displayWith
-		= createRelationValues(org.instantlogic.designer.entity.ValidationDesignEntity.displayWith);
+	private final org.instantlogic.fabric.value.RelationValueList<ValidationDesign, AttributeDesign> displayWith
+		= createRelationValueList(org.instantlogic.designer.entity.ValidationDesignEntity.displayWith);
 		
-	public org.instantlogic.fabric.value.RelationValues<ValidationDesign, AttributeDesign> getDisplayWithRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<ValidationDesign, AttributeDesign> getDisplayWithRelationValue() {
 		return displayWith;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.AttributeDesign> getDisplayWith() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.AttributeDesign> getDisplayWith() {
 		return displayWith.getValue();
 	}
 	

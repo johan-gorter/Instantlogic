@@ -3,6 +3,7 @@ package org.instantlogic.fabric.util;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
+import org.instantlogic.fabric.value.ReadOnlyAttributeValueList;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValues;
 
 public class ValueChangeEvent {
@@ -31,13 +32,22 @@ public class ValueChangeEvent {
 		this.newStoredValue = newStoredValue;
 	}
 	
-	// For updates on multivalue attributes/relations
-	public ValueChangeEvent(ReadOnlyAttributeValues<?,?> attributeValue, ValueAndLevel<? extends Object> value, MultiValueUpdateType multiValueUpdateType, int index, Object itemValue, Operation operation) {
+	// For updates on ordered multivalue attributes/relations
+	public ValueChangeEvent(ReadOnlyAttributeValueList<?,?> attributeValue, ValueAndLevel<? extends Object> value, MultiValueUpdateType multiValueUpdateType, int index, Object itemValue, Operation operation) {
 		this.operation = operation;
 		this.attributeValue = attributeValue;
 		this.oldValue = value;
 		this.multiValueUpdateType = multiValueUpdateType;
 		this.index = index;
+		this.itemValue = itemValue;
+	}
+
+	// For updates on multivalue attributes/relations
+	public ValueChangeEvent(ReadOnlyAttributeValues<?,?> attributeValue, ValueAndLevel<? extends Object> value, MultiValueUpdateType multiValueUpdateType, Object itemValue, Operation operation) {
+		this.operation = operation;
+		this.attributeValue = attributeValue;
+		this.oldValue = value;
+		this.multiValueUpdateType = multiValueUpdateType;
 		this.itemValue = itemValue;
 	}
 	

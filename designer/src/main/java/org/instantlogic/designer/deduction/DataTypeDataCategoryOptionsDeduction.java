@@ -11,20 +11,20 @@ import org.instantlogic.designer.entity.DataTypeDesignEntity;
 import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.util.DeductionContext;
 import org.instantlogic.fabric.util.ValueAndLevel;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.ValueList;
 
-public class DataTypeDataCategoryOptionsDeduction extends Deduction<Multi<DataCategoryDesign>>{
+public class DataTypeDataCategoryOptionsDeduction extends Deduction<ValueList<DataCategoryDesign>>{
 
 	private static final List<DataCategoryDesign> ATTRIBUTE_OPTIONS = Arrays.asList(new DataCategoryDesign[]{
 		DataCategoryDesign.text, DataCategoryDesign.number, DataCategoryDesign.dateTime, 
 		DataCategoryDesign._boolean, DataCategoryDesign.custom}); 
 	
 	@Override
-	public ValueAndLevel<Multi<DataCategoryDesign>> execute(DeductionContext context) {
+	public ValueAndLevel<ValueList<DataCategoryDesign>> execute(DeductionContext context) {
 		DataTypeDesign dataType = context.getSelectedInstance(DataTypeDesignEntity.INSTANCE);
 		if (dataType.getAttribute() instanceof RelationDesign) {
-			return ValueAndLevel.rule(new Multi<DataCategoryDesign>(Collections.singletonList(DataCategoryDesign.entity)));
+			return ValueAndLevel.rule(new ValueList<DataCategoryDesign>(Collections.singletonList(DataCategoryDesign.entity)));
 		}
-		return ValueAndLevel.rule(new Multi<DataCategoryDesign>(ATTRIBUTE_OPTIONS));
+		return ValueAndLevel.rule(new ValueList<DataCategoryDesign>(ATTRIBUTE_OPTIONS));
 	}
 }

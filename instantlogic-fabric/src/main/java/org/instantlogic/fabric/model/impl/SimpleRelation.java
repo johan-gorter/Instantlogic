@@ -25,6 +25,7 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 	public boolean owner;
 	public boolean autoCreate;
 	public boolean multivalue;
+	public boolean ordered;
 	public boolean reverse;
 	public Validation[] validations;
 	public Map<String, Object> dataType;
@@ -166,5 +167,10 @@ public class SimpleRelation<I extends Instance, Value extends Object, To extends
 	@Override
 	public Deduction<? extends Iterable<To>> getOptions() {
 		return options;
+	}
+
+	@Override
+	public boolean isOrderedMultivalue() {
+		return ordered && multivalue;
 	}
 }

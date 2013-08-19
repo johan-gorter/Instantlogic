@@ -30,14 +30,14 @@ public abstract class AbstractEventDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<EventDesign, EntityDesign> parameters
-		= createRelationValues(org.instantlogic.designer.entity.EventDesignEntity.parameters);
+	private final org.instantlogic.fabric.value.RelationValueList<EventDesign, EntityDesign> parameters
+		= createRelationValueList(org.instantlogic.designer.entity.EventDesignEntity.parameters);
 		
-	public org.instantlogic.fabric.value.RelationValues<EventDesign, EntityDesign> getParametersRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<EventDesign, EntityDesign> getParametersRelationValue() {
 		return parameters;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign> getParameters() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.EntityDesign> getParameters() {
 		return parameters.getValue();
 	}
 	

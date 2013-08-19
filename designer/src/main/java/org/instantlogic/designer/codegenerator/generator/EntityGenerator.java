@@ -119,9 +119,10 @@ public class EntityGenerator extends AbstractGenerator {
 			relation.item = relationDesign.getTo().getTechnicalNameCapitalized();
 			relation.to = model.rootPackageName+"."+relation.item;
 			if (relation.multivalue) {
+				String valueClassName = relation.ordered?"ValueList":"Values";
 				relation.internalItemClassName=relation.to.replace('.', '/');
-				relation.to = "org.instantlogic.fabric.value.Multi<"+relation.to+">";
-				relation.internalTo="org/instantlogic/fabric/value/Multi";
+				relation.to = "org.instantlogic.fabric.value."+valueClassName+"<"+relation.to+">";
+				relation.internalTo="org/instantlogic/fabric/value/"+valueClassName;
 			} else {
 				relation.internalTo=relation.internalItemClassName=relation.to.replace('.', '/');
 			}
@@ -154,9 +155,10 @@ public class EntityGenerator extends AbstractGenerator {
 				relation.item = relationDesign.getFrom().getTechnicalNameCapitalized();
 				relation.to = model.rootPackageName+"."+relation.item;
 				if (relation.multivalue) {
+					String valueClassName = relation.ordered?"ValueList":"Values";
 					relation.internalItemClassName=relation.to.replace('.', '/');
-					relation.to = "org.instantlogic.fabric.value.Multi<"+relation.to+">";
-					relation.internalTo="org/instantlogic/fabric/value/Multi";
+					relation.to = "org.instantlogic.fabric.value."+valueClassName+"<"+relation.to+">";
+					relation.internalTo="org/instantlogic/fabric/value/"+valueClassName;
 				} else {
 					relation.internalTo=relation.internalItemClassName=relation.to.replace('.', '/');
 				}

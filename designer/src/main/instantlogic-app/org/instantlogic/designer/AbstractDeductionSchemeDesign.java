@@ -30,14 +30,14 @@ public abstract class AbstractDeductionSchemeDesign extends org.instantlogic.fab
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionSchemeDesign, DeductionDesign> deductions
-		= createRelationValues(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.deductions);
+	private final org.instantlogic.fabric.value.RelationValueList<DeductionSchemeDesign, DeductionDesign> deductions
+		= createRelationValueList(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.deductions);
 		
-	public org.instantlogic.fabric.value.RelationValues<DeductionSchemeDesign, DeductionDesign> getDeductionsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<DeductionSchemeDesign, DeductionDesign> getDeductionsRelationValue() {
 		return deductions;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionDesign> getDeductions() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionDesign> getDeductions() {
 		return deductions.getValue();
 	}
 	

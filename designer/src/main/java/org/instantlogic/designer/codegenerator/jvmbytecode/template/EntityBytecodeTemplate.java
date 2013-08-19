@@ -204,6 +204,12 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 					mv.visitInsn(ICONST_1);
 					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleAttribute", "multivalue", "Z");
 				}
+				if (a.ordered) {
+					// description.multivalue = true;
+					mv.visitVarInsn(ALOAD, localVariableIndex);
+					mv.visitInsn(ICONST_1);
+					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleAttribute", "ordered", "Z");
+				}
 				if (a.question!=null) {
 					//TODO
 				}
@@ -265,6 +271,12 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 					mv.visitVarInsn(ALOAD, localVariableIndex);
 					mv.visitInsn(ICONST_1);
 					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleRelation", "multivalue", "Z");
+				}
+				if (r.multivalue) {
+					//$issues.ordered = true;
+					mv.visitVarInsn(ALOAD, localVariableIndex);
+					mv.visitInsn(ICONST_1);
+					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleRelation", "ordered", "Z");
 				}
 				if (r.readonly) {
 					mv.visitVarInsn(ALOAD, localVariableIndex);

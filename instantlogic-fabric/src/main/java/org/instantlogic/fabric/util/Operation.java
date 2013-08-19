@@ -7,7 +7,7 @@ import java.util.List;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.util.ValueChangeEvent.MultiValueUpdateType;
 import org.instantlogic.fabric.value.AttributeValue;
-import org.instantlogic.fabric.value.AttributeValues;
+import org.instantlogic.fabric.value.AttributeValueList;
 
 public class Operation implements AutoCloseable {
 	
@@ -122,7 +122,7 @@ public class Operation implements AutoCloseable {
 			for (int i=eventsToUndo.size()-1;i>=0;i--) {
 				ValueChangeEvent event = eventsToUndo.get(i);
 				if (event.isMultivalueUpdate()) {
-					AttributeValues attributeValues = (AttributeValues)((Attribute)event.getAttribute()).get(event.getInstance());
+					AttributeValueList attributeValues = (AttributeValueList)((Attribute)event.getAttribute()).get(event.getInstance());
 					if (event.getMultiValueUpdateType()==MultiValueUpdateType.INSERT) {
 						attributeValues.removeValue(event.getIndex());
 					}

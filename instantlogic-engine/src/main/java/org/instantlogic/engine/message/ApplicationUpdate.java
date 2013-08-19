@@ -8,11 +8,11 @@ import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.value.AttributeValue;
-import org.instantlogic.fabric.value.AttributeValues;
-import org.instantlogic.fabric.value.Multi;
+import org.instantlogic.fabric.value.AttributeValueList;
+import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.fabric.value.RelationValue;
-import org.instantlogic.fabric.value.RelationValues;
+import org.instantlogic.fabric.value.RelationValueList;
 import org.instantlogic.interaction.Application;
 
 public class ApplicationUpdate {
@@ -50,8 +50,8 @@ public class ApplicationUpdate {
 					}
 				} else {
 					if (newRelation.isMultivalue()) {
-						RelationValues relationValues = (RelationValues)newRelation.get(newInstance);
-						for (Instance newChildInstance : (Multi<? extends Instance>)relationValues.getValue()) {
+						RelationValueList relationValues = (RelationValueList)newRelation.get(newInstance);
+						for (Instance newChildInstance : (ValueList<? extends Instance>)relationValues.getValue()) {
 							Instance oldChildInstance = oldInstance.getMetadata().getCaseAdministration().getInstanceByUniqueId(newChildInstance.getMetadata().getUniqueId());
 							copyData(newChildInstance, oldChildInstance, newCaseAdministration);
 						}
@@ -73,9 +73,9 @@ public class ApplicationUpdate {
 			if (newRelation!=null && !newRelation.isReadOnly()) {
 				if (oldRelation.isMultivalue()) {
 					if (newRelation.isMultivalue()) {
-						RelationValues oldRelationValues = (RelationValues)oldRelation.get(oldInstance);
-						RelationValues newRelationValues = (RelationValues)newRelation.get(newInstance);
-						for (Instance oldValue : (Multi<Instance>)oldRelationValues.getStoredValue()) {
+						RelationValueList oldRelationValues = (RelationValueList)oldRelation.get(oldInstance);
+						RelationValueList newRelationValues = (RelationValueList)newRelation.get(newInstance);
+						for (Instance oldValue : (ValueList<Instance>)oldRelationValues.getStoredValue()) {
 							Instance newValue = findInstance(oldValue, newCaseAdministration);
 							newRelationValues.addValue(newValue);
 						}
@@ -115,9 +115,9 @@ public class ApplicationUpdate {
 			if (newAttribute!=null && !newAttribute.isReadOnly()) {
 				if (oldAttribute.isMultivalue()) {
 					if (newAttribute.isMultivalue()) {
-						AttributeValues oldAttributeValues = (AttributeValues)oldAttribute.get(oldInstance);
-						AttributeValues newAttributeValues = (AttributeValues)newAttribute.get(newInstance);
-						for (Object oldValue : (Multi)oldAttributeValues.getStoredValue()) {
+						AttributeValueList oldAttributeValues = (AttributeValueList)oldAttribute.get(oldInstance);
+						AttributeValueList newAttributeValues = (AttributeValueList)newAttribute.get(newInstance);
+						for (Object oldValue : (ValueList)oldAttributeValues.getStoredValue()) {
 							newAttributeValues.addValue(oldValue);
 						}
 					} else {
@@ -153,9 +153,9 @@ public class ApplicationUpdate {
 					if (attributeValue.hasStoredValue()) {
 						if (oldRelation.isMultivalue()) {
 							if (newRelation.isMultivalue()) {
-								RelationValues oldRelationValues = (RelationValues)oldRelation.get(oldInstance);
-								RelationValues newRelationValues = (RelationValues)newRelation.get(newInstance);
-								for (Instance oldChildInstance : (Multi<? extends Instance>)oldRelationValues.getValue()) {
+								RelationValueList oldRelationValues = (RelationValueList)oldRelation.get(oldInstance);
+								RelationValueList newRelationValues = (RelationValueList)newRelation.get(newInstance);
+								for (Instance oldChildInstance : (ValueList<? extends Instance>)oldRelationValues.getValue()) {
 									Instance newChildInstance = createInstance(oldChildInstance, newCaseAdministration);
 									if (newChildInstance!=null) {
 										newRelationValues.addValue(newChildInstance);

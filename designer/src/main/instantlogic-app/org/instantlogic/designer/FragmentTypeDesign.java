@@ -28,14 +28,14 @@ public class FragmentTypeDesign extends Design {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> fragmentFilters
-		= createAttributeValues(org.instantlogic.designer.entity.FragmentTypeDesignEntity.fragmentFilters);
+	private final org.instantlogic.fabric.value.AttributeValueList<FragmentTypeDesign, java.lang.String> fragmentFilters
+		= createAttributeValueList(org.instantlogic.designer.entity.FragmentTypeDesignEntity.fragmentFilters);
 	
-	public org.instantlogic.fabric.value.Multi<java.lang.String> getFragmentFilters() {
+	public org.instantlogic.fabric.value.ValueList<java.lang.String> getFragmentFilters() {
 		return fragmentFilters.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> getFragmentFiltersAttributeValue() {
+	public org.instantlogic.fabric.value.AttributeValueList<FragmentTypeDesign, java.lang.String> getFragmentFiltersAttributeValue() {
 		return fragmentFilters;
 	}
 
@@ -122,7 +122,7 @@ public class FragmentTypeDesign extends Design {
 		return usages;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FragmentTemplateDesign> getUsages() {
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign> getUsages() {
 		return usages.getValue();
 	}
 

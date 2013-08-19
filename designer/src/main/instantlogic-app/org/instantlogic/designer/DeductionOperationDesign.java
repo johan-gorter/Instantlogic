@@ -149,14 +149,14 @@ public class DeductionOperationDesign extends Design {
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionOperationDesign, DeductionOperationInputDesign> inputs
-		= createRelationValues(org.instantlogic.designer.entity.DeductionOperationDesignEntity.inputs);
+	private final org.instantlogic.fabric.value.RelationValueList<DeductionOperationDesign, DeductionOperationInputDesign> inputs
+		= createRelationValueList(org.instantlogic.designer.entity.DeductionOperationDesignEntity.inputs);
 		
-	public org.instantlogic.fabric.value.RelationValues<DeductionOperationDesign, DeductionOperationInputDesign> getInputsRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<DeductionOperationDesign, DeductionOperationInputDesign> getInputsRelationValue() {
 		return inputs;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationInputDesign> getInputs() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionOperationInputDesign> getInputs() {
 		return inputs.getValue();
 	}
 	
@@ -181,14 +181,14 @@ public class DeductionOperationDesign extends Design {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionOperationDesign, DeductionOperationParameterDesign> parameters
-		= createRelationValues(org.instantlogic.designer.entity.DeductionOperationDesignEntity.parameters);
+	private final org.instantlogic.fabric.value.RelationValueList<DeductionOperationDesign, DeductionOperationParameterDesign> parameters
+		= createRelationValueList(org.instantlogic.designer.entity.DeductionOperationDesignEntity.parameters);
 		
-	public org.instantlogic.fabric.value.RelationValues<DeductionOperationDesign, DeductionOperationParameterDesign> getParametersRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<DeductionOperationDesign, DeductionOperationParameterDesign> getParametersRelationValue() {
 		return parameters;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.DeductionOperationParameterDesign> getParameters() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionOperationParameterDesign> getParameters() {
 		return parameters.getValue();
 	}
 	

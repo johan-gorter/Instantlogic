@@ -29,6 +29,7 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 	public Deduction<Boolean> relevance;
 	public Validation[] validations = NO_VALIDATIONS;
 	public boolean multivalue;
+	public boolean ordered;
 	public boolean readOnly;
 	private Field instanceField; 
 	
@@ -124,5 +125,10 @@ public class SimpleAttribute<I extends Instance, Value extends Object, Item exte
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public boolean isOrderedMultivalue() {
+		return multivalue && ordered;
 	}
 }

@@ -32,6 +32,7 @@ public class EntityClassModel extends AbstractClassModel {
 		public String internalItemClassName;
 		public TextModel question;
 		public boolean multivalue;
+		public boolean ordered;
 		public boolean readonly;
 		public TextModel explanation;
 		public List<DomainEntry> domain;
@@ -53,6 +54,9 @@ public class EntityClassModel extends AbstractClassModel {
 		}
 		public boolean isMultivalue() {
 			return multivalue;
+		}
+		public boolean isOrdered() {
+			return ordered;
 		}
 		public boolean isReadonly() {
 			return readonly;
@@ -96,6 +100,18 @@ public class EntityClassModel extends AbstractClassModel {
 		}
 		public String getId() {
 			return id;
+		}
+		
+		// getReadOnlyRelationValue...
+		public String getValueSuffix() {
+			if (multivalue) {
+				if (ordered) {
+					return "List";
+				} else {
+					return "s";
+				}
+			}
+			return "";
 		}
 	}
 	

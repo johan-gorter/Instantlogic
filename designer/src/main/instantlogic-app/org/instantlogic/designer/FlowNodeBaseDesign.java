@@ -56,7 +56,7 @@ public class FlowNodeBaseDesign extends Design {
 		return outgoingEdges;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign> getOutgoingEdges() {
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign> getOutgoingEdges() {
 		return outgoingEdges.getValue();
 	}
 
@@ -78,7 +78,7 @@ public class FlowNodeBaseDesign extends Design {
 		return incomingEdges;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign> getIncomingEdges() {
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign> getIncomingEdges() {
 		return incomingEdges.getValue();
 	}
 

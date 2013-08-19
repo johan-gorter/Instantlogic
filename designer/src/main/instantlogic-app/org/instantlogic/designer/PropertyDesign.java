@@ -64,14 +64,14 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<PropertyDesign, ElementDesign> children
-		= createRelationValues(org.instantlogic.designer.entity.PropertyDesignEntity.children);
+	private final org.instantlogic.fabric.value.RelationValueList<PropertyDesign, ElementDesign> children
+		= createRelationValueList(org.instantlogic.designer.entity.PropertyDesignEntity.children);
 		
-	public org.instantlogic.fabric.value.RelationValues<PropertyDesign, ElementDesign> getChildrenRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<PropertyDesign, ElementDesign> getChildrenRelationValue() {
 		return children;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.ElementDesign> getChildren() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.ElementDesign> getChildren() {
 		return children.getValue();
 	}
 	

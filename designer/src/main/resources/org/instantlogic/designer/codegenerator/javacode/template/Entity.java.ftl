@@ -97,6 +97,9 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 			<#if attribute.multivalue>
 		$${attribute.javaIdentifier}.multivalue = true;
 			</#if>
+			<#if attribute.ordered>
+		$${attribute.javaIdentifier}.ordered = true;
+			</#if>
 			<#if attribute.question??>
 		$${attribute.javaIdentifier}.question=<@text_macro text=attribute.question />;
 			</#if>
@@ -135,6 +138,9 @@ public class ${technicalNameCapitalized}Entity extends org.instantlogic.fabric.m
 			</#if>
 			<#if relation.multivalue>
 		$${relation.javaIdentifier}.multivalue = true;
+			</#if>
+			<#if relation.ordered>
+		$${relation.javaIdentifier}.ordered = true;
 			</#if>
 			<#if relation.readonly>
 		$${relation.javaIdentifier}.readOnly = true;

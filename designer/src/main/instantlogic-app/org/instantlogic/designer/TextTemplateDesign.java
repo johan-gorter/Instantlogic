@@ -30,14 +30,14 @@ public class TextTemplateDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<TextTemplateDesign, StringTemplateDesign> untranslated
-		= createRelationValues(org.instantlogic.designer.entity.TextTemplateDesignEntity.untranslated);
+	private final org.instantlogic.fabric.value.RelationValueList<TextTemplateDesign, StringTemplateDesign> untranslated
+		= createRelationValueList(org.instantlogic.designer.entity.TextTemplateDesignEntity.untranslated);
 		
-	public org.instantlogic.fabric.value.RelationValues<TextTemplateDesign, StringTemplateDesign> getUntranslatedRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<TextTemplateDesign, StringTemplateDesign> getUntranslatedRelationValue() {
 		return untranslated;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.StringTemplateDesign> getUntranslated() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.StringTemplateDesign> getUntranslated() {
 		return untranslated.getValue();
 	}
 	

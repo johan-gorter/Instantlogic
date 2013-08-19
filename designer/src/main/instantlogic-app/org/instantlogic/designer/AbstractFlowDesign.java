@@ -30,14 +30,14 @@ public abstract class AbstractFlowDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowNodeBaseDesign> nodes
-		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.nodes);
+	private final org.instantlogic.fabric.value.RelationValueList<FlowDesign, FlowNodeBaseDesign> nodes
+		= createRelationValueList(org.instantlogic.designer.entity.FlowDesignEntity.nodes);
 		
-	public org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowNodeBaseDesign> getNodesRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<FlowDesign, FlowNodeBaseDesign> getNodesRelationValue() {
 		return nodes;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowNodeBaseDesign> getNodes() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.FlowNodeBaseDesign> getNodes() {
 		return nodes.getValue();
 	}
 	
@@ -62,14 +62,14 @@ public abstract class AbstractFlowDesign extends Design {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> edges
-		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.edges);
+	private final org.instantlogic.fabric.value.RelationValueList<FlowDesign, FlowEdgeDesign> edges
+		= createRelationValueList(org.instantlogic.designer.entity.FlowDesignEntity.edges);
 		
-	public org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> getEdgesRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<FlowDesign, FlowEdgeDesign> getEdgesRelationValue() {
 		return edges;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.FlowEdgeDesign> getEdges() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.FlowEdgeDesign> getEdges() {
 		return edges.getValue();
 	}
 	
@@ -94,14 +94,14 @@ public abstract class AbstractFlowDesign extends Design {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, EntityDesign> parameters
-		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.parameters);
+	private final org.instantlogic.fabric.value.RelationValueList<FlowDesign, EntityDesign> parameters
+		= createRelationValueList(org.instantlogic.designer.entity.FlowDesignEntity.parameters);
 		
-	public org.instantlogic.fabric.value.RelationValues<FlowDesign, EntityDesign> getParametersRelationValue() {
+	public org.instantlogic.fabric.value.RelationValueList<FlowDesign, EntityDesign> getParametersRelationValue() {
 		return parameters;
 	}
 
-	public org.instantlogic.fabric.value.Multi<org.instantlogic.designer.EntityDesign> getParameters() {
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.EntityDesign> getParameters() {
 		return parameters.getValue();
 	}
 	

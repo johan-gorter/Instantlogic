@@ -1,8 +1,9 @@
 package org.instantlogic.fabric.value.impl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.TreeSet;
 
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
@@ -13,67 +14,82 @@ import org.instantlogic.fabric.util.ValueAndLevel;
 import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.fabric.util.ValueChangeEvent.MultiValueUpdateType;
 import org.instantlogic.fabric.value.AttributeValue;
-import org.instantlogic.fabric.value.Multi;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.fabric.value.RelationValues;
+import org.instantlogic.fabric.value.Values;
 
 
 public class ReverseRelationValuesImpl<I extends Instance, From extends Instance>
-	extends ReadOnlyAttributeValueImpl<I, Multi<From>>
+	extends ReadOnlyAttributeValueImpl<I, Values<From>>
 	implements RelationValues<I, From>{
 
-	private List<From> values = new ArrayList<From>();
-	private Multi<From> reverseValue = new Multi<From>(values);
+	private Map<From, Integer> duplicates = new HashMap<>();
+	private TreeSet<From> values = new TreeSet<From>();
+	private Values<From> reverseValue = new Values<From>(values);
 	
-	public ReverseRelationValuesImpl(I forInstance, Relation<I, Multi<From>, From> relation) {
-		super(forInstance, (Attribute<I, Multi<From>, ? extends Object>)relation);
+	public ReverseRelationValuesImpl(I forInstance, Relation<I, Values<From>, From> relation) {
+		super(forInstance, (Attribute<I, Values<From>, ? extends Object>)relation);
 	}
 	
 	@Override
-	public ValueAndLevel<Multi<From>> getValueAndLevel() {
+	public ValueAndLevel<Values<From>> getValueAndLevel() {
 		CaseAdministration registry = forInstance.getMetadata().getCaseAdministration();
 		registry.registerObservation(this);
 		return ValueAndLevel.rule(reverseValue);
 	}
 
 	public void internalAddReverse(From reverseValue, Operation operation) {
-		this.values.add(reverseValue);
-		if (operation!=null) {
-			fireEvent(new ValueChangeEvent(this, ValueAndLevel.rule(this.reverseValue), MultiValueUpdateType.INSERT, this.values.size()-1, reverseValue, operation));
+		if(!this.values.add(reverseValue)) {
+			addDuplicate(reverseValue);
 		}
+		if (operation!=null) {
+			fireEvent(new ValueChangeEvent(this, ValueAndLevel.rule(this.reverseValue), MultiValueUpdateType.INSERT, reverseValue, operation));
+		}
+	}
+
+	private void addDuplicate(From from) {
+		Integer duplicateCount = duplicates.get(from);
+		if (duplicateCount==null) {
+			duplicateCount = 2;
+		} else {
+			duplicateCount = duplicateCount+1;
+		}
+		duplicates.put(from, duplicateCount);
 	}
 
 	public void internalRemoveReverse(From reverseValue, Operation operation) {
-		int index = this.values.indexOf(reverseValue);
-		if (index<0) {
-			throw new RuntimeException("Reverse value not found: "+reverseValue);
-		}
-		this.values.remove(index);
-		fireEvent(new ValueChangeEvent(this, ValueAndLevel.rule(this.reverseValue), MultiValueUpdateType.DELETE, index, reverseValue, operation));
+		if (!removeDuplicate(reverseValue)) {
+			if (!this.values.remove(reverseValue)) {
+				throw new RuntimeException("Reverse value not found: "+reverseValue);
+			}
+		} 
+		fireEvent(new ValueChangeEvent(this, ValueAndLevel.rule(this.reverseValue), MultiValueUpdateType.DELETE, reverseValue, operation));
 	}
 	
-	@Override
-	public Relation<I, Multi<From>, ? extends Object> getModel() {
-		return (Relation<I, Multi<From>, ? extends Object>) super.getModel();
+	private boolean removeDuplicate(From from) {
+		Integer duplicateCount = duplicates.get(from);
+		if (duplicateCount==null) {
+			return false;
+		} else {
+			if (duplicateCount == 2) {
+				duplicates.remove(from);
+			} else {
+				duplicates.put(from, duplicateCount-1);
+			}
+			return true;
+		}
 	}
 
 	@Override
-	public void insertValue(From item, int index) {
-		throw new RuntimeException("Reverse relation does not allow an explicit ordening on values");
-	}
-
-	@Override
-	public From removeValue(int index) {
-		From result = values.get(index); 
-		removeValue(result);
-		return result;
+	public Relation<I, Values<From>, ? extends Object> getModel() {
+		return (Relation<I, Values<From>, ? extends Object>) super.getModel();
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void addValue(From newEntity) {
 		if (newEntity==null) throw new IllegalArgumentException("addValue null");
-		Relation<From,? extends Object,I> relation = ((Relation<I, Multi<From>, From>)getModel()).getReverseRelation();
+		Relation<From,? extends Object,I> relation = ((Relation<I, Values<From>, From>)getModel()).getReverseRelation();
 		// Add forInstance to the new entity
 		ReadOnlyAttributeValue<From, ? extends Object> value = (ReadOnlyAttributeValue<From, ? extends Object>)relation.get(newEntity);
 		if (relation.isMultivalue()) {
@@ -89,7 +105,7 @@ public class ReverseRelationValuesImpl<I extends Instance, From extends Instance
 	public void removeValue(From oldEntity) {
 		if (!values.contains(oldEntity)) throw new NoSuchElementException("oldEntity was not present in reverse values");
 		if (oldEntity==null) throw new IllegalArgumentException("removeValue null");
-		Relation<From,? extends Object,I> relation = ((Relation<I, Multi<From>, From>)getModel()).getReverseRelation();
+		Relation<From,? extends Object,I> relation = ((Relation<I, Values<From>, From>)getModel()).getReverseRelation();
 		// Add forInstance to the new entity
 		ReadOnlyAttributeValue<From, ? extends Object> value = (ReadOnlyAttributeValue<From, ? extends Object>)relation.get(oldEntity);
 		if (relation.isMultivalue()) {
