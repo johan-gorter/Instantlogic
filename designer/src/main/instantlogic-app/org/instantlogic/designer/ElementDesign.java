@@ -28,23 +28,6 @@ public class ElementDesign extends Design {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.Boolean> editorOpen
-		= createAttributeValue(org.instantlogic.designer.entity.ElementDesignEntity.editorOpen);
-	
-	public java.lang.Boolean getEditorOpen() {
-		return editorOpen.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.Boolean> getEditorOpenAttributeValue() {
-		return editorOpen;
-	}
-
-	public ElementDesign setEditorOpen(java.lang.Boolean newValue) {
-		editorOpen.setValue(newValue);
-		return (ElementDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.String> previewMode
 		= createAttributeValue(org.instantlogic.designer.entity.ElementDesignEntity.previewMode);
 	
@@ -58,6 +41,23 @@ public class ElementDesign extends Design {
 
 	public ElementDesign setPreviewMode(java.lang.String newValue) {
 		previewMode.setValue(newValue);
+		return (ElementDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.Boolean> editorOpen
+		= createAttributeValue(org.instantlogic.designer.entity.ElementDesignEntity.editorOpen);
+	
+	public java.lang.Boolean getEditorOpen() {
+		return editorOpen.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.Boolean> getEditorOpenAttributeValue() {
+		return editorOpen;
+	}
+
+	public ElementDesign setEditorOpen(java.lang.Boolean newValue) {
+		editorOpen.setValue(newValue);
 		return (ElementDesign)this;
 	}
 	
@@ -83,19 +83,19 @@ public class ElementDesign extends Design {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, PlaceTemplateDesign> contentOfPage
-		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.contentOfPage);
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> childOfSelection
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
 
-	public org.instantlogic.fabric.value.RelationValue<ElementDesign, PlaceTemplateDesign> getContentOfPageRelationValue() {
-		return contentOfPage;
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> getChildOfSelectionRelationValue() {
+		return childOfSelection;
 	}
 
-	public org.instantlogic.designer.PlaceTemplateDesign getContentOfPage() {
-		return contentOfPage.getValue();
+	public org.instantlogic.designer.SelectionDesign getChildOfSelection() {
+		return childOfSelection.getValue();
 	}
 
-    public ElementDesign setContentOfPage(org.instantlogic.designer.PlaceTemplateDesign newValue) {
-        contentOfPage.setValue(newValue);
+    public ElementDesign setChildOfSelection(org.instantlogic.designer.SelectionDesign newValue) {
+        childOfSelection.setValue(newValue);
         return (ElementDesign)this;
     }
 
@@ -117,19 +117,19 @@ public class ElementDesign extends Design {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> childOfSelection
-		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, PlaceTemplateDesign> contentOfPage
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.contentOfPage);
 
-	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> getChildOfSelectionRelationValue() {
-		return childOfSelection;
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, PlaceTemplateDesign> getContentOfPageRelationValue() {
+		return contentOfPage;
 	}
 
-	public org.instantlogic.designer.SelectionDesign getChildOfSelection() {
-		return childOfSelection.getValue();
+	public org.instantlogic.designer.PlaceTemplateDesign getContentOfPage() {
+		return contentOfPage.getValue();
 	}
 
-    public ElementDesign setChildOfSelection(org.instantlogic.designer.SelectionDesign newValue) {
-        childOfSelection.setValue(newValue);
+    public ElementDesign setContentOfPage(org.instantlogic.designer.PlaceTemplateDesign newValue) {
+        contentOfPage.setValue(newValue);
         return (ElementDesign)this;
     }
 

@@ -11,9 +11,6 @@ public class DeductionModel {
 		public boolean multivalue;
 
 		public String getInputName() {
-			if (inputName.equals("Strings")) {
-				System.out.println("strings-"+deductionIndex);
-			}
 			return inputName;
 		}
 

@@ -123,7 +123,7 @@ public class IzzyGenerator extends Design {
 		projectIssues = project.addRelation("issues", RelationType.OneToManyAggregation, issue).setReverseName("project");
 		issueReporter = issue.addRelation("reporter", RelationType.ManyToZeroOrOne, user).setReverseName("reported issues");
 		issueAssignee = issue.addRelation("assignee", RelationType.ManyToZeroOrOne, user).setReverseName("assigned issues");
-		issue.addRelation("comments", RelationType.OneToManyAggregation, comment).setReverseName("issue");
+		issue.addRelation("comments", RelationType.OneToManyAggregation, comment).setReverseName("issue").getDataType().setOrdered(true);
 		comment.addRelation("by", RelationType.OneToZeroOrOne, user).setReverseName("comments");
 		issueReporter.newOptions().deduceRelation(projectUsers);
 		issueAssignee.newOptions().deduceRelation(projectUsers);
@@ -421,7 +421,9 @@ public class IzzyGenerator extends Design {
 			submitButton, resolveButton, reopenButton, closeButton, reopenClosedButton;
 		DeductionSchemeDesign statusDraft, statusOpen, statusResolved, statusClosed;
 		
-		issueDetailsPlaceTemplate = new PlaceTemplateDesign("issueDetails")
+		issueDetailsPlaceTemplate = new PlaceTemplateDesign("issueDetails");
+		issueDetailsPlaceTemplate.getMetadata().initUniqueId("issueDetails");// Keep this one fixed
+		issueDetailsPlaceTemplate
 			.setOwner(issueFlow)
 			.setContent(new FragmentTemplateDesign("Page")
 				.setChildren("mainContent", 
@@ -464,7 +466,6 @@ public class IzzyGenerator extends Design {
 				)
 			);
 		
-		issueDetailsPlaceTemplate.getMetadata().initUniqueId("issueDetails");// Keep this one fixed
 		homeLink.setEvent(homeEvent);
 		deleteButton.setEvent(deleteIssueEvent);
 		number.deduceAttribute(issueNumber);

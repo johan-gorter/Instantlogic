@@ -8,8 +8,7 @@ import org.instantlogic.designer.dataexplorer.RelationInstanceShopping.TravelerE
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.SingleInstanceDeductionContext;
 import org.instantlogic.fabric.value.ValueList;
-import org.instantlogic.fabric.value.RelationValue;
-import org.instantlogic.fabric.value.RelationValueList;
+import org.instantlogic.fabric.value.WriteableAttributeValue;
 import org.instantlogic.interaction.page.Element;
 import org.instantlogic.interaction.util.ChangeContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
@@ -47,7 +46,7 @@ public class ShoppingElement extends Element {
 				ValueList<?> items = (ValueList<?>) cart.getRelation().get(cart.getInstance()).getValue();
 				result.put("itemCount", items.size());
 			} else {
-				result.put("itemCount", (cart.getRelation().get(cart.getInstance())).getValue()==null?0:1);
+				result.put("itemCount", (cart.getRelation().get(cart.getInstance())).getValue()==null?0:1); //TODO:Make nicer
 			}
 			if (Entity.extendsFrom(potentialCandidateEntity, cart.getRelation().getTo())) {
 				result.put("addCurrent", true);
@@ -57,6 +56,7 @@ public class ShoppingElement extends Element {
 		}
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public FlowEventOccurrence submit(SubmitContext context) {
 		TravelerExtension extension = ((RenderContext)context).getTraveler().getOrCreateExtension(RelationInstanceShopping.TravelerExtension.class);
@@ -64,13 +64,8 @@ public class ShoppingElement extends Element {
 		for (RelationInstanceShopping cart : extension.getCurrentlyShoppingFor()) {
 			String id = context.enterScope(Integer.toHexString(cart.hashCode()));
 			if ((id+"-addItem").equals(context.getPageElementId())) {
-				if (cart.getRelation().isMultivalue()) {
-					RelationValueList values = (RelationValueList) cart.getRelation().get(cart.getInstance());
-					values.addValue(context.getSelectedInstance(null));
-				} else {
-					RelationValue value = (RelationValue) cart.getRelation().get(cart.getInstance());
-					value.setValue(context.getSelectedInstance(null));
-				}
+				WriteableAttributeValue value = (WriteableAttributeValue) cart.getRelation().get(cart.getInstance());
+				value.setOrAdd(context.getSelectedInstance(null));
 			}
 			if ((id+"-finished").equals(context.getPageElementId())) {
 				cartToRemove = cart;

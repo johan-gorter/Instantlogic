@@ -6,8 +6,8 @@ public class AttributeFlow extends org.instantlogic.interaction.flow.impl.Simple
 	public static final AttributeFlow INSTANCE = new AttributeFlow();
 	
 	private static final org.instantlogic.interaction.flow.FlowNodeBase[] NODES = new org.instantlogic.interaction.flow.FlowNodeBase[]{
-		org.instantlogic.designer.flow.attribute.AttributeDetailsPlaceTemplate.INSTANCE,
 		org.instantlogic.designer.flow.attribute.RemoveAttributeSubFlow.INSTANCE,
+		org.instantlogic.designer.flow.attribute.AttributeDetailsPlaceTemplate.INSTANCE,
 	};
 	
 	private static final org.instantlogic.interaction.flow.FlowEdge[] EDGES = new org.instantlogic.interaction.flow.FlowEdge[]{

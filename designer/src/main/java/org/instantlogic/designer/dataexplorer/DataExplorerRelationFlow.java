@@ -10,6 +10,7 @@ import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.value.RelationValue;
 import org.instantlogic.fabric.value.RelationValueList;
+import org.instantlogic.fabric.value.WriteableAttributeValue;
 import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEdge;
 import org.instantlogic.interaction.flow.FlowEvent;
@@ -66,11 +67,7 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 					public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
 						Instance instance = context.getSelectedInstance(entity);
 						Instance newInstance = entityToBeAdded.createInstance();
-						if (relation.isMultivalue()) {
-							((RelationValueList)relation.get(instance)).addValue(newInstance);
-						} else {
-							((RelationValue)relation.get(instance)).setValue(newInstance);
-						}
+						((WriteableAttributeValue)relation.get(instance)).setOrAdd(newInstance);
 						return new FlowEventOccurrence(relationDetailsEvent);
 					}
 				};
@@ -101,11 +98,7 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 			public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
 				Instance instance = context.getSelectedInstance(entity);
 				Instance instanceToRemove = occurrence.getParameters()[0];
-				if (relation.isMultivalue()) {
-					((RelationValueList)relation.get(instance)).removeValue(instanceToRemove);
-				} else {
-					((RelationValue)relation.get(instance)).setValue(null);
-				}
+				((WriteableAttributeValue)relation.get(instance)).clearOrRemove(instanceToRemove);
 				return new FlowEventOccurrence(relationDetailsEvent);
 			}
 		};

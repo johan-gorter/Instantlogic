@@ -23,7 +23,7 @@ public abstract class AbstractDesignerApplication extends org.instantlogic.inter
 	}
 
 
-    private static final String[] THEME_NAMES = new String[]{"margin", "designer"};	
+    private static final String[] THEME_NAMES = new String[]{"designer", "margin"};	
 	@Override
 	public String[] getThemeNames() {
 		return THEME_NAMES;

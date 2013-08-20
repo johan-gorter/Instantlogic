@@ -10,6 +10,7 @@ import org.instantlogic.fabric.value.AttributeValue;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.fabric.value.RelationValue;
 import org.instantlogic.fabric.value.RelationValueList;
+import org.instantlogic.fabric.value.RelationValues;
 
 
 public class ReverseRelationValueImpl<I extends Instance, From extends Instance>
@@ -64,28 +65,17 @@ public class ReverseRelationValueImpl<I extends Instance, From extends Instance>
 			// Add forInstance to the new entity
 			ReadOnlyAttributeValue<From, ? extends Object> value = (ReadOnlyAttributeValue<From, ? extends Object>)relation.get(newEntity);
 			if (relation.isMultivalue()) {
-				((RelationValueList)value).addValue(forInstance);
+				if (relation.isOrderedMultivalue()) {
+					((RelationValueList)value).addValue(forInstance);
+				} else {
+					((RelationValues)value).addValue(forInstance);
+				}
 			} else {
 				((AttributeValue)value).setValue(forInstance);
 			}
 		}
 	}
 	
-	@SuppressWarnings("rawtypes")
-	public void clear() { // From looking at this method, it seems non-functional at the moment
-		if (reverseValue==null) return;
-		Relation<From,? extends Object,I> relation = ((Relation<I, From, From>)getModel()).getReverseRelation();
-		AttributeValue<From, ? extends Object> value = (AttributeValue<From, ? extends Object>)relation.get(reverseValue);
-		boolean result = false;
-		if (relation.isMultivalue()) {
-			result = ((List)value).remove(forInstance);
-		} else {
-			result = value.getStoredValue()==forInstance;
-			value.setValue(null);
-		}
-		if (!result) throw new RuntimeException("Reverse value not in sync while clearing reverse relation");
-	}
-
 	@Override
 	public boolean isStored() {
 		return reverseValue!=null;
@@ -99,6 +89,18 @@ public class ReverseRelationValueImpl<I extends Instance, From extends Instance>
 	@Override
 	public From getStoredValue() {
 		return reverseValue;
+	}
+
+	@Override
+	public From setOrAdd(From newValue) {
+		From oldValue = reverseValue;
+		setValue(newValue);
+		return oldValue;
+	}
+	
+	@Override
+	public void clearOrRemove(From valueToBeRemoved) {
+		setValue(null);
 	}
 	
 }

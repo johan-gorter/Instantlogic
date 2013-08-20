@@ -18,6 +18,7 @@ import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 import org.instantlogic.fabric.value.ValueList;
+import org.instantlogic.fabric.value.Values;
 
 public class FlowGenerator extends AbstractGenerator {
 
@@ -100,7 +101,7 @@ public class FlowGenerator extends AbstractGenerator {
 		return model;
 	}
 
-	private List<SubFlowDesign> getSubFlows(ValueList<FlowNodeBaseDesign> list) {
+	private List<SubFlowDesign> getSubFlows(Values<FlowNodeBaseDesign> list) {
 		ArrayList<SubFlowDesign> result = new ArrayList<SubFlowDesign>();
 		for (FlowNodeBaseDesign node : list) {
 			if (node instanceof SubFlowDesign) {
@@ -110,7 +111,7 @@ public class FlowGenerator extends AbstractGenerator {
 		return result;
 	}
 
-	private List<PlaceTemplateDesign> getPages(ValueList<FlowNodeBaseDesign> list) {
+	private List<PlaceTemplateDesign> getPages(Values<FlowNodeBaseDesign> list) {
 		ArrayList<PlaceTemplateDesign> result = new ArrayList<PlaceTemplateDesign>();
 		for (FlowNodeBaseDesign node : list) {
 			if (node instanceof PlaceTemplateDesign) {

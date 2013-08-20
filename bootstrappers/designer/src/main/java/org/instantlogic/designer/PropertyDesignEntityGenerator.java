@@ -1,8 +1,5 @@
 package org.instantlogic.designer;
 
-
-
-
 public class PropertyDesignEntityGenerator extends EntityDesign {
 
     public static final PropertyDesignEntityGenerator ENTITY = new PropertyDesignEntityGenerator();
@@ -24,6 +21,7 @@ public class PropertyDesignEntityGenerator extends EntityDesign {
     @Override
     public void init() {
     	super.init();
+    	children.getDataType().setOrdered(true);
     	collapsed.newDefault().deduceConstant(Boolean.class, Boolean.TRUE);
     }
 }

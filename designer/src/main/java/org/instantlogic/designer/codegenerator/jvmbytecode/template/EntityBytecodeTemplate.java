@@ -76,7 +76,7 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			}
 		}
 		for(Relation r: model.relations) {
-			// public static final org.instantlogic.fabric.model.Relation<org.instantlogic.engine.presence.Presence, org.instantlogic.fabric.value.Multi<org.instantlogic.engine.presence.Place>, org.instantlogic.engine.presence.Place> activePlaces
+			// public static final org.instantlogic.fabric.model.Relation<org.instantlogic.engine.presence.Presence, org.instantlogic.fabric.value.Values<org.instantlogic.engine.presence.Place>, org.instantlogic.engine.presence.Place> activePlaces
 			{
 				fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, r.javaIdentifier, "Lorg/instantlogic/fabric/model/Relation;", "Lorg/instantlogic/fabric/model/Relation<L"+instanceClassName+";L"+r.internalTo+";L"+r.internalItemClassName+";>;", null);
 				fv.visitEnd();
@@ -138,8 +138,8 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 				localVariableIndex++;
 			}
 			for (Relation r:model.relations) {
-				//org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.example.izzy.Project, org.instantlogic.fabric.value.Multi<org.instantlogic.example.izzy.Issue>, org.instantlogic.example.izzy.Issue> $issues
-				//	= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.example.izzy.Project, org.instantlogic.fabric.value.Multi<org.instantlogic.example.izzy.Issue>, org.instantlogic.example.izzy.Issue>(
+				//org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.example.izzy.Project, org.instantlogic.fabric.value.Values<org.instantlogic.example.izzy.Issue>, org.instantlogic.example.izzy.Issue> $issues
+				//	= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.example.izzy.Project, org.instantlogic.fabric.value.Values<org.instantlogic.example.izzy.Issue>, org.instantlogic.example.izzy.Issue>(
 				//		"issues", INSTANCE, "issues", org.instantlogic.example.izzy.Project.class);
 				mv.visitTypeInsn(NEW, "org/instantlogic/fabric/model/impl/SimpleRelation");
 				mv.visitInsn(DUP);

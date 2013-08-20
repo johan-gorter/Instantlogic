@@ -54,4 +54,16 @@ public class AttributeValueImpl<I extends Instance, Value extends Object>
 	protected String valueToString() {
 		return super.valueToString()+",stored:"+storedValue;
 	}
+
+	@Override
+	public Value setOrAdd(Value newValue) {
+		Value oldStoredValue = storedValue; 
+		setValue(newValue);
+		return oldStoredValue;
+	}
+	
+	@Override
+	public void clearOrRemove(Value valueToBeRemoved) {
+		setValue(null);
+	}
 }

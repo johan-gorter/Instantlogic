@@ -4,7 +4,7 @@ import org.instantlogic.fabric.Instance;
 
 
 public interface AttributeValueList<I extends Instance, Item extends Object> 
-	extends ReadOnlyAttributeValueList<I, Item> {
+	extends ReadOnlyAttributeValueList<I, Item>, WriteableAttributeValue<I, ValueList<Item>, Item> {
 	
 	public void addValue(Item item);
 

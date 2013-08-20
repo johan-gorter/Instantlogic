@@ -1,11 +1,5 @@
 package org.instantlogic.designer;
 
-import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstance;
-import org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction;
-import org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction;
-import org.instantlogic.designer.deduction.DataTypeEntityDeduction;
-import org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction;
-import org.instantlogic.designer.deduction.DataTypeMultivalueDeduction;
 
 public class DataTypeDesignEntityGenerator extends EntityDesign {
 
@@ -20,6 +14,7 @@ public class DataTypeDesignEntityGenerator extends EntityDesign {
 
     public static final RelationDesign entity = addRelation(ENTITY, "entity", RelationType.OneToZeroOrOne, EntityDesignEntityGenerator.ENTITY);
     public static final AttributeDesign multivalue = addAttribute(ENTITY, "multivalue", DataCategoryDesign._boolean);
+    public static final AttributeDesign ordered = addAttribute(ENTITY, "ordered", DataCategoryDesign._boolean);
    
     // Classname of a single item
     public static final AttributeDesign javaClassName = addAttribute(ENTITY, "javaClassName", DataCategoryDesign.text);
@@ -76,6 +71,10 @@ public class DataTypeDesignEntityGenerator extends EntityDesign {
     	exactRounding.newRelevance().deduceEquals(
     			exactRounding.getRelevance().deduceAttribute(wholeNumber), 
     			exactRounding.getRelevance().deduceConstant(Boolean.class, Boolean.FALSE));
+    	ordered.newRelevance().deduceEquals(
+    			ordered.getRelevance().deduceAttribute(multivalue),
+    			ordered.getRelevance().deduceConstant(Boolean.class, Boolean.TRUE));
+    	
     	
     	newValidation("DataCategoryRequired", "Select a value", dataCategory).deduceAttributeHasValue(dataCategory);
     }

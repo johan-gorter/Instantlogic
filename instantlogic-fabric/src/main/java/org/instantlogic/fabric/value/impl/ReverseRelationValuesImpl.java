@@ -15,8 +15,10 @@ import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.fabric.util.ValueChangeEvent.MultiValueUpdateType;
 import org.instantlogic.fabric.value.AttributeValue;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
+import org.instantlogic.fabric.value.RelationValueList;
 import org.instantlogic.fabric.value.RelationValues;
 import org.instantlogic.fabric.value.Values;
+import org.instantlogic.fabric.value.WriteableAttributeValue;
 
 
 public class ReverseRelationValuesImpl<I extends Instance, From extends Instance>
@@ -91,13 +93,9 @@ public class ReverseRelationValuesImpl<I extends Instance, From extends Instance
 		if (newEntity==null) throw new IllegalArgumentException("addValue null");
 		Relation<From,? extends Object,I> relation = ((Relation<I, Values<From>, From>)getModel()).getReverseRelation();
 		// Add forInstance to the new entity
-		ReadOnlyAttributeValue<From, ? extends Object> value = (ReadOnlyAttributeValue<From, ? extends Object>)relation.get(newEntity);
-		if (relation.isMultivalue()) {
-			((RelationValues)value).addValue(forInstance);
-		} else {
-			((AttributeValue<From, I>)value).setValue(forInstance);
-		}
-		// The statements above added newEntity to values 
+		WriteableAttributeValue value = (WriteableAttributeValue)relation.get(newEntity);
+		value.setOrAdd(forInstance);
+		// The statements above added newEntity to values indirectly 
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -109,7 +107,11 @@ public class ReverseRelationValuesImpl<I extends Instance, From extends Instance
 		// Add forInstance to the new entity
 		ReadOnlyAttributeValue<From, ? extends Object> value = (ReadOnlyAttributeValue<From, ? extends Object>)relation.get(oldEntity);
 		if (relation.isMultivalue()) {
-			((RelationValues)value).removeValue(forInstance);
+			if (relation.isOrderedMultivalue()) {
+				((RelationValueList)value).removeValue(forInstance);
+			} else {
+				((RelationValues)value).removeValue(forInstance);
+			}
 		} else {
 			((AttributeValue<From, I>)value).setValue(null);
 		}
@@ -119,5 +121,21 @@ public class ReverseRelationValuesImpl<I extends Instance, From extends Instance
 	@Override
 	protected String valueToString() {
 		return super.valueToString()+",reverseValue:"+reverseValue;
+	}
+
+	@Override
+	public boolean isStored() {
+		return true;
+	}
+
+	@Override
+	public From setOrAdd(From newValue) {
+		addValue(newValue);
+		return null;
 	}	
+	
+	@Override
+	public void clearOrRemove(From valueToBeRemoved) {
+		removeValue(valueToBeRemoved);
+	}
 }

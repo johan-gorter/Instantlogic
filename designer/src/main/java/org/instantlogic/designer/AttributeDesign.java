@@ -43,5 +43,10 @@ public class AttributeDesign extends AbstractAttributeDesign {
 		return new StaticFieldValueModel(entity.getApplication().getRootPackageName()+".entity."+entity.getTechnicalNameCapitalized()+"Entity", getJavaIdentifier(), 
 			(this instanceof RelationDesign)?"org.instantlogic.fabric.model.Relation":"org.instantlogic.fabric.model.Attribute");
 	}
+	
+	public AttributeDesign ordered() {
+		getDataType().setOrdered(true);
+		return this;
+	}
 
 }

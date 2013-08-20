@@ -14,11 +14,10 @@ import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.value.AttributeValue;
-import org.instantlogic.fabric.value.AttributeValueList;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.fabric.value.ReadOnlyRelationValue;
 import org.instantlogic.fabric.value.RelationValue;
-import org.instantlogic.fabric.value.RelationValueList;
+import org.instantlogic.fabric.value.WriteableAttributeValue;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
@@ -50,7 +49,7 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 				ReadOnlyAttributeValue attributeValue = (ReadOnlyAttributeValue) attribute.get(src);
 				if (attributeValue.hasStoredValue()) {
 					if (attribute.isMultivalue()) {
-						AttributeValueList attributeValues = (AttributeValueList) attributeValue;
+						WriteableAttributeValue attributeValues = (WriteableAttributeValue) attributeValue;
 						JsonArray values = new JsonArray();
 						for (Object value : (Iterable) attributeValues.getValue()) {
 							JsonElement valueItem = toJsonPrimitive(value);
@@ -69,7 +68,7 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 				ReadOnlyAttributeValue attributeValue = (ReadOnlyAttributeValue) relation.get(src);
 				if (attributeValue.hasStoredValue()) {
 					if (relation.isMultivalue()) {
-						RelationValueList target = (RelationValueList) attributeValue;
+						WriteableAttributeValue target = (WriteableAttributeValue) attributeValue;
 						JsonArray values = new JsonArray();
 						result.add(relation.getName(), values);
 						for (Instance targetInstance : (Iterable<Instance>) target.getValue()) {
@@ -143,7 +142,7 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 				if (data.has(attribute.getName())) {
 					JsonElement value = data.get(attribute.getName());
 					if (attribute.isMultivalue()) {
-						setMultivalueAttribute(attribute, (AttributeValueList) attribute.get(result), value, result.getMetadata().getCaseAdministration());
+						setMultivalueAttribute(attribute, (WriteableAttributeValue) attribute.get(result), value, result.getMetadata().getCaseAdministration());
 					} else {
 						AttributeValue attributeValue = (AttributeValue) attribute.get(result);
 						attributeValue.setValue(toPrimitive(attribute, value, result.getMetadata().getCaseAdministration()));
@@ -158,7 +157,7 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 					ReadOnlyRelationValue relationValue = (ReadOnlyRelationValue) relation.get(result);
 					if (relation.isOwner()) {
 						if (relation.isMultivalue()) {
-							setMultivalueRelation(relation, (RelationValueList) relationValue, value, result, caseInstance, instances);
+							setMultivalueRelation(relation, (WriteableAttributeValue) relationValue, value, result, caseInstance, instances);
 						} else {
 							JsonObject valueObject = value.getAsJsonObject();
 							String newInstanceId = valueObject.get("instanceId").getAsString();
@@ -191,14 +190,14 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 					if (!relation.isOwner()) {
 						// Set non-owning relations
 						if (relation.isMultivalue()) {
-							RelationValueList values = (RelationValueList) relationValue;
+							WriteableAttributeValue values = (WriteableAttributeValue) relationValue;
 							for (JsonElement item : ((JsonArray) value)) {
 								if (item instanceof JsonObject) {
 									// probably a static instance
-									values.addValue(deserializeStaticInstance((JsonObject)item, result.getMetadata().getCaseAdministration()));
+									values.setOrAdd(deserializeStaticInstance((JsonObject)item, result.getMetadata().getCaseAdministration()));
 								} else {
 									String itemId = item.getAsString(); // Id of another instance
-									values.addValue(instances.get(itemId));
+									values.setOrAdd(instances.get(itemId));
 								}
 							}
 						} else {
@@ -246,7 +245,7 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 		return result;
 	}
 
-	private void setMultivalueRelation(Relation relation, RelationValueList relationValue, JsonElement value, Instance owner, Instance caseInstance, Map<String, Instance> instances) {
+	private void setMultivalueRelation(Relation relation, WriteableAttributeValue relationValue, JsonElement value, Instance owner, Instance caseInstance, Map<String, Instance> instances) {
 		JsonArray values = (JsonArray) value;
 		for (JsonElement item : values) {
 			JsonObject valueObject = item.getAsJsonObject();
@@ -254,17 +253,17 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 			Instance target = createInstance(caseInstance, valueObject, newInstanceId);
 			if (target!=null) {
 				deserializeFirstPass(item.getAsJsonObject(), target, newInstanceId, caseInstance, instances);
-				relationValue.addValue(target);
+				relationValue.setOrAdd(target);
 			} else {
 				// Warning: could not deserialize instance
 			}
 		}
 	}
 
-	private void setMultivalueAttribute(Attribute attribute, AttributeValueList attributeValue, JsonElement value, CaseAdministration caseAdministration) {
+	private void setMultivalueAttribute(Attribute attribute, WriteableAttributeValue attributeValue, JsonElement value, CaseAdministration caseAdministration) {
 		JsonArray values = (JsonArray) value;
 		for (JsonElement item : values) {
-			attributeValue.addValue(toPrimitive(attribute, item, caseAdministration));
+			attributeValue.setOrAdd(toPrimitive(attribute, item, caseAdministration));
 		}
 	}
 

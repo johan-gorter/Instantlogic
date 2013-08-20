@@ -30,14 +30,14 @@ public abstract class AbstractEventDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValueList<EventDesign, EntityDesign> parameters
-		= createRelationValueList(org.instantlogic.designer.entity.EventDesignEntity.parameters);
+	private final org.instantlogic.fabric.value.RelationValues<EventDesign, EntityDesign> parameters
+		= createRelationValues(org.instantlogic.designer.entity.EventDesignEntity.parameters);
 		
-	public org.instantlogic.fabric.value.RelationValueList<EventDesign, EntityDesign> getParametersRelationValue() {
+	public org.instantlogic.fabric.value.RelationValues<EventDesign, EntityDesign> getParametersRelationValue() {
 		return parameters;
 	}
 
-	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.EntityDesign> getParameters() {
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign> getParameters() {
 		return parameters.getValue();
 	}
 	
@@ -46,20 +46,11 @@ public abstract class AbstractEventDesign extends Design {
 		return (EventDesign)this;
 	}
 	
-	public EventDesign addToParameters(EntityDesign item, int index) {
-		parameters.insertValue(item, index);
-		return (EventDesign)this;
-	}
-	
 	public EventDesign removeFromParameters(EntityDesign item) {
 		parameters.removeValue(item);
 		return (EventDesign)this;
 	}
 	
-	public EventDesign removeFromParameters(int index) {
-		parameters.removeValue(index);
-		return (EventDesign)this;
-	}
 	
 
 	// Reverse relations

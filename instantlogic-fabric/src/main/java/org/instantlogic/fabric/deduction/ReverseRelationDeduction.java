@@ -10,7 +10,9 @@ import org.instantlogic.fabric.util.ValueAndLevel;
  * Return value can either be a 
  *   ReverseRelationDeduction<From, To>
  * or a 
- *   ReverseRelationDeduction<Multi<From>, To>
+ *   ReverseRelationDeduction<Values<From>, To>
+ * or a 
+ *   ReverseRelationDeduction<ValueList<From>, To>
  */
 public class ReverseRelationDeduction<From extends Instance, Item extends Object, To extends Instance, ReverseItem extends Object> extends Deduction<ReverseItem> {
 

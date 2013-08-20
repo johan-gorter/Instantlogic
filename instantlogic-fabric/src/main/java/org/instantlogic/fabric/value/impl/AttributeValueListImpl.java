@@ -97,5 +97,21 @@ public class AttributeValueListImpl<I extends Instance, Item extends Object>
 	@Override
 	protected String valueToString() {
 		return super.valueToString()+",stored:"+storedValue;
-	}	
+	}
+	
+	@Override
+	public Item setOrAdd(Item newValue) {
+		addValue(newValue);
+		return null;
+	}
+	
+	@Override
+	public void clearOrRemove(Item valueToBeRemoved) {
+		removeValue(valueToBeRemoved);
+	}
+
+	@Override
+	public boolean isStored() {
+		return true; // Rule-based multivalue is not yet implemented
+	}
 }

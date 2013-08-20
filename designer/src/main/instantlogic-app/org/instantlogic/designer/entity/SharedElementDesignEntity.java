@@ -27,7 +27,7 @@ public class SharedElementDesignEntity extends org.instantlogic.fabric.model.Ent
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDesign, org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDefinitionDesign> $definition
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDesign, org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDefinitionDesign>(
-				"Relationdesign__004d", "definition", INSTANCE, "definition", org.instantlogic.designer.SharedElementDesign.class);
+				"alud__dEjygmohbj_bdfb36e7_4001", "definition", INSTANCE, "definition", org.instantlogic.designer.SharedElementDesign.class);
 		definition = $definition;
 		// Reverse relations
 		
@@ -51,7 +51,7 @@ public class SharedElementDesignEntity extends org.instantlogic.fabric.model.Ent
 	
 	@Override
 	public String getUniqueId() {
-		return "Entitydesign__0020";
+		return "CcvzcdiacyfIuc_z_2f51ca08_61de";
 	}
 	
 	@Override

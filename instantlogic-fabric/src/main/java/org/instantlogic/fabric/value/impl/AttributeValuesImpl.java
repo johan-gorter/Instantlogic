@@ -39,7 +39,9 @@ public class AttributeValuesImpl<I extends Instance, Item extends Object>
 	public void addValue(Item item) {
 		Operation operation = startOperation();
 		try {
-			storedValues.add(item);
+			if (!storedValues.add(item)) {
+				throw new RuntimeException(toString()+" already contains "+item);
+			}
 			fireChange(ValueChangeEvent.MultiValueUpdateType.INSERT, item, operation);
 			operation.complete();
 		} finally {
@@ -78,5 +80,26 @@ public class AttributeValuesImpl<I extends Instance, Item extends Object>
 	@Override
 	protected String valueToString() {
 		return super.valueToString()+",stored:"+storedValue;
-	}	
+	}
+
+	@Override
+	public Item setOrAdd(Item newValue) {
+		ensureStored();
+		if (storedValues.contains(newValue)) {
+			return newValue;
+		}
+		addValue(newValue);
+		return null;
+	}
+	
+	@Override
+	public void clearOrRemove(Item valueToBeRemoved) {
+		removeValue(valueToBeRemoved);
+	}
+
+	@Override
+	public boolean isStored() {
+		return true; // Rule-based multivalue is not yet implemented
+	}
+
 }

@@ -65,19 +65,19 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $name
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"Attributedesign__0006", "name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractDesign.class);
+				"HvdbzcAutufmuckk_b40e339e_1222", "name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractDesign.class);
 		name = $name;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $javaIdentifier
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"Attributedesign__0007", "javaIdentifier", INSTANCE, java.lang.String.class, "javaIdentifier", org.instantlogic.designer.AbstractDesign.class);
+				"WUvffbs_aIfnen_f_38ff2cb6_26bc", "javaIdentifier", INSTANCE, java.lang.String.class, "javaIdentifier", org.instantlogic.designer.AbstractDesign.class);
 		javaIdentifier = $javaIdentifier;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $technicalName
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"Attributedesign__0008", "technicalName", INSTANCE, java.lang.String.class, "technicalName", org.instantlogic.designer.AbstractDesign.class);
+				"aUznfehshidjqhgu_602655e0_4e68", "technicalName", INSTANCE, java.lang.String.class, "technicalName", org.instantlogic.designer.AbstractDesign.class);
 		technicalName = $technicalName;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> $isCustomized
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean>(
-				"Attributedesign__0009", "isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractDesign.class);
+				"ugnbwyhUmI_zqcdl_509527e5_4693", "isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractDesign.class);
 		isCustomized = $isCustomized;
 		// Relations
 		// Reverse relations
@@ -126,7 +126,7 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	
 	@Override
 	public String getUniqueId() {
-		return "Entitydesign__0008";
+		return "Zndz_djzia_lyaIx_ee927dd6_a058";
 	}
 	
 	@Override

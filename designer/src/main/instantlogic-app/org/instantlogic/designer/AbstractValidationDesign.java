@@ -76,14 +76,14 @@ public abstract class AbstractValidationDesign extends Design {
 	}
 
 	
-	private final org.instantlogic.fabric.value.RelationValueList<ValidationDesign, AttributeDesign> displayWith
-		= createRelationValueList(org.instantlogic.designer.entity.ValidationDesignEntity.displayWith);
+	private final org.instantlogic.fabric.value.RelationValues<ValidationDesign, AttributeDesign> displayWith
+		= createRelationValues(org.instantlogic.designer.entity.ValidationDesignEntity.displayWith);
 		
-	public org.instantlogic.fabric.value.RelationValueList<ValidationDesign, AttributeDesign> getDisplayWithRelationValue() {
+	public org.instantlogic.fabric.value.RelationValues<ValidationDesign, AttributeDesign> getDisplayWithRelationValue() {
 		return displayWith;
 	}
 
-	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.AttributeDesign> getDisplayWith() {
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.AttributeDesign> getDisplayWith() {
 		return displayWith.getValue();
 	}
 	
@@ -92,20 +92,11 @@ public abstract class AbstractValidationDesign extends Design {
 		return (ValidationDesign)this;
 	}
 	
-	public ValidationDesign addToDisplayWith(AttributeDesign item, int index) {
-		displayWith.insertValue(item, index);
-		return (ValidationDesign)this;
-	}
-	
 	public ValidationDesign removeFromDisplayWith(AttributeDesign item) {
 		displayWith.removeValue(item);
 		return (ValidationDesign)this;
 	}
 	
-	public ValidationDesign removeFromDisplayWith(int index) {
-		displayWith.removeValue(index);
-		return (ValidationDesign)this;
-	}
 	
 
 	// Reverse relations

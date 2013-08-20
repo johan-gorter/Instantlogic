@@ -30,29 +30,6 @@ public class IfElseDesign extends ElementDesign {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, DeductionSchemeDesign> condition
-		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.condition);
-		
-	public org.instantlogic.fabric.value.RelationValue<IfElseDesign, DeductionSchemeDesign> getConditionRelationValue() {
-		return condition;
-	}
-
-	public org.instantlogic.designer.DeductionSchemeDesign getCondition() {
-		return condition.getValue();
-	}
-	
-	public IfElseDesign setCondition(org.instantlogic.designer.DeductionSchemeDesign newValue) {
-		condition.setValue(newValue);
-		return (IfElseDesign)this;
-	}
-	
-	public org.instantlogic.designer.DeductionSchemeDesign newCondition() {
-		org.instantlogic.designer.DeductionSchemeDesign newValue = new org.instantlogic.designer.DeductionSchemeDesign(); 
-		condition.setValue(newValue);
-		return newValue;
-	}
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> ifChild
 		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.ifChild);
 		
@@ -95,6 +72,29 @@ public class IfElseDesign extends ElementDesign {
 	public org.instantlogic.designer.ElementDesign newElseChild() {
 		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
 		elseChild.setValue(newValue);
+		return newValue;
+	}
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, DeductionSchemeDesign> condition
+		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.condition);
+		
+	public org.instantlogic.fabric.value.RelationValue<IfElseDesign, DeductionSchemeDesign> getConditionRelationValue() {
+		return condition;
+	}
+
+	public org.instantlogic.designer.DeductionSchemeDesign getCondition() {
+		return condition.getValue();
+	}
+	
+	public IfElseDesign setCondition(org.instantlogic.designer.DeductionSchemeDesign newValue) {
+		condition.setValue(newValue);
+		return (IfElseDesign)this;
+	}
+	
+	public org.instantlogic.designer.DeductionSchemeDesign newCondition() {
+		org.instantlogic.designer.DeductionSchemeDesign newValue = new org.instantlogic.designer.DeductionSchemeDesign(); 
+		condition.setValue(newValue);
 		return newValue;
 	}
 

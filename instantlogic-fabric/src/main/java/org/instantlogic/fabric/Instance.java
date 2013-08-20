@@ -32,7 +32,7 @@ import org.instantlogic.fabric.value.impl.ReverseRelationValuesImpl;
  * 
  * Note that an instance should always have an owner. the root of this owner hierarchy is called the case.
  */
-public abstract class Instance {
+public abstract class Instance implements Comparable<Instance> {
 
 	private final InstanceMetadata metadata;
 	
@@ -130,5 +130,21 @@ public abstract class Instance {
 	 */
 	public InstanceMetadata getMetadata() {
 		return metadata;
+	}
+	
+	// compareTo, equals and hashcode are based on the uniqueId
+	
+	public int compareTo(Instance other) {
+		return metadata.getUniqueId().compareTo(other.metadata.getUniqueId());
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return obj == this;
+	}
+	
+	@Override
+	public int hashCode() {
+		return metadata.getUniqueId().hashCode();
 	}
 }
