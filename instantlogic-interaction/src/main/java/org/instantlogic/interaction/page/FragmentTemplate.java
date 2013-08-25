@@ -109,6 +109,10 @@ public class FragmentTemplate extends Element {
 		return this;
 	}
 	
+	public FragmentTemplate putConstantText(String dataKey, String constantText) {
+		return putText(dataKey, new TextTemplate().getUntranslated().add(constantText).getTextTemplate());
+	}
+	
 	public FragmentTemplate putChildren(String DataKey, Element... children) {
 		if (children==null) throw new IllegalArgumentException();
 		childlistProperties.put(DataKey, Arrays.asList(children));

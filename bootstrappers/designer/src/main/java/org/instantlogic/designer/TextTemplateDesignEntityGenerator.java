@@ -18,5 +18,9 @@ public class TextTemplateDesignEntityGenerator extends EntityDesign {
     public static final RelationDesign untranslated = addRelation(ENTITY, "untranslated", RelationType.OneToManyAggregation, StringTemplateDesignEntityGenerator.ENTITY)
             .setReverseName("untranslatedInTemplate");
     
-
+    @Override
+    public void init() {
+    	super.init();
+    	untranslated.getDataType().setOrdered(true);
+    }
 }

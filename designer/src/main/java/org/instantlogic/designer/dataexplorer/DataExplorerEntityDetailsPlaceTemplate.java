@@ -2,7 +2,6 @@ package org.instantlogic.designer.dataexplorer;
 
 import java.util.List;
 
-import org.instantlogic.designer.dataexplorer.RelationInstanceShopping.TravelerExtension;
 import org.instantlogic.fabric.deduction.AttributeDeduction;
 import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.deduction.ReverseRelationDeduction;
@@ -13,12 +12,10 @@ import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
 import org.instantlogic.fabric.util.DeductionContext;
 import org.instantlogic.fabric.util.ValueAndLevel;
-import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.page.FragmentTemplate;
 import org.instantlogic.interaction.page.SelectionElement;
-import org.instantlogic.interaction.util.RenderContext;
 
 public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 
@@ -32,14 +29,18 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 		this.directEvents = directEvents;
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public FragmentTemplate getRootContainer() {
 		// the resulting page can be used to view each instance of the same entity
 		FragmentTemplate page = new FragmentTemplate(entity.getUniqueId()+"-details", "Page")
 			.addChild("mainContent",
                 new org.instantlogic.interaction.page.FragmentTemplate("h1", "Heading1")      
-                    .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(entity.getName() + " details").getTextTemplate())        
+                    .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated()
+                    	.add(entity.getName() + " '")
+                    	.add(createInstanceTitleDeduction())
+                    	.add("'")
+                    	.getTextTemplate())        
             );
 		
 		page.addChild("mainContent", new ShoppingElement(entity));
@@ -116,14 +117,16 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 					)
 					.addChild("content", new FragmentTemplate(id+"controls relations", "Div").setStyleNames(new String[]{"controls"})
 						.addChild("content", 
-							new SelectionElement(selectValue, 
-								new FragmentTemplate(id+"-link", "Link")
-									.putText("text", getEntityTitle(relation.getTo()))
-									.setEvent(ExploreDataEvent.INSTANCE))
+							new SelectionElement(selectValue,
+								new FragmentTemplate(id+"-linkBlock", "Block").addChild("content", 
+									new FragmentTemplate(id+"-link", "Link")
+										.putText("text", getEntityTitle(relation.getTo()))
+										.setEvent(ExploreDataEvent.INSTANCE))
+								)
 						)
 						.addChild("content", 
 							new FragmentTemplate(id+"detailsButton", "Button").setStyleNames(new String[]{"btn"})
-								.putText("text", new TextTemplate().getUntranslated().add("Details").getTextTemplate())
+								.putText("text", new TextTemplate().getUntranslated().add("Relation").getTextTemplate())
 								.setEvent(entityFlow.getRelationDetailsEvent(relation))
 						)
 					)
@@ -139,7 +142,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 			}
 			currentEntity = currentEntity.extendsEntity();
 		}
-		return new TextTemplate().getUntranslated().add(entity.getName()).getTextTemplate();
+		return new TextTemplate().getUntranslated().add(entity.getUniqueId()).getTextTemplate();
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -157,6 +160,18 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 		result.setToInstance(selectedInstance);
 		return result;
 	}
+
+	@SuppressWarnings({ "rawtypes" })
+	private Deduction createInstanceTitleDeduction() {
+		return new Deduction<String>() {
+			@Override
+			protected ValueAndLevel<String> execute(DeductionContext context) {
+				TextTemplate entityTitle = getEntityTitle(entity);
+				return ValueAndLevel.rule(entityTitle.renderText(context));
+			}
+		};
+	}
+
 
 	@Override
 	public String getId() {

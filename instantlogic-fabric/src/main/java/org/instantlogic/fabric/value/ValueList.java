@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
+/**
+ * 
+ * Contains only the read methods from List<T>
+ */
 public class ValueList<T> extends Values<T> {
 
 	protected List<T> items = new ArrayList<T>();
@@ -31,7 +36,11 @@ public class ValueList<T> extends Values<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-		return asList().iterator();
+		return readOnlyItems.iterator();
+	}
+	
+	public ListIterator<T> listIterator() {
+		return readOnlyItems.listIterator();
 	}
 
 	public T get(int i) {

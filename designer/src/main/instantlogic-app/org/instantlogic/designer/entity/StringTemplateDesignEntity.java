@@ -24,17 +24,17 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String> $constantText
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String>(
-				"KOUpkpIhpyerknkv_2b55644e_1580", "constantText", INSTANCE, java.lang.String.class, "constantText", org.instantlogic.designer.StringTemplateDesign.class);
+				"E_csqpyuiabnudyq_8bd801f2_c322", "constantText", INSTANCE, java.lang.String.class, "constantText", org.instantlogic.designer.StringTemplateDesign.class);
 		constantText = $constantText;
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $deduction
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"_gcbmtinIuflqhfn_a61972ac_e9a2", "deduction", INSTANCE, "deduction", org.instantlogic.designer.StringTemplateDesign.class);
+				"ixccqqUujabukgok_b2b59b19_a823", "deduction", INSTANCE, "deduction", org.instantlogic.designer.StringTemplateDesign.class);
 		deduction = $deduction;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $untranslatedInTemplate
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"Hwomnkukkabweipy_6d1266d3_8e05", "untranslatedInTemplate", INSTANCE, "untranslatedInTemplate", org.instantlogic.designer.StringTemplateDesign.class);
+				"O_jfdqOuuigwuiOo_67f3703a_4f4e", "untranslatedInTemplate", INSTANCE, "untranslatedInTemplate", org.instantlogic.designer.StringTemplateDesign.class);
 		untranslatedInTemplate = $untranslatedInTemplate;
 		
 		// Phase 2
@@ -63,7 +63,7 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 	
 	@Override
 	public String getUniqueId() {
-		return "I_EpcfpprmaaU_qE_7c88e4b6_fe11";
+		return "SUIruIkityflU_Uo_cdbcb2b5_db4f";
 	}
 	
 	@Override

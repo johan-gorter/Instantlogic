@@ -31,16 +31,20 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 	public FragmentTemplate getRootContainer() {
 		FragmentTemplate page = new FragmentTemplate(relation.getUniqueId()+"-details", "Page")
 			.addChild("mainContent",
-                new org.instantlogic.interaction.page.FragmentTemplate("h1", "Heading1")      
-                    .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(relation.getName()+" ("+entity.getName()+")").getTextTemplate())        
+                new FragmentTemplate("h1", "Heading1")      
+                    .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated()
+                    	.add("Relation '"+ relation.getName()+"'").getTextTemplate())        
             );
-
-		page.addChild("mainContent", 
-			new FragmentTemplate(entity.getUniqueId()+"-link", "Link")
-				.putText("text", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(entity))
-				.setEvent(ExploreDataEvent.INSTANCE)
+		page.addChild("mainContent", new FragmentTemplate("h2", "Heading2")
+			.addChild("content", new FragmentTemplate("h2-1","Text").putConstantText("text", "On "))
+			.addChild("content", 
+				new FragmentTemplate(entity.getUniqueId()+"-link", "Link")
+					.addChild("content", new FragmentTemplate(entity.getUniqueId()+"link1", "Text").putText("text", new TextTemplate().getUntranslated().add(entity.getName() + " '").getTextTemplate()))
+					.addChild("content", new FragmentTemplate(entity.getUniqueId()+"link2", "Text").putText("text", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(entity)))
+					.addChild("content", new FragmentTemplate(entity.getUniqueId()+"link3", "Text").putText("text", new TextTemplate().getUntranslated().add("'").getTextTemplate()))
+					.setEvent(ExploreDataEvent.INSTANCE)
+			)
 		);
-		
 		page.addChild("mainContent", new ShoppingElement());
 		
 		for (Entry<Entity, FlowEvent> entry : flow.getAddNewEvents().entrySet()) {

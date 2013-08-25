@@ -73,6 +73,57 @@ public abstract class AbstractDeductionSchemeDesign extends org.instantlogic.fab
 
 	// Reverse relations
 	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, SelectionDesign> selectionElement
+		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.selectionElement);
+
+	public org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, SelectionDesign> getSelectionElementRelationValue() {
+		return selectionElement;
+	}
+
+	public org.instantlogic.designer.SelectionDesign getSelectionElement() {
+		return selectionElement.getValue();
+	}
+
+    public DeductionSchemeDesign setSelectionElement(org.instantlogic.designer.SelectionDesign newValue) {
+        selectionElement.setValue(newValue);
+        return (DeductionSchemeDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, AttributeDesign> defaultOfAttribute
+		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.defaultOfAttribute);
+
+	public org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, AttributeDesign> getDefaultOfAttributeRelationValue() {
+		return defaultOfAttribute;
+	}
+
+	public org.instantlogic.designer.AttributeDesign getDefaultOfAttribute() {
+		return defaultOfAttribute.getValue();
+	}
+
+    public DeductionSchemeDesign setDefaultOfAttribute(org.instantlogic.designer.AttributeDesign newValue) {
+        defaultOfAttribute.setValue(newValue);
+        return (DeductionSchemeDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, AttributeDesign> relevanceOfAttribute
+		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.relevanceOfAttribute);
+
+	public org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, AttributeDesign> getRelevanceOfAttributeRelationValue() {
+		return relevanceOfAttribute;
+	}
+
+	public org.instantlogic.designer.AttributeDesign getRelevanceOfAttribute() {
+		return relevanceOfAttribute.getValue();
+	}
+
+    public DeductionSchemeDesign setRelevanceOfAttribute(org.instantlogic.designer.AttributeDesign newValue) {
+        relevanceOfAttribute.setValue(newValue);
+        return (DeductionSchemeDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, ValidationDesign> ruleForValidation
 		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.ruleForValidation);
 
@@ -120,57 +171,6 @@ public abstract class AbstractDeductionSchemeDesign extends org.instantlogic.fab
 
     public DeductionSchemeDesign setRuleOfAttribute(org.instantlogic.designer.AttributeDesign newValue) {
         ruleOfAttribute.setValue(newValue);
-        return (DeductionSchemeDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, AttributeDesign> relevanceOfAttribute
-		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.relevanceOfAttribute);
-
-	public org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, AttributeDesign> getRelevanceOfAttributeRelationValue() {
-		return relevanceOfAttribute;
-	}
-
-	public org.instantlogic.designer.AttributeDesign getRelevanceOfAttribute() {
-		return relevanceOfAttribute.getValue();
-	}
-
-    public DeductionSchemeDesign setRelevanceOfAttribute(org.instantlogic.designer.AttributeDesign newValue) {
-        relevanceOfAttribute.setValue(newValue);
-        return (DeductionSchemeDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, AttributeDesign> defaultOfAttribute
-		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.defaultOfAttribute);
-
-	public org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, AttributeDesign> getDefaultOfAttributeRelationValue() {
-		return defaultOfAttribute;
-	}
-
-	public org.instantlogic.designer.AttributeDesign getDefaultOfAttribute() {
-		return defaultOfAttribute.getValue();
-	}
-
-    public DeductionSchemeDesign setDefaultOfAttribute(org.instantlogic.designer.AttributeDesign newValue) {
-        defaultOfAttribute.setValue(newValue);
-        return (DeductionSchemeDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, SelectionDesign> selectionElement
-		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.selectionElement);
-
-	public org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, SelectionDesign> getSelectionElementRelationValue() {
-		return selectionElement;
-	}
-
-	public org.instantlogic.designer.SelectionDesign getSelectionElement() {
-		return selectionElement.getValue();
-	}
-
-    public DeductionSchemeDesign setSelectionElement(org.instantlogic.designer.SelectionDesign newValue) {
-        selectionElement.setValue(newValue);
         return (DeductionSchemeDesign)this;
     }
 

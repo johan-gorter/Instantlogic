@@ -82,7 +82,7 @@ public class ApplicationGenerator extends AbstractGenerator{
 			model.loggedInEvent = applicationInstance.getLoggedInEvent().getTechnicalNameCapitalized();
 		}
 		if (applicationInstance.getThemeNames().size()>0) {
-			model.themeNames = applicationInstance.getThemeNames().asList().toArray(new String[applicationInstance.getThemeNames().size()]);
+			model.themeNames = applicationInstance.getThemeNames().asCollection().toArray(new String[applicationInstance.getThemeNames().size()]);
 		} else {
 			model.themeNames = new String[0];
 		}

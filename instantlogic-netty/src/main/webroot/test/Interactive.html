@@ -10,9 +10,11 @@
 <link rel="stylesheet" type="text/css" href="../style/designer.css">
 <link rel="stylesheet" type="text/css" href="../style/izzy.css">
 
-  
+<!--    
   <script src="http://yui.yahooapis.com/3.10.3/build/yui/yui.js"></script>
-<!--  <script type="text/javascript" src="/webjars/yui/3.7.3/yui/yui.js"></script> -->
+-->
+
+<script type="text/javascript" src="/webjars/yui/3.7.3/yui/yui.js"></script>
 
 <script src="../html.js"></script>
 <script src="../instantlogic.js"></script>
@@ -39,6 +41,184 @@
 	                "headerContent": [{ "type": "Heading1", "id": "F40P1F1-F40P1F1F1F1", "text": "Welcome"}],
 	                "mainContent": [{ "type": "Paragraph", "id": "F40P1F1-F40P1F1F2F1", "text": "Welcome to the Designer"}]
 	            };
+	            model.mainContent.push({
+	            		 "type": "DeductionScheme",
+	            		 "id": "GwfEpybynIcxk_vm_2725fd3d_13df",
+	            		 "output": "ixElpctnfabzghfr_b7b6bb72_2d7b",
+	            		 "deductions": [
+	            		  {
+	            		   "type": "Deduction",
+	            		   "id": "!REfzgOmnyIdngmOm_714fd71b_1d75+NlvAducrhicgqoiq_dd17c7bd_1dd4",
+	            		   "deductionId": "REfzgOmnyIdngmOm_714fd71b_1d75",
+	            		   "xy": {
+	            		    "left": -10,
+	            		    "top": 20
+	            		   },
+	            		   "operationName": "Attribute",
+	            		   "inputs": [
+	            		    {
+	            		     "type": "DeductionInput",
+	            		     "id": "!REfzgOmnyIdngmOm_714fd71b_1d75!ochkEbzyvidqIczE_0760b60f_1188+JodeEtItjidryajf_cead85ca_74b3",
+	            		     "deductionInputId": "ochkEbzyvidqIczE_0760b60f_1188",
+	            		     "operationInputName": "Instance"
+	            		    }
+	            		   ],
+	            		   "outputs": [
+	            		    {
+	            		     "type": "Output",
+	            		     "id": "!REfzgOmnyIdngmOm_714fd71b_1d75!SwcafdvotIcxw_mk_ec081292_37e9+VaUdyfOqUybOqjqd_f123b762_0667",
+	            		     "toDeductionInputId": "SwcafdvotIcxw_mk_ec081292_37e9"
+	            		    }
+	            		   ]
+	            		  },
+	            		  {
+	            		   "type": "Deduction",
+	            		   "id": "!SnxdbvAivIghilUa_19ee533c_8a09+NlvAducrhicgqoiq_dd17c7bd_1dd4",
+	            		   "deductionId": "SnxdbvAivIghilUa_19ee533c_8a09",
+	            		   "xy": {
+	            		    "left": -15,
+	            		    "top": 50
+	            		   },
+	            		   "operationName": "Selected instance",
+	            		   "inputs": [],
+	            		   "outputs": [
+	            		    {
+	            		     "type": "Output",
+	            		     "id": "!SnxdbvAivIghilUa_19ee533c_8a09!FxaxfyhxtigcUflI_e885b01e_a578+VaUdyfOqUybOqjqd_f123b762_0667",
+	            		     "toDeductionInputId": "FxaxfyhxtigcUflI_e885b01e_a578"
+	            		    },
+	            		    {
+	            		     "type": "Output",
+	            		     "id": "!SnxdbvAivIghilUa_19ee533c_8a09!ochkEbzyvidqIczE_0760b60f_1188+VaUdyfOqUybOqjqd_f123b762_0667",
+	            		     "toDeductionInputId": "ochkEbzyvidqIczE_0760b60f_1188"
+	            		    }
+	            		   ]
+	            		  },
+	            		  {
+	            		   "type": "Deduction",
+	            		   "id": "!UoetbIEEuIasqhuE_514c6ede_7f2e+NlvAducrhicgqoiq_dd17c7bd_1dd4",
+	            		   "deductionId": "UoetbIEEuIasqhuE_514c6ede_7f2e",
+	            		   "xy": {
+	            		    "left": 0,
+	            		    "top": 20
+	            		   },
+	            		   "operationName": "If",
+	            		   "inputs": [
+	            		    {
+	            		     "type": "DeductionInput",
+	            		     "id": "!UoetbIEEuIasqhuE_514c6ede_7f2e!Nurxscfyzugkqmmz_4cb9be13_ecda+JodeEtItjidryajf_cead85ca_74b3",
+	            		     "deductionInputId": "Nurxscfyzugkqmmz_4cb9be13_ecda",
+	            		     "operationInputName": "Condition"
+	            		    },
+	            		    {
+	            		     "type": "DeductionInput",
+	            		     "id": "!UoetbIEEuIasqhuE_514c6ede_7f2e!ThIkgylicIbUwbwj_bcac8826_0022+JodeEtItjidryajf_cead85ca_74b3",
+	            		     "deductionInputId": "ThIkgylicIbUwbwj_bcac8826_0022",
+	            		     "operationInputName": "trueValue"
+	            		    }
+	            		   ],
+	            		   "outputs": [
+	            		    {
+	            		     "type": "Output",
+	            		     "id": "!UoetbIEEuIasqhuE_514c6ede_7f2e!SwcafdvotIcxw_mk_ec081292_37e9+VaUdyfOqUybOqjqd_f123b762_0667",
+	            		     "toDeductionInputId": "SwcafdvotIcxw_mk_ec081292_37e9"
+	            		    }
+	            		   ]
+	            		  },
+	            		  {
+	            		   "type": "Deduction",
+	            		   "id": "!WpOinggvdqeAAnmb_efe0f1aa_7eb1+NlvAducrhicgqoiq_dd17c7bd_1dd4",
+	            		   "deductionId": "WpOinggvdqeAAnmb_efe0f1aa_7eb1",
+	            		   "xy": {
+	            		    "left": 6.666666666666668,
+	            		    "top": 30
+	            		   },
+	            		   "operationName": "Constant",
+	            		   "inputs": [],
+	            		   "outputs": [
+	            		    {
+	            		     "type": "Output",
+	            		     "id": "!WpOinggvdqeAAnmb_efe0f1aa_7eb1!ThIkgylicIbUwbwj_bcac8826_0022+VaUdyfOqUybOqjqd_f123b762_0667",
+	            		     "toDeductionInputId": "ThIkgylicIbUwbwj_bcac8826_0022"
+	            		    }
+	            		   ]
+	            		  },
+	            		  {
+	            		   "type": "Deduction",
+	            		   "id": "!XdrIifbhie_Iyfuh_99628809_a96e+NlvAducrhicgqoiq_dd17c7bd_1dd4",
+	            		   "deductionId": "XdrIifbhie_Iyfuh_99628809_a96e",
+	            		   "xy": {
+	            		    "left": -10,
+	            		    "top": 40
+	            		   },
+	            		   "operationName": "Attribute",
+	            		   "inputs": [
+	            		    {
+	            		     "type": "DeductionInput",
+	            		     "id": "!XdrIifbhie_Iyfuh_99628809_a96e!FxaxfyhxtigcUflI_e885b01e_a578+JodeEtItjidryajf_cead85ca_74b3",
+	            		     "deductionInputId": "FxaxfyhxtigcUflI_e885b01e_a578",
+	            		     "operationInputName": "Instance"
+	            		    }
+	            		   ],
+	            		   "outputs": [
+	            		    {
+	            		     "type": "Output",
+	            		     "id": "!XdrIifbhie_Iyfuh_99628809_a96e!Bmxwelckvaajgbyb_01ca2197_5ba3+VaUdyfOqUybOqjqd_f123b762_0667",
+	            		     "toDeductionInputId": "Bmxwelckvaajgbyb_01ca2197_5ba3"
+	            		    },
+	            		    {
+	            		     "type": "Output",
+	            		     "id": "!XdrIifbhie_Iyfuh_99628809_a96e!SwcafdvotIcxw_mk_ec081292_37e9+VaUdyfOqUybOqjqd_f123b762_0667",
+	            		     "toDeductionInputId": "SwcafdvotIcxw_mk_ec081292_37e9"
+	            		    }
+	            		   ]
+	            		  },
+	            		  {
+	            		   "type": "Deduction",
+	            		   "id": "!afwhxzkhaIcyyiwI_f3b579ed_cee5+NlvAducrhicgqoiq_dd17c7bd_1dd4",
+	            		   "deductionId": "afwhxzkhaIcyyiwI_f3b579ed_cee5",
+	            		   "xy": {
+	            		    "left": -6.666666666666666,
+	            		    "top": 30
+	            		   },
+	            		   "operationName": "Has value",
+	            		   "inputs": [
+	            		    {
+	            		     "type": "DeductionInput",
+	            		     "id": "!afwhxzkhaIcyyiwI_f3b579ed_cee5!Bmxwelckvaajgbyb_01ca2197_5ba3+JodeEtItjidryajf_cead85ca_74b3",
+	            		     "deductionInputId": "Bmxwelckvaajgbyb_01ca2197_5ba3",
+	            		     "operationInputName": "Input"
+	            		    }
+	            		   ],
+	            		   "outputs": [
+	            		    {
+	            		     "type": "Output",
+	            		     "id": "!afwhxzkhaIcyyiwI_f3b579ed_cee5!Nurxscfyzugkqmmz_4cb9be13_ecda+VaUdyfOqUybOqjqd_f123b762_0667",
+	            		     "toDeductionInputId": "Nurxscfyzugkqmmz_4cb9be13_ecda"
+	            		    }
+	            		   ]
+	            		  },
+	            		  {
+	            		   "type": "Deduction",
+	            		   "id": "!ixElpctnfabzghfr_b7b6bb72_2d7b+NlvAducrhicgqoiq_dd17c7bd_1dd4",
+	            		   "deductionId": "ixElpctnfabzghfr_b7b6bb72_2d7b",
+	            		   "xy": {
+	            		    "left": 0,
+	            		    "top": 10
+	            		   },
+	            		   "operationName": "Concatenate",
+	            		   "inputs": [
+	            		    {
+	            		     "type": "DeductionInput",
+	            		     "id": "!ixElpctnfabzghfr_b7b6bb72_2d7b!SwcafdvotIcxw_mk_ec081292_37e9+JodeEtItjidryajf_cead85ca_74b3",
+	            		     "deductionInputId": "SwcafdvotIcxw_mk_ec081292_37e9",
+	            		     "operationInputName": "Strings"
+	            		    }
+	            		   ],
+	            		   "outputs": []
+	            		  }
+	            		 ]
+	            		}); 
 	            modelJson = JSON.stringify(model, null, " ");
         	}
         	Y.one('#input').set("value", modelJson);

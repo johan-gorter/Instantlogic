@@ -21,8 +21,8 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> values;
 	
 	// Reverse relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> valueOfStaticInstances;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> entity;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> valueOfStaticInstances;
 
 	static {
 		// Phase 1
@@ -30,21 +30,21 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $description
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"CIqg_uikAagrmaza_d63be6a4_55dc", "description", INSTANCE, "description", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"OithmcoiOydgomla_b14960fd_c46f", "description", INSTANCE, "description", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		description = $description;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> $values
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
-				"JvzhvddAkabaskid_25585738_e46c", "values", INSTANCE, "values", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"Tluskimnsiffogte_34768d2a_5477", "values", INSTANCE, "values", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		values = $values;
 		// Reverse relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> $valueOfStaticInstances
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
-				"SkEdoEeUpygvgffd_9b3df4e0_13ea", "valueOfStaticInstances", INSTANCE, "valueOfStaticInstances", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
-		valueOfStaticInstances = $valueOfStaticInstances;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $entity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"Y_dUOnzheuanclAI_aa937e5f_25d6", "entity", INSTANCE, "entity", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"Gjgyarkhdae_sdlz_003bb797_1c11", "entity", INSTANCE, "entity", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		entity = $entity;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> $valueOfStaticInstances
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
+				"PkInzkotxqbiwgcO_63fad824_73d0", "valueOfStaticInstances", INSTANCE, "valueOfStaticInstances", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+		valueOfStaticInstances = $valueOfStaticInstances;
 		
 		// Phase 2
 
@@ -56,15 +56,15 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 		$values.owner = true;
 		$values.multivalue = true;
 
+		$entity.reverse = true;
+		$entity.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$entity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$entity.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.staticInstances);
 		$valueOfStaticInstances.reverse = true;
 		$valueOfStaticInstances.valueClass = org.instantlogic.designer.StaticInstanceValueDesign.class;
 		$valueOfStaticInstances.to = org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.INSTANCE;
 		$valueOfStaticInstances.setReverseRelation(org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.relationValue);
 		$valueOfStaticInstances.multivalue = true;
-		$entity.reverse = true;
-		$entity.valueClass = org.instantlogic.designer.EntityDesign.class;
-		$entity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
-		$entity.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.staticInstances);
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 	
 	@Override
 	public String getUniqueId() {
-		return "ZkywygfijefnskAU_a1957733_b5b7";
+		return "EeIrpnIrca_wsdIl_1abe6b29_083a";
 	}
 	
 	@Override
@@ -94,8 +94,8 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 		values,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		valueOfStaticInstances,
 		entity,
+		valueOfStaticInstances,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

@@ -100,9 +100,11 @@ public class Animals implements EnginePlugin {
 
 	@Override
 	public void caseCreated(CaseProcessor caseProcessor) {
-		addAgents(caseProcessor);
-		runnerThread = new Thread(runner);
-		runnerThread.start();
+		if (!"Designer".equals(caseProcessor.getApplication().getName())) {
+			addAgents(caseProcessor);
+			runnerThread = new Thread(runner);
+			runnerThread.start();
+		}
 	}
 
 	public void stop() {
@@ -124,10 +126,8 @@ public class Animals implements EnginePlugin {
 	}
 
 	private void addAgents(CaseProcessor caseProcessor) {
-		if (!"Designer".equals(caseProcessor.getApplication().getName())) {
-			this.monkey = new Animal("monkey");
-			monkey.start(caseProcessor);
-		}
+		this.monkey = new Animal("monkey");
+		monkey.start(caseProcessor);
 	}
 
 	@Override

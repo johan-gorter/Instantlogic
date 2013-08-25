@@ -28,23 +28,6 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> propertyName
-		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.propertyName);
-	
-	public java.lang.String getPropertyName() {
-		return propertyName.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> getPropertyNameAttributeValue() {
-		return propertyName;
-	}
-
-	public PropertyDesign setPropertyName(java.lang.String newValue) {
-		propertyName.setValue(newValue);
-		return (PropertyDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> collapsed
 		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.collapsed);
 	
@@ -62,30 +45,24 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 	
-	// Relations
+	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> propertyName
+		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.propertyName);
 	
-	private final org.instantlogic.fabric.value.RelationValue<PropertyDesign, DeductionSchemeDesign> value
-		= createRelationValue(org.instantlogic.designer.entity.PropertyDesignEntity.value);
-		
-	public org.instantlogic.fabric.value.RelationValue<PropertyDesign, DeductionSchemeDesign> getValueRelationValue() {
-		return value;
+	public java.lang.String getPropertyName() {
+		return propertyName.getValue();
 	}
 
-	public org.instantlogic.designer.DeductionSchemeDesign getValue() {
-		return value.getValue();
+	public org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> getPropertyNameAttributeValue() {
+		return propertyName;
 	}
-	
-	public PropertyDesign setValue(org.instantlogic.designer.DeductionSchemeDesign newValue) {
-		value.setValue(newValue);
+
+	public PropertyDesign setPropertyName(java.lang.String newValue) {
+		propertyName.setValue(newValue);
 		return (PropertyDesign)this;
 	}
 	
-	public org.instantlogic.designer.DeductionSchemeDesign newValue() {
-		org.instantlogic.designer.DeductionSchemeDesign newValue = new org.instantlogic.designer.DeductionSchemeDesign(); 
-		value.setValue(newValue);
-		return newValue;
-	}
-
+	
+	// Relations
 	
 	private final org.instantlogic.fabric.value.RelationValueList<PropertyDesign, ElementDesign> children
 		= createRelationValueList(org.instantlogic.designer.entity.PropertyDesignEntity.children);
@@ -118,6 +95,29 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 		return (PropertyDesign)this;
 	}	
 	
+	
+	private final org.instantlogic.fabric.value.RelationValue<PropertyDesign, DeductionSchemeDesign> value
+		= createRelationValue(org.instantlogic.designer.entity.PropertyDesignEntity.value);
+		
+	public org.instantlogic.fabric.value.RelationValue<PropertyDesign, DeductionSchemeDesign> getValueRelationValue() {
+		return value;
+	}
+
+	public org.instantlogic.designer.DeductionSchemeDesign getValue() {
+		return value.getValue();
+	}
+	
+	public PropertyDesign setValue(org.instantlogic.designer.DeductionSchemeDesign newValue) {
+		value.setValue(newValue);
+		return (PropertyDesign)this;
+	}
+	
+	public org.instantlogic.designer.DeductionSchemeDesign newValue() {
+		org.instantlogic.designer.DeductionSchemeDesign newValue = new org.instantlogic.designer.DeductionSchemeDesign(); 
+		value.setValue(newValue);
+		return newValue;
+	}
+
 	
 	private final org.instantlogic.fabric.value.RelationValue<PropertyDesign, TextTemplateDesign> text
 		= createRelationValue(org.instantlogic.designer.entity.PropertyDesignEntity.text);

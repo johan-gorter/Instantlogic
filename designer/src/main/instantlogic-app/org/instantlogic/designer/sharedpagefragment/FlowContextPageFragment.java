@@ -16,20 +16,20 @@ public class FlowContextPageFragment extends org.instantlogic.interaction.page.S
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-    new org.instantlogic.interaction.page.FragmentTemplate("ZjggOedsme_Ucown_e7d11acf_0c39", "Group")        
+    new org.instantlogic.interaction.page.FragmentTemplate("IE_AuoO_hufvehwx_e1aab8b8_d0a7", "Group")        
         .addChild("content",
-                new org.instantlogic.interaction.page.SharedElementHolder("QpAkaohfvqfpgfy_c50885a5_8d06", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+                new org.instantlogic.interaction.page.SharedElementHolder("SsctnpUudqdOchxf_cc23ce37_8108", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
         )        
         .addChild("content",
-            new org.instantlogic.interaction.page.FragmentTemplate("ZuAfxlIraufvyhwE_9b80160d_1497", "Link")      
+            new org.instantlogic.interaction.page.FragmentTemplate("_jeOpcvwwybsoaxe_67ad8af6_3620", "Link")      
                 .setEvent(org.instantlogic.designer.event.FlowDetailsEvent.INSTANCE)        
                 .addChild("content",
-                    new org.instantlogic.interaction.page.FragmentTemplate("KcIExt_noucnmgct_c33fa589_b3fc", "Block")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("TaIhkdswpebAkhvc_146a238a_de68", "Block")      
                         .setStyleNames(new String[]{"inactive-card"})        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("A_bgviA_cubcqelb_3f9c044f_6cf5", "Heading3")      
-                                .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Flow)").getTextTemplate())        
+                            new org.instantlogic.interaction.page.FragmentTemplate("RIwskjvnAucasoww_73754399_439c", "Heading3")      
+                                .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(" (Flow)").add(createDeduction0()).getTextTemplate())        
                         )        
                 )        
         ); 

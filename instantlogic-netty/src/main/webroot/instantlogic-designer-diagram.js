@@ -18,7 +18,7 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
   ns.DeductionScheme = createFragment({
     createMarkup: function() {
       return html.div({ className: 'deduction-scheme'},
-        this.node = svg.svg({ viewBox: '-50 0 50 50' })
+        this.node = svg.svg({ viewBox: '-50 0 50 100' })
       );
     },
     fragmentLists: function(model) {

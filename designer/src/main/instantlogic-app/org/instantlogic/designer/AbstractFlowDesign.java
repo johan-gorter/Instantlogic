@@ -53,29 +53,6 @@ public abstract class AbstractFlowDesign extends Design {
 	
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowNodeBaseDesign> nodes
-		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.nodes);
-		
-	public org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowNodeBaseDesign> getNodesRelationValue() {
-		return nodes;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowNodeBaseDesign> getNodes() {
-		return nodes.getValue();
-	}
-	
-	public FlowDesign addToNodes(FlowNodeBaseDesign item) {
-		nodes.addValue(item);
-		return (FlowDesign)this;
-	}
-	
-	public FlowDesign removeFromNodes(FlowNodeBaseDesign item) {
-		nodes.removeValue(item);
-		return (FlowDesign)this;
-	}
-	
-	
-	
 	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> edges
 		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.edges);
 		
@@ -98,25 +75,31 @@ public abstract class AbstractFlowDesign extends Design {
 	}
 	
 	
+	
+	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowNodeBaseDesign> nodes
+		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.nodes);
+		
+	public org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowNodeBaseDesign> getNodesRelationValue() {
+		return nodes;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowNodeBaseDesign> getNodes() {
+		return nodes.getValue();
+	}
+	
+	public FlowDesign addToNodes(FlowNodeBaseDesign item) {
+		nodes.addValue(item);
+		return (FlowDesign)this;
+	}
+	
+	public FlowDesign removeFromNodes(FlowNodeBaseDesign item) {
+		nodes.removeValue(item);
+		return (FlowDesign)this;
+	}
+	
+	
 
 	// Reverse relations
-	
-	private final org.instantlogic.fabric.value.RelationValue<FlowDesign, SubFlowDesign> subFlowIn
-		= createReverseRelationValue(org.instantlogic.designer.entity.FlowDesignEntity.subFlowIn);
-
-	public org.instantlogic.fabric.value.RelationValue<FlowDesign, SubFlowDesign> getSubFlowInRelationValue() {
-		return subFlowIn;
-	}
-
-	public org.instantlogic.designer.SubFlowDesign getSubFlowIn() {
-		return subFlowIn.getValue();
-	}
-
-    public FlowDesign setSubFlowIn(org.instantlogic.designer.SubFlowDesign newValue) {
-        subFlowIn.setValue(newValue);
-        return (FlowDesign)this;
-    }
-
 	
 	private final org.instantlogic.fabric.value.RelationValue<FlowDesign, ApplicationDesign> application
 		= createReverseRelationValue(org.instantlogic.designer.entity.FlowDesignEntity.application);
@@ -131,6 +114,23 @@ public abstract class AbstractFlowDesign extends Design {
 
     public FlowDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
         application.setValue(newValue);
+        return (FlowDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<FlowDesign, SubFlowDesign> subFlowIn
+		= createReverseRelationValue(org.instantlogic.designer.entity.FlowDesignEntity.subFlowIn);
+
+	public org.instantlogic.fabric.value.RelationValue<FlowDesign, SubFlowDesign> getSubFlowInRelationValue() {
+		return subFlowIn;
+	}
+
+	public org.instantlogic.designer.SubFlowDesign getSubFlowIn() {
+		return subFlowIn.getValue();
+	}
+
+    public FlowDesign setSubFlowIn(org.instantlogic.designer.SubFlowDesign newValue) {
+        subFlowIn.setValue(newValue);
         return (FlowDesign)this;
     }
 

@@ -16,22 +16,22 @@ public class EntityContextPageFragment extends org.instantlogic.interaction.page
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-    new org.instantlogic.interaction.page.FragmentTemplate("YaszrvEktyaUmjur_0d6cb381_4622", "Group")        
+    new org.instantlogic.interaction.page.FragmentTemplate("IkoxfvgEvy_bc__y_a63ff1fb_fa43", "Group")        
         .addChild("content",
-            new org.instantlogic.interaction.page.FragmentTemplate("TklwbpcwsIbgufas_5cab0bdf_b895", "Link")      
+                new org.instantlogic.interaction.page.SharedElementHolder("ihtf_awwemagwjqz_c637b260_51b9", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+        
+        )        
+        .addChild("content",
+            new org.instantlogic.interaction.page.FragmentTemplate("ed_cA_nefqgeIolc_61658a35_9936", "Link")      
                 .setEvent(org.instantlogic.designer.event.EntityDetailsEvent.INSTANCE)        
                 .addChild("content",
-                    new org.instantlogic.interaction.page.FragmentTemplate("QqfcIqxf_mgiehdy_600d361a_3007", "Block")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("VwnOftaajmegijck_5ae7b160_54b5", "Block")      
                         .setStyleNames(new String[]{"inactive-card"})        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("Ppblsaflredpodhn_7453d996_123f", "Heading3")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("GcdEfOzxnedhInnt_4269a993_12ca", "Heading3")      
                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(" (Entity)").add(createDeduction0()).getTextTemplate())        
                         )        
                 )        
-        )        
-        .addChild("content",
-                new org.instantlogic.interaction.page.SharedElementHolder("atEvgqzEkeaOIgo_2c92192d_31ed", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
-        
         ); 
 
 	protected EntityContextPageFragment() {

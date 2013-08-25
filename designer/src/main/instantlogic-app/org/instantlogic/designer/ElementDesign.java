@@ -83,23 +83,6 @@ public class ElementDesign extends Design {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> childOfSelection
-		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
-
-	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> getChildOfSelectionRelationValue() {
-		return childOfSelection;
-	}
-
-	public org.instantlogic.designer.SelectionDesign getChildOfSelection() {
-		return childOfSelection.getValue();
-	}
-
-    public ElementDesign setChildOfSelection(org.instantlogic.designer.SelectionDesign newValue) {
-        childOfSelection.setValue(newValue);
-        return (ElementDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, PropertyDesign> childrenForFragment
 		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childrenForFragment);
 
@@ -113,6 +96,23 @@ public class ElementDesign extends Design {
 
     public ElementDesign setChildrenForFragment(org.instantlogic.designer.PropertyDesign newValue) {
         childrenForFragment.setValue(newValue);
+        return (ElementDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> childOfSelection
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
+
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> getChildOfSelectionRelationValue() {
+		return childOfSelection;
+	}
+
+	public org.instantlogic.designer.SelectionDesign getChildOfSelection() {
+		return childOfSelection.getValue();
+	}
+
+    public ElementDesign setChildOfSelection(org.instantlogic.designer.SelectionDesign newValue) {
+        childOfSelection.setValue(newValue);
         return (ElementDesign)this;
     }
 

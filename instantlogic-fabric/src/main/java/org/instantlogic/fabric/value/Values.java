@@ -1,13 +1,11 @@
 package org.instantlogic.fabric.value;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 
 /**
- * Contains only the readonly methods from Collection<T>
+ * Contains only the read methods from Collection<T>
  */
 public class Values<T> implements Iterable<T>{
 
@@ -34,10 +32,5 @@ public class Values<T> implements Iterable<T>{
 	
 	public Collection<T> asCollection() {
 		return readOnlySource;
-	}
-	
-	@Deprecated
-	public List<T> asList() {
-		return new ArrayList<T>(source);
 	}
 }

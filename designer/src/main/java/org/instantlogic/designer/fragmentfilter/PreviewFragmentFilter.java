@@ -41,7 +41,7 @@ public class PreviewFragmentFilter implements FragmentFilter {
 				result.put("type", "Text"); // Fallback
 			}
 			if (template.getStyleNames()!=null && template.getStyleNames().size()>0) {
-				result.put("styleNames", template.getStyleNames().asList().toArray());
+				result.put("styleNames", template.getStyleNames().asCollection().toArray());
 			}
 			for (PropertyDesign property : template.getProperties()) {
 				if (property.getChildren().size()>0) {
