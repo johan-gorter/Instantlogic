@@ -21,6 +21,9 @@ public class AttributeValueImpl<I extends Instance, Value extends Object>
 	public void setValue(Value value) {
 		// Note: If the current value is based on a rule, the new value is still stored, but it is not visible. 
 		if (value==storedValue) return;
+		if (value!=null && !getModel().getJavaClassName().isAssignableFrom(value.getClass())) {
+			throw new ClassCastException("Cannot cast "+value.getClass()+" to "+getModel().getJavaClassName());
+		}
 		Operation operation = forInstance.getMetadata().getCaseAdministration().startOperation();
 		try {
 			Value oldStoredValue = storedValue;

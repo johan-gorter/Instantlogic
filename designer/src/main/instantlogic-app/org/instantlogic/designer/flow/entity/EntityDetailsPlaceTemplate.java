@@ -6,7 +6,7 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
 
 	@Override
 	public String getId() {
-		return "Msqjpran_Ichsbwd_bfc76ecc_3ef3";
+		return "StwrA_sieeckUhox_98c58f78_cfe5";
 	}
 	
 
@@ -55,41 +55,51 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
 
 	
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
-        new org.instantlogic.interaction.page.FragmentTemplate("Bhrrojewoq_qImib_07d462a4_45e4", "Page")        
+        new org.instantlogic.interaction.page.FragmentTemplate("QbadvtU_cibAseez_0b2c16e4_bc8d", "Page")        
             .addChild("mainContent",
-                    new org.instantlogic.interaction.page.SharedElementHolder("BdskuclekI_pyhOe_56da38c3_946d", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+                    new org.instantlogic.interaction.page.SharedElementHolder("PmfhnqlaEiegalE_92b0bf15_e123", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
             )        
             .addChild("mainContent",
-                new org.instantlogic.interaction.page.FragmentTemplate("PEnwxghjeqg_gmAl_6ace86fa_93d7", "Block")      
+                new org.instantlogic.interaction.page.FragmentTemplate("Luhhjubldegcyddn_e3133790_40e6", "Block")      
                     .setStyleNames(new String[]{"card"})        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("aaqclvgOuIgxmjsu_902ce60d_86a0", "Heading3")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("SIctjvhtlIblahEa_dac79528_a515", "Heading3")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Entity)").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("PsiapsghmieOscii_f2b69d5a_afec", "Input")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("uwObmhrxOmbokioO_4dae050e_0ad4", "Button")      
+                            .setStyleNames(new String[]{"btn"})      
+                            .setEvent(org.instantlogic.designer.event.DataEvent.INSTANCE)      
+                            .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
+                            .addChild("content",
+                                new org.instantlogic.interaction.page.FragmentTemplate("Ii_kdwqyvudIwlfc_ffc2bfe1_0d20", "Icon")      
+                                    .setStyleNames(new String[]{"icon-wrench"})        
+                            )        
+                    )        
+                    .addChild("content",
+                        new org.instantlogic.interaction.page.FragmentTemplate("RukaotzAie_suaUt_390c7109_417f", "Input")      
                             .setField(org.instantlogic.designer.entity.DesignEntity.INSTANCE, org.instantlogic.designer.entity.DesignEntity.name)        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Otd_qotvfm__ofyj_1821d29f_4ff3", "Heading4")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("KcymqhfxtabOucsA_08bad104_5c06", "Heading4")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Attributes").getTextTemplate())        
                     )        
                     .addChild("content",
                         new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
-                                new org.instantlogic.interaction.page.FragmentTemplate("D_qcgfyoty_ewlku_dcfeea47_cce6", "Link")      
+                                new org.instantlogic.interaction.page.FragmentTemplate("KEmsvrEpxy_xwfbn_e173c24b_2624", "Link")      
                                     .setEvent(org.instantlogic.designer.event.AttributeDetailsEvent.INSTANCE)        
                                     .addChild("content",
-                                        new org.instantlogic.interaction.page.FragmentTemplate("LuiAdeebsaerkhqu_458825a2_0199", "Block")        
+                                        new org.instantlogic.interaction.page.FragmentTemplate("GwhfgxgtmydnAozn_4840a696_0943", "Block")        
                                             .addChild("content",
-                                                new org.instantlogic.interaction.page.FragmentTemplate("uUqggOridmaIsawb_c04e96fb_b18b", "Strong")      
+                                                new org.instantlogic.interaction.page.FragmentTemplate("ooUllk_duqfdIjrp_d474aa41_24c2", "Strong")      
                                                     .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction2()).getTextTemplate())        
                                             )        
                                     ))
         
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("XcfmkurgEag_ebeg_f4890198_a6e7", "Button")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("GgpuIcbknuaaibuf_0ca5e814_cb9d", "Button")      
                             .setEvent(org.instantlogic.designer.event.AddAttributeEvent.INSTANCE)      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Add attribute").getTextTemplate())        
                     )        

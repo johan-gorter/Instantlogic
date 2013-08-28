@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.instantlogic.fabric.deduction.AttributeDeduction;
 import org.instantlogic.fabric.deduction.Deduction;
+import org.instantlogic.fabric.deduction.IdDeduction;
 import org.instantlogic.fabric.deduction.ReverseRelationDeduction;
 import org.instantlogic.fabric.deduction.SelectedInstanceDeduction;
 import org.instantlogic.fabric.model.Attribute;
@@ -142,7 +143,9 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 			}
 			currentEntity = currentEntity.extendsEntity();
 		}
-		return new TextTemplate().getUntranslated().add(entity.getUniqueId()).getTextTemplate();
+		IdDeduction idDeduction = new IdDeduction();
+		idDeduction.setIdOfInstance(new SelectedInstanceDeduction(entity));
+		return new TextTemplate().getUntranslated().add(idDeduction).getTextTemplate();
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

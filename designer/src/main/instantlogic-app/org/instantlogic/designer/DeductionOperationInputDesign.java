@@ -15,66 +15,66 @@ public class DeductionOperationInputDesign extends Design {
 		return instance;
 	}
 	
-	public static final DeductionOperationInputDesign idOfInstance;
-	public static final DeductionOperationInputDesign attributeInstance;
-	public static final DeductionOperationInputDesign negationInput;
-	public static final DeductionOperationInputDesign ifCondition;
-	public static final DeductionOperationInputDesign concatenateStrings;
-	public static final DeductionOperationInputDesign hasValueInput;
 	public static final DeductionOperationInputDesign sumOperands;
-	public static final DeductionOperationInputDesign equalsOperands;
-	public static final DeductionOperationInputDesign titleOfInstance;
+	public static final DeductionOperationInputDesign hasValueInput;
 	public static final DeductionOperationInputDesign castInstance;
 	public static final DeductionOperationInputDesign ifTrueValue;
+	public static final DeductionOperationInputDesign equalsOperands;
+	public static final DeductionOperationInputDesign attributeInstance;
 	public static final DeductionOperationInputDesign reverseRelationToInstance;
 	public static final DeductionOperationInputDesign ifFalseValue;
+	public static final DeductionOperationInputDesign ifCondition;
+	public static final DeductionOperationInputDesign concatenateStrings;
+	public static final DeductionOperationInputDesign idOfInstance;
+	public static final DeductionOperationInputDesign negationInput;
+	public static final DeductionOperationInputDesign titleOfInstance;
 	
 	static {
 	  // Phase 1
-	  idOfInstance = addStaticInstance("idOfInstance", new DeductionOperationInputDesign());
-	  attributeInstance = addStaticInstance("attributeInstance", new DeductionOperationInputDesign());
-	  negationInput = addStaticInstance("negationInput", new DeductionOperationInputDesign());
-	  ifCondition = addStaticInstance("ifCondition", new DeductionOperationInputDesign());
-	  concatenateStrings = addStaticInstance("concatenateStrings", new DeductionOperationInputDesign());
-	  hasValueInput = addStaticInstance("hasValueInput", new DeductionOperationInputDesign());
 	  sumOperands = addStaticInstance("sumOperands", new DeductionOperationInputDesign());
-	  equalsOperands = addStaticInstance("equalsOperands", new DeductionOperationInputDesign());
-	  titleOfInstance = addStaticInstance("titleOfInstance", new DeductionOperationInputDesign());
+	  hasValueInput = addStaticInstance("hasValueInput", new DeductionOperationInputDesign());
 	  castInstance = addStaticInstance("castInstance", new DeductionOperationInputDesign());
 	  ifTrueValue = addStaticInstance("ifTrueValue", new DeductionOperationInputDesign());
+	  equalsOperands = addStaticInstance("equalsOperands", new DeductionOperationInputDesign());
+	  attributeInstance = addStaticInstance("attributeInstance", new DeductionOperationInputDesign());
 	  reverseRelationToInstance = addStaticInstance("reverseRelationToInstance", new DeductionOperationInputDesign());
 	  ifFalseValue = addStaticInstance("ifFalseValue", new DeductionOperationInputDesign());
+	  ifCondition = addStaticInstance("ifCondition", new DeductionOperationInputDesign());
+	  concatenateStrings = addStaticInstance("concatenateStrings", new DeductionOperationInputDesign());
+	  idOfInstance = addStaticInstance("idOfInstance", new DeductionOperationInputDesign());
+	  negationInput = addStaticInstance("negationInput", new DeductionOperationInputDesign());
+	  titleOfInstance = addStaticInstance("titleOfInstance", new DeductionOperationInputDesign());
 	  // Phase 2
-      idOfInstance.setName("idOfInstance");
-	  idOfInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Id of instance").getTextTemplate());
+      sumOperands.setName("operands");
+      sumOperands.setMultivalue(true);
+      sumOperands.setMultivalue(true);
+	  sumOperands.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Operands").getTextTemplate());
+      hasValueInput.setName("input");
+	  hasValueInput.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Input").getTextTemplate());
+      castInstance.setName("instance");
+	  castInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Instance").getTextTemplate());
+      ifTrueValue.setName("trueValue");
+	  ifTrueValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("trueValue").getTextTemplate());
+      equalsOperands.setName("operands");
+      equalsOperands.setMultivalue(true);
+	  equalsOperands.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Operands").getTextTemplate());
       attributeInstance.setName("instance");
 	  attributeInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Instance").getTextTemplate());
-      negationInput.setName("input");
-	  negationInput.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Input").getTextTemplate());
+      reverseRelationToInstance.setName("toInstance");
+	  reverseRelationToInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("To instance").getTextTemplate());
+      ifFalseValue.setName("falseValue");
+	  ifFalseValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("falseValue").getTextTemplate());
       ifCondition.setName("condition");
 	  ifCondition.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Condition").getTextTemplate());
       concatenateStrings.setMultivalue(true);
       concatenateStrings.setName("strings");
 	  concatenateStrings.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Strings").getTextTemplate());
-      hasValueInput.setName("input");
-	  hasValueInput.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Input").getTextTemplate());
-      sumOperands.setMultivalue(true);
-      sumOperands.setName("operands");
-      sumOperands.setMultivalue(true);
-	  sumOperands.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Operands").getTextTemplate());
-      equalsOperands.setName("operands");
-      equalsOperands.setMultivalue(true);
-	  equalsOperands.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Operands").getTextTemplate());
+      idOfInstance.setName("idOfInstance");
+	  idOfInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Id of instance").getTextTemplate());
+      negationInput.setName("input");
+	  negationInput.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Input").getTextTemplate());
       titleOfInstance.setName("titleOfInstance");
 	  titleOfInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Title of instance").getTextTemplate());
-      castInstance.setName("instance");
-	  castInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Instance").getTextTemplate());
-      ifTrueValue.setName("trueValue");
-	  ifTrueValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("trueValue").getTextTemplate());
-      reverseRelationToInstance.setName("toInstance");
-	  reverseRelationToInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("To instance").getTextTemplate());
-      ifFalseValue.setName("falseValue");
-	  ifFalseValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("falseValue").getTextTemplate());
 	}
 	
 	@Override

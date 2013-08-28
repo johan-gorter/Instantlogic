@@ -30,29 +30,6 @@ public class IfElseDesign extends ElementDesign {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> elseChild
-		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.elseChild);
-		
-	public org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> getElseChildRelationValue() {
-		return elseChild;
-	}
-
-	public org.instantlogic.designer.ElementDesign getElseChild() {
-		return elseChild.getValue();
-	}
-	
-	public IfElseDesign setElseChild(org.instantlogic.designer.ElementDesign newValue) {
-		elseChild.setValue(newValue);
-		return (IfElseDesign)this;
-	}
-	
-	public org.instantlogic.designer.ElementDesign newElseChild() {
-		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
-		elseChild.setValue(newValue);
-		return newValue;
-	}
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> ifChild
 		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.ifChild);
 		
@@ -72,6 +49,29 @@ public class IfElseDesign extends ElementDesign {
 	public org.instantlogic.designer.ElementDesign newIfChild() {
 		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
 		ifChild.setValue(newValue);
+		return newValue;
+	}
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> elseChild
+		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.elseChild);
+		
+	public org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> getElseChildRelationValue() {
+		return elseChild;
+	}
+
+	public org.instantlogic.designer.ElementDesign getElseChild() {
+		return elseChild.getValue();
+	}
+	
+	public IfElseDesign setElseChild(org.instantlogic.designer.ElementDesign newValue) {
+		elseChild.setValue(newValue);
+		return (IfElseDesign)this;
+	}
+	
+	public org.instantlogic.designer.ElementDesign newElseChild() {
+		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
+		elseChild.setValue(newValue);
 		return newValue;
 	}
 

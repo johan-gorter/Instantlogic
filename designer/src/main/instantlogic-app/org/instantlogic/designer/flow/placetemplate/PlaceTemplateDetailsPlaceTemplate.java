@@ -6,7 +6,7 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 
 	@Override
 	public String getId() {
-		return "ZvdrkcyUyebnInig_1ba51e86_3bad";
+		return "YAilyxIhdmbmyiwc_383167ef_0190";
 	}
 	
 
@@ -51,33 +51,33 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 
 	
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
-        new org.instantlogic.interaction.page.FragmentTemplate("TeEttOhImq_uwckO_fbfa603f_1391", "Page")        
+        new org.instantlogic.interaction.page.FragmentTemplate("Eje_ayqjOy_Isacn_130995b6_d333", "Page")        
             .addChild("mainContent",
                 new org.instantlogic.interaction.page.SelectionElement(createDeduction0(),
-                            new org.instantlogic.interaction.page.SharedElementHolder("Pvcpgswfimduuopo_f9b1b5ef_acc0", org.instantlogic.designer.sharedpagefragment.FlowContextPageFragment.INSTANCE)
+                            new org.instantlogic.interaction.page.SharedElementHolder("FdjdapszvqaOobiU_9111d513_a726", org.instantlogic.designer.sharedpagefragment.FlowContextPageFragment.INSTANCE)
 )
         
             )        
             .addChild("mainContent",
-                new org.instantlogic.interaction.page.FragmentTemplate("FAxxtzclAe_nwlew_f1ce593f_ffe0", "Block")      
+                new org.instantlogic.interaction.page.FragmentTemplate("XIdttfuqwybdkakz_a61e9b6e_5cd8", "Block")      
                     .setStyleNames(new String[]{"card"})        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Atcqzz_tvigsImdm_95d402bf_8acb", "Heading3")      
-                            .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(" (Place template)").add(createDeduction1()).getTextTemplate())        
+                        new org.instantlogic.interaction.page.FragmentTemplate("MrrgmAczAeevommv_8fad2151_b6a9", "Heading3")      
+                            .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction1()).add(" (Place template)").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("_bvorwvywqejmdtt_7d30fef4_bb8c", "Input")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("DOon_lr_Oaffolhh_21774215_540b", "Input")      
                             .setField(org.instantlogic.designer.entity.DesignEntity.INSTANCE, org.instantlogic.designer.entity.DesignEntity.name)        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Y_ayeUydiaelsfio_98b914ad_0668", "Heading4")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("ooUcpmqdbyebcmxn_30744a2d_bfd7", "Heading4")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Content").getTextTemplate())        
                     )        
                     .addChild("content",
                         new org.instantlogic.interaction.page.SelectionElement(createDeduction2(),
-                                new org.instantlogic.interaction.page.FragmentTemplate("ubnkIseecmazgakA_9d41c0fd_7f8e", "ElementEditor")        
+                                new org.instantlogic.interaction.page.FragmentTemplate("FEmjmetfAucoAeph_6f2a1e95_ee2b", "ElementEditor")        
                                     .addChild("content",
-                                            new org.instantlogic.interaction.page.SharedElementHolder("QlAu_ccpeybAcaty_1d02dc30_57ef", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
+                                            new org.instantlogic.interaction.page.SharedElementHolder("TnsaIreAAebxoaxh_d74fd22d_d256", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
         
                                     ))
         

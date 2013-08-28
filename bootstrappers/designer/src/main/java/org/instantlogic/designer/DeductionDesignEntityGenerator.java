@@ -15,8 +15,8 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
     }
     
     public static final AttributeDesign diagramPosition = addAttribute(ENTITY, "diagramPosition", Point2d.class);
-    public static final AttributeDesign diagramWidth = addAttribute(ENTITY, "diagramWidth", java.lang.Double.class);
-    public static final AttributeDesign diagramHeight = addAttribute(ENTITY, "diagramHeight", java.lang.Double.class);
+    public static final AttributeDesign diagramWidth = addAttribute(ENTITY, "diagramWidth", DataCategoryDesign.number);
+    public static final AttributeDesign diagramHeight = addAttribute(ENTITY, "diagramHeight", DataCategoryDesign.number);
     
     // Relations
     public static final RelationDesign operation = addRelation(ENTITY, "operation", RelationType.ManyToZeroOrOne, DeductionOperationDesignEntityGenerator.ENTITY);

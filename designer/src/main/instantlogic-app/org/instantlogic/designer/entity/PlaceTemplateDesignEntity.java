@@ -28,11 +28,11 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $content
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"Yzwulakhfa__mnkU_f0fce5d9_ceec", "content", INSTANCE, "content", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+				"WbqprAaAoacjUlIg_b3f458ce_a0cd", "content", INSTANCE, "content", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
 		content = $content;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $title
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"_obxA_pjgIbukfkt_9c5d99c9_270e", "title", INSTANCE, "title", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+				"XAjhzj_xbIb_qeox_c1ee076a_32f1", "title", INSTANCE, "title", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
 		title = $title;
 		// Reverse relations
 		
@@ -61,7 +61,7 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 	
 	@Override
 	public String getUniqueId() {
-		return "Stbaqihceefmgffl_9c42ede6_d216";
+		return "REgkogl_dIceigeO_75b0a6ae_a78f";
 	}
 	
 	@Override

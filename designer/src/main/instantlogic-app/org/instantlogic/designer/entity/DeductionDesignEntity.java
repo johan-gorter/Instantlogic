@@ -11,7 +11,7 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
-		    d0.setValue(8.0);
+		    d0.setValue(4.0);
 		return d0;
 	}
 
@@ -24,98 +24,94 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
-		    d0.setValue(4.0);
+		    d0.setValue(8.0);
 		return d0;
 	}
 
 
 	
 	// Attributes
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> diagramWidth; 
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.util.diagram.Point2d, org.instantlogic.designer.util.diagram.Point2d> diagramPosition; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> diagramHeight; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.util.diagram.Point2d, org.instantlogic.designer.util.diagram.Point2d> diagramPosition; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> diagramWidth; 
 	
 	// Relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> parameters;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> operation;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> inputs;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> parameters;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> dataType;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> inputs;
 	
 	// Reverse relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> outputOfScheme;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> outputs;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> scheme;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> outputOfScheme;
 
 	static {
 		// Phase 1
 		// Attributes
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> $diagramWidth
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double>(
-				"LeUnqpxocqcfgksw_2ff03a3a_fa8b", "diagramWidth", INSTANCE, java.lang.Double.class, "diagramWidth", org.instantlogic.designer.AbstractDeductionDesign.class);
-		diagramWidth = $diagramWidth;
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.util.diagram.Point2d, org.instantlogic.designer.util.diagram.Point2d> $diagramPosition
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.util.diagram.Point2d, org.instantlogic.designer.util.diagram.Point2d>(
-				"_qoqrnncEqeyegce_2440532a_2444", "diagramPosition", INSTANCE, org.instantlogic.designer.util.diagram.Point2d.class, "diagramPosition", org.instantlogic.designer.AbstractDeductionDesign.class);
-		diagramPosition = $diagramPosition;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> $diagramHeight
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double>(
-				"asdEAh_jUidiIdEw_3e3749ff_25a3", "diagramHeight", INSTANCE, java.lang.Double.class, "diagramHeight", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"Cwxtcalniyfvqkfm_87650bc6_edc0", "diagramHeight", INSTANCE, java.lang.Double.class, "diagramHeight", org.instantlogic.designer.AbstractDeductionDesign.class);
 		diagramHeight = $diagramHeight;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.util.diagram.Point2d, org.instantlogic.designer.util.diagram.Point2d> $diagramPosition
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.util.diagram.Point2d, org.instantlogic.designer.util.diagram.Point2d>(
+				"HEIclpUowI_rcdwu_b5ec5210_51cc", "diagramPosition", INSTANCE, org.instantlogic.designer.util.diagram.Point2d.class, "diagramPosition", org.instantlogic.designer.AbstractDeductionDesign.class);
+		diagramPosition = $diagramPosition;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double> $diagramWidth
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionDesign, java.lang.Double, java.lang.Double>(
+				"ubfhoogtxmeycfb_a1e9db73_31b9", "diagramWidth", INSTANCE, java.lang.Double.class, "diagramWidth", org.instantlogic.designer.AbstractDeductionDesign.class);
+		diagramWidth = $diagramWidth;
 		// Relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> $parameters
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
-				"GbgcoudofucmAjwy_3c179e3a_a8de", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractDeductionDesign.class);
-		parameters = $parameters;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
-				"JfysqeOiIaeqgnbz_366a5237_ea90", "operation", INSTANCE, "operation", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"LOzdjApEiIgtqngo_b5771165_80f4", "operation", INSTANCE, "operation", org.instantlogic.designer.AbstractDeductionDesign.class);
 		operation = $operation;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $inputs
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
-				"ooAgukAlwuexglsa_41104b4c_0d96", "inputs", INSTANCE, "inputs", org.instantlogic.designer.AbstractDeductionDesign.class);
-		inputs = $inputs;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> $parameters
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
+				"NUobIlItfufzUhou_857b6f2b_078c", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractDeductionDesign.class);
+		parameters = $parameters;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"uEgxEhkyauecUotr_c9e97a66_dd82", "dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"PiardUimqucvonnk_292f4dd7_56c9", "dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractDeductionDesign.class);
 		dataType = $dataType;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $inputs
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
+				"RxldhibEnqawciy_89c5ae47_2f87", "inputs", INSTANCE, "inputs", org.instantlogic.designer.AbstractDeductionDesign.class);
+		inputs = $inputs;
 		// Reverse relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $outputOfScheme
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"Ghqobkzzqmf_yhfI_481f1b81_0c4b", "outputOfScheme", INSTANCE, "outputOfScheme", org.instantlogic.designer.AbstractDeductionDesign.class);
-		outputOfScheme = $outputOfScheme;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $outputs
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
-				"VqyAlmtyui_gyfbl_8a5c123d_424c", "outputs", INSTANCE, "outputs", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"Qzwiceba_IffaiqO_b879f3e4_01a6", "outputs", INSTANCE, "outputs", org.instantlogic.designer.AbstractDeductionDesign.class);
 		outputs = $outputs;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $scheme
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"aAhbtglvII_vi_ta_f97c0003_74b7", "scheme", INSTANCE, "scheme", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"YwthtemejeejibzI_3f004c6a_5646", "scheme", INSTANCE, "scheme", org.instantlogic.designer.AbstractDeductionDesign.class);
 		scheme = $scheme;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $outputOfScheme
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
+				"ZeUOt_mnAyfpafqy_e79df60c_98c0", "outputOfScheme", INSTANCE, "outputOfScheme", org.instantlogic.designer.AbstractDeductionDesign.class);
+		outputOfScheme = $outputOfScheme;
 		
 		// Phase 2
-		$diagramWidth._default = createDeduction0();
+		$diagramHeight._default = createDeduction0();
 		$diagramPosition._default = createDeduction1();
-		$diagramHeight._default = createDeduction2();
+		$diagramWidth._default = createDeduction2();
 
+		$operation.valueClass = org.instantlogic.designer.DeductionOperationDesign.class;
+		$operation.to = org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE;
 		$parameters.valueClass = org.instantlogic.designer.DeductionParameterDesign.class;
 		$parameters.to = org.instantlogic.designer.entity.DeductionParameterDesignEntity.INSTANCE;
 		$parameters.setReverseRelation(org.instantlogic.designer.entity.DeductionParameterDesignEntity.deduction);
 		$parameters.owner = true;
 		$parameters.multivalue = true;
-		$operation.valueClass = org.instantlogic.designer.DeductionOperationDesign.class;
-		$operation.to = org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE;
+		$dataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;
+		$dataType.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
 		$inputs.valueClass = org.instantlogic.designer.DeductionInputDesign.class;
 		$inputs.to = org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE;
 		$inputs.setReverseRelation(org.instantlogic.designer.entity.DeductionInputDesignEntity.deduction);
 		$inputs.owner = true;
 		$inputs.multivalue = true;
-		$dataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;
-		$dataType.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
 
-		$outputOfScheme.reverse = true;
-		$outputOfScheme.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
-		$outputOfScheme.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
-		$outputOfScheme.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.output);
 		$outputs.reverse = true;
 		$outputs.valueClass = org.instantlogic.designer.DeductionInputDesign.class;
 		$outputs.to = org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE;
@@ -125,6 +121,10 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		$scheme.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
 		$scheme.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
 		$scheme.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.deductions);
+		$outputOfScheme.reverse = true;
+		$outputOfScheme.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
+		$outputOfScheme.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
+		$outputOfScheme.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.output);
 	}
 
 	@Override
@@ -139,7 +139,7 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	
 	@Override
 	public String getUniqueId() {
-		return "euEotqwAwq_wiemd_0cb8a4d2_533d";
+		return "XvhkqhosdeftImqb_ac7f5b1f_8b65";
 	}
 	
 	@Override
@@ -148,20 +148,20 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
-		diagramWidth,
-		diagramPosition,
 		diagramHeight,
+		diagramPosition,
+		diagramWidth,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		parameters,
 		operation,
-		inputs,
+		parameters,
 		dataType,
+		inputs,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		outputOfScheme,
 		outputs,
 		scheme,
+		outputOfScheme,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

@@ -145,7 +145,11 @@ public class GsonInstanceAdapter implements JsonSerializer<Instance>, JsonDeseri
 						setMultivalueAttribute(attribute, (WriteableAttributeValue) attribute.get(result), value, result.getMetadata().getCaseAdministration());
 					} else {
 						AttributeValue attributeValue = (AttributeValue) attribute.get(result);
-						attributeValue.setValue(toPrimitive(attribute, value, result.getMetadata().getCaseAdministration()));
+						try {
+							attributeValue.setValue(toPrimitive(attribute, value, result.getMetadata().getCaseAdministration()));
+						} catch (ClassCastException e) {
+							// TODO: log
+						}
 					}
 				}
 			}

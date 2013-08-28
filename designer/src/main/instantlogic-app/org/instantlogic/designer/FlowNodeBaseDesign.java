@@ -32,28 +32,6 @@ public class FlowNodeBaseDesign extends Design {
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<FlowNodeBaseDesign, FlowEdgeDesign> incomingEdges
-		= createReverseRelationValues(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.incomingEdges);
-
-	public org.instantlogic.fabric.value.RelationValues<FlowNodeBaseDesign, FlowEdgeDesign> getIncomingEdgesRelationValue() {
-		return incomingEdges;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign> getIncomingEdges() {
-		return incomingEdges.getValue();
-	}
-
-    public FlowNodeBaseDesign addToIncomingEdges(FlowEdgeDesign item) {
-        incomingEdges.addValue(item);
-        return (FlowNodeBaseDesign)this;
-    }
-
-    public FlowNodeBaseDesign removeFromIncomingEdges(FlowEdgeDesign item) {
-        incomingEdges.removeValue(item);
-        return (FlowNodeBaseDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValues<FlowNodeBaseDesign, FlowEdgeDesign> outgoingEdges
 		= createReverseRelationValues(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.outgoingEdges);
 
@@ -72,6 +50,28 @@ public class FlowNodeBaseDesign extends Design {
 
     public FlowNodeBaseDesign removeFromOutgoingEdges(FlowEdgeDesign item) {
         outgoingEdges.removeValue(item);
+        return (FlowNodeBaseDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<FlowNodeBaseDesign, FlowEdgeDesign> incomingEdges
+		= createReverseRelationValues(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.incomingEdges);
+
+	public org.instantlogic.fabric.value.RelationValues<FlowNodeBaseDesign, FlowEdgeDesign> getIncomingEdgesRelationValue() {
+		return incomingEdges;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign> getIncomingEdges() {
+		return incomingEdges.getValue();
+	}
+
+    public FlowNodeBaseDesign addToIncomingEdges(FlowEdgeDesign item) {
+        incomingEdges.addValue(item);
+        return (FlowNodeBaseDesign)this;
+    }
+
+    public FlowNodeBaseDesign removeFromIncomingEdges(FlowEdgeDesign item) {
+        incomingEdges.removeValue(item);
         return (FlowNodeBaseDesign)this;
     }
 

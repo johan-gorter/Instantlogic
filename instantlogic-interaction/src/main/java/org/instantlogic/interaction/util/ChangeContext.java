@@ -1,5 +1,6 @@
 package org.instantlogic.interaction.util;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,7 +33,8 @@ public class ChangeContext extends RenderContext {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void setValue(Entity entity, Attribute attribute, Object value) {
-		((AttributeValue)getAttributeValue(entity, attribute)).setValue(parse(value, attribute));
+		AttributeValue attributeValue = (AttributeValue)getAttributeValue(entity, attribute);
+		attributeValue.setValue(parse(value, attribute));
 	}
 	
 	private static final DateFormat DATE_INTERNATIONAL = new SimpleDateFormat("yyyy/MM/dd");
@@ -45,9 +47,10 @@ public class ChangeContext extends RenderContext {
 				throw new RuntimeException(e);
 			}
 		}
+		if (value == null) return null;
 		if (attribute instanceof Relation) {
 			String id = (String)value;
-			if (id==null || id.length()==0) return null;
+			if (id.length()==0) return null;
 			CaseAdministration administration = this.getCaseInstance().getMetadata().getCaseAdministration();
 			int split = id.indexOf('!');
 			if (split>=0) { // Static instance
@@ -57,6 +60,15 @@ public class ChangeContext extends RenderContext {
 				Instance instance = administration.getInstanceByUniqueId(id);
 				return instance;
 			}
+		}
+		if (attribute.getJavaClassName() == Double.class) {
+			return ((Number)value).doubleValue();
+		}
+		if (attribute.getJavaClassName() == Integer.class) {
+			return ((Number)value).intValue();
+		}
+		if (attribute.getJavaClassName() == BigDecimal.class) {
+			return new BigDecimal(value.toString());
 		}
 		return value;
 	}

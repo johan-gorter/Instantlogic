@@ -10,60 +10,141 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
   var createFragment = Y.instantlogic.createFragment;
 
   var svg = Y.svg;
+  
+  var svgFragmentListOptions = { fragmentHolderOptions: { elementFactory: svg.g } };
 
   var sqr = function (a) {
     return a * a;
   };
+  
+  var differentXYWidthHeight = function(oldModel, newModel) {
+	  return (oldModel.xy.top!=newModel.xy.top || 
+			  oldModel.xy.left!=newModel.xy.left ||
+			  oldModel.width!=newModel.width ||
+			  oldModel.height!=newModel.height);
+  }
+  
+  var getInputXY = function(deductionModel, inputModel) {
+	  // TODO: use input type
+	  return [deductionModel.xy.left, deductionModel.xy.top+deductionModel.height+0.4];
+  }
 
   ns.DeductionScheme = createFragment({
     createMarkup: function() {
       return html.div({ className: 'deduction-scheme'},
-        this.node = svg.svg({ viewBox: '-50 0 50 100' })
+        this.node = svg.svg({ viewBox: '-25 0 50 50' })
       );
     },
     fragmentLists: function(model) {
-      return [[this.node, model.deductions, { fragmentHolderOptions: { elementFactory: svg.g } }]];
+      return [[this.node, model.deductions, svgFragmentListOptions]];
     }
   });
 
   ns.Deduction = createFragment({
     createMarkup: function() {
       return this.node = svg.g(
+        this.inputsGroup = svg.g(),
         this.outputsGroup = svg.g(),
-        this.circle = svg.ellipse({fill:'red'}),
-        this.nameText = svg.text()
+        this.rect = svg.rect({fill:'red', rx:1, ry:1}),
+        this.nameText = svg.text({'font-family':'"Helvetica Neue", Helvetica, Arial, sans-serif', 'font-size':'1.5px'})
       );
     },
     texts: function(model) {
       return [[this.nameText, model.operationName]];
     },
     fragmentLists: function(model) {
-      return [[this.outputsGroup, model.outputs]];
+      return [[this.outputsGroup, model.outputs, svgFragmentListOptions], [this.inputsGroup, model.inputs, svgFragmentListOptions]];
     },
     postInit: function(model) {
       this.setDimensions(model);
     },
     postUpdate: function(newModel, diff) {
-      if(
-        newModel.xy.left != this.oldModel.xy.left ||
-        newModel.xy.top != this.oldModel.xy.top
-      ) {
+      if(differentXYWidthHeight(newModel, this.oldModel)) {
         this.setDimensions(newModel);
       }
     },
     overrides: {
       setDimensions: function (model) {
-        this.circle.setAttribute('cx', model.xy.left);
-        this.circle.setAttribute('cy', model.xy.top);
-        this.circle.setAttribute('rx', 8.0);
-        this.circle.setAttribute('ry', 4.0);
+        this.rect.setAttribute('x', model.xy.left-model.width/2);
+        this.rect.setAttribute('y', model.xy.top);
+        this.rect.setAttribute('width', model.width);
+        this.rect.setAttribute('height', model.height);
+        this.nameText.setAttribute('x', model.xy.left-model.width/2+1);
+        this.nameText.setAttribute('y', model.xy.top+2);
       }
     }
+  });
+  
+  ns.DeductionInput = createFragment({
+    createMarkup: function() {
+      return this.node = svg.circle({fill:'red', r:0.5});
+    },
+    postInit: function(model) {
+    	this.oldDeductionModel = this.getDeductionModel();
+    	this.setDimensions(model, this.oldDeductionModel);
+      },
+      postUpdate: function(newModel, diff) {
+    	  var deductionModel = this.getDeductionModel();
+    	  if (differentXYWidthHeight(deductionModel, this.oldDeductionModel)) {
+    		  this.setDimensions(model, deductionModel);
+    	  }
+    	  this.oldDeductionModel = deductionModel;
+      },
+      overrides: {
+    	setDimensions: function(model, deductionModel) {
+    		var xy = getInputXY(deductionModel, model);
+    		this.node.setAttribute("cx", xy[0]);
+    		this.node.setAttribute("cy", xy[1]);
+    	},
+      	getDeductionModel: function() {
+      	  return this.parentFragment.model;
+      	}
+      }
   });
 
   ns.Output = createFragment({
     createMarkup: function() {
-      return this.node = svg.path();
+      return this.node = svg.path({stroke:'red', 'stroke-width': 0.3});
+    }, 
+    postInit: function(model) {
+      this.oldSourceDeductionModel = this.getSourceDeductionModel(); 
+      this.oldTargetModels = this.getTargetDeductionAndInputModel(model.toDeductionInputId);
+      this.setDimensions(this.oldSourceDeductionModel, this.oldTargetModels[0], this.oldTargetModels[1])
+    },
+    postUpdate: function(newModel, diff) {
+    	var sourceDeductionModel = this.getSourceDeductionModel();
+        var targetModels = this.getTargetDeductionAndInputModel(newModel.toDeductionInputId);
+        if (differentXYWidthHeight(sourceDeductionModel, this.oldSourceDeductionModel) ||
+            differentXYWidthHeight(targetModels[0], this.oldTargetModels[0])) {
+        	this.setDimensions(sourceDeductionModel, targetModels[0], targetModels[1]);
+        }
+        this.oldSourceDeductionModel = sourceDeductionModel;
+        this.oldTargetModels = targetModels;
+    },
+    overrides: {
+    	getSchemeModel: function() {
+    		return this.parentFragment.parentFragment.model;
+    	},
+    	getSourceDeductionModel: function() {
+    		return this.parentFragment.model;
+    	},
+    	getTargetDeductionAndInputModel: function(toDeductionInputId) {
+    		var deductions = this.getSchemeModel().deductions;
+    		for (var i=0;i<deductions.length;i++) {
+    			var candidateDeduction = deductions[i];
+    			for (var ii=0;ii<candidateDeduction.inputs.length;ii++) {
+    				var candidateInput = candidateDeduction.inputs[ii];
+    				if (candidateInput.deductionInputId == toDeductionInputId) {
+    					return [candidateDeduction, candidateInput];
+    				}
+    			}
+    		}
+    		throw new Error("DeductionInputId not found: "+toDeductionInputId);
+    	},
+    	setDimensions: function(sourceDeductionModel, targetDeductionModel, targetInputModel) {
+    		var targetXY = getInputXY(targetDeductionModel, targetInputModel);
+    		this.node.setAttribute('d', ['M', [sourceDeductionModel.xy.left, sourceDeductionModel.xy.top], 'L', targetXY, 'Z'].join(''))
+    	}
     }
   });
 

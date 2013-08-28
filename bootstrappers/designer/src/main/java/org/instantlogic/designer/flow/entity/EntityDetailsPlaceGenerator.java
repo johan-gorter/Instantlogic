@@ -13,6 +13,7 @@ import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.event.AddAttributeEventGenerator;
 import org.instantlogic.designer.event.AttributeDetailsEventGenerator;
+import org.instantlogic.designer.event.DataEventGenerator;
 import org.instantlogic.designer.sharedfragment.ApplicationContextSharedElementGenerator;
 
 public class EntityDetailsPlaceGenerator extends PlaceTemplateDesign {
@@ -26,7 +27,7 @@ public class EntityDetailsPlaceGenerator extends PlaceTemplateDesign {
 	@Override
 	public void init() {
 		DeductionSchemeDesign entityName, attributes, attributeName;
-		FragmentTemplateDesign nameInput, attributeLink, addAttributeButton;
+		FragmentTemplateDesign nameInput, attributeLink, addAttributeButton, exploreButton;
 		SharedElementDesign applicationContext;
 		
 		setTitle(new TextTemplateDesign()
@@ -50,6 +51,10 @@ public class EntityDetailsPlaceGenerator extends PlaceTemplateDesign {
 							.addToUntranslated(new StringTemplateDesign().setDeduction(entityName = new DeductionSchemeDesign()))
 							.addToUntranslated(new StringTemplateDesign().setConstantText(" (Entity)"))
 						),
+						
+						exploreButton = new FragmentTemplateDesign("Button").addToStyleNames("btn")
+							.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-wrench"))
+							.setText("text", createConstantText("Data")),
 						
 						nameInput = new FragmentTemplateDesign("Input"),
 						
@@ -84,5 +89,6 @@ public class EntityDetailsPlaceGenerator extends PlaceTemplateDesign {
 		attributeLink.setEvent(AttributeDetailsEventGenerator.EVENT);
 		nameInput.setEntity(DesignEntityGenerator.ENTITY).setAttribute(DesignEntityGenerator.name);
 		addAttributeButton.setEvent(AddAttributeEventGenerator.EVENT);
+		exploreButton.setEvent(DataEventGenerator.EVENT);
 	}
 }

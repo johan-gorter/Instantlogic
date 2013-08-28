@@ -30,29 +30,6 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, TextTemplateDesign> description
-		= createRelationValue(org.instantlogic.designer.entity.StaticInstanceDesignEntity.description);
-		
-	public org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, TextTemplateDesign> getDescriptionRelationValue() {
-		return description;
-	}
-
-	public org.instantlogic.designer.TextTemplateDesign getDescription() {
-		return description.getValue();
-	}
-	
-	public StaticInstanceDesign setDescription(org.instantlogic.designer.TextTemplateDesign newValue) {
-		description.setValue(newValue);
-		return (StaticInstanceDesign)this;
-	}
-	
-	public org.instantlogic.designer.TextTemplateDesign newDescription() {
-		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
-		description.setValue(newValue);
-		return newValue;
-	}
-
-	
 	private final org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> values
 		= createRelationValues(org.instantlogic.designer.entity.StaticInstanceDesignEntity.values);
 		
@@ -75,6 +52,29 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 	}
 	
 	
+	
+	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, TextTemplateDesign> description
+		= createRelationValue(org.instantlogic.designer.entity.StaticInstanceDesignEntity.description);
+		
+	public org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, TextTemplateDesign> getDescriptionRelationValue() {
+		return description;
+	}
+
+	public org.instantlogic.designer.TextTemplateDesign getDescription() {
+		return description.getValue();
+	}
+	
+	public StaticInstanceDesign setDescription(org.instantlogic.designer.TextTemplateDesign newValue) {
+		description.setValue(newValue);
+		return (StaticInstanceDesign)this;
+	}
+	
+	public org.instantlogic.designer.TextTemplateDesign newDescription() {
+		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
+		description.setValue(newValue);
+		return newValue;
+	}
+
 
 	// Reverse relations
 	

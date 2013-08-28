@@ -9,6 +9,9 @@ YUI.add('instantlogic-answers', function (Y) {
 	// getValue: function() This method should return the current value
     
     ns.createAnswer = function(model, parentNode, parentFragment, engine) {
+    	if (model.options) {
+    		return new ns.DropdownAnswer(parentNode, parentFragment, engine);
+    	}
     	if (model.dataType) {
 	    	if (model.dataType.multiLine) {
 	    		return new ns.TextareaAnswer(parentNode, parentFragment, engine);
@@ -16,11 +19,11 @@ YUI.add('instantlogic-answers', function (Y) {
 	    	if (model.dataType.category == 'boolean') {
 	    		return new ns.CheckboxAnswer(parentNode, parentFragment, engine);
 	    	}
+	    	if (model.dataType.category == 'string') {
+	    		return new ns.TextAnswer(parentNode, parentFragment, engine);
+	    	}
     	}
-    	if (model.options) {
-    		return new ns.DropdownAnswer(parentNode, parentFragment, engine);
-    	}
-    	return new ns.TextAnswer(parentNode, parentFragment, engine);
+    	return new ns.JsonAnswer(parentNode, parentFragment, engine);
     };
     
     ns.TextAnswer = Y.instantlogic.createFragment({
@@ -38,6 +41,20 @@ YUI.add('instantlogic-answers', function (Y) {
 	    	}
     	}
     });
+    
+    ns.JsonAnswer = Y.instantlogic.createFragment({
+    	baseClass: ns.TextAnswer,
+    	overrides: {
+	    	updateValue: function(newValue) {
+	    		this.input.set('value', JSON.stringify(newValue));
+	    	},
+	    	getValue: function() {
+	    		return JSON.parse(this.input.get('value'));
+	    	}
+    	}
+    });
+    
+    
 
     ns.TextareaAnswer = Y.instantlogic.createFragment({
     	baseClass: ns.TextAnswer,

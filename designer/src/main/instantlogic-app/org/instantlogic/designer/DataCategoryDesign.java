@@ -16,27 +16,27 @@ public class DataCategoryDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 	public static final DataCategoryDesign entity;
-	public static final DataCategoryDesign _boolean;
 	public static final DataCategoryDesign custom;
-	public static final DataCategoryDesign number;
+	public static final DataCategoryDesign _boolean;
 	public static final DataCategoryDesign dateTime;
 	public static final DataCategoryDesign text;
+	public static final DataCategoryDesign number;
 	
 	static {
 	  // Phase 1
 	  entity = addStaticInstance("entity", new DataCategoryDesign());
-	  _boolean = addStaticInstance("boolean", new DataCategoryDesign());
 	  custom = addStaticInstance("custom", new DataCategoryDesign());
-	  number = addStaticInstance("number", new DataCategoryDesign());
+	  _boolean = addStaticInstance("boolean", new DataCategoryDesign());
 	  dateTime = addStaticInstance("dateTime", new DataCategoryDesign());
 	  text = addStaticInstance("text", new DataCategoryDesign());
+	  number = addStaticInstance("number", new DataCategoryDesign());
 	  // Phase 2
 	  entity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Entity").getTextTemplate());
-	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Yes-No").getTextTemplate());
 	  custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Custom").getTextTemplate());
-	  number.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Number").getTextTemplate());
+	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Yes-No").getTextTemplate());
 	  dateTime.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Date/Time").getTextTemplate());
 	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Text").getTextTemplate());
+	  number.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Number").getTextTemplate());
 	}
 	
 	@Override

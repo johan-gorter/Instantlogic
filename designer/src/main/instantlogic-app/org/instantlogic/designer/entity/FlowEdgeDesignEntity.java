@@ -13,9 +13,9 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	// Attributes
 	
 	// Relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> endNode;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> startNode;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> event;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> endNode;
 	
 	// Reverse relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> owner;
@@ -24,34 +24,34 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Phase 1
 		// Attributes
 		// Relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> $endNode
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign>(
-				"CvwgExgwpq_sokmw_6e0a47e5_2897", "endNode", INSTANCE, "endNode", org.instantlogic.designer.FlowEdgeDesign.class);
-		endNode = $endNode;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> $startNode
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign>(
-				"FhxnybEceecfkcet_94da850a_bc33", "startNode", INSTANCE, "startNode", org.instantlogic.designer.FlowEdgeDesign.class);
+				"FcOnmpfmOIepIdoh_d1312d77_506c", "startNode", INSTANCE, "startNode", org.instantlogic.designer.FlowEdgeDesign.class);
 		startNode = $startNode;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $event
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
-				"QnerhlzEImeEyaIo_0cb58b65_5a10", "event", INSTANCE, "event", org.instantlogic.designer.FlowEdgeDesign.class);
+				"FfkmjimOsu_vUlne_22296a2a_bf90", "event", INSTANCE, "event", org.instantlogic.designer.FlowEdgeDesign.class);
 		event = $event;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> $endNode
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign>(
+				"JagbgxjtkIcmqfoa_1ed040b6_2243", "endNode", INSTANCE, "endNode", org.instantlogic.designer.FlowEdgeDesign.class);
+		endNode = $endNode;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> $owner
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
-				"XgnAUgsfhabqinky_1971e432_4ea4", "owner", INSTANCE, "owner", org.instantlogic.designer.FlowEdgeDesign.class);
+				"IiqAjlkgaq_ha_ar_b97926a6_9741", "owner", INSTANCE, "owner", org.instantlogic.designer.FlowEdgeDesign.class);
 		owner = $owner;
 		
 		// Phase 2
 
-		$endNode.valueClass = org.instantlogic.designer.FlowNodeBaseDesign.class;
-		$endNode.to = org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE;
-		$endNode.setReverseRelation(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.incomingEdges);
 		$startNode.valueClass = org.instantlogic.designer.FlowNodeBaseDesign.class;
 		$startNode.to = org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE;
 		$startNode.setReverseRelation(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.outgoingEdges);
 		$event.valueClass = org.instantlogic.designer.EventDesign.class;
 		$event.to = org.instantlogic.designer.entity.EventDesignEntity.INSTANCE;
+		$endNode.valueClass = org.instantlogic.designer.FlowNodeBaseDesign.class;
+		$endNode.to = org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE;
+		$endNode.setReverseRelation(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.incomingEdges);
 
 		$owner.reverse = true;
 		$owner.valueClass = org.instantlogic.designer.FlowDesign.class;
@@ -71,7 +71,7 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	
 	@Override
 	public String getUniqueId() {
-		return "FAEhIhiwxIgsshmz_8eda2eb8_2300";
+		return "_wIzvxAliygakbaq_a61183dd_12cc";
 	}
 	
 	@Override
@@ -82,9 +82,9 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		endNode,
 		startNode,
 		event,
+		endNode,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		owner,

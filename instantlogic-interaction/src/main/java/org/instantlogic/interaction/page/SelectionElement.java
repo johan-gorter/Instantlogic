@@ -101,8 +101,8 @@ public class SelectionElement extends Element {
 		ValueAndLevel<?> valueAndLevel = selection.deduce(changeContext);
 		if (valueAndLevel.hasValue()) {
 			Object value = valueAndLevel.getValue();
-			if (value instanceof ValueList<?>) {
-				for (Object item: (ValueList<?>)value) {
+			if (value instanceof Values<?>) {
+				for (Object item: (Values<?>)value) {
 					changeWith(item, changeContext);
 				}
 			} else  {

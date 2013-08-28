@@ -89,10 +89,10 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 	// Relations
 	<#list relations as relation>
 	
-	private final org.instantlogic.fabric.value.<#if relation.readonly>ReadOnly</#if>RelationValue<#if relation.multivalue>s</#if><${technicalNameCapitalized}, ${relation.item}> ${relation.javaIdentifier}
-		= create<#if relation.readonly>ReadOnly</#if>RelationValue<#if relation.multivalue>s</#if>(${rootPackageName}.entity.${technicalNameCapitalized}Entity.${relation.javaIdentifier});
+	private final org.instantlogic.fabric.value.<#if relation.readonly>ReadOnly</#if>RelationValue${relation.valueSuffix}<${technicalNameCapitalized}, ${relation.item}> ${relation.javaIdentifier}
+		= create<#if relation.readonly>ReadOnly</#if>RelationValue${relation.valueSuffix}(${rootPackageName}.entity.${technicalNameCapitalized}Entity.${relation.javaIdentifier});
 		
-	public org.instantlogic.fabric.value.<#if relation.readonly>ReadOnly</#if>RelationValue<#if relation.multivalue>s</#if><${technicalNameCapitalized}, ${relation.item}> get${relation.technicalName?cap_first}RelationValue() {
+	public org.instantlogic.fabric.value.<#if relation.readonly>ReadOnly</#if>RelationValue${relation.valueSuffix}<${technicalNameCapitalized}, ${relation.item}> get${relation.technicalName?cap_first}RelationValue() {
 		return ${relation.javaIdentifier};
 	}
 
@@ -126,7 +126,7 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 		return (${technicalNameCapitalized})this;
 	}
 	
-	<#if attribute.ordered>
+	<#if relation.ordered>
 	public ${technicalNameCapitalized} removeFrom${relation.technicalName?cap_first}(int index) {
 		${relation.javaIdentifier}.removeValue(index);
 		return (${technicalNameCapitalized})this;
@@ -144,10 +144,10 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 	// Reverse relations
 	<#list reverseRelations as relation>
 	
-	private final org.instantlogic.fabric.value.RelationValue<#if relation.multivalue>s</#if><${technicalNameCapitalized}, ${relation.item}> ${relation.javaIdentifier}
-		= createReverseRelationValue<#if relation.multivalue>s</#if>(${rootPackageName}.entity.${technicalNameCapitalized}Entity.${relation.javaIdentifier});
+	private final org.instantlogic.fabric.value.RelationValue${relation.valueSuffix}<${technicalNameCapitalized}, ${relation.item}> ${relation.javaIdentifier}
+		= createReverseRelationValue${relation.valueSuffix}(${rootPackageName}.entity.${technicalNameCapitalized}Entity.${relation.javaIdentifier});
 
-	public org.instantlogic.fabric.value.RelationValue<#if relation.multivalue>s</#if><${technicalNameCapitalized}, ${relation.item}> get${relation.technicalName?cap_first}RelationValue() {
+	public org.instantlogic.fabric.value.RelationValue${relation.valueSuffix}<${technicalNameCapitalized}, ${relation.item}> get${relation.technicalName?cap_first}RelationValue() {
 		return ${relation.javaIdentifier};
 	}
 

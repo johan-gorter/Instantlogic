@@ -28,40 +28,6 @@ public class FragmentTypeDesign extends Design {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasAttribute
-		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasAttribute);
-	
-	public java.lang.Boolean getHasAttribute() {
-		return hasAttribute.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasAttributeAttributeValue() {
-		return hasAttribute;
-	}
-
-	public FragmentTypeDesign setHasAttribute(java.lang.Boolean newValue) {
-		hasAttribute.setValue(newValue);
-		return (FragmentTypeDesign)this;
-	}
-	
-	
-	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasEvent
-		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasEvent);
-	
-	public java.lang.Boolean getHasEvent() {
-		return hasEvent.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasEventAttributeValue() {
-		return hasEvent;
-	}
-
-	public FragmentTypeDesign setHasEvent(java.lang.Boolean newValue) {
-		hasEvent.setValue(newValue);
-		return (FragmentTypeDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> fragmentFilters
 		= createAttributeValues(org.instantlogic.designer.entity.FragmentTypeDesignEntity.fragmentFilters);
 	
@@ -85,26 +51,43 @@ public class FragmentTypeDesign extends Design {
 	
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasEvent
+		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasEvent);
+	
+	public java.lang.Boolean getHasEvent() {
+		return hasEvent.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasEventAttributeValue() {
+		return hasEvent;
+	}
+
+	public FragmentTypeDesign setHasEvent(java.lang.Boolean newValue) {
+		hasEvent.setValue(newValue);
+		return (FragmentTypeDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasAttribute
+		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasAttribute);
+	
+	public java.lang.Boolean getHasAttribute() {
+		return hasAttribute.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasAttributeAttributeValue() {
+		return hasAttribute;
+	}
+
+	public FragmentTypeDesign setHasAttribute(java.lang.Boolean newValue) {
+		hasAttribute.setValue(newValue);
+		return (FragmentTypeDesign)this;
+	}
+	
+	
 	// Relations
 
 	// Reverse relations
-	
-	private final org.instantlogic.fabric.value.RelationValue<FragmentTypeDesign, ApplicationDesign> application
-		= createReverseRelationValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.application);
-
-	public org.instantlogic.fabric.value.RelationValue<FragmentTypeDesign, ApplicationDesign> getApplicationRelationValue() {
-		return application;
-	}
-
-	public org.instantlogic.designer.ApplicationDesign getApplication() {
-		return application.getValue();
-	}
-
-    public FragmentTypeDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
-        application.setValue(newValue);
-        return (FragmentTypeDesign)this;
-    }
-
 	
 	private final org.instantlogic.fabric.value.RelationValues<FragmentTypeDesign, FragmentTemplateDesign> usages
 		= createReverseRelationValues(org.instantlogic.designer.entity.FragmentTypeDesignEntity.usages);
@@ -124,6 +107,23 @@ public class FragmentTypeDesign extends Design {
 
     public FragmentTypeDesign removeFromUsages(FragmentTemplateDesign item) {
         usages.removeValue(item);
+        return (FragmentTypeDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTypeDesign, ApplicationDesign> application
+		= createReverseRelationValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.application);
+
+	public org.instantlogic.fabric.value.RelationValue<FragmentTypeDesign, ApplicationDesign> getApplicationRelationValue() {
+		return application;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getApplication() {
+		return application.getValue();
+	}
+
+    public FragmentTypeDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
+        application.setValue(newValue);
         return (FragmentTypeDesign)this;
     }
 
