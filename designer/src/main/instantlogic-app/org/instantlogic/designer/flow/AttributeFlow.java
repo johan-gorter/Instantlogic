@@ -13,13 +13,13 @@ public class AttributeFlow extends org.instantlogic.interaction.flow.impl.Simple
 	private static final org.instantlogic.interaction.flow.FlowEdge[] EDGES = new org.instantlogic.interaction.flow.FlowEdge[]{
 		new org.instantlogic.interaction.flow.FlowEdge(
 			null, 
-			org.instantlogic.designer.event.AttributeDetailsEvent.INSTANCE,
-			org.instantlogic.designer.flow.attribute.AttributeDetailsPlaceTemplate.INSTANCE
+			org.instantlogic.designer.event.RemoveAttributeEvent.INSTANCE,
+			org.instantlogic.designer.flow.attribute.RemoveAttributeSubFlow.INSTANCE
 		),
 		new org.instantlogic.interaction.flow.FlowEdge(
 			null, 
-			org.instantlogic.designer.event.RemoveAttributeEvent.INSTANCE,
-			org.instantlogic.designer.flow.attribute.RemoveAttributeSubFlow.INSTANCE
+			org.instantlogic.designer.event.AttributeDetailsEvent.INSTANCE,
+			org.instantlogic.designer.flow.attribute.AttributeDetailsPlaceTemplate.INSTANCE
 		),
 	};
 	

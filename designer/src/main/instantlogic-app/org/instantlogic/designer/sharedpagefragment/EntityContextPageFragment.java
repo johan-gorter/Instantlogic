@@ -16,19 +16,19 @@ public class EntityContextPageFragment extends org.instantlogic.interaction.page
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-    new org.instantlogic.interaction.page.FragmentTemplate("WgggOhwjqyegi_mk_fde853df_0c95", "Group")        
+    new org.instantlogic.interaction.page.FragmentTemplate("DfbeOojikybxabfw_cc10df02_f481", "Group")        
         .addChild("content",
-                new org.instantlogic.interaction.page.SharedElementHolder("NdqxAhkmqqfEaicI_ef8115d5_b047", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+                new org.instantlogic.interaction.page.SharedElementHolder("UEqbwvkvdqbrgntO_8efafc1c_23e4", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
         )        
         .addChild("content",
-            new org.instantlogic.interaction.page.FragmentTemplate("Eux_OcqrdIenufIx_31838490_ec2d", "Link")      
+            new org.instantlogic.interaction.page.FragmentTemplate("XqeqAasmtadlAbvg_32c08387_6ccb", "Link")      
                 .setEvent(org.instantlogic.designer.event.EntityDetailsEvent.INSTANCE)        
                 .addChild("content",
-                    new org.instantlogic.interaction.page.FragmentTemplate("TIvhEgzs_mcqIgen_5a02b548_1f76", "Block")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("JaOAwmpifubrmbfo_ffe19cea_cc9a", "Block")      
                         .setStyleNames(new String[]{"inactive-card"})        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("Jlin_EaAoq_embpt_7284e36e_1bcc", "Heading3")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("KcqozdqEcibEu_Oe_4d626dc2_e7c6", "Heading3")      
                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Entity)").getTextTemplate())        
                         )        
                 )        

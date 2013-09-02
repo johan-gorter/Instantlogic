@@ -30,29 +30,6 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> values
-		= createRelationValues(org.instantlogic.designer.entity.StaticInstanceDesignEntity.values);
-		
-	public org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> getValuesRelationValue() {
-		return values;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign> getValues() {
-		return values.getValue();
-	}
-	
-	public StaticInstanceDesign addToValues(StaticInstanceValueDesign item) {
-		values.addValue(item);
-		return (StaticInstanceDesign)this;
-	}
-	
-	public StaticInstanceDesign removeFromValues(StaticInstanceValueDesign item) {
-		values.removeValue(item);
-		return (StaticInstanceDesign)this;
-	}
-	
-	
-	
 	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, TextTemplateDesign> description
 		= createRelationValue(org.instantlogic.designer.entity.StaticInstanceDesignEntity.description);
 		
@@ -75,6 +52,29 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 		return newValue;
 	}
 
+	
+	private final org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> values
+		= createRelationValues(org.instantlogic.designer.entity.StaticInstanceDesignEntity.values);
+		
+	public org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> getValuesRelationValue() {
+		return values;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign> getValues() {
+		return values.getValue();
+	}
+	
+	public StaticInstanceDesign addToValues(StaticInstanceValueDesign item) {
+		values.addValue(item);
+		return (StaticInstanceDesign)this;
+	}
+	
+	public StaticInstanceDesign removeFromValues(StaticInstanceValueDesign item) {
+		values.removeValue(item);
+		return (StaticInstanceDesign)this;
+	}
+	
+	
 
 	// Reverse relations
 	

@@ -16,6 +16,10 @@ public class DeductionSchemeDesignEntityGenerator extends EntityDesign {
     // Relations
     public static final RelationDesign deductions = addRelation(ENTITY, "deductions", RelationType.OneToManyAggregation, DeductionDesignEntityGenerator.ENTITY)
             .setReverseName("scheme");
+
+    public static final RelationDesign selectedDeduction = addRelation(ENTITY, "selectedDeduction", RelationType.OneToZeroOrOne, DeductionDesignEntityGenerator.ENTITY)
+            .setReverseName("selectionInScheme");
+
     public static final RelationDesign output = addRelation(ENTITY, "output", RelationType.OneToZeroOrOne, DeductionDesignEntityGenerator.ENTITY)
     		.setReverseName("outputOfScheme");
 

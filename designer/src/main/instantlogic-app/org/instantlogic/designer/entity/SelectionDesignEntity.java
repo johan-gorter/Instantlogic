@@ -17,8 +17,8 @@ public class SelectionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	// Attributes
 	
 	// Relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> selection;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> child;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> selection;
 	
 	// Reverse relations
 
@@ -26,27 +26,27 @@ public class SelectionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		// Phase 1
 		// Attributes
 		// Relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $selection
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"RicbsIgcduafkcwx_1c6dbd2e_5592", "selection", INSTANCE, "selection", org.instantlogic.designer.SelectionDesign.class);
-		selection = $selection;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $child
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"eonIragbrIccgoou_046dd73f_4880", "child", INSTANCE, "child", org.instantlogic.designer.SelectionDesign.class);
+				"Vkirjeemgqgkgmqs_a23bf066_c0d4", "child", INSTANCE, "child", org.instantlogic.designer.SelectionDesign.class);
 		child = $child;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $selection
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
+				"ihylhAxzzycishis_75a292f6_3da7", "selection", INSTANCE, "selection", org.instantlogic.designer.SelectionDesign.class);
+		selection = $selection;
 		// Reverse relations
 		
 		// Phase 2
 
+		$child.valueClass = org.instantlogic.designer.ElementDesign.class;
+		$child.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
+		$child.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
+		$child.owner = true;
 		$selection.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
 		$selection.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
 		$selection.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.selectionElement);
 		$selection.owner = true;
 		$selection.autoCreate = true;
-		$child.valueClass = org.instantlogic.designer.ElementDesign.class;
-		$child.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
-		$child.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
-		$child.owner = true;
 
 	}
 
@@ -62,7 +62,7 @@ public class SelectionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	
 	@Override
 	public String getUniqueId() {
-		return "VxjUibnbzuebg_hU_20d77b90_1fca";
+		return "GixbAhqjxqeqAehA_e43e00ef_262b";
 	}
 	
 	@Override
@@ -73,8 +73,8 @@ public class SelectionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		selection,
 		child,
+		selection,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};

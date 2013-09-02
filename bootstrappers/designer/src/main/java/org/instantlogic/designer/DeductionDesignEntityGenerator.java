@@ -32,8 +32,8 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
 
     @Override
     public void init() {
-    	diagramHeight.newDefault().deduceConstant(java.lang.Double.class, 4.0);
-    	diagramWidth.newDefault().deduceConstant(java.lang.Double.class, 8.0);
+    	diagramHeight.newDefault().deduceConstant(java.lang.Double.class, 40.0);
+    	diagramWidth.newDefault().deduceConstant(java.lang.Double.class, 80.0);
     	diagramPosition.newDefault().deduceCustom(DesignerApplicationGenerator.DeductionDiagramPositionDefaultDeduction);
     }
 }

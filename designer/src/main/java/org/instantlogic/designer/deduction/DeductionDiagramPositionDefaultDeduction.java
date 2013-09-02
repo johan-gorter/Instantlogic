@@ -12,17 +12,17 @@ import org.instantlogic.fabric.value.Values;
 public class DeductionDiagramPositionDefaultDeduction extends Deduction<Point2d> {
 
 	private static final double RELATIVE_SPREAD = 1.5;
-	private static final double ABSOLUTE_SPREAD = 40;
+	private static final double ABSOLUTE_SPREAD = 400;
 	
 	@Override
 	public ValueAndLevel<Point2d> execute(DeductionContext context) {
 		DeductionDesign deductionDesign = context.getSelectedInstance(DeductionDesignEntity.INSTANCE);
 		if (deductionDesign.getOutputOfScheme()!=null) {
-			return ValueAndLevel.rule(new Point2d(0, 10));
+			return ValueAndLevel.rule(new Point2d(0, 100));
 		}
 		Values<DeductionInputDesign> outputs = deductionDesign.getOutputs();
 		if (outputs.size()==0) {
-			return ValueAndLevel.rule(new Point2d(10, 10));
+			return ValueAndLevel.rule(new Point2d(100, 100));
 		}
 		DeductionDesign parent = outputs.iterator().next().getDeduction();
 		int parentInputCount = 0;
@@ -37,6 +37,6 @@ public class DeductionDiagramPositionDefaultDeduction extends Deduction<Point2d>
 		}
 		double absoluteOffset = ABSOLUTE_SPREAD * (childIndex+1) / (parentInputCount+1) - 0.5 * ABSOLUTE_SPREAD;
 		Point2d parentPosition = parent.getDiagramPosition();
-		return ValueAndLevel.rule(new Point2d(parentPosition.getLeft()*RELATIVE_SPREAD+absoluteOffset,parentPosition.getTop()+10));
+		return ValueAndLevel.rule(new Point2d(parentPosition.getLeft()*RELATIVE_SPREAD+absoluteOffset,parentPosition.getTop()+100));
 	}
 }

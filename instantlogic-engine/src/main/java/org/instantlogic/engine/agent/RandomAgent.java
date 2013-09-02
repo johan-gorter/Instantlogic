@@ -13,6 +13,9 @@ import org.instantlogic.interaction.util.TravelerInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
+
 public class RandomAgent extends Agent {
 
 	private static final Logger logger = LoggerFactory.getLogger(RandomAgent.class);
@@ -109,12 +112,12 @@ public class RandomAgent extends Agent {
 	}
 
 	@SuppressWarnings("rawtypes")
-	protected Object provideValue(Map<String, Object> focussedElement) {
+	protected JsonElement provideValue(Map<String, Object> focussedElement) {
 		Object[] options = (Object[]) focussedElement.get("options");
 		if (options!=null) {
 			int index = (int)(Math.random()*options.length);
 			Map option = (Map) options[index];
-			return option.get("id");
+			return new JsonPrimitive((String)option.get("id"));
 		}
 		Map dataType = (Map)focussedElement.get("dataType");
 		if (dataType!=null) {
@@ -124,7 +127,7 @@ public class RandomAgent extends Agent {
 				case "text" :
 					boolean multiLine = (Boolean.TRUE == dataType.get("multiLine"));
 					String currentValue = (String)focussedElement.get("value");
-					return provideText(multiLine, currentValue);
+					return new JsonPrimitive(provideText(multiLine, currentValue));
 				}
 			}
 		}

@@ -13,6 +13,7 @@ public class DeductionOperationInputDesignEntityGenerator extends EntityDesign {
 
     // Attributes
     public static final AttributeDesign multivalue = addAttribute(ENTITY, "multivalue", DataCategoryDesign._boolean);
+    public static final AttributeDesign diagramPosition = addAttribute(ENTITY, "diagramPosition", DataCategoryDesign.text); // primary, control or secondary
     
     // Relations
     public static final RelationDesign dataType = addRelation(ENTITY, "dataType", RelationType.ManyToZeroOrOne, DataTypeDesignEntityGenerator.ENTITY);
@@ -35,6 +36,7 @@ public class DeductionOperationInputDesignEntityGenerator extends EntityDesign {
     @Override
     public void init() {
     	multivalue.newDefault().deduceConstant(Boolean.class, false);
+    	diagramPosition.newDefault().deduceConstant(String.class, "primary");
     	
     	addStaticInstanceValue(attributeInstance, DesignEntityGenerator.name, "instance");
     	addStaticInstanceValue(castInstance, DesignEntityGenerator.name, "instance");
@@ -46,9 +48,12 @@ public class DeductionOperationInputDesignEntityGenerator extends EntityDesign {
     	addStaticInstanceValue(reverseRelationToInstance, DesignEntityGenerator.name, "toInstance");
     	addStaticInstanceValue(sumOperands, DesignEntityGenerator.name, "operands");    	
     	addStaticInstanceValue(concatenateStrings, DesignEntityGenerator.name, "strings");    	
-    	addStaticInstanceValue(ifCondition, DesignEntityGenerator.name, "condition");    	
+    	addStaticInstanceValue(ifCondition, DesignEntityGenerator.name, "condition");
+    	addStaticInstanceValue(ifCondition, diagramPosition, "control");
     	addStaticInstanceValue(ifTrueValue, DesignEntityGenerator.name, "trueValue");    	
+    	addStaticInstanceValue(ifTrueValue, diagramPosition, "primary");
     	addStaticInstanceValue(ifFalseValue, DesignEntityGenerator.name, "falseValue");    	
+    	addStaticInstanceValue(ifFalseValue, diagramPosition, "secondary");
 
     	addStaticInstanceValue(sumOperands, multivalue, true);
     	addStaticInstanceValue(equalsOperands, multivalue, true);

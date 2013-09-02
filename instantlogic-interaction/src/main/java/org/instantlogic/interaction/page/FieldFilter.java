@@ -101,12 +101,4 @@ public class FieldFilter extends AbstractFragmentFilter {
 			changeContext.setValue(this.entity, this.attribute, changeContext.getValue());
 		}
 	}
-	
-//	private Domain[] convertDomain(DomainEntry[] domain, RenderContext context) {
-//		Domain[] result = new Domain[domain.length];
-//		for (int i=0;i<domain.length;i++) {
-//			result[i]=new Domain(domain[i].getValue(), domain[i].getDisplay().renderText(context));
-//		}
-//		return result;
-//	}
 }

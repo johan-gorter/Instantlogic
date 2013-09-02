@@ -15,18 +15,18 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
 		return instance;
 	}
 	
-	public static final DataTypeDesign text;
 	public static final DataTypeDesign _boolean;
+	public static final DataTypeDesign text;
 	
 	static {
 	  // Phase 1
-	  text = addStaticInstance("text", new DataTypeDesign());
 	  _boolean = addStaticInstance("boolean", new DataTypeDesign());
+	  text = addStaticInstance("text", new DataTypeDesign());
 	  // Phase 2
-      text.setDataCategory(org.instantlogic.designer.DataCategoryDesign.text);
-	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Text").getTextTemplate());
       _boolean.setDataCategory(org.instantlogic.designer.DataCategoryDesign._boolean);
 	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Boolean").getTextTemplate());
+      text.setDataCategory(org.instantlogic.designer.DataCategoryDesign.text);
+	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Text").getTextTemplate());
 	}
 	
 	@Override
@@ -36,36 +36,36 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> wholeNumber
-		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.wholeNumber);
+	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> multiLine
+		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.multiLine);
 	
-	public java.lang.Boolean getWholeNumber() {
-		return wholeNumber.getValue();
+	public java.lang.Boolean getMultiLine() {
+		return multiLine.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getWholeNumberAttributeValue() {
-		return wholeNumber;
+	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getMultiLineAttributeValue() {
+		return multiLine;
 	}
 
-	public DataTypeDesign setWholeNumber(java.lang.Boolean newValue) {
-		wholeNumber.setValue(newValue);
+	public DataTypeDesign setMultiLine(java.lang.Boolean newValue) {
+		multiLine.setValue(newValue);
 		return (DataTypeDesign)this;
 	}
 	
 	
-	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> multivalue
-		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.multivalue);
+	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> ordered
+		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.ordered);
 	
-	public java.lang.Boolean getMultivalue() {
-		return multivalue.getValue();
+	public java.lang.Boolean getOrdered() {
+		return ordered.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getMultivalueAttributeValue() {
-		return multivalue;
+	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getOrderedAttributeValue() {
+		return ordered;
 	}
 
-	public DataTypeDesign setMultivalue(java.lang.Boolean newValue) {
-		multivalue.setValue(newValue);
+	public DataTypeDesign setOrdered(java.lang.Boolean newValue) {
+		ordered.setValue(newValue);
 		return (DataTypeDesign)this;
 	}
 	
@@ -87,36 +87,19 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> exactRounding
-		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.exactRounding);
+	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> multivalue
+		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.multivalue);
 	
-	public java.lang.Boolean getExactRounding() {
-		return exactRounding.getValue();
+	public java.lang.Boolean getMultivalue() {
+		return multivalue.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getExactRoundingAttributeValue() {
-		return exactRounding;
+	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getMultivalueAttributeValue() {
+		return multivalue;
 	}
 
-	public DataTypeDesign setExactRounding(java.lang.Boolean newValue) {
-		exactRounding.setValue(newValue);
-		return (DataTypeDesign)this;
-	}
-	
-	
-	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> multiLine
-		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.multiLine);
-	
-	public java.lang.Boolean getMultiLine() {
-		return multiLine.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getMultiLineAttributeValue() {
-		return multiLine;
-	}
-
-	public DataTypeDesign setMultiLine(java.lang.Boolean newValue) {
-		multiLine.setValue(newValue);
+	public DataTypeDesign setMultivalue(java.lang.Boolean newValue) {
+		multivalue.setValue(newValue);
 		return (DataTypeDesign)this;
 	}
 	
@@ -155,19 +138,36 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> ordered
-		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.ordered);
+	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> wholeNumber
+		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.wholeNumber);
 	
-	public java.lang.Boolean getOrdered() {
-		return ordered.getValue();
+	public java.lang.Boolean getWholeNumber() {
+		return wholeNumber.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getOrderedAttributeValue() {
-		return ordered;
+	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getWholeNumberAttributeValue() {
+		return wholeNumber;
 	}
 
-	public DataTypeDesign setOrdered(java.lang.Boolean newValue) {
-		ordered.setValue(newValue);
+	public DataTypeDesign setWholeNumber(java.lang.Boolean newValue) {
+		wholeNumber.setValue(newValue);
+		return (DataTypeDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> exactRounding
+		= createAttributeValue(org.instantlogic.designer.entity.DataTypeDesignEntity.exactRounding);
+	
+	public java.lang.Boolean getExactRounding() {
+		return exactRounding.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<DataTypeDesign, java.lang.Boolean> getExactRoundingAttributeValue() {
+		return exactRounding;
+	}
+
+	public DataTypeDesign setExactRounding(java.lang.Boolean newValue) {
+		exactRounding.setValue(newValue);
 		return (DataTypeDesign)this;
 	}
 	
@@ -206,6 +206,23 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
 
 	// Reverse relations
 	
+	private final org.instantlogic.fabric.value.RelationValue<DataTypeDesign, AttributeDesign> attribute
+		= createReverseRelationValue(org.instantlogic.designer.entity.DataTypeDesignEntity.attribute);
+
+	public org.instantlogic.fabric.value.RelationValue<DataTypeDesign, AttributeDesign> getAttributeRelationValue() {
+		return attribute;
+	}
+
+	public org.instantlogic.designer.AttributeDesign getAttribute() {
+		return attribute.getValue();
+	}
+
+    public DataTypeDesign setAttribute(org.instantlogic.designer.AttributeDesign newValue) {
+        attribute.setValue(newValue);
+        return (DataTypeDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValue<DataTypeDesign, RelationDesign> reverseRelation
 		= createReverseRelationValue(org.instantlogic.designer.entity.DataTypeDesignEntity.reverseRelation);
 
@@ -236,23 +253,6 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
 
     public DataTypeDesign setForEntity(org.instantlogic.designer.EntityDesign newValue) {
         forEntity.setValue(newValue);
-        return (DataTypeDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<DataTypeDesign, AttributeDesign> attribute
-		= createReverseRelationValue(org.instantlogic.designer.entity.DataTypeDesignEntity.attribute);
-
-	public org.instantlogic.fabric.value.RelationValue<DataTypeDesign, AttributeDesign> getAttributeRelationValue() {
-		return attribute;
-	}
-
-	public org.instantlogic.designer.AttributeDesign getAttribute() {
-		return attribute.getValue();
-	}
-
-    public DataTypeDesign setAttribute(org.instantlogic.designer.AttributeDesign newValue) {
-        attribute.setValue(newValue);
         return (DataTypeDesign)this;
     }
 

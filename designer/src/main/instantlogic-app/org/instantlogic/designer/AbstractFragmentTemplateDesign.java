@@ -28,23 +28,6 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<FragmentTemplateDesign, java.lang.String> fragmentTypeName
-		= createAttributeValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.fragmentTypeName);
-	
-	public java.lang.String getFragmentTypeName() {
-		return fragmentTypeName.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<FragmentTemplateDesign, java.lang.String> getFragmentTypeNameAttributeValue() {
-		return fragmentTypeName;
-	}
-
-	public FragmentTemplateDesign setFragmentTypeName(java.lang.String newValue) {
-		fragmentTypeName.setValue(newValue);
-		return (FragmentTemplateDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValues<FragmentTemplateDesign, java.lang.String> styleNames
 		= createAttributeValues(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.styleNames);
 	
@@ -100,21 +83,38 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	}
 	
 	
-	// Relations
+	private final org.instantlogic.fabric.value.AttributeValue<FragmentTemplateDesign, java.lang.String> fragmentTypeName
+		= createAttributeValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.fragmentTypeName);
 	
-	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, AttributeDesign> attribute
-		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.attribute);
-		
-	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, AttributeDesign> getAttributeRelationValue() {
-		return attribute;
+	public java.lang.String getFragmentTypeName() {
+		return fragmentTypeName.getValue();
 	}
 
-	public org.instantlogic.designer.AttributeDesign getAttribute() {
-		return attribute.getValue();
+	public org.instantlogic.fabric.value.AttributeValue<FragmentTemplateDesign, java.lang.String> getFragmentTypeNameAttributeValue() {
+		return fragmentTypeName;
+	}
+
+	public FragmentTemplateDesign setFragmentTypeName(java.lang.String newValue) {
+		fragmentTypeName.setValue(newValue);
+		return (FragmentTemplateDesign)this;
 	}
 	
-	public FragmentTemplateDesign setAttribute(org.instantlogic.designer.AttributeDesign newValue) {
-		attribute.setValue(newValue);
+	
+	// Relations
+	
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EventDesign> event
+		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.event);
+		
+	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EventDesign> getEventRelationValue() {
+		return event;
+	}
+
+	public org.instantlogic.designer.EventDesign getEvent() {
+		return event.getValue();
+	}
+	
+	public FragmentTemplateDesign setEvent(org.instantlogic.designer.EventDesign newValue) {
+		event.setValue(newValue);
 		return (FragmentTemplateDesign)this;
 	}
 	
@@ -133,6 +133,24 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	
 	public FragmentTemplateDesign setType(org.instantlogic.designer.FragmentTypeDesign newValue) {
 		type.setValue(newValue);
+		return (FragmentTemplateDesign)this;
+	}
+	
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, AttributeDesign> attribute
+		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.attribute);
+		
+	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, AttributeDesign> getAttributeRelationValue() {
+		return attribute;
+	}
+
+	public org.instantlogic.designer.AttributeDesign getAttribute() {
+		return attribute.getValue();
+	}
+	
+	public FragmentTemplateDesign setAttribute(org.instantlogic.designer.AttributeDesign newValue) {
+		attribute.setValue(newValue);
 		return (FragmentTemplateDesign)this;
 	}
 	
@@ -174,24 +192,6 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	
 	public FragmentTemplateDesign setEntity(org.instantlogic.designer.EntityDesign newValue) {
 		entity.setValue(newValue);
-		return (FragmentTemplateDesign)this;
-	}
-	
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EventDesign> event
-		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.event);
-		
-	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EventDesign> getEventRelationValue() {
-		return event;
-	}
-
-	public org.instantlogic.designer.EventDesign getEvent() {
-		return event.getValue();
-	}
-	
-	public FragmentTemplateDesign setEvent(org.instantlogic.designer.EventDesign newValue) {
-		event.setValue(newValue);
 		return (FragmentTemplateDesign)this;
 	}
 	

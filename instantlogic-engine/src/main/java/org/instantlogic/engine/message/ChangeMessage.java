@@ -7,12 +7,14 @@ import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.util.ChangeContext;
 
+import com.google.gson.JsonElement;
+
 public class ChangeMessage extends Message {
 
 	private final String placeElementId;
-	private final Object value;
+	private final JsonElement value;
 
-	public ChangeMessage(String placeElementId, Object value) {
+	public ChangeMessage(String placeElementId, JsonElement value) {
 		this.placeElementId = placeElementId;
 		this.value = value;
 	}

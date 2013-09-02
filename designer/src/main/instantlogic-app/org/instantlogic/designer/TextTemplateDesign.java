@@ -64,19 +64,19 @@ public class TextTemplateDesign extends Design {
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, ValidationDesign> messageOfValidation
-		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.messageOfValidation);
+	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PlaceTemplateDesign> titleOfPlaceTemplate
+		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfPlaceTemplate);
 
-	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, ValidationDesign> getMessageOfValidationRelationValue() {
-		return messageOfValidation;
+	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PlaceTemplateDesign> getTitleOfPlaceTemplateRelationValue() {
+		return titleOfPlaceTemplate;
 	}
 
-	public org.instantlogic.designer.ValidationDesign getMessageOfValidation() {
-		return messageOfValidation.getValue();
+	public org.instantlogic.designer.PlaceTemplateDesign getTitleOfPlaceTemplate() {
+		return titleOfPlaceTemplate.getValue();
 	}
 
-    public TextTemplateDesign setMessageOfValidation(org.instantlogic.designer.ValidationDesign newValue) {
-        messageOfValidation.setValue(newValue);
+    public TextTemplateDesign setTitleOfPlaceTemplate(org.instantlogic.designer.PlaceTemplateDesign newValue) {
+        titleOfPlaceTemplate.setValue(newValue);
         return (TextTemplateDesign)this;
     }
 
@@ -98,19 +98,19 @@ public class TextTemplateDesign extends Design {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PlaceTemplateDesign> titleOfPlaceTemplate
-		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfPlaceTemplate);
+	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, ValidationDesign> messageOfValidation
+		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.messageOfValidation);
 
-	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PlaceTemplateDesign> getTitleOfPlaceTemplateRelationValue() {
-		return titleOfPlaceTemplate;
+	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, ValidationDesign> getMessageOfValidationRelationValue() {
+		return messageOfValidation;
 	}
 
-	public org.instantlogic.designer.PlaceTemplateDesign getTitleOfPlaceTemplate() {
-		return titleOfPlaceTemplate.getValue();
+	public org.instantlogic.designer.ValidationDesign getMessageOfValidation() {
+		return messageOfValidation.getValue();
 	}
 
-    public TextTemplateDesign setTitleOfPlaceTemplate(org.instantlogic.designer.PlaceTemplateDesign newValue) {
-        titleOfPlaceTemplate.setValue(newValue);
+    public TextTemplateDesign setMessageOfValidation(org.instantlogic.designer.ValidationDesign newValue) {
+        messageOfValidation.setValue(newValue);
         return (TextTemplateDesign)this;
     }
 

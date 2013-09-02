@@ -21,9 +21,9 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 	
 	@Override
 	public void init() {
-		DeductionSchemeDesign schemeOutput, selectDeductions, selectInputs, deductionId, deductionXY, deductionWidth, deductionHeight, deductionOperation,
+		DeductionSchemeDesign schemeOutput, selectDeductions, selectInputs, deductionId, selected, deductionXY, deductionWidth, deductionHeight, deductionOperation,
 			deductionInputId, deductionOperationInput, selectOutputs, toDeductionInputId;
-		FragmentTemplateDesign exploreButton;
+		FragmentTemplateDesign exploreButton, deductionScheme, deduction;
 
 		setTitle(new TextTemplateDesign()
 			.addToUntranslated(new StringTemplateDesign().setConstantText("DeductionScheme"))
@@ -43,12 +43,13 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 							.setChildren("content", new FragmentTemplateDesign("Icon").addToStyleNames("icon-wrench"))
 							.setText("text", createConstantText("Data")),
 						
-						new FragmentTemplateDesign("DeductionScheme")
+						deductionScheme = new FragmentTemplateDesign("DeductionScheme")
 							.setValue("output", schemeOutput = new DeductionSchemeDesign())
 							.setChildren("deductions",
 								new SelectionDesign().setSelection(selectDeductions = new DeductionSchemeDesign())
-									.setChild(new FragmentTemplateDesign("Deduction")
+									.setChild(deduction = new FragmentTemplateDesign("Deduction")
 										.setValue("deductionId", deductionId = new DeductionSchemeDesign())
+										.setValue("selected", selected = new DeductionSchemeDesign())
 										.setValue("xy", deductionXY = new DeductionSchemeDesign())
 										.setValue("width", deductionWidth = new DeductionSchemeDesign())
 										.setValue("height", deductionHeight = new DeductionSchemeDesign())
@@ -71,11 +72,20 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 					)
 			)
 		);
-		
+
+		deductionScheme
+			.setEntity(DeductionSchemeDesignEntityGenerator.ENTITY)
+			.setAttribute(DeductionSchemeDesignEntityGenerator.selectedDeduction);
+
+		deduction
+			.setEntity(DeductionDesignEntityGenerator.ENTITY)
+			.setAttribute(DeductionDesignEntityGenerator.diagramPosition);
+
 		exploreButton.setEvent(DataEventGenerator.EVENT);
 		
 		schemeOutput.deduceId(schemeOutput.deduceRelation(DeductionSchemeDesignEntityGenerator.output));
 		deductionId.deduceId(deductionId.deduceSelectedInstance(DeductionDesignEntityGenerator.ENTITY));
+		selected.deduceHasValue(selected.deduceReverseRelation(DeductionSchemeDesignEntityGenerator.selectedDeduction, selected.deduceSelectedInstance(DeductionDesignEntityGenerator.ENTITY)));
 		deductionXY.deduceAttribute(DeductionDesignEntityGenerator.diagramPosition);
 		deductionWidth.deduceAttribute(DeductionDesignEntityGenerator.diagramWidth);
 		deductionHeight.deduceAttribute(DeductionDesignEntityGenerator.diagramHeight);

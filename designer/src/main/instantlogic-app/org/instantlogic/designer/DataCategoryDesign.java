@@ -15,28 +15,28 @@ public class DataCategoryDesign extends org.instantlogic.fabric.Instance {
 		return instance;
 	}
 	
-	public static final DataCategoryDesign entity;
-	public static final DataCategoryDesign custom;
-	public static final DataCategoryDesign _boolean;
-	public static final DataCategoryDesign dateTime;
-	public static final DataCategoryDesign text;
 	public static final DataCategoryDesign number;
+	public static final DataCategoryDesign custom;
+	public static final DataCategoryDesign text;
+	public static final DataCategoryDesign dateTime;
+	public static final DataCategoryDesign _boolean;
+	public static final DataCategoryDesign entity;
 	
 	static {
 	  // Phase 1
-	  entity = addStaticInstance("entity", new DataCategoryDesign());
-	  custom = addStaticInstance("custom", new DataCategoryDesign());
-	  _boolean = addStaticInstance("boolean", new DataCategoryDesign());
-	  dateTime = addStaticInstance("dateTime", new DataCategoryDesign());
-	  text = addStaticInstance("text", new DataCategoryDesign());
 	  number = addStaticInstance("number", new DataCategoryDesign());
+	  custom = addStaticInstance("custom", new DataCategoryDesign());
+	  text = addStaticInstance("text", new DataCategoryDesign());
+	  dateTime = addStaticInstance("dateTime", new DataCategoryDesign());
+	  _boolean = addStaticInstance("boolean", new DataCategoryDesign());
+	  entity = addStaticInstance("entity", new DataCategoryDesign());
 	  // Phase 2
-	  entity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Entity").getTextTemplate());
-	  custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Custom").getTextTemplate());
-	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Yes-No").getTextTemplate());
-	  dateTime.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Date/Time").getTextTemplate());
-	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Text").getTextTemplate());
 	  number.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Number").getTextTemplate());
+	  custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Custom").getTextTemplate());
+	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Text").getTextTemplate());
+	  dateTime.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Date/Time").getTextTemplate());
+	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Yes-No").getTextTemplate());
+	  entity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Entity").getTextTemplate());
 	}
 	
 	@Override

@@ -2,7 +2,7 @@
   "instanceId": "Lruwoktaxucicnhv_cfa4d5c2_0295",
   "entityName": "project",
   "version": 0,
-  "last issue number": 49,
+  "last issue number": 50,
   "users": [
     {
       "instanceId": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
@@ -11,10 +11,10 @@
       "name": "Johan"
     },
     {
-      "instanceId": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "instanceId": "WyfzAmjEdqfjuhoo_96ba133b_e046",
       "entityName": "user",
-      "username": "alice@instantlogic.org",
-      "name": "Alice"
+      "username": "monkey@instantlogic.org",
+      "name": "Monkey"
     },
     {
       "instanceId": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
@@ -23,95 +23,95 @@
       "name": "Bob"
     },
     {
-      "instanceId": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "instanceId": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "entityName": "user",
-      "username": "monkey@instantlogic.org",
-      "name": "Monkey"
+      "username": "alice@instantlogic.org",
+      "name": "Alice"
     }
   ],
   "issues": [
     {
-      "instanceId": "Kghwealj_y_dgaIg_35c84f9a_a2a0",
+      "instanceId": "FrrwkscsIIejqlqn_cab38e34_a4fc",
       "entityName": "issue",
-      "number": 39,
-      "headline": "tropics The fruit requires careful handling, rapid transport to ports, cooling, and refrigerated shipping.",
-      "description": "The Cavendish banana is the most common banana type sold.",
-      "reporter": "WyfzAmjEdqfjuhoo_96ba133b_e046",
-      "assignee": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
-      "comments": [],
+      "headline": "markets",
+      "number": 50,
+      "description": "A banana is an edible fruit produced by several kinds of large herbaceous flowering plants of the genus Musa. (In some countries, bananas used for cooking may be called plantains.) The fruit is variable in size, color and firmness, but is usually elongated and curved, with soft flesh rich in starch covered with a rind which may be yellow, purple or red when ripe. The fruits grow in clusters hanging from the top of the plant. Almost all modern edible parthenocarpic (seedless) bananas come from two wild species – Musa acuminata and Musa balbisiana. The scientific names of most cultivated bananas are Musa acuminata, Musa balbisiana, and Musa × paradisiaca for the hybrid Musa acuminata × M. balbisiana, depending on their genomic constitution. The old scientific name Musa sapientum is no longer used.",
       "status": {
-        "instanceName": "open",
+        "instanceName": "closed",
         "entityName": "issueStatus"
-      }
-    },
-    {
-      "instanceId": "YIIzyUsmaaccUfcq_7d4f6e44_2720",
-      "entityName": "issue",
-      "number": 42,
-      "headline": "banana tropics By the 10th century the banana appears in texts from Palestine and Egypt. There is some textual evidence that Muhammad was familiar with bananas. From there it diffused into north Africa and Muslim Iberia.",
-      "description": "Worldwide, there is no sharp distinction between \"bananas\" and \"plantains\". Especially in the Americas and Europe, \"banana\" usually refers to soft, sweet, dessert bananas, particularly those of the Cavendish group, which are the main exports from banana-growing countries. By contrast, Musa cultivars with firmer, starchier fruit are called \"plantains\". In other regions, such as Southeast Asia, many more kinds of banana are grown and eaten, so the simple two-fold distinction is not useful and is not made in local languages.",
-      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
-      "comments": [],
-      "status": {
-        "instanceName": "open",
-        "entityName": "issueStatus"
-      }
-    },
-    {
-      "instanceId": "KzbdbzIchudEodnf_69ed5f32_dfc7",
-      "entityName": "issue",
-      "number": 44,
-      "headline": "ripen",
-      "description": "Unripe bananas can not be held in home refrigerators because they suffer from the cold.\r\n\r\nIn the Japanese system, leaves and shoots are cut from the plant periodically to ensure softness.",
-      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
-      "assignee": "WyfzAmjEdqfjuhoo_96ba133b_e046",
-      "comments": [],
-      "status": {
-        "instanceName": "open",
-        "entityName": "issueStatus"
-      }
-    },
-    {
-      "instanceId": "HiOycocpteesImyU_f5d73e70_4623",
-      "entityName": "issue",
-      "number": 46,
-      "headline": "Unripe bananas can not be held in home refrigerators because they suffer from the cold. banana The goal is to prevent the bananas from producing their natural ripening agent, ethylene.",
-      "description": "Musa is in the family Musaceae.\r\n\r\nThe fruits grow in clusters hanging from the top of the plant.",
+      },
       "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
-      "comments": [],
-      "status": {
-        "instanceName": "open",
-        "entityName": "issueStatus"
-      }
+      "comments": []
     },
     {
       "instanceId": "GqhnrrqvomdOgmmi_cc724908_6ee6",
       "entityName": "issue",
+      "headline": "plant",
       "number": 48,
-      "headline": "plant banana",
-      "description": "The Cavendish banana is the most common banana type sold.",
-      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
-      "assignee": "WyfzAmjEdqfjuhoo_96ba133b_e046",
-      "comments": [],
+      "description": "When a banana plant is mature, the corm stops producing new leaves and begins to form a flower spike or inflorescence. ",
       "status": {
-        "instanceName": "resolved",
+        "instanceName": "open",
         "entityName": "issueStatus"
-      }
+      },
+      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
+      "assignee": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
+      "comments": []
+    },
+    {
+      "instanceId": "HiOycocpteesImyU_f5d73e70_4623",
+      "entityName": "issue",
+      "headline": "Unripe bananas can not be held in home refrigerators because they suffer from the cold. banana The goal is to prevent the bananas from producing their natural ripening agent, ethylene.",
+      "number": 46,
+      "description": "Musa is in the family Musaceae.\r\n\r\nThe fruits grow in clusters hanging from the top of the plant.",
+      "status": {
+        "instanceName": "open",
+        "entityName": "issueStatus"
+      },
+      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
+      "comments": []
+    },
+    {
+      "instanceId": "Kghwealj_y_dgaIg_35c84f9a_a2a0",
+      "entityName": "issue",
+      "headline": "markets tropics",
+      "number": 39,
+      "description": "The banana may have been present in isolated locations of the Middle East on the eve of Islam.",
+      "status": {
+        "instanceName": "open",
+        "entityName": "issueStatus"
+      },
+      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
+      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
+      "comments": []
+    },
+    {
+      "instanceId": "KzbdbzIchudEodnf_69ed5f32_dfc7",
+      "entityName": "issue",
+      "headline": "ripen",
+      "number": 44,
+      "description": "Unripe bananas can not be held in home refrigerators because they suffer from the cold.\r\n\r\nIn the Japanese system, leaves and shoots are cut from the plant periodically to ensure softness.",
+      "status": {
+        "instanceName": "open",
+        "entityName": "issueStatus"
+      },
+      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
+      "comments": []
     },
     {
       "instanceId": "MtbzmyOocI_wUeo_ce17091d_eb07",
       "entityName": "issue",
-      "number": 49,
       "headline": "Cavendish bananas are the main commercial banana cultivars sold in the world market. When a banana plant is mature, the corm stops producing new leaves and begins to form a flower spike or inflorescence. ",
+      "number": 49,
       "description": "In a series of papers published in 1947 onwards, Ernest Cheesman showed that Linnaeus\u0027 Musa sapientum and Musa paradisiaca were actually cultivars and descendants of two wild seed-producing species, Musa acuminata and Musa balbisiana, both first described by Luigi Aloysius Colla.[29] He recommended the abolition of Linnaeus\u0027 species in favor of reclassifying bananas according to three morphologically distinct groups of cultivars – those primarily exhibiting the botanical characteristics of Musa balbisiana, those primarily exhibiting the botanical characteristics of Musa acuminata, and those with characteristics that are the combination of the two.[28] Researchers Norman Simmonds and Ken Shepherd proposed a genome-based nomenclature system in 1955. This system eliminated almost all the difficulties and inconsistencies of the earlier classification of bananas based on assigning scientific names to cultivated varieties. Despite this, the original names are still recognized by some authorities today, leading to confusion.\r\n\r\nThe classification of cultivated bananas has long been a problematic issue for taxonomists. Linnaeus originally placed bananas into two species based only on their uses as food: Musa sapientum for dessert bananas and Musa paradisiaca for plantains. Subsequently further species names were added. However, this approach proved inadequate to address the sheer number of cultivars existing in the primary center of diversity of the genus, Southeast Asia. Many of these cultivars were given names which proved to be synonyms.",
-      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
-      "assignee": "WyfzAmjEdqfjuhoo_96ba133b_e046",
-      "comments": [],
       "status": {
-        "instanceName": "draft",
+        "instanceName": "resolved",
         "entityName": "issueStatus"
-      }
+      },
+      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "assignee": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "comments": []
     }
   ]
 }

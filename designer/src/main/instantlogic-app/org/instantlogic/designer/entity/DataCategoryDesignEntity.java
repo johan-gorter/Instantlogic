@@ -39,7 +39,7 @@ public class DataCategoryDesignEntity extends org.instantlogic.fabric.model.Enti
 	
 	@Override
 	public String getUniqueId() {
-		return "FuEtfjunzqcweaAa_29f106ed_e3bb";
+		return "N_UoUIUadqenAcOf_57bcb4a9_5a90";
 	}
 	
 	@Override

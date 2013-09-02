@@ -17,8 +17,8 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 	// Attributes
 	
 	// Relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> content;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> title;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> content;
 	
 	// Reverse relations
 
@@ -26,26 +26,26 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 		// Phase 1
 		// Attributes
 		// Relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $content
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"WbqprAaAoacjUlIg_b3f458ce_a0cd", "content", INSTANCE, "content", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
-		content = $content;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $title
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"XAjhzj_xbIb_qeox_c1ee076a_32f1", "title", INSTANCE, "title", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+				"AvpbiAevkec_Agb_e679a2c7_f99b", "title", INSTANCE, "title", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
 		title = $title;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $content
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
+				"ualpamasdydzsnAt_7a7ee681_278b", "content", INSTANCE, "content", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+		content = $content;
 		// Reverse relations
 		
 		// Phase 2
 
-		$content.valueClass = org.instantlogic.designer.ElementDesign.class;
-		$content.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
-		$content.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.contentOfPage);
-		$content.owner = true;
 		$title.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
 		$title.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
 		$title.setReverseRelation(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfPlaceTemplate);
 		$title.owner = true;
+		$content.valueClass = org.instantlogic.designer.ElementDesign.class;
+		$content.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
+		$content.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.contentOfPage);
+		$content.owner = true;
 
 	}
 
@@ -61,7 +61,7 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 	
 	@Override
 	public String getUniqueId() {
-		return "REgkogl_dIceigeO_75b0a6ae_a78f";
+		return "HueizmpIhmedagOI_135c2745_1642";
 	}
 	
 	@Override
@@ -72,8 +72,8 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		content,
 		title,
+		content,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};
