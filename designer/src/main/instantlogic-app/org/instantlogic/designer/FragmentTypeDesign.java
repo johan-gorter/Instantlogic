@@ -28,19 +28,19 @@ public class FragmentTypeDesign extends Design {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasAttribute
-		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasAttribute);
+	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasEvent
+		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasEvent);
 	
-	public java.lang.Boolean getHasAttribute() {
-		return hasAttribute.getValue();
+	public java.lang.Boolean getHasEvent() {
+		return hasEvent.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasAttributeAttributeValue() {
-		return hasAttribute;
+	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasEventAttributeValue() {
+		return hasEvent;
 	}
 
-	public FragmentTypeDesign setHasAttribute(java.lang.Boolean newValue) {
-		hasAttribute.setValue(newValue);
+	public FragmentTypeDesign setHasEvent(java.lang.Boolean newValue) {
+		hasEvent.setValue(newValue);
 		return (FragmentTypeDesign)this;
 	}
 	
@@ -68,19 +68,19 @@ public class FragmentTypeDesign extends Design {
 	
 	
 	
-	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasEvent
-		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasEvent);
+	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasAttribute
+		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasAttribute);
 	
-	public java.lang.Boolean getHasEvent() {
-		return hasEvent.getValue();
+	public java.lang.Boolean getHasAttribute() {
+		return hasAttribute.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasEventAttributeValue() {
-		return hasEvent;
+	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasAttributeAttributeValue() {
+		return hasAttribute;
 	}
 
-	public FragmentTypeDesign setHasEvent(java.lang.Boolean newValue) {
-		hasEvent.setValue(newValue);
+	public FragmentTypeDesign setHasAttribute(java.lang.Boolean newValue) {
+		hasAttribute.setValue(newValue);
 		return (FragmentTypeDesign)this;
 	}
 	

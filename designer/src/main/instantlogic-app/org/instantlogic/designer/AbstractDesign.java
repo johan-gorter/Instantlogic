@@ -28,6 +28,30 @@ public abstract class AbstractDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
+	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> technicalName
+		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DesignEntity.technicalName);
+	
+	public java.lang.String getTechnicalName() {
+		return technicalName.getValue();
+	}
+
+	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> getTechnicalNameAttributeValue() {
+		return technicalName;
+	}
+
+	
+	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> javaIdentifier
+		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DesignEntity.javaIdentifier);
+	
+	public java.lang.String getJavaIdentifier() {
+		return javaIdentifier.getValue();
+	}
+
+	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> getJavaIdentifierAttributeValue() {
+		return javaIdentifier;
+	}
+
+	
 	private final org.instantlogic.fabric.value.AttributeValue<Design, java.lang.Boolean> isCustomized
 		= createAttributeValue(org.instantlogic.designer.entity.DesignEntity.isCustomized);
 	
@@ -45,18 +69,6 @@ public abstract class AbstractDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> javaIdentifier
-		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DesignEntity.javaIdentifier);
-	
-	public java.lang.String getJavaIdentifier() {
-		return javaIdentifier.getValue();
-	}
-
-	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> getJavaIdentifierAttributeValue() {
-		return javaIdentifier;
-	}
-
-	
 	private final org.instantlogic.fabric.value.AttributeValue<Design, java.lang.String> name
 		= createAttributeValue(org.instantlogic.designer.entity.DesignEntity.name);
 	
@@ -73,18 +85,6 @@ public abstract class AbstractDesign extends org.instantlogic.fabric.Instance {
 		return (Design)this;
 	}
 	
-	
-	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> technicalName
-		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DesignEntity.technicalName);
-	
-	public java.lang.String getTechnicalName() {
-		return technicalName.getValue();
-	}
-
-	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> getTechnicalNameAttributeValue() {
-		return technicalName;
-	}
-
 	
 	// Relations
 

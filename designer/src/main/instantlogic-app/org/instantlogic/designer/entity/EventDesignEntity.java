@@ -28,12 +28,12 @@ public class EventDesignEntity extends org.instantlogic.fabric.model.Entity<org.
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> $parameters
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
-				"Ptlcrnsxxqelmedn_61501519_7f9c", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractEventDesign.class);
+				"KrsigucdEygdkall_e39857cf_473c", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractEventDesign.class);
 		parameters = $parameters;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"Pfsfcbylzugfwdgg_036090ce_72a2", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEventDesign.class);
+				"UzEepedqvy_zofOb_d70c17d2_2894", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEventDesign.class);
 		application = $application;
 		
 		// Phase 2
@@ -60,7 +60,7 @@ public class EventDesignEntity extends org.instantlogic.fabric.model.Entity<org.
 	
 	@Override
 	public String getUniqueId() {
-		return "CIozOb_igyfAAebz_f2604af3_f665";
+		return "SvOvbdvrhIdjckOd_462d896d_0eeb";
 	}
 	
 	@Override

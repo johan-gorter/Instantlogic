@@ -30,28 +30,28 @@ public abstract class AbstractValidationDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<ValidationDesign, AttributeDesign> displayWith
-		= createRelationValues(org.instantlogic.designer.entity.ValidationDesignEntity.displayWith);
+	private final org.instantlogic.fabric.value.RelationValue<ValidationDesign, DeductionSchemeDesign> rule
+		= createRelationValue(org.instantlogic.designer.entity.ValidationDesignEntity.rule);
 		
-	public org.instantlogic.fabric.value.RelationValues<ValidationDesign, AttributeDesign> getDisplayWithRelationValue() {
-		return displayWith;
+	public org.instantlogic.fabric.value.RelationValue<ValidationDesign, DeductionSchemeDesign> getRuleRelationValue() {
+		return rule;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.AttributeDesign> getDisplayWith() {
-		return displayWith.getValue();
+	public org.instantlogic.designer.DeductionSchemeDesign getRule() {
+		return rule.getValue();
 	}
 	
-	public ValidationDesign addToDisplayWith(AttributeDesign item) {
-		displayWith.addValue(item);
+	public ValidationDesign setRule(org.instantlogic.designer.DeductionSchemeDesign newValue) {
+		rule.setValue(newValue);
 		return (ValidationDesign)this;
 	}
 	
-	public ValidationDesign removeFromDisplayWith(AttributeDesign item) {
-		displayWith.removeValue(item);
-		return (ValidationDesign)this;
+	public org.instantlogic.designer.DeductionSchemeDesign newRule() {
+		org.instantlogic.designer.DeductionSchemeDesign newValue = new org.instantlogic.designer.DeductionSchemeDesign(); 
+		rule.setValue(newValue);
+		return newValue;
 	}
-	
-	
+
 	
 	private final org.instantlogic.fabric.value.RelationValue<ValidationDesign, TextTemplateDesign> message
 		= createRelationValue(org.instantlogic.designer.entity.ValidationDesignEntity.message);
@@ -76,28 +76,28 @@ public abstract class AbstractValidationDesign extends Design {
 	}
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<ValidationDesign, DeductionSchemeDesign> rule
-		= createRelationValue(org.instantlogic.designer.entity.ValidationDesignEntity.rule);
+	private final org.instantlogic.fabric.value.RelationValues<ValidationDesign, AttributeDesign> displayWith
+		= createRelationValues(org.instantlogic.designer.entity.ValidationDesignEntity.displayWith);
 		
-	public org.instantlogic.fabric.value.RelationValue<ValidationDesign, DeductionSchemeDesign> getRuleRelationValue() {
-		return rule;
+	public org.instantlogic.fabric.value.RelationValues<ValidationDesign, AttributeDesign> getDisplayWithRelationValue() {
+		return displayWith;
 	}
 
-	public org.instantlogic.designer.DeductionSchemeDesign getRule() {
-		return rule.getValue();
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.AttributeDesign> getDisplayWith() {
+		return displayWith.getValue();
 	}
 	
-	public ValidationDesign setRule(org.instantlogic.designer.DeductionSchemeDesign newValue) {
-		rule.setValue(newValue);
+	public ValidationDesign addToDisplayWith(AttributeDesign item) {
+		displayWith.addValue(item);
 		return (ValidationDesign)this;
 	}
 	
-	public org.instantlogic.designer.DeductionSchemeDesign newRule() {
-		org.instantlogic.designer.DeductionSchemeDesign newValue = new org.instantlogic.designer.DeductionSchemeDesign(); 
-		rule.setValue(newValue);
-		return newValue;
+	public ValidationDesign removeFromDisplayWith(AttributeDesign item) {
+		displayWith.removeValue(item);
+		return (ValidationDesign)this;
 	}
-
+	
+	
 
 	// Reverse relations
 	

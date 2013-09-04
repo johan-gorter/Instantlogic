@@ -15,35 +15,35 @@ public class DeductionOperationParameterDesign extends Design {
 		return instance;
 	}
 	
-	public static final DeductionOperationParameterDesign reverseRelationRelation;
-	public static final DeductionOperationParameterDesign attribute;
-	public static final DeductionOperationParameterDesign selectedInstanceEntity;
-	public static final DeductionOperationParameterDesign castToEntity;
 	public static final DeductionOperationParameterDesign constantValue;
+	public static final DeductionOperationParameterDesign selectedInstanceEntity;
+	public static final DeductionOperationParameterDesign attribute;
+	public static final DeductionOperationParameterDesign reverseRelationRelation;
+	public static final DeductionOperationParameterDesign castToEntity;
 	
 	static {
 	  // Phase 1
-	  reverseRelationRelation = addStaticInstance("reverseRelationRelation", new DeductionOperationParameterDesign());
-	  attribute = addStaticInstance("attribute", new DeductionOperationParameterDesign());
-	  selectedInstanceEntity = addStaticInstance("selectedInstanceEntity", new DeductionOperationParameterDesign());
-	  castToEntity = addStaticInstance("castToEntity", new DeductionOperationParameterDesign());
 	  constantValue = addStaticInstance("constantValue", new DeductionOperationParameterDesign());
+	  selectedInstanceEntity = addStaticInstance("selectedInstanceEntity", new DeductionOperationParameterDesign());
+	  attribute = addStaticInstance("attribute", new DeductionOperationParameterDesign());
+	  reverseRelationRelation = addStaticInstance("reverseRelationRelation", new DeductionOperationParameterDesign());
+	  castToEntity = addStaticInstance("castToEntity", new DeductionOperationParameterDesign());
 	  // Phase 2
-      reverseRelationRelation.setValueClass("org.instantlogic.fabric.model.Relation");
-      reverseRelationRelation.setName("relation");
-	  reverseRelationRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Relation").getTextTemplate());
-      attribute.setValueClass("org.instantlogic.fabric.model.Attribute");
-      attribute.setName("attribute");
-	  attribute.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Attribute").getTextTemplate());
-      selectedInstanceEntity.setName("ofEntity");
-      selectedInstanceEntity.setValueClass("org.instantlogic.fabric.model.Entity");
-	  selectedInstanceEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Of entity").getTextTemplate());
-      castToEntity.setName("toEntity");
-      castToEntity.setValueClass("org.instantlogic.fabric.model.Entity");
-	  castToEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("To entity").getTextTemplate());
       constantValue.setName("value");
       constantValue.setValueClass("java.lang.Object");
 	  constantValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Value").getTextTemplate());
+      selectedInstanceEntity.setName("ofEntity");
+      selectedInstanceEntity.setValueClass("org.instantlogic.fabric.model.Entity");
+	  selectedInstanceEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Of entity").getTextTemplate());
+      attribute.setName("attribute");
+      attribute.setValueClass("org.instantlogic.fabric.model.Attribute");
+	  attribute.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Attribute").getTextTemplate());
+      reverseRelationRelation.setValueClass("org.instantlogic.fabric.model.Relation");
+      reverseRelationRelation.setName("relation");
+	  reverseRelationRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Relation").getTextTemplate());
+      castToEntity.setValueClass("org.instantlogic.fabric.model.Entity");
+      castToEntity.setName("toEntity");
+	  castToEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("To entity").getTextTemplate());
 	}
 	
 	@Override

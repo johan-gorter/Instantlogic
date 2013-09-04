@@ -53,24 +53,42 @@ public abstract class AbstractEntityDesign extends Design {
 	
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, AttributeDesign> attributes
-		= createRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
+	private final org.instantlogic.fabric.value.RelationValue<EntityDesign, EntityDesign> extendsFrom
+		= createRelationValue(org.instantlogic.designer.entity.EntityDesignEntity.extendsFrom);
 		
-	public org.instantlogic.fabric.value.RelationValues<EntityDesign, AttributeDesign> getAttributesRelationValue() {
-		return attributes;
+	public org.instantlogic.fabric.value.RelationValue<EntityDesign, EntityDesign> getExtendsFromRelationValue() {
+		return extendsFrom;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.AttributeDesign> getAttributes() {
-		return attributes.getValue();
+	public org.instantlogic.designer.EntityDesign getExtendsFrom() {
+		return extendsFrom.getValue();
 	}
 	
-	public EntityDesign addToAttributes(AttributeDesign item) {
-		attributes.addValue(item);
+	public EntityDesign setExtendsFrom(org.instantlogic.designer.EntityDesign newValue) {
+		extendsFrom.setValue(newValue);
 		return (EntityDesign)this;
 	}
 	
-	public EntityDesign removeFromAttributes(AttributeDesign item) {
-		attributes.removeValue(item);
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, RelationDesign> relations
+		= createRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.relations);
+		
+	public org.instantlogic.fabric.value.RelationValues<EntityDesign, RelationDesign> getRelationsRelationValue() {
+		return relations;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign> getRelations() {
+		return relations.getValue();
+	}
+	
+	public EntityDesign addToRelations(RelationDesign item) {
+		relations.addValue(item);
+		return (EntityDesign)this;
+	}
+	
+	public EntityDesign removeFromRelations(RelationDesign item) {
+		relations.removeValue(item);
 		return (EntityDesign)this;
 	}
 	
@@ -99,47 +117,6 @@ public abstract class AbstractEntityDesign extends Design {
 	}
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, RelationDesign> relations
-		= createRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.relations);
-		
-	public org.instantlogic.fabric.value.RelationValues<EntityDesign, RelationDesign> getRelationsRelationValue() {
-		return relations;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign> getRelations() {
-		return relations.getValue();
-	}
-	
-	public EntityDesign addToRelations(RelationDesign item) {
-		relations.addValue(item);
-		return (EntityDesign)this;
-	}
-	
-	public EntityDesign removeFromRelations(RelationDesign item) {
-		relations.removeValue(item);
-		return (EntityDesign)this;
-	}
-	
-	
-	
-	private final org.instantlogic.fabric.value.RelationValue<EntityDesign, EntityDesign> extendsFrom
-		= createRelationValue(org.instantlogic.designer.entity.EntityDesignEntity.extendsFrom);
-		
-	public org.instantlogic.fabric.value.RelationValue<EntityDesign, EntityDesign> getExtendsFromRelationValue() {
-		return extendsFrom;
-	}
-
-	public org.instantlogic.designer.EntityDesign getExtendsFrom() {
-		return extendsFrom.getValue();
-	}
-	
-	public EntityDesign setExtendsFrom(org.instantlogic.designer.EntityDesign newValue) {
-		extendsFrom.setValue(newValue);
-		return (EntityDesign)this;
-	}
-	
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<EntityDesign, DataTypeDesign> dataType
 		= createRelationValue(org.instantlogic.designer.entity.EntityDesignEntity.dataType);
 		
@@ -162,6 +139,29 @@ public abstract class AbstractEntityDesign extends Design {
 		return newValue;
 	}
 
+	
+	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, AttributeDesign> attributes
+		= createRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
+		
+	public org.instantlogic.fabric.value.RelationValues<EntityDesign, AttributeDesign> getAttributesRelationValue() {
+		return attributes;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.AttributeDesign> getAttributes() {
+		return attributes.getValue();
+	}
+	
+	public EntityDesign addToAttributes(AttributeDesign item) {
+		attributes.addValue(item);
+		return (EntityDesign)this;
+	}
+	
+	public EntityDesign removeFromAttributes(AttributeDesign item) {
+		attributes.removeValue(item);
+		return (EntityDesign)this;
+	}
+	
+	
 	
 	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, ValidationDesign> validations
 		= createRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.validations);
@@ -205,28 +205,6 @@ public abstract class AbstractEntityDesign extends Design {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, RelationDesign> reverseRelations
-		= createReverseRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.reverseRelations);
-
-	public org.instantlogic.fabric.value.RelationValues<EntityDesign, RelationDesign> getReverseRelationsRelationValue() {
-		return reverseRelations;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign> getReverseRelations() {
-		return reverseRelations.getValue();
-	}
-
-    public EntityDesign addToReverseRelations(RelationDesign item) {
-        reverseRelations.addValue(item);
-        return (EntityDesign)this;
-    }
-
-    public EntityDesign removeFromReverseRelations(RelationDesign item) {
-        reverseRelations.removeValue(item);
-        return (EntityDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, EntityDesign> extensions
 		= createReverseRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.extensions);
 
@@ -245,6 +223,28 @@ public abstract class AbstractEntityDesign extends Design {
 
     public EntityDesign removeFromExtensions(EntityDesign item) {
         extensions.removeValue(item);
+        return (EntityDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, RelationDesign> reverseRelations
+		= createReverseRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.reverseRelations);
+
+	public org.instantlogic.fabric.value.RelationValues<EntityDesign, RelationDesign> getReverseRelationsRelationValue() {
+		return reverseRelations;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign> getReverseRelations() {
+		return reverseRelations.getValue();
+	}
+
+    public EntityDesign addToReverseRelations(RelationDesign item) {
+        reverseRelations.addValue(item);
+        return (EntityDesign)this;
+    }
+
+    public EntityDesign removeFromReverseRelations(RelationDesign item) {
+        reverseRelations.removeValue(item);
         return (EntityDesign)this;
     }
 

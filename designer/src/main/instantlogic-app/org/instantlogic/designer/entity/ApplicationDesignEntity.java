@@ -11,21 +11,21 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 
 	
 	// Attributes
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> rootPackageName; 
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> sourcePath; 
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<java.lang.String>, java.lang.String> themeNames; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> name; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> rootPackageName; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.Boolean, java.lang.Boolean> isCustomized; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<java.lang.String>, java.lang.String> themeNames; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> sourcePath; 
 	
 	// Relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> loggedInEvent;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> entities;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign> customDeductionOperations;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign> sharedElements;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> flows;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> caseEntity;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign> events;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> loggedInEvent;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign> fragmentTypes;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> flows;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> mainFlow;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> startEvent;
 	
@@ -34,79 +34,77 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	static {
 		// Phase 1
 		// Attributes
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> $rootPackageName
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
-				"JnEUjnAIvaazcczn_e740ead2_3893", "rootPackageName", INSTANCE, java.lang.String.class, "rootPackageName", org.instantlogic.designer.AbstractApplicationDesign.class);
-		rootPackageName = $rootPackageName;
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> $sourcePath
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
-				"StAOxfiIyygxkaun_bab36082_4a29", "sourcePath", INSTANCE, java.lang.String.class, "sourcePath", org.instantlogic.designer.AbstractApplicationDesign.class);
-		sourcePath = $sourcePath;
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<java.lang.String>, java.lang.String> $themeNames
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<java.lang.String>, java.lang.String>(
-				"Uxopyovdhighsawj_91708eb7_8754", "themeNames", INSTANCE, java.lang.String.class, "themeNames", org.instantlogic.designer.AbstractApplicationDesign.class);
-		themeNames = $themeNames;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> $name
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
-				"WUkIktsrUibAioOw_8a40137d_7d59", "name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"HckAgvijmyavIobv_18901b66_812a", "name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractApplicationDesign.class);
 		name = $name;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> $rootPackageName
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
+				"SijiIsooUuazw_dg_77f59e04_dcba", "rootPackageName", INSTANCE, java.lang.String.class, "rootPackageName", org.instantlogic.designer.AbstractApplicationDesign.class);
+		rootPackageName = $rootPackageName;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.Boolean, java.lang.Boolean> $isCustomized
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.Boolean, java.lang.Boolean>(
-				"XbbOokrqumcgmefv_570c8cd4_760b", "isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"VqIeO_egji_vyjsd_194369c4_2739", "isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractApplicationDesign.class);
 		isCustomized = $isCustomized;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<java.lang.String>, java.lang.String> $themeNames
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<java.lang.String>, java.lang.String>(
+				"ayillanEuubiegsf_04be8faa_1bf2", "themeNames", INSTANCE, java.lang.String.class, "themeNames", org.instantlogic.designer.AbstractApplicationDesign.class);
+		themeNames = $themeNames;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> $sourcePath
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String>(
+				"iuUcUzohomduUijy_201348b3_cde7", "sourcePath", INSTANCE, java.lang.String.class, "sourcePath", org.instantlogic.designer.AbstractApplicationDesign.class);
+		sourcePath = $sourcePath;
 		// Relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $loggedInEvent
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
-				"Aq_epdanjuamukeE_db6e3b5a_e9ad", "loggedInEvent", INSTANCE, "loggedInEvent", org.instantlogic.designer.AbstractApplicationDesign.class);
-		loggedInEvent = $loggedInEvent;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> $entities
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
-				"Eflrluxyei_suhln_2ee88420_b6bd", "entities", INSTANCE, "entities", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"AsIqa_zyrqcoaejU_a5f178ac_90e2", "entities", INSTANCE, "entities", org.instantlogic.designer.AbstractApplicationDesign.class);
 		entities = $entities;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign> $customDeductionOperations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign>(
-				"Grfaxvnznieneoek_dd704090_7cbb", "customDeductionOperations", INSTANCE, "customDeductionOperations", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"BUhr_jznsubhgmhv_73bf52e7_10f3", "customDeductionOperations", INSTANCE, "customDeductionOperations", org.instantlogic.designer.AbstractApplicationDesign.class);
 		customDeductionOperations = $customDeductionOperations;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign> $sharedElements
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign>(
-				"HAAizkpzdq_Ukobh_2a469670_c86e", "sharedElements", INSTANCE, "sharedElements", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"GEdrbitaIabvAoga_52854661_9810", "sharedElements", INSTANCE, "sharedElements", org.instantlogic.designer.AbstractApplicationDesign.class);
 		sharedElements = $sharedElements;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> $flows
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign>(
+				"HupsfdoIaIeOUaqv_a52abba1_2e51", "flows", INSTANCE, "flows", org.instantlogic.designer.AbstractApplicationDesign.class);
+		flows = $flows;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $caseEntity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"MAdke_fAraadAgzv_b71b0b05_b5ee", "caseEntity", INSTANCE, "caseEntity", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"UOqatwaUbq_UAokj_d2bc0e51_16ac", "caseEntity", INSTANCE, "caseEntity", org.instantlogic.designer.AbstractApplicationDesign.class);
 		caseEntity = $caseEntity;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign> $events
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign>(
-				"Pfsfcbylzugfwdgg_036090ce_72a2", "events", INSTANCE, "events", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"UzEepedqvy_zofOb_d70c17d2_2894", "events", INSTANCE, "events", org.instantlogic.designer.AbstractApplicationDesign.class);
 		events = $events;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $loggedInEvent
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
+				"WExo_zdltecleaqh_107ce9e4_618e", "loggedInEvent", INSTANCE, "loggedInEvent", org.instantlogic.designer.AbstractApplicationDesign.class);
+		loggedInEvent = $loggedInEvent;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign> $fragmentTypes
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign>(
-				"QfUzjygkza_hworE_c601f5dd_3a7c", "fragmentTypes", INSTANCE, "fragmentTypes", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"adqjyapdzIeAIotq_391f54d0_2aa5", "fragmentTypes", INSTANCE, "fragmentTypes", org.instantlogic.designer.AbstractApplicationDesign.class);
 		fragmentTypes = $fragmentTypes;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> $flows
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign>(
-				"UepelfIpkIbtsgqf_60f2299d_ad76", "flows", INSTANCE, "flows", org.instantlogic.designer.AbstractApplicationDesign.class);
-		flows = $flows;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> $mainFlow
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
-				"VnfxqEvagudnmevy_59bca44a_a282", "mainFlow", INSTANCE, "mainFlow", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"iiyfm_jcougOminb_32bf0fde_a40d", "mainFlow", INSTANCE, "mainFlow", org.instantlogic.designer.AbstractApplicationDesign.class);
 		mainFlow = $mainFlow;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $startEvent
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
-				"Wsoieukvaq_uigfE_5569a4dc_2b79", "startEvent", INSTANCE, "startEvent", org.instantlogic.designer.AbstractApplicationDesign.class);
+				"uvAlgmsypqbOifti_fc1d5375_b330", "startEvent", INSTANCE, "startEvent", org.instantlogic.designer.AbstractApplicationDesign.class);
 		startEvent = $startEvent;
 		// Reverse relations
 		
 		// Phase 2
+		$name.dataType.put("category", "text");
 		$rootPackageName.dataType.put("category", "text");
-		$sourcePath.dataType.put("category", "text");
+		$isCustomized.dataType.put("category", "boolean");
 		$themeNames.dataType.put("category", "text");
 		$themeNames.multivalue = true;
-		$name.dataType.put("category", "text");
-		$isCustomized.dataType.put("category", "boolean");
+		$sourcePath.dataType.put("category", "text");
 
-		$loggedInEvent.valueClass = org.instantlogic.designer.EventDesign.class;
-		$loggedInEvent.to = org.instantlogic.designer.entity.EventDesignEntity.INSTANCE;
 		$entities.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$entities.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$entities.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.application);
@@ -121,6 +119,11 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		$sharedElements.setReverseRelation(org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.application);
 		$sharedElements.owner = true;
 		$sharedElements.multivalue = true;
+		$flows.valueClass = org.instantlogic.designer.FlowDesign.class;
+		$flows.to = org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE;
+		$flows.setReverseRelation(org.instantlogic.designer.entity.FlowDesignEntity.application);
+		$flows.owner = true;
+		$flows.multivalue = true;
 		$caseEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$caseEntity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$events.valueClass = org.instantlogic.designer.EventDesign.class;
@@ -128,16 +131,13 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		$events.setReverseRelation(org.instantlogic.designer.entity.EventDesignEntity.application);
 		$events.owner = true;
 		$events.multivalue = true;
+		$loggedInEvent.valueClass = org.instantlogic.designer.EventDesign.class;
+		$loggedInEvent.to = org.instantlogic.designer.entity.EventDesignEntity.INSTANCE;
 		$fragmentTypes.valueClass = org.instantlogic.designer.FragmentTypeDesign.class;
 		$fragmentTypes.to = org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE;
 		$fragmentTypes.setReverseRelation(org.instantlogic.designer.entity.FragmentTypeDesignEntity.application);
 		$fragmentTypes.owner = true;
 		$fragmentTypes.multivalue = true;
-		$flows.valueClass = org.instantlogic.designer.FlowDesign.class;
-		$flows.to = org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE;
-		$flows.setReverseRelation(org.instantlogic.designer.entity.FlowDesignEntity.application);
-		$flows.owner = true;
-		$flows.multivalue = true;
 		$mainFlow.valueClass = org.instantlogic.designer.FlowDesign.class;
 		$mainFlow.to = org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE;
 		$startEvent.valueClass = org.instantlogic.designer.EventDesign.class;
@@ -157,7 +157,7 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	
 	@Override
 	public String getUniqueId() {
-		return "_nxvuizmpidsgmyu_2ab78eb3_70e8";
+		return "ZazcUrhipqddIcbe_225a25d5_d322";
 	}
 	
 	@Override
@@ -166,21 +166,21 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
-		rootPackageName,
-		sourcePath,
-		themeNames,
 		name,
+		rootPackageName,
 		isCustomized,
+		themeNames,
+		sourcePath,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		loggedInEvent,
 		entities,
 		customDeductionOperations,
 		sharedElements,
+		flows,
 		caseEntity,
 		events,
+		loggedInEvent,
 		fragmentTypes,
-		flows,
 		mainFlow,
 		startEvent,
 	};

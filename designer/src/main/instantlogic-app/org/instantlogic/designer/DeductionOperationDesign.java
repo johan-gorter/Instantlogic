@@ -16,93 +16,93 @@ public class DeductionOperationDesign extends Design {
 	}
 	
 	public static final DeductionOperationDesign constant;
+	public static final DeductionOperationDesign cast;
+	public static final DeductionOperationDesign id;
+	public static final DeductionOperationDesign reverseRelation;
+	public static final DeductionOperationDesign attribute;
+	public static final DeductionOperationDesign hasValue;
+	public static final DeductionOperationDesign concatenate;
+	public static final DeductionOperationDesign negation;
 	public static final DeductionOperationDesign equals;
-	public static final DeductionOperationDesign custom;
 	public static final DeductionOperationDesign selectedInstance;
 	public static final DeductionOperationDesign _if;
-	public static final DeductionOperationDesign concatenate;
 	public static final DeductionOperationDesign first;
 	public static final DeductionOperationDesign sum;
-	public static final DeductionOperationDesign id;
-	public static final DeductionOperationDesign hasValue;
-	public static final DeductionOperationDesign reverseRelation;
-	public static final DeductionOperationDesign negation;
-	public static final DeductionOperationDesign attribute;
-	public static final DeductionOperationDesign cast;
+	public static final DeductionOperationDesign custom;
 	
 	static {
 	  // Phase 1
 	  constant = addStaticInstance("constant", new DeductionOperationDesign());
+	  cast = addStaticInstance("cast", new DeductionOperationDesign());
+	  id = addStaticInstance("id", new DeductionOperationDesign());
+	  reverseRelation = addStaticInstance("reverseRelation", new DeductionOperationDesign());
+	  attribute = addStaticInstance("attribute", new DeductionOperationDesign());
+	  hasValue = addStaticInstance("hasValue", new DeductionOperationDesign());
+	  concatenate = addStaticInstance("concatenate", new DeductionOperationDesign());
+	  negation = addStaticInstance("negation", new DeductionOperationDesign());
 	  equals = addStaticInstance("equals", new DeductionOperationDesign());
-	  custom = addStaticInstance("custom", new DeductionOperationDesign());
 	  selectedInstance = addStaticInstance("selectedInstance", new DeductionOperationDesign());
 	  _if = addStaticInstance("if", new DeductionOperationDesign());
-	  concatenate = addStaticInstance("concatenate", new DeductionOperationDesign());
 	  first = addStaticInstance("first", new DeductionOperationDesign());
 	  sum = addStaticInstance("sum", new DeductionOperationDesign());
-	  id = addStaticInstance("id", new DeductionOperationDesign());
-	  hasValue = addStaticInstance("hasValue", new DeductionOperationDesign());
-	  reverseRelation = addStaticInstance("reverseRelation", new DeductionOperationDesign());
-	  negation = addStaticInstance("negation", new DeductionOperationDesign());
-	  attribute = addStaticInstance("attribute", new DeductionOperationDesign());
-	  cast = addStaticInstance("cast", new DeductionOperationDesign());
+	  custom = addStaticInstance("custom", new DeductionOperationDesign());
 	  // Phase 2
-      constant.addToParameters(org.instantlogic.designer.DeductionOperationParameterDesign.constantValue);
       constant.setName("constant");
       constant.setJavaClassName("org.instantlogic.fabric.deduction.ConstantDeduction");
+      constant.addToParameters(org.instantlogic.designer.DeductionOperationParameterDesign.constantValue);
 	  constant.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Constant").getTextTemplate());
-      equals.setJavaClassName("org.instantlogic.fabric.deduction.EqualsDeduction");
-      equals.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.equalsOperands);
-      equals.setName("equals");
-	  equals.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Equals").getTextTemplate());
-      custom.setName("custom");
-      custom.setJavaClassName("org.instantlogic.fabric.deduction.CustomDeduction");
-	  custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Custom").getTextTemplate());
-      selectedInstance.setName("selectedInstance");
-      selectedInstance.setJavaClassName("org.instantlogic.fabric.deduction.SelectedInstanceDeduction");
-      selectedInstance.addToParameters(org.instantlogic.designer.DeductionOperationParameterDesign.selectedInstanceEntity);
-	  selectedInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Selected instance").getTextTemplate());
-      _if.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.ifTrueValue);
-      _if.setName("if");
-      _if.setJavaClassName("org.instantlogic.fabric.deduction.IfDeduction");
-      _if.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.ifFalseValue);
-      _if.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.ifCondition);
-	  _if.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("If").getTextTemplate());
-      concatenate.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.concatenateStrings);
-      concatenate.setJavaClassName("org.instantlogic.fabric.deduction.ConcatenateDeduction");
-      concatenate.setName("concatenate");
-	  concatenate.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Concatenate").getTextTemplate());
-	  first.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("First").getTextTemplate());
-      sum.setName("sum");
-      sum.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.sumOperands);
-      sum.setJavaClassName("org.instantlogic.fabric.deduction.SumDeduction");
-	  sum.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Sum").getTextTemplate());
+      cast.setJavaClassName("org.instantlogic.fabric.deduction.CastInstanceDeduction");
+      cast.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.castInstance);
+      cast.addToParameters(org.instantlogic.designer.DeductionOperationParameterDesign.castToEntity);
+      cast.setName("cast");
+	  cast.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Cast").getTextTemplate());
       id.setName("id");
-      id.setJavaClassName("org.instantlogic.fabric.deduction.IdDeduction");
       id.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.idOfInstance);
+      id.setJavaClassName("org.instantlogic.fabric.deduction.IdDeduction");
 	  id.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Id").getTextTemplate());
+      reverseRelation.setJavaClassName("org.instantlogic.fabric.deduction.ReverseRelationDeduction");
+      reverseRelation.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.reverseRelationToInstance);
+      reverseRelation.setName("reverseRelation");
+	  reverseRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Reverse relation").getTextTemplate());
+      attribute.setJavaClassName("org.instantlogic.fabric.deduction.AttributeDeduction");
+      attribute.addToParameters(org.instantlogic.designer.DeductionOperationParameterDesign.attribute);
+      attribute.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.attributeInstance);
+      attribute.setName("attribute");
+	  attribute.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Attribute").getTextTemplate());
       hasValue.setJavaClassName("org.instantlogic.fabric.deduction.HasValueDeduction");
       hasValue.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.hasValueInput);
       hasValue.setName("hasValue");
 	  hasValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Has value").getTextTemplate());
-      reverseRelation.setName("reverseRelation");
-      reverseRelation.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.reverseRelationToInstance);
-      reverseRelation.setJavaClassName("org.instantlogic.fabric.deduction.ReverseRelationDeduction");
-	  reverseRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Reverse relation").getTextTemplate());
+      concatenate.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.concatenateStrings);
+      concatenate.setJavaClassName("org.instantlogic.fabric.deduction.ConcatenateDeduction");
+      concatenate.setName("concatenate");
+	  concatenate.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Concatenate").getTextTemplate());
+      negation.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.negationInput);
       negation.setName("negation");
       negation.setJavaClassName("org.instantlogic.fabric.deduction.NegationDeduction");
-      negation.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.negationInput);
 	  negation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Negation").getTextTemplate());
-      attribute.setJavaClassName("org.instantlogic.fabric.deduction.AttributeDeduction");
-      attribute.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.attributeInstance);
-      attribute.setName("attribute");
-      attribute.addToParameters(org.instantlogic.designer.DeductionOperationParameterDesign.attribute);
-	  attribute.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Attribute").getTextTemplate());
-      cast.addToParameters(org.instantlogic.designer.DeductionOperationParameterDesign.castToEntity);
-      cast.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.castInstance);
-      cast.setJavaClassName("org.instantlogic.fabric.deduction.CastInstanceDeduction");
-      cast.setName("cast");
-	  cast.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Cast").getTextTemplate());
+      equals.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.equalsOperands);
+      equals.setName("equals");
+      equals.setJavaClassName("org.instantlogic.fabric.deduction.EqualsDeduction");
+	  equals.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Equals").getTextTemplate());
+      selectedInstance.addToParameters(org.instantlogic.designer.DeductionOperationParameterDesign.selectedInstanceEntity);
+      selectedInstance.setName("selectedInstance");
+      selectedInstance.setJavaClassName("org.instantlogic.fabric.deduction.SelectedInstanceDeduction");
+	  selectedInstance.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Selected instance").getTextTemplate());
+      _if.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.ifFalseValue);
+      _if.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.ifTrueValue);
+      _if.setJavaClassName("org.instantlogic.fabric.deduction.IfDeduction");
+      _if.setName("if");
+      _if.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.ifCondition);
+	  _if.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("If").getTextTemplate());
+	  first.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("First").getTextTemplate());
+      sum.addToInputs(org.instantlogic.designer.DeductionOperationInputDesign.sumOperands);
+      sum.setJavaClassName("org.instantlogic.fabric.deduction.SumDeduction");
+      sum.setName("sum");
+	  sum.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Sum").getTextTemplate());
+      custom.setJavaClassName("org.instantlogic.fabric.deduction.CustomDeduction");
+      custom.setName("custom");
+	  custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Custom").getTextTemplate());
 	}
 	
 	@Override
@@ -131,6 +131,24 @@ public class DeductionOperationDesign extends Design {
 	
 	// Relations
 	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionOperationDesign, DataTypeDesign> outputDataType
+		= createRelationValue(org.instantlogic.designer.entity.DeductionOperationDesignEntity.outputDataType);
+		
+	public org.instantlogic.fabric.value.RelationValue<DeductionOperationDesign, DataTypeDesign> getOutputDataTypeRelationValue() {
+		return outputDataType;
+	}
+
+	public org.instantlogic.designer.DataTypeDesign getOutputDataType() {
+		return outputDataType.getValue();
+	}
+	
+	public DeductionOperationDesign setOutputDataType(org.instantlogic.designer.DataTypeDesign newValue) {
+		outputDataType.setValue(newValue);
+		return (DeductionOperationDesign)this;
+	}
+	
+
+	
 	private final org.instantlogic.fabric.value.RelationValues<DeductionOperationDesign, DeductionOperationParameterDesign> parameters
 		= createRelationValues(org.instantlogic.designer.entity.DeductionOperationDesignEntity.parameters);
 		
@@ -153,24 +171,6 @@ public class DeductionOperationDesign extends Design {
 	}
 	
 	
-	
-	private final org.instantlogic.fabric.value.RelationValue<DeductionOperationDesign, DataTypeDesign> outputDataType
-		= createRelationValue(org.instantlogic.designer.entity.DeductionOperationDesignEntity.outputDataType);
-		
-	public org.instantlogic.fabric.value.RelationValue<DeductionOperationDesign, DataTypeDesign> getOutputDataTypeRelationValue() {
-		return outputDataType;
-	}
-
-	public org.instantlogic.designer.DataTypeDesign getOutputDataType() {
-		return outputDataType.getValue();
-	}
-	
-	public DeductionOperationDesign setOutputDataType(org.instantlogic.designer.DataTypeDesign newValue) {
-		outputDataType.setValue(newValue);
-		return (DeductionOperationDesign)this;
-	}
-	
-
 	
 	private final org.instantlogic.fabric.value.RelationValues<DeductionOperationDesign, DeductionOperationInputDesign> inputs
 		= createRelationValues(org.instantlogic.designer.entity.DeductionOperationDesignEntity.inputs);

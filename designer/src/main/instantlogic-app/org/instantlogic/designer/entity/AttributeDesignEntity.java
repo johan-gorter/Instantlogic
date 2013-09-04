@@ -48,131 +48,131 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 
 	
 	// Attributes
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> hasRule; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> writeable; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> hasDefault; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> hasRelevance; 
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> writeable; 
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> hasRule; 
 	
 	// Relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> question;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> dataType;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> relevance;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> _default;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> belongsToEntity;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> explanation;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> rule;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> explanation;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> question;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> _default;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> relevance;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> belongsToEntity;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> dataType;
 	
 	// Reverse relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign> validations;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> attributeOf;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign> validations;
 
 	static {
 		// Phase 1
 		// Attributes
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> $hasRule
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean>(
+				"F_qdkzpujqdnkgjO_974ac7dd_eff3", "hasRule", INSTANCE, java.lang.Boolean.class, "hasRule", org.instantlogic.designer.AbstractAttributeDesign.class);
+		hasRule = $hasRule;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> $writeable
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean>(
+				"GEialodIEicamcUp_4bcbfa08_286f", "writeable", INSTANCE, java.lang.Boolean.class, "writeable", org.instantlogic.designer.AbstractAttributeDesign.class);
+		writeable = $writeable;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> $hasDefault
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean>(
-				"CqE_uwlabecmobiw_341b0465_4d5a", "hasDefault", INSTANCE, java.lang.Boolean.class, "hasDefault", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"Kws__ApfvueIqfyw_f0288348_33bd", "hasDefault", INSTANCE, java.lang.Boolean.class, "hasDefault", org.instantlogic.designer.AbstractAttributeDesign.class);
 		hasDefault = $hasDefault;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> $hasRelevance
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean>(
-				"Tol_neobnacoglkz_84992008_f3d2", "hasRelevance", INSTANCE, java.lang.Boolean.class, "hasRelevance", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"iI_ihphfxa_zUadq_aede71e2_4ee4", "hasRelevance", INSTANCE, java.lang.Boolean.class, "hasRelevance", org.instantlogic.designer.AbstractAttributeDesign.class);
 		hasRelevance = $hasRelevance;
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> $writeable
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean>(
-				"Wuialkilpydpsmm_831461f7_b9a0", "writeable", INSTANCE, java.lang.Boolean.class, "writeable", org.instantlogic.designer.AbstractAttributeDesign.class);
-		writeable = $writeable;
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean> $hasRule
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.AttributeDesign, java.lang.Boolean, java.lang.Boolean>(
-				"odgvrndnqucnccgl_09e6110d_d9b8", "hasRule", INSTANCE, java.lang.Boolean.class, "hasRule", org.instantlogic.designer.AbstractAttributeDesign.class);
-		hasRule = $hasRule;
 		// Relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $question
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"Prrocmccli_cumyu_86597e18_0889", "question", INSTANCE, "question", org.instantlogic.designer.AbstractAttributeDesign.class);
-		question = $question;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"RpAdptjIqmafyevk_5f3cf7f0_731a", "dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractAttributeDesign.class);
-		dataType = $dataType;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $relevance
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"XbjrfrbeoebEekee_22a6a3ca_d426", "relevance", INSTANCE, "relevance", org.instantlogic.designer.AbstractAttributeDesign.class);
-		relevance = $relevance;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $_default
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"XeucAopevme_odea_f54b3839_ce03", "default", INSTANCE, "_default", org.instantlogic.designer.AbstractAttributeDesign.class);
-		_default = $_default;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $belongsToEntity
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"YpelItmmraelwbkz_c5199f7b_2f0b", "belongsToEntity", INSTANCE, "belongsToEntity", org.instantlogic.designer.AbstractAttributeDesign.class);
-		belongsToEntity = $belongsToEntity;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $explanation
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"ZnoelkrluueiaoEk_fe682742_8f86", "explanation", INSTANCE, "explanation", org.instantlogic.designer.AbstractAttributeDesign.class);
-		explanation = $explanation;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $rule
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"osUk_pzOAmdswhaf_c589fac4_64d5", "rule", INSTANCE, "rule", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"DIyxjhvyUiapm_Ej_5a8deb35_1a9b", "rule", INSTANCE, "rule", org.instantlogic.designer.AbstractAttributeDesign.class);
 		rule = $rule;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $explanation
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
+				"OkyaxovhIabaylxu_d8db41dc_5157", "explanation", INSTANCE, "explanation", org.instantlogic.designer.AbstractAttributeDesign.class);
+		explanation = $explanation;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $question
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
+				"SOeOEivbrIgIqlAt_2d37e358_b0d5", "question", INSTANCE, "question", org.instantlogic.designer.AbstractAttributeDesign.class);
+		question = $question;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $_default
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
+				"SvzAmkji_qfAsfij_90fc2f5f_41b4", "default", INSTANCE, "_default", org.instantlogic.designer.AbstractAttributeDesign.class);
+		_default = $_default;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $relevance
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
+				"XuvhwfxscefIildd_a1dace46_0cd7", "relevance", INSTANCE, "relevance", org.instantlogic.designer.AbstractAttributeDesign.class);
+		relevance = $relevance;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $belongsToEntity
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
+				"oqeakdiqfa_kIoie_ebf20aaa_1fcf", "belongsToEntity", INSTANCE, "belongsToEntity", org.instantlogic.designer.AbstractAttributeDesign.class);
+		belongsToEntity = $belongsToEntity;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
+				"uuEEosAqnya_whrd_8cfc8eb2_8bce", "dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractAttributeDesign.class);
+		dataType = $dataType;
 		// Reverse relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign> $validations
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign>(
-				"DErgrsEwcIcrm_za_a246511a_8ed8", "validations", INSTANCE, "validations", org.instantlogic.designer.AbstractAttributeDesign.class);
-		validations = $validations;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $attributeOf
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"RvnEchnctugjmexn_41245aaf_ce88", "attributeOf", INSTANCE, "attributeOf", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"OfaAmjliem_yokxd_98f7415e_7e33", "attributeOf", INSTANCE, "attributeOf", org.instantlogic.designer.AbstractAttributeDesign.class);
 		attributeOf = $attributeOf;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign> $validations
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign>(
+				"QlaeqcqUoygdohAl_04602bd0_cfd7", "validations", INSTANCE, "validations", org.instantlogic.designer.AbstractAttributeDesign.class);
+		validations = $validations;
 		
 		// Phase 2
 		EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
 			org.instantlogic.designer.entity.RelationDesignEntity.INSTANCE
 		};
-		$hasDefault.dataType.put("category", "boolean");
-		$hasRelevance.dataType.put("category", "boolean");
-		$hasRelevance._default = createDeduction0();
+		$hasRule.dataType.put("category", "boolean");
+		$hasRule._default = createDeduction0();
 		$writeable.dataType.put("category", "boolean");
 		$writeable._default = createDeduction1();
-		$hasRule.dataType.put("category", "boolean");
-		$hasRule._default = createDeduction2();
+		$hasDefault.dataType.put("category", "boolean");
+		$hasRelevance.dataType.put("category", "boolean");
+		$hasRelevance._default = createDeduction2();
 
+		$rule.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
+		$rule.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
+		$rule.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.ruleOfAttribute);
+		$rule.owner = true;
+		$explanation.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
+		$explanation.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
+		$explanation.owner = true;
 		$question.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
 		$question.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
 		$question.owner = true;
+		$_default.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
+		$_default.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
+		$_default.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.defaultOfAttribute);
+		$_default.owner = true;
+		$relevance.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
+		$relevance.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
+		$relevance.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.relevanceOfAttribute);
+		$relevance.owner = true;
+		$belongsToEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$belongsToEntity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$belongsToEntity.readOnly = true;
+		$belongsToEntity.rule = createDeduction3();
 		$dataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;
 		$dataType.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
 		$dataType.setReverseRelation(org.instantlogic.designer.entity.DataTypeDesignEntity.attribute);
 		$dataType.owner = true;
 		$dataType.autoCreate = true;
-		$relevance.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
-		$relevance.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
-		$relevance.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.relevanceOfAttribute);
-		$relevance.owner = true;
-		$_default.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
-		$_default.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
-		$_default.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.defaultOfAttribute);
-		$_default.owner = true;
-		$belongsToEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
-		$belongsToEntity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
-		$belongsToEntity.readOnly = true;
-		$belongsToEntity.rule = createDeduction3();
-		$explanation.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
-		$explanation.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
-		$explanation.owner = true;
-		$rule.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
-		$rule.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
-		$rule.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.ruleOfAttribute);
-		$rule.owner = true;
 
+		$attributeOf.reverse = true;
+		$attributeOf.valueClass = org.instantlogic.designer.EntityDesign.class;
+		$attributeOf.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
+		$attributeOf.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
 		$validations.reverse = true;
 		$validations.valueClass = org.instantlogic.designer.ValidationDesign.class;
 		$validations.to = org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE;
 		$validations.setReverseRelation(org.instantlogic.designer.entity.ValidationDesignEntity.displayWith);
 		$validations.multivalue = true;
-		$attributeOf.reverse = true;
-		$attributeOf.valueClass = org.instantlogic.designer.EntityDesign.class;
-		$attributeOf.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
-		$attributeOf.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.attributes);
 	}
 
 	@Override
@@ -187,7 +187,7 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 	
 	@Override
 	public String getUniqueId() {
-		return "MosnzezbrIbnukia_30f942eb_c7c7";
+		return "elohtitAcufcmlig_bfd1c0d6_561a";
 	}
 	
 	@Override
@@ -196,23 +196,23 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
+		hasRule,
+		writeable,
 		hasDefault,
 		hasRelevance,
-		writeable,
-		hasRule,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		question,
-		dataType,
-		relevance,
-		_default,
-		belongsToEntity,
-		explanation,
 		rule,
+		explanation,
+		question,
+		_default,
+		relevance,
+		belongsToEntity,
+		dataType,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		validations,
 		attributeOf,
+		validations,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

@@ -2,6 +2,7 @@ package org.instantlogic.designer.flow.deductionscheme;
 
 import org.instantlogic.designer.DeductionDesignEntityGenerator;
 import org.instantlogic.designer.DeductionInputDesignEntityGenerator;
+import org.instantlogic.designer.DeductionOperationInputDesignEntityGenerator;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.DeductionSchemeDesignEntityGenerator;
 import org.instantlogic.designer.FragmentTemplateDesign;
@@ -22,7 +23,7 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 	@Override
 	public void init() {
 		DeductionSchemeDesign schemeOutput, selectDeductions, selectInputs, deductionId, selected, deductionXY, deductionWidth, deductionHeight, deductionOperation,
-			deductionInputId, deductionOperationInput, selectOutputs, toDeductionInputId;
+			deductionInputId, deductionOperationInput, selectOutputs, toDeductionInputId, deductionInputDiagramPosition;
 		FragmentTemplateDesign exploreButton, deductionScheme, deduction;
 
 		setTitle(new TextTemplateDesign()
@@ -58,6 +59,7 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 											new SelectionDesign().setSelection(selectInputs = new DeductionSchemeDesign())
 												.setChild(new FragmentTemplateDesign("DeductionInput")
 													.setValue("deductionInputId", deductionInputId = new DeductionSchemeDesign())
+													.setValue("diagramPosition", deductionInputDiagramPosition = new DeductionSchemeDesign())
 													.setText("operationInputName", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(deductionOperationInput = new DeductionSchemeDesign())))
 												)
 										)
@@ -95,6 +97,8 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 		selectInputs.deduceRelation(DeductionDesignEntityGenerator.inputs);
 		
 		deductionInputId.deduceId(deductionInputId.deduceSelectedInstance(DeductionInputDesignEntityGenerator.ENTITY));
+		deductionInputDiagramPosition.deduceAttribute(DeductionOperationInputDesignEntityGenerator.diagramPosition, 
+			deductionInputDiagramPosition.deduceRelation(DeductionInputDesignEntityGenerator.operationInput));
 		deductionOperationInput.deduceRelation(DeductionInputDesignEntityGenerator.operationInput);
 		
 		selectOutputs.deduceReverseRelation(DeductionInputDesignEntityGenerator.inputs, selectOutputs.deduceSelectedInstance(DeductionDesignEntityGenerator.ENTITY));

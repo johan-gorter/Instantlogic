@@ -28,23 +28,6 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> collapsed
-		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.collapsed);
-	
-	public java.lang.Boolean getCollapsed() {
-		return collapsed.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> getCollapsedAttributeValue() {
-		return collapsed;
-	}
-
-	public PropertyDesign setCollapsed(java.lang.Boolean newValue) {
-		collapsed.setValue(newValue);
-		return (PropertyDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> propertyName
 		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.propertyName);
 	
@@ -62,7 +45,47 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> collapsed
+		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.collapsed);
+	
+	public java.lang.Boolean getCollapsed() {
+		return collapsed.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> getCollapsedAttributeValue() {
+		return collapsed;
+	}
+
+	public PropertyDesign setCollapsed(java.lang.Boolean newValue) {
+		collapsed.setValue(newValue);
+		return (PropertyDesign)this;
+	}
+	
+	
 	// Relations
+	
+	private final org.instantlogic.fabric.value.RelationValue<PropertyDesign, TextTemplateDesign> text
+		= createRelationValue(org.instantlogic.designer.entity.PropertyDesignEntity.text);
+		
+	public org.instantlogic.fabric.value.RelationValue<PropertyDesign, TextTemplateDesign> getTextRelationValue() {
+		return text;
+	}
+
+	public org.instantlogic.designer.TextTemplateDesign getText() {
+		return text.getValue();
+	}
+	
+	public PropertyDesign setText(org.instantlogic.designer.TextTemplateDesign newValue) {
+		text.setValue(newValue);
+		return (PropertyDesign)this;
+	}
+	
+	public org.instantlogic.designer.TextTemplateDesign newText() {
+		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
+		text.setValue(newValue);
+		return newValue;
+	}
+
 	
 	private final org.instantlogic.fabric.value.RelationValue<PropertyDesign, DeductionSchemeDesign> value
 		= createRelationValue(org.instantlogic.designer.entity.PropertyDesignEntity.value);
@@ -118,29 +141,6 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 		return (PropertyDesign)this;
 	}	
 	
-	
-	private final org.instantlogic.fabric.value.RelationValue<PropertyDesign, TextTemplateDesign> text
-		= createRelationValue(org.instantlogic.designer.entity.PropertyDesignEntity.text);
-		
-	public org.instantlogic.fabric.value.RelationValue<PropertyDesign, TextTemplateDesign> getTextRelationValue() {
-		return text;
-	}
-
-	public org.instantlogic.designer.TextTemplateDesign getText() {
-		return text.getValue();
-	}
-	
-	public PropertyDesign setText(org.instantlogic.designer.TextTemplateDesign newValue) {
-		text.setValue(newValue);
-		return (PropertyDesign)this;
-	}
-	
-	public org.instantlogic.designer.TextTemplateDesign newText() {
-		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
-		text.setValue(newValue);
-		return newValue;
-	}
-
 
 	// Reverse relations
 	
