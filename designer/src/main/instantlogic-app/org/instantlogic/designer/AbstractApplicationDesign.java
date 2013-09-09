@@ -28,23 +28,6 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> name
-		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.name);
-	
-	public java.lang.String getName() {
-		return name.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> getNameAttributeValue() {
-		return name;
-	}
-
-	public ApplicationDesign setName(java.lang.String newValue) {
-		name.setValue(newValue);
-		return (ApplicationDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> rootPackageName
 		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.rootPackageName);
 	
@@ -58,23 +41,6 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 
 	public ApplicationDesign setRootPackageName(java.lang.String newValue) {
 		rootPackageName.setValue(newValue);
-		return (ApplicationDesign)this;
-	}
-	
-	
-	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.Boolean> isCustomized
-		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.isCustomized);
-	
-	public java.lang.Boolean getIsCustomized() {
-		return isCustomized.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.Boolean> getIsCustomizedAttributeValue() {
-		return isCustomized;
-	}
-
-	public ApplicationDesign setIsCustomized(java.lang.Boolean newValue) {
-		isCustomized.setValue(newValue);
 		return (ApplicationDesign)this;
 	}
 	
@@ -102,6 +68,23 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.Boolean> isCustomized
+		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.isCustomized);
+	
+	public java.lang.Boolean getIsCustomized() {
+		return isCustomized.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.Boolean> getIsCustomizedAttributeValue() {
+		return isCustomized;
+	}
+
+	public ApplicationDesign setIsCustomized(java.lang.Boolean newValue) {
+		isCustomized.setValue(newValue);
+		return (ApplicationDesign)this;
+	}
+	
+	
 	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> sourcePath
 		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.sourcePath);
 	
@@ -119,49 +102,102 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	}
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> name
+		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.name);
+	
+	public java.lang.String getName() {
+		return name.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> getNameAttributeValue() {
+		return name;
+	}
+
+	public ApplicationDesign setName(java.lang.String newValue) {
+		name.setValue(newValue);
+		return (ApplicationDesign)this;
+	}
+	
+	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> entities
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
+	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EventDesign> events
+		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.events);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> getEntitiesRelationValue() {
-		return entities;
+	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EventDesign> getEventsRelationValue() {
+		return events;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign> getEntities() {
-		return entities.getValue();
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign> getEvents() {
+		return events.getValue();
 	}
 	
-	public ApplicationDesign addToEntities(EntityDesign item) {
-		entities.addValue(item);
+	public ApplicationDesign addToEvents(EventDesign item) {
+		events.addValue(item);
 		return (ApplicationDesign)this;
 	}
 	
-	public ApplicationDesign removeFromEntities(EntityDesign item) {
-		entities.removeValue(item);
+	public ApplicationDesign removeFromEvents(EventDesign item) {
+		events.removeValue(item);
 		return (ApplicationDesign)this;
 	}
 	
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> customDeductionOperations
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.customDeductionOperations);
+	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> startEvent
+		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.startEvent);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> getCustomDeductionOperationsRelationValue() {
-		return customDeductionOperations;
+	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> getStartEventRelationValue() {
+		return startEvent;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign> getCustomDeductionOperations() {
-		return customDeductionOperations.getValue();
+	public org.instantlogic.designer.EventDesign getStartEvent() {
+		return startEvent.getValue();
 	}
 	
-	public ApplicationDesign addToCustomDeductionOperations(DeductionOperationDesign item) {
-		customDeductionOperations.addValue(item);
+	public ApplicationDesign setStartEvent(org.instantlogic.designer.EventDesign newValue) {
+		startEvent.setValue(newValue);
 		return (ApplicationDesign)this;
 	}
 	
-	public ApplicationDesign removeFromCustomDeductionOperations(DeductionOperationDesign item) {
-		customDeductionOperations.removeValue(item);
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> loggedInEvent
+		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.loggedInEvent);
+		
+	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> getLoggedInEventRelationValue() {
+		return loggedInEvent;
+	}
+
+	public org.instantlogic.designer.EventDesign getLoggedInEvent() {
+		return loggedInEvent.getValue();
+	}
+	
+	public ApplicationDesign setLoggedInEvent(org.instantlogic.designer.EventDesign newValue) {
+		loggedInEvent.setValue(newValue);
+		return (ApplicationDesign)this;
+	}
+	
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> flows
+		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.flows);
+		
+	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> getFlowsRelationValue() {
+		return flows;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign> getFlows() {
+		return flows.getValue();
+	}
+	
+	public ApplicationDesign addToFlows(FlowDesign item) {
+		flows.addValue(item);
+		return (ApplicationDesign)this;
+	}
+	
+	public ApplicationDesign removeFromFlows(FlowDesign item) {
+		flows.removeValue(item);
 		return (ApplicationDesign)this;
 	}
 	
@@ -190,24 +226,24 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> flows
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.flows);
+	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> entities
+		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> getFlowsRelationValue() {
-		return flows;
+	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> getEntitiesRelationValue() {
+		return entities;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign> getFlows() {
-		return flows.getValue();
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign> getEntities() {
+		return entities.getValue();
 	}
 	
-	public ApplicationDesign addToFlows(FlowDesign item) {
-		flows.addValue(item);
+	public ApplicationDesign addToEntities(EntityDesign item) {
+		entities.addValue(item);
 		return (ApplicationDesign)this;
 	}
 	
-	public ApplicationDesign removeFromFlows(FlowDesign item) {
-		flows.removeValue(item);
+	public ApplicationDesign removeFromEntities(EntityDesign item) {
+		entities.removeValue(item);
 		return (ApplicationDesign)this;
 	}
 	
@@ -231,42 +267,42 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EventDesign> events
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.events);
+	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> customDeductionOperations
+		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.customDeductionOperations);
 		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EventDesign> getEventsRelationValue() {
-		return events;
+	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> getCustomDeductionOperationsRelationValue() {
+		return customDeductionOperations;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign> getEvents() {
-		return events.getValue();
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign> getCustomDeductionOperations() {
+		return customDeductionOperations.getValue();
 	}
 	
-	public ApplicationDesign addToEvents(EventDesign item) {
-		events.addValue(item);
+	public ApplicationDesign addToCustomDeductionOperations(DeductionOperationDesign item) {
+		customDeductionOperations.addValue(item);
 		return (ApplicationDesign)this;
 	}
 	
-	public ApplicationDesign removeFromEvents(EventDesign item) {
-		events.removeValue(item);
+	public ApplicationDesign removeFromCustomDeductionOperations(DeductionOperationDesign item) {
+		customDeductionOperations.removeValue(item);
 		return (ApplicationDesign)this;
 	}
 	
 	
 	
-	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> loggedInEvent
-		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.loggedInEvent);
+	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, FlowDesign> mainFlow
+		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.mainFlow);
 		
-	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> getLoggedInEventRelationValue() {
-		return loggedInEvent;
+	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, FlowDesign> getMainFlowRelationValue() {
+		return mainFlow;
 	}
 
-	public org.instantlogic.designer.EventDesign getLoggedInEvent() {
-		return loggedInEvent.getValue();
+	public org.instantlogic.designer.FlowDesign getMainFlow() {
+		return mainFlow.getValue();
 	}
 	
-	public ApplicationDesign setLoggedInEvent(org.instantlogic.designer.EventDesign newValue) {
-		loggedInEvent.setValue(newValue);
+	public ApplicationDesign setMainFlow(org.instantlogic.designer.FlowDesign newValue) {
+		mainFlow.setValue(newValue);
 		return (ApplicationDesign)this;
 	}
 	
@@ -294,42 +330,6 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	}
 	
 	
-	
-	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, FlowDesign> mainFlow
-		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.mainFlow);
-		
-	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, FlowDesign> getMainFlowRelationValue() {
-		return mainFlow;
-	}
-
-	public org.instantlogic.designer.FlowDesign getMainFlow() {
-		return mainFlow.getValue();
-	}
-	
-	public ApplicationDesign setMainFlow(org.instantlogic.designer.FlowDesign newValue) {
-		mainFlow.setValue(newValue);
-		return (ApplicationDesign)this;
-	}
-	
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> startEvent
-		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.startEvent);
-		
-	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> getStartEventRelationValue() {
-		return startEvent;
-	}
-
-	public org.instantlogic.designer.EventDesign getStartEvent() {
-		return startEvent.getValue();
-	}
-	
-	public ApplicationDesign setStartEvent(org.instantlogic.designer.EventDesign newValue) {
-		startEvent.setValue(newValue);
-		return (ApplicationDesign)this;
-	}
-	
-
 
 	// Reverse relations
 

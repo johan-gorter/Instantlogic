@@ -16,13 +16,13 @@ public class ApplicationContextPageFragment extends org.instantlogic.interaction
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-    new org.instantlogic.interaction.page.FragmentTemplate("ZiitAw_g_eafUb_c_5541c9d7_6d21", "Link")      
+    new org.instantlogic.interaction.page.FragmentTemplate("T_ysbpbp_IamAowv_cb4f5142_384e", "Link")      
         .setEvent(org.instantlogic.designer.event.HomeEvent.INSTANCE)        
         .addChild("content",
-            new org.instantlogic.interaction.page.FragmentTemplate("akAuAhltqifbocvv_90dd8dda_a9ce", "Block")      
+            new org.instantlogic.interaction.page.FragmentTemplate("Mhtrsmevxmaaqbdr_c8988b33_b1d7", "Block")      
                 .setStyleNames(new String[]{"inactive-card"})        
                 .addChild("content",
-                    new org.instantlogic.interaction.page.FragmentTemplate("BbvfEapurqdAycgu_93ad153d_2796", "Heading3")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("emltgokkgycrymsf_7f68b869_15e2", "Heading3")      
                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Application)").getTextTemplate())        
                 )        
         ); 

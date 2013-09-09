@@ -15,6 +15,6 @@ public class DefaultDesignNameDeduction extends Deduction<String> {
 		if (name.endsWith("Design")) {
 			name = name.substring(0, name.length()-6);
 		}
-		return ValueAndLevel.rule("new "+name.toLowerCase());
+		return ValueAndLevel.rule(design.getMetadata().getUniqueId());
 	}
 }

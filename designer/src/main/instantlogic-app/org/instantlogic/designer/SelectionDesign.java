@@ -30,29 +30,6 @@ public class SelectionDesign extends ElementDesign {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<SelectionDesign, ElementDesign> child
-		= createRelationValue(org.instantlogic.designer.entity.SelectionDesignEntity.child);
-		
-	public org.instantlogic.fabric.value.RelationValue<SelectionDesign, ElementDesign> getChildRelationValue() {
-		return child;
-	}
-
-	public org.instantlogic.designer.ElementDesign getChild() {
-		return child.getValue();
-	}
-	
-	public SelectionDesign setChild(org.instantlogic.designer.ElementDesign newValue) {
-		child.setValue(newValue);
-		return (SelectionDesign)this;
-	}
-	
-	public org.instantlogic.designer.ElementDesign newChild() {
-		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
-		child.setValue(newValue);
-		return newValue;
-	}
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<SelectionDesign, DeductionSchemeDesign> selection
 		= createRelationValue(org.instantlogic.designer.entity.SelectionDesignEntity.selection);
 		
@@ -72,6 +49,29 @@ public class SelectionDesign extends ElementDesign {
 	public org.instantlogic.designer.DeductionSchemeDesign newSelection() {
 		org.instantlogic.designer.DeductionSchemeDesign newValue = new org.instantlogic.designer.DeductionSchemeDesign(); 
 		selection.setValue(newValue);
+		return newValue;
+	}
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<SelectionDesign, ElementDesign> child
+		= createRelationValue(org.instantlogic.designer.entity.SelectionDesignEntity.child);
+		
+	public org.instantlogic.fabric.value.RelationValue<SelectionDesign, ElementDesign> getChildRelationValue() {
+		return child;
+	}
+
+	public org.instantlogic.designer.ElementDesign getChild() {
+		return child.getValue();
+	}
+	
+	public SelectionDesign setChild(org.instantlogic.designer.ElementDesign newValue) {
+		child.setValue(newValue);
+		return (SelectionDesign)this;
+	}
+	
+	public org.instantlogic.designer.ElementDesign newChild() {
+		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
+		child.setValue(newValue);
 		return newValue;
 	}
 

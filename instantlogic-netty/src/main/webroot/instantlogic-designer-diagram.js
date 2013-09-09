@@ -22,6 +22,9 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
   }
   
   var differentXYWidthHeight = function(oldModel, newModel) {
+	  if (!oldModel && !newModel) {
+		  return false
+	  };
 	  return (oldModel.xy.top!=newModel.xy.top || 
 			  oldModel.xy.left!=newModel.xy.left ||
 			  oldModel.width!=newModel.width ||
@@ -35,6 +38,14 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
     	element.setAttribute('width', width);
     	element.setAttribute('height', height);
     });
+  };
+  
+  var determineColor = function(operationName) {
+	  if (operationName=="Attribute") {
+		  return "lightgreen";
+	  } else if (operationName=="Selected instance") {
+		  return "cyan";
+	  } else return "yellow";
   };
   
   var getInputXY = function(deductionModel, inputModel) {
@@ -53,14 +64,19 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
       this.height = 500;
       this.draggingRect = svg.rect({fill:'none', stroke:'gray', 'stroke-width':2, 'stroke-dasharray':'4,2', rx:10, ry:10});
       var result = html.div({ className: 'deduction-scheme'},
-        this.node = svg.svg({ viewBox: [-this.width/2, 0, this.width, this.height].toString() })
+        this.node = svg.svg({ viewBox: [-this.width/2, 0, this.width, this.height].toString() },
+          this.background = svg.rect({x:-this.width/2+0.5,y:0.5, width:this.width-1, height: this.height-1, fill: 'white', stroke:'black', 'stroke-width':1, rx:10, ry:10}),
+          this.container = svg.g(),
+          svg.circle({cx:0, cy:3, r:5, fill:'black'})
+        )
       );
+      this.node.on("click", this.onClick, this);
       this.node.on("mouseup", this.onMouseup, this);
       this.node.on("mousemove", this.onMousemove, this);
       return result;
     },
     fragmentLists: function(model) {
-      return [[this.node, model.deductions, svgFragmentListOptions]];
+      return [[this.container, model.deductions, svgFragmentListOptions]];
     },
     overrides: {
     	toSVGXY: function(pageX, pageY) {
@@ -86,6 +102,11 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
     		setXYWidthHeight([this.draggingRect], deduction.model.xy.left-deduction.model.width/2-2, deduction.model.xy.top-2, deduction.model.width+4, deduction.model.height+4);
     		this.node.appendChild(this.draggingRect);
     	},
+    	onClick: function(evt) {
+    		if (evt.target.compareTo(this.background)) {
+    			this.engine.sendChange(this.model.id, null);
+    		}
+    	},
     	onMouseup: function(evt) {
     		if (this.drag) {
     			this.drag.deductionFragment.draggedTo(this.toSVGXY(evt.pageX, evt.pageY));
@@ -105,25 +126,27 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
 
   ns.Deduction = createFragment({
     createMarkup: function() {
-      this.selectionBorder = svg.rect({fill:'none', stroke:'blue', 'stroke-width':3, 'stroke-dasharray':'5,5', rx:16, ry:16});
+      this.selectionBorder = svg.rect({fill:'none', stroke:'red', 'stroke-width':3, 'stroke-dasharray':'5,5', rx:16, ry:16});
       return this.node = svg.g(
-        this.bottomRect = svg.rect({stroke:'black', 'stroke-width': 5, rx:10, ry:10}),
+        this.bottomRect = svg.rect({stroke:'black', 'stroke-width': 3, rx:10, ry:10}),
         this.outputsBackgroundGroup = svg.g(),
         this.inputsGroup = svg.g(),
         this.outputsGroup = svg.g(),
-        this.rect = svg.rect({fill:'red', rx:10, ry:10}),
+        this.rect = svg.rect({rx:10, ry:10}),
         this.svgTextBox = svg.svg(
-          this.nameText = svg.text({'font-family':'"Helvetica Neue", Helvetica, Arial, sans-serif', 'font-size':'15px', y:18})
+          this.operationText = svg.text({'font-family':'"Helvetica Neue", Helvetica, Arial, sans-serif', 'font-size':'13px', 'font-style': 'italic', x:3, y:15}),
+          this.parametersText = svg.text({'font-family':'"Helvetica Neue", Helvetica, Arial, sans-serif', 'font-size':'15px', x:3, y:33})
         )
       );
     },
     texts: function(model) {
-      return [[this.nameText, model.operationName]];
+      return [[this.operationText, model.operationName], [this.parametersText, model.parameters]];
     },
     fragmentLists: function(model) {
       return [[this.outputsGroup, model.outputs, svgFragmentListOptions], [this.inputsGroup, model.inputs, svgFragmentListOptions]];
     },
     postInit: function(model) {
+      this.rect.setAttribute("fill", determineColor(model.operationName));
       this.setDimensions(model);
       if (model.selected) {
     	  this.toggleSelected(true);
@@ -140,13 +163,14 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
       if (newModel.selected != this.oldModel.selected) {
     	  this.toggleSelected(newModel.selected);
       }
+      if (newModel.operationName != this.oldModel.operationName) {
+    	  this.rect.setAttribute("fill", determineColor(newModel.operationName));
+      }
     },
     overrides: {
       setDimensions: function (model) {
     	setXYWidthHeight([this.rect, this.bottomRect, this.svgTextBox], model.xy.left-model.width/2, model.xy.top, model.width, model.height);
     	setXYWidthHeight([this.selectionBorder], model.xy.left-model.width/2-6, model.xy.top-6, model.width+12, model.height+12);
-//        this.nameText.setAttribute('x', model.xy.left-model.width/2+1);
-//        this.nameText.setAttribute('y', model.xy.top+2);
       },
       onClick: function(evt) {
     	  evt.preventDefault();
@@ -161,7 +185,7 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
       },
       toggleSelected: function(newValue) {
     	  if (newValue) {
-    		  this.node.prepend(this.selectionBorder);
+    		  this.node.appendChild(this.selectionBorder);
     	  } else {
     		  this.node.removeChild(this.selectionBorder);
     	  }
@@ -171,16 +195,20 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
   
   ns.DeductionInput = createFragment({
     createMarkup: function() {
-      return this.node = svg.circle({fill:'red', stroke:'black', 'stroke-width':3, r:5});
+      return this.node = svg.circle({stroke:'black', 'stroke-width':1.5, r:5});
     },
     postInit: function(model) {
     	this.oldDeductionModel = this.getDeductionModel();
     	this.setDimensions(model, this.oldDeductionModel);
+		this.node.setAttribute('fill', determineColor(this.oldDeductionModel.operationName));
       },
       postUpdate: function(newModel, diff) {
     	  var deductionModel = this.getDeductionModel();
     	  if (differentXYWidthHeight(deductionModel, this.oldDeductionModel) || newModel.diagramPosition != this.oldModel.diagramPosition) {
     		  this.setDimensions(newModel, deductionModel);
+    	  }
+    	  if (this.oldDeductionModel.operationName!=deductionModel.operationName) {
+    		  this.node.setAttribute('fill', determineColor(deductionModel.operationName));
     	  }
     	  this.oldDeductionModel = deductionModel;
       },
@@ -199,13 +227,14 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
   ns.Output = createFragment({
     createMarkup: function() {
       this.backgroundNode = svg.path({stroke:'black', 'stroke-width':3});
-      return this.node = svg.path({fill:'red'});
+      return this.node = svg.path();
     },
     postInit: function(model) {
       this.parentFragment.outputsBackgroundGroup.appendChild(this.backgroundNode);
       this.oldSourceDeductionModel = this.getSourceDeductionModel(); 
       this.oldTargetModels = this.getTargetDeductionAndInputModel(model.toDeductionInputId);
       this.setDimensions(this.oldSourceDeductionModel, this.oldTargetModels[0], this.oldTargetModels[1])
+	  this.node.setAttribute('fill', determineColor(this.oldSourceDeductionModel.operationName));
     },
     postUpdate: function(newModel, diff) {
     	var sourceDeductionModel = this.getSourceDeductionModel();
@@ -215,6 +244,9 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
             targetModels[1].diagramPostion != this.oldTargetModels[1].diagramPosition) {
         	this.setDimensions(sourceDeductionModel, targetModels[0], targetModels[1]);
         }
+        if (this.oldSourceDeductionModel.operationName!=sourceDeductionModel.operationName) {
+		  this.node.setAttribute('fill', determineColor(sourceDeductionModel.operationName));
+		}
         this.oldSourceDeductionModel = sourceDeductionModel;
         this.oldTargetModels = targetModels;
     },
@@ -229,6 +261,10 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
     		return this.parentFragment.model;
     	},
     	getTargetDeductionAndInputModel: function(toDeductionInputId) {
+    		if (!toDeductionInputId) {
+    			// This means we are pointing to the output of the scheme
+    			return [null,{}];
+    		}
     		var deductions = this.getSchemeModel().deductions;
     		for (var i=0;i<deductions.length;i++) {
     			var candidateDeduction = deductions[i];
@@ -242,14 +278,16 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
     		throw new Error("DeductionInputId not found: "+toDeductionInputId);
     	},
     	setDimensions: function(sourceDeductionModel, targetDeductionModel, targetInputModel) {
-    		var targetXY = getInputXY(targetDeductionModel, targetInputModel);
+    		var targetXY = targetDeductionModel?getInputXY(targetDeductionModel, targetInputModel):[0,3];
     		var sourceXY = [sourceDeductionModel.xy.left, sourceDeductionModel.xy.top+sourceDeductionModel.height/2];
 
             var pointerLength = Math.sqrt(sqr(sourceXY[0] - targetXY[0]) + sqr(sourceXY[1] - targetXY[1]));
+            var targetRadiusX = ((sourceXY[0] - targetXY[0]) / pointerLength) * 5;
+            var targetRadiusY = ((sourceXY[1] - targetXY[1]) / pointerLength) * 5;
             var radiusX = ((sourceXY[1] - targetXY[1]) / pointerLength) * 10;
             var radiusY = -((sourceXY[0] - targetXY[0]) / pointerLength) * 10;
     		var path = [ 'M', [sourceXY[0] + radiusX, sourceXY[1] + radiusY], 
-    	    		     'L', targetXY,
+    	    		     'L', [targetXY[0] + targetRadiusX, targetXY[1]+targetRadiusY],
     	    		     'L', [sourceXY[0] - radiusX, sourceXY[1] - radiusY],
     	    		     'Z'].join('')
     		this.node.setAttribute('d', path);

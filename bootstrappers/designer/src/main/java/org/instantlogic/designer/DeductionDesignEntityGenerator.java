@@ -17,6 +17,7 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
     public static final AttributeDesign diagramPosition = addAttribute(ENTITY, "diagramPosition", Point2d.class);
     public static final AttributeDesign diagramWidth = addAttribute(ENTITY, "diagramWidth", DataCategoryDesign.number);
     public static final AttributeDesign diagramHeight = addAttribute(ENTITY, "diagramHeight", DataCategoryDesign.number);
+    public static final AttributeDesign parameterValuesDescription = addAttribute(ENTITY, "parameterValuesDescription", DataCategoryDesign.text);
     
     // Relations
     public static final RelationDesign operation = addRelation(ENTITY, "operation", RelationType.ManyToZeroOrOne, DeductionOperationDesignEntityGenerator.ENTITY);
@@ -35,5 +36,9 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
     	diagramHeight.newDefault().deduceConstant(java.lang.Double.class, 40.0);
     	diagramWidth.newDefault().deduceConstant(java.lang.Double.class, 80.0);
     	diagramPosition.newDefault().deduceCustom(DesignerApplicationGenerator.DeductionDiagramPositionDefaultDeduction);
+
+    	parameterValuesDescription.setWriteable(false);
+    	parameterValuesDescription.newRule().deduceCustom(DesignerApplicationGenerator.DeductionParameterValuesDescriptionRuleDeduction);
     }
+    
 }

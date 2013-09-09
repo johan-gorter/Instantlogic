@@ -2,7 +2,7 @@
   "instanceId": "Lruwoktaxucicnhv_cfa4d5c2_0295",
   "entityName": "project",
   "version": 0,
-  "last issue number": 50,
+  "last issue number": 51,
   "users": [
     {
       "instanceId": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
@@ -33,29 +33,29 @@
     {
       "instanceId": "FrrwkscsIIejqlqn_cab38e34_a4fc",
       "entityName": "issue",
-      "headline": "markets",
+      "headline": "green banana tropics markets",
       "number": 50,
-      "description": "A banana is an edible fruit produced by several kinds of large herbaceous flowering plants of the genus Musa. (In some countries, bananas used for cooking may be called plantains.) The fruit is variable in size, color and firmness, but is usually elongated and curved, with soft flesh rich in starch covered with a rind which may be yellow, purple or red when ripe. The fruits grow in clusters hanging from the top of the plant. Almost all modern edible parthenocarpic (seedless) bananas come from two wild species – Musa acuminata and Musa balbisiana. The scientific names of most cultivated bananas are Musa acuminata, Musa balbisiana, and Musa × paradisiaca for the hybrid Musa acuminata × M. balbisiana, depending on their genomic constitution. The old scientific name Musa sapientum is no longer used.",
+      "description": "The fruit requires careful handling, rapid transport to ports, cooling, and refrigerated shipping.\r\n\r\nCavendish bananas are the main commercial banana cultivars sold in the world market.",
       "status": {
-        "instanceName": "closed",
+        "instanceName": "open",
         "entityName": "issueStatus"
       },
-      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
-      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
+      "reporter": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "assignee": "WyfzAmjEdqfjuhoo_96ba133b_e046",
       "comments": []
     },
     {
       "instanceId": "GqhnrrqvomdOgmmi_cc724908_6ee6",
       "entityName": "issue",
-      "headline": "plant",
+      "headline": "green Harvested shoots are first boiled in lye to prepare fibers for yarn-making. plant In the Japanese system, leaves and shoots are cut from the plant periodically to ensure softness. There is some textual evidence that Muhammad was familiar with bananas.",
       "number": 48,
-      "description": "When a banana plant is mature, the corm stops producing new leaves and begins to form a flower spike or inflorescence. ",
+      "description": "Harvested shoots are first boiled in lye to prepare fibers for yarn-making.",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
       },
-      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
-      "assignee": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
+      "reporter": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
       "comments": []
     },
     {
@@ -111,6 +111,20 @@
       },
       "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "assignee": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "comments": []
+    },
+    {
+      "instanceId": "ujximAAodqcvoof_18250206_7f0a",
+      "entityName": "issue",
+      "headline": "tropics A 2008 study reported that ripe bananas fluoresce when exposed to ultraviolet light.",
+      "number": 51,
+      "description": "A 2008 study reported that ripe bananas fluoresce when exposed to ultraviolet light.\r\n\r\nIn a series of papers published in 1947 onwards, Ernest Cheesman showed that Linnaeus\u0027 Musa sapientum and Musa paradisiaca were actually cultivars and descendants of two wild seed-producing species, Musa acuminata and Musa balbisiana, both first described by Luigi Aloysius Colla.[29] He recommended the abolition of Linnaeus\u0027 species in favor of reclassifying bananas according to three morphologically distinct groups of cultivars – those primarily exhibiting the botanical characteristics of Musa balbisiana, those primarily exhibiting the botanical characteristics of Musa acuminata, and those with characteristics that are the combination of the two.[28] Researchers Norman Simmonds and Ken Shepherd proposed a genome-based nomenclature system in 1955. This system eliminated almost all the difficulties and inconsistencies of the earlier classification of bananas based on assigning scientific names to cultivated varieties. Despite this, the original names are still recognized by some authorities today, leading to confusion.\r\n\r\nCavendish bananas are the main commercial banana cultivars sold in the world market.",
+      "status": {
+        "instanceName": "draft",
+        "entityName": "issueStatus"
+      },
+      "reporter": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "assignee": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "comments": []
     }
   ]

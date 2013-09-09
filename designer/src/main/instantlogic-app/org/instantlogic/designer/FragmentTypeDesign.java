@@ -28,23 +28,6 @@ public class FragmentTypeDesign extends Design {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasEvent
-		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasEvent);
-	
-	public java.lang.Boolean getHasEvent() {
-		return hasEvent.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasEventAttributeValue() {
-		return hasEvent;
-	}
-
-	public FragmentTypeDesign setHasEvent(java.lang.Boolean newValue) {
-		hasEvent.setValue(newValue);
-		return (FragmentTypeDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> fragmentFilters
 		= createAttributeValues(org.instantlogic.designer.entity.FragmentTypeDesignEntity.fragmentFilters);
 	
@@ -81,6 +64,23 @@ public class FragmentTypeDesign extends Design {
 
 	public FragmentTypeDesign setHasAttribute(java.lang.Boolean newValue) {
 		hasAttribute.setValue(newValue);
+		return (FragmentTypeDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasEvent
+		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasEvent);
+	
+	public java.lang.Boolean getHasEvent() {
+		return hasEvent.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> getHasEventAttributeValue() {
+		return hasEvent;
+	}
+
+	public FragmentTypeDesign setHasEvent(java.lang.Boolean newValue) {
+		hasEvent.setValue(newValue);
 		return (FragmentTypeDesign)this;
 	}
 	

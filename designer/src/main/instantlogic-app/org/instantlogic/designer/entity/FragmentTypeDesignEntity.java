@@ -29,9 +29,9 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 
 	
 	// Attributes
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean> hasEvent; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Values<java.lang.String>, java.lang.String> fragmentFilters; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean> hasAttribute; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean> hasEvent; 
 	
 	// Relations
 	
@@ -42,36 +42,36 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 	static {
 		// Phase 1
 		// Attributes
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean> $hasEvent
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-				"YUfoUfkjmI_AceIn_5ba4550d_34dc", "hasEvent", INSTANCE, java.lang.Boolean.class, "hasEvent", org.instantlogic.designer.FragmentTypeDesign.class);
-		hasEvent = $hasEvent;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Values<java.lang.String>, java.lang.String> $fragmentFilters
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Values<java.lang.String>, java.lang.String>(
-				"ayuEvcsjIqfwols_f98a65b1_bb87", "fragmentFilters", INSTANCE, java.lang.String.class, "fragmentFilters", org.instantlogic.designer.FragmentTypeDesign.class);
+				"StgAglivayeawapq_9c04ac68_538e", "fragmentFilters", INSTANCE, java.lang.String.class, "fragmentFilters", org.instantlogic.designer.FragmentTypeDesign.class);
 		fragmentFilters = $fragmentFilters;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean> $hasAttribute
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean>(
-				"iEruUpwoEyaqcdpv_c893f7a0_d7c3", "hasAttribute", INSTANCE, java.lang.Boolean.class, "hasAttribute", org.instantlogic.designer.FragmentTypeDesign.class);
+				"XzujadyxOyfUIhuj_6f3ae35c_7528", "hasAttribute", INSTANCE, java.lang.Boolean.class, "hasAttribute", org.instantlogic.designer.FragmentTypeDesign.class);
 		hasAttribute = $hasAttribute;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean> $hasEvent
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.FragmentTypeDesign, java.lang.Boolean, java.lang.Boolean>(
+				"icno_oAExebOqgOz_dbf699d2_1f0f", "hasEvent", INSTANCE, java.lang.Boolean.class, "hasEvent", org.instantlogic.designer.FragmentTypeDesign.class);
+		hasEvent = $hasEvent;
 		// Relations
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $usages
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign>(
-				"JtfwiOzAhqavgnug_acd4c6b8_3f51", "usages", INSTANCE, "usages", org.instantlogic.designer.FragmentTypeDesign.class);
+				"BArqkuIAgqgdwjuu_c1032b91_36ee", "usages", INSTANCE, "usages", org.instantlogic.designer.FragmentTypeDesign.class);
 		usages = $usages;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"adqjyapdzIeAIotq_391f54d0_2aa5", "application", INSTANCE, "application", org.instantlogic.designer.FragmentTypeDesign.class);
+				"ixgtuwAIdIchIftU_b1c9c5c2_e9e4", "application", INSTANCE, "application", org.instantlogic.designer.FragmentTypeDesign.class);
 		application = $application;
 		
 		// Phase 2
-		$hasEvent.dataType.put("category", "boolean");
-		$hasEvent._default = createDeduction0();
 		$fragmentFilters.dataType.put("category", "text");
 		$fragmentFilters.multivalue = true;
 		$hasAttribute.dataType.put("category", "boolean");
-		$hasAttribute._default = createDeduction1();
+		$hasAttribute._default = createDeduction0();
+		$hasEvent.dataType.put("category", "boolean");
+		$hasEvent._default = createDeduction1();
 
 
 		$usages.reverse = true;
@@ -97,7 +97,7 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 	
 	@Override
 	public String getUniqueId() {
-		return "ZuAhpdomri_Osgpe_2004f7e6_5a4d";
+		return "Uzwxgrctjeeimlkt_6d0174ea_e5c2";
 	}
 	
 	@Override
@@ -106,9 +106,9 @@ public class FragmentTypeDesignEntity extends org.instantlogic.fabric.model.Enti
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
-		hasEvent,
 		fragmentFilters,
 		hasAttribute,
+		hasEvent,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};

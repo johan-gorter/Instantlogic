@@ -13,6 +13,7 @@ public class DeductionParameterDesignEntityGenerator extends EntityDesign {
     
     // Attributes
     public static final AttributeDesign value = addAttribute(ENTITY, "value", Object.class);
+    public static final AttributeDesign valueDescription = addAttribute(ENTITY, "valueDescription", DataCategoryDesign.text); 
 
     // Relations
     public static final RelationDesign operationParameter = addRelation(ENTITY, "operationParameter", RelationType.ManyToZeroOrOne, DeductionOperationParameterDesignEntityGenerator.ENTITY);
@@ -21,4 +22,11 @@ public class DeductionParameterDesignEntityGenerator extends EntityDesign {
     public static final RelationDesign entityValue = addRelation(ENTITY, "entityValue", RelationType.ManyToZeroOrOne, EntityDesignEntityGenerator.ENTITY);
     public static final RelationDesign attributeValue = addRelation(ENTITY, "attributeValue", RelationType.ManyToZeroOrOne, AttributeDesignEntityGenerator.ENTITY);
     public static final RelationDesign staticInstanceValue = addRelation(ENTITY, "staticInstanceValue", RelationType.ManyToZeroOrOne, StaticInstanceDesignEntityGenerator.ENTITY);
+    
+    @Override
+    public void init() {
+    	super.init();
+    	valueDescription.setWriteable(false);
+    	valueDescription.newRule().deduceCustom(DesignerApplicationGenerator.DeductionParameterValueDescriptionRuleDeduction);
+    }
 }

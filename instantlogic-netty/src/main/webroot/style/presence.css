@@ -16,13 +16,13 @@
 .top-right {position:absolute; top:0px;right:0px;}
 .navbar-fixed-top .btn {margin-top:0px; color:#999;}
 
-/*
-.focus-bar {position:absolute;z-index: -1000;width:100%; height:58px; background-color:#FDFDFD;background: linear-gradient(to bottom, #FDFDFD 1%,#E0E0E0 50%,#FDFDFD 100%);}
-.focus-bar.me {z-index: -999;background-color:#FFFFB0;background: linear-gradient(to bottom, #ffffEA 1%,#FFFF90 50%,#ffffEA 100%);}
-*/
+.focus-bar {position:absolute;z-index: -1000;width:100%; height:58px; background-color:#FDFDFD;background: linear-gradient(to bottom, #FFFFFF 1%,#E0E0E0 50%,#FFFFFF 100%);}
+.focus-bar.me {z-index: -999;background-color:#FFFFB0;background: linear-gradient(to bottom, #ffffff 1%,#FFFFAA 50%,#ffffff 100%);}
 
+/*
 .focus-bar {position:absolute;z-index: -1000;width:98%; height:78px; background-color:#FFFFF;margin: 0 1%;border-radius:8px;}
 .focus-bar.me {z-index: -999;background-color:#f0f6fa;background: linear-gradient(to bottom, #f0f6fa 1%, #f0f6fa 40%, rgba(255,255,255,0) 100%);border-top: solid 1px #cceaff}
+*/
 
 .floating-avatar {position:absolute; left:600px; top:4px; background-color:#222222;z-index:11}
 .floating-pointer {position:absolute; left:600px; top:2px; width:54px; height:54px; background-color:#222222; z-index:10}

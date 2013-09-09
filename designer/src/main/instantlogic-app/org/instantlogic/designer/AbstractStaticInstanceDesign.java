@@ -30,29 +30,6 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, TextTemplateDesign> description
-		= createRelationValue(org.instantlogic.designer.entity.StaticInstanceDesignEntity.description);
-		
-	public org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, TextTemplateDesign> getDescriptionRelationValue() {
-		return description;
-	}
-
-	public org.instantlogic.designer.TextTemplateDesign getDescription() {
-		return description.getValue();
-	}
-	
-	public StaticInstanceDesign setDescription(org.instantlogic.designer.TextTemplateDesign newValue) {
-		description.setValue(newValue);
-		return (StaticInstanceDesign)this;
-	}
-	
-	public org.instantlogic.designer.TextTemplateDesign newDescription() {
-		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
-		description.setValue(newValue);
-		return newValue;
-	}
-
-	
 	private final org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> values
 		= createRelationValues(org.instantlogic.designer.entity.StaticInstanceDesignEntity.values);
 		
@@ -75,25 +52,31 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 	}
 	
 	
+	
+	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, TextTemplateDesign> description
+		= createRelationValue(org.instantlogic.designer.entity.StaticInstanceDesignEntity.description);
+		
+	public org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, TextTemplateDesign> getDescriptionRelationValue() {
+		return description;
+	}
+
+	public org.instantlogic.designer.TextTemplateDesign getDescription() {
+		return description.getValue();
+	}
+	
+	public StaticInstanceDesign setDescription(org.instantlogic.designer.TextTemplateDesign newValue) {
+		description.setValue(newValue);
+		return (StaticInstanceDesign)this;
+	}
+	
+	public org.instantlogic.designer.TextTemplateDesign newDescription() {
+		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
+		description.setValue(newValue);
+		return newValue;
+	}
+
 
 	// Reverse relations
-	
-	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, EntityDesign> entity
-		= createReverseRelationValue(org.instantlogic.designer.entity.StaticInstanceDesignEntity.entity);
-
-	public org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, EntityDesign> getEntityRelationValue() {
-		return entity;
-	}
-
-	public org.instantlogic.designer.EntityDesign getEntity() {
-		return entity.getValue();
-	}
-
-    public StaticInstanceDesign setEntity(org.instantlogic.designer.EntityDesign newValue) {
-        entity.setValue(newValue);
-        return (StaticInstanceDesign)this;
-    }
-
 	
 	private final org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> valueOfStaticInstances
 		= createReverseRelationValues(org.instantlogic.designer.entity.StaticInstanceDesignEntity.valueOfStaticInstances);
@@ -113,6 +96,23 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 
     public StaticInstanceDesign removeFromValueOfStaticInstances(StaticInstanceValueDesign item) {
         valueOfStaticInstances.removeValue(item);
+        return (StaticInstanceDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, EntityDesign> entity
+		= createReverseRelationValue(org.instantlogic.designer.entity.StaticInstanceDesignEntity.entity);
+
+	public org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, EntityDesign> getEntityRelationValue() {
+		return entity;
+	}
+
+	public org.instantlogic.designer.EntityDesign getEntity() {
+		return entity.getValue();
+	}
+
+    public StaticInstanceDesign setEntity(org.instantlogic.designer.EntityDesign newValue) {
+        entity.setValue(newValue);
         return (StaticInstanceDesign)this;
     }
 

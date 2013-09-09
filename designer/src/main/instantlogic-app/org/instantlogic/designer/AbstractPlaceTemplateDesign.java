@@ -30,29 +30,6 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ElementDesign> content
-		= createRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.content);
-		
-	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ElementDesign> getContentRelationValue() {
-		return content;
-	}
-
-	public org.instantlogic.designer.ElementDesign getContent() {
-		return content.getValue();
-	}
-	
-	public PlaceTemplateDesign setContent(org.instantlogic.designer.ElementDesign newValue) {
-		content.setValue(newValue);
-		return (PlaceTemplateDesign)this;
-	}
-	
-	public org.instantlogic.designer.ElementDesign newContent() {
-		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
-		content.setValue(newValue);
-		return newValue;
-	}
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, TextTemplateDesign> title
 		= createRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.title);
 		
@@ -72,6 +49,29 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
 	public org.instantlogic.designer.TextTemplateDesign newTitle() {
 		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
 		title.setValue(newValue);
+		return newValue;
+	}
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ElementDesign> content
+		= createRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.content);
+		
+	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ElementDesign> getContentRelationValue() {
+		return content;
+	}
+
+	public org.instantlogic.designer.ElementDesign getContent() {
+		return content.getValue();
+	}
+	
+	public PlaceTemplateDesign setContent(org.instantlogic.designer.ElementDesign newValue) {
+		content.setValue(newValue);
+		return (PlaceTemplateDesign)this;
+	}
+	
+	public org.instantlogic.designer.ElementDesign newContent() {
+		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
+		content.setValue(newValue);
 		return newValue;
 	}
 

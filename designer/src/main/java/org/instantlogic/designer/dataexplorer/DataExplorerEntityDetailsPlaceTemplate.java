@@ -23,11 +23,13 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	private final Entity<?> entity;
 	private DataExplorerEntityFlow entityFlow;
 	private List<FlowEvent> directEvents;
+	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
 
-	public DataExplorerEntityDetailsPlaceTemplate(DataExplorerEntityFlow entityFlow, List<FlowEvent> directEvents) {
+	public DataExplorerEntityDetailsPlaceTemplate(DataExplorerEntityFlow entityFlow, List<FlowEvent> directEvents, DataExplorerOwnerBreadcrumbElement breadcrumbElement) {
 		this.entity = entityFlow.getEntity();
 		this.entityFlow = entityFlow;
 		this.directEvents = directEvents;
+		this.breadcrumbElement = breadcrumbElement;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -35,8 +37,9 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	public FragmentTemplate getRootContainer() {
 		// the resulting page can be used to view each instance of the same entity
 		FragmentTemplate page = new FragmentTemplate(entity.getUniqueId()+"-details", "Page")
+		    .addChild("mainContent", breadcrumbElement)
 			.addChild("mainContent",
-                new org.instantlogic.interaction.page.FragmentTemplate("h1", "Heading1")      
+                new FragmentTemplate("h1", "Heading1")      
                     .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated()
                     	.add(entity.getName() + " '")
                     	.add(createInstanceTitleDeduction())

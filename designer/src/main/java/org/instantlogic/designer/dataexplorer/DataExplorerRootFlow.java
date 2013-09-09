@@ -23,6 +23,7 @@ public class DataExplorerRootFlow extends Flow {
 
 	private Map<String, DataExplorerEntityFlow> entityFlows = new HashMap<String, DataExplorerEntityFlow>();
 	private Map<String, SimpleFlowEvent> entityDetailsEvents = new HashMap<String, SimpleFlowEvent>();
+	private Map<String, DataExplorerOwnerBreadcrumbElement> breadcrumbElements = new HashMap<String, DataExplorerOwnerBreadcrumbElement>();
 	private Map<SimpleFlowEvent, DataExplorerEntityFlow> detailEventToFlow = new HashMap<SimpleFlowEvent, DataExplorerEntityFlow>();
 	private FlowWithDataExplorer flowWithDataExplorer;
 	
@@ -30,12 +31,18 @@ public class DataExplorerRootFlow extends Flow {
 		this.flowWithDataExplorer = flowWithDataExplorer;
 		SortedMap<String,Entity<?>> allEntitiesById = CaseAdministration.getAllEntitiesById(application.getCaseEntity());
 		for (Entity<?> entity : allEntitiesById.values()) {
+			DataExplorerOwnerBreadcrumbElement breadcrumbElement = new DataExplorerOwnerBreadcrumbElement(entity, this);
+			breadcrumbElements.put(entity.getUniqueId(), breadcrumbElement);
 			SimpleFlowEvent detailsEvent = new SimpleFlowEvent(entity.getUniqueId()+"-details", entity);
-			DataExplorerEntityFlow entityFlow = new DataExplorerEntityFlow(entity, detailsEvent, flowWithDataExplorer.getDirectEvents(entity));
+			DataExplorerEntityFlow entityFlow = new DataExplorerEntityFlow(entity, detailsEvent, breadcrumbElement, flowWithDataExplorer.getDirectEvents(entity));
 			entityFlows.put(entity.getUniqueId(), entityFlow);
 			entityDetailsEvents.put(entity.getUniqueId(), detailsEvent);
 			detailEventToFlow.put(detailsEvent, entityFlow);
 		}
+	}
+	
+	public DataExplorerOwnerBreadcrumbElement getBreadcrumbElement(Entity entity) {
+		return breadcrumbElements.get(entity.getUniqueId());
 	}
 
 	private DataExplorerEntityFlow getEntityFlow(String entityId) {

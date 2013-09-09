@@ -28,23 +28,6 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> propertyName
-		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.propertyName);
-	
-	public java.lang.String getPropertyName() {
-		return propertyName.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> getPropertyNameAttributeValue() {
-		return propertyName;
-	}
-
-	public PropertyDesign setPropertyName(java.lang.String newValue) {
-		propertyName.setValue(newValue);
-		return (PropertyDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.Boolean> collapsed
 		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.collapsed);
 	
@@ -62,7 +45,56 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> propertyName
+		= createAttributeValue(org.instantlogic.designer.entity.PropertyDesignEntity.propertyName);
+	
+	public java.lang.String getPropertyName() {
+		return propertyName.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<PropertyDesign, java.lang.String> getPropertyNameAttributeValue() {
+		return propertyName;
+	}
+
+	public PropertyDesign setPropertyName(java.lang.String newValue) {
+		propertyName.setValue(newValue);
+		return (PropertyDesign)this;
+	}
+	
+	
 	// Relations
+	
+	private final org.instantlogic.fabric.value.RelationValueList<PropertyDesign, ElementDesign> children
+		= createRelationValueList(org.instantlogic.designer.entity.PropertyDesignEntity.children);
+		
+	public org.instantlogic.fabric.value.RelationValueList<PropertyDesign, ElementDesign> getChildrenRelationValue() {
+		return children;
+	}
+
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.ElementDesign> getChildren() {
+		return children.getValue();
+	}
+	
+	public PropertyDesign addToChildren(ElementDesign item) {
+		children.addValue(item);
+		return (PropertyDesign)this;
+	}
+	
+	public PropertyDesign removeFromChildren(ElementDesign item) {
+		children.removeValue(item);
+		return (PropertyDesign)this;
+	}
+	
+	public PropertyDesign removeFromChildren(int index) {
+		children.removeValue(index);
+		return (PropertyDesign)this;
+	}
+
+	public PropertyDesign addToChildren(ElementDesign item, int index) {
+		children.insertValue(item, index);
+		return (PropertyDesign)this;
+	}	
+	
 	
 	private final org.instantlogic.fabric.value.RelationValue<PropertyDesign, TextTemplateDesign> text
 		= createRelationValue(org.instantlogic.designer.entity.PropertyDesignEntity.text);
@@ -109,38 +141,6 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 		return newValue;
 	}
 
-	
-	private final org.instantlogic.fabric.value.RelationValueList<PropertyDesign, ElementDesign> children
-		= createRelationValueList(org.instantlogic.designer.entity.PropertyDesignEntity.children);
-		
-	public org.instantlogic.fabric.value.RelationValueList<PropertyDesign, ElementDesign> getChildrenRelationValue() {
-		return children;
-	}
-
-	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.ElementDesign> getChildren() {
-		return children.getValue();
-	}
-	
-	public PropertyDesign addToChildren(ElementDesign item) {
-		children.addValue(item);
-		return (PropertyDesign)this;
-	}
-	
-	public PropertyDesign removeFromChildren(ElementDesign item) {
-		children.removeValue(item);
-		return (PropertyDesign)this;
-	}
-	
-	public PropertyDesign removeFromChildren(int index) {
-		children.removeValue(index);
-		return (PropertyDesign)this;
-	}
-
-	public PropertyDesign addToChildren(ElementDesign item, int index) {
-		children.insertValue(item, index);
-		return (PropertyDesign)this;
-	}	
-	
 
 	// Reverse relations
 	

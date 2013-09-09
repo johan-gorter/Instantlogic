@@ -23,7 +23,7 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 	@Override
 	public void init() {
 		DeductionSchemeDesign schemeOutput, selectDeductions, selectInputs, deductionId, selected, deductionXY, deductionWidth, deductionHeight, deductionOperation,
-			deductionInputId, deductionOperationInput, selectOutputs, toDeductionInputId, deductionInputDiagramPosition;
+		    deductionParameters, deductionInputId, deductionOperationInput, selectOutputs, selectOutputOfScheme, toDeductionInputId, deductionInputDiagramPosition;
 		FragmentTemplateDesign exploreButton, deductionScheme, deduction;
 
 		setTitle(new TextTemplateDesign()
@@ -55,6 +55,7 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 										.setValue("width", deductionWidth = new DeductionSchemeDesign())
 										.setValue("height", deductionHeight = new DeductionSchemeDesign())
 										.setText("operationName", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(deductionOperation = new DeductionSchemeDesign())))
+										.setText("parameters", new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(deductionParameters = new DeductionSchemeDesign())))
 										.setChildren("inputs", 
 											new SelectionDesign().setSelection(selectInputs = new DeductionSchemeDesign())
 												.setChild(new FragmentTemplateDesign("DeductionInput")
@@ -67,7 +68,11 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 											new SelectionDesign().setSelection(selectOutputs = new DeductionSchemeDesign())
 												.setChild(new FragmentTemplateDesign("Output")
 													.setValue("toDeductionInputId", toDeductionInputId = new DeductionSchemeDesign())
-												)
+												),
+											new SelectionDesign().setSelection(selectOutputOfScheme = new DeductionSchemeDesign())
+													.setChild(new FragmentTemplateDesign("Output"))
+													
+												
 										)
 									)
 							)
@@ -92,6 +97,7 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 		deductionWidth.deduceAttribute(DeductionDesignEntityGenerator.diagramWidth);
 		deductionHeight.deduceAttribute(DeductionDesignEntityGenerator.diagramHeight);
 		deductionOperation.deduceRelation(DeductionDesignEntityGenerator.operation);
+		deductionParameters.deduceAttribute(DeductionDesignEntityGenerator.parameterValuesDescription);
 		
 		selectDeductions.deduceRelation(DeductionSchemeDesignEntityGenerator.deductions);
 		selectInputs.deduceRelation(DeductionDesignEntityGenerator.inputs);
@@ -103,6 +109,7 @@ public class DeductionSchemePlaceGenerator  extends PlaceTemplateDesign {
 		
 		selectOutputs.deduceReverseRelation(DeductionInputDesignEntityGenerator.inputs, selectOutputs.deduceSelectedInstance(DeductionDesignEntityGenerator.ENTITY));
 		toDeductionInputId.deduceId(toDeductionInputId.deduceSelectedInstance(DeductionInputDesignEntityGenerator.ENTITY));
+		selectOutputOfScheme.deduceReverseRelation(DeductionSchemeDesignEntityGenerator.output, selectOutputOfScheme.deduceSelectedInstance(DeductionDesignEntityGenerator.ENTITY));
 	}
 }
 

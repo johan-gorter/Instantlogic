@@ -38,6 +38,8 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
     public static DeductionOperationDesign ReverseTechnicalNameDeduction;
     public static DeductionOperationDesign TechnicalNameDeduction;
     public static DeductionOperationDesign DeductionDiagramPositionDefaultDeduction;
+	public static DeductionOperationDesign DeductionParameterValueDescriptionRuleDeduction;
+	public static DeductionOperationDesign DeductionParameterValuesDescriptionRuleDeduction;
     
     public DesignerApplicationGenerator() {
         APPLICATION = this;
@@ -127,7 +129,18 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
     	addToCustomDeductionOperations(DeductionDiagramPositionDefaultDeduction);
     	DeductionDiagramPositionDefaultDeduction.setName("DeductionDiagramPositionDefault");
     	DeductionDiagramPositionDefaultDeduction.setJavaClassName("org.instantlogic.designer.deduction.DeductionDiagramPositionDefaultDeduction");
-	}
+    	
+    	DeductionParameterValueDescriptionRuleDeduction = new DeductionOperationDesign();
+    	addToCustomDeductionOperations(DeductionParameterValueDescriptionRuleDeduction);
+    	DeductionParameterValueDescriptionRuleDeduction.setName("DeductionParameterValueDescriptionRuleDeduction");
+    	DeductionParameterValueDescriptionRuleDeduction.setJavaClassName("org.instantlogic.designer.deduction.DeductionParameterValueDescriptionRuleDeduction");
+
+    	DeductionParameterValuesDescriptionRuleDeduction = new DeductionOperationDesign();
+    	addToCustomDeductionOperations(DeductionParameterValuesDescriptionRuleDeduction);
+    	DeductionParameterValuesDescriptionRuleDeduction.setName("DeductionParameterValuesDescriptionRuleDeduction");
+    	DeductionParameterValuesDescriptionRuleDeduction.setJavaClassName("org.instantlogic.designer.deduction.DeductionParameterValuesDescriptionRuleDeduction");
+    
+    }
 
 	private void addFragmentTypes() {
     	FragmentTypeInput = (FragmentTypeDesign) new FragmentTypeDesign().setHasAttribute(true).setName("Input");
