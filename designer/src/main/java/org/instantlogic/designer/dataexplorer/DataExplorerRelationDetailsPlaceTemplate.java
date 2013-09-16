@@ -20,16 +20,19 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 	private final Entity<?> entity;
 	private Relation<?, ?, ?> relation;
 	private DataExplorerRelationFlow flow;
+	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
 
-	public DataExplorerRelationDetailsPlaceTemplate(DataExplorerRelationFlow flow) {
+	public DataExplorerRelationDetailsPlaceTemplate(DataExplorerRelationFlow flow, DataExplorerOwnerBreadcrumbElement breadcrumbElement) {
 		this.entity = flow.getEntity();
 		this.relation = flow.getRelation();
 		this.flow = flow;
+		this.breadcrumbElement = breadcrumbElement;
 	}
 	
 	@Override
 	public FragmentTemplate getRootContainer() {
 		FragmentTemplate page = new FragmentTemplate(relation.getUniqueId()+"-details", "Page")
+			.addChild("mainContent", breadcrumbElement)
 			.addChild("mainContent",
                 new FragmentTemplate("h1", "Heading1")      
                     .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated()

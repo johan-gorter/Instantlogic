@@ -38,7 +38,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		
 		ApplicationBytecodeGenerator applicationBytecodeGenerator = new ApplicationBytecodeGenerator((DesignerApplicationEnvironment)applicationEnvironment, // Generate bytecode 
 			new BackgroundThreadGeneratedClassModelsProcessor(
-				new ApplicationJavacodeGenerator(new File(new File("../webapps", result.getName()), "target/generated-sources/instantlogic-app").getAbsoluteFile()) // Generate java code
+				new ApplicationJavacodeGenerator(new File(new File("../webapps", applicationDesign.getName()), "target/generated-sources/instantlogic-app").getAbsoluteFile()) // Generate java code
 			)
 		);
 		

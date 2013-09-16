@@ -19,7 +19,7 @@ YUI.add('instantlogic-answers', function (Y) {
 	    	if (model.dataType.category == 'boolean') {
 	    		return new ns.CheckboxAnswer(parentNode, parentFragment, engine);
 	    	}
-	    	if (model.dataType.category == 'string') {
+	    	if (model.dataType.category == 'text') {
 	    		return new ns.TextAnswer(parentNode, parentFragment, engine);
 	    	}
     	}

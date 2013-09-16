@@ -6,6 +6,7 @@ import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
 import org.instantlogic.fabric.util.AbstractDeductionContext;
 import org.instantlogic.fabric.util.InstanceMetadata;
+import org.instantlogic.fabric.util.SingleInstanceDeductionContext;
 import org.instantlogic.fabric.value.AttributeValue;
 import org.instantlogic.fabric.value.AttributeValueList;
 import org.instantlogic.fabric.value.AttributeValues;
@@ -93,21 +94,21 @@ public abstract class Instance implements Comparable<Instance> {
 		return new ReverseRelationValuesImpl<I, To>((I)this, relation);
 	}
 	
-	public String getName() {
-		return null;
-	}
-	
 	@Override
 	public String toString() {
-		String name = getName();
-		if (name==null) {
-			name="";
-		} else {
-			name="("+name+")";
+		String suffix = "";
+		Entity<?> entity = getMetadata().getEntity();
+		while (entity.getTitle()==null && entity.extendsEntity()!=null) {
+			entity = entity.extendsEntity();
+		}
+		TextTemplate title = entity.getTitle();
+		if (title!=null) {
+			SingleInstanceDeductionContext context = new SingleInstanceDeductionContext(this);
+			suffix = " ("+title.renderText(context)+")";
 		}
 		String uniqueId = getMetadata().getUniqueIdIfInitialized();
 		if (uniqueId==null) uniqueId="Anonymous";
-		return getInstanceEntity().toString()+"#"+uniqueId+name;
+		return getInstanceEntity().toString()+"#"+uniqueId+suffix;
 	}
 	
 	public String renderTitle(AbstractDeductionContext context) {
@@ -125,8 +126,20 @@ public abstract class Instance implements Comparable<Instance> {
 		}
 	}
 
+	public String renderTitle() {
+		Entity<?> entity = getMetadata().getEntity();
+		while (entity.getTitle()==null && entity.extendsEntity()!=null) {
+			entity = entity.extendsEntity();
+		}
+		TextTemplate title = entity.getTitle();
+		if (title==null) return getMetadata().getUniqueId();
+		SingleInstanceDeductionContext context = new SingleInstanceDeductionContext(this);
+		return title.renderText(context);
+	}
+
+
 	/**
-	 * Suggestions for a better name: getInstanceOptions, getInstanceOperations, getInstanceData, instance() ...
+	 * Suggestions for a better name: getInstanceOptions, getInstanceOperations, getInstanceData, instance(), asInstance() ...
 	 */
 	public InstanceMetadata getMetadata() {
 		return metadata;

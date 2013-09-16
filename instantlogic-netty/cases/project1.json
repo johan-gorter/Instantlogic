@@ -2,7 +2,7 @@
   "instanceId": "Lruwoktaxucicnhv_cfa4d5c2_0295",
   "entityName": "project",
   "version": 0,
-  "last issue number": 51,
+  "last issue number": 59,
   "users": [
     {
       "instanceId": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
@@ -31,100 +31,101 @@
   ],
   "issues": [
     {
-      "instanceId": "FrrwkscsIIejqlqn_cab38e34_a4fc",
+      "instanceId": "AejmpcAuOy_iucqO_d10bbffb_b030",
       "entityName": "issue",
-      "headline": "green banana tropics markets",
-      "number": 50,
-      "description": "The fruit requires careful handling, rapid transport to ports, cooling, and refrigerated shipping.\r\n\r\nCavendish bananas are the main commercial banana cultivars sold in the world market.",
+      "headline": "markets The genus Musa was created by Carl Linnaeus in 1753. green The word banana is generally said to be derived from the Wolof word banaana.",
+      "number": 59,
+      "description": "By the 10th century the banana appears in texts from Palestine and Egypt.\r\n\r\nThe classification of cultivated bananas has long been a problematic issue for taxonomists. Linnaeus originally placed bananas into two species based only on their uses as food: Musa sapientum for dessert bananas and Musa paradisiaca for plantains. Subsequently further species names were added. However, this approach proved inadequate to address the sheer number of cultivars existing in the primary center of diversity of the genus, Southeast Asia. Many of these cultivars were given names which proved to be synonyms.\r\n\r\nIn 650, Islamic conquerors brought the banana to Palestine.\r\n\r\nThe banana plant is the largest herbaceous flowering plant. All the above-ground parts of a banana plant grow from a structure usually called a \"corm\". Plants are normally tall and fairly sturdy, and are often mistaken for trees, but what appears to be a trunk is actually a \"false stem\" or pseudostem. Bananas grow in a wide variety of soils, as long as the soil is at least 60 cm deep, has good drainage and is not compacted. The leaves of banana plants are composed of a \"stalk\" (petiole) and a blade (lamina). The base of the petiole widens to form a sheath; the tightly packed sheaths make up the pseudostem, which is all that supports the plant. The edges of the sheath meet when it is first produced, making it tubular. As new growth occurs in the centre of the pseudostem the edges are forced apart.\r\n\r\nA banana is an edible fruit produced by several kinds of large herbaceous flowering plants of the genus Musa. (In some countries, bananas used for cooking may be called plantains.) The fruit is variable in size, color and firmness, but is usually elongated and curved, with soft flesh rich in starch covered with a rind which may be yellow, purple or red when ripe. The fruits grow in clusters hanging from the top of the plant. Almost all modern edible parthenocarpic (seedless) bananas come from two wild species – Musa acuminata and Musa balbisiana. The scientific names of most cultivated bananas are Musa acuminata, Musa balbisiana, and Musa × paradisiaca for the hybrid Musa acuminata × M. balbisiana, depending on their genomic constitution. The old scientific name Musa sapientum is no longer used.\r\n\r\nIn 650, Islamic conquerors brought the banana to Palestine.",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
       },
-      "reporter": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "reporter": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
       "assignee": "WyfzAmjEdqfjuhoo_96ba133b_e046",
       "comments": []
     },
     {
-      "instanceId": "GqhnrrqvomdOgmmi_cc724908_6ee6",
+      "instanceId": "GOhpOUcIEiaiocyO_8b668a34_518c",
       "entityName": "issue",
-      "headline": "green Harvested shoots are first boiled in lye to prepare fibers for yarn-making. plant In the Japanese system, leaves and shoots are cut from the plant periodically to ensure softness. There is some textual evidence that Muhammad was familiar with bananas.",
-      "number": 48,
-      "description": "Harvested shoots are first boiled in lye to prepare fibers for yarn-making.",
+      "headline": "green",
+      "number": 58,
+      "description": "In 650, Islamic conquerors brought the banana to Palestine.",
       "status": {
         "instanceName": "open",
         "entityName": "issueStatus"
       },
-      "reporter": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
       "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
       "comments": []
     },
     {
       "instanceId": "HiOycocpteesImyU_f5d73e70_4623",
       "entityName": "issue",
-      "headline": "Unripe bananas can not be held in home refrigerators because they suffer from the cold. banana The goal is to prevent the bananas from producing their natural ripening agent, ethylene.",
+      "headline": "The fruit requires careful handling, rapid transport to ports, cooling, and refrigerated shipping.",
       "number": 46,
-      "description": "Musa is in the family Musaceae.\r\n\r\nThe fruits grow in clusters hanging from the top of the plant.",
-      "status": {
-        "instanceName": "open",
-        "entityName": "issueStatus"
-      },
-      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
-      "comments": []
-    },
-    {
-      "instanceId": "Kghwealj_y_dgaIg_35c84f9a_a2a0",
-      "entityName": "issue",
-      "headline": "markets tropics",
-      "number": 39,
-      "description": "The banana may have been present in isolated locations of the Middle East on the eve of Islam.",
-      "status": {
-        "instanceName": "open",
-        "entityName": "issueStatus"
-      },
-      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
-      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
-      "comments": []
-    },
-    {
-      "instanceId": "KzbdbzIchudEodnf_69ed5f32_dfc7",
-      "entityName": "issue",
-      "headline": "ripen",
-      "number": 44,
-      "description": "Unripe bananas can not be held in home refrigerators because they suffer from the cold.\r\n\r\nIn the Japanese system, leaves and shoots are cut from the plant periodically to ensure softness.",
-      "status": {
-        "instanceName": "open",
-        "entityName": "issueStatus"
-      },
-      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
-      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
-      "comments": []
-    },
-    {
-      "instanceId": "MtbzmyOocI_wUeo_ce17091d_eb07",
-      "entityName": "issue",
-      "headline": "Cavendish bananas are the main commercial banana cultivars sold in the world market. When a banana plant is mature, the corm stops producing new leaves and begins to form a flower spike or inflorescence. ",
-      "number": 49,
-      "description": "In a series of papers published in 1947 onwards, Ernest Cheesman showed that Linnaeus\u0027 Musa sapientum and Musa paradisiaca were actually cultivars and descendants of two wild seed-producing species, Musa acuminata and Musa balbisiana, both first described by Luigi Aloysius Colla.[29] He recommended the abolition of Linnaeus\u0027 species in favor of reclassifying bananas according to three morphologically distinct groups of cultivars – those primarily exhibiting the botanical characteristics of Musa balbisiana, those primarily exhibiting the botanical characteristics of Musa acuminata, and those with characteristics that are the combination of the two.[28] Researchers Norman Simmonds and Ken Shepherd proposed a genome-based nomenclature system in 1955. This system eliminated almost all the difficulties and inconsistencies of the earlier classification of bananas based on assigning scientific names to cultivated varieties. Despite this, the original names are still recognized by some authorities today, leading to confusion.\r\n\r\nThe classification of cultivated bananas has long been a problematic issue for taxonomists. Linnaeus originally placed bananas into two species based only on their uses as food: Musa sapientum for dessert bananas and Musa paradisiaca for plantains. Subsequently further species names were added. However, this approach proved inadequate to address the sheer number of cultivars existing in the primary center of diversity of the genus, Southeast Asia. Many of these cultivars were given names which proved to be synonyms.",
+      "description": "The Chinese name of the aromatic Go San Heong banana means \u0027You can smell it from the next mountain.",
       "status": {
         "instanceName": "resolved",
         "entityName": "issueStatus"
       },
       "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
-      "assignee": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "assignee": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "comments": []
     },
     {
-      "instanceId": "ujximAAodqcvoof_18250206_7f0a",
+      "instanceId": "KUfElavcOuequcOm_45233af6_b9da",
       "entityName": "issue",
-      "headline": "tropics A 2008 study reported that ripe bananas fluoresce when exposed to ultraviolet light.",
-      "number": 51,
-      "description": "A 2008 study reported that ripe bananas fluoresce when exposed to ultraviolet light.\r\n\r\nIn a series of papers published in 1947 onwards, Ernest Cheesman showed that Linnaeus\u0027 Musa sapientum and Musa paradisiaca were actually cultivars and descendants of two wild seed-producing species, Musa acuminata and Musa balbisiana, both first described by Luigi Aloysius Colla.[29] He recommended the abolition of Linnaeus\u0027 species in favor of reclassifying bananas according to three morphologically distinct groups of cultivars – those primarily exhibiting the botanical characteristics of Musa balbisiana, those primarily exhibiting the botanical characteristics of Musa acuminata, and those with characteristics that are the combination of the two.[28] Researchers Norman Simmonds and Ken Shepherd proposed a genome-based nomenclature system in 1955. This system eliminated almost all the difficulties and inconsistencies of the earlier classification of bananas based on assigning scientific names to cultivated varieties. Despite this, the original names are still recognized by some authorities today, leading to confusion.\r\n\r\nCavendish bananas are the main commercial banana cultivars sold in the world market.",
+      "headline": "banana",
+      "number": 54,
+      "description": "The fruits grow in clusters hanging from the top of the plant.",
       "status": {
-        "instanceName": "draft",
+        "instanceName": "open",
+        "entityName": "issueStatus"
+      },
+      "reporter": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
+      "assignee": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "comments": []
+    },
+    {
+      "instanceId": "OqhbzwAntqdlmeEv_398317e2_7566",
+      "entityName": "issue",
+      "headline": "Cavendish bananas are the main commercial banana cultivars sold in the world market.",
+      "number": 53,
+      "description": "The classification of cultivated bananas has long been a problematic issue for taxonomists. Linnaeus originally placed bananas into two species based only on their uses as food: Musa sapientum for dessert bananas and Musa paradisiaca for plantains. Subsequently further species names were added. However, this approach proved inadequate to address the sheer number of cultivars existing in the primary center of diversity of the genus, Southeast Asia. Many of these cultivars were given names which proved to be synonyms.\r\n\r\nWorldwide, there is no sharp distinction between \"bananas\" and \"plantains\". Especially in the Americas and Europe, \"banana\" usually refers to soft, sweet, dessert bananas, particularly those of the Cavendish group, which are the main exports from banana-growing countries. By contrast, Musa cultivars with firmer, starchier fruit are called \"plantains\". In other regions, such as Southeast Asia, many more kinds of banana are grown and eaten, so the simple two-fold distinction is not useful and is not made in local languages.",
+      "status": {
+        "instanceName": "open",
+        "entityName": "issueStatus"
+      },
+      "reporter": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "assignee": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
+      "comments": []
+    },
+    {
+      "instanceId": "X_gmgmOawy_Uoctx_5294d398_2019",
+      "entityName": "issue",
+      "headline": "yellow",
+      "number": 57,
+      "description": "Worldwide, there is no sharp distinction between \"bananas\" and \"plantains\". Especially in the Americas and Europe, \"banana\" usually refers to soft, sweet, dessert bananas, particularly those of the Cavendish group, which are the main exports from banana-growing countries. By contrast, Musa cultivars with firmer, starchier fruit are called \"plantains\". In other regions, such as Southeast Asia, many more kinds of banana are grown and eaten, so the simple two-fold distinction is not useful and is not made in local languages.\r\n\r\nThe banana plant is the largest herbaceous flowering plant. All the above-ground parts of a banana plant grow from a structure usually called a \"corm\". Plants are normally tall and fairly sturdy, and are often mistaken for trees, but what appears to be a trunk is actually a \"false stem\" or pseudostem. Bananas grow in a wide variety of soils, as long as the soil is at least 60 cm deep, has good drainage and is not compacted. The leaves of banana plants are composed of a \"stalk\" (petiole) and a blade (lamina). The base of the petiole widens to form a sheath; the tightly packed sheaths make up the pseudostem, which is all that supports the plant. The edges of the sheath meet when it is first produced, making it tubular. As new growth occurs in the centre of the pseudostem the edges are forced apart.\r\n\r\nIn a series of papers published in 1947 onwards, Ernest Cheesman showed that Linnaeus\u0027 Musa sapientum and Musa paradisiaca were actually cultivars and descendants of two wild seed-producing species, Musa acuminata and Musa balbisiana, both first described by Luigi Aloysius Colla.[29] He recommended the abolition of Linnaeus\u0027 species in favor of reclassifying bananas according to three morphologically distinct groups of cultivars – those primarily exhibiting the botanical characteristics of Musa balbisiana, those primarily exhibiting the botanical characteristics of Musa acuminata, and those with characteristics that are the combination of the two.[28] Researchers Norman Simmonds and Ken Shepherd proposed a genome-based nomenclature system in 1955. This system eliminated almost all the difficulties and inconsistencies of the earlier classification of bananas based on assigning scientific names to cultivated varieties. Despite this, the original names are still recognized by some authorities today, leading to confusion.",
+      "status": {
+        "instanceName": "resolved",
         "entityName": "issueStatus"
       },
       "reporter": "WyfzAmjEdqfjuhoo_96ba133b_e046",
       "assignee": "a63e47f6-839d-452e-85e3-7d754d304ec3",
+      "comments": []
+    },
+    {
+      "instanceId": "_chepotUembsoelj_cec42511_ab53",
+      "entityName": "issue",
+      "headline": "plant",
+      "number": 52,
+      "description": "On arrival, bananas are held at about 17 °C (63 °F) and treated with a low concentration of ethylene.\r\n\r\nThe classification of cultivated bananas has long been a problematic issue for taxonomists. Linnaeus originally placed bananas into two species based only on their uses as food: Musa sapientum for dessert bananas and Musa paradisiaca for plantains. Subsequently further species names were added. However, this approach proved inadequate to address the sheer number of cultivars existing in the primary center of diversity of the genus, Southeast Asia. Many of these cultivars were given names which proved to be synonyms.\r\n\r\nThis traditional Japanese cloth-making process requires many steps, all performed by hand.\r\n\r\nIn 650, Islamic conquerors brought the banana to Palestine.\r\n\r\nThe classification of cultivated bananas has long been a problematic issue for taxonomists. Linnaeus originally placed bananas into two species based only on their uses as food: Musa sapientum for dessert bananas and Musa paradisiaca for plantains. Subsequently further species names were added. However, this approach proved inadequate to address the sheer number of cultivars existing in the primary center of diversity of the genus, Southeast Asia. Many of these cultivars were given names which proved to be synonyms.",
+      "status": {
+        "instanceName": "open",
+        "entityName": "issueStatus"
+      },
+      "reporter": "WyfzAmjEdqfjuhoo_96ba133b_e046",
+      "assignee": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8",
       "comments": []
     }
   ]

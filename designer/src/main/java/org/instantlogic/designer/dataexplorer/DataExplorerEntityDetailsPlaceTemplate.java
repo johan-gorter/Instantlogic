@@ -37,6 +37,11 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	public FragmentTemplate getRootContainer() {
 		// the resulting page can be used to view each instance of the same entity
 		FragmentTemplate page = new FragmentTemplate(entity.getUniqueId()+"-details", "Page")
+			.addChild("mainContent", new FragmentTemplate("h2", "Heading2")
+				.putText("text", new TextTemplate().getUntranslated().add("Data Explorer").getTextTemplate()))
+			.addChild("mainContent", new FragmentTemplate("staticinstances-link", "Link")
+				.putText("text", new TextTemplate().getUntranslated().add("Static instances").getTextTemplate())
+				.setEvent(ExploreStaticInstancesEvent.INSTANCE))
 		    .addChild("mainContent", breadcrumbElement)
 			.addChild("mainContent",
                 new FragmentTemplate("h1", "Heading1")      
@@ -57,32 +62,6 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 			);
 		}
 		
-		// Owner (relationname + link)
-		for (Relation reverseRelation : entity.getReverseRelations()) {
-			if (reverseRelation.getReverseRelation().isOwner()) {
-				String id = "owner-"+reverseRelation.getUniqueId();
-				Deduction selectValue = createSelectReverseRelationDeduction(reverseRelation); 
-
-				page.addChild("mainContent", new SelectionElement(selectValue, 
-					new FragmentTemplate(id, "Block").setStyleNames(new String[]{"control-group", "form-horizontal"})
-						.addChild("content",
-							new FragmentTemplate(id+"label", "Div").setStyleNames(new String[]{"input"})
-								.addChild("content", 
-									new FragmentTemplate(id+"label", "Div").setStyleNames(new String[]{"control-label"}).addChild("content", 
-										new FragmentTemplate(id+"-text", "Text")
-											.putText("text", new TextTemplate().getUntranslated().add(reverseRelation.getName()).add(" ").getTextTemplate()))
-								)
-								.addChild("content", 
-									new FragmentTemplate(id+"controls", "Div").setStyleNames(new String[]{"controls"}).addChild("content", 
-										new FragmentTemplate(id+"-link", "Link")
-											.putText("text", getEntityTitle(reverseRelation.getTo()))
-											.setEvent(ExploreDataEvent.INSTANCE))
-								)
-						)
-					)
-				);
-			}
-		}
 		// Attributes
 		for(Attribute attribute : entity.getAttributes()) {
 			page.addChild("mainContent", new FragmentTemplate("attribute-"+attribute.getUniqueId(), "Input")

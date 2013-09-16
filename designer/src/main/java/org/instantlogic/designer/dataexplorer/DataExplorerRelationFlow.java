@@ -41,11 +41,11 @@ public class DataExplorerRelationFlow extends SimpleFlow {
 	private final Map<Entity, FlowEvent> addNewEvents = new HashMap<Entity, FlowEvent>();
 	private final FlowEvent shopForInstancesEvent;
 	
-	public DataExplorerRelationFlow(final DataExplorerEntityFlow parentFlow, final Relation relation, final SimpleFlowEvent relationDetailsEvent) {
+	public DataExplorerRelationFlow(final DataExplorerEntityFlow parentFlow, final Relation relation, final SimpleFlowEvent relationDetailsEvent, DataExplorerOwnerBreadcrumbElement breadcrumbElement) {
 		this.entity = parentFlow.getEntity();
 		removeInstanceEvent = new SimpleFlowEvent("remove-instance", relation.getTo());
 		this.relation = relation;
-		this.relationPlaceTemplate = new DataExplorerRelationDetailsPlaceTemplate(this);
+		this.relationPlaceTemplate = new DataExplorerRelationDetailsPlaceTemplate(this, breadcrumbElement);
 		this.parameters = new Entity<?>[]{};
 		
 		ArrayList<FlowNodeBase> nodeList = new ArrayList<FlowNodeBase>();

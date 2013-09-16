@@ -60,6 +60,8 @@ public class CaseAdministration {
 		}
 	}
 	
+	// Also available from the Application
+	@Deprecated 
 	public SortedMap<String, Entity<?>> getAllEntities() {
 		if (allEntitiesByName==null) {
 			TreeMap<String, Entity<?>> tempResult = new TreeMap<String, Entity<?>>();

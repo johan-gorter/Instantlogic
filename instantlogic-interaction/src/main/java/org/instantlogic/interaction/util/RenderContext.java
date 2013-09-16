@@ -37,7 +37,7 @@ public class RenderContext extends AbstractDeductionContext {
 		return makeId(suffix);
 	}
 	
-	private String makeId(String suffix) {
+	public String makeId(String suffix) {
 		if (prefixes.size()==0) return suffix;
 		StringBuilder sb = new StringBuilder();
 		sb.append(prefixes.get(prefixes.size()-1));

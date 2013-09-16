@@ -1,6 +1,7 @@
 package org.instantlogic.designer.dataexplorer;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,10 +24,11 @@ public class DataExplorerEntityFlow extends SimpleFlow {
 	private final FlowNodeBase[] nodes;
 	private final FlowEdge[] edges;
 	private final Entity<?>[] parameters;
-	@SuppressWarnings("rawtypes")
-	private final Map<Relation, FlowEvent> relationDetailsEvents = new HashMap<Relation, FlowEvent>();
+	private final Map<String, SimpleFlowEvent> relationDetailsEvents = new HashMap<String, SimpleFlowEvent>();
+	private SimpleFlowEvent detailsEvent;
 	
-	public DataExplorerEntityFlow(Entity<?> entity, SimpleFlowEvent entityDetailsEvent, DataExplorerOwnerBreadcrumbElement breadcrumbElement, List<FlowEvent> directEvents) {
+	public DataExplorerEntityFlow(Entity<?> entity, SimpleFlowEvent entityDetailsEvent, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerOwnerBreadcrumbElement relationBreadcrumbElement, List<FlowEvent> directEvents) {
+		this.detailsEvent = entityDetailsEvent;
 		this.entity = entity;
 		this.detailsPlaceTemplate = new DataExplorerEntityDetailsPlaceTemplate(this, directEvents, breadcrumbElement);
 		this.parameters = new Entity<?>[]{entity};
@@ -38,33 +40,41 @@ public class DataExplorerEntityFlow extends SimpleFlow {
 		edgeList.add(new FlowEdge(null, entityDetailsEvent, detailsPlaceTemplate));
 		
 		for (Relation<?, ? extends Object, ? extends Instance> relation : entity.getRelations()) {
-			addRelationDetails(relation, nodeList, edgeList);
+			addRelationDetails(relation, nodeList, edgeList, relationBreadcrumbElement);
 		}
 		for (Relation<?, ? extends Object, ? extends Instance> relation : entity.getReverseRelations()) {
-			addRelationDetails(relation, nodeList, edgeList);
+			addRelationDetails(relation, nodeList, edgeList, relationBreadcrumbElement);
 		}
 		
 		this.nodes = nodeList.toArray(new FlowNodeBase[nodeList.size()]);
 		this.edges = edgeList.toArray(new FlowEdge[edgeList.size()]);
 	}
+	
+	public SimpleFlowEvent getEntityDetailsEvent() {
+		return detailsEvent;
+	}
 
-	private void addRelationDetails(Relation<?, ?, ?> relation, List<FlowNodeBase> nodeList, List<FlowEdge> edgeList) {
+	private void addRelationDetails(Relation<?, ?, ?> relation, List<FlowNodeBase> nodeList, List<FlowEdge> edgeList, DataExplorerOwnerBreadcrumbElement breadcrumbElement) {
 		SimpleFlowEvent relationDetailsEvent = new SimpleFlowEvent(entity.getName()+"-"+relation.getName()+"-details");
-		DataExplorerRelationFlow relationFlow = new DataExplorerRelationFlow(this, relation, relationDetailsEvent);
-		relationDetailsEvents.put(relation, relationDetailsEvent);
+		DataExplorerRelationFlow relationFlow = new DataExplorerRelationFlow(this, relation, relationDetailsEvent, breadcrumbElement);
+		relationDetailsEvents.put(relation.getName(), relationDetailsEvent);
 		SimpleSubFlow relationSubFlow = new SimpleSubFlow(relationFlow);
 		nodeList.add(relationSubFlow);
-		edgeList.add(new FlowEdge(detailsPlaceTemplate, relationDetailsEvent, relationSubFlow));
+		edgeList.add(new FlowEdge(null, relationDetailsEvent, relationSubFlow));
 	}
 	
 	@SuppressWarnings("rawtypes")
 	public FlowEvent getRelationDetailsEvent(Relation relation) {
-		return relationDetailsEvents.get(relation);
+		return relationDetailsEvents.get(relation.getName());
+	}
+
+	public FlowEvent getRelationDetailsEvent(String relationName) {
+		return relationDetailsEvents.get(relationName);
 	}
 
 	@Override
 	public String getName() {
-		return "DataExplorer"+entity.getUniqueId();
+		return "DataExplorer"+entity.getName();
 	}
 
 	@Override
@@ -84,5 +94,9 @@ public class DataExplorerEntityFlow extends SimpleFlow {
 
 	public Entity<?> getEntity() {
 		return entity;
+	}
+
+	public Collection<SimpleFlowEvent> getRelationDetailsEvents() {
+		return relationDetailsEvents.values();
 	}
 }

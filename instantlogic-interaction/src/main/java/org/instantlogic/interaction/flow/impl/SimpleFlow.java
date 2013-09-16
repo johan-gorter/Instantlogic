@@ -60,6 +60,9 @@ public abstract class SimpleFlow extends Flow {
 	
 	public FlowEventOccurrence enter(FlowEventOccurrence occurrence, FlowContext context) {
 		FlowEdge edge = findEdge(null, occurrence);
+		if (edge==null) {
+			throw new RuntimeException("Count not find an edge for event "+occurrence.getEvent()+" in flow "+this);
+		}
 		context.pushFlowContext(this);
 		acceptParameters(context, occurrence.getParameters());
 		return reach(edge.getEndNode(), occurrence, context);
@@ -108,7 +111,16 @@ public abstract class SimpleFlow extends Flow {
 			String instanceId = moreCoordinates.next();
 			Instance instance = caseInstance.getMetadata().getCaseAdministration().getInstanceByUniqueId(instanceId);
 			if (instance==null) {
-				throw new InvalidFlowCoordinatesException("Unknown instance "+instanceId);
+				if (instanceId.contains("!")) {
+					int index = instanceId.indexOf('!');
+					Entity<?> instanceEntity = caseInstance.getMetadata().getCaseAdministration().getAllEntities().get(instanceId.substring(0, index));
+					if (instanceEntity!=null) {
+						instance = instanceEntity.getStaticInstances().get(instanceId.substring(index+1));
+					}
+				} 
+				if (instance==null){
+					throw new InvalidFlowCoordinatesException("Unknown instance "+instanceId);
+				}
 			}
 			if (!entity.getInstanceClass().isAssignableFrom(instance.getClass())) {
 				throw new InvalidFlowCoordinatesException("Selected instance is not a "+entity.getInstanceClass().getName());

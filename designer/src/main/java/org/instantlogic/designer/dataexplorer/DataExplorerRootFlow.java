@@ -26,21 +26,44 @@ public class DataExplorerRootFlow extends Flow {
 	private Map<String, DataExplorerOwnerBreadcrumbElement> breadcrumbElements = new HashMap<String, DataExplorerOwnerBreadcrumbElement>();
 	private Map<SimpleFlowEvent, DataExplorerEntityFlow> detailEventToFlow = new HashMap<SimpleFlowEvent, DataExplorerEntityFlow>();
 	private FlowWithDataExplorer flowWithDataExplorer;
+	private DataExplorerStaticInstancesPlaceTemplate staticInstancesPlaceTemplate;
+	private Entity<? extends Instance> caseEntity;
+	private Application application;
 	
+	public Application getApplication() {
+		return application;
+	}
+
+	public Entity<? extends Instance> getCaseEntity() {
+		return caseEntity;
+	}
+
 	public DataExplorerRootFlow(Application application, FlowWithDataExplorer flowWithDataExplorer) {
+		this.application = application;
 		this.flowWithDataExplorer = flowWithDataExplorer;
+		this.caseEntity = application.getCaseEntity();
 		SortedMap<String,Entity<?>> allEntitiesById = CaseAdministration.getAllEntitiesById(application.getCaseEntity());
 		for (Entity<?> entity : allEntitiesById.values()) {
-			DataExplorerOwnerBreadcrumbElement breadcrumbElement = new DataExplorerOwnerBreadcrumbElement(entity, this);
+			DataExplorerOwnerBreadcrumbElement breadcrumbElement = new DataExplorerOwnerBreadcrumbElement(entity, this, false);
 			breadcrumbElements.put(entity.getUniqueId(), breadcrumbElement);
 			SimpleFlowEvent detailsEvent = new SimpleFlowEvent(entity.getUniqueId()+"-details", entity);
-			DataExplorerEntityFlow entityFlow = new DataExplorerEntityFlow(entity, detailsEvent, breadcrumbElement, flowWithDataExplorer.getDirectEvents(entity));
+			DataExplorerEntityFlow entityFlow = new DataExplorerEntityFlow(entity, detailsEvent, breadcrumbElement, new DataExplorerOwnerBreadcrumbElement(entity, this, true), flowWithDataExplorer.getDirectEvents(entity));
 			entityFlows.put(entity.getUniqueId(), entityFlow);
 			entityDetailsEvents.put(entity.getUniqueId(), detailsEvent);
 			detailEventToFlow.put(detailsEvent, entityFlow);
+			for (SimpleFlowEvent relationEvent: entityFlow.getRelationDetailsEvents()) {
+				detailEventToFlow.put(relationEvent, entityFlow);
+			}
 		}
+		this.staticInstancesPlaceTemplate = new DataExplorerStaticInstancesPlaceTemplate(this);
 	}
 	
+	@SuppressWarnings("rawtypes")
+	public SimpleFlowEvent getEntityDetailsEvent(Entity entity) {
+		return entityDetailsEvents.get(entity.getUniqueId());
+	}
+	
+	@SuppressWarnings("rawtypes")
 	public DataExplorerOwnerBreadcrumbElement getBreadcrumbElement(Entity entity) {
 		return breadcrumbElements.get(entity.getUniqueId());
 	}
@@ -57,6 +80,9 @@ public class DataExplorerRootFlow extends Flow {
 	// Used in case of a StartMessage (browser navigates directly to a url)
 	@Override
 	public FlowEvent findEvent(String eventName) {
+		if (eventName.equals(ExploreStaticInstancesEvent.INSTANCE.getName())) {
+			return ExploreStaticInstancesEvent.INSTANCE;
+		}
 		return ExploreDataEvent.INSTANCE;
 	}
 
@@ -64,6 +90,10 @@ public class DataExplorerRootFlow extends Flow {
 	public FlowStack createFlowStack(FlowStack parentStack, Flow thisOrWrapper, String current, Iterator<String> moreCoordinates, Instance caseInstance) {
 		FlowStack result = new FlowStack(parentStack, this);
 		String entityId = moreCoordinates.next();
+		if (entityId.equals("Static instances")) {
+			result.setCurrentNode(this.staticInstancesPlaceTemplate);
+			return result;
+		}
 		result.setCurrentNode(fakeSubFlow(entityId));
 		DataExplorerEntityFlow entityFlow = getEntityFlow(entityId);
 		return entityFlow.createFlowStack(result, entityFlow, entityId, moreCoordinates, caseInstance);
@@ -107,6 +137,10 @@ public class DataExplorerRootFlow extends Flow {
 	public FlowEventOccurrence step(FlowNodeBase currentNode, FlowEventOccurrence occurrence, FlowContext flowContext) {
 		DataExplorerEntityFlow entityFlow = detailEventToFlow.get(occurrence.getEvent()); 
 		if (entityFlow==null) {
+			if (occurrence.getEvent()==ExploreStaticInstancesEvent.INSTANCE) {
+				flowContext.getFlowStack().setCurrentNode(this.staticInstancesPlaceTemplate);
+				return null;
+			}
 			if (occurrence.getEvent().getName().equals("ExploreData")) {
 				// ExploreDataEvent
 				Instance instanceToExplore = findInstanceToExplore(occurrence, flowContext);
@@ -127,5 +161,9 @@ public class DataExplorerRootFlow extends Flow {
 	@Override
 	public String getName() {
 		return "DataExplorerRoot";
+	}
+
+	public DataExplorerEntityFlow getEntityFlow(Entity<?> entity) {
+		return getEntityFlow(entity.getUniqueId());
 	}
 }
