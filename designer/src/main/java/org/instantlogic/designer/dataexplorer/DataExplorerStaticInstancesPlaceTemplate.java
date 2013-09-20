@@ -32,6 +32,7 @@ public class DataExplorerStaticInstancesPlaceTemplate extends PlaceTemplate {
 					.putText("text", new TextTemplate().getUntranslated().add("Back to "+rootFlow.getCaseEntity().getName()).getTextTemplate())
 					.setEvent(rootFlow.getEntityDetailsEvent(rootFlow.getCaseEntity()))
 				))
+			.addChild("mainContent", new ShoppingElement(rootFlow))
 			.addChild("mainContent",
 	            new FragmentTemplate("h1", "Heading1")      
 	                .putText("text", new TextTemplate().getUntranslated()
@@ -47,9 +48,11 @@ public class DataExplorerStaticInstancesPlaceTemplate extends PlaceTemplate {
 				for (Instance instance : entity.getStaticInstances().values()) {
 					page.addChild("mainContent", 
 						new SelectionElement(new ConstantDeduction<Instance>(instance),
-							new FragmentTemplate("link-"+(id++), "Link")
-								.putText("text", new TextTemplate().getUntranslated().add(instance.getMetadata().getStaticName()).getTextTemplate())
-								.setEvent(rootFlow.getEntityDetailsEvent(entity))
+							new FragmentTemplate("block-"+(id++),"Block").addChild("content",
+								new FragmentTemplate("link-"+(id++), "Link")
+									.putText("text", new TextTemplate().getUntranslated().add(instance.getMetadata().getStaticName()).getTextTemplate())
+									.setEvent(rootFlow.getEntityDetailsEvent(entity))
+							)
 						)
 					);
 				}

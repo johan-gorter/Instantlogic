@@ -24,12 +24,14 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	private DataExplorerEntityFlow entityFlow;
 	private List<FlowEvent> directEvents;
 	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
+	private DataExplorerRootFlow rootFlow;
 
-	public DataExplorerEntityDetailsPlaceTemplate(DataExplorerEntityFlow entityFlow, List<FlowEvent> directEvents, DataExplorerOwnerBreadcrumbElement breadcrumbElement) {
+	public DataExplorerEntityDetailsPlaceTemplate(DataExplorerEntityFlow entityFlow, List<FlowEvent> directEvents, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerRootFlow dataExplorerRootFlow) {
 		this.entity = entityFlow.getEntity();
 		this.entityFlow = entityFlow;
 		this.directEvents = directEvents;
 		this.breadcrumbElement = breadcrumbElement;
+		this.rootFlow = dataExplorerRootFlow;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -42,6 +44,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 			.addChild("mainContent", new FragmentTemplate("staticinstances-link", "Link")
 				.putText("text", new TextTemplate().getUntranslated().add("Static instances").getTextTemplate())
 				.setEvent(ExploreStaticInstancesEvent.INSTANCE))
+			.addChild("mainContent", new ShoppingElement(rootFlow, entity))
 		    .addChild("mainContent", breadcrumbElement)
 			.addChild("mainContent",
                 new FragmentTemplate("h1", "Heading1")      
@@ -51,8 +54,6 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
                     	.add("'")
                     	.getTextTemplate())        
             );
-		
-		page.addChild("mainContent", new ShoppingElement(entity));
 		
 		// DirectEvent buttons
 		for (FlowEvent directEvent : directEvents) {

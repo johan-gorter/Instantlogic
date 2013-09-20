@@ -761,6 +761,8 @@ YUI.add('instantlogic', function (Y) {
      * - createMarkup: function for creating the markup, this markup will be appended to this.parentNode
      * - texts: function(model), optional, must return an array of tuples with [0]: the div from the markup
      * and [1]: the text from the model to render there
+     * - styles: function(model), optional, must return an array of triples with [0]: the div from the markup
+     * [1] the css property and [2]: the value for this property
      * - fragmentLists: function(model), optional, must return an array of tuples with [0]: the div from the markup 
      * and [1]: the list of elements in the model to render there
      * - postInit: function(model), optional, runs after the init phase has been completed
@@ -806,6 +808,13 @@ YUI.add('instantlogic', function (Y) {
     				results[i][0].set('text', text);
     			}
     		}
+    		if (options.styles) {
+    			var results = options.styles.call(this, model);
+    			for (var i=0;i<results.length;i++) {
+    				var value = results[i][2];
+    				results[i][0].setStyle(results[i][1], value);
+    			}
+    		}
     		if (options.postInit) {
     			options.postInit.call(this, model);
     		}
@@ -829,6 +838,15 @@ YUI.add('instantlogic', function (Y) {
             }
           }
         }
+        if(options.styles) {
+            var newResults = options.styles.call(this, newModel);
+            var oldResults = options.styles.call(this, this.oldModel);
+            for(var i = 0; i < newResults.length; i++) {
+              if(newResults[i][2] != oldResults[i][2]) {
+                newResults[i][0].setStyle(newResults[i][1], newResults[i][2]);
+              }
+            }
+          }
         if(!ns.util.arrayEquals(this.oldModel.styleNames, newModel.styleNames)) {
           if(this.oldModel.styleNames) {
             for(var i = 0; i < this.oldModel.styleNames.length; i++) {

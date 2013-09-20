@@ -21,19 +21,27 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 	private Relation<?, ?, ?> relation;
 	private DataExplorerRelationFlow flow;
 	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
+	private DataExplorerRootFlow rootFlow;
 
-	public DataExplorerRelationDetailsPlaceTemplate(DataExplorerRelationFlow flow, DataExplorerOwnerBreadcrumbElement breadcrumbElement) {
+	public DataExplorerRelationDetailsPlaceTemplate(DataExplorerRelationFlow flow, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerRootFlow dataExplorerRootFlow) {
 		this.entity = flow.getEntity();
 		this.relation = flow.getRelation();
 		this.flow = flow;
 		this.breadcrumbElement = breadcrumbElement;
+		this.rootFlow = dataExplorerRootFlow;
 	}
 	
 	@Override
 	public FragmentTemplate getRootContainer() {
 		FragmentTemplate page = new FragmentTemplate(relation.getUniqueId()+"-details", "Page")
-			.addChild("mainContent", breadcrumbElement)
-			.addChild("mainContent",
+		.addChild("mainContent", new FragmentTemplate("h2", "Heading2")
+			.putText("text", new TextTemplate().getUntranslated().add("Data Explorer").getTextTemplate()))
+		.addChild("mainContent", new FragmentTemplate("staticinstances-link", "Link")
+			.putText("text", new TextTemplate().getUntranslated().add("Static instances").getTextTemplate())
+			.setEvent(ExploreStaticInstancesEvent.INSTANCE))
+		.addChild("mainContent", new ShoppingElement(rootFlow))
+		.addChild("mainContent", breadcrumbElement)
+		.addChild("mainContent",
                 new FragmentTemplate("h1", "Heading1")      
                     .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated()
                     	.add("Relation '"+ relation.getName()+"'").getTextTemplate())        
@@ -48,7 +56,6 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 					.setEvent(ExploreDataEvent.INSTANCE)
 			)
 		);
-		page.addChild("mainContent", new ShoppingElement());
 		
 		for (Entry<Entity, FlowEvent> entry : flow.getAddNewEvents().entrySet()) {
 			Entity entity = entry.getKey();

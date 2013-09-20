@@ -62,5 +62,7 @@
 .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:180px;}
 .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment .fragment-debug {margin-left:200px;}
 
+/* Data explorer */
 .explore-data-button {position:absolute;top:50px;right:20px;background:rgba(255,128,128,0.8);border:solid 1px #FF0000; border-radius: 5px; 5px 5px 5px; color:#FFFFFF;cursor:pointer;padding:0 4px;}
 .breadcrumb-node .breadcrumb-node {position:relative; border-left:solid 15px transparent;}
+.shopping {border: solid 1px darkgray; padding:3px; border-radius:3px;white-space:no-wrap;margin:2px 0;}

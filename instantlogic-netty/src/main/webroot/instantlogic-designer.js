@@ -70,37 +70,62 @@ YUI.add('instantlogic-designer', function (Y) {
     // Shopping (shops for instances to add to a relation in the data-explorer)
     ns.Shopping = Y.instantlogic.createFragment({
     	createMarkup: function() {
-    		return html.div({className: 'shopping animate-vertically'},
-    			html.span('Shopping for '),
-    			this.relationNameSpan = html.span(),
-    			html.span(' (for '),
-    			this.instanceNameSpan = html.span(),
-    			html.span('), items: '),
-    			this.itemCountSpan = html.span(),
-    			this.addButton = html.button('add to cart'),
-    			this.readyButton = html.button('ready')
-    		);
+    		return html.div({className: 'animate-vertically'},
+    			html.div({className:'shopping'},
+	    			html.span('Finding '),
+	    			this.relationNameLink = html.a({href:'#'}),
+	    			html.span(' for '),
+	    			this.instanceNameLink = html.a({href:'#'}),
+	    			this.itemLabelSpan = html.span(', items: '),
+	    			this.itemCountSpan = html.b(),
+	    			this.addButton = html.button('add this'),
+	    			this.setToButton = html.button('set to this'),
+	    			this.removeButton = html.button('remove this'),
+	    			this.readyButton = html.button('stop')
+	    		)
+	    	);
     	},
     	postInit: function(model) {
     		this.addButton.on('click', this.addClicked, this);
+    		this.setToButton.on('click', this.addClicked, this);
+    		this.removeButton.on('click', this.removeClicked, this);
     		this.readyButton.on('click', this.readyClicked, this);
-    		if (!model.addCurrent) {
-    			this.addButton.hide();
-    		}
+    		this.instanceNameLink.on('click', this.instanceNameClicked, this);
+    		this.relationNameLink.on('click', this.relationNameClicked, this);
     	},
     	postUpdate: function(newModel) {
     	},
     	texts: function(model) {
-    		return [[this.relationNameSpan, model.relationName], [this.instanceNameSpan, model.instanceName], [this.itemCountSpan, model.itemCount]];
+    		return [[this.relationNameLink, model.relationName], [this.instanceNameLink, model.instanceName], [this.itemCountSpan, model.itemCount]];
+    	},
+    	styles: function(model) {
+    		return [[this.itemLabelSpan, 'display', (!model.single)?'inline':'none'],
+    		        [this.itemCountSpan, 'display', (!model.single)?'inline':'none'],
+    		        [this.addButton, 'display', (model.thisCanBeAdded && !model.single)?'inline':'none'],
+    		        [this.setToButton, 'display', (model.thisCanBeAdded && model.single)?'inline':'none'],
+    		        [this.removeButton, 'display', (model.thisCanBeRemoved)?'inline':'none']
+    		        ];
     	},
     	overrides: {
     		addClicked: function(evt) {
                 evt.preventDefault();
                 this.engine.sendSubmit(this.model.id+'-addItem');
     		},
+    		removeClicked: function(evt) {
+                evt.preventDefault();
+                this.engine.sendSubmit(this.model.id+'-removeItem');
+    		},
 			readyClicked: function(evt) {
                 evt.preventDefault();
                 this.engine.sendSubmit(this.model.id+'-finished');
+    		},
+			relationNameClicked: function(evt) {
+                evt.preventDefault();
+                this.engine.sendSubmit(this.model.id+'-gotoRelation');
+    		},
+			instanceNameClicked: function(evt) {
+                evt.preventDefault();
+                this.engine.sendSubmit(this.model.id+'-gotoInstance');
 			}
     	}
     });

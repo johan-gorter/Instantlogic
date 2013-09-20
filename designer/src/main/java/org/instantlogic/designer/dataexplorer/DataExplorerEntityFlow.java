@@ -26,11 +26,13 @@ public class DataExplorerEntityFlow extends SimpleFlow {
 	private final Entity<?>[] parameters;
 	private final Map<String, SimpleFlowEvent> relationDetailsEvents = new HashMap<String, SimpleFlowEvent>();
 	private SimpleFlowEvent detailsEvent;
+	private DataExplorerRootFlow rootFlow;
 	
-	public DataExplorerEntityFlow(Entity<?> entity, SimpleFlowEvent entityDetailsEvent, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerOwnerBreadcrumbElement relationBreadcrumbElement, List<FlowEvent> directEvents) {
+	public DataExplorerEntityFlow(Entity<?> entity, SimpleFlowEvent entityDetailsEvent, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerOwnerBreadcrumbElement relationBreadcrumbElement, List<FlowEvent> directEvents, DataExplorerRootFlow dataExplorerRootFlow) {
 		this.detailsEvent = entityDetailsEvent;
 		this.entity = entity;
-		this.detailsPlaceTemplate = new DataExplorerEntityDetailsPlaceTemplate(this, directEvents, breadcrumbElement);
+		this.rootFlow = dataExplorerRootFlow;
+		this.detailsPlaceTemplate = new DataExplorerEntityDetailsPlaceTemplate(this, directEvents, breadcrumbElement, dataExplorerRootFlow);
 		this.parameters = new Entity<?>[]{entity};
 		
 		ArrayList<FlowNodeBase> nodeList = new ArrayList<FlowNodeBase>();
@@ -56,7 +58,7 @@ public class DataExplorerEntityFlow extends SimpleFlow {
 
 	private void addRelationDetails(Relation<?, ?, ?> relation, List<FlowNodeBase> nodeList, List<FlowEdge> edgeList, DataExplorerOwnerBreadcrumbElement breadcrumbElement) {
 		SimpleFlowEvent relationDetailsEvent = new SimpleFlowEvent(entity.getName()+"-"+relation.getName()+"-details");
-		DataExplorerRelationFlow relationFlow = new DataExplorerRelationFlow(this, relation, relationDetailsEvent, breadcrumbElement);
+		DataExplorerRelationFlow relationFlow = new DataExplorerRelationFlow(this, relation, relationDetailsEvent, breadcrumbElement, rootFlow);
 		relationDetailsEvents.put(relation.getName(), relationDetailsEvent);
 		SimpleSubFlow relationSubFlow = new SimpleSubFlow(relationFlow);
 		nodeList.add(relationSubFlow);

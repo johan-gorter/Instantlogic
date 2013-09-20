@@ -47,7 +47,7 @@ public class DataExplorerRootFlow extends Flow {
 			DataExplorerOwnerBreadcrumbElement breadcrumbElement = new DataExplorerOwnerBreadcrumbElement(entity, this, false);
 			breadcrumbElements.put(entity.getUniqueId(), breadcrumbElement);
 			SimpleFlowEvent detailsEvent = new SimpleFlowEvent(entity.getUniqueId()+"-details", entity);
-			DataExplorerEntityFlow entityFlow = new DataExplorerEntityFlow(entity, detailsEvent, breadcrumbElement, new DataExplorerOwnerBreadcrumbElement(entity, this, true), flowWithDataExplorer.getDirectEvents(entity));
+			DataExplorerEntityFlow entityFlow = new DataExplorerEntityFlow(entity, detailsEvent, breadcrumbElement, new DataExplorerOwnerBreadcrumbElement(entity, this, true), flowWithDataExplorer.getDirectEvents(entity), this);
 			entityFlows.put(entity.getUniqueId(), entityFlow);
 			entityDetailsEvents.put(entity.getUniqueId(), detailsEvent);
 			detailEventToFlow.put(detailsEvent, entityFlow);
