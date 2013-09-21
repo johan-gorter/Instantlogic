@@ -66,19 +66,53 @@ public class ElementDesign extends Design {
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, PropertyDesign> childrenForFragment
-		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childrenForFragment);
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> childOfSelection
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
 
-	public org.instantlogic.fabric.value.RelationValue<ElementDesign, PropertyDesign> getChildrenForFragmentRelationValue() {
-		return childrenForFragment;
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> getChildOfSelectionRelationValue() {
+		return childOfSelection;
 	}
 
-	public org.instantlogic.designer.PropertyDesign getChildrenForFragment() {
-		return childrenForFragment.getValue();
+	public org.instantlogic.designer.SelectionDesign getChildOfSelection() {
+		return childOfSelection.getValue();
 	}
 
-    public ElementDesign setChildrenForFragment(org.instantlogic.designer.PropertyDesign newValue) {
-        childrenForFragment.setValue(newValue);
+    public ElementDesign setChildOfSelection(org.instantlogic.designer.SelectionDesign newValue) {
+        childOfSelection.setValue(newValue);
+        return (ElementDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, IfElseDesign> elseChildOnIfElseDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.elseChildOnIfElseDesign);
+
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, IfElseDesign> getElseChildOnIfElseDesignRelationValue() {
+		return elseChildOnIfElseDesign;
+	}
+
+	public org.instantlogic.designer.IfElseDesign getElseChildOnIfElseDesign() {
+		return elseChildOnIfElseDesign.getValue();
+	}
+
+    public ElementDesign setElseChildOnIfElseDesign(org.instantlogic.designer.IfElseDesign newValue) {
+        elseChildOnIfElseDesign.setValue(newValue);
+        return (ElementDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SharedElementDefinitionDesign> partOfSharedElementDefinition
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.partOfSharedElementDefinition);
+
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SharedElementDefinitionDesign> getPartOfSharedElementDefinitionRelationValue() {
+		return partOfSharedElementDefinition;
+	}
+
+	public org.instantlogic.designer.SharedElementDefinitionDesign getPartOfSharedElementDefinition() {
+		return partOfSharedElementDefinition.getValue();
+	}
+
+    public ElementDesign setPartOfSharedElementDefinition(org.instantlogic.designer.SharedElementDefinitionDesign newValue) {
+        partOfSharedElementDefinition.setValue(newValue);
         return (ElementDesign)this;
     }
 
@@ -100,36 +134,36 @@ public class ElementDesign extends Design {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> childOfSelection
-		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, IfElseDesign> ifChildOnIfElseDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.ifChildOnIfElseDesign);
 
-	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> getChildOfSelectionRelationValue() {
-		return childOfSelection;
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, IfElseDesign> getIfChildOnIfElseDesignRelationValue() {
+		return ifChildOnIfElseDesign;
 	}
 
-	public org.instantlogic.designer.SelectionDesign getChildOfSelection() {
-		return childOfSelection.getValue();
+	public org.instantlogic.designer.IfElseDesign getIfChildOnIfElseDesign() {
+		return ifChildOnIfElseDesign.getValue();
 	}
 
-    public ElementDesign setChildOfSelection(org.instantlogic.designer.SelectionDesign newValue) {
-        childOfSelection.setValue(newValue);
+    public ElementDesign setIfChildOnIfElseDesign(org.instantlogic.designer.IfElseDesign newValue) {
+        ifChildOnIfElseDesign.setValue(newValue);
         return (ElementDesign)this;
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SharedElementDefinitionDesign> partOfSharedElementDefinition
-		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.partOfSharedElementDefinition);
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, PropertyDesign> childrenForFragment
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childrenForFragment);
 
-	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SharedElementDefinitionDesign> getPartOfSharedElementDefinitionRelationValue() {
-		return partOfSharedElementDefinition;
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, PropertyDesign> getChildrenForFragmentRelationValue() {
+		return childrenForFragment;
 	}
 
-	public org.instantlogic.designer.SharedElementDefinitionDesign getPartOfSharedElementDefinition() {
-		return partOfSharedElementDefinition.getValue();
+	public org.instantlogic.designer.PropertyDesign getChildrenForFragment() {
+		return childrenForFragment.getValue();
 	}
 
-    public ElementDesign setPartOfSharedElementDefinition(org.instantlogic.designer.SharedElementDefinitionDesign newValue) {
-        partOfSharedElementDefinition.setValue(newValue);
+    public ElementDesign setChildrenForFragment(org.instantlogic.designer.PropertyDesign newValue) {
+        childrenForFragment.setValue(newValue);
         return (ElementDesign)this;
     }
 

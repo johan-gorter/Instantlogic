@@ -6,23 +6,11 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
 
 	@Override
 	public String getId() {
-		return "DytbUEqozmbleoEu_162ca994_8180";
+		return "Xtxzpiqkkueucncl_756f2262_58d8";
 	}
 	
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
-		  	org.instantlogic.fabric.deduction.IdDeduction d0 = new org.instantlogic.fabric.deduction.IdDeduction();
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 = new org.instantlogic.fabric.deduction.AttributeDeduction();
-		    d1.setAttribute(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.output);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
-		    d2.setOfEntity(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE);
-		    d0.setIdOfInstance(d1);
-		    d1.setInstance(d2);
-		return d0;
-	}
-
-
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.deductions);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
@@ -32,17 +20,16 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
-		    d0.setAttribute(org.instantlogic.designer.entity.DeductionDesignEntity.parameterValuesDescription);
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
+		  	org.instantlogic.fabric.deduction.IdDeduction d0 = new org.instantlogic.fabric.deduction.IdDeduction();
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
-		    d0.setInstance(d1);
+		    d0.setIdOfInstance(d1);
 		return d0;
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DeductionDesignEntity.diagramWidth);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
@@ -52,36 +39,17 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
 	}
 
 
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.DeductionDesignEntity.parameterValuesDescription);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
+		return d0;
+	}
+
+
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction4() {
-		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 = new org.instantlogic.fabric.deduction.ReverseRelationDeduction();
-		    d0.setRelation(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
-		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
-		    d0.setToInstance(d1);
-		return d0;
-	}
-
-
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction5() {
-		  	org.instantlogic.fabric.deduction.IdDeduction d0 = new org.instantlogic.fabric.deduction.IdDeduction();
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
-		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE);
-		    d0.setIdOfInstance(d1);
-		return d0;
-	}
-
-
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction6() {
-		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 = new org.instantlogic.fabric.deduction.ReverseRelationDeduction();
-		    d0.setRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.output);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
-		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
-		    d0.setToInstance(d1);
-		return d0;
-	}
-
-
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction7() {
 		  	org.instantlogic.fabric.deduction.HasValueDeduction d0 = new org.instantlogic.fabric.deduction.HasValueDeduction();
 		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d1 = new org.instantlogic.fabric.deduction.ReverseRelationDeduction();
 		    d1.setRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.selectedDeduction);
@@ -93,17 +61,7 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction8() {
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
-		    d0.setAttribute(org.instantlogic.designer.entity.DeductionDesignEntity.diagramHeight);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
-		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
-		    d0.setInstance(d1);
-		return d0;
-	}
-
-
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction9() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction5() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DeductionDesignEntity.inputs);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
@@ -113,12 +71,54 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction10() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction6() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DeductionInputDesignEntity.operationInput);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE);
 		    d0.setInstance(d1);
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction7() {
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.diagramPosition);
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d1.setAttribute(org.instantlogic.designer.entity.DeductionInputDesignEntity.operationInput);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d2.setOfEntity(org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
+		    d1.setInstance(d2);
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction8() {
+		  	org.instantlogic.fabric.deduction.IdDeduction d0 = new org.instantlogic.fabric.deduction.IdDeduction();
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE);
+		    d0.setIdOfInstance(d1);
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction9() {
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.DeductionDesignEntity.diagramHeight);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction10() {
+		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 = new org.instantlogic.fabric.deduction.ReverseRelationDeduction();
+		    d0.setRelation(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
+		    d0.setToInstance(d1);
 		return d0;
 	}
 
@@ -133,23 +133,21 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction12() {
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
-		    d0.setAttribute(org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.diagramPosition);
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 = new org.instantlogic.fabric.deduction.AttributeDeduction();
-		    d1.setAttribute(org.instantlogic.designer.entity.DeductionInputDesignEntity.operationInput);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
-		    d2.setOfEntity(org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE);
-		    d0.setInstance(d1);
-		    d1.setInstance(d2);
+		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 = new org.instantlogic.fabric.deduction.ReverseRelationDeduction();
+		    d0.setRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.output);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
+		    d0.setToInstance(d1);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction13() {
-		  	org.instantlogic.fabric.deduction.IdDeduction d0 = new org.instantlogic.fabric.deduction.IdDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.DeductionDesignEntity.diagramPosition);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
 		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
-		    d0.setIdOfInstance(d1);
+		    d0.setInstance(d1);
 		return d0;
 	}
 
@@ -165,66 +163,68 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction15() {
-		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
-		    d0.setAttribute(org.instantlogic.designer.entity.DeductionDesignEntity.diagramPosition);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
-		    d1.setOfEntity(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE);
-		    d0.setInstance(d1);
+		  	org.instantlogic.fabric.deduction.IdDeduction d0 = new org.instantlogic.fabric.deduction.IdDeduction();
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d1.setAttribute(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.output);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d2.setOfEntity(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE);
+		    d0.setIdOfInstance(d1);
+		    d1.setInstance(d2);
 		return d0;
 	}
 
 	
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
-        new org.instantlogic.interaction.page.FragmentTemplate("AegsdcwcmIfrueIz_d1a3c995_be03", "Page")        
+        new org.instantlogic.interaction.page.FragmentTemplate("orqdxpEEcagsaa_n_571e6789_6573", "Page")        
             .addChild("mainContent",
-                new org.instantlogic.interaction.page.FragmentTemplate("Fqftql_xIaeIwauw_97ec2688_b0ab", "Block")      
+                new org.instantlogic.interaction.page.FragmentTemplate("HEjslap_jiezabkb_c45b9a5c_5e9a", "Block")      
                     .setStyleNames(new String[]{"card"})        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("BIvgkdEvUe_IoeuI_677c81d2_6c7a", "Heading3")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("N_sekfummqgoqmEw_9dc4b33e_84d7", "Heading3")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("DeductionScheme").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("eelrmEwqwacfIkfe_dc35a8f8_f3da", "Button")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("GgIvxOIk_ievAlpp_0a89cb3f_c423", "Button")      
                             .setStyleNames(new String[]{"btn"})      
                             .setEvent(org.instantlogic.designer.event.DataEvent.INSTANCE)      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
                             .addChild("content",
-                                new org.instantlogic.interaction.page.FragmentTemplate("MjpaqzdEim_uacUy_65998237_e796", "Icon")      
+                                new org.instantlogic.interaction.page.FragmentTemplate("ZabOtAmvdiessiAb_f5485b0a_9d26", "Icon")      
                                     .setStyleNames(new String[]{"icon-wrench"})        
                             )        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("Ubczf_qikieuAeop_b471714a_21af", "DeductionScheme")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("RlbErfpnyyaUinjs_bb6d2d0c_5296", "DeductionScheme")      
                             .setField(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE, org.instantlogic.designer.entity.DeductionSchemeDesignEntity.selectedDeduction)      
-                            .putValue("output", createDeduction0())        
+                            .putValue("output", createDeduction15())        
                             .addChild("deductions",
-                                new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
-                                        new org.instantlogic.interaction.page.FragmentTemplate("Vsroyxqofacbqmiy_e750bae2_d81a", "Deduction")      
+                                new org.instantlogic.interaction.page.SelectionElement(createDeduction0(),
+                                        new org.instantlogic.interaction.page.FragmentTemplate("LseyUdaspa_mibzj_c94fb888_9564", "Deduction")      
                                             .setField(org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE, org.instantlogic.designer.entity.DeductionDesignEntity.diagramPosition)      
-                                            .putValue("selected", createDeduction7())      
-                                            .putValue("height", createDeduction8())      
-                                            .putValue("width", createDeduction3())      
-                                            .putValue("deductionId", createDeduction13())      
-                                            .putValue("xy", createDeduction15())      
+                                            .putValue("selected", createDeduction4())      
+                                            .putValue("height", createDeduction9())      
+                                            .putValue("width", createDeduction2())      
+                                            .putValue("deductionId", createDeduction1())      
+                                            .putValue("xy", createDeduction13())      
                                             .putText("operationName", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction14()).getTextTemplate())      
-                                            .putText("parameters", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction2()).getTextTemplate())        
+                                            .putText("parameters", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction3()).getTextTemplate())        
                                             .addChild("inputs",
-                                                new org.instantlogic.interaction.page.SelectionElement(createDeduction9(),
-                                                        new org.instantlogic.interaction.page.FragmentTemplate("JkUuIqfhbIbjalUE_93452b76_dc78", "DeductionInput")      
-                                                            .putValue("deductionInputId", createDeduction11())      
-                                                            .putValue("diagramPosition", createDeduction12())      
-                                                            .putText("operationInputName", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction10()).getTextTemplate()))
+                                                new org.instantlogic.interaction.page.SelectionElement(createDeduction5(),
+                                                        new org.instantlogic.interaction.page.FragmentTemplate("BnnEUoUeqe_Eymtd_caf6f61a_2b2a", "DeductionInput")      
+                                                            .putValue("deductionInputId", createDeduction8())      
+                                                            .putValue("diagramPosition", createDeduction7())      
+                                                            .putText("operationInputName", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction6()).getTextTemplate()))
         
                                             )        
                                             .addChild("outputs",
-                                                new org.instantlogic.interaction.page.SelectionElement(createDeduction4(),
-                                                        new org.instantlogic.interaction.page.FragmentTemplate("Cqqsiccsoebzwf_z_1ba19023_2657", "Output")      
-                                                            .putValue("toDeductionInputId", createDeduction5()))
+                                                new org.instantlogic.interaction.page.SelectionElement(createDeduction10(),
+                                                        new org.instantlogic.interaction.page.FragmentTemplate("VluwxuloUaedkfvo_7c285688_f188", "Output")      
+                                                            .putValue("toDeductionInputId", createDeduction11()))
         
                                             )        
                                             .addChild("outputs",
-                                                new org.instantlogic.interaction.page.SelectionElement(createDeduction6(),
-                                                        new org.instantlogic.interaction.page.FragmentTemplate("Au_iIyzvve_fkcii_5fcb3f13_03ca", "Output"))
+                                                new org.instantlogic.interaction.page.SelectionElement(createDeduction12(),
+                                                        new org.instantlogic.interaction.page.FragmentTemplate("VOabqU_mkmcdmbIm_9a57a06c_f8e8", "Output"))
         
                                             ))
         

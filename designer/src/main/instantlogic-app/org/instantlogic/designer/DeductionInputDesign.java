@@ -30,29 +30,6 @@ public class DeductionInputDesign extends org.instantlogic.fabric.Instance {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<DeductionInputDesign, DeductionDesign> inputs
-		= createRelationValues(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
-		
-	public org.instantlogic.fabric.value.RelationValues<DeductionInputDesign, DeductionDesign> getInputsRelationValue() {
-		return inputs;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionDesign> getInputs() {
-		return inputs.getValue();
-	}
-	
-	public DeductionInputDesign addToInputs(DeductionDesign item) {
-		inputs.addValue(item);
-		return (DeductionInputDesign)this;
-	}
-	
-	public DeductionInputDesign removeFromInputs(DeductionDesign item) {
-		inputs.removeValue(item);
-		return (DeductionInputDesign)this;
-	}
-	
-	
-	
 	private final org.instantlogic.fabric.value.RelationValue<DeductionInputDesign, DeductionOperationInputDesign> operationInput
 		= createRelationValue(org.instantlogic.designer.entity.DeductionInputDesignEntity.operationInput);
 		
@@ -70,6 +47,38 @@ public class DeductionInputDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 
+	
+	private final org.instantlogic.fabric.value.RelationValueList<DeductionInputDesign, DeductionDesign> inputs
+		= createRelationValueList(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
+		
+	public org.instantlogic.fabric.value.RelationValueList<DeductionInputDesign, DeductionDesign> getInputsRelationValue() {
+		return inputs;
+	}
+
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionDesign> getInputs() {
+		return inputs.getValue();
+	}
+	
+	public DeductionInputDesign addToInputs(DeductionDesign item) {
+		inputs.addValue(item);
+		return (DeductionInputDesign)this;
+	}
+	
+	public DeductionInputDesign removeFromInputs(DeductionDesign item) {
+		inputs.removeValue(item);
+		return (DeductionInputDesign)this;
+	}
+	
+	public DeductionInputDesign removeFromInputs(int index) {
+		inputs.removeValue(index);
+		return (DeductionInputDesign)this;
+	}
+
+	public DeductionInputDesign addToInputs(DeductionDesign item, int index) {
+		inputs.insertValue(item, index);
+		return (DeductionInputDesign)this;
+	}	
+	
 
 	// Reverse relations
 	

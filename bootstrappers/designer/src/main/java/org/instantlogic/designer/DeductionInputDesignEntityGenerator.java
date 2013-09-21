@@ -1,9 +1,5 @@
 package org.instantlogic.designer;
 
-import org.instantlogic.designer.EntityDesign.RelationType;
-
-
-
 public class DeductionInputDesignEntityGenerator extends EntityDesign {
 
     public static final DeductionInputDesignEntityGenerator ENTITY = new DeductionInputDesignEntityGenerator();
@@ -19,5 +15,9 @@ public class DeductionInputDesignEntityGenerator extends EntityDesign {
     public static final RelationDesign inputs = addRelation(ENTITY, "inputs", RelationType.ManyToMany, DeductionDesignEntityGenerator.ENTITY)
         	.setReverseName("outputs");
 
+    @Override
+    public void init() {
+    	inputs.ordered();
+    }
     
 }

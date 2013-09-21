@@ -16,19 +16,19 @@ public class FlowContextPageFragment extends org.instantlogic.interaction.page.S
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-    new org.instantlogic.interaction.page.FragmentTemplate("WAbrznhnvygougpz_cbedd6a2_3429", "Group")        
+    new org.instantlogic.interaction.page.FragmentTemplate("TixhrdObuycyyfUm_bd0dcf19_d8cc", "Group")        
         .addChild("content",
-                new org.instantlogic.interaction.page.SharedElementHolder("StjeOwsrdycyonbk_06f762a9_ec06", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+                new org.instantlogic.interaction.page.SharedElementHolder("NvictUpzjedoAbxI_8732672d_b913", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
         )        
         .addChild("content",
-            new org.instantlogic.interaction.page.FragmentTemplate("Bcoeplpiyiejains_2c1802c2_3d92", "Link")      
+            new org.instantlogic.interaction.page.FragmentTemplate("expOotrijyfskjwU_7e8d91e6_8759", "Link")      
                 .setEvent(org.instantlogic.designer.event.FlowDetailsEvent.INSTANCE)        
                 .addChild("content",
-                    new org.instantlogic.interaction.page.FragmentTemplate("acuibfwcuucygkxA_aad15964_d468", "Block")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("oeIpxnoerifAimwU_0a226673_9c25", "Block")      
                         .setStyleNames(new String[]{"inactive-card"})        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("SvdoAjailedoahhg_af02a841_f8b7", "Heading3")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("eubnafwddugvcnUI_5b4d2620_395a", "Heading3")      
                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Flow)").getTextTemplate())        
                         )        
                 )        

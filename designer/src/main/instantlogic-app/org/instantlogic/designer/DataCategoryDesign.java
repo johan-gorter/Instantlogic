@@ -15,28 +15,28 @@ public class DataCategoryDesign extends org.instantlogic.fabric.Instance {
 		return instance;
 	}
 	
-	public static final DataCategoryDesign number;
 	public static final DataCategoryDesign entity;
-	public static final DataCategoryDesign custom;
-	public static final DataCategoryDesign text;
-	public static final DataCategoryDesign dateTime;
 	public static final DataCategoryDesign _boolean;
+	public static final DataCategoryDesign number;
+	public static final DataCategoryDesign custom;
+	public static final DataCategoryDesign dateTime;
+	public static final DataCategoryDesign text;
 	
 	static {
 	  // Phase 1
-	  number = addStaticInstance("number", new DataCategoryDesign());
 	  entity = addStaticInstance("entity", new DataCategoryDesign());
-	  custom = addStaticInstance("custom", new DataCategoryDesign());
-	  text = addStaticInstance("text", new DataCategoryDesign());
-	  dateTime = addStaticInstance("dateTime", new DataCategoryDesign());
 	  _boolean = addStaticInstance("boolean", new DataCategoryDesign());
+	  number = addStaticInstance("number", new DataCategoryDesign());
+	  custom = addStaticInstance("custom", new DataCategoryDesign());
+	  dateTime = addStaticInstance("dateTime", new DataCategoryDesign());
+	  text = addStaticInstance("text", new DataCategoryDesign());
 	  // Phase 2
-	  number.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Number").getTextTemplate());
 	  entity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Entity").getTextTemplate());
-	  custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Custom").getTextTemplate());
-	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Text").getTextTemplate());
-	  dateTime.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Date/Time").getTextTemplate());
 	  _boolean.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Yes-No").getTextTemplate());
+	  number.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Number").getTextTemplate());
+	  custom.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Custom").getTextTemplate());
+	  dateTime.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Date/Time").getTextTemplate());
+	  text.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Text").getTextTemplate());
 	}
 	
 	@Override
@@ -49,5 +49,22 @@ public class DataCategoryDesign extends org.instantlogic.fabric.Instance {
 	// Relations
 
 	// Reverse relations
+	
+	private final org.instantlogic.fabric.value.RelationValue<DataCategoryDesign, DataTypeDesign> dataCategoryOnDataTypeDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.DataCategoryDesignEntity.dataCategoryOnDataTypeDesign);
+
+	public org.instantlogic.fabric.value.RelationValue<DataCategoryDesign, DataTypeDesign> getDataCategoryOnDataTypeDesignRelationValue() {
+		return dataCategoryOnDataTypeDesign;
+	}
+
+	public org.instantlogic.designer.DataTypeDesign getDataCategoryOnDataTypeDesign() {
+		return dataCategoryOnDataTypeDesign.getValue();
+	}
+
+    public DataCategoryDesign setDataCategoryOnDataTypeDesign(org.instantlogic.designer.DataTypeDesign newValue) {
+        dataCategoryOnDataTypeDesign.setValue(newValue);
+        return (DataCategoryDesign)this;
+    }
+
 
 }

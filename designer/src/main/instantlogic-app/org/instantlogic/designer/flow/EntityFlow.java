@@ -13,13 +13,13 @@ public class EntityFlow extends org.instantlogic.interaction.flow.impl.SimpleFlo
 	private static final org.instantlogic.interaction.flow.FlowEdge[] EDGES = new org.instantlogic.interaction.flow.FlowEdge[]{
 		new org.instantlogic.interaction.flow.FlowEdge(
 			null, 
-			org.instantlogic.designer.event.EntityDetailsEvent.INSTANCE,
-			org.instantlogic.designer.flow.entity.EntityDetailsPlaceTemplate.INSTANCE
+			org.instantlogic.designer.event.AddAttributeEvent.INSTANCE,
+			org.instantlogic.designer.flow.entity.AddAttributeSubFlow.INSTANCE
 		),
 		new org.instantlogic.interaction.flow.FlowEdge(
 			null, 
-			org.instantlogic.designer.event.AddAttributeEvent.INSTANCE,
-			org.instantlogic.designer.flow.entity.AddAttributeSubFlow.INSTANCE
+			org.instantlogic.designer.event.EntityDetailsEvent.INSTANCE,
+			org.instantlogic.designer.flow.entity.EntityDetailsPlaceTemplate.INSTANCE
 		),
 	};
 	

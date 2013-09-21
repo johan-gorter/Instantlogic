@@ -15,20 +15,26 @@ public class DeductionOperationParameterDesign extends Design {
 		return instance;
 	}
 	
+	public static final DeductionOperationParameterDesign constantValue;
+	public static final DeductionOperationParameterDesign castToEntity;
 	public static final DeductionOperationParameterDesign selectedInstanceEntity;
 	public static final DeductionOperationParameterDesign attribute;
 	public static final DeductionOperationParameterDesign reverseRelationRelation;
-	public static final DeductionOperationParameterDesign castToEntity;
-	public static final DeductionOperationParameterDesign constantValue;
 	
 	static {
 	  // Phase 1
+	  constantValue = addStaticInstance("constantValue", new DeductionOperationParameterDesign());
+	  castToEntity = addStaticInstance("castToEntity", new DeductionOperationParameterDesign());
 	  selectedInstanceEntity = addStaticInstance("selectedInstanceEntity", new DeductionOperationParameterDesign());
 	  attribute = addStaticInstance("attribute", new DeductionOperationParameterDesign());
 	  reverseRelationRelation = addStaticInstance("reverseRelationRelation", new DeductionOperationParameterDesign());
-	  castToEntity = addStaticInstance("castToEntity", new DeductionOperationParameterDesign());
-	  constantValue = addStaticInstance("constantValue", new DeductionOperationParameterDesign());
 	  // Phase 2
+      constantValue.setName("value");
+      constantValue.setValueClass("java.lang.Object");
+	  constantValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Value").getTextTemplate());
+      castToEntity.setValueClass("org.instantlogic.fabric.model.Entity");
+      castToEntity.setName("toEntity");
+	  castToEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("To entity").getTextTemplate());
       selectedInstanceEntity.setValueClass("org.instantlogic.fabric.model.Entity");
       selectedInstanceEntity.setName("ofEntity");
 	  selectedInstanceEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Of entity").getTextTemplate());
@@ -38,12 +44,6 @@ public class DeductionOperationParameterDesign extends Design {
       reverseRelationRelation.setValueClass("org.instantlogic.fabric.model.Relation");
       reverseRelationRelation.setName("relation");
 	  reverseRelationRelation.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Relation").getTextTemplate());
-      castToEntity.setName("toEntity");
-      castToEntity.setValueClass("org.instantlogic.fabric.model.Entity");
-	  castToEntity.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("To entity").getTextTemplate());
-      constantValue.setName("value");
-      constantValue.setValueClass("java.lang.Object");
-	  constantValue.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Value").getTextTemplate());
 	}
 	
 	@Override
@@ -87,6 +87,28 @@ public class DeductionOperationParameterDesign extends Design {
 
     public DeductionOperationParameterDesign setOperation(org.instantlogic.designer.DeductionOperationDesign newValue) {
         operation.setValue(newValue);
+        return (DeductionOperationParameterDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<DeductionOperationParameterDesign, DeductionParameterDesign> operationParameterOnDeductionParameterDesign
+		= createReverseRelationValues(org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.operationParameterOnDeductionParameterDesign);
+
+	public org.instantlogic.fabric.value.RelationValues<DeductionOperationParameterDesign, DeductionParameterDesign> getOperationParameterOnDeductionParameterDesignRelationValue() {
+		return operationParameterOnDeductionParameterDesign;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign> getOperationParameterOnDeductionParameterDesign() {
+		return operationParameterOnDeductionParameterDesign.getValue();
+	}
+
+    public DeductionOperationParameterDesign addToOperationParameterOnDeductionParameterDesign(DeductionParameterDesign item) {
+        operationParameterOnDeductionParameterDesign.addValue(item);
+        return (DeductionOperationParameterDesign)this;
+    }
+
+    public DeductionOperationParameterDesign removeFromOperationParameterOnDeductionParameterDesign(DeductionParameterDesign item) {
+        operationParameterOnDeductionParameterDesign.removeValue(item);
         return (DeductionOperationParameterDesign)this;
     }
 

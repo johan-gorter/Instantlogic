@@ -102,19 +102,37 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, FragmentTypeDesign> type
-		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.type);
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EntityDesign> entity
+		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity);
 		
-	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, FragmentTypeDesign> getTypeRelationValue() {
-		return type;
+	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EntityDesign> getEntityRelationValue() {
+		return entity;
 	}
 
-	public org.instantlogic.designer.FragmentTypeDesign getType() {
-		return type.getValue();
+	public org.instantlogic.designer.EntityDesign getEntity() {
+		return entity.getValue();
 	}
 	
-	public FragmentTemplateDesign setType(org.instantlogic.designer.FragmentTypeDesign newValue) {
-		type.setValue(newValue);
+	public FragmentTemplateDesign setEntity(org.instantlogic.designer.EntityDesign newValue) {
+		entity.setValue(newValue);
+		return (FragmentTemplateDesign)this;
+	}
+	
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EventDesign> event
+		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.event);
+		
+	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EventDesign> getEventRelationValue() {
+		return event;
+	}
+
+	public org.instantlogic.designer.EventDesign getEvent() {
+		return event.getValue();
+	}
+	
+	public FragmentTemplateDesign setEvent(org.instantlogic.designer.EventDesign newValue) {
+		event.setValue(newValue);
 		return (FragmentTemplateDesign)this;
 	}
 	
@@ -138,19 +156,19 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EntityDesign> entity
-		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity);
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, FragmentTypeDesign> type
+		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.type);
 		
-	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EntityDesign> getEntityRelationValue() {
-		return entity;
+	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, FragmentTypeDesign> getTypeRelationValue() {
+		return type;
 	}
 
-	public org.instantlogic.designer.EntityDesign getEntity() {
-		return entity.getValue();
+	public org.instantlogic.designer.FragmentTypeDesign getType() {
+		return type.getValue();
 	}
 	
-	public FragmentTemplateDesign setEntity(org.instantlogic.designer.EntityDesign newValue) {
-		entity.setValue(newValue);
+	public FragmentTemplateDesign setType(org.instantlogic.designer.FragmentTypeDesign newValue) {
+		type.setValue(newValue);
 		return (FragmentTemplateDesign)this;
 	}
 	
@@ -178,24 +196,6 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	}
 	
 	
-	
-	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EventDesign> event
-		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.event);
-		
-	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, EventDesign> getEventRelationValue() {
-		return event;
-	}
-
-	public org.instantlogic.designer.EventDesign getEvent() {
-		return event.getValue();
-	}
-	
-	public FragmentTemplateDesign setEvent(org.instantlogic.designer.EventDesign newValue) {
-		event.setValue(newValue);
-		return (FragmentTemplateDesign)this;
-	}
-	
-
 
 	// Reverse relations
 

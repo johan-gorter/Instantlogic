@@ -99,8 +99,7 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 	}
 	
 	// With only 1 input
-	public DeductionDesign deduceCustom(DeductionOperationDesign operation,
-			DeductionOperationInputDesign input1, DeductionDesign input1InputDeduction) {
+	public DeductionDesign deduceCustom(DeductionOperationDesign operation, DeductionOperationInputDesign input1, DeductionDesign input1InputDeduction) {
 		DeductionDesign result = deduceCustom(operation);
 		DeductionInputDesign input1Input = new DeductionInputDesign();
 		result.addToInputs(input1Input);

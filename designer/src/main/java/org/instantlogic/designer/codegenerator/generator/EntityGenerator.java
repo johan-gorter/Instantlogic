@@ -129,6 +129,9 @@ public class EntityGenerator extends AbstractGenerator {
 			} else {
 				relation.internalTo=relation.internalItemClassName=relation.to.replace('.', '/');
 			}
+			if (relationDesign.getReverseName()== null) {
+				throw new RuntimeException("Reverse relation is mandatory");
+			}
 			relation.reverseName=relationDesign.getReverseName();
 			relation.reverseJavaIdentifier = relationDesign.getReverseJavaIdentifier();
 			if (relationDesign.getRule()!=null) {

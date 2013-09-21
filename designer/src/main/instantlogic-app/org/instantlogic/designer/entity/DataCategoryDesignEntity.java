@@ -15,16 +15,25 @@ public class DataCategoryDesignEntity extends org.instantlogic.fabric.model.Enti
 	// Relations
 	
 	// Reverse relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> dataCategoryOnDataTypeDesign;
 
 	static {
 		// Phase 1
 		// Attributes
 		// Relations
 		// Reverse relations
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataCategoryOnDataTypeDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
+				"NObzwekkuybOahy_b8babd06_2d12", "dataCategoryOnDataTypeDesign", INSTANCE, "dataCategoryOnDataTypeDesign", org.instantlogic.designer.DataCategoryDesign.class);
+		dataCategoryOnDataTypeDesign = $dataCategoryOnDataTypeDesign;
 		
 		// Phase 2
 
 
+		$dataCategoryOnDataTypeDesign.reverse = true;
+		$dataCategoryOnDataTypeDesign.valueClass = org.instantlogic.designer.DataTypeDesign.class;
+		$dataCategoryOnDataTypeDesign.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
+		$dataCategoryOnDataTypeDesign.setReverseRelation(org.instantlogic.designer.entity.DataTypeDesignEntity.dataCategory);
 	}
 
 	@Override
@@ -39,7 +48,7 @@ public class DataCategoryDesignEntity extends org.instantlogic.fabric.model.Enti
 	
 	@Override
 	public String getUniqueId() {
-		return "Semrymji_ybbqmou_5ecca12a_6ec0";
+		return "V_rvhospOqegyoxb_90a8f476_6131";
 	}
 	
 	@Override
@@ -52,6 +61,7 @@ public class DataCategoryDesignEntity extends org.instantlogic.fabric.model.Enti
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
+		dataCategoryOnDataTypeDesign,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

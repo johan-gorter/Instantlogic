@@ -28,29 +28,6 @@ public class FragmentTypeDesign extends Design {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> fragmentFilters
-		= createAttributeValues(org.instantlogic.designer.entity.FragmentTypeDesignEntity.fragmentFilters);
-	
-	public org.instantlogic.fabric.value.Values<java.lang.String> getFragmentFilters() {
-		return fragmentFilters.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> getFragmentFiltersAttributeValue() {
-		return fragmentFilters;
-	}
-
-	public FragmentTypeDesign addToFragmentFilters(java.lang.String item) {
-		fragmentFilters.addValue(item);
-		return (FragmentTypeDesign)this;
-	}
-	
-	public FragmentTypeDesign removeFromFragmentFilters(java.lang.String item) {
-		fragmentFilters.removeValue(item);
-		return (FragmentTypeDesign)this;
-	}
-	
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasAttribute
 		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasAttribute);
 	
@@ -85,9 +62,49 @@ public class FragmentTypeDesign extends Design {
 	}
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> fragmentFilters
+		= createAttributeValues(org.instantlogic.designer.entity.FragmentTypeDesignEntity.fragmentFilters);
+	
+	public org.instantlogic.fabric.value.Values<java.lang.String> getFragmentFilters() {
+		return fragmentFilters.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> getFragmentFiltersAttributeValue() {
+		return fragmentFilters;
+	}
+
+	public FragmentTypeDesign addToFragmentFilters(java.lang.String item) {
+		fragmentFilters.addValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign removeFromFragmentFilters(java.lang.String item) {
+		fragmentFilters.removeValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	
+	
 	// Relations
 
 	// Reverse relations
+	
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTypeDesign, ApplicationDesign> application
+		= createReverseRelationValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.application);
+
+	public org.instantlogic.fabric.value.RelationValue<FragmentTypeDesign, ApplicationDesign> getApplicationRelationValue() {
+		return application;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getApplication() {
+		return application.getValue();
+	}
+
+    public FragmentTypeDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
+        application.setValue(newValue);
+        return (FragmentTypeDesign)this;
+    }
+
 	
 	private final org.instantlogic.fabric.value.RelationValues<FragmentTypeDesign, FragmentTemplateDesign> usages
 		= createReverseRelationValues(org.instantlogic.designer.entity.FragmentTypeDesignEntity.usages);
@@ -107,23 +124,6 @@ public class FragmentTypeDesign extends Design {
 
     public FragmentTypeDesign removeFromUsages(FragmentTemplateDesign item) {
         usages.removeValue(item);
-        return (FragmentTypeDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<FragmentTypeDesign, ApplicationDesign> application
-		= createReverseRelationValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.application);
-
-	public org.instantlogic.fabric.value.RelationValue<FragmentTypeDesign, ApplicationDesign> getApplicationRelationValue() {
-		return application;
-	}
-
-	public org.instantlogic.designer.ApplicationDesign getApplication() {
-		return application.getValue();
-	}
-
-    public FragmentTypeDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
-        application.setValue(newValue);
         return (FragmentTypeDesign)this;
     }
 

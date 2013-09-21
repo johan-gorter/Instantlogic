@@ -28,40 +28,6 @@ public abstract class AbstractAttributeDesign extends Design {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<AttributeDesign, java.lang.Boolean> hasDefault
-		= createAttributeValue(org.instantlogic.designer.entity.AttributeDesignEntity.hasDefault);
-	
-	public java.lang.Boolean getHasDefault() {
-		return hasDefault.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<AttributeDesign, java.lang.Boolean> getHasDefaultAttributeValue() {
-		return hasDefault;
-	}
-
-	public AttributeDesign setHasDefault(java.lang.Boolean newValue) {
-		hasDefault.setValue(newValue);
-		return (AttributeDesign)this;
-	}
-	
-	
-	private final org.instantlogic.fabric.value.AttributeValue<AttributeDesign, java.lang.Boolean> hasRelevance
-		= createAttributeValue(org.instantlogic.designer.entity.AttributeDesignEntity.hasRelevance);
-	
-	public java.lang.Boolean getHasRelevance() {
-		return hasRelevance.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<AttributeDesign, java.lang.Boolean> getHasRelevanceAttributeValue() {
-		return hasRelevance;
-	}
-
-	public AttributeDesign setHasRelevance(java.lang.Boolean newValue) {
-		hasRelevance.setValue(newValue);
-		return (AttributeDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<AttributeDesign, java.lang.Boolean> hasRule
 		= createAttributeValue(org.instantlogic.designer.entity.AttributeDesignEntity.hasRule);
 	
@@ -96,7 +62,64 @@ public abstract class AbstractAttributeDesign extends Design {
 	}
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValue<AttributeDesign, java.lang.Boolean> hasDefault
+		= createAttributeValue(org.instantlogic.designer.entity.AttributeDesignEntity.hasDefault);
+	
+	public java.lang.Boolean getHasDefault() {
+		return hasDefault.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<AttributeDesign, java.lang.Boolean> getHasDefaultAttributeValue() {
+		return hasDefault;
+	}
+
+	public AttributeDesign setHasDefault(java.lang.Boolean newValue) {
+		hasDefault.setValue(newValue);
+		return (AttributeDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<AttributeDesign, java.lang.Boolean> hasRelevance
+		= createAttributeValue(org.instantlogic.designer.entity.AttributeDesignEntity.hasRelevance);
+	
+	public java.lang.Boolean getHasRelevance() {
+		return hasRelevance.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<AttributeDesign, java.lang.Boolean> getHasRelevanceAttributeValue() {
+		return hasRelevance;
+	}
+
+	public AttributeDesign setHasRelevance(java.lang.Boolean newValue) {
+		hasRelevance.setValue(newValue);
+		return (AttributeDesign)this;
+	}
+	
+	
 	// Relations
+	
+	private final org.instantlogic.fabric.value.RelationValue<AttributeDesign, TextTemplateDesign> question
+		= createRelationValue(org.instantlogic.designer.entity.AttributeDesignEntity.question);
+		
+	public org.instantlogic.fabric.value.RelationValue<AttributeDesign, TextTemplateDesign> getQuestionRelationValue() {
+		return question;
+	}
+
+	public org.instantlogic.designer.TextTemplateDesign getQuestion() {
+		return question.getValue();
+	}
+	
+	public AttributeDesign setQuestion(org.instantlogic.designer.TextTemplateDesign newValue) {
+		question.setValue(newValue);
+		return (AttributeDesign)this;
+	}
+	
+	public org.instantlogic.designer.TextTemplateDesign newQuestion() {
+		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
+		question.setValue(newValue);
+		return newValue;
+	}
+
 	
 	private final org.instantlogic.fabric.value.RelationValue<AttributeDesign, DeductionSchemeDesign> relevance
 		= createRelationValue(org.instantlogic.designer.entity.AttributeDesignEntity.relevance);
@@ -144,6 +167,18 @@ public abstract class AbstractAttributeDesign extends Design {
 	}
 
 	
+	private final org.instantlogic.fabric.value.ReadOnlyRelationValue<AttributeDesign, EntityDesign> belongsToEntity
+		= createReadOnlyRelationValue(org.instantlogic.designer.entity.AttributeDesignEntity.belongsToEntity);
+		
+	public org.instantlogic.fabric.value.ReadOnlyRelationValue<AttributeDesign, EntityDesign> getBelongsToEntityRelationValue() {
+		return belongsToEntity;
+	}
+
+	public org.instantlogic.designer.EntityDesign getBelongsToEntity() {
+		return belongsToEntity.getValue();
+	}
+	
+	
 	private final org.instantlogic.fabric.value.RelationValue<AttributeDesign, DataTypeDesign> dataType
 		= createRelationValue(org.instantlogic.designer.entity.AttributeDesignEntity.dataType);
 		
@@ -163,52 +198,6 @@ public abstract class AbstractAttributeDesign extends Design {
 	public org.instantlogic.designer.DataTypeDesign newDataType() {
 		org.instantlogic.designer.DataTypeDesign newValue = new org.instantlogic.designer.DataTypeDesign(); 
 		dataType.setValue(newValue);
-		return newValue;
-	}
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<AttributeDesign, TextTemplateDesign> explanation
-		= createRelationValue(org.instantlogic.designer.entity.AttributeDesignEntity.explanation);
-		
-	public org.instantlogic.fabric.value.RelationValue<AttributeDesign, TextTemplateDesign> getExplanationRelationValue() {
-		return explanation;
-	}
-
-	public org.instantlogic.designer.TextTemplateDesign getExplanation() {
-		return explanation.getValue();
-	}
-	
-	public AttributeDesign setExplanation(org.instantlogic.designer.TextTemplateDesign newValue) {
-		explanation.setValue(newValue);
-		return (AttributeDesign)this;
-	}
-	
-	public org.instantlogic.designer.TextTemplateDesign newExplanation() {
-		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
-		explanation.setValue(newValue);
-		return newValue;
-	}
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<AttributeDesign, TextTemplateDesign> question
-		= createRelationValue(org.instantlogic.designer.entity.AttributeDesignEntity.question);
-		
-	public org.instantlogic.fabric.value.RelationValue<AttributeDesign, TextTemplateDesign> getQuestionRelationValue() {
-		return question;
-	}
-
-	public org.instantlogic.designer.TextTemplateDesign getQuestion() {
-		return question.getValue();
-	}
-	
-	public AttributeDesign setQuestion(org.instantlogic.designer.TextTemplateDesign newValue) {
-		question.setValue(newValue);
-		return (AttributeDesign)this;
-	}
-	
-	public org.instantlogic.designer.TextTemplateDesign newQuestion() {
-		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
-		question.setValue(newValue);
 		return newValue;
 	}
 
@@ -236,17 +225,28 @@ public abstract class AbstractAttributeDesign extends Design {
 	}
 
 	
-	private final org.instantlogic.fabric.value.ReadOnlyRelationValue<AttributeDesign, EntityDesign> belongsToEntity
-		= createReadOnlyRelationValue(org.instantlogic.designer.entity.AttributeDesignEntity.belongsToEntity);
+	private final org.instantlogic.fabric.value.RelationValue<AttributeDesign, TextTemplateDesign> explanation
+		= createRelationValue(org.instantlogic.designer.entity.AttributeDesignEntity.explanation);
 		
-	public org.instantlogic.fabric.value.ReadOnlyRelationValue<AttributeDesign, EntityDesign> getBelongsToEntityRelationValue() {
-		return belongsToEntity;
+	public org.instantlogic.fabric.value.RelationValue<AttributeDesign, TextTemplateDesign> getExplanationRelationValue() {
+		return explanation;
 	}
 
-	public org.instantlogic.designer.EntityDesign getBelongsToEntity() {
-		return belongsToEntity.getValue();
+	public org.instantlogic.designer.TextTemplateDesign getExplanation() {
+		return explanation.getValue();
 	}
 	
+	public AttributeDesign setExplanation(org.instantlogic.designer.TextTemplateDesign newValue) {
+		explanation.setValue(newValue);
+		return (AttributeDesign)this;
+	}
+	
+	public org.instantlogic.designer.TextTemplateDesign newExplanation() {
+		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
+		explanation.setValue(newValue);
+		return newValue;
+	}
+
 
 	// Reverse relations
 	
@@ -263,6 +263,72 @@ public abstract class AbstractAttributeDesign extends Design {
 
     public AttributeDesign setAttributeOf(org.instantlogic.designer.EntityDesign newValue) {
         attributeOf.setValue(newValue);
+        return (AttributeDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<AttributeDesign, StaticInstanceValueDesign> attributeOnStaticInstanceValueDesign
+		= createReverseRelationValues(org.instantlogic.designer.entity.AttributeDesignEntity.attributeOnStaticInstanceValueDesign);
+
+	public org.instantlogic.fabric.value.RelationValues<AttributeDesign, StaticInstanceValueDesign> getAttributeOnStaticInstanceValueDesignRelationValue() {
+		return attributeOnStaticInstanceValueDesign;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign> getAttributeOnStaticInstanceValueDesign() {
+		return attributeOnStaticInstanceValueDesign.getValue();
+	}
+
+    public AttributeDesign addToAttributeOnStaticInstanceValueDesign(StaticInstanceValueDesign item) {
+        attributeOnStaticInstanceValueDesign.addValue(item);
+        return (AttributeDesign)this;
+    }
+
+    public AttributeDesign removeFromAttributeOnStaticInstanceValueDesign(StaticInstanceValueDesign item) {
+        attributeOnStaticInstanceValueDesign.removeValue(item);
+        return (AttributeDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<AttributeDesign, DeductionParameterDesign> attributeValueOnDeductionParameterDesign
+		= createReverseRelationValues(org.instantlogic.designer.entity.AttributeDesignEntity.attributeValueOnDeductionParameterDesign);
+
+	public org.instantlogic.fabric.value.RelationValues<AttributeDesign, DeductionParameterDesign> getAttributeValueOnDeductionParameterDesignRelationValue() {
+		return attributeValueOnDeductionParameterDesign;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign> getAttributeValueOnDeductionParameterDesign() {
+		return attributeValueOnDeductionParameterDesign.getValue();
+	}
+
+    public AttributeDesign addToAttributeValueOnDeductionParameterDesign(DeductionParameterDesign item) {
+        attributeValueOnDeductionParameterDesign.addValue(item);
+        return (AttributeDesign)this;
+    }
+
+    public AttributeDesign removeFromAttributeValueOnDeductionParameterDesign(DeductionParameterDesign item) {
+        attributeValueOnDeductionParameterDesign.removeValue(item);
+        return (AttributeDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<AttributeDesign, FragmentTemplateDesign> attributeOnFragmentTemplateDesign
+		= createReverseRelationValues(org.instantlogic.designer.entity.AttributeDesignEntity.attributeOnFragmentTemplateDesign);
+
+	public org.instantlogic.fabric.value.RelationValues<AttributeDesign, FragmentTemplateDesign> getAttributeOnFragmentTemplateDesignRelationValue() {
+		return attributeOnFragmentTemplateDesign;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign> getAttributeOnFragmentTemplateDesign() {
+		return attributeOnFragmentTemplateDesign.getValue();
+	}
+
+    public AttributeDesign addToAttributeOnFragmentTemplateDesign(FragmentTemplateDesign item) {
+        attributeOnFragmentTemplateDesign.addValue(item);
+        return (AttributeDesign)this;
+    }
+
+    public AttributeDesign removeFromAttributeOnFragmentTemplateDesign(FragmentTemplateDesign item) {
+        attributeOnFragmentTemplateDesign.removeValue(item);
         return (AttributeDesign)this;
     }
 

@@ -45,18 +45,6 @@ public abstract class AbstractDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> javaIdentifier
-		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DesignEntity.javaIdentifier);
-	
-	public java.lang.String getJavaIdentifier() {
-		return javaIdentifier.getValue();
-	}
-
-	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> getJavaIdentifierAttributeValue() {
-		return javaIdentifier;
-	}
-
-	
 	private final org.instantlogic.fabric.value.AttributeValue<Design, java.lang.String> name
 		= createAttributeValue(org.instantlogic.designer.entity.DesignEntity.name);
 	
@@ -83,6 +71,18 @@ public abstract class AbstractDesign extends org.instantlogic.fabric.Instance {
 
 	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> getTechnicalNameAttributeValue() {
 		return technicalName;
+	}
+
+	
+	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> javaIdentifier
+		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DesignEntity.javaIdentifier);
+	
+	public java.lang.String getJavaIdentifier() {
+		return javaIdentifier.getValue();
+	}
+
+	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<Design, java.lang.String> getJavaIdentifierAttributeValue() {
+		return javaIdentifier;
 	}
 
 	

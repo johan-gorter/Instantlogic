@@ -21,20 +21,25 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 	
 	// Reverse relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> operation;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> operationParameterOnDeductionParameterDesign;
 
 	static {
 		// Phase 1
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationParameterDesign, java.lang.String, java.lang.String> $valueClass
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationParameterDesign, java.lang.String, java.lang.String>(
-				"JntuqEelaIekiber_a51bea13_a814", "valueClass", INSTANCE, java.lang.String.class, "valueClass", org.instantlogic.designer.DeductionOperationParameterDesign.class);
+				"AaisIzggaeeUUipg_6063b105_ff22", "valueClass", INSTANCE, java.lang.String.class, "valueClass", org.instantlogic.designer.DeductionOperationParameterDesign.class);
 		valueClass = $valueClass;
 		// Relations
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
-				"FtkOxiiOyeaueasr_3e3983e7_4472", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationParameterDesign.class);
+				"ROcauAlrdIciwkfa_7a1bbfec_2b91", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationParameterDesign.class);
 		operation = $operation;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> $operationParameterOnDeductionParameterDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
+				"_qoOmhqmAi_aidmg_c783655a_e589", "operationParameterOnDeductionParameterDesign", INSTANCE, "operationParameterOnDeductionParameterDesign", org.instantlogic.designer.DeductionOperationParameterDesign.class);
+		operationParameterOnDeductionParameterDesign = $operationParameterOnDeductionParameterDesign;
 		
 		// Phase 2
 		$valueClass.dataType.put("category", "text");
@@ -44,6 +49,11 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 		$operation.valueClass = org.instantlogic.designer.DeductionOperationDesign.class;
 		$operation.to = org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE;
 		$operation.setReverseRelation(org.instantlogic.designer.entity.DeductionOperationDesignEntity.parameters);
+		$operationParameterOnDeductionParameterDesign.reverse = true;
+		$operationParameterOnDeductionParameterDesign.valueClass = org.instantlogic.designer.DeductionParameterDesign.class;
+		$operationParameterOnDeductionParameterDesign.to = org.instantlogic.designer.entity.DeductionParameterDesignEntity.INSTANCE;
+		$operationParameterOnDeductionParameterDesign.setReverseRelation(org.instantlogic.designer.entity.DeductionParameterDesignEntity.operationParameter);
+		$operationParameterOnDeductionParameterDesign.multivalue = true;
 	}
 
 	@Override
@@ -58,7 +68,7 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 	
 	@Override
 	public String getUniqueId() {
-		return "AiEaytbocagxqfhI_2f3ff407_827d";
+		return "BmgzEparvuaswmsn_03774f87_f0a9";
 	}
 	
 	@Override
@@ -73,6 +83,7 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		operation,
+		operationParameterOnDeductionParameterDesign,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

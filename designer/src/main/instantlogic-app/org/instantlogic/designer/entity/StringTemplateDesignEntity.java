@@ -24,17 +24,17 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String> $constantText
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StringTemplateDesign, java.lang.String, java.lang.String>(
-				"YnItmqqtoebgmoje_7e89c3e2_1023", "constantText", INSTANCE, java.lang.String.class, "constantText", org.instantlogic.designer.StringTemplateDesign.class);
+				"Banvdfmbbadkafuv_fa09390a_2855", "constantText", INSTANCE, java.lang.String.class, "constantText", org.instantlogic.designer.StringTemplateDesign.class);
 		constantText = $constantText;
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $deduction
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"RgEgdIlUeygjibow_3fe76171_223e", "deduction", INSTANCE, "deduction", org.instantlogic.designer.StringTemplateDesign.class);
+				"VylgObgxpu_pkbIq_d373636f_36e2", "deduction", INSTANCE, "deduction", org.instantlogic.designer.StringTemplateDesign.class);
 		deduction = $deduction;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $untranslatedInTemplate
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StringTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"GOmcqqOuUufyqflz_fb7587f1_601d", "untranslatedInTemplate", INSTANCE, "untranslatedInTemplate", org.instantlogic.designer.StringTemplateDesign.class);
+				"E_hAbjvmdqgts_ns_41a9b735_75a9", "untranslatedInTemplate", INSTANCE, "untranslatedInTemplate", org.instantlogic.designer.StringTemplateDesign.class);
 		untranslatedInTemplate = $untranslatedInTemplate;
 		
 		// Phase 2
@@ -42,6 +42,7 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 
 		$deduction.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
 		$deduction.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
+		$deduction.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.deductionOnStringTemplateDesign);
 		$deduction.owner = true;
 		$deduction.autoCreate = true;
 
@@ -63,7 +64,7 @@ public class StringTemplateDesignEntity extends org.instantlogic.fabric.model.En
 	
 	@Override
 	public String getUniqueId() {
-		return "NtiOqumEiugia_tt_8c27a4bb_2179";
+		return "DcxrEharUactsobI_3aa9d128_c4f6";
 	}
 	
 	@Override

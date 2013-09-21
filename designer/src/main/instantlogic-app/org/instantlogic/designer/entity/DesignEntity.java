@@ -26,19 +26,19 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
-		  	org.instantlogic.designer.deduction.JavaIdentifierDeduction d0 = new org.instantlogic.designer.deduction.JavaIdentifierDeduction();
-		return d0;
-	}
-
-
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.designer.deduction.DefaultDesignNameDeduction d0 = new org.instantlogic.designer.deduction.DefaultDesignNameDeduction();
 		return d0;
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.designer.deduction.TechnicalNameDeduction d0 = new org.instantlogic.designer.deduction.TechnicalNameDeduction();
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
+		  	org.instantlogic.designer.deduction.JavaIdentifierDeduction d0 = new org.instantlogic.designer.deduction.JavaIdentifierDeduction();
 		return d0;
 	}
 
@@ -52,9 +52,9 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	
 	// Attributes
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> isCustomized; 
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> javaIdentifier; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> name; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> technicalName; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> javaIdentifier; 
 	
 	// Relations
 	
@@ -65,20 +65,20 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> $isCustomized
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean>(
-				"ItdjyIit_a_Iedvo_b47b182d_23c9", "isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractDesign.class);
+				"DyEsbyljxmdieggm_8a8616c6_6a57", "isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractDesign.class);
 		isCustomized = $isCustomized;
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $javaIdentifier
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"NcIxUInIoqfEcdmg_739eb9f8_810a", "javaIdentifier", INSTANCE, java.lang.String.class, "javaIdentifier", org.instantlogic.designer.AbstractDesign.class);
-		javaIdentifier = $javaIdentifier;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $name
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"NqclgIpgeygrIgOr_41896cfe_e8c5", "name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractDesign.class);
+				"FdehbubEhigemcfi_afa380ec_e770", "name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractDesign.class);
 		name = $name;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $technicalName
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"WUekhdanvqemuaic_43c081d5_8fbb", "technicalName", INSTANCE, java.lang.String.class, "technicalName", org.instantlogic.designer.AbstractDesign.class);
+				"YmtlEw_nAaanegap_8fd6cdbb_5168", "technicalName", INSTANCE, java.lang.String.class, "technicalName", org.instantlogic.designer.AbstractDesign.class);
 		technicalName = $technicalName;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $javaIdentifier
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
+				"icuizrirdmdoUdwm_d21f7071_68ec", "javaIdentifier", INSTANCE, java.lang.String.class, "javaIdentifier", org.instantlogic.designer.AbstractDesign.class);
+		javaIdentifier = $javaIdentifier;
 		// Relations
 		// Reverse relations
 		
@@ -100,14 +100,14 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 			org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE
 		};
 		$isCustomized.dataType.put("category", "boolean");
-		$javaIdentifier.dataType.put("category", "text");
-		$javaIdentifier.readOnly = true;
-		$javaIdentifier.rule = createDeduction1();
 		$name.dataType.put("category", "text");
-		$name._default = createDeduction2();
+		$name._default = createDeduction1();
 		$technicalName.dataType.put("category", "text");
 		$technicalName.readOnly = true;
-		$technicalName.rule = createDeduction3();
+		$technicalName.rule = createDeduction2();
+		$javaIdentifier.dataType.put("category", "text");
+		$javaIdentifier.readOnly = true;
+		$javaIdentifier.rule = createDeduction3();
 
 
 
@@ -126,7 +126,7 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	
 	@Override
 	public String getUniqueId() {
-		return "emIlmUowoIeAijoy_2f671889_455c";
+		return "TEpAlpjaaIdjilEg_0364ee71_346e";
 	}
 	
 	@Override
@@ -136,9 +136,9 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 		isCustomized,
-		javaIdentifier,
 		name,
 		technicalName,
+		javaIdentifier,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};

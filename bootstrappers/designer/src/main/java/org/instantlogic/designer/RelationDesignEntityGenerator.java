@@ -1,5 +1,7 @@
 package org.instantlogic.designer;
 
+import org.instantlogic.fabric.deduction.ConcatenateDeduction;
+
 
 
 
@@ -35,6 +37,17 @@ public class RelationDesignEntityGenerator extends EntityDesign {
     @Override
     public void init() {
     	super.init();
+    	
+    	DeductionDesign deduceRelationName = reverseName.newDefault().deduceAttribute(DesignEntityGenerator.name);
+    	DeductionDesign constantOn = reverseName.getDefault().deduceConstant(String.class, "On");
+    	DeductionDesign entityName = reverseName.getDefault().deduceAttribute(DesignEntityGenerator.name, reverseName.getDefault().deduceReverseRelation(EntityDesignEntityGenerator.relations, reverseName.getDefault().deduceSelectedInstance(ENTITY)));
+    	DeductionDesign reverseDefault = reverseName.getDefault().deduceCustom(DeductionOperationDesign.concatenate);
+		DeductionInputDesign stringsInput = new DeductionInputDesign();
+		reverseDefault.addToInputs(stringsInput);
+		stringsInput.setOperationInput(DeductionOperationInputDesign.concatenateStrings);
+		stringsInput.addToInputs(deduceRelationName);
+		stringsInput.addToInputs(constantOn);
+		stringsInput.addToInputs(entityName);
     	
     	reverseTechnicalName.setWriteable(false);
     	reverseTechnicalName.newRule().deduceCustom(DesignerApplicationGenerator.ReverseTechnicalNameDeduction);

@@ -18,37 +18,50 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String> javaClassName; 
 	
 	// Relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> outputDataType;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign> inputs;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign> parameters;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> outputDataType;
 	
 	// Reverse relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign> operationOnDeductionDesign;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> customDeductionOperationsOnApplicationDesign;
 
 	static {
 		// Phase 1
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String> $javaClassName
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationDesign, java.lang.String, java.lang.String>(
-				"QqaUjrfhmIbccget_e30e2ce7_33ab", "javaClassName", INSTANCE, java.lang.String.class, "javaClassName", org.instantlogic.designer.DeductionOperationDesign.class);
+				"BtouUUEylufOafew_7386195e_c4d3", "javaClassName", INSTANCE, java.lang.String.class, "javaClassName", org.instantlogic.designer.DeductionOperationDesign.class);
 		javaClassName = $javaClassName;
 		// Relations
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $outputDataType
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
+				"DvyhnjEeIqamAafy_c8bcfed2_14be", "outputDataType", INSTANCE, "outputDataType", org.instantlogic.designer.DeductionOperationDesign.class);
+		outputDataType = $outputDataType;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign> $inputs
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign>(
-				"Ehnvkdxduigfublj_84ff099e_790c", "inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionOperationDesign.class);
+				"Ljhczyxprmcsm_AE_10c07c61_d745", "inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionOperationDesign.class);
 		inputs = $inputs;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign> $parameters
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationParameterDesign>, org.instantlogic.designer.DeductionOperationParameterDesign>(
-				"FtkOxiiOyeaueasr_3e3983e7_4472", "parameters", INSTANCE, "parameters", org.instantlogic.designer.DeductionOperationDesign.class);
+				"ROcauAlrdIciwkfa_7a1bbfec_2b91", "parameters", INSTANCE, "parameters", org.instantlogic.designer.DeductionOperationDesign.class);
 		parameters = $parameters;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $outputDataType
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"uOilOggbtegpIidn_85c74b35_d60c", "outputDataType", INSTANCE, "outputDataType", org.instantlogic.designer.DeductionOperationDesign.class);
-		outputDataType = $outputDataType;
 		// Reverse relations
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign> $operationOnDeductionDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign>(
+				"SOuyIavqEieaUgzt_25172217_4aa2", "operationOnDeductionDesign", INSTANCE, "operationOnDeductionDesign", org.instantlogic.designer.DeductionOperationDesign.class);
+		operationOnDeductionDesign = $operationOnDeductionDesign;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $customDeductionOperationsOnApplicationDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
+				"ZOanipuagm_vucbn_f993c2d2_ae3c", "customDeductionOperationsOnApplicationDesign", INSTANCE, "customDeductionOperationsOnApplicationDesign", org.instantlogic.designer.DeductionOperationDesign.class);
+		customDeductionOperationsOnApplicationDesign = $customDeductionOperationsOnApplicationDesign;
 		
 		// Phase 2
 		$javaClassName.dataType.put("category", "text");
 
+		$outputDataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;
+		$outputDataType.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
+		$outputDataType.setReverseRelation(org.instantlogic.designer.entity.DataTypeDesignEntity.outputDataTypeOnDeductionOperationDesign);
 		$inputs.valueClass = org.instantlogic.designer.DeductionOperationInputDesign.class;
 		$inputs.to = org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.INSTANCE;
 		$inputs.setReverseRelation(org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.operation);
@@ -59,9 +72,16 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 		$parameters.setReverseRelation(org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.operation);
 		$parameters.owner = true;
 		$parameters.multivalue = true;
-		$outputDataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;
-		$outputDataType.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
 
+		$operationOnDeductionDesign.reverse = true;
+		$operationOnDeductionDesign.valueClass = org.instantlogic.designer.DeductionDesign.class;
+		$operationOnDeductionDesign.to = org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE;
+		$operationOnDeductionDesign.setReverseRelation(org.instantlogic.designer.entity.DeductionDesignEntity.operation);
+		$operationOnDeductionDesign.multivalue = true;
+		$customDeductionOperationsOnApplicationDesign.reverse = true;
+		$customDeductionOperationsOnApplicationDesign.valueClass = org.instantlogic.designer.ApplicationDesign.class;
+		$customDeductionOperationsOnApplicationDesign.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
+		$customDeductionOperationsOnApplicationDesign.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.customDeductionOperations);
 	}
 
 	@Override
@@ -76,7 +96,7 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 	
 	@Override
 	public String getUniqueId() {
-		return "Kxeirjqyaiftknut_eae8c26d_8396";
+		return "QOiOtghaymekm_gx_d617926d_2bd8";
 	}
 	
 	@Override
@@ -88,11 +108,13 @@ public class DeductionOperationDesignEntity extends org.instantlogic.fabric.mode
 		javaClassName,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
+		outputDataType,
 		inputs,
 		parameters,
-		outputDataType,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
+		operationOnDeductionDesign,
+		customDeductionOperationsOnApplicationDesign,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

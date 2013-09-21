@@ -30,24 +30,24 @@ public abstract class AbstractFlowDesign extends Design {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, EntityDesign> parameters
-		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.parameters);
+	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> edges
+		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.edges);
 		
-	public org.instantlogic.fabric.value.RelationValues<FlowDesign, EntityDesign> getParametersRelationValue() {
-		return parameters;
+	public org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> getEdgesRelationValue() {
+		return edges;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign> getParameters() {
-		return parameters.getValue();
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign> getEdges() {
+		return edges.getValue();
 	}
 	
-	public FlowDesign addToParameters(EntityDesign item) {
-		parameters.addValue(item);
+	public FlowDesign addToEdges(FlowEdgeDesign item) {
+		edges.addValue(item);
 		return (FlowDesign)this;
 	}
 	
-	public FlowDesign removeFromParameters(EntityDesign item) {
-		parameters.removeValue(item);
+	public FlowDesign removeFromEdges(FlowEdgeDesign item) {
+		edges.removeValue(item);
 		return (FlowDesign)this;
 	}
 	
@@ -76,24 +76,24 @@ public abstract class AbstractFlowDesign extends Design {
 	
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> edges
-		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.edges);
+	private final org.instantlogic.fabric.value.RelationValues<FlowDesign, EntityDesign> parameters
+		= createRelationValues(org.instantlogic.designer.entity.FlowDesignEntity.parameters);
 		
-	public org.instantlogic.fabric.value.RelationValues<FlowDesign, FlowEdgeDesign> getEdgesRelationValue() {
-		return edges;
+	public org.instantlogic.fabric.value.RelationValues<FlowDesign, EntityDesign> getParametersRelationValue() {
+		return parameters;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign> getEdges() {
-		return edges.getValue();
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign> getParameters() {
+		return parameters.getValue();
 	}
 	
-	public FlowDesign addToEdges(FlowEdgeDesign item) {
-		edges.addValue(item);
+	public FlowDesign addToParameters(EntityDesign item) {
+		parameters.addValue(item);
 		return (FlowDesign)this;
 	}
 	
-	public FlowDesign removeFromEdges(FlowEdgeDesign item) {
-		edges.removeValue(item);
+	public FlowDesign removeFromParameters(EntityDesign item) {
+		parameters.removeValue(item);
 		return (FlowDesign)this;
 	}
 	
@@ -114,6 +114,23 @@ public abstract class AbstractFlowDesign extends Design {
 
     public FlowDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
         application.setValue(newValue);
+        return (FlowDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<FlowDesign, ApplicationDesign> mainFlowOnApplicationDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.FlowDesignEntity.mainFlowOnApplicationDesign);
+
+	public org.instantlogic.fabric.value.RelationValue<FlowDesign, ApplicationDesign> getMainFlowOnApplicationDesignRelationValue() {
+		return mainFlowOnApplicationDesign;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getMainFlowOnApplicationDesign() {
+		return mainFlowOnApplicationDesign.getValue();
+	}
+
+    public FlowDesign setMainFlowOnApplicationDesign(org.instantlogic.designer.ApplicationDesign newValue) {
+        mainFlowOnApplicationDesign.setValue(newValue);
         return (FlowDesign)this;
     }
 

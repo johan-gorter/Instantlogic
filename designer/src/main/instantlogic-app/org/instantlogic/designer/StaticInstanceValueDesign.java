@@ -84,5 +84,22 @@ public class StaticInstanceValueDesign extends org.instantlogic.fabric.Instance 
 
 
 	// Reverse relations
+	
+	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceValueDesign, StaticInstanceDesign> valuesOnStaticInstanceDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.StaticInstanceValueDesignEntity.valuesOnStaticInstanceDesign);
+
+	public org.instantlogic.fabric.value.RelationValue<StaticInstanceValueDesign, StaticInstanceDesign> getValuesOnStaticInstanceDesignRelationValue() {
+		return valuesOnStaticInstanceDesign;
+	}
+
+	public org.instantlogic.designer.StaticInstanceDesign getValuesOnStaticInstanceDesign() {
+		return valuesOnStaticInstanceDesign.getValue();
+	}
+
+    public StaticInstanceValueDesign setValuesOnStaticInstanceDesign(org.instantlogic.designer.StaticInstanceDesign newValue) {
+        valuesOnStaticInstanceDesign.setValue(newValue);
+        return (StaticInstanceValueDesign)this;
+    }
+
 
 }
