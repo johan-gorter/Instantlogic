@@ -55,6 +55,23 @@ public abstract class AbstractEventDesign extends Design {
 
 	// Reverse relations
 	
+	private final org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> startEventOnApplicationDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.EventDesignEntity.startEventOnApplicationDesign);
+
+	public org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> getStartEventOnApplicationDesignRelationValue() {
+		return startEventOnApplicationDesign;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getStartEventOnApplicationDesign() {
+		return startEventOnApplicationDesign.getValue();
+	}
+
+    public EventDesign setStartEventOnApplicationDesign(org.instantlogic.designer.ApplicationDesign newValue) {
+        startEventOnApplicationDesign.setValue(newValue);
+        return (EventDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValues<EventDesign, FragmentTemplateDesign> eventOnFragmentTemplateDesign
 		= createReverseRelationValues(org.instantlogic.designer.entity.EventDesignEntity.eventOnFragmentTemplateDesign);
 
@@ -129,23 +146,6 @@ public abstract class AbstractEventDesign extends Design {
 
     public EventDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
         application.setValue(newValue);
-        return (EventDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> startEventOnApplicationDesign
-		= createReverseRelationValue(org.instantlogic.designer.entity.EventDesignEntity.startEventOnApplicationDesign);
-
-	public org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> getStartEventOnApplicationDesignRelationValue() {
-		return startEventOnApplicationDesign;
-	}
-
-	public org.instantlogic.designer.ApplicationDesign getStartEventOnApplicationDesign() {
-		return startEventOnApplicationDesign.getValue();
-	}
-
-    public EventDesign setStartEventOnApplicationDesign(org.instantlogic.designer.ApplicationDesign newValue) {
-        startEventOnApplicationDesign.setValue(newValue);
         return (EventDesign)this;
     }
 

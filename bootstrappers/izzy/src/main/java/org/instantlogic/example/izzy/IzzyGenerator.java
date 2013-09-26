@@ -88,7 +88,7 @@ public class IzzyGenerator extends Design {
 	public static void main(String[] args) throws IOException {
 		// Entities and attributes
 		izzy = new ApplicationDesign();
-		izzy.getMetadata().getCaseAdministration().setIdGenerator(new SequencePerLabelIdGenerator()); // predictable Id's for better source control
+//		izzy.getMetadata().getCaseAdministration().setIdGenerator(new SequencePerLabelIdGenerator()); // predictable Id's for better source control
 		issuePreviewDeduction = new DeductionOperationDesign();
 		izzy.addToCustomDeductionOperations(issuePreviewDeduction);
 		issuePreviewDeduction.setName("issue preview");
@@ -130,8 +130,8 @@ public class IzzyGenerator extends Design {
 		issueIssueStatus = issue.addRelation("status", RelationType.ManyToZeroOrOne, issueStatus);
 		
 		// Validations
-    	issue.newValidation("HeadlineRequired","Enter a value", issueHeadline).deduceAttributeHasValue(issueHeadline);
-    	issue.newValidation("DescriptionRequired", "Enter a value", issueDescription).deduceAttributeHasValue(issueDescription);
+    	issue.newValidation("Enter a value", issueHeadline).deduceAttributeHasValue(issueHeadline);
+    	issue.newValidation("Enter a value", issueDescription).deduceAttributeHasValue(issueDescription);
 
 		izzy.setCaseEntity(project);
 		izzy.setName("izzy");
@@ -422,7 +422,6 @@ public class IzzyGenerator extends Design {
 		DeductionSchemeDesign statusDraft, statusOpen, statusResolved, statusClosed;
 		
 		issueDetailsPlaceTemplate = new PlaceTemplateDesign("issueDetails");
-		issueDetailsPlaceTemplate.getMetadata().initUniqueId("issueDetails");// Keep this one fixed
 		issueDetailsPlaceTemplate
 			.setOwner(issueFlow)
 			.setContent(new FragmentTemplateDesign("Page")

@@ -37,6 +37,15 @@ public class InstanceMetadata {
 	
 	private TextTemplate staticDescription;
 	private String staticName;
+	private InstanceStorageInfo storageInfo;
+
+	public InstanceStorageInfo getStorageInfo() {
+		return storageInfo;
+	}
+
+	public void setStorageInfo(InstanceStorageInfo storageInfo) {
+		this.storageInfo = storageInfo;
+	}
 
 	public InstanceMetadata(Instance instance, Entity<? extends Instance> entity) {
 		this.instance = instance;

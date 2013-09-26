@@ -22,8 +22,8 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.PropertyDesign, java.lang.Boolean, java.lang.Boolean> collapsed; 
 	
 	// Relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> text;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PropertyDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.ElementDesign>, org.instantlogic.designer.ElementDesign> children;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> text;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> value;
 	
 	// Reverse relations
@@ -34,29 +34,29 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.PropertyDesign, java.lang.String, java.lang.String> $propertyName
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.PropertyDesign, java.lang.String, java.lang.String>(
-				"FIIopbfwhibwsgbi_b7106dc3_acfc", "propertyName", INSTANCE, java.lang.String.class, "propertyName", org.instantlogic.designer.PropertyDesign.class);
+				"RhksebEdtu_omgsw_d11eab32_8efd", "propertyName", INSTANCE, java.lang.String.class, "propertyName", org.instantlogic.designer.PropertyDesign.class);
 		propertyName = $propertyName;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.PropertyDesign, java.lang.Boolean, java.lang.Boolean> $collapsed
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.PropertyDesign, java.lang.Boolean, java.lang.Boolean>(
-				"XyxOvtOugq_uUkp_7b4aa6be_a83b", "collapsed", INSTANCE, java.lang.Boolean.class, "collapsed", org.instantlogic.designer.PropertyDesign.class);
+				"WuzmEcarteficbbd_e350872e_8ab3", "collapsed", INSTANCE, java.lang.Boolean.class, "collapsed", org.instantlogic.designer.PropertyDesign.class);
 		collapsed = $collapsed;
 		// Relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $text
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"X_wjEzpIEeatqihp_67e1adec_919e", "text", INSTANCE, "text", org.instantlogic.designer.PropertyDesign.class);
-		text = $text;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.ElementDesign>, org.instantlogic.designer.ElementDesign> $children
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.ElementDesign>, org.instantlogic.designer.ElementDesign>(
-				"YomfcEviqidccdqy_be42c708_78c8", "children", INSTANCE, "children", org.instantlogic.designer.PropertyDesign.class);
+				"EodOspApymcuy_sz_65607c6e_ccd1", "children", INSTANCE, "children", org.instantlogic.designer.PropertyDesign.class);
 		children = $children;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $text
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
+				"WqerpekzOeckAncf_ac07e620_5f6d", "text", INSTANCE, "text", org.instantlogic.designer.PropertyDesign.class);
+		text = $text;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $value
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"usdUurondyasUjat_c05cc746_336a", "value", INSTANCE, "value", org.instantlogic.designer.PropertyDesign.class);
+				"XybfkfbzzqaiIiEa_fb451075_c2ad", "value", INSTANCE, "value", org.instantlogic.designer.PropertyDesign.class);
 		value = $value;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $fragment
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
-				"ectmoOdqyy_EqnOo_fa76547a_125b", "fragment", INSTANCE, "fragment", org.instantlogic.designer.PropertyDesign.class);
+				"TsknhpgqyIemimo_0a66322c_fc4c", "fragment", INSTANCE, "fragment", org.instantlogic.designer.PropertyDesign.class);
 		fragment = $fragment;
 		
 		// Phase 2
@@ -64,16 +64,16 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		$collapsed.dataType.put("category", "boolean");
 		$collapsed._default = createDeduction0();
 
-		$text.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
-		$text.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
-		$text.setReverseRelation(org.instantlogic.designer.entity.TextTemplateDesignEntity.textOnPropertyDesign);
-		$text.owner = true;
 		$children.valueClass = org.instantlogic.designer.ElementDesign.class;
 		$children.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
 		$children.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.childrenForFragment);
 		$children.owner = true;
 		$children.multivalue = true;
 		$children.ordered = true;
+		$text.valueClass = org.instantlogic.designer.TextTemplateDesign.class;
+		$text.to = org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE;
+		$text.setReverseRelation(org.instantlogic.designer.entity.TextTemplateDesignEntity.textOnPropertyDesign);
+		$text.owner = true;
 		$value.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
 		$value.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
 		$value.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.valueOnPropertyDesign);
@@ -97,7 +97,7 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	
 	@Override
 	public String getUniqueId() {
-		return "Cezsy_j_nmcsib_y_f786656a_7e53";
+		return "XxdngtkOsyfeilri_9058c877_1ad5";
 	}
 	
 	@Override
@@ -110,8 +110,8 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		collapsed,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		text,
 		children,
+		text,
 		value,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{

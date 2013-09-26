@@ -88,9 +88,8 @@ public class CaseManager {
 				}
 				operation.complete();
 				presenceOperation.complete();
-				persist(caseAdministration);
 			} finally {
-				operation.close();
+				operation.close(); // Causes the persistenceManager to save itself
 				presenceOperation.close();
 			}
 		} catch (Exception e) {
@@ -99,12 +98,6 @@ public class CaseManager {
 		}
 	}
 
-	private void persist(CaseAdministration caseAdministration) {
-		long version = caseAdministration.getVersion();
-		caseAdministration.setVersion(version+1);
-		persistenceStrategy.persist(this.caseId, this.theCase, (int)version, application); //TODO: provide a list of changed stored fields
-	}
-	
 	public Instance getCase() {
 		return theCase;
 	}
@@ -131,8 +124,13 @@ public class CaseManager {
 
 	public void updateApplication(ApplicationUpdate applicationUpdateMessage) {
 		this.application = applicationUpdateMessage.application;
-		this.theCase = applicationUpdateMessage.loadFrom(this.theCase);
-		persist(this.theCase.getMetadata().getCaseAdministration());
+		
+		// fast in-memory variant is not in use anymore
+		//this.theCase = applicationUpdateMessage.loadFrom(this.theCase);
+		//persist(this.theCase.getMetadata().getCaseAdministration());
+		
+		persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass(), application);
+		
 		for (Traveler traveler: presence.getActiveTravelers()) {
 			traveler.applicationUpdated();
 		}

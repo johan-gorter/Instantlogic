@@ -28,23 +28,6 @@ public abstract class AbstractDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<Design, java.lang.Boolean> isCustomized
-		= createAttributeValue(org.instantlogic.designer.entity.DesignEntity.isCustomized);
-	
-	public java.lang.Boolean getIsCustomized() {
-		return isCustomized.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<Design, java.lang.Boolean> getIsCustomizedAttributeValue() {
-		return isCustomized;
-	}
-
-	public Design setIsCustomized(java.lang.Boolean newValue) {
-		isCustomized.setValue(newValue);
-		return (Design)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<Design, java.lang.String> name
 		= createAttributeValue(org.instantlogic.designer.entity.DesignEntity.name);
 	
@@ -58,6 +41,23 @@ public abstract class AbstractDesign extends org.instantlogic.fabric.Instance {
 
 	public Design setName(java.lang.String newValue) {
 		name.setValue(newValue);
+		return (Design)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<Design, java.lang.Boolean> isCustomized
+		= createAttributeValue(org.instantlogic.designer.entity.DesignEntity.isCustomized);
+	
+	public java.lang.Boolean getIsCustomized() {
+		return isCustomized.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<Design, java.lang.Boolean> getIsCustomizedAttributeValue() {
+		return isCustomized;
+	}
+
+	public Design setIsCustomized(java.lang.Boolean newValue) {
+		isCustomized.setValue(newValue);
 		return (Design)this;
 	}
 	

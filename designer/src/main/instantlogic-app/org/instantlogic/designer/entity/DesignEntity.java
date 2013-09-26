@@ -51,8 +51,8 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	}
 	
 	// Attributes
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> isCustomized; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> name; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> isCustomized; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> technicalName; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> javaIdentifier; 
 	
@@ -63,21 +63,21 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	static {
 		// Phase 1
 		// Attributes
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> $isCustomized
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean>(
-				"DyEsbyljxmdieggm_8a8616c6_6a57", "isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractDesign.class);
-		isCustomized = $isCustomized;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $name
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"FdehbubEhigemcfi_afa380ec_e770", "name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractDesign.class);
+				"FycjhxI_qI_dmit_cb0ea52e_81fa", "name", INSTANCE, java.lang.String.class, "name", org.instantlogic.designer.AbstractDesign.class);
 		name = $name;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean> $isCustomized
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.Boolean, java.lang.Boolean>(
+				"Hadsvuks_Iesmajv_cd1522be_7c3f", "isCustomized", INSTANCE, java.lang.Boolean.class, "isCustomized", org.instantlogic.designer.AbstractDesign.class);
+		isCustomized = $isCustomized;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $technicalName
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"YmtlEw_nAaanegap_8fd6cdbb_5168", "technicalName", INSTANCE, java.lang.String.class, "technicalName", org.instantlogic.designer.AbstractDesign.class);
+				"IUbExansga_qogAg_459ae398_d5b6", "technicalName", INSTANCE, java.lang.String.class, "technicalName", org.instantlogic.designer.AbstractDesign.class);
 		technicalName = $technicalName;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String> $javaIdentifier
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.Design, java.lang.String, java.lang.String>(
-				"icuizrirdmdoUdwm_d21f7071_68ec", "javaIdentifier", INSTANCE, java.lang.String.class, "javaIdentifier", org.instantlogic.designer.AbstractDesign.class);
+				"Prlapifoneenkcae_45d16250_b8f6", "javaIdentifier", INSTANCE, java.lang.String.class, "javaIdentifier", org.instantlogic.designer.AbstractDesign.class);
 		javaIdentifier = $javaIdentifier;
 		// Relations
 		// Reverse relations
@@ -99,9 +99,9 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 			org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE
 		};
-		$isCustomized.dataType.put("category", "boolean");
 		$name.dataType.put("category", "text");
 		$name._default = createDeduction1();
+		$isCustomized.dataType.put("category", "boolean");
 		$technicalName.dataType.put("category", "text");
 		$technicalName.readOnly = true;
 		$technicalName.rule = createDeduction2();
@@ -126,7 +126,7 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	
 	@Override
 	public String getUniqueId() {
-		return "TEpAlpjaaIdjilEg_0364ee71_346e";
+		return "amIEkUwhbyddogAg_1ff66f0a_47dc";
 	}
 	
 	@Override
@@ -135,8 +135,8 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
-		isCustomized,
 		name,
+		isCustomized,
 		technicalName,
 		javaIdentifier,
 	};

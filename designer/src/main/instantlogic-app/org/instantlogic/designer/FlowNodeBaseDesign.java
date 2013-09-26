@@ -54,6 +54,23 @@ public class FlowNodeBaseDesign extends Design {
     }
 
 	
+	private final org.instantlogic.fabric.value.RelationValue<FlowNodeBaseDesign, FlowDesign> owner
+		= createReverseRelationValue(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.owner);
+
+	public org.instantlogic.fabric.value.RelationValue<FlowNodeBaseDesign, FlowDesign> getOwnerRelationValue() {
+		return owner;
+	}
+
+	public org.instantlogic.designer.FlowDesign getOwner() {
+		return owner.getValue();
+	}
+
+    public FlowNodeBaseDesign setOwner(org.instantlogic.designer.FlowDesign newValue) {
+        owner.setValue(newValue);
+        return (FlowNodeBaseDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValues<FlowNodeBaseDesign, FlowEdgeDesign> outgoingEdges
 		= createReverseRelationValues(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.outgoingEdges);
 
@@ -72,23 +89,6 @@ public class FlowNodeBaseDesign extends Design {
 
     public FlowNodeBaseDesign removeFromOutgoingEdges(FlowEdgeDesign item) {
         outgoingEdges.removeValue(item);
-        return (FlowNodeBaseDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<FlowNodeBaseDesign, FlowDesign> owner
-		= createReverseRelationValue(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.owner);
-
-	public org.instantlogic.fabric.value.RelationValue<FlowNodeBaseDesign, FlowDesign> getOwnerRelationValue() {
-		return owner;
-	}
-
-	public org.instantlogic.designer.FlowDesign getOwner() {
-		return owner.getValue();
-	}
-
-    public FlowNodeBaseDesign setOwner(org.instantlogic.designer.FlowDesign newValue) {
-        owner.setValue(newValue);
         return (FlowNodeBaseDesign)this;
     }
 

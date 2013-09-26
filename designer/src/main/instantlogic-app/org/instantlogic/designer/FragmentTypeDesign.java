@@ -28,6 +28,29 @@ public class FragmentTypeDesign extends Design {
 
 	// Attributes
 	
+	private final org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> fragmentFilters
+		= createAttributeValues(org.instantlogic.designer.entity.FragmentTypeDesignEntity.fragmentFilters);
+	
+	public org.instantlogic.fabric.value.Values<java.lang.String> getFragmentFilters() {
+		return fragmentFilters.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> getFragmentFiltersAttributeValue() {
+		return fragmentFilters;
+	}
+
+	public FragmentTypeDesign addToFragmentFilters(java.lang.String item) {
+		fragmentFilters.addValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign removeFromFragmentFilters(java.lang.String item) {
+		fragmentFilters.removeValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	
+	
 	private final org.instantlogic.fabric.value.AttributeValue<FragmentTypeDesign, java.lang.Boolean> hasAttribute
 		= createAttributeValue(org.instantlogic.designer.entity.FragmentTypeDesignEntity.hasAttribute);
 	
@@ -60,29 +83,6 @@ public class FragmentTypeDesign extends Design {
 		hasEvent.setValue(newValue);
 		return (FragmentTypeDesign)this;
 	}
-	
-	
-	private final org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> fragmentFilters
-		= createAttributeValues(org.instantlogic.designer.entity.FragmentTypeDesignEntity.fragmentFilters);
-	
-	public org.instantlogic.fabric.value.Values<java.lang.String> getFragmentFilters() {
-		return fragmentFilters.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValues<FragmentTypeDesign, java.lang.String> getFragmentFiltersAttributeValue() {
-		return fragmentFilters;
-	}
-
-	public FragmentTypeDesign addToFragmentFilters(java.lang.String item) {
-		fragmentFilters.addValue(item);
-		return (FragmentTypeDesign)this;
-	}
-	
-	public FragmentTypeDesign removeFromFragmentFilters(java.lang.String item) {
-		fragmentFilters.removeValue(item);
-		return (FragmentTypeDesign)this;
-	}
-	
 	
 	
 	// Relations

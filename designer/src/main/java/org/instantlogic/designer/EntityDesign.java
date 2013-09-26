@@ -102,9 +102,8 @@ public class EntityDesign extends AbstractEntityDesign {
 		return relation;
 	}
 	
-	public DeductionSchemeDesign newValidation(String uniqueId, String message, AttributeDesign... displayWith) {
+	public DeductionSchemeDesign newValidation(String message, AttributeDesign... displayWith) {
 		ValidationDesign validation = new ValidationDesign();
-		validation.getMetadata().initUniqueId(uniqueId);
 		addToValidations(validation);
 		validation.setMessage(createConstantText(message));
 		for (AttributeDesign attribute : displayWith) {
@@ -113,9 +112,8 @@ public class EntityDesign extends AbstractEntityDesign {
 		return validation.newRule();
 	}
 	
-	public ValidationDesign newValidation(String uniqueId, AttributeDesign... displayWith) {
+	public ValidationDesign newValidation(AttributeDesign... displayWith) {
 		ValidationDesign validation = new ValidationDesign();
-		validation.getMetadata().initUniqueId(uniqueId);
 		addToValidations(validation);
 		for (AttributeDesign attribute : displayWith) {
 			validation.addToDisplayWith(attribute);

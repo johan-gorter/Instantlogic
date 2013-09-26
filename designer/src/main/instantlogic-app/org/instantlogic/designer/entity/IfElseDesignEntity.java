@@ -17,9 +17,9 @@ public class IfElseDesignEntity extends org.instantlogic.fabric.model.Entity<org
 	// Attributes
 	
 	// Relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> elseChild;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> condition;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> ifChild;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> condition;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> elseChild;
 	
 	// Reverse relations
 
@@ -27,35 +27,35 @@ public class IfElseDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		// Phase 1
 		// Attributes
 		// Relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $elseChild
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"MtlmI_iskidxockE_5401fb8a_4d5d", "elseChild", INSTANCE, "elseChild", org.instantlogic.designer.IfElseDesign.class);
-		elseChild = $elseChild;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $condition
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"WfgucqgdcyeluiEt_6fe4ba41_3c33", "condition", INSTANCE, "condition", org.instantlogic.designer.IfElseDesign.class);
-		condition = $condition;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $ifChild
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"XUaznIifia__ajeh_20cfae86_aab5", "ifChild", INSTANCE, "ifChild", org.instantlogic.designer.IfElseDesign.class);
+				"OEybAE_nomfkkjOw_033f4de0_86e1", "ifChild", INSTANCE, "ifChild", org.instantlogic.designer.IfElseDesign.class);
 		ifChild = $ifChild;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $condition
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
+				"eUfvAipOiabywmOi_ff5e1aab_baa7", "condition", INSTANCE, "condition", org.instantlogic.designer.IfElseDesign.class);
+		condition = $condition;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $elseChild
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
+				"esnfqzyexageoain_f9f3d6b8_5087", "elseChild", INSTANCE, "elseChild", org.instantlogic.designer.IfElseDesign.class);
+		elseChild = $elseChild;
 		// Reverse relations
 		
 		// Phase 2
 
-		$elseChild.valueClass = org.instantlogic.designer.ElementDesign.class;
-		$elseChild.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
-		$elseChild.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.elseChildOnIfElseDesign);
-		$elseChild.owner = true;
+		$ifChild.valueClass = org.instantlogic.designer.ElementDesign.class;
+		$ifChild.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
+		$ifChild.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.ifChildOnIfElseDesign);
+		$ifChild.owner = true;
 		$condition.valueClass = org.instantlogic.designer.DeductionSchemeDesign.class;
 		$condition.to = org.instantlogic.designer.entity.DeductionSchemeDesignEntity.INSTANCE;
 		$condition.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.conditionOnIfElseDesign);
 		$condition.owner = true;
 		$condition.autoCreate = true;
-		$ifChild.valueClass = org.instantlogic.designer.ElementDesign.class;
-		$ifChild.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
-		$ifChild.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.ifChildOnIfElseDesign);
-		$ifChild.owner = true;
+		$elseChild.valueClass = org.instantlogic.designer.ElementDesign.class;
+		$elseChild.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
+		$elseChild.setReverseRelation(org.instantlogic.designer.entity.ElementDesignEntity.elseChildOnIfElseDesign);
+		$elseChild.owner = true;
 
 	}
 
@@ -71,7 +71,7 @@ public class IfElseDesignEntity extends org.instantlogic.fabric.model.Entity<org
 	
 	@Override
 	public String getUniqueId() {
-		return "FeifhEAysyaqAhzA_d001459c_f631";
+		return "Nnfkchaagaduu_mv_74b107dc_00f1";
 	}
 	
 	@Override
@@ -82,9 +82,9 @@ public class IfElseDesignEntity extends org.instantlogic.fabric.model.Entity<org
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		elseChild,
-		condition,
 		ifChild,
+		condition,
+		elseChild,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};

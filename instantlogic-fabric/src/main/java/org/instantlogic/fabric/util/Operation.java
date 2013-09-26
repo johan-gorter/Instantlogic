@@ -83,25 +83,26 @@ public class Operation implements AutoCloseable {
 				if (transactionListeners==null) {
 					transactionListeners = Collections.emptyList();
 				}
+				List<ValueChangeEvent> events = Collections.unmodifiableList(eventsToUndo);
 				try {
 					// Prepare
 					for (TransactionListener transactionListener : transactionListeners) {
-						transactionListener.transactionPreparing(this.caseAdministration);
+						transactionListener.transactionPreparing(this.caseAdministration, events);
 					}
-					this.caseAdministration.fireTransactionPreparing();
+					this.caseAdministration.fireTransactionPreparing(events);
 					// Commit
 					for (TransactionListener transactionListener : transactionListeners) {
-						transactionListener.transactionCommitting(this.caseAdministration);
+						transactionListener.transactionCommitting(this.caseAdministration, events);
 					}
-					this.caseAdministration.fireTransactionCommitting();
+					this.caseAdministration.fireTransactionCommitting(events);
 					committed = true;
 				} finally {
 					this.caseAdministration.popCurrentOperation(partOfOperation);
 					// Completed
 					for (TransactionListener transactionListener : transactionListeners) {
-						transactionListener.transactionCompleted(this.caseAdministration, committed);
+						transactionListener.transactionCompleted(this.caseAdministration, committed, events);
 					}
-					this.caseAdministration.fireTransactionCompleted(committed);
+					this.caseAdministration.fireTransactionCompleted(committed, events);
 				}
 			} else {
 				for (ValueChangeEvent event: this.eventsToUndo) {

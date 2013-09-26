@@ -6,9 +6,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.List;
 import java.util.Random;
 
 import org.instantlogic.fabric.Instance;
+import org.instantlogic.fabric.util.AbstractTransactionListener;
+import org.instantlogic.fabric.util.CaseAdministration;
+import org.instantlogic.fabric.util.TransactionListener;
+import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.PersistenceStrategy;
 import org.slf4j.Logger;
@@ -34,8 +39,7 @@ public class FileCasePersister extends CasePersister implements PersistenceStrat
 		return casesDir;
 	}
 
-	@Override
-	public void persist(String id, Instance caseInstance, int version, Application application) {
+	public void persist(String id, Instance caseInstance, int version, Application application, List<ValueChangeEvent> events) {
 		try {
 			caseInstance.getMetadata().getCaseAdministration().setVersion(version);
 			File file = new File(getCaseDir(application, id), id + ".tmp");
@@ -81,18 +85,30 @@ public class FileCasePersister extends CasePersister implements PersistenceStrat
 		return sb.toString();
 	}
 
-	public Instance loadOrCreate(String caseId, Class<? extends Instance> ofType, Application application) {
+	public Instance loadOrCreate(final String caseId, Class<? extends Instance> ofType, final Application application) {
 		File file = new File(getCaseDir(application, caseId), caseId + ".json");
+		Instance result;
 		if (file.exists()) {
-			return load(caseId, ofType, application);
+			result = load(caseId, ofType, application);
 		} else {
 			try {
-				Instance result = ofType.newInstance();
-				persist(caseId, result, 1, application);
+				result = ofType.newInstance();
+				persist(caseId, result, 1, application, null);
 				return result;
 			} catch (InstantiationException | IllegalAccessException e) {
 				throw new RuntimeException(e);
 			}
 		}
+		final Instance finalResult = result;
+		TransactionListener transactionListener = new AbstractTransactionListener() {
+			@Override
+			public void transactionCommitting(CaseAdministration instanceAdministration, List<ValueChangeEvent> events) {
+				long version = finalResult.getMetadata().getCaseAdministration().getVersion();
+				finalResult.getMetadata().getCaseAdministration().setVersion(version+1);
+				persist(caseId, finalResult, 0, application, events);
+			}
+		};
+		result.getMetadata().getCaseAdministration().addTransactionListener(transactionListener);
+		return result;
 	}
 }

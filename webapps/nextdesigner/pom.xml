@@ -76,7 +76,7 @@
             </goals>
             <configuration>
               <sources>
-                <source>target/generated-sources/instantlogic-app/designer/</source>
+                <source>target/generated-sources/instantlogic-app/nextdesigner/</source>
               </sources>
             </configuration>
           </execution>

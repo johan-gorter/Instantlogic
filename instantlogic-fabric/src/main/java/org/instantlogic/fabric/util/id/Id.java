@@ -209,6 +209,10 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     }
 
     public String toString() {
+    	return toString(true);
+    }
+    
+    public String toString(boolean compact) {
     	char[] chars = new char[16];
     	chars[0] = LabelStartChars[(int)((this.hiBits >> 59) & 0x0000001f)];
     	for (int i=1;i<11;i++) {
@@ -219,7 +223,9 @@ public class Id  implements java.io.Serializable, Comparable<Id> {
     		chars[i] = LabelChars[(int)((bits >> (20-(i-11)*5)) & 0x0000001f)];
     	}
     	int labelLength = 16;
-    	while (labelLength>0 && chars[labelLength-1]=='_') labelLength--;
+    	if (compact) {
+    		while (labelLength>0 && chars[labelLength-1]=='_') labelLength--;
+    	}
     	long sequenceNr = loBits & 0x0000ffff;
     	long runId = (loBits >> 16) & 0xffffffff;
     	StringBuffer sb = new StringBuffer();

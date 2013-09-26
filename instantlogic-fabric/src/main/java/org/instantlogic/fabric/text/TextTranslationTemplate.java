@@ -29,6 +29,16 @@ public class TextTranslationTemplate {
 		return this;
 	}
 
+	public TextTranslationTemplate insert(int position, String constant) {
+		stringTemplates.add(position, new StringTemplate(constant));
+		return this;
+	}
+	
+	public TextTranslationTemplate insert(int position, Deduction<? extends Object> value) {
+		stringTemplates.add(position, new StringTemplate(value));
+		return this;
+	}
+
 	public String render(DeductionContext context) {
 		StringBuffer sb = new StringBuffer();
 		for (StringTemplate stringTemplate : stringTemplates) {

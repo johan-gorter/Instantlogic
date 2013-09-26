@@ -28,7 +28,11 @@ public class ConstantValueModel extends ValueModel {
 
 	@Override
 	public void writeJvmBytecode(MethodVisitor mv) {
-		if (constantValue instanceof Boolean) {
+		if (constantValue instanceof Instance) { // Must be a static instance
+			String className = ((Instance)constantValue).getMetadata().getEntity().getInstanceClass().getName();
+			String fieldName = TechnicalNameDeduction.makeTechnicalName(((Instance)constantValue).getMetadata().getStaticName());
+			mv.visitFieldInsn(Opcodes.GETSTATIC, className.replace('.', '/'), fieldName, "L"+className.replace('.', '/')+";");
+		} else if (constantValue instanceof Boolean) {
 			if (constantValue==Boolean.TRUE) {
 				mv.visitInsn(Opcodes.ICONST_1);
 			} else {
@@ -43,6 +47,8 @@ public class ConstantValueModel extends ValueModel {
 				mv.visitIntInsn(Opcodes.BIPUSH, (Integer)constantValue);
 			}
 			mv.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;");
+		} else if (constantValue instanceof Number) {
+			mv.visitLdcInsn(((Number) constantValue).doubleValue());
 		} else if (constantValue instanceof String) {
 			mv.visitLdcInsn(constantValue);
 		} else {

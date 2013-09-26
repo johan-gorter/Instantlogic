@@ -30,24 +30,6 @@ public class DeductionInputDesign extends org.instantlogic.fabric.Instance {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<DeductionInputDesign, DeductionOperationInputDesign> operationInput
-		= createRelationValue(org.instantlogic.designer.entity.DeductionInputDesignEntity.operationInput);
-		
-	public org.instantlogic.fabric.value.RelationValue<DeductionInputDesign, DeductionOperationInputDesign> getOperationInputRelationValue() {
-		return operationInput;
-	}
-
-	public org.instantlogic.designer.DeductionOperationInputDesign getOperationInput() {
-		return operationInput.getValue();
-	}
-	
-	public DeductionInputDesign setOperationInput(org.instantlogic.designer.DeductionOperationInputDesign newValue) {
-		operationInput.setValue(newValue);
-		return (DeductionInputDesign)this;
-	}
-	
-
-	
 	private final org.instantlogic.fabric.value.RelationValueList<DeductionInputDesign, DeductionDesign> inputs
 		= createRelationValueList(org.instantlogic.designer.entity.DeductionInputDesignEntity.inputs);
 		
@@ -79,6 +61,24 @@ public class DeductionInputDesign extends org.instantlogic.fabric.Instance {
 		return (DeductionInputDesign)this;
 	}	
 	
+	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionInputDesign, DeductionOperationInputDesign> operationInput
+		= createRelationValue(org.instantlogic.designer.entity.DeductionInputDesignEntity.operationInput);
+		
+	public org.instantlogic.fabric.value.RelationValue<DeductionInputDesign, DeductionOperationInputDesign> getOperationInputRelationValue() {
+		return operationInput;
+	}
+
+	public org.instantlogic.designer.DeductionOperationInputDesign getOperationInput() {
+		return operationInput.getValue();
+	}
+	
+	public DeductionInputDesign setOperationInput(org.instantlogic.designer.DeductionOperationInputDesign newValue) {
+		operationInput.setValue(newValue);
+		return (DeductionInputDesign)this;
+	}
+	
+
 
 	// Reverse relations
 	

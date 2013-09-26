@@ -170,21 +170,21 @@ public class CaseAdministration {
 		}
 	}
 	
-	protected void fireTransactionPreparing()	{
+	protected void fireTransactionPreparing(List<ValueChangeEvent> events)	{
 		for(TransactionListener listener: transactionListeners) {
-			listener.transactionPreparing(this);
+			listener.transactionPreparing(this, events);
 		}
 	}
 	
-	protected void fireTransactionCommitting()	{
+	protected void fireTransactionCommitting(List<ValueChangeEvent> events)	{
 		for(TransactionListener listener: transactionListeners) {
-			listener.transactionCommitting(this);
+			listener.transactionCommitting(this, events);
 		}
 	}
 	
-	protected void fireTransactionCompleted(boolean committed)	{
+	protected void fireTransactionCompleted(boolean committed, List<ValueChangeEvent> events)	{
 		for(TransactionListener listener: transactionListeners) {
-			listener.transactionCompleted(this, committed);
+			listener.transactionCompleted(this, committed, events);
 		}
 	}
 	
@@ -230,8 +230,8 @@ public class CaseAdministration {
 		this.idGenerator = idGenerator;
 	}
 
-	public Id newId(Instance forInstance) {
-		if (idGenerator==null) return Id.newRandomId();
-		return idGenerator.generate(forInstance.getMetadata().getEntity().getName());
+	public String newId(Instance forInstance) {
+		if (idGenerator==null) return Id.newRandomId().toString(false);
+		return idGenerator.generate(forInstance.getMetadata().getEntity().getName()).toString(false);
 	}
 }

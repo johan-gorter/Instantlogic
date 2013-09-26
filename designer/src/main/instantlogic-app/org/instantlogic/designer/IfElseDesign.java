@@ -30,25 +30,25 @@ public class IfElseDesign extends ElementDesign {
 	
 	// Relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> elseChild
-		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.elseChild);
+	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> ifChild
+		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.ifChild);
 		
-	public org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> getElseChildRelationValue() {
-		return elseChild;
+	public org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> getIfChildRelationValue() {
+		return ifChild;
 	}
 
-	public org.instantlogic.designer.ElementDesign getElseChild() {
-		return elseChild.getValue();
+	public org.instantlogic.designer.ElementDesign getIfChild() {
+		return ifChild.getValue();
 	}
 	
-	public IfElseDesign setElseChild(org.instantlogic.designer.ElementDesign newValue) {
-		elseChild.setValue(newValue);
+	public IfElseDesign setIfChild(org.instantlogic.designer.ElementDesign newValue) {
+		ifChild.setValue(newValue);
 		return (IfElseDesign)this;
 	}
 	
-	public org.instantlogic.designer.ElementDesign newElseChild() {
+	public org.instantlogic.designer.ElementDesign newIfChild() {
 		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
-		elseChild.setValue(newValue);
+		ifChild.setValue(newValue);
 		return newValue;
 	}
 
@@ -76,25 +76,25 @@ public class IfElseDesign extends ElementDesign {
 	}
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> ifChild
-		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.ifChild);
+	private final org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> elseChild
+		= createRelationValue(org.instantlogic.designer.entity.IfElseDesignEntity.elseChild);
 		
-	public org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> getIfChildRelationValue() {
-		return ifChild;
+	public org.instantlogic.fabric.value.RelationValue<IfElseDesign, ElementDesign> getElseChildRelationValue() {
+		return elseChild;
 	}
 
-	public org.instantlogic.designer.ElementDesign getIfChild() {
-		return ifChild.getValue();
+	public org.instantlogic.designer.ElementDesign getElseChild() {
+		return elseChild.getValue();
 	}
 	
-	public IfElseDesign setIfChild(org.instantlogic.designer.ElementDesign newValue) {
-		ifChild.setValue(newValue);
+	public IfElseDesign setElseChild(org.instantlogic.designer.ElementDesign newValue) {
+		elseChild.setValue(newValue);
 		return (IfElseDesign)this;
 	}
 	
-	public org.instantlogic.designer.ElementDesign newIfChild() {
+	public org.instantlogic.designer.ElementDesign newElseChild() {
 		org.instantlogic.designer.ElementDesign newValue = new org.instantlogic.designer.ElementDesign(); 
-		ifChild.setValue(newValue);
+		elseChild.setValue(newValue);
 		return newValue;
 	}
 

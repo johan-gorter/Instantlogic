@@ -26,6 +26,10 @@ public class DeductionParameterDesignEntityGenerator extends EntityDesign {
     @Override
     public void init() {
     	super.init();
+    	DeductionSchemeDesign title;
+		setTitle(new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(title = new DeductionSchemeDesign())));
+		title.deduceAttribute(valueDescription);
+    	
     	valueDescription.setWriteable(false);
     	valueDescription.newRule().deduceCustom(DesignerApplicationGenerator.DeductionParameterValueDescriptionRuleDeduction);
     }

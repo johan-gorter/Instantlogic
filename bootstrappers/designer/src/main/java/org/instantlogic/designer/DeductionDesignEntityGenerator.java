@@ -33,6 +33,14 @@ public class DeductionDesignEntityGenerator extends EntityDesign {
 
     @Override
     public void init() {
+    	DeductionSchemeDesign title;
+		setTitle(new TextTemplateDesign().addToUntranslated(new StringTemplateDesign().setDeduction(title = new DeductionSchemeDesign())));
+		DeductionDesign operationName = title.deduceAttribute(DesignEntityGenerator.name, title.deduceRelation(operation));
+		DeductionDesign space = title.deduceConstant(String.class, " ");
+		DeductionDesign parameters = title.deduceAttribute(parameterValuesDescription);
+		DeductionDesign concatenate = title.deduceCustom(DeductionOperationDesign.concatenate);
+		concatenate.addInput(DeductionOperationInputDesign.concatenateStrings, operationName, space, parameters);
+    	
     	diagramHeight.newDefault().deduceConstant(java.lang.Double.class, 40.0);
     	diagramWidth.newDefault().deduceConstant(java.lang.Double.class, 80.0);
     	diagramPosition.newDefault().deduceCustom(DesignerApplicationGenerator.DeductionDiagramPositionDefaultDeduction);

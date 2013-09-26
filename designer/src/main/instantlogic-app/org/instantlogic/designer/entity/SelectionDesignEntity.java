@@ -28,11 +28,11 @@ public class SelectionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign> $child
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.ElementDesign, org.instantlogic.designer.ElementDesign>(
-				"Btpiwbwubmbbmcze_31407976_76ab", "child", INSTANCE, "child", org.instantlogic.designer.SelectionDesign.class);
+				"UAcuIsixhi_jecAw_62209cd2_0804", "child", INSTANCE, "child", org.instantlogic.designer.SelectionDesign.class);
 		child = $child;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $selection
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"EdAze_vvOua_mmbw_b80a723d_6672", "selection", INSTANCE, "selection", org.instantlogic.designer.SelectionDesign.class);
+				"upksAfiynactkksn_c38a64d4_997e", "selection", INSTANCE, "selection", org.instantlogic.designer.SelectionDesign.class);
 		selection = $selection;
 		// Reverse relations
 		
@@ -62,7 +62,7 @@ public class SelectionDesignEntity extends org.instantlogic.fabric.model.Entity<
 	
 	@Override
 	public String getUniqueId() {
-		return "FlopUyzhxmajearU_d85d08d3_6c69";
+		return "QaezhmvueugUcgtl_d8430bb2_628d";
 	}
 	
 	@Override

@@ -20,7 +20,6 @@ public class TextTemplateDesignEntityGenerator extends EntityDesign {
     
     @Override
     public void init() {
-    	super.init();
     	untranslated.getDataType().setOrdered(true);
     }
 }

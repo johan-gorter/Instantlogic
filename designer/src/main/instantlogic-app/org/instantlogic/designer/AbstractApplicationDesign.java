@@ -28,36 +28,19 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> rootPackageName
-		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.rootPackageName);
+	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> name
+		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.name);
 	
-	public java.lang.String getRootPackageName() {
-		return rootPackageName.getValue();
+	public java.lang.String getName() {
+		return name.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> getRootPackageNameAttributeValue() {
-		return rootPackageName;
+	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> getNameAttributeValue() {
+		return name;
 	}
 
-	public ApplicationDesign setRootPackageName(java.lang.String newValue) {
-		rootPackageName.setValue(newValue);
-		return (ApplicationDesign)this;
-	}
-	
-	
-	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> sourcePath
-		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.sourcePath);
-	
-	public java.lang.String getSourcePath() {
-		return sourcePath.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> getSourcePathAttributeValue() {
-		return sourcePath;
-	}
-
-	public ApplicationDesign setSourcePath(java.lang.String newValue) {
-		sourcePath.setValue(newValue);
+	public ApplicationDesign setName(java.lang.String newValue) {
+		name.setValue(newValue);
 		return (ApplicationDesign)this;
 	}
 	
@@ -75,6 +58,23 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 
 	public ApplicationDesign setIsCustomized(java.lang.Boolean newValue) {
 		isCustomized.setValue(newValue);
+		return (ApplicationDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> sourcePath
+		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.sourcePath);
+	
+	public java.lang.String getSourcePath() {
+		return sourcePath.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> getSourcePathAttributeValue() {
+		return sourcePath;
+	}
+
+	public ApplicationDesign setSourcePath(java.lang.String newValue) {
+		sourcePath.setValue(newValue);
 		return (ApplicationDesign)this;
 	}
 	
@@ -102,19 +102,19 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	
 	
-	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> name
-		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.name);
+	private final org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> rootPackageName
+		= createAttributeValue(org.instantlogic.designer.entity.ApplicationDesignEntity.rootPackageName);
 	
-	public java.lang.String getName() {
-		return name.getValue();
+	public java.lang.String getRootPackageName() {
+		return rootPackageName.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> getNameAttributeValue() {
-		return name;
+	public org.instantlogic.fabric.value.AttributeValue<ApplicationDesign, java.lang.String> getRootPackageNameAttributeValue() {
+		return rootPackageName;
 	}
 
-	public ApplicationDesign setName(java.lang.String newValue) {
-		name.setValue(newValue);
+	public ApplicationDesign setRootPackageName(java.lang.String newValue) {
+		rootPackageName.setValue(newValue);
 		return (ApplicationDesign)this;
 	}
 	
@@ -144,29 +144,6 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	
 	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> flows
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.flows);
-		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> getFlowsRelationValue() {
-		return flows;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign> getFlows() {
-		return flows.getValue();
-	}
-	
-	public ApplicationDesign addToFlows(FlowDesign item) {
-		flows.addValue(item);
-		return (ApplicationDesign)this;
-	}
-	
-	public ApplicationDesign removeFromFlows(FlowDesign item) {
-		flows.removeValue(item);
-		return (ApplicationDesign)this;
-	}
-	
-	
-	
 	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EntityDesign> caseEntity
 		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.caseEntity);
 		
@@ -180,6 +157,42 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	public ApplicationDesign setCaseEntity(org.instantlogic.designer.EntityDesign newValue) {
 		caseEntity.setValue(newValue);
+		return (ApplicationDesign)this;
+	}
+	
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, FlowDesign> mainFlow
+		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.mainFlow);
+		
+	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, FlowDesign> getMainFlowRelationValue() {
+		return mainFlow;
+	}
+
+	public org.instantlogic.designer.FlowDesign getMainFlow() {
+		return mainFlow.getValue();
+	}
+	
+	public ApplicationDesign setMainFlow(org.instantlogic.designer.FlowDesign newValue) {
+		mainFlow.setValue(newValue);
+		return (ApplicationDesign)this;
+	}
+	
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> startEvent
+		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.startEvent);
+		
+	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> getStartEventRelationValue() {
+		return startEvent;
+	}
+
+	public org.instantlogic.designer.EventDesign getStartEvent() {
+		return startEvent.getValue();
+	}
+	
+	public ApplicationDesign setStartEvent(org.instantlogic.designer.EventDesign newValue) {
+		startEvent.setValue(newValue);
 		return (ApplicationDesign)this;
 	}
 	
@@ -208,42 +221,24 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	
 	
-	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, FlowDesign> mainFlow
-		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.mainFlow);
+	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> flows
+		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.flows);
 		
-	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, FlowDesign> getMainFlowRelationValue() {
-		return mainFlow;
+	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, FlowDesign> getFlowsRelationValue() {
+		return flows;
 	}
 
-	public org.instantlogic.designer.FlowDesign getMainFlow() {
-		return mainFlow.getValue();
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign> getFlows() {
+		return flows.getValue();
 	}
 	
-	public ApplicationDesign setMainFlow(org.instantlogic.designer.FlowDesign newValue) {
-		mainFlow.setValue(newValue);
+	public ApplicationDesign addToFlows(FlowDesign item) {
+		flows.addValue(item);
 		return (ApplicationDesign)this;
 	}
 	
-
-	
-	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> entities
-		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
-		
-	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> getEntitiesRelationValue() {
-		return entities;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign> getEntities() {
-		return entities.getValue();
-	}
-	
-	public ApplicationDesign addToEntities(EntityDesign item) {
-		entities.addValue(item);
-		return (ApplicationDesign)this;
-	}
-	
-	public ApplicationDesign removeFromEntities(EntityDesign item) {
-		entities.removeValue(item);
+	public ApplicationDesign removeFromFlows(FlowDesign item) {
+		flows.removeValue(item);
 		return (ApplicationDesign)this;
 	}
 	
@@ -267,6 +262,29 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	public ApplicationDesign removeFromCustomDeductionOperations(DeductionOperationDesign item) {
 		customDeductionOperations.removeValue(item);
+		return (ApplicationDesign)this;
+	}
+	
+	
+	
+	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> entities
+		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
+		
+	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, EntityDesign> getEntitiesRelationValue() {
+		return entities;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign> getEntities() {
+		return entities.getValue();
+	}
+	
+	public ApplicationDesign addToEntities(EntityDesign item) {
+		entities.addValue(item);
+		return (ApplicationDesign)this;
+	}
+	
+	public ApplicationDesign removeFromEntities(EntityDesign item) {
+		entities.removeValue(item);
 		return (ApplicationDesign)this;
 	}
 	
@@ -312,24 +330,6 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	}
 	
 	
-	
-	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> startEvent
-		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.startEvent);
-		
-	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> getStartEventRelationValue() {
-		return startEvent;
-	}
-
-	public org.instantlogic.designer.EventDesign getStartEvent() {
-		return startEvent.getValue();
-	}
-	
-	public ApplicationDesign setStartEvent(org.instantlogic.designer.EventDesign newValue) {
-		startEvent.setValue(newValue);
-		return (ApplicationDesign)this;
-	}
-	
-
 
 	// Reverse relations
 
