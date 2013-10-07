@@ -165,6 +165,16 @@ public abstract class Entity<I extends Instance> extends Concept {
 		}
 		throw new NoSuchElementException(attributeName);
 	}
+	
+	@SuppressWarnings("rawtypes")
+	public Attribute tryGetAttribute(String attributeName) {
+		for (Attribute attribute: getAttributes()) {
+			if (attributeName.equals(attribute.getName())) {
+				return attribute;
+			}
+		}
+		return null;
+	}
 
 	// Convenience method for obtaining an attribute
 	@SuppressWarnings("rawtypes")
@@ -175,6 +185,17 @@ public abstract class Entity<I extends Instance> extends Concept {
 			}
 		}
 		throw new NoSuchElementException(relationName);
+	}
+
+	// Convenience method for obtaining an attribute
+	@SuppressWarnings("rawtypes")
+	public Relation tryGetRelation(String relationName) {
+		for (Relation relation: getRelations()) {
+			if (relationName.equals(relation.getName())) {
+				return relation;
+			}
+		}
+		return null;
 	}
 	
 	@SuppressWarnings("rawtypes")

@@ -29,6 +29,7 @@ import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.SubFlowDesign;
 import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.tools.Generator;
+import org.instantlogic.designer.util.DesignerPersistenceStrategy;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
 import org.instantlogic.tools.persistence.json.CasePersister;
 

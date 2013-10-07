@@ -76,6 +76,6 @@ public class DataTypeDesignEntityGenerator extends EntityDesign {
     			ordered.getRelevance().deduceConstant(Boolean.class, Boolean.TRUE));
     	
     	
-    	newValidation("DataCategoryRequired", "Select a value", dataCategory).deduceAttributeHasValue(dataCategory);
+    	newValidation("Select a value", dataCategory).deduceAttributeHasValue(dataCategory);
     }
 }
