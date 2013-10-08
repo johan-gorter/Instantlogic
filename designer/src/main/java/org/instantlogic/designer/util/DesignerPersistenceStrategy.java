@@ -47,6 +47,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
+import com.google.gson.internal.LazilyParsedNumber;
 
 public class DesignerPersistenceStrategy extends FileCasePersister {
 	
@@ -90,6 +91,9 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		
 //		Instance result = super.loadOrCreate(caseId, ofType, application);
 		
+		result.getMetadata().setStorageInfo(null);
+		save(result, getCaseDir(application, caseId), null);
+		
 		ApplicationDesign applicationDesign = (ApplicationDesign)result;
 		
 		ApplicationBytecodeGenerator applicationBytecodeGenerator = new ApplicationBytecodeGenerator((DesignerApplicationEnvironment)applicationEnvironment, // Generate bytecode 
@@ -122,10 +126,10 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 					WriteableAttributeValue attributeValue = (WriteableAttributeValue)attribute.get(instance);
 					if (attribute.isMultivalue()) {
 						for (String item : value.values) {
-							attributeValue.setOrAdd(gson.fromJson(item, attributeValue.getModel().getJavaClassName()));
+							attributeValue.setOrAdd(parseValue(item, attributeValue.getModel()));
 						}
 					} else {
-						attributeValue.setOrAdd(gson.fromJson(value.values.get(0), attributeValue.getModel().getJavaClassName()));
+						attributeValue.setOrAdd(parseValue(value.values.get(0), attributeValue.getModel()));
 					}
 				} else {
 					Relation relation = entity.tryGetRelation(value.attributeName);
@@ -157,8 +161,18 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		}
 	}
 
+	private Object parseValue(String item, Attribute attribute) {
+		Class<?> javaClassName = attribute.getJavaClassName();
+		Object result = gson.fromJson(item, javaClassName);
+		if (javaClassName==Object.class && (result instanceof Double) && (!item.contains("."))) {
+			return ((Double)result).intValue();
+		}
+		return result;
+	}
+
 	private Instance createStructure(InstanceStorageInfo storage, SortedMap<String, Entity<?>> entities) {
 		Instance result = entities.get(storage.node.entityName).createInstance();
+		result.getMetadata().initUniqueId(storage.node.uniqueId);
 		result.getMetadata().setStorageInfo(storage);
 		createStructure(result, storage.node, entities, storage);
 		for (Entry<String, List<InstanceStorageInfo>> entry: storage.subStorages.entrySet()) {
@@ -263,7 +277,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 				if (matcher.matches()) {
 					if (current==null) throw new RuntimeException("Data after end");
 					String attributeName = matcher.group(2);
-					AttributeValueNode value = result.node.getOrAddValue(attributeName);
+					AttributeValueNode value = current.getOrAddValue(attributeName);
 					char instruction = matcher.group(3).charAt(0);
 					switch (instruction) {
 					case '[':
@@ -291,7 +305,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 				if (matcher.matches()) {
 					if (current==null) throw new RuntimeException("Data after end");
 					String attributeName = matcher.group(2);
-					result.node.getOrAddValue(attributeName);
+					current.getOrAddValue(attributeName);
 					continue;
 				}
 				matcher = ENTITY_END_LINE.matcher(line); 
