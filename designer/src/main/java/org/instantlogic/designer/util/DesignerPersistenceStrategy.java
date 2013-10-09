@@ -54,10 +54,10 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 	private static final Logger logger = LoggerFactory.getLogger(DesignerPersistenceStrategy.class);
 
 	private static final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-	private static final Pattern START_LINE = Pattern.compile("^(\\w+\\s+)?(\\w+)\\s*:\\s*(\\w+)\\s*\\{\\s*$");
-	private static final Pattern DATA_LINE = Pattern.compile("^(\\w+\\s+)?(\\w+)\\s*([\\[\\+=])\\s*(.*)$");
-	private static final Pattern NODATA_LINE = Pattern.compile("^(\\w+\\s+)?(\\w+)\\s*$");
-	private static final Pattern ENTITY_END_LINE = Pattern.compile("^(\\w+\\s+)?\\}\\s*(\\w+)\\s*$");
+	private static final Pattern START_LINE = Pattern.compile("^(\\w+:)?\\s*(\\w+)\\s*:\\s*(\\w+)\\s*\\{\\s*$");
+	private static final Pattern DATA_LINE = Pattern.compile("^(\\w+:)?\\s*(\\w+)\\s*([\\[\\+=])\\s*(.*)$");
+	private static final Pattern NODATA_LINE = Pattern.compile("^(\\w+:)?\\s*(\\w+)\\s*$");
+	private static final Pattern ENTITY_END_LINE = Pattern.compile("^(\\w+:)?\\s*\\}\\s*(\\w+)\\s*$");
 	private static final Pattern ENTITY_START_DATA = Pattern.compile("(\\w+)\\s*:\\s*(\\w+)\\s*\\{\\s*$");
 	
 	private static final FilenameFilter DESIGNS = new FilenameFilter() {
@@ -643,7 +643,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 					writer.write("{\n");
 					
 					
-					writeAttributes(writer, subInstance, subInstance.uniqueId+nextIndent, nextIndent+" ");
+					writeAttributes(writer, subInstance, subInstance.uniqueId+":"+nextIndent, nextIndent+" ");
 
 					writer.write(prefix);
 					writer.write("}");

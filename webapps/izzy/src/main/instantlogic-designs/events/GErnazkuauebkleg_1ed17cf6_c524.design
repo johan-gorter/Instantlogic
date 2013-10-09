@@ -1,7 +1,7 @@
-GErnazkuauebkleg_1ed17cf6_c524 GErnazkuauebkleg_1ed17cf6_c524:EventDesign{
-GErnazkuauebkleg_1ed17cf6_c524  name="close issue"
-GErnazkuauebkleg_1ed17cf6_c524  isCustomized
-GErnazkuauebkleg_1ed17cf6_c524  parameters[
-GErnazkuauebkleg_1ed17cf6_c524  parameters+"UukUrImfumbiooAz_f84b7e63_638e"
-GErnazkuauebkleg_1ed17cf6_c524  parameters]
-GErnazkuauebkleg_1ed17cf6_c524 }GErnazkuauebkleg_1ed17cf6_c524
+GErnazkuauebkleg_1ed17cf6_c524: GErnazkuauebkleg_1ed17cf6_c524:EventDesign{
+GErnazkuauebkleg_1ed17cf6_c524:  name="close issue"
+GErnazkuauebkleg_1ed17cf6_c524:  isCustomized
+GErnazkuauebkleg_1ed17cf6_c524:  parameters[
+GErnazkuauebkleg_1ed17cf6_c524:  parameters+"UukUrImfumbiooAz_f84b7e63_638e"
+GErnazkuauebkleg_1ed17cf6_c524:  parameters]
+GErnazkuauebkleg_1ed17cf6_c524: }GErnazkuauebkleg_1ed17cf6_c524
