@@ -83,7 +83,11 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 	
 	@Override
 	public Instance loadOrCreate(String caseId, Class<? extends Instance> ofType, Application application) {
-		InstanceStorageInfo storage = load(getCaseDir(application, caseId));
+		File dir = getCaseDir(application, caseId);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		InstanceStorageInfo storage = load(dir, caseId);
 		
 		//TODO: move these to a place where the application reload can take place (also for non-designer applications)
 		Instance result = createStructure(storage, application.getAllEntities());
@@ -225,13 +229,26 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		}
 	}
 
-	private InstanceStorageInfo load(File dir) {
+	private InstanceStorageInfo load(File dir, String caseId) {
 		File[] designs = dir.listFiles(DESIGNS);
-		if (designs.length!=1) {
+		if (designs.length>1) {
 			throw new RuntimeException(designs.length+" .design files exist in "+dir+" expected 1");
 		}
 		try {
-			InstanceStorageInfo root = loadDesign(designs[0], null);
+			InstanceStorageInfo root;
+			if (designs.length==1) { 
+				root = loadDesign(designs[0], null);
+			} else {
+				root = new InstanceStorageInfo();
+				root.node = new InstanceNode();
+				root.node.entityName = "ApplicationDesign";
+				root.node.uniqueId = new ApplicationDesign().getMetadata().getUniqueId();
+				root.fileName = root.node.uniqueId+".design";
+				AttributeValueNode nameValue = new AttributeValueNode();
+				nameValue.attributeName = "name";
+				nameValue.values.add(caseId);
+				root.node.values.add(nameValue);
+			}
 			root.root = null;
 			for(File sub : dir.listFiles()) {
 				if (sub.isDirectory()) {
@@ -563,7 +580,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 	}
 
 	private void writeInstance(OutputStreamWriter writer, InstanceNode rootNode) throws IOException {
-		String prefix = rootNode.uniqueId+" ";
+		String prefix = rootNode.uniqueId+": ";
 		writer.write(prefix);
 		writer.write(rootNode.uniqueId);
 		writer.write(":");
@@ -603,7 +620,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 					writer.write("{\n");
 					
 					
-					writeAttributes(writer, subInstance, subInstance.uniqueId+nextIndent, nextIndent+" ");
+					writeAttributes(writer, subInstance, subInstance.uniqueId+":"+nextIndent, nextIndent+" ");
 
 					writer.write(prefix);
 					writer.write("}");
