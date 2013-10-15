@@ -90,4 +90,9 @@ public class ApplicationDesign extends AbstractApplicationDesign {
 			GeneratedClassModelsProcessor generatedClassModelsProcessor) {
 		this.generatedClassModelsProcessor = generatedClassModelsProcessor;
 	}
+
+	public boolean isValidForCodeGeneration() {
+		return getName()!=null && getName().length()>0 &&
+				getRootPackageName()!=null && getRootPackageName().length()>0;
+	}
 }

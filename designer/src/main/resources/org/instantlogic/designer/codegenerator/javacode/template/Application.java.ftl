@@ -7,10 +7,12 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 	protected <#if isCustomized>Abstract</#if>${technicalNameCapitalized}Application() {
 	}
 	
+    <#if caseEntity??>	
 	@Override
 	public org.instantlogic.fabric.model.Entity<${rootPackageName}.${caseEntity}> getCaseEntity() {
 		return ${rootPackageName}.entity.${caseEntity}Entity.INSTANCE;
 	}
+	</#if>
 
     <#if mainFlow??>	
 	@Override

@@ -69,7 +69,10 @@ public abstract class AbstractJavacodeGenerator {
 
 	static void deleteFile(String subDirectory, AbstractClassModel classModel, String postfix, File root) {
 		String prefix = classModel.isCustomized?"Abstract":"";
-		new File(new File(root, subDirectory), prefix + classModel.technicalNameCapitalized + postfix + ".java").delete();
+		if (subDirectory!=null) {
+			root = new File(root, subDirectory);
+		}
+		new File(root, prefix + classModel.technicalNameCapitalized + postfix + ".java").delete();
 	}
 	
 	protected static void purge(File dir) {

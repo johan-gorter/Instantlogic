@@ -21,7 +21,6 @@ import org.instantlogic.designer.codegenerator.jvmbytecode.template.SubFlowBytec
 import org.instantlogic.designer.dataexplorer.ApplicationWithDataExplorer;
 import org.instantlogic.designer.util.DesignerPersistenceStrategy;
 import org.instantlogic.interaction.Application;
-import org.instantlogic.interaction.ApplicationEnvironment;
 import org.instantlogic.interaction.DesignerApplicationEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,70 +31,75 @@ public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcess
 
 	public static void update(GeneratedClassModels classModels, JvmBytecodeApplication updateableApplication) {
 		if (classModels.updatedApplication!=null) {
-			String fullApplicationClassName = classModels.rootPackageName+"." + classModels.updatedApplication.name+"Application";
-			updateableApplication.setClassBytes(fullApplicationClassName,
-				ApplicationBytecodeTemplate.generate(classModels.updatedApplication, fullApplicationClassName));
-		}
-		for (EntityClassModel entity: classModels.deletedEntities) {
-			//Instance
-			String fullInstanceClassName = classModels.rootPackageName+"." + (entity.isCustomized?"Abstract":"") + entity.technicalNameCapitalized;
-			updateableApplication.removeClassBytes(fullInstanceClassName);
-			//Entity
-			String fullEntityClassName = classModels.rootPackageName+".entity." + entity.technicalNameCapitalized+"Entity";
-			updateableApplication.removeClassBytes(fullEntityClassName);
+			String fullApplicationClassName = classModels.updatedApplication.rootPackageName+"." + classModels.updatedApplication.name+"Application";
+			if (classModels.updatedApplication.isDeleted) {
+				updateableApplication.removeClassBytes(fullApplicationClassName);
+			} else {
+				updateableApplication.setClassBytes(fullApplicationClassName,
+					ApplicationBytecodeTemplate.generate(classModels.updatedApplication, fullApplicationClassName));
+			}
 		}
 		for (EntityClassModel entity: classModels.updatedEntities) {
-			//Instance
-			String fullInstanceClassName = classModels.rootPackageName+"." + (entity.isCustomized?"Abstract":"") + entity.technicalNameCapitalized;
-			updateableApplication.setClassBytes(fullInstanceClassName,
-				InstanceBytecodeTemplate.generate(entity, fullInstanceClassName));
-			//Entity
-			String fullEntityClassName = classModels.rootPackageName+".entity." + entity.technicalNameCapitalized+"Entity";
-			updateableApplication.setClassBytes(fullEntityClassName,
-				EntityBytecodeTemplate.generate(entity, fullEntityClassName));
+			String fullInstanceClassName = entity.rootPackageName+"." + (entity.isCustomized?"Abstract":"") + entity.technicalNameCapitalized;
+			String fullEntityClassName = entity.rootPackageName+".entity." + entity.technicalNameCapitalized+"Entity";
+			if (entity.isDeleted) {
+				//Instance
+				updateableApplication.removeClassBytes(fullInstanceClassName);
+				//Entity
+				updateableApplication.removeClassBytes(fullEntityClassName);
+			} else {
+				//Instance
+				updateableApplication.setClassBytes(fullInstanceClassName,
+					InstanceBytecodeTemplate.generate(entity, fullInstanceClassName));
+				//Entity
+				updateableApplication.setClassBytes(fullEntityClassName,
+					EntityBytecodeTemplate.generate(entity, fullEntityClassName));
+			}
 		}
 
-		for (EventClassModel event: classModels.deletedEvents) {
-			updateableApplication.removeClassBytes(event.getFullClassName());
-		}
 		for (EventClassModel event: classModels.updatedEvents) {
-			updateableApplication.setClassBytes(event.getFullClassName(),
-				EventBytecodeTemplate.generate(event));
+			if (event.isDeleted) {
+				updateableApplication.removeClassBytes(event.getFullClassName());
+			} else {
+				updateableApplication.setClassBytes(event.getFullClassName(),
+					EventBytecodeTemplate.generate(event));
+			}
 		}
 		
-		for (FlowClassModel flow: classModels.deletedFlows) {
-			updateableApplication.removeClassBytes(flow.getFullClassName());
-		}
 		for (FlowClassModel flow: classModels.updatedFlows) {
-			updateableApplication.setClassBytes(flow.getFullClassName(),
-				FlowBytecodeTemplate.generate(flow));
+			if (flow.isDeleted) {
+				updateableApplication.removeClassBytes(flow.getFullClassName());
+			} else {
+				updateableApplication.setClassBytes(flow.getFullClassName(), FlowBytecodeTemplate.generate(flow));
+			}
 		}
 		
-		for (PlaceClassModel placeTemplate: classModels.deletedPlaces) {
-			updateableApplication.removeClassBytes(placeTemplate.getFullClassName());
-		}
 		for (PlaceClassModel placeTemplate: classModels.updatedPlaces) {
-			updateableApplication.setClassBytes(placeTemplate.getFullClassName(),
-				PlaceTemplateBytecodeTemplate.generate(placeTemplate));
+			if (placeTemplate.isDeleted) {
+				updateableApplication.removeClassBytes(placeTemplate.getFullClassName());
+			} else {
+				updateableApplication.setClassBytes(placeTemplate.getFullClassName(),
+						PlaceTemplateBytecodeTemplate.generate(placeTemplate));
+			}
 		}
 
-		for (SubFlowClassModel subFlowTemplate: classModels.deletedSubFlows) {
-			updateableApplication.removeClassBytes(subFlowTemplate.getFullClassName());
-		}
 		for (SubFlowClassModel subFlowTemplate: classModels.updatedSubFlows) {
-			updateableApplication.setClassBytes(subFlowTemplate.getFullClassName(),
-				SubFlowBytecodeTemplate.generate(subFlowTemplate));
+			if (subFlowTemplate.isDeleted) {
+				updateableApplication.removeClassBytes(subFlowTemplate.getFullClassName());
+			} else {
+				updateableApplication.setClassBytes(subFlowTemplate.getFullClassName(),
+					SubFlowBytecodeTemplate.generate(subFlowTemplate));
+			}
 		}
 		
-		for (SharedPageFragmentClassModel sharedPageFragment: classModels.deletedSharedPageFragments) {
-			updateableApplication.removeClassBytes(sharedPageFragment.getFullClassName());
-		}
 		for (SharedPageFragmentClassModel sharedPageFragment: classModels.updatedSharedPageFragments) {
-			updateableApplication.setClassBytes(sharedPageFragment.getFullClassName(),
-				SharedPageFragmentBytecodeTemplate.generate(sharedPageFragment));
+			if (sharedPageFragment.isDeleted) {
+				updateableApplication.removeClassBytes(sharedPageFragment.getFullClassName());
+			} else {
+				updateableApplication.setClassBytes(sharedPageFragment.getFullClassName(),
+					SharedPageFragmentBytecodeTemplate.generate(sharedPageFragment));
+			}
 		}
-		
-		
 	}
 	
 	private final DesignerApplicationEnvironment applicationEnvironment;
@@ -128,15 +132,19 @@ public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcess
 			} else {
 				customizationUrls = new URL[]{applicationEnvironment.getCustomizationClassesUrl(applicationName)};
 			}
-			JvmBytecodeApplicationClassloader jvmBytecodeApplicationClassloader = 
-				new JvmBytecodeApplicationClassloader(Application.class.getClassLoader(), lastApplication, customizationUrls);
-			Application application = jvmBytecodeApplicationClassloader.getApplication(applicationRootPackage, applicationName);
-			logger.debug("Generated bytecode for application {} consisting of {} classes and classfiles from {}", 
-				new Object[]{this.applicationName, lastApplication.getClassCount(), customizationUrls});
-			application.addCloseableResource(jvmBytecodeApplicationClassloader);
-			// Add the data explorer
-			application = new ApplicationWithDataExplorer(application);
-			applicationEnvironment.updateApplication(application);
+			if (!models.updatedApplication.isDeleted) {
+				JvmBytecodeApplicationClassloader jvmBytecodeApplicationClassloader = 
+					new JvmBytecodeApplicationClassloader(Application.class.getClassLoader(), lastApplication, customizationUrls);
+				Application application = jvmBytecodeApplicationClassloader.getApplication(applicationRootPackage, applicationName);
+				logger.debug("Generated bytecode for application {} consisting of {} classes and classfiles from {}", 
+					new Object[]{this.applicationName, lastApplication.getClassCount(), customizationUrls});
+				application.addCloseableResource(jvmBytecodeApplicationClassloader);
+				// Add the data explorer
+				application = new ApplicationWithDataExplorer(application);
+				applicationEnvironment.updateApplication(application);
+			} else {
+				// TODO: replace application with stub?
+			}
 		} finally {
 			if (next!=null) {
 				next.process(models);

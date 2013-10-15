@@ -95,14 +95,14 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		
 //		Instance result = super.loadOrCreate(caseId, ofType, application);
 		
-		result.getMetadata().setStorageInfo(null);
-		save(result, getCaseDir(application, caseId), null);
+//		result.getMetadata().setStorageInfo(null);
+//		save(result, getCaseDir(application, caseId), null);
 		
 		ApplicationDesign applicationDesign = (ApplicationDesign)result;
 		
 		ApplicationBytecodeGenerator applicationBytecodeGenerator = new ApplicationBytecodeGenerator((DesignerApplicationEnvironment)applicationEnvironment, // Generate bytecode 
 			new BackgroundThreadGeneratedClassModelsProcessor(
-				new ApplicationJavacodeGenerator(new File(new File("../webapps", applicationDesign.getName()), "target/generated-sources/instantlogic-app").getAbsoluteFile()) // Generate java code
+				new ApplicationJavacodeGenerator(new File(dir, "../../../target/generated-sources/instantlogic-app").getAbsoluteFile()) // Generate java code
 			)
 		);
 		
@@ -114,7 +114,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 				applicationBytecodeGenerator
 			)
 		);
-		
+		addPersistTransactionListener(caseId, application, result);
 		return result;
 		// TODO: cleanup
 	}
@@ -352,9 +352,8 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		if (generatedClassModelsProcessor!=null) {
 			GeneratedClassModels classModelUpdates = applicationDesign.getApplicationGenerator().getClassModelUpdates();
 			int updates = classModelUpdates.countUpdates();
-			int deletes = classModelUpdates.countDeletes();
-			if (updates>0 || deletes>0) {
-				logger.info("Updated {} class models and deleted {} class models", updates, deletes);
+			if (updates>0) {
+				logger.info("Updated {} class models", updates);
 				generatedClassModelsProcessor.process(classModelUpdates);
 			}
 		}

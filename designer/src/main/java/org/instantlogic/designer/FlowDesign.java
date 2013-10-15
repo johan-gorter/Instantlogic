@@ -32,4 +32,8 @@ public class FlowDesign extends AbstractFlowDesign {
 		addToEdges(edge);
 		return edge;
 	}
+
+	public boolean isValidForCodeGeneration() {
+		return hasLength(getName()); // TODO uniqueness of getTechnicalName()
+	}
 }

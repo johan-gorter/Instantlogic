@@ -1,5 +1,6 @@
 package org.instantlogic.designer.codegenerator.generator;
 
+import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.ValidationDesign;
 import org.instantlogic.designer.codegenerator.classmodel.ValidationClassModel;
 import org.instantlogic.fabric.util.CaseAdministration;
@@ -21,9 +22,11 @@ public class ValidationGenerator extends AbstractGenerator {
 		caseAdministration.startRecordingObservations();
 		
 		ValidationClassModel model = initModel();
-		model.rootPackageName = context.rootPackageName;
+		model.rootPackageName = updateRootPackageName(((ApplicationDesign)validationDesign.getMetadata().getCase()).getRootPackageName(), context);
+		model.determineIsDeleted(validationDesign.isValidForCodeGeneration());
+		
 		model.message = TextGenerator.generate(validationDesign.getMessage(), model);
-		model.ruleDeductionIndex = model.addDeductionScheme(DeductionSchemeGenerator.generate(context.rootPackageName, validationDesign.getRule()));
+		model.ruleDeductionIndex = model.addDeductionScheme(DeductionSchemeGenerator.generate(model.rootPackageName, validationDesign.getRule()));
 		
 		this.observations = new ObservationsOutdatedObserver(caseAdministration.stopRecordingObservations(), null);
 		context.updatedValidations.add(model);
@@ -32,12 +35,14 @@ public class ValidationGenerator extends AbstractGenerator {
 	@Override
 	public void delete(GeneratedClassModels context) {
 		ValidationClassModel model = initModel();
-		context.deletedValidations.add(model);
+		model.isDeleted = true;
+		context.updatedValidations.add(model);
 	}
 
 	private ValidationClassModel initModel() {
 		ValidationClassModel model = new ValidationClassModel();
 		model.name = validationDesign.getName();
+		model.rootPackageName = lastRootPackageName;
 		model.technicalNameCapitalized = validationDesign.getTechnicalNameCapitalized();
 		model.isCustomized = validationDesign.getIsCustomized()==Boolean.TRUE;
 		return model;

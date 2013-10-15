@@ -43,8 +43,9 @@ public class EntityGenerator extends AbstractGenerator {
 		entityDesign.getMetadata().getCaseAdministration().startRecordingObservations();
 		
 		EntityClassModel model = initModel();
-
-		model.rootPackageName = context.rootPackageName;
+		model.rootPackageName = updateRootPackageName(entityDesign.getApplication().getRootPackageName(), context);
+		model.determineIsDeleted(entityDesign.isValidForCodeGeneration());
+		
 		if (entityDesign.getExtendsFrom()!=null) {
 			model.extendsFrom = entityDesign.getExtendsFrom().getTechnicalNameCapitalized();
 		}
@@ -174,7 +175,6 @@ public class EntityGenerator extends AbstractGenerator {
 		for (ValidationDesign validation: entityDesign.getValidations()) {
 			model.validations.add(validation.getTechnicalNameCapitalized());
 		}
-		sortNames(model);
 		for (StaticInstanceDesign staticInstanceDesign: entityDesign.getStaticInstances()) {
 			StaticInstance staticInstance = new StaticInstance();
 			staticInstance.name = staticInstanceDesign.getName();
@@ -232,17 +232,10 @@ public class EntityGenerator extends AbstractGenerator {
 		// In the future: Unit-prefix, unit-suffix, decimalPlaces
 	}
 
-	private void sortNames(EntityClassModel model) {
-// The order should be the same as in the design
-//		Collections.sort(model.attributes);
-//		Collections.sort(model.relations);
-//		Collections.sort(model.reverseRelations);
-//		Collections.sort(model.validations);
-	}
-
 	private EntityClassModel initModel() {
 		EntityClassModel model = new EntityClassModel();
 		model.name = entityDesign.getName();
+		model.rootPackageName = lastRootPackageName;
 		model.id = entityDesign.getMetadata().getUniqueId();
 		model.technicalNameCapitalized = entityDesign.getTechnicalNameCapitalized();
 		model.isCustomized = entityDesign.getIsCustomized()==Boolean.TRUE;
@@ -252,7 +245,8 @@ public class EntityGenerator extends AbstractGenerator {
 	@Override
 	public void delete(GeneratedClassModels context) {
 		EntityClassModel model = initModel();
-		context.deletedEntities.add(model);
+		model.isDeleted = true;
+		context.updatedEntities.add(model);
 	}
 
 }

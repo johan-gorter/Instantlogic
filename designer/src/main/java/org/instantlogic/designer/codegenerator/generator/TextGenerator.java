@@ -6,7 +6,6 @@ import org.instantlogic.designer.StringTemplateDesign;
 import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.codegenerator.classmodel.AbstractClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.TextModel;
-import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.fabric.value.Values;
 
 public abstract class TextGenerator extends AbstractGenerator {

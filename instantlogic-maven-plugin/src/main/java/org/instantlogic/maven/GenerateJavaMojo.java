@@ -16,22 +16,19 @@ package org.instantlogic.maven;
  * limitations under the License.
  */
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGenerator;
 import org.instantlogic.tools.persistence.json.CasePersister;
-
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 
 /**
  * Goal which generates java code from instantlogic designs.
@@ -62,7 +59,7 @@ public class GenerateJavaMojo extends AbstractMojo
 			        File generatedDir = new File(new File(outputDirectory, "generated-sources/instantlogic-app"), designName);
 			        generatedDir.mkdirs();
 			        getLog().info("Generating into: " + generatedDir.getAbsolutePath());
-			        ApplicationJavacodeGenerator.generate(classModelUpdates, generatedDir);
+			        new ApplicationJavacodeGenerator(generatedDir).generate(classModelUpdates);
 				} catch (IOException e) {
 					throw new MojoExecutionException("Exception creating java code", e);
 				}

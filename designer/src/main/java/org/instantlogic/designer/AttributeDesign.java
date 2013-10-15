@@ -4,10 +4,8 @@ import org.instantlogic.designer.codegenerator.classmodel.StaticFieldValueModel;
 import org.instantlogic.designer.codegenerator.classmodel.ValueModel;
 
 public class AttributeDesign extends AbstractAttributeDesign {
-	
-	// TODO: override for RelationDesign and take the uniqueness of the reverseRelation into account 
-	public boolean isValidForCodegeneration() {
-		String name = getName();
+
+	protected boolean isNameUnique(String name) {
 		if (name!=null && name.length()>0) { // getDataType().getJavaClassName()!=null removed
 			for (AttributeDesign attribute: getBelongsToEntity().getAttributesAndRelations()) {
 				if (name.equals(attribute.getName()) && attribute!=this) return false;
@@ -15,6 +13,15 @@ public class AttributeDesign extends AbstractAttributeDesign {
 			return true;
 		}
 		return false;
+	}
+	
+	// TODO: override for RelationDesign and take the uniqueness of the reverseRelation into account 
+	public boolean isValidForCodegeneration() {
+		String name = getName();
+		if (this instanceof RelationDesign) {
+			if (((RelationDesign)this).getTo()==null) return false;
+		}
+		return isNameUnique(name);
 	}
 	
 	// Makes the API easier to use

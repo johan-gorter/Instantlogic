@@ -13,19 +13,20 @@ import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 public abstract class AbstractGenerator {
 
 	protected ObservationsOutdatedObserver observations;
+	protected String lastRootPackageName;
 
 	public abstract void update(GeneratedClassModels context);
 	
 	public abstract void delete(GeneratedClassModels context);
 	
 	protected <G extends AbstractGenerator> List<Design> updateGenerators(Map<String, G> generators, Iterable<? extends Design> from, GeneratedClassModels context) {
-		List<Design> newConcepts = new ArrayList<Design>();
+		List<Design> newDesigns = new ArrayList<Design>();
 		for(Design instance: from) {
 			AbstractGenerator generator = generators.get(instance.getName());
 			if (generator!=null) {
 				generator.update(context);
 			} else {
-				newConcepts.add(instance);
+				newDesigns.add(instance);
 			}
 		}
 		Iterator<Map.Entry<String, G>> i = generators.entrySet().iterator();
@@ -39,7 +40,7 @@ public abstract class AbstractGenerator {
 			entry.getValue().delete(context);
 			i.remove();
 		}
-		return newConcepts;
+		return newDesigns;
 	}
 	
 	protected void updateAll(Collection<? extends AbstractGenerator> generators, GeneratedClassModels context) {
@@ -53,5 +54,14 @@ public abstract class AbstractGenerator {
 			return "_"+name;
 		}
 		return name;
+	}
+	
+	protected String updateRootPackageName(String rootPackageName, GeneratedClassModels context) {
+		if ((rootPackageName==null && lastRootPackageName==null) || (rootPackageName!=null && rootPackageName.equals(lastRootPackageName))) {
+			return lastRootPackageName;
+		}
+		delete(context);
+		lastRootPackageName = rootPackageName;
+		return rootPackageName;
 	}
 }

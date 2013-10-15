@@ -99,16 +99,22 @@ public class FileCasePersister extends CasePersister implements PersistenceStrat
 				throw new RuntimeException(e);
 			}
 		}
-		final Instance finalResult = result;
+		addPersistTransactionListener(caseId, application, result);
+		return result;
+	}
+
+	protected void addPersistTransactionListener(final String caseId, final Application application, final Instance result) {
 		TransactionListener transactionListener = new AbstractTransactionListener() {
 			@Override
 			public void transactionCommitting(CaseAdministration instanceAdministration, List<ValueChangeEvent> events) {
-				long version = finalResult.getMetadata().getCaseAdministration().getVersion();
-				finalResult.getMetadata().getCaseAdministration().setVersion(version+1);
-				persist(caseId, finalResult, 0, application, events);
+				if (events.size()==0) {
+					return;
+				}
+				long version = result.getMetadata().getCaseAdministration().getVersion();
+				result.getMetadata().getCaseAdministration().setVersion(version+1);
+				persist(caseId, result, 0, application, events);
 			}
 		};
 		result.getMetadata().getCaseAdministration().addTransactionListener(transactionListener);
-		return result;
 	}
 }

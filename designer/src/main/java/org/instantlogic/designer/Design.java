@@ -22,4 +22,8 @@ public class Design extends AbstractDesign {
 	public String getTechnicalNameCapitalized() {
 		return TechnicalNameDeduction.capitalizeFirst(getTechnicalName());
 	}
+	
+	public static boolean hasLength(String text) {
+		return text!=null && text.length()>0;
+	}
 }

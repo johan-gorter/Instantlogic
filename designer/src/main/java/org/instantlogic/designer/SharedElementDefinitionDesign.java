@@ -4,4 +4,8 @@ public class SharedElementDefinitionDesign extends AbstractSharedElementDefiniti
 
 	public void init() {
 	}
+
+	public boolean isValidForCodeGeneration() {
+		return hasLength(getName()); // TODO uniqueness of getTechnicalName()
+	}
 }

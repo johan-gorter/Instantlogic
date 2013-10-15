@@ -1,6 +1,7 @@
 package org.instantlogic.designer.codegenerator.generator;
 
 
+import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.EntityDesign;
 import org.instantlogic.designer.EventDesign;
 import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
@@ -25,8 +26,9 @@ public class EventGenerator extends AbstractGenerator {
 		caseAdministration.startRecordingObservations();
 		
 		EventClassModel model = initModel();
-		model.rootPackageName = context.rootPackageName;
-
+		model.rootPackageName = updateRootPackageName(((ApplicationDesign)eventDesign.getMetadata().getCase()).getRootPackageName(), context);
+		model.determineIsDeleted(eventDesign.isValidForCodeGeneration());
+		
 		for (EntityDesign parameter: eventDesign.getParameters()) {
 			model.parameters.add(parameter.getTechnicalNameCapitalized());
 		}
@@ -38,12 +40,14 @@ public class EventGenerator extends AbstractGenerator {
 	@Override
 	public void delete(GeneratedClassModels context) {
 		EventClassModel model = initModel();
-		context.deletedEvents.add(model);
+		model.isDeleted = true;
+		context.updatedEvents.add(model);
 	}
 
 	private EventClassModel initModel() {
 		EventClassModel model = new EventClassModel();
 		model.name = eventDesign.getName();
+		model.rootPackageName = lastRootPackageName;
 		model.technicalNameCapitalized = eventDesign.getTechnicalNameCapitalized();
 		model.isCustomized = eventDesign.getIsCustomized()==Boolean.TRUE;
 		return model;

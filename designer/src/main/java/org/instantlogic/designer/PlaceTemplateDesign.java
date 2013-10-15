@@ -55,4 +55,8 @@ public class PlaceTemplateDesign extends AbstractPlaceTemplateDesign {
 		}
 		throw new RuntimeException("Unknown type: "+name);
 	}
+
+	public boolean isValidForCodeGeneration() {
+		return hasLength(getName()); // TODO uniqueness of getTechnicalName()
+	}
 }

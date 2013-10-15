@@ -44,7 +44,6 @@ public class ApplicationGenerator extends AbstractGenerator{
 	 */
 	public GeneratedClassModels getClassModelUpdates() {
 		GeneratedClassModels result = new GeneratedClassModels();
-		result.rootPackageName = applicationInstance.getRootPackageName();
 		update(result);
 		return result;
 	}
@@ -52,6 +51,7 @@ public class ApplicationGenerator extends AbstractGenerator{
 	@Override
 	public void update(GeneratedClassModels context) {
 		if (observations!=null && !observations.isOutdated()) {
+			// Our observations are not changed, but maybe there are changes in one of these generators
 			updateAll(entityGenerators.values(), context);
 			updateAll(eventGenerators.values(), context);
 			updateAll(flowGenerators.values(), context);
@@ -66,6 +66,7 @@ public class ApplicationGenerator extends AbstractGenerator{
 		model.name = applicationInstance.getName();
 		model.technicalNameCapitalized = TechnicalNameDeduction.capitalizeFirst(TechnicalNameDeduction.makeTechnicalName(applicationInstance.getName()));
 		model.isCustomized = applicationInstance.getIsCustomized()==Boolean.TRUE;
+		model.determineIsDeleted(applicationInstance.isValidForCodeGeneration());
 		for (EntityDesign entity: applicationInstance.getEntities()) {
 			model.entities.add(entity.getName());
 		}
@@ -128,6 +129,6 @@ public class ApplicationGenerator extends AbstractGenerator{
 
 	public void generateJavaCode() {
 		GeneratedClassModels classModelUpdates = getClassModelUpdates();
-		ApplicationJavacodeGenerator.generate(classModelUpdates, new File(applicationInstance.getSourcePath()));
+		new ApplicationJavacodeGenerator(new File(applicationInstance.getSourcePath())).generate(classModelUpdates);
 	}
 }

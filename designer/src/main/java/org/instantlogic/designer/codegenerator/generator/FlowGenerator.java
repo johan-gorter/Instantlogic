@@ -5,8 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.management.RuntimeErrorException;
-
+import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.Design;
 import org.instantlogic.designer.EntityDesign;
 import org.instantlogic.designer.FlowDesign;
@@ -17,7 +16,6 @@ import org.instantlogic.designer.SubFlowDesign;
 import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
-import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.fabric.value.Values;
 
 public class FlowGenerator extends AbstractGenerator {
@@ -44,7 +42,8 @@ public class FlowGenerator extends AbstractGenerator {
 		caseAdministration.startRecordingObservations();
 
 		FlowClassModel model = initModel();
-		model.rootPackageName = context.rootPackageName;
+		model.rootPackageName = updateRootPackageName(((ApplicationDesign)flowDesign.getMetadata().getCase()).getRootPackageName(), context);
+		model.determineIsDeleted(flowDesign.isValidForCodeGeneration());
 
 		for (FlowNodeBaseDesign nodeDesign : flowDesign.getNodes()) {
 			FlowClassModel.FlowNode node = new FlowClassModel.FlowNode();
@@ -89,14 +88,15 @@ public class FlowGenerator extends AbstractGenerator {
 	@Override
 	public void delete(GeneratedClassModels context) {
 		FlowClassModel model = initModel();
-		context.deletedFlows.add(model);
+		model.isDeleted = true;
+		context.updatedFlows.add(model);
 	}
 
 	private FlowClassModel initModel() {
 		FlowClassModel model = new FlowClassModel();
 		model.name = flowDesign.getName();
-		model.technicalNameCapitalized = flowDesign
-				.getTechnicalNameCapitalized();
+		model.rootPackageName = lastRootPackageName;
+		model.technicalNameCapitalized = flowDesign.getTechnicalNameCapitalized();
 		model.isCustomized = flowDesign.getIsCustomized() == Boolean.TRUE;
 		return model;
 	}

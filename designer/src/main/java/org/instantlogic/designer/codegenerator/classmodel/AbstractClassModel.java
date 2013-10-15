@@ -14,12 +14,17 @@ public abstract class AbstractClassModel {
 	
 	public String rootPackageName;
 	public String name;
+	public boolean isDeleted;
+	
 	public String technicalNameCapitalized;
 	public String id;
 	public boolean isCustomized;
-	
 	private String rootPackageInternalPrefix;
 	
+	// Not-null and uniqueness of technicalNameCapitalized is checked in validForCodeGeneration
+	public void determineIsDeleted(boolean validForCodeGeneration) {
+		isDeleted = !(validForCodeGeneration && rootPackageName!=null && rootPackageName.length()>0); 
+	}
 	public String getRootPackageName() {
 		return rootPackageName;
 	}

@@ -169,12 +169,17 @@ public class EngineManager {
 		return null;
 	}
 
-	public File getApplicationRoot(String applicationName) {
+	public File getApplicationRoot(String applicationName, boolean create) {
 		for (File dir:webappsDirectories) {
 			File appDir = new File(dir, applicationName); 
 			if (appDir.isDirectory()) {
 				return appDir;
 			}
+		}
+		if (create) {
+			File result = new File(webappsDirectories.get(0), applicationName);
+			result.mkdirs();
+			return result;
 		}
 		return null;
 	}

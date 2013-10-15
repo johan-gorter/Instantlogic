@@ -72,7 +72,9 @@ public class CaseAdministration {
 	
 	public static SortedMap<String, Entity<?>> getAllEntitiesById(Entity<?> caseEntity) {
 		TreeMap<String, Entity<?>> result = new TreeMap<String, Entity<?>>();
-		addEntitiesById(caseEntity, result);
+		if (caseEntity!=null) {
+			addEntitiesById(caseEntity, result);
+		}
 		return result;
 	}
 

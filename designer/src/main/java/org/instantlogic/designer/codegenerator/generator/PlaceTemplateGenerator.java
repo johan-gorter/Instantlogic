@@ -1,6 +1,7 @@
 package org.instantlogic.designer.codegenerator.generator;
 
 
+import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.PlaceTemplateDesign;
 import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
 import org.instantlogic.fabric.util.CaseAdministration;
@@ -23,7 +24,9 @@ public class PlaceTemplateGenerator extends AbstractGenerator {
 		caseAdministration.startRecordingObservations();
 		
 		PlaceClassModel model = initModel();
-		model.rootPackageName = context.rootPackageName;
+		model.rootPackageName = updateRootPackageName(((ApplicationDesign)placeTemplateDesign.getMetadata().getCase()).getRootPackageName(), context);
+		model.determineIsDeleted(placeTemplateDesign.isValidForCodeGeneration());
+		
 		model.content = ContentGenerator.generate(placeTemplateDesign.getContent(), model);
 		model.title = TextGenerator.generate(placeTemplateDesign.getTitle(), model);
 
@@ -34,12 +37,14 @@ public class PlaceTemplateGenerator extends AbstractGenerator {
 	@Override
 	public void delete(GeneratedClassModels context) {
 		PlaceClassModel model = initModel();
-		context.deletedPlaces.add(model);
+		model.isDeleted = true;
+		context.updatedPlaces.add(model);
 	}
 
 	private PlaceClassModel initModel() {
 		PlaceClassModel model = new PlaceClassModel();
 		model.name = placeTemplateDesign.getName();
+		model.rootPackageName = lastRootPackageName;
 		model.technicalNameCapitalized = placeTemplateDesign.getTechnicalNameCapitalized();
 		model.id = placeTemplateDesign.getMetadata().getUniqueId();
 		model.isCustomized = placeTemplateDesign.getIsCustomized()==Boolean.TRUE;

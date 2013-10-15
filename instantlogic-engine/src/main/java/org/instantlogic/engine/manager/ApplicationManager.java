@@ -59,7 +59,7 @@ public class ApplicationManager implements DesignerApplicationEnvironment {
 	
 	@Override
 	public File getApplicationRoot(String caseId) {
-		return engineManager.getApplicationRoot(caseId);
+		return engineManager.getApplicationRoot(caseId, true);
 	}
 
 	@Override

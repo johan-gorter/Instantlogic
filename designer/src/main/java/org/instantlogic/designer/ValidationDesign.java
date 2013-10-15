@@ -7,4 +7,7 @@ public class ValidationDesign extends AbstractValidationDesign {
 		return getForEntity().getName()+getMetadata().getUniqueId();
 	}
 
+	public boolean isValidForCodeGeneration() {
+		return true;
+	}
 }

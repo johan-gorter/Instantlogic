@@ -1,6 +1,7 @@
 package org.instantlogic.designer.codegenerator.generator;
 
 
+import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.SubFlowDesign;
 import org.instantlogic.designer.codegenerator.classmodel.SubFlowClassModel;
 import org.instantlogic.fabric.util.CaseAdministration;
@@ -22,7 +23,9 @@ public class SubFlowGenerator extends AbstractGenerator {
 		caseAdministration.startRecordingObservations();
 		
 		SubFlowClassModel model = initModel();
-		model.rootPackageName = context.rootPackageName;
+		model.rootPackageName = updateRootPackageName(((ApplicationDesign)subFlowDesign.getMetadata().getCase()).getRootPackageName(), context);
+		model.determineIsDeleted(true /*TODO subFlowDesign.isValidForCodeGeneration()*/);
+		
 		model.subFlowName = subFlowDesign.getFlow().getTechnicalNameCapitalized();
 		
 		this.observations = new ObservationsOutdatedObserver(caseAdministration.stopRecordingObservations(), null);
@@ -32,12 +35,14 @@ public class SubFlowGenerator extends AbstractGenerator {
 	@Override
 	public void delete(GeneratedClassModels context) {
 		SubFlowClassModel model = initModel();
-		context.deletedSubFlows.add(model);
+		model.isDeleted = true;
+		context.updatedSubFlows.add(model);
 	}
 
 	private SubFlowClassModel initModel() {
 		SubFlowClassModel model = new SubFlowClassModel();
 		model.name = subFlowDesign.getName();
+		model.rootPackageName = lastRootPackageName;
 		model.technicalNameCapitalized = subFlowDesign.getTechnicalNameCapitalized();
 		model.isCustomized = subFlowDesign.getIsCustomized()==Boolean.TRUE;
 		model.flowname = subFlowDesign.getOwner().getTechnicalName();

@@ -39,7 +39,7 @@ public class Generator {
 			        File generatedDir = new File(new File(webapp, "target/generated-sources/instantlogic-app"), designName);
 			        generatedDir.mkdirs();
 			        System.out.println(" -> " + generatedDir.getAbsolutePath());
-			        ApplicationJavacodeGenerator.generate(classModelUpdates, generatedDir);
+			        new ApplicationJavacodeGenerator(generatedDir).generate(classModelUpdates);
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 				}

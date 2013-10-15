@@ -178,4 +178,8 @@ public class EntityDesign extends AbstractEntityDesign {
 		String className = getApplication().getRootPackageName()+".entity."+getTechnicalNameCapitalized()+"Entity";
 		return new StaticFieldValueModel(className,"INSTANCE", className);
 	}
+
+	public boolean isValidForCodeGeneration() {
+		return hasLength(getName()); // TODO uniqueness of getTechnicalName()
+	}
 }
