@@ -7,7 +7,7 @@ import org.instantlogic.designer.codegenerator.classmodel.SubFlowClassModel;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 
-public class SubFlowGenerator extends AbstractGenerator {
+public class SubFlowGenerator extends AbstractGenerator<SubFlowClassModel> {
 
 	public SubFlowDesign subFlowDesign;
 	
@@ -16,36 +16,31 @@ public class SubFlowGenerator extends AbstractGenerator {
 	}
 
 	@Override
-	public void update(GeneratedClassModels context) {
-		if (observations!=null && !observations.isOutdated()) return;
+	public SubFlowClassModel generate(GeneratedClassModels context) {
+		if (observations!=null && !observations.isOutdated()) return null;
 
 		CaseAdministration caseAdministration = subFlowDesign.getMetadata().getCaseAdministration();
 		caseAdministration.startRecordingObservations();
 		
-		SubFlowClassModel model = initModel();
-		model.rootPackageName = updateRootPackageName(((ApplicationDesign)subFlowDesign.getMetadata().getCase()).getRootPackageName(), context);
-		model.determineIsDeleted(true /*TODO subFlowDesign.isValidForCodeGeneration()*/);
-		
-		model.subFlowName = subFlowDesign.getFlow().getTechnicalNameCapitalized();
-		
-		this.observations = new ObservationsOutdatedObserver(caseAdministration.stopRecordingObservations(), null);
-		context.updatedSubFlows.add(model);
-	}
-
-	@Override
-	public void delete(GeneratedClassModels context) {
-		SubFlowClassModel model = initModel();
-		model.isDeleted = true;
-		context.updatedSubFlows.add(model);
-	}
-
-	private SubFlowClassModel initModel() {
 		SubFlowClassModel model = new SubFlowClassModel();
 		model.name = subFlowDesign.getName();
-		model.rootPackageName = lastRootPackageName;
+		model.rootPackageName = ((ApplicationDesign)subFlowDesign.getMetadata().getCase()).getRootPackageName();
 		model.technicalNameCapitalized = subFlowDesign.getTechnicalNameCapitalized();
 		model.isCustomized = subFlowDesign.getIsCustomized()==Boolean.TRUE;
 		model.flowname = subFlowDesign.getOwner().getTechnicalName();
+		model.determineIsDeleted(true /*TODO subFlowDesign.isValidForCodeGeneration()*/);
+		
+		if (subFlowDesign.getFlow()!=null) {
+			model.subFlowName = subFlowDesign.getFlow().getTechnicalNameCapitalized();
+		}
+		
+		this.observations = new ObservationsOutdatedObserver(caseAdministration.stopRecordingObservations(), null);
 		return model;
 	}
+	
+	@Override
+	public void queueClassModel(SubFlowClassModel classModel, GeneratedClassModels context) {
+		context.updatedSubFlows.add(classModel);
+	}
+
 }

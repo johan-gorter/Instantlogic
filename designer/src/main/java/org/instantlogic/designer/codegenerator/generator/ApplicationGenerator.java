@@ -16,7 +16,14 @@ import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGener
 import org.instantlogic.designer.deduction.TechnicalNameDeduction;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 
-public class ApplicationGenerator extends AbstractGenerator{
+/**
+ * Here the generation of the application starts. 
+ * 
+ * This class is able to 
+ * generate a list of changes (classmodelupdates) that can be sent to another
+ * thread to be generated out to java bytecode or java source files.
+ */
+public class ApplicationGenerator extends AbstractGenerator<ApplicationClassModel> {
 
 	private ApplicationDesign applicationInstance;
 	
@@ -37,6 +44,7 @@ public class ApplicationGenerator extends AbstractGenerator{
 		eventGenerators.clear();
 		flowGenerators.clear();
 		sharedPageFragmentGenerators.clear();
+		// TODO: remove the memory leak here
 	}
 	
 	/**
@@ -49,14 +57,14 @@ public class ApplicationGenerator extends AbstractGenerator{
 	}
 	
 	@Override
-	public void update(GeneratedClassModels context) {
+	public ApplicationClassModel generate(GeneratedClassModels context) {
 		if (observations!=null && !observations.isOutdated()) {
 			// Our observations are not changed, but maybe there are changes in one of these generators
 			updateAll(entityGenerators.values(), context);
 			updateAll(eventGenerators.values(), context);
 			updateAll(flowGenerators.values(), context);
 			updateAll(sharedPageFragmentGenerators.values(), context);
-			return;
+			return null;
 		}
 		
 		applicationInstance.getMetadata().getCaseAdministration().startRecordingObservations();
@@ -66,11 +74,13 @@ public class ApplicationGenerator extends AbstractGenerator{
 		model.name = applicationInstance.getName();
 		model.technicalNameCapitalized = TechnicalNameDeduction.capitalizeFirst(TechnicalNameDeduction.makeTechnicalName(applicationInstance.getName()));
 		model.isCustomized = applicationInstance.getIsCustomized()==Boolean.TRUE;
+		
 		model.determineIsDeleted(applicationInstance.isValidForCodeGeneration());
+		
 		for (EntityDesign entity: applicationInstance.getEntities()) {
-			model.entities.add(entity.getName());
+			model.entities.add(entity.getTechnicalNameCapitalized());
 		}
-		if (applicationInstance.getCaseEntity()!=null) {
+		if (applicationInstance.getCaseEntity()!=null && applicationInstance.getCaseEntity().isValidForCodeGeneration()) {
 			model.caseEntity = applicationInstance.getCaseEntity().getTechnicalNameCapitalized();
 		}
 		if (applicationInstance.getMainFlow()!=null) {
@@ -95,7 +105,7 @@ public class ApplicationGenerator extends AbstractGenerator{
 			entityGenerators.put(newEntity.getName(), entityGenerator);
 		}
 		
-		// Comment from here to temporarely skip the interaction part
+		// Comment from here to temporary skip the interaction part
 		
 		List<Design> newSharedPageFragments = updateGenerators(sharedPageFragmentGenerators, applicationInstance.getSharedElements(), context);
 		for(Design newSharedPageFragment : newSharedPageFragments) {
@@ -119,16 +129,11 @@ public class ApplicationGenerator extends AbstractGenerator{
 		}
 		
 		this.observations = new ObservationsOutdatedObserver(applicationInstance.getMetadata().getCaseAdministration().stopRecordingObservations(), null);
-		context.updatedApplication = model;
+		return model;
 	}
-
+	
 	@Override
-	public void delete(GeneratedClassModels context) {
-	}
-
-
-	public void generateJavaCode() {
-		GeneratedClassModels classModelUpdates = getClassModelUpdates();
-		new ApplicationJavacodeGenerator(new File(applicationInstance.getSourcePath())).generate(classModelUpdates);
+	public void queueClassModel(ApplicationClassModel classModel, GeneratedClassModels context) {
+		context.updatedApplication = classModel;
 	}
 }

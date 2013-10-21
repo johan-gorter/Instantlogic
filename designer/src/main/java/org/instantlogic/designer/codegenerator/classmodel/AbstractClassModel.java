@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Represents all the data used to construct a (possibly Java) class. 
  */
-public abstract class AbstractClassModel {
+public abstract class AbstractClassModel implements Cloneable {
 
 	private List<DeductionSchemeModel> deductionSchemes = new ArrayList<DeductionSchemeModel>();
 	
@@ -61,5 +61,10 @@ public abstract class AbstractClassModel {
 
 	public String getId() {
 		return id;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 }

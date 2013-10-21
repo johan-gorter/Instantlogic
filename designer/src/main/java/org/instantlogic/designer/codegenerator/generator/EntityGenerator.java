@@ -17,6 +17,7 @@ import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.designer.ValidationDesign;
 import org.instantlogic.designer.codegenerator.classmodel.ConstantValueModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.ValidationClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.Attribute;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstance;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstanceValue;
@@ -24,26 +25,31 @@ import org.instantlogic.designer.codegenerator.classmodel.StaticFieldValueModel;
 import org.instantlogic.designer.deduction.TechnicalNameDeduction;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 
-public class EntityGenerator extends AbstractGenerator {
+public class EntityGenerator extends AbstractGenerator<EntityClassModel> {
 
 	public EntityDesign entityDesign;
-	private Map<String, AbstractGenerator> validationGenerators = new HashMap<String, AbstractGenerator>();
+	private Map<String, AbstractGenerator<ValidationClassModel>> validationGenerators = new HashMap<String, AbstractGenerator<ValidationClassModel>>();
 	
 	public EntityGenerator(EntityDesign entityDesign) {
 		this.entityDesign = entityDesign;
 	}
 	
 	@Override
-	public void update(GeneratedClassModels context) {
+	public EntityClassModel generate(GeneratedClassModels context) {
 		if (observations != null && !observations.isOutdated()) {
 			updateAll(validationGenerators.values(), context);
-			return;
+			return null;
 		}
 
 		entityDesign.getMetadata().getCaseAdministration().startRecordingObservations();
 		
-		EntityClassModel model = initModel();
-		model.rootPackageName = updateRootPackageName(entityDesign.getApplication().getRootPackageName(), context);
+		EntityClassModel model = new EntityClassModel();
+		model.name = entityDesign.getName();
+		model.rootPackageName = entityDesign.getApplication().getRootPackageName();
+		model.id = entityDesign.getMetadata().getUniqueId();
+		model.technicalNameCapitalized = entityDesign.getTechnicalNameCapitalized();
+		model.isCustomized = entityDesign.getIsCustomized()==Boolean.TRUE;
+		
 		model.determineIsDeleted(entityDesign.isValidForCodeGeneration());
 		
 		if (entityDesign.getExtendsFrom()!=null) {
@@ -203,7 +209,12 @@ public class EntityGenerator extends AbstractGenerator {
 		}
 		
 		this.observations = new ObservationsOutdatedObserver(entityDesign.getMetadata().getCaseAdministration().stopRecordingObservations(), null);
-		context.updatedEntities.add(model);
+		return model;
+	}
+	
+	@Override
+	public void queueClassModel(EntityClassModel classModel, GeneratedClassModels context) {
+		context.updatedEntities.add(classModel);
 	}
 
 	private void setDatatype(Attribute attribute, DataTypeDesign dataType) {
@@ -231,22 +242,4 @@ public class EntityGenerator extends AbstractGenerator {
 		}
 		// In the future: Unit-prefix, unit-suffix, decimalPlaces
 	}
-
-	private EntityClassModel initModel() {
-		EntityClassModel model = new EntityClassModel();
-		model.name = entityDesign.getName();
-		model.rootPackageName = lastRootPackageName;
-		model.id = entityDesign.getMetadata().getUniqueId();
-		model.technicalNameCapitalized = entityDesign.getTechnicalNameCapitalized();
-		model.isCustomized = entityDesign.getIsCustomized()==Boolean.TRUE;
-		return model;
-	}
-	
-	@Override
-	public void delete(GeneratedClassModels context) {
-		EntityClassModel model = initModel();
-		model.isDeleted = true;
-		context.updatedEntities.add(model);
-	}
-
 }

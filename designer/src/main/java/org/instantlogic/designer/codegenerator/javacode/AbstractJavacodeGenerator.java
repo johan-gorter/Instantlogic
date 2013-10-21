@@ -68,6 +68,7 @@ public abstract class AbstractJavacodeGenerator {
 	}
 
 	static void deleteFile(String subDirectory, AbstractClassModel classModel, String postfix, File root) {
+		//TODO: in order to cope with rootpackage changes, use the classModel to determine the right root
 		String prefix = classModel.isCustomized?"Abstract":"";
 		if (subDirectory!=null) {
 			root = new File(root, subDirectory);

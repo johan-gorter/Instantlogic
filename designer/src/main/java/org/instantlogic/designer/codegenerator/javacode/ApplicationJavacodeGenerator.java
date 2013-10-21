@@ -48,8 +48,8 @@ public class ApplicationJavacodeGenerator extends AbstractJavacodeGenerator impl
 		for (EntityClassModel entity: context.updatedEntities) {
 			if (entity.isDeleted) {
 				deleteFile("entity", entity, "Entity", applicationRoot);
-				deleteFile(null, entity, "Instance", applicationRoot);
-				deleteFile(null, entity, "AbstractInstance", applicationRoot);
+				deleteFile(null, entity, "", applicationRoot);
+				deleteFile(null, entity, "", applicationRoot);
 			} else {
 				generateFile(AbstractJavacodeGenerator.entityTemplate, entity, "entity", "Entity", applicationRoot);
 				generateFile(AbstractJavacodeGenerator.instanceTemplate, entity, null, "", applicationRoot);

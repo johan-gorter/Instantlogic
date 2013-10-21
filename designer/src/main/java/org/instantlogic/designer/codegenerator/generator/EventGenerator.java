@@ -8,7 +8,7 @@ import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 
-public class EventGenerator extends AbstractGenerator {
+public class EventGenerator extends AbstractGenerator<EventClassModel> {
 
 	private EventDesign eventDesign;
 
@@ -17,16 +17,20 @@ public class EventGenerator extends AbstractGenerator {
 	}
 	
 	@Override
-	public void update(GeneratedClassModels context) {
+	public EventClassModel generate(GeneratedClassModels context) {
 		if (observations!=null && !observations.isOutdated()) {
-			return;
+			return null;
 		}
 
 		CaseAdministration caseAdministration = eventDesign.getMetadata().getCaseAdministration();
 		caseAdministration.startRecordingObservations();
 		
-		EventClassModel model = initModel();
-		model.rootPackageName = updateRootPackageName(((ApplicationDesign)eventDesign.getMetadata().getCase()).getRootPackageName(), context);
+		EventClassModel model = new EventClassModel();
+		model.name = eventDesign.getName();
+		model.rootPackageName = ((ApplicationDesign)eventDesign.getMetadata().getCase()).getRootPackageName();
+		model.technicalNameCapitalized = eventDesign.getTechnicalNameCapitalized();
+		model.isCustomized = eventDesign.getIsCustomized()==Boolean.TRUE;
+
 		model.determineIsDeleted(eventDesign.isValidForCodeGeneration());
 		
 		for (EntityDesign parameter: eventDesign.getParameters()) {
@@ -34,22 +38,11 @@ public class EventGenerator extends AbstractGenerator {
 		}
 		
 		this.observations = new ObservationsOutdatedObserver(caseAdministration.stopRecordingObservations(), null);
-		context.updatedEvents.add(model);
-	}
-
-	@Override
-	public void delete(GeneratedClassModels context) {
-		EventClassModel model = initModel();
-		model.isDeleted = true;
-		context.updatedEvents.add(model);
-	}
-
-	private EventClassModel initModel() {
-		EventClassModel model = new EventClassModel();
-		model.name = eventDesign.getName();
-		model.rootPackageName = lastRootPackageName;
-		model.technicalNameCapitalized = eventDesign.getTechnicalNameCapitalized();
-		model.isCustomized = eventDesign.getIsCustomized()==Boolean.TRUE;
 		return model;
+	}
+	
+	@Override
+	public void queueClassModel(EventClassModel classModel, GeneratedClassModels context) {
+		context.updatedEvents.add(classModel);
 	}
 }

@@ -97,6 +97,9 @@ public class EngineManager {
 		CaseProcessor result = caseProcessors.get(key);
 		if (result==null) {
 			ApplicationManager applicationManager = getManager(application);
+			if (application==null) {
+				throw new RuntimeException("Application not found: "+application);
+			}
 			result = new CaseProcessor(applicationManager, caseId);
 			caseProcessors.put(key, result);
 			for (EnginePlugin plugin : plugins) {

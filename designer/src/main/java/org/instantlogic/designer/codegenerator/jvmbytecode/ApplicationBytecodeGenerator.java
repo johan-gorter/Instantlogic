@@ -20,6 +20,7 @@ import org.instantlogic.designer.codegenerator.jvmbytecode.template.SharedPageFr
 import org.instantlogic.designer.codegenerator.jvmbytecode.template.SubFlowBytecodeTemplate;
 import org.instantlogic.designer.dataexplorer.ApplicationWithDataExplorer;
 import org.instantlogic.designer.util.DesignerPersistenceStrategy;
+import org.instantlogic.designer.util.NoSuchApplicationApplication;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.DesignerApplicationEnvironment;
 import org.slf4j.Logger;
@@ -107,6 +108,7 @@ public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcess
 	private JvmBytecodeApplication lastApplication;
 	private String applicationName;
 	private String applicationRootPackage;
+	private boolean applicationIsDeleted = false;
 	
 	public ApplicationBytecodeGenerator(DesignerApplicationEnvironment applicationEnvironment, GeneratedClassModelsProcessor next) {
 		this.applicationEnvironment = applicationEnvironment;
@@ -119,6 +121,7 @@ public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcess
 			if (models.updatedApplication!=null) {
 				this.applicationName = models.updatedApplication.name;
 				this.applicationRootPackage = models.updatedApplication.rootPackageName;
+				this.applicationIsDeleted = models.updatedApplication.isDeleted;
 			}
 			if (lastApplication!=null) {
 				lastApplication = new JvmBytecodeApplication(lastApplication);
@@ -132,7 +135,7 @@ public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcess
 			} else {
 				customizationUrls = new URL[]{applicationEnvironment.getCustomizationClassesUrl(applicationName)};
 			}
-			if (!models.updatedApplication.isDeleted) {
+			if (!this.applicationIsDeleted) {
 				JvmBytecodeApplicationClassloader jvmBytecodeApplicationClassloader = 
 					new JvmBytecodeApplicationClassloader(Application.class.getClassLoader(), lastApplication, customizationUrls);
 				Application application = jvmBytecodeApplicationClassloader.getApplication(applicationRootPackage, applicationName);
@@ -143,7 +146,7 @@ public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcess
 				application = new ApplicationWithDataExplorer(application);
 				applicationEnvironment.updateApplication(application);
 			} else {
-				// TODO: replace application with stub?
+				applicationEnvironment.updateApplication(new NoSuchApplicationApplication(applicationName));
 			}
 		} finally {
 			if (next!=null) {

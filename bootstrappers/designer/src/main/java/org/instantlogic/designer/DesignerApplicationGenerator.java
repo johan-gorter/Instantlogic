@@ -47,7 +47,6 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
         setName("Designer");
         setIsCustomized(true);
         setRootPackageName("org.instantlogic.designer");
-        setSourcePath("target/generated-sources/instantlogic-app");
         addDeductionOperations();
         setCaseEntity(ApplicationDesignEntityGenerator.ENTITY);
         setMainFlow(MainFlowGenerator.FLOW);

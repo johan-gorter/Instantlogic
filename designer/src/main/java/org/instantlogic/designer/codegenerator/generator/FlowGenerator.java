@@ -18,7 +18,7 @@ import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 import org.instantlogic.fabric.value.Values;
 
-public class FlowGenerator extends AbstractGenerator {
+public class FlowGenerator extends AbstractGenerator<FlowClassModel> {
 
 	private FlowDesign flowDesign;
 
@@ -30,19 +30,23 @@ public class FlowGenerator extends AbstractGenerator {
 	private Map<String, SubFlowGenerator> subFlowGenerators = new HashMap<String, SubFlowGenerator>();
 
 	@Override
-	public void update(GeneratedClassModels context) {
+	public FlowClassModel generate(GeneratedClassModels context) {
 		if (observations != null && !observations.isOutdated()) {
 			updateAll(placeTemplateGenerators.values(), context);
 			updateAll(subFlowGenerators.values(), context);
-			return;
+			return null;
 		}
 
 		CaseAdministration caseAdministration = flowDesign.getMetadata()
 				.getCaseAdministration();
 		caseAdministration.startRecordingObservations();
 
-		FlowClassModel model = initModel();
-		model.rootPackageName = updateRootPackageName(((ApplicationDesign)flowDesign.getMetadata().getCase()).getRootPackageName(), context);
+		FlowClassModel model = new FlowClassModel();
+		model.name = flowDesign.getName();
+		model.rootPackageName = ((ApplicationDesign)flowDesign.getMetadata().getCase()).getRootPackageName();
+		model.technicalNameCapitalized = flowDesign.getTechnicalNameCapitalized();
+		model.isCustomized = flowDesign.getIsCustomized() == Boolean.TRUE;
+
 		model.determineIsDeleted(flowDesign.isValidForCodeGeneration());
 
 		for (FlowNodeBaseDesign nodeDesign : flowDesign.getNodes()) {
@@ -82,23 +86,12 @@ public class FlowGenerator extends AbstractGenerator {
 		}
 		this.observations = new ObservationsOutdatedObserver(
 				caseAdministration.stopRecordingObservations(), null);
-		context.updatedFlows.add(model);
-	}
-
-	@Override
-	public void delete(GeneratedClassModels context) {
-		FlowClassModel model = initModel();
-		model.isDeleted = true;
-		context.updatedFlows.add(model);
-	}
-
-	private FlowClassModel initModel() {
-		FlowClassModel model = new FlowClassModel();
-		model.name = flowDesign.getName();
-		model.rootPackageName = lastRootPackageName;
-		model.technicalNameCapitalized = flowDesign.getTechnicalNameCapitalized();
-		model.isCustomized = flowDesign.getIsCustomized() == Boolean.TRUE;
 		return model;
+	}
+	
+	@Override
+	public void queueClassModel(FlowClassModel classModel, GeneratedClassModels context) {
+		context.updatedFlows.add(classModel);
 	}
 
 	private List<SubFlowDesign> getSubFlows(Values<FlowNodeBaseDesign> list) {

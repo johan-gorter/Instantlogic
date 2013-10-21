@@ -8,16 +8,56 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.instantlogic.designer.Design;
+import org.instantlogic.designer.codegenerator.classmodel.AbstractClassModel;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 
-public abstract class AbstractGenerator {
+public abstract class AbstractGenerator<CM extends AbstractClassModel> {
 
 	protected ObservationsOutdatedObserver observations;
-	protected String lastRootPackageName;
-
-	public abstract void update(GeneratedClassModels context);
 	
-	public abstract void delete(GeneratedClassModels context);
+	/**
+	 * Used to keep track of the last rootPackageName, name and isCustomized
+	 */
+	private CM lastClassModel;
+
+	public abstract CM generate(GeneratedClassModels context);
+
+	private boolean equals(String s1, String s2) {
+		if (s1==null) return s2==null;
+		return (s1.equals(s2));
+	}
+	
+	public final void update(GeneratedClassModels context) {
+		CM newClassModel = generate(context);
+		if (newClassModel == null) return;
+		if (lastClassModel!=null && !lastClassModel.isDeleted) {
+			if (!equals(lastClassModel.technicalNameCapitalized, newClassModel.technicalNameCapitalized)
+					|| !equals(lastClassModel.rootPackageName, newClassModel.rootPackageName)
+					|| (lastClassModel.isCustomized != newClassModel.isCustomized) || newClassModel.isDeleted) {
+				delete(context);
+			}
+		}
+		if (lastClassModel==null || !newClassModel.isDeleted) {
+			queueClassModel(newClassModel, context);
+			lastClassModel = newClassModel;
+		}
+	}
+	
+	public abstract void queueClassModel(CM classModel, GeneratedClassModels context);
+	
+	public final void delete(GeneratedClassModels context) {
+		if (lastClassModel!=null && !lastClassModel.isDeleted) {
+			try {
+				@SuppressWarnings("unchecked")
+				CM clone = (CM)lastClassModel.clone();
+				clone.isDeleted = true;
+				queueClassModel(clone, context);
+				lastClassModel = clone;
+			} catch (CloneNotSupportedException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
 	
 	protected <G extends AbstractGenerator> List<Design> updateGenerators(Map<String, G> generators, Iterable<? extends Design> from, GeneratedClassModels context) {
 		List<Design> newDesigns = new ArrayList<Design>();
@@ -34,7 +74,7 @@ public abstract class AbstractGenerator {
 			Entry<String, G> entry = i.next();
 			for (Design instance : from) {
 				if (entry.getKey().equals(instance.getName())) {
-					break nextEntry;
+					continue nextEntry;
 				}
 			}
 			entry.getValue().delete(context);
@@ -54,14 +94,5 @@ public abstract class AbstractGenerator {
 			return "_"+name;
 		}
 		return name;
-	}
-	
-	protected String updateRootPackageName(String rootPackageName, GeneratedClassModels context) {
-		if ((rootPackageName==null && lastRootPackageName==null) || (rootPackageName!=null && rootPackageName.equals(lastRootPackageName))) {
-			return lastRootPackageName;
-		}
-		delete(context);
-		lastRootPackageName = rootPackageName;
-		return rootPackageName;
 	}
 }

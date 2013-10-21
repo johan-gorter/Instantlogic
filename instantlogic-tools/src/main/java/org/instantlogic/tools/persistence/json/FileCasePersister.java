@@ -94,7 +94,6 @@ public class FileCasePersister extends CasePersister implements PersistenceStrat
 			try {
 				result = ofType.newInstance();
 				persist(caseId, result, 1, application, null);
-				return result;
 			} catch (InstantiationException | IllegalAccessException e) {
 				throw new RuntimeException(e);
 			}

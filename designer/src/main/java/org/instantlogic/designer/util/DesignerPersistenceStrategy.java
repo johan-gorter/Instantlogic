@@ -102,7 +102,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		
 		ApplicationBytecodeGenerator applicationBytecodeGenerator = new ApplicationBytecodeGenerator((DesignerApplicationEnvironment)applicationEnvironment, // Generate bytecode 
 			new BackgroundThreadGeneratedClassModelsProcessor(
-				new ApplicationJavacodeGenerator(new File(dir, "../../../target/generated-sources/instantlogic-app").getAbsoluteFile()) // Generate java code
+				new ApplicationJavacodeGenerator(new File(dir, "../../../target/generated-sources/instantlogic-app/"+caseId).getAbsoluteFile()) // Generate java code
 			)
 		);
 		
@@ -246,7 +246,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 				root.fileName = root.node.uniqueId+".design";
 				AttributeValueNode nameValue = new AttributeValueNode();
 				nameValue.attributeName = "name";
-				nameValue.values.add(caseId);
+				nameValue.values.add("\""+caseId+"\"");
 				root.node.values.add(nameValue);
 			}
 			root.root = null;
@@ -482,6 +482,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		instanceStorage.subDirectory = subDirectory;
 		instanceStorage.node = initInstanceNode(instance, results, instanceStorage);
 		instanceStorage.fileName = instance.getMetadata().getUniqueId()+".design";
+		instanceStorage.root = instanceStorage;
 		return instanceStorage;
 	}
 

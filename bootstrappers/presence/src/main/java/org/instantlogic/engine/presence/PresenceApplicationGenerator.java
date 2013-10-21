@@ -29,7 +29,6 @@ public class PresenceApplicationGenerator extends ApplicationDesign {
 		IsMeDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.IsMeDeduction");
         setName("Presence");
         setRootPackageName("org.instantlogic.engine.presence");
-        setSourcePath("target/generated-sources/instantlogic-app");
         setCaseEntity(PresenceEntityGenerator.ENTITY);
         setMainFlow(MainFlowGenerator.FLOW);
 

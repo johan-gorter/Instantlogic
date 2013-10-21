@@ -7,7 +7,7 @@ import org.instantlogic.designer.codegenerator.classmodel.SharedPageFragmentClas
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 
-public class SharedElementDefinitionGenerator extends AbstractGenerator {
+public class SharedElementDefinitionGenerator extends AbstractGenerator<SharedPageFragmentClassModel> {
 
 	private SharedElementDefinitionDesign definition;
 
@@ -17,35 +17,29 @@ public class SharedElementDefinitionGenerator extends AbstractGenerator {
 
 
 	@Override
-	public void update(GeneratedClassModels context) {
-		if (observations!=null && !observations.isOutdated()) { return; }
+	public SharedPageFragmentClassModel generate(GeneratedClassModels context) {
+		if (observations!=null && !observations.isOutdated()) { 
+			return null; 
+		}
 
 		CaseAdministration caseAdministration = definition.getMetadata().getCaseAdministration();
 		caseAdministration.startRecordingObservations();
 
-		SharedPageFragmentClassModel model = initModel(context);
-		model.rootPackageName = updateRootPackageName(((ApplicationDesign)definition.getMetadata().getCase()).getRootPackageName(), context);
+		SharedPageFragmentClassModel model = new SharedPageFragmentClassModel();
+		model.rootPackageName = ((ApplicationDesign)definition.getMetadata().getCase()).getRootPackageName();
+		model.name = definition.getName();
+		model.technicalNameCapitalized = definition.getTechnicalNameCapitalized();
+		model.isCustomized = definition.getIsCustomized()==Boolean.TRUE;
 		model.determineIsDeleted(definition.isValidForCodeGeneration());
 		
 		model.content = ContentGenerator.generate(definition.getFragment(), model);
 		
 		this.observations = new ObservationsOutdatedObserver(caseAdministration.stopRecordingObservations(), null);
-		context.updatedSharedPageFragments.add(model);
-	}
-
-	@Override
-	public void delete(GeneratedClassModels context) {
-		SharedPageFragmentClassModel model = initModel(context);
-		model.isDeleted = true;
-		context.updatedSharedPageFragments.add(model);
-	}
-
-	private SharedPageFragmentClassModel initModel(GeneratedClassModels context) {
-		SharedPageFragmentClassModel model = new SharedPageFragmentClassModel();
-		model.rootPackageName = lastRootPackageName;
-		model.name = definition.getName();
-		model.technicalNameCapitalized = definition.getTechnicalNameCapitalized();
-		model.isCustomized = definition.getIsCustomized()==Boolean.TRUE;
 		return model;
+	}
+	
+	@Override
+	public void queueClassModel(SharedPageFragmentClassModel classModel, GeneratedClassModels context) {
+		context.updatedSharedPageFragments.add(classModel);
 	}
 }

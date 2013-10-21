@@ -2,6 +2,7 @@ package org.instantlogic.designer.dataexplorer;
 
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.flow.Flow;
+import org.instantlogic.interaction.flow.FlowEvent;
 
 // Wraps another application and adds the DataExplorer flows
 public class ApplicationWithDataExplorer extends ApplicationWrapper {
@@ -15,5 +16,14 @@ public class ApplicationWithDataExplorer extends ApplicationWrapper {
 
 	public Flow getMainFlow() {
 		return mainFlow;
+	}
+	
+	@Override
+	public FlowEvent getStartEvent() {
+		FlowEvent startEvent = super.getStartEvent();
+		if (startEvent==null) {
+			return ExploreDataEvent.INSTANCE;
+		}
+		return startEvent;
 	}
 }
