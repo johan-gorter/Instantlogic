@@ -129,7 +129,7 @@ public class CaseManager {
 		//this.theCase = applicationUpdateMessage.loadFrom(this.theCase);
 		//persist(this.theCase.getMetadata().getCaseAdministration());
 		
-		persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass(), application);
+		this.theCase = persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass(), application);
 		
 		for (Traveler traveler: presence.getActiveTravelers()) {
 			traveler.applicationUpdated();

@@ -390,7 +390,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 							if (((Relation)attribute).isOwner()) {
 								 if (event.isMultivalueUpdate()) {
 									if (event.getMultiValueUpdateType() == MultiValueUpdateType.INSERT) {
-										initSubInstanceNode((Instance)event.getItemValue(), instancesToSave, storageInfo);
+										initSubInstanceNode((Instance)event.getItemValue(), instancesToSave, storageInfo.root);
 									}
 									List<InstanceNode> newNodes = new ArrayList<>();
 									for (Instance value : (Iterable<Instance>)event.getNewValue().getValue()) {
