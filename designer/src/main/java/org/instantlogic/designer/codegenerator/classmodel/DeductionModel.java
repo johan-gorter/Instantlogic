@@ -60,7 +60,7 @@ public class DeductionModel {
 		return customization;
 	}
 	public String getInternalClassName() {
-		if (internalClassName==null) {
+		if (internalClassName==null && type != null) {
 			internalClassName = type.replace(".", "/");
 		}
 		return internalClassName;

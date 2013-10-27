@@ -243,7 +243,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 				root.node = new InstanceNode();
 				root.node.entityName = "ApplicationDesign";
 				root.node.uniqueId = new ApplicationDesign().getMetadata().getUniqueId();
-				root.fileName = root.node.uniqueId+".design";
+				root.fileName = caseId+".design";
 				AttributeValueNode nameValue = new AttributeValueNode();
 				nameValue.attributeName = "name";
 				nameValue.values.add("\""+caseId+"\"");
@@ -481,9 +481,20 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		results.add(instanceStorage);
 		instanceStorage.subDirectory = subDirectory;
 		instanceStorage.node = initInstanceNode(instance, results, instanceStorage);
-		instanceStorage.fileName = instance.getMetadata().getUniqueId()+".design";
+		instanceStorage.fileName = fileNameForInstance(instance);
 		instanceStorage.root = instanceStorage;
 		return instanceStorage;
+	}
+
+	private String fileNameForInstance(Instance instance) {
+		Attribute nameAttribute = instance.getMetadata().getEntity().tryGetAttribute("name");
+		if (nameAttribute!=null) {
+			String name = (String)nameAttribute.get(instance).getValue();
+			if (name!=null) {
+				return name+".design";
+			}
+		}
+		return instance.getMetadata().getUniqueId()+".design";
 	}
 
 	private InstanceNode initSubInstanceNode(Instance instance, List<InstanceStorageInfo> instanceStoragesToSave, InstanceStorageInfo instanceStorageRoot) {
@@ -516,7 +527,11 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 				} else {
 					Object value = ((WriteableAttributeValue)attributeValue).getStoredValue();
 					if (value!=null) {
-						attributeNode.values.add(gson.toJson(value));
+						if (value instanceof Instance) {
+							attributeNode.values.add(value.toString());
+						} else {
+							attributeNode.values.add(gson.toJson(value));
+						}
 					}
 				}
 			}

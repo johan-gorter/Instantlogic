@@ -13,8 +13,12 @@ import org.instantlogic.designer.codegenerator.classmodel.ConstantValueModel;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionModel;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionModel.Input;
 import org.instantlogic.designer.codegenerator.classmodel.DeductionSchemeModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DeductionSchemeGenerator {
+
+	private static final Logger logger = LoggerFactory.getLogger(DeductionSchemeGenerator.class);
 	
 	public static DeductionSchemeModel generate(String rootPackageName, DeductionSchemeDesign deductionSchemeDesign) {
 		List<DeductionDesign> deductionDesigns = new ArrayList<DeductionDesign>();
@@ -45,17 +49,20 @@ public class DeductionSchemeGenerator {
 					}
 					classModel.parameters.add(parameterModel);
 				}
-			}
-			for (DeductionInputDesign input : deduction.getInputs()) {
-				for (DeductionDesign inputDeduction: input.getInputs()) {
-					Input inputModel = new DeductionModel.Input();
-					inputModel.deductionIndex = deductionDesigns.indexOf(inputDeduction);
-					inputModel.multivalue = input.getOperationInput().getMultivalue();
-					inputModel.inputName = input.getOperationInput().getTechnicalNameCapitalized();
-					classModel.inputs.add(inputModel);
+				for (DeductionInputDesign input : deduction.getInputs()) {
+					for (DeductionDesign inputDeduction: input.getInputs()) {
+						Input inputModel = new DeductionModel.Input();
+						inputModel.deductionIndex = deductionDesigns.indexOf(inputDeduction);
+						inputModel.multivalue = input.getOperationInput().getMultivalue();
+						inputModel.inputName = input.getOperationInput().getTechnicalNameCapitalized();
+						classModel.inputs.add(inputModel);
+					}
 				}
+				model.deductions.add(classModel);
 			}
-			model.deductions.add(classModel);
+			else {
+				logger.warn("Deduction without operation in deductionSchemeDesign "+deductionSchemeDesign);
+			}
 		}
 		return model;
 	}

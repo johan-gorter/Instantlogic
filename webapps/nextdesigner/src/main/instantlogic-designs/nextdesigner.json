@@ -10243,10 +10243,7 @@
                   {
                     "instanceId": "ZrEz_bkxbagAaofd_838de19b_3708",
                     "entityName": "DeductionParameterDesign",
-                    "value": {
-                      "instanceName": "text",
-                      "entityName": "DataCategoryDesign"
-                    },
+                    "staticInstanceValue": "JfgqatdspmehmkOt_16226553_b5f2",
                     "operationParameter": {
                       "instanceName": "constantValue",
                       "entityName": "DeductionOperationParameterDesign"
@@ -10593,10 +10590,7 @@
                   {
                     "instanceId": "SdIajkdIyq_taklv_3e01481c_e9b4",
                     "entityName": "DeductionParameterDesign",
-                    "value": {
-                      "instanceName": "number",
-                      "entityName": "DataCategoryDesign"
-                    },
+                    "staticInstanceValue": "UUgmoaphkqfcUarI_bd2686a5_83a8",
                     "operationParameter": {
                       "instanceName": "constantValue",
                       "entityName": "DeductionOperationParameterDesign"
@@ -10813,10 +10807,7 @@
                   {
                     "instanceId": "XxqmidkEayczibem_10a46e3c_4776",
                     "entityName": "DeductionParameterDesign",
-                    "value": {
-                      "instanceName": "text",
-                      "entityName": "DataCategoryDesign"
-                    },
+                    "staticInstanceValue": "JfgqatdspmehmkOt_16226553_b5f2",
                     "operationParameter": {
                       "instanceName": "constantValue",
                       "entityName": "DeductionOperationParameterDesign"
@@ -11046,10 +11037,7 @@
                   {
                     "instanceId": "ateyjlhutucsAmhf_95e30f00_615c",
                     "entityName": "DeductionParameterDesign",
-                    "value": {
-                      "instanceName": "number",
-                      "entityName": "DataCategoryDesign"
-                    },
+                    "staticInstanceValue": "UUgmoaphkqfcUarI_bd2686a5_83a8",
                     "operationParameter": {
                       "instanceName": "constantValue",
                       "entityName": "DeductionOperationParameterDesign"
