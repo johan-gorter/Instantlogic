@@ -1,0 +1,14 @@
+eosxwrcIUa_jIapq_708b274c_d706: eosxwrcIUa_jIapq_708b274c_d706:ApplicationDesign{
+eosxwrcIUa_jIapq_708b274c_d706:  name="izzy"
+eosxwrcIUa_jIapq_708b274c_d706:  isCustomized
+eosxwrcIUa_jIapq_708b274c_d706:  sourcePath="../izzy/target/generated-sources/instantlogic-app"
+eosxwrcIUa_jIapq_708b274c_d706:  themeNames[
+eosxwrcIUa_jIapq_708b274c_d706:  themeNames+"izzy"
+eosxwrcIUa_jIapq_708b274c_d706:  themeNames+"margin"
+eosxwrcIUa_jIapq_708b274c_d706:  themeNames]
+eosxwrcIUa_jIapq_708b274c_d706:  rootPackageName="org.instantlogic.example.izzy"
+eosxwrcIUa_jIapq_708b274c_d706:  caseEntity="Bd_gEgUllmgeaehm_f615a854_72d9"
+eosxwrcIUa_jIapq_708b274c_d706:  mainFlow="LteejsAjbe_Eojkj_7cebbb86_a57d"
+eosxwrcIUa_jIapq_708b274c_d706:  startEvent="PdAgOanvAicEior__505e0300_bcdb"
+eosxwrcIUa_jIapq_708b274c_d706:  loggedInEvent="PdAgOanvAicEior__505e0300_bcdb"
+eosxwrcIUa_jIapq_708b274c_d706: }eosxwrcIUa_jIapq_708b274c_d706

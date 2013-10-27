@@ -93,6 +93,14 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		Instance result = createStructure(storage, application.getAllEntities());
 		loadData(result, result.getMetadata().getCaseAdministration());
 		
+//		OutputStreamWriter osw = new OutputStreamWriter(System.out);
+//		super.save(result, osw);
+//		try {
+//			osw.flush();
+//		} catch (IOException e) {
+//			throw new RuntimeException(e);
+//		}
+		
 //		Instance result = super.loadOrCreate(caseId, ofType, application);
 		
 //		result.getMetadata().setStorageInfo(null);
@@ -539,41 +547,43 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		
 		for (Relation relation : instance.getMetadata().getEntity().getRelations()) {
 			ReadOnlyAttributeValue attributeValue = relation.get(instance);
-			if (relation.isOwner() && relation.isMultivalue() && instance.getMetadata().getInstanceOwner()==null) {
-				// Move each entry to a file of its own
-				for (Instance value : (Values<Instance>)attributeValue.getValue()) {
-					InstanceStorageInfo result = initRootInstanceNode(value, relation.getName(), instanceStoragesToSave);
-					instanceStorageRoot.addSubStorage(relation.getName(), result);
-				}
-			} else {
-				AttributeValueNode attributeNode = new AttributeValueNode();
-				attributeNode.attributeName = relation.getName();
-				node.values.add(attributeNode);
-				if (relation.isOwner()) {
-					if (relation.isMultivalue()) {
-						attributeNode.multivalue = true;
-						for (Instance value : (Values<Instance>)attributeValue.getValue()) {
-							InstanceNode subInstance = initSubInstanceNode(value, null, instanceStorageRoot);
-							attributeNode.subInstances.add(subInstance);
-						}
-					} else {
-						Instance value = (Instance)attributeValue.getValue();
-						if (value!=null) {
-							InstanceNode subInstance = initSubInstanceNode(value, null, instanceStorageRoot);
-							attributeNode.subInstances.add(subInstance);
-						}
+			if (attributeValue.hasStoredValue()) {
+				if (relation.isOwner() && relation.isMultivalue() && instance.getMetadata().getInstanceOwner()==null) {
+					// Move each entry to a file of its own
+					for (Instance value : (Values<Instance>)attributeValue.getValue()) {
+						InstanceStorageInfo result = initRootInstanceNode(value, relation.getName(), instanceStoragesToSave);
+						instanceStorageRoot.addSubStorage(relation.getName(), result);
 					}
 				} else {
-					if (relation.isMultivalue()) {
-						attributeNode.multivalue = true;
-						for (Instance value : (Values<Instance>)attributeValue.getValue()) {
-							attributeNode.values.add(serializeInstanceId(value));
+					AttributeValueNode attributeNode = new AttributeValueNode();
+					attributeNode.attributeName = relation.getName();
+					node.values.add(attributeNode);
+					if (relation.isOwner()) {
+						if (relation.isMultivalue()) {
+							attributeNode.multivalue = true;
+							for (Instance value : (Values<Instance>)attributeValue.getValue()) {
+								InstanceNode subInstance = initSubInstanceNode(value, null, instanceStorageRoot);
+								attributeNode.subInstances.add(subInstance);
+							}
+						} else {
+							Instance value = (Instance)attributeValue.getValue();
+							if (value!=null) {
+								InstanceNode subInstance = initSubInstanceNode(value, null, instanceStorageRoot);
+								attributeNode.subInstances.add(subInstance);
+							}
 						}
 					} else {
-						if (!relation.isReadOnly()) {
-							Instance value = (Instance)((WriteableAttributeValue)attributeValue).getStoredValue();
-							if (value!=null) {
+						if (relation.isMultivalue()) {
+							attributeNode.multivalue = true;
+							for (Instance value : (Values<Instance>)attributeValue.getValue()) {
 								attributeNode.values.add(serializeInstanceId(value));
+							}
+						} else {
+							if (!relation.isReadOnly()) {
+								Instance value = (Instance)((WriteableAttributeValue)attributeValue).getStoredValue();
+								if (value!=null) {
+									attributeNode.values.add(serializeInstanceId(value));
+								}
 							}
 						}
 					}

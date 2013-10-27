@@ -1,0 +1,16 @@
+CwjhuvardefyykgI_db23a224_f03f: CwjhuvardefyykgI_db23a224_f03f:DeductionOperationDesign{
+CwjhuvardefyykgI_db23a224_f03f:  name="CapitalizeFirst"
+CwjhuvardefyykgI_db23a224_f03f:  isCustomized
+CwjhuvardefyykgI_db23a224_f03f:  javaClassName="org.instantlogic.designer.deduction.CapitalizeFirstDeduction"
+CwjhuvardefyykgI_db23a224_f03f:  inputs[
+CwjhuvardefyykgI_db23a224_f03f:  inputs+GjrchjUaEucng__f_a4fd57ce_d9eb:DeductionOperationInputDesign{
+GjrchjUaEucng__f_a4fd57ce_d9eb:   name="Input"
+GjrchjUaEucng__f_a4fd57ce_d9eb:   isCustomized
+GjrchjUaEucng__f_a4fd57ce_d9eb:   multivalue
+GjrchjUaEucng__f_a4fd57ce_d9eb:   diagramPosition
+CwjhuvardefyykgI_db23a224_f03f:  }GjrchjUaEucng__f_a4fd57ce_d9eb
+CwjhuvardefyykgI_db23a224_f03f:  inputs]
+CwjhuvardefyykgI_db23a224_f03f:  parameters[
+CwjhuvardefyykgI_db23a224_f03f:  parameters]
+CwjhuvardefyykgI_db23a224_f03f:  outputDataType={"entityName":"DataTypeDesign","instanceName":"text"}
+CwjhuvardefyykgI_db23a224_f03f: }CwjhuvardefyykgI_db23a224_f03f

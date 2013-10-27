@@ -6559,7 +6559,7 @@
     {
       "instanceId": "DoeovpsafmfimoUd_dba71810_5ea0",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "DataTypeEntityDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.DataTypeEntityDeduction",
       "inputs": [],
       "parameters": []
@@ -6567,7 +6567,7 @@
     {
       "instanceId": "IxxufkAkpadykgsk_344568dd_78ff",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "JavaIdentifierDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.JavaIdentifierDeduction",
       "inputs": [],
       "parameters": []
@@ -6583,7 +6583,7 @@
     {
       "instanceId": "Lgdzllhhzyblsghi_2df542de_01dd",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "DataTypeMultivalueDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.DataTypeMultivalueDeduction",
       "inputs": [],
       "parameters": []
@@ -6591,7 +6591,7 @@
     {
       "instanceId": "MmrpOonkdia_Acru_eb1fdac8_3e10",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "ReverseTechnicalNameDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction",
       "inputs": [],
       "parameters": []
@@ -6599,7 +6599,7 @@
     {
       "instanceId": "SrysuUhzgueowlbj_8fa53e10_87f2",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "AttributeBelongsToDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.AttributeBelongsToDeduction",
       "inputs": [],
       "parameters": []
@@ -6607,7 +6607,7 @@
     {
       "instanceId": "VfbUuvsxcyafkmgh_84d203ea_44e9",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "DataTypeJavaClassNameDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.DataTypeJavaClassNameDeduction",
       "inputs": [],
       "parameters": []
@@ -6623,7 +6623,7 @@
     {
       "instanceId": "ZxumuOxvpudvmcdl_9d2b1365_74b7",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "ReverseJavaIdentifierDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.ReverseJavaIdentifierDeduction",
       "inputs": [],
       "parameters": []
@@ -6631,7 +6631,7 @@
     {
       "instanceId": "_lEriceqdIeqoldj_ef2edc6c_d236",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "DataTypeDataCategoryDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction",
       "inputs": [],
       "parameters": []
@@ -6639,7 +6639,7 @@
     {
       "instanceId": "aAgckswknibvIdEO_3e130640_a944",
       "entityName": "DeductionOperationDesign",
-      "name": "DeductionDiagramPositionDefault",
+      "name": "DeductionDiagramPositionDefaultDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.DeductionDiagramPositionDefaultDeduction",
       "inputs": [],
       "parameters": []
@@ -6647,7 +6647,7 @@
     {
       "instanceId": "ahqvcdIitebIAmUx_9e3bb43a_a303",
       "entityName": "DeductionOperationDesign",
-      "name": "TechnicalName",
+      "name": "TechnicalNameDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.TechnicalNameDeduction",
       "inputs": [],
       "parameters": []
@@ -6655,7 +6655,7 @@
     {
       "instanceId": "ibwajmrioeacqbhr_45fb2422_337e",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "DataTypeDataCategoryOptionsDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.DataTypeDataCategoryOptionsDeduction",
       "inputs": [],
       "parameters": []
@@ -6663,7 +6663,7 @@
     {
       "instanceId": "oosaAUg__qerodkj_2b7873e3_edbe",
       "entityName": "DeductionOperationDesign",
-      "name": "DataTypeDataCategoryOptions",
+      "name": "DefaultDesignNameDeduction",
       "javaClassName": "org.instantlogic.designer.deduction.DefaultDesignNameDeduction",
       "inputs": [],
       "parameters": []
