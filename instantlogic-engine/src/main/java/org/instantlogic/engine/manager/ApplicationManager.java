@@ -48,8 +48,8 @@ public class ApplicationManager implements DesignerApplicationEnvironment {
 
 	// Called from the (Designer)application
 	@Override
-	public void updateApplication(Application updatedApplication) {
-		engineManager.updateApplication(updatedApplication);
+	public void updateApplication(Application updatedApplication, String applicationName) {
+		engineManager.updateApplication(updatedApplication, applicationName);
 	}
 
 	@Override

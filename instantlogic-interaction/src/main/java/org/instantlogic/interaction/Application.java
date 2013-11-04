@@ -77,7 +77,7 @@ public abstract class Application implements AutoCloseable {
 	}
 
 	// Injected dependency
-	public void setEnvironment(ApplicationEnvironment environment) {
+	public void setEnvironment(ApplicationEnvironment environment, String applicationName) {
 	}
 
 }

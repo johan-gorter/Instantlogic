@@ -26,11 +26,6 @@
 	  </dependency>
       <dependency>
     	<groupId>org.instantlogic</groupId>
-        <artifactId>instantlogic-designer</artifactId>
-    	<version>${project.version}</version>
-	  </dependency>
-      <dependency>
-    	<groupId>org.instantlogic</groupId>
         <artifactId>instantlogic-tools</artifactId>
     	<version>${project.version}</version>
 	  </dependency>
@@ -68,6 +63,31 @@
 		<version>3.7.3</version>
 	  </dependency>
             
+      <!-- Needed to run Designer -->
+      
+	  <dependency>
+		<groupId>org.ow2.asm</groupId>
+        <artifactId>asm</artifactId>
+      </dependency>
+
+	  <!-- These can be removed when a few lines are commented out in the source -->
+	  <dependency>
+		<groupId>org.ow2.asm</groupId>
+        <artifactId>asm-util</artifactId>
+      </dependency>
+	  <dependency>
+		<groupId>org.ow2.asm</groupId>
+        <artifactId>asm-tree</artifactId>
+      </dependency>
+	  <dependency>
+		<groupId>org.ow2.asm</groupId>
+        <artifactId>asm-analysis</artifactId>
+      </dependency>
+
+	  <dependency>
+		<groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+      </dependency>            
             
     </dependencies>
 

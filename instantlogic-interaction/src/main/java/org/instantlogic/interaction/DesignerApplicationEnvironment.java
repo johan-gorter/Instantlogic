@@ -7,7 +7,7 @@ public interface DesignerApplicationEnvironment extends ApplicationEnvironment {
 
 	public URL getCustomizationClassesUrl(String applicationName);
 	
-	public void updateApplication(Application updatedApplication);
+	public void updateApplication(Application updatedApplication, String applicationName);
 
 	public File getApplicationRoot(String caseId);
 	

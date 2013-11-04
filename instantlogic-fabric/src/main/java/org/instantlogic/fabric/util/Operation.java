@@ -8,6 +8,7 @@ import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.util.ValueChangeEvent.MultiValueUpdateType;
 import org.instantlogic.fabric.value.AttributeValue;
 import org.instantlogic.fabric.value.AttributeValueList;
+import org.instantlogic.fabric.value.AttributeValues;
 
 public class Operation implements AutoCloseable {
 	
@@ -122,13 +123,21 @@ public class Operation implements AutoCloseable {
 		try {
 			for (int i=eventsToUndo.size()-1;i>=0;i--) {
 				ValueChangeEvent event = eventsToUndo.get(i);
-				if (event.isMultivalueUpdate()) {
+				if (event.isMultivalueUpdate() && event.getAttribute().isOrderedMultivalue()) {
 					AttributeValueList attributeValues = (AttributeValueList)((Attribute)event.getAttribute()).get(event.getInstance());
 					if (event.getMultiValueUpdateType()==MultiValueUpdateType.INSERT) {
 						attributeValues.removeValue(event.getIndex());
 					}
 					if (event.getMultiValueUpdateType()==MultiValueUpdateType.DELETE) {
 						attributeValues.insertValue(event.getItemValue(), event.getIndex());
+					}
+				} else if (event.isMultivalueUpdate()) {
+					AttributeValues attributeValues = (AttributeValues)((Attribute)event.getAttribute()).get(event.getInstance());
+					if (event.getMultiValueUpdateType()==MultiValueUpdateType.INSERT) {
+						attributeValues.removeValue(event.getItemValue());
+					}
+					if (event.getMultiValueUpdateType()==MultiValueUpdateType.DELETE) {
+						attributeValues.addValue(event.getItemValue());
 					}
 				} else {
 					AttributeValue attributeValue = (AttributeValue)((Attribute)event.getAttribute()).get(event.getInstance());

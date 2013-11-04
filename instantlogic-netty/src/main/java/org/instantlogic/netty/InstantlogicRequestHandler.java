@@ -50,13 +50,13 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
 		if (applications==null || applications.size()!=1) {
 			throw new Exception("No application queryString parameter");
 		}
-		String applicationName = applications.get(0);
+		String applicationName = applications.get(0).toLowerCase();
 
 		List<String> cases = params.get("case");
 		if (cases==null || cases.size()!=1) {
 			throw new Exception("No case queryString parameter");
 		}
-		String caseId = cases.get(0);
+		String caseId = cases.get(0).toLowerCase();
 		
 		NettyTraveler nettyTraveler = travelersManagement.getOrCreate(travelerId, applicationName, caseId);
 		

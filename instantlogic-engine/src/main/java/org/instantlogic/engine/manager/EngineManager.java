@@ -30,10 +30,10 @@ public class EngineManager {
 
 	private List<EnginePlugin> plugins = new ArrayList<EnginePlugin>();
 	
-	public synchronized ApplicationManager registerApplication(Application application) {
+	public synchronized ApplicationManager registerApplication(Application application, String applicationName) {
 		ApplicationManager applicationManager = new ApplicationManager(application, this);
-		application.setEnvironment(applicationManager);
-		applicationManagers.put(application.getName(), applicationManager);
+		application.setEnvironment(applicationManager, applicationName);
+		applicationManagers.put(applicationName, applicationManager);
 		return applicationManager;
 	}
 	
@@ -70,26 +70,50 @@ public class EngineManager {
 	// Is overridden in DesignerEngineManager
 	protected ApplicationManager doLoadApplication(File appDir, String name) throws Exception {
 		logger.info("Loading application [{}] from {}", name, appDir.getAbsoluteFile());
-		URL customized = new File(appDir, "target/classes/").toURI().toURL();
-		URL preGenerated = new File(appDir, "target/generated-classes").toURI().toURL();
+		
+		File customizationsDir = ("nextdesigner".equals(name))
+				? new File(appDir, "../designer/target/classes/") // NextDesigner loads customizations from Designer
+				: new File(appDir, "target/classes/");
+		File preGeneratedDir = new File(appDir, "target/generated-classes");
+		
+		URL customized = customizationsDir.toURI().toURL();
+		URL preGenerated = preGeneratedDir.toURI().toURL();
 		URLClassLoader classLoader = new URLClassLoader(new URL[]{customized, preGenerated});
-		Class<?> applicationClass = classLoader.loadClass(findApplicationClassName("",new File(appDir, "target/generated-classes")));
+		Class<?> applicationClass = classLoader.loadClass(findApplicationClassName(customizationsDir, preGeneratedDir));
 		logger.info("Application [{}] loaded", name);
 		Application application = (Application)applicationClass.getField("INSTANCE").get(null);
-		return registerApplication(application);
+		return registerApplication(application, name);
+	}
+	
+	private String findApplicationClassName(File customizedDir, File generatedDir) {
+		String result = findApplicationClassName("", customizedDir, false);
+		if (result==null) {
+			result = findApplicationClassName("", generatedDir, true);
+		}
+		return result;
 	}
 
-	private String findApplicationClassName(String classNamePrefix, File file) {
-		String[] contents = file.list();
+	private String findApplicationClassName(String classNamePrefix, File dir, boolean throwIfNotFound) {
+		String[] contents = dir.list();
 		for (String content:contents) {
-			if (content.endsWith("Application.class")) {
+			if (content.endsWith("Application.class") && !content.startsWith("Abstract")) {
 				return classNamePrefix+content.substring(0, content.indexOf('.'));
 			}
 		}
 		if (contents.length==1) {
-			return findApplicationClassName(classNamePrefix+contents[0]+".", new File(file, contents[0]));
+			return findApplicationClassName(classNamePrefix+contents[0]+".", new File(dir, contents[0]), throwIfNotFound);
 		}
-		throw new RuntimeException("Could not find application class in folder "+file.getAbsolutePath());
+		if (contents.length==2 && "META-INF".equals(contents[0])) {
+			return findApplicationClassName(classNamePrefix+contents[1]+".", new File(dir, contents[1]), throwIfNotFound);
+		}
+		if (contents.length==2 && "META-INF".equals(contents[1])) {
+			return findApplicationClassName(classNamePrefix+contents[0]+".", new File(dir, contents[0]), throwIfNotFound);
+		}
+		if (throwIfNotFound) {
+			throw new RuntimeException("Could not find application class in folder "+dir.getAbsolutePath());
+		} else {
+			return null;
+		}
 	}
 	
 	public synchronized CaseProcessor getCaseProcessor(String application, String caseId) {
@@ -130,16 +154,16 @@ public class EngineManager {
 		return sb.toString();
 	}
 
-	public void updateApplication(Application updatedApplication) {
+	public void updateApplication(Application updatedApplication, String applicationName) {
 		List<String> caseIds = null;
 		ApplicationManager applicationManager;
 		Application oldApplication = null;
 		synchronized (this) {
-			applicationManager = applicationManagers.get(updatedApplication.getName());
+			applicationManager = applicationManagers.get(applicationName);
 			if (applicationManager==null) {
 				// Application was not loaded, good for us
 				applicationManager = new ApplicationManager(updatedApplication, this);
-				applicationManagers.put(updatedApplication.getName(), applicationManager);
+				applicationManagers.put(applicationName, applicationManager);
 			} else {
 				oldApplication = applicationManager.getApplication();
 				caseIds = applicationManager.applicationUpdated(updatedApplication);
@@ -149,7 +173,7 @@ public class EngineManager {
 			ApplicationUpdate applicationUpdateMessage = new ApplicationUpdate(oldApplication, updatedApplication);
 			applicationUpdateMessage.addTaskToComplete();
 			for (String caseId : caseIds) {
-				CaseProcessor caseProcessor = caseProcessors.get(updatedApplication.getName()+":"+caseId);
+				CaseProcessor caseProcessor = caseProcessors.get(applicationName+":"+caseId);
 				if (caseProcessor!=null) {
 					caseProcessor.processApplicationUpdate(applicationUpdateMessage);
 				}

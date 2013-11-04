@@ -100,7 +100,7 @@ public class Animals implements EnginePlugin {
 
 	@Override
 	public void caseCreated(CaseProcessor caseProcessor) {
-		if (!"Designer".equals(caseProcessor.getApplication().getName())) {
+		if (!"designer".equals(caseProcessor.getApplication().getName().toLowerCase())) {
 			addAgents(caseProcessor);
 			runnerThread = new Thread(runner);
 			runnerThread.start();

@@ -76,7 +76,9 @@ public class CaseManager {
 		CaseAdministration caseAdministration = this.theCase.getMetadata().getCaseAdministration();
 		CaseAdministration presenceCaseAdministration = presence.getMetadata().getCaseAdministration();
 		Traveler traveler = presence.findOrAddTraveler(travelerProxy, this);
+		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
+			Thread.currentThread().setContextClassLoader(application.getClass().getClassLoader());
 			Operation operation = caseAdministration.startOperation();
 			Operation presenceOperation = presenceCaseAdministration.startOperation();
 			try {
@@ -95,6 +97,8 @@ public class CaseManager {
 		} catch (Exception e) {
 			logger.error("Exception processing messages from traveler " + traveler.getId(), e);
 			traveler.sendException(e, false);
+		} finally {
+			Thread.currentThread().setContextClassLoader(contextClassLoader);
 		}
 	}
 

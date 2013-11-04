@@ -26,11 +26,6 @@
 	  </dependency>
       <dependency>
     	<groupId>org.instantlogic</groupId>
-        <artifactId>instantlogic-designer</artifactId>
-    	<version>${project.version}</version>
-	  </dependency>
-      <dependency>
-    	<groupId>org.instantlogic</groupId>
         <artifactId>instantlogic-tools</artifactId>
     	<version>${project.version}</version>
 	  </dependency>
