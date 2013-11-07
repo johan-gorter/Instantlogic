@@ -27,6 +27,10 @@ public class CaseManager {
 	private final String caseId;
 	private Instance theCase;
 	private Application application;
+	public Application getApplication() {
+		return application;
+	}
+
 	/**
 	 * Administration for users, travelers and places.
 	 */
@@ -40,21 +44,33 @@ public class CaseManager {
 		this.caseId = caseId;
 		this.applicationManager = applicationManager;
 		this.presence = new Presence();
-		this.presence.setApplicationName(applicationManager.getApplication().getName());
+		this.presence.setApplicationName(application.getName());
 		this.presence.setCaseName(caseId);
 		this.application = application;
-		this.theCase = persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass(), applicationManager.getApplication());
+		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(application.getApplicationClassLoader());
+			this.theCase = persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass(), applicationManager.getApplication());
+		} finally {
+			Thread.currentThread().setContextClassLoader(contextClassLoader);
+		}
 	}
 
 	public void sendUpdates() {
 		// Render the places (this may update the place titles needed for rendering the presence)
-		for (Traveler traveler: presence.getActiveTravelers()) {
-			try {
-				traveler.queuePlaceIfNeeded();
-			} catch (Exception e) {
-				logger.error("Exception sending updates to traveler " + traveler.getId(), e);
-				traveler.sendException(e, true);
+		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(application.getApplicationClassLoader());
+			for (Traveler traveler: presence.getActiveTravelers()) {
+				try {
+					traveler.queuePlaceIfNeeded();
+				} catch (Exception e) {
+					logger.error("Exception sending updates to traveler " + traveler.getId(), e);
+					traveler.sendException(e, true);
+				}
 			}
+		} finally {
+			Thread.currentThread().setContextClassLoader(contextClassLoader);
 		}
 		// Render the presence and send
 		for (Traveler traveler: presence.getActiveTravelers()) {
@@ -78,7 +94,7 @@ public class CaseManager {
 		Traveler traveler = presence.findOrAddTraveler(travelerProxy, this);
 		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
-			Thread.currentThread().setContextClassLoader(application.getClass().getClassLoader());
+			Thread.currentThread().setContextClassLoader(application.getApplicationClassLoader());
 			Operation operation = caseAdministration.startOperation();
 			Operation presenceOperation = presenceCaseAdministration.startOperation();
 			try {
@@ -133,7 +149,7 @@ public class CaseManager {
 		//this.theCase = applicationUpdateMessage.loadFrom(this.theCase);
 		//persist(this.theCase.getMetadata().getCaseAdministration());
 		
-		this.theCase = persistenceStrategy.loadOrCreate(caseId, applicationManager.getApplication().getCaseEntity().getInstanceClass(), application);
+		this.theCase = persistenceStrategy.loadOrCreate(caseId, application.getCaseEntity().getInstanceClass(), application);
 		
 		for (Traveler traveler: presence.getActiveTravelers()) {
 			traveler.applicationUpdated();

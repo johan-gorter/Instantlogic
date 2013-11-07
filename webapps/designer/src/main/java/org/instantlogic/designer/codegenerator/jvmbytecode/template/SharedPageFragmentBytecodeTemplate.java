@@ -59,13 +59,13 @@ public class SharedPageFragmentBytecodeTemplate extends AbstractBytecodeTemplate
 
 			// SHARED_INSTANCE = 
 			dumpContent(mv, className, model.content);
-			mv.visitFieldInsn(PUTSTATIC, "org/instantlogic/example/izzy/sharedpagefragment/IssueRowPageFragment", "SHARED_INSTANCE", "Lorg/instantlogic/interaction/page/Element;");
+			mv.visitFieldInsn(PUTSTATIC, className, "SHARED_INSTANCE", "Lorg/instantlogic/interaction/page/Element;");
 
 			
 			// INSTANCE.setElement(SHARED_INSTANCE);
-			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/izzy/sharedpagefragment/IssueRowPageFragment", "INSTANCE", "Lorg/instantlogic/example/izzy/sharedpagefragment/IssueRowPageFragment;");
-			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/izzy/sharedpagefragment/IssueRowPageFragment", "SHARED_INSTANCE", "Lorg/instantlogic/interaction/page/Element;");
-			mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/example/izzy/sharedpagefragment/IssueRowPageFragment", "setElement", "(Lorg/instantlogic/interaction/page/Element;)V");
+			mv.visitFieldInsn(GETSTATIC, className, "INSTANCE", "L"+concreteClassName+";");
+			mv.visitFieldInsn(GETSTATIC, className, "SHARED_INSTANCE", "Lorg/instantlogic/interaction/page/Element;");
+			mv.visitMethodInsn(INVOKEVIRTUAL, className, "setElement", "(Lorg/instantlogic/interaction/page/Element;)V");
 
 			
 			mv.visitInsn(RETURN);

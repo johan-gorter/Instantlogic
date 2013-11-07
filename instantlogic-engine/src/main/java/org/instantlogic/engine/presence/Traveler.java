@@ -122,7 +122,7 @@ public class Traveler extends AbstractTraveler {
 		String title = (String)update.getRootFragment().get("title");
 		if (title==null) title = "?";
 		getCurrentPlace().setTitle(title);
-		update.getRootFragment().put("themeNames", caseManager.getApplicationManager().getApplication().getThemeNames());
+		update.getRootFragment().put("themeNames", caseManager.getApplication().getThemeNames());
 		Observations observations = caseAdministration.stopRecordingObservations();
 
 		placeOutdated = false;
@@ -170,7 +170,7 @@ public class Traveler extends AbstractTraveler {
 	
 	private RenderContext locatePlace() {
 		try {
-			Application application = this.caseManager.getApplicationManager().getApplication();
+			Application application = this.caseManager.getApplication();
 			return RenderContext.create(application.getMainFlow(), getCurrentPlace().getUrl(), caseManager.getCase(), caseManager.getCaseId(), travelerInfo);
 		} catch (NoSuchElementException e) {
 			return null;

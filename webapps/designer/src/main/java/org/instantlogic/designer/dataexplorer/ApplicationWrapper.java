@@ -56,4 +56,9 @@ public class ApplicationWrapper extends Application {
 	public String getName() {
 		return delegate.getName();
 	}
+	
+	@Override
+	public ClassLoader getApplicationClassLoader() {
+		return delegate.getApplicationClassLoader();
+	}
 }

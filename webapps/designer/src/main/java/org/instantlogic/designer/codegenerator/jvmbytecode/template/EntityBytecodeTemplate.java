@@ -51,6 +51,13 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			fv = cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "INSTANCE", "L"+className+";", null, null);
 			fv.visitEnd();
 		}
+		
+		if (model.extensions.size()>0)
+		{
+			fv = cw.visitField(ACC_PRIVATE + ACC_FINAL + ACC_STATIC, "EXTENSIONS", "[Lorg/instantlogic/fabric/model/Entity;", "[Lorg/instantlogic/fabric/model/Entity<*>;", null);
+			fv.visitEnd();
+		}			
+		
 		// private static final org.instantlogic.fabric.text.TextTemplate title;
 		if (model.title!=null)
 		{
@@ -180,7 +187,23 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 			}
 			// Phase 2
 			//EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
-			// TODO
+			if (model.extensions.size()>0)
+			{
+				mv.visitIntInsn(BIPUSH, model.extensions.size());
+				mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/model/Entity");
+
+				int i=0;
+				for(String extension:model.extensions) {
+					mv.visitInsn(DUP);
+					mv.visitIntInsn(BIPUSH, i);
+					String internalName = model.getRootPackageInternalPrefix()+"entity/"+extension+"Entity";
+					mv.visitFieldInsn(GETSTATIC, internalName, "INSTANCE", "L"+internalName+";");
+					mv.visitInsn(AASTORE);
+					i++;
+				}
+				mv.visitFieldInsn(PUTSTATIC, className, "EXTENSIONS", "[Lorg/instantlogic/fabric/model/Entity;");
+			}
+
 			localVariableIndex=0;
 			for(Attribute a:model.attributes) {
 				for (Map.Entry<String,Object> dataTypeEntry : a.dataType.entrySet()) {
@@ -272,7 +295,7 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 					mv.visitInsn(ICONST_1);
 					mv.visitFieldInsn(PUTFIELD, "org/instantlogic/fabric/model/impl/SimpleRelation", "multivalue", "Z");
 				}
-				if (r.multivalue) {
+				if (r.ordered) {
 					//$issues.ordered = true;
 					mv.visitVarInsn(ALOAD, localVariableIndex);
 					mv.visitInsn(ICONST_1);
@@ -403,6 +426,34 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 		//Deductions
 		for (DeductionSchemeModel scheme : model.getDeductionSchemes()) {
 			dumpDeductionScheme(cw, scheme);
+		}
+		
+		// @Override
+		// public org.instantlogic.fabric.model.Entity[] extensions() {
+		//      return EXTENSIONS;
+		// }
+		if (model.extensions.size()>0)
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "extensions", "()[Lorg/instantlogic/fabric/model/Entity;", null, null);
+			mv.visitCode();
+			mv.visitFieldInsn(GETSTATIC, className, "EXTENSIONS", "[Lorg/instantlogic/fabric/model/Entity;");
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}
+		
+		//  @Override
+		//	public org.instantlogic.fabric.model.Entity extendsEntity() {
+		//		return org.instantlogic.designer.entity.DesignEntity.INSTANCE;
+		//	}
+		if (model.extendsFrom!=null)
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "extendsEntity", "()Lorg/instantlogic/fabric/model/Entity;", null, null);
+			mv.visitCode();
+			mv.visitFieldInsn(GETSTATIC, model.getExtendsFromEntityInternalName(), "INSTANCE", "L"+model.getExtendsFromEntityInternalName()+";");
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
 		}
 		
 		//@Override

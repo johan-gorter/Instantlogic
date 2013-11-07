@@ -43,7 +43,7 @@ public class CaseProcessor {
 	 * @return the application.
 	 */
 	public Application getApplication() {
-		return this.caseManager.getApplicationManager().getApplication();
+		return this.caseManager.getApplication();
 	}
 	
 	public boolean processApplicationUpdate(ApplicationUpdate applicationUpdate) {

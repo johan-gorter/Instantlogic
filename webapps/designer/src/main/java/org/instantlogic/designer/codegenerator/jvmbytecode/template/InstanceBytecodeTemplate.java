@@ -13,13 +13,13 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	private static final boolean TRACE = false;
+	private static final boolean TRACE = true;
 
 	public static byte[] generate(EntityClassModel model, String fullInstanceClassName) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 
 		ClassVisitor cw;
-		if (TRACE) {
+		if (TRACE && model.name.equals("Design")) {
 			cw = new TraceClassVisitor(cwriter, new ASMifier(), new PrintWriter(System.out));
 		} else {
 			cw=cwriter;

@@ -55,10 +55,10 @@ public class FlowContext extends DeductionContext {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <I extends Instance> I getSelectedInstance(Entity<I> entity) {
-		if (entity == caseInstance.getMetadata().getEntity()) {
+		Instance result = flowStack.getSelectedInstance(entity);
+		if (Entity.extendsFrom(caseInstance.getMetadata().getEntity(), entity)) {
 			return (I)caseInstance;
 		}
-		Instance result = flowStack.getSelectedInstance(entity);
 		if (result!=null) {
 			return (I)result;
 		}

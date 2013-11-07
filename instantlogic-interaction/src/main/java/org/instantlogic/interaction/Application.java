@@ -69,6 +69,10 @@ public abstract class Application implements AutoCloseable {
 		resourcesToClose.add(resource);
 	}
 	
+	public ClassLoader getApplicationClassLoader() {
+		return getClass().getClassLoader();
+	}
+	
 	@Override
 	public void close() throws Exception {
 		for(AutoCloseable resource : resourcesToClose) {
