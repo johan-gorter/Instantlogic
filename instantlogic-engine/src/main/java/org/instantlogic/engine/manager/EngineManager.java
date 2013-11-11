@@ -163,6 +163,7 @@ public class EngineManager {
 			if (applicationManager==null) {
 				// Application was not loaded, good for us
 				applicationManager = new ApplicationManager(updatedApplication, this);
+				updatedApplication.setEnvironment(applicationManager, applicationName);
 				applicationManagers.put(applicationName, applicationManager);
 			} else {
 				oldApplication = applicationManager.getApplication();

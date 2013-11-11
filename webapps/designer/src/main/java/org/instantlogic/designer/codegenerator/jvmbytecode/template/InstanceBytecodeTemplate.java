@@ -13,13 +13,13 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	private static final boolean TRACE = true;
+	private static final boolean TRACE = false;
 
 	public static byte[] generate(EntityClassModel model, String fullInstanceClassName) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 
 		ClassVisitor cw;
-		if (TRACE && model.name.equals("Design")) {
+		if (TRACE) {
 			cw = new TraceClassVisitor(cwriter, new ASMifier(), new PrintWriter(System.out));
 		} else {
 			cw=cwriter;
@@ -217,8 +217,8 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv = cw.visitMethod(ACC_PUBLIC, "get"+a.technicalNameCapitalized, "()L"+a.internalClassName+";", null, null);
 				mv.visitCode();
 				mv.visitVarInsn(ALOAD, 0);
-				mv.visitFieldInsn(GETFIELD, className, a.javaIdentifier, "Lorg/instantlogic/fabric/value/AttributeValue;");
-				mv.visitMethodInsn(INVOKEINTERFACE, "org/instantlogic/fabric/value/AttributeValue", "getValue", "()Ljava/lang/Object;");
+				mv.visitFieldInsn(GETFIELD, className, a.javaIdentifier, "Lorg/instantlogic/fabric/value/"+(a.readonly?"ReadOnly":"")+"AttributeValue;");
+				mv.visitMethodInsn(INVOKEINTERFACE, "org/instantlogic/fabric/value/ReadOnlyAttributeValue", "getValue", "()Ljava/lang/Object;");
 				mv.visitTypeInsn(CHECKCAST, a.internalClassName);
 				mv.visitInsn(ARETURN);
 				mv.visitMaxs(1, 1);

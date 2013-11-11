@@ -21,13 +21,13 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	public static final boolean TRACE = false;
+	public static final boolean TRACE = true;
 
 	public static byte[] generate(EntityClassModel model, String fullName) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 
 		ClassVisitor cw;
-		if (TRACE) {
+		if (TRACE && model.name.equals("ApplicationDesign")) {
 			cw = new TraceClassVisitor(cwriter, new ASMifier(), new PrintWriter(System.out));
 			cw = new CheckClassAdapter(cw);
 		} else {
@@ -132,7 +132,7 @@ public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitLdcInsn(a.id);
 				mv.visitLdcInsn(a.name);
 				mv.visitFieldInsn(GETSTATIC, className, "INSTANCE", "L"+className+";");
-				mv.visitLdcInsn(Type.getType("L"+a.internalClassName+";"));
+				mv.visitLdcInsn(Type.getType("L"+a.internalItemClassName+";"));
 				mv.visitLdcInsn(a.javaIdentifier);
 				mv.visitLdcInsn(Type.getType("L"+abstractInstanceClassName+";"));
 				mv.visitMethodInsn(INVOKESPECIAL, "org/instantlogic/fabric/model/impl/SimpleAttribute", "<init>", "(Ljava/lang/String;Ljava/lang/String;Lorg/instantlogic/fabric/model/Entity;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Class;)V");
