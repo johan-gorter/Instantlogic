@@ -21,13 +21,13 @@ import org.objectweb.asm.util.TraceClassVisitor;
 
 public class EntityBytecodeTemplate extends AbstractBytecodeTemplate {
 	
-	public static final boolean TRACE = true;
+	public static final boolean TRACE = false;
 
 	public static byte[] generate(EntityClassModel model, String fullName) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 
 		ClassVisitor cw;
-		if (TRACE && model.name.equals("ApplicationDesign")) {
+		if (TRACE) {
 			cw = new TraceClassVisitor(cwriter, new ASMifier(), new PrintWriter(System.out));
 			cw = new CheckClassAdapter(cw);
 		} else {

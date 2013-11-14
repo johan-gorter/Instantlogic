@@ -19,12 +19,13 @@ public abstract class TextGenerator extends AbstractGenerator {
 			if (spInstance.getConstantText()!=null) {
 				result.type = "constant";
 				result.constant = spInstance.getConstantText();
-			} else {
+				model.untranslated.add(result);
+			} else if (spInstance.getDeductionRelationValue().hasStoredValue()) { //autocreate was not such a brilliant idea here
 				result.type = "formattedValue";
 				DeductionSchemeDesign scheme = spInstance.getDeduction();
 				result.deductionIndex = deductionSchemeHolder.addDeductionScheme(DeductionSchemeGenerator.generate(deductionSchemeHolder.rootPackageName, scheme));
+				model.untranslated.add(result);
 			}
-			model.untranslated.add(result);
 		}
 		return model;
 	}

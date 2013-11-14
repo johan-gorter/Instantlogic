@@ -56,7 +56,7 @@ public class FlowContext extends DeductionContext {
 	@Override
 	public <I extends Instance> I getSelectedInstance(Entity<I> entity) {
 		Instance result = flowStack.getSelectedInstance(entity);
-		if (Entity.extendsFrom(caseInstance.getMetadata().getEntity(), entity)) {
+		if (result==null && Entity.extendsFrom(caseInstance.getMetadata().getEntity(), entity)) {
 			return (I)caseInstance;
 		}
 		if (result!=null) {

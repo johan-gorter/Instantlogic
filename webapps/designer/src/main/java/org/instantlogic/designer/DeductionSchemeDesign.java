@@ -205,4 +205,8 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		parameter.setAttributeValue(relation);
 		return result; 
 	}
+
+	public boolean isValidForCodeGeneration() {
+		return getOutput()!=null;
+	}
 }

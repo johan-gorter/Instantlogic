@@ -21,15 +21,22 @@ public class DeductionSchemeGenerator {
 	private static final Logger logger = LoggerFactory.getLogger(DeductionSchemeGenerator.class);
 	
 	public static DeductionSchemeModel generate(String rootPackageName, DeductionSchemeDesign deductionSchemeDesign) {
+		DeductionSchemeModel model = new DeductionSchemeModel();
+		if (!deductionSchemeDesign.isValidForCodeGeneration()) {
+			DeductionModel unknown = new DeductionModel();
+			unknown.type = "org.instantlogic.fabric.deduction.InvalidDeduction";
+			unknown.index = 0;
+			model.deductions.add(unknown);
+			return model;
+		}
 		List<DeductionDesign> deductionDesigns = new ArrayList<DeductionDesign>();
 		fillDeductions(deductionSchemeDesign.getOutput(), deductionDesigns);
 		Collections.reverse(deductionDesigns);
 		int deductionIndex = 0;
-		DeductionSchemeModel model = new DeductionSchemeModel();
 		for (DeductionDesign deduction : deductionDesigns) {
 			DeductionModel classModel = new DeductionModel();
 			classModel.index = deductionIndex++;
-			if (deduction.getOperation()!=null) {
+			if (deduction.isValidForCodeGeneration()) {
 				classModel.type = deduction.getOperation().getJavaClassName();
 				for (DeductionParameterDesign parameter : deduction.getParameters()) {
 					DeductionModel.Parameter parameterModel = new DeductionModel.Parameter();
@@ -58,11 +65,11 @@ public class DeductionSchemeGenerator {
 						classModel.inputs.add(inputModel);
 					}
 				}
-				model.deductions.add(classModel);
 			}
 			else {
-				logger.warn("Deduction without operation in deductionSchemeDesign "+deductionSchemeDesign);
+				classModel.type = "org.instantlogic.fabric.deduction.InvalidDeduction";
 			}
+			model.deductions.add(classModel);
 		}
 		return model;
 	}

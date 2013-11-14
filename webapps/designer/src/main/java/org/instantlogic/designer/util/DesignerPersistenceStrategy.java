@@ -109,9 +109,9 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 //		result.getMetadata().setStorageInfo(null);
 //		save(result, getCaseDir(application, caseId), null);
 		
-		ApplicationDesign applicationDesign = (ApplicationDesign)result;
 		
 		if (generateCode) {
+			ApplicationDesign applicationDesign = (ApplicationDesign)result;
 			ApplicationBytecodeGenerator applicationBytecodeGenerator = new ApplicationBytecodeGenerator((DesignerApplicationEnvironment)applicationEnvironment, // Generate bytecode 
 				new BackgroundThreadGeneratedClassModelsProcessor(
 					new ApplicationJavacodeGenerator(new File(dir, "../../../target/generated-sources/instantlogic-app/"+caseId).getAbsoluteFile()) // Generate java code
@@ -384,6 +384,9 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 				if (event.storedValueChanged()) {
 					Attribute attribute = event.getAttribute();
 					InstanceStorageInfo storageInfo = event.getInstance().getMetadata().getStorageInfo();
+					if (storageInfo==null) {
+						throw new RuntimeException("No storage info");
+					}
 					if (event.isMultivalueUpdate() && event.getInstance().getMetadata().getInstanceOwner()==null && attribute instanceof Relation) {
 						// Add/remove a file
 						Instance value = (Instance) event.getItemValue();

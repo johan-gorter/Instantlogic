@@ -34,17 +34,24 @@ public class RelationValueImpl<I extends Instance, To extends Instance>
 		ValueAndLevel<To> result = super.getValueAndLevel();
 		if (!result.isConclusive() && model.isAutoCreate()) {
 			// 1 on 1 aggregation, is now silently lazily created
+			Operation operation = forInstance.getMetadata().getCaseAdministration().startOperation();
 			To resultValue = (To) model.createTo(forInstance);
-			setStoredValue(resultValue);
-			invalidateCachedValue();
-			forInstance.getMetadata().adopt(resultValue);
-			if (model.getReverseRelation()!=null) {
-				ReadOnlyAttributeValue<To, ? extends Object> newReverseRelationValue = model.getReverseRelation().get(resultValue);
-				if (getModel().getReverseRelation().isMultivalue()) {
-					((ReverseRelationValuesImpl)newReverseRelationValue).internalAddReverse(forInstance, null);
-				} else {
-					((ReverseRelationValueImpl)newReverseRelationValue).internalSetReverse(forInstance, null);
+			try {
+				setStoredValue(resultValue);
+				invalidateCachedValue();
+				// happens during valueChanged: forInstance.getMetadata().adopt(resultValue);
+				fireValueChanged((ValueAndLevel)ValueAndLevel.inconclusive(), null, resultValue, operation);
+				if (model.getReverseRelation()!=null) {
+					ReadOnlyAttributeValue<To, ? extends Object> newReverseRelationValue = model.getReverseRelation().get(resultValue);
+					if (getModel().getReverseRelation().isMultivalue()) {
+						((ReverseRelationValuesImpl)newReverseRelationValue).internalAddReverse(forInstance, null);
+					} else {
+						((ReverseRelationValueImpl)newReverseRelationValue).internalSetReverse(forInstance, null);
+					}
 				}
+				operation.complete();
+			} finally {
+				operation.close();
 			}
 			return ValueAndLevel.stored(resultValue);
 		}

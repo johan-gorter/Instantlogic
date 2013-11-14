@@ -178,6 +178,16 @@ _d_tfAtAEadragbd_d43e9dce_0fd8:   untranslated]
 amIEkUwhbyddogAg_1ff66f0a_47dc:  }_d_tfAtAEadragbd_d43e9dce_0fd8
 amIEkUwhbyddogAg_1ff66f0a_47dc:  staticInstances[
 amIEkUwhbyddogAg_1ff66f0a_47dc:  staticInstances]
+amIEkUwhbyddogAg_1ff66f0a_47dc:  dataType=PvfotoUEzuepgbep_dd089657_e7e3:DataTypeDesign{
+PvfotoUEzuepgbep_dd089657_e7e3:   ordered
+PvfotoUEzuepgbep_dd089657_e7e3:   javaClassName
+PvfotoUEzuepgbep_dd089657_e7e3:   multivalue
+PvfotoUEzuepgbep_dd089657_e7e3:   formatted
+PvfotoUEzuepgbep_dd089657_e7e3:   wholeNumber
+PvfotoUEzuepgbep_dd089657_e7e3:   multiLine
+PvfotoUEzuepgbep_dd089657_e7e3:   exactRounding
+PvfotoUEzuepgbep_dd089657_e7e3:   percentage
+amIEkUwhbyddogAg_1ff66f0a_47dc:  }PvfotoUEzuepgbep_dd089657_e7e3
 amIEkUwhbyddogAg_1ff66f0a_47dc:  validations[
 amIEkUwhbyddogAg_1ff66f0a_47dc:  validations]
 amIEkUwhbyddogAg_1ff66f0a_47dc: }amIEkUwhbyddogAg_1ff66f0a_47dc
