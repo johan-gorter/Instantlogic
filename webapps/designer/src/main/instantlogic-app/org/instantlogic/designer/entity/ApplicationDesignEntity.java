@@ -9,6 +9,22 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	
 	// Deductions
 
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.ApplicationDesignEntity.name);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
+		return d0;
+	}
+
+
+	// Title
+	private static final org.instantlogic.fabric.text.TextTemplate title;
+	@Override
+	public org.instantlogic.fabric.text.TextTemplate getTitle() {
+		return title;
+	}
 	
 	// Attributes
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ApplicationDesign, java.lang.String, java.lang.String> name; 
@@ -148,6 +164,8 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		$events.owner = true;
 		$events.multivalue = true;
 
+
+		title = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).getTextTemplate();
 	}
 
 	@Override

@@ -306,7 +306,6 @@ KcewdIb_xaavInsa_536e80bf_e015:      diagramHeight
 KcewdIb_xaavInsa_536e80bf_e015:      diagramPosition
 KcewdIb_xaavInsa_536e80bf_e015:      parameters[
 KcewdIb_xaavInsa_536e80bf_e015:      parameters]
-KcewdIb_xaavInsa_536e80bf_e015:      operation={"entityName":"DeductionOperationDesign","instanceName":"if"}
 KcewdIb_xaavInsa_536e80bf_e015:      inputs[
 KcewdIb_xaavInsa_536e80bf_e015:      inputs+PewgItmebIccIict_d88e19ae_6b1e:DeductionInputDesign{
 PewgItmebIccIict_d88e19ae_6b1e:       inputs[
@@ -382,6 +381,16 @@ ZexwxegAiadiiiwA_fa4f5a67_a7b6:   untranslated]
 UukUrImfumbiooAz_f84b7e63_638e:  }ZexwxegAiadiiiwA_fa4f5a67_a7b6
 UukUrImfumbiooAz_f84b7e63_638e:  staticInstances[
 UukUrImfumbiooAz_f84b7e63_638e:  staticInstances]
+UukUrImfumbiooAz_f84b7e63_638e:  dataType=Cdkt_syxsqdrs_zk_6968aa16_404c:DataTypeDesign{
+Cdkt_syxsqdrs_zk_6968aa16_404c:   ordered
+Cdkt_syxsqdrs_zk_6968aa16_404c:   javaClassName
+Cdkt_syxsqdrs_zk_6968aa16_404c:   multivalue
+Cdkt_syxsqdrs_zk_6968aa16_404c:   formatted
+Cdkt_syxsqdrs_zk_6968aa16_404c:   wholeNumber
+Cdkt_syxsqdrs_zk_6968aa16_404c:   multiLine
+Cdkt_syxsqdrs_zk_6968aa16_404c:   exactRounding
+Cdkt_syxsqdrs_zk_6968aa16_404c:   percentage
+UukUrImfumbiooAz_f84b7e63_638e:  }Cdkt_syxsqdrs_zk_6968aa16_404c
 UukUrImfumbiooAz_f84b7e63_638e:  validations[
 UukUrImfumbiooAz_f84b7e63_638e:  validations+GnndynIAjyaaIdnl_5c300f3b_fe88:ValidationDesign{
 GnndynIAjyaaIdnl_5c300f3b_fe88:   name

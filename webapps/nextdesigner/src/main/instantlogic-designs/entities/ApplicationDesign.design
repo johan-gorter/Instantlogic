@@ -347,6 +347,7 @@ Obyd_uhIpyaUUdhc_999e6c3e_1f19:   untranslated[
 Obyd_uhIpyaUUdhc_999e6c3e_1f19:   untranslated+UgmqtA_enmareopf_e0c8217b_a339:StringTemplateDesign{
 UgmqtA_enmareopf_e0c8217b_a339:    constantText
 UgmqtA_enmareopf_e0c8217b_a339:    deduction=GvapkIglaqfUucEn_ca644ace_ef10:DeductionSchemeDesign{
+GvapkIglaqfUucEn_ca644ace_ef10:     output="Tmyefwyqdackugcc_e6a76283_5c82"
 GvapkIglaqfUucEn_ca644ace_ef10:     deductions[
 GvapkIglaqfUucEn_ca644ace_ef10:     deductions+Tmyefwyqdackugcc_e6a76283_5c82:DeductionDesign{
 Tmyefwyqdackugcc_e6a76283_5c82:      diagramWidth
@@ -359,6 +360,7 @@ XIoxherebuffkk_E_123adcc8_6f21:       attributeValue="GieypaqkeIdwa_bs_a91eb66f_
 XIoxherebuffkk_E_123adcc8_6f21:       operationParameter={"entityName":"DeductionOperationParameterDesign","instanceName":"attribute"}
 Tmyefwyqdackugcc_e6a76283_5c82:      }XIoxherebuffkk_E_123adcc8_6f21
 Tmyefwyqdackugcc_e6a76283_5c82:      parameters]
+Tmyefwyqdackugcc_e6a76283_5c82:      operation={"entityName":"DeductionOperationDesign","instanceName":"attribute"}
 Tmyefwyqdackugcc_e6a76283_5c82:      inputs[
 Tmyefwyqdackugcc_e6a76283_5c82:      inputs+NpauOfkegqgkUmnn_0e777211_1435:DeductionInputDesign{
 NpauOfkegqgkUmnn_0e777211_1435:       inputs[
@@ -367,7 +369,6 @@ NpauOfkegqgkUmnn_0e777211_1435:       inputs]
 NpauOfkegqgkUmnn_0e777211_1435:       operationInput={"entityName":"DeductionOperationInputDesign","instanceName":"attributeInstance"}
 Tmyefwyqdackugcc_e6a76283_5c82:      }NpauOfkegqgkUmnn_0e777211_1435
 Tmyefwyqdackugcc_e6a76283_5c82:      inputs]
-Tmyefwyqdackugcc_e6a76283_5c82:      operation={"entityName":"DeductionOperationDesign","instanceName":"attribute"}
 GvapkIglaqfUucEn_ca644ace_ef10:     }Tmyefwyqdackugcc_e6a76283_5c82
 GvapkIglaqfUucEn_ca644ace_ef10:     deductions+optwccwozyfxigyv_06885111_e5ea:DeductionDesign{
 optwccwozyfxigyv_06885111_e5ea:      diagramWidth
@@ -380,12 +381,11 @@ ZmsUnaqovy_xooex_6f790967_f7f0:       entityValue="Fzpbnqxblqcqmlcl_0d62e8ec_a09
 ZmsUnaqovy_xooex_6f790967_f7f0:       operationParameter={"entityName":"DeductionOperationParameterDesign","instanceName":"selectedInstanceEntity"}
 optwccwozyfxigyv_06885111_e5ea:      }ZmsUnaqovy_xooex_6f790967_f7f0
 optwccwozyfxigyv_06885111_e5ea:      parameters]
+optwccwozyfxigyv_06885111_e5ea:      operation={"entityName":"DeductionOperationDesign","instanceName":"selectedInstance"}
 optwccwozyfxigyv_06885111_e5ea:      inputs[
 optwccwozyfxigyv_06885111_e5ea:      inputs]
-optwccwozyfxigyv_06885111_e5ea:      operation={"entityName":"DeductionOperationDesign","instanceName":"selectedInstance"}
 GvapkIglaqfUucEn_ca644ace_ef10:     }optwccwozyfxigyv_06885111_e5ea
 GvapkIglaqfUucEn_ca644ace_ef10:     deductions]
-GvapkIglaqfUucEn_ca644ace_ef10:     output="Tmyefwyqdackugcc_e6a76283_5c82"
 UgmqtA_enmareopf_e0c8217b_a339:    }GvapkIglaqfUucEn_ca644ace_ef10
 Obyd_uhIpyaUUdhc_999e6c3e_1f19:   }UgmqtA_enmareopf_e0c8217b_a339
 Obyd_uhIpyaUUdhc_999e6c3e_1f19:   untranslated]

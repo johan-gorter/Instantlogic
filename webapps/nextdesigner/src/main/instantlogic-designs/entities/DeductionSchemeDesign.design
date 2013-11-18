@@ -79,6 +79,16 @@ JsOcAEm_euefqbcc_3b6b23cf_50b5:  attributes[
 JsOcAEm_euefqbcc_3b6b23cf_50b5:  attributes]
 JsOcAEm_euefqbcc_3b6b23cf_50b5:  staticInstances[
 JsOcAEm_euefqbcc_3b6b23cf_50b5:  staticInstances]
+JsOcAEm_euefqbcc_3b6b23cf_50b5:  dataType=Ljwc_OhgnmgiUoon_b32b9208_58f9:DataTypeDesign{
+Ljwc_OhgnmgiUoon_b32b9208_58f9:   ordered
+Ljwc_OhgnmgiUoon_b32b9208_58f9:   javaClassName
+Ljwc_OhgnmgiUoon_b32b9208_58f9:   multivalue
+Ljwc_OhgnmgiUoon_b32b9208_58f9:   formatted
+Ljwc_OhgnmgiUoon_b32b9208_58f9:   wholeNumber
+Ljwc_OhgnmgiUoon_b32b9208_58f9:   multiLine
+Ljwc_OhgnmgiUoon_b32b9208_58f9:   exactRounding
+Ljwc_OhgnmgiUoon_b32b9208_58f9:   percentage
+JsOcAEm_euefqbcc_3b6b23cf_50b5:  }Ljwc_OhgnmgiUoon_b32b9208_58f9
 JsOcAEm_euefqbcc_3b6b23cf_50b5:  validations[
 JsOcAEm_euefqbcc_3b6b23cf_50b5:  validations]
 JsOcAEm_euefqbcc_3b6b23cf_50b5: }JsOcAEm_euefqbcc_3b6b23cf_50b5
