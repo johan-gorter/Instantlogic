@@ -92,6 +92,16 @@ Bd_gEgUllmgeaehm_f615a854_72d9:  }Fkldtyvtduatokye_bd4826c9_ac25
 Bd_gEgUllmgeaehm_f615a854_72d9:  attributes]
 Bd_gEgUllmgeaehm_f615a854_72d9:  staticInstances[
 Bd_gEgUllmgeaehm_f615a854_72d9:  staticInstances]
+Bd_gEgUllmgeaehm_f615a854_72d9:  dataType=ukykjEEeky_Uohsa_ace6b68a_6a2b:DataTypeDesign{
+ukykjEEeky_Uohsa_ace6b68a_6a2b:   ordered
+ukykjEEeky_Uohsa_ace6b68a_6a2b:   javaClassName
+ukykjEEeky_Uohsa_ace6b68a_6a2b:   multivalue
+ukykjEEeky_Uohsa_ace6b68a_6a2b:   formatted
+ukykjEEeky_Uohsa_ace6b68a_6a2b:   wholeNumber
+ukykjEEeky_Uohsa_ace6b68a_6a2b:   multiLine
+ukykjEEeky_Uohsa_ace6b68a_6a2b:   exactRounding
+ukykjEEeky_Uohsa_ace6b68a_6a2b:   percentage
+Bd_gEgUllmgeaehm_f615a854_72d9:  }ukykjEEeky_Uohsa_ace6b68a_6a2b
 Bd_gEgUllmgeaehm_f615a854_72d9:  validations[
 Bd_gEgUllmgeaehm_f615a854_72d9:  validations]
 Bd_gEgUllmgeaehm_f615a854_72d9: }Bd_gEgUllmgeaehm_f615a854_72d9

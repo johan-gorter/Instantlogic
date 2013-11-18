@@ -360,14 +360,17 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 	public void persist(String id, Instance caseInstance, int version, Application application, List<ValueChangeEvent> events) {
 		save(caseInstance, getCaseDir(application, id), events);
 		
-		ApplicationDesign applicationDesign = (ApplicationDesign)caseInstance;
-		GeneratedClassModelsProcessor generatedClassModelsProcessor = applicationDesign.getGeneratedClassModelsProcessor();
-		if (generatedClassModelsProcessor!=null) {
-			GeneratedClassModels classModelUpdates = applicationDesign.getApplicationGenerator().getClassModelUpdates();
-			int updates = classModelUpdates.countUpdates();
-			if (updates>0) {
-				logger.info("Updated {} class models", updates);
-				generatedClassModelsProcessor.process(classModelUpdates, id);
+		if (caseInstance instanceof ApplicationDesign) {
+			// NextDesigner has its own ApplicationDesign class
+			ApplicationDesign applicationDesign = (ApplicationDesign)caseInstance;
+			GeneratedClassModelsProcessor generatedClassModelsProcessor = applicationDesign.getGeneratedClassModelsProcessor();
+			if (generatedClassModelsProcessor!=null) {
+				GeneratedClassModels classModelUpdates = applicationDesign.getApplicationGenerator().getClassModelUpdates();
+				int updates = classModelUpdates.countUpdates();
+				if (updates>0) {
+					logger.info("Updated {} class models", updates);
+					generatedClassModelsProcessor.process(classModelUpdates, id);
+				}
 			}
 		}
 	}
@@ -424,7 +427,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 								 if (event.isMultivalueUpdate()) {
 									 List<String> ids = new ArrayList<String>();
 									 for (Instance value : (Iterable<Instance>)event.getNewValue().getValue()) {
-										 ids.add("\""+value.getMetadata().getUniqueId()+"\"");
+										 ids.add(serializeInstanceId(value));
 									 }
 									 storageInfo.node.setValues(event.getAttribute(), ids);
 								 } else {
@@ -432,7 +435,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 									 if (newValue==null) {
 										 storageInfo.node.setValue(event.getAttribute(), null);
 									 } else {
-										 storageInfo.node.setValue(event.getAttribute(), "\""+newValue.getMetadata().getUniqueId()+"\"");
+										 storageInfo.node.setValue(event.getAttribute(), serializeInstanceId(newValue));
 									 }
 								 }
 							 }
