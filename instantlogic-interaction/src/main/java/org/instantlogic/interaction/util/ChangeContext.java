@@ -12,6 +12,7 @@ import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.value.AttributeValue;
+import org.instantlogic.fabric.value.AttributeValues;
 import org.instantlogic.interaction.flow.Flow;
 
 import com.google.gson.Gson;
@@ -36,8 +37,15 @@ public class ChangeContext extends RenderContext {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void setValue(Entity entity, Attribute attribute, JsonElement value) {
-		AttributeValue attributeValue = (AttributeValue)getAttributeValue(entity, attribute);
-		attributeValue.setValue(parse(value, attribute));
+		if (attribute.isMultivalue()) {
+			AttributeValues attributeValues = (AttributeValues)getAttributeValue(entity, attribute);
+			// TODO:
+			//attributeValues.removeValue(item)
+			//value.getAsJsonArray().iterator();
+		} else {
+			AttributeValue attributeValue = (AttributeValue)getAttributeValue(entity, attribute);
+			attributeValue.setValue(parse(value, attribute));
+		}
 	}
 	
 	private static final DateFormat DATE_INTERNATIONAL = new SimpleDateFormat("yyyy/MM/dd");

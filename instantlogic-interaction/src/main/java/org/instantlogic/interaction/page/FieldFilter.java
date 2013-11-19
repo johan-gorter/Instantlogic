@@ -13,6 +13,7 @@ import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.util.InstanceMetadata;
 import org.instantlogic.fabric.util.ValueAndLevel;
 import org.instantlogic.fabric.util.ValueLevel;
+import org.instantlogic.fabric.value.Values;
 import org.instantlogic.interaction.util.ChangeContext;
 import org.instantlogic.interaction.util.RenderContext;
 
@@ -74,6 +75,9 @@ public class FieldFilter extends AbstractFragmentFilter {
 				result.put("dataType", dataType);
 			}
 		}
+		if (attribute.isMultivalue() && !result.containsKey("multivalue")) {
+			result.put("multivalue", true);
+		}
 		result.put("valueLevel", valueAndLevel.getValueLevel().toString().toLowerCase());
 		if (valueAndLevel.getValueLevel()==ValueLevel.RULE) {
 			result.put("readOnly", true);
@@ -90,6 +94,9 @@ public class FieldFilter extends AbstractFragmentFilter {
 			} else {
 				return metadata.getUniqueId();
 			}
+		}
+		if (value instanceof Values) {
+			return ((Values)value).asCollection().toArray();
 		}
 		return value;
 	}
