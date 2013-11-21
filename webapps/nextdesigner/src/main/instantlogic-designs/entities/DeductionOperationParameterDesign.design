@@ -142,6 +142,16 @@ eIxq_klueIcxqigg_39d36edf_15a8:   }apwwOAnogq_zonOA_bc693205_1bba
 eIxq_klueIcxqigg_39d36edf_15a8:   values]
 FrdteUkz_ufnobpc_34d85660_96cb:  }eIxq_klueIcxqigg_39d36edf_15a8
 FrdteUkz_ufnobpc_34d85660_96cb:  staticInstances]
+FrdteUkz_ufnobpc_34d85660_96cb:  dataType=_jEda_EOxibjkfyz_8fd903d7_2e71:DataTypeDesign{
+_jEda_EOxibjkfyz_8fd903d7_2e71:   ordered
+_jEda_EOxibjkfyz_8fd903d7_2e71:   javaClassName
+_jEda_EOxibjkfyz_8fd903d7_2e71:   multivalue
+_jEda_EOxibjkfyz_8fd903d7_2e71:   formatted
+_jEda_EOxibjkfyz_8fd903d7_2e71:   wholeNumber
+_jEda_EOxibjkfyz_8fd903d7_2e71:   multiLine
+_jEda_EOxibjkfyz_8fd903d7_2e71:   exactRounding
+_jEda_EOxibjkfyz_8fd903d7_2e71:   percentage
+FrdteUkz_ufnobpc_34d85660_96cb:  }_jEda_EOxibjkfyz_8fd903d7_2e71
 FrdteUkz_ufnobpc_34d85660_96cb:  validations[
 FrdteUkz_ufnobpc_34d85660_96cb:  validations]
 FrdteUkz_ufnobpc_34d85660_96cb: }FrdteUkz_ufnobpc_34d85660_96cb

@@ -113,7 +113,7 @@ BuvuOwyhuagwcmaq_59cc01de_a60a:       children+ifbevxgvImbIihpd_561531a6_9bfb:Fr
 ifbevxgvImbIihpd_561531a6_9bfb:        name
 ifbevxgvImbIihpd_561531a6_9bfb:        isCustomized
 ifbevxgvImbIihpd_561531a6_9bfb:        previewMode
-ifbevxgvImbIihpd_561531a6_9bfb:        editorOpen
+ifbevxgvImbIihpd_561531a6_9bfb:        editorOpen=false
 ifbevxgvImbIihpd_561531a6_9bfb:        styleNames[
 ifbevxgvImbIihpd_561531a6_9bfb:        styleNames+"icon-remove"
 ifbevxgvImbIihpd_561531a6_9bfb:        styleNames]
@@ -806,7 +806,7 @@ RkqbcUzezmcEofwO_11c52219_2358:     children+JIpimlnkIaceudth_48f7e0f3_ee72:Frag
 JIpimlnkIaceudth_48f7e0f3_ee72:      name
 JIpimlnkIaceudth_48f7e0f3_ee72:      isCustomized
 JIpimlnkIaceudth_48f7e0f3_ee72:      previewMode
-JIpimlnkIaceudth_48f7e0f3_ee72:      editorOpen
+JIpimlnkIaceudth_48f7e0f3_ee72:      editorOpen=false
 JIpimlnkIaceudth_48f7e0f3_ee72:      styleNames[
 JIpimlnkIaceudth_48f7e0f3_ee72:      styleNames+"answer-span8"
 JIpimlnkIaceudth_48f7e0f3_ee72:      styleNames]
