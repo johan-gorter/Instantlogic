@@ -120,6 +120,11 @@ public class WelcomePlaceTemplate extends org.instantlogic.interaction.flow.Plac
         
                             )        
                     )        
+                    .addChild("content",
+                        new org.instantlogic.interaction.page.FragmentTemplate("AIeEamgyoieqoecl_976c5758_7f5b", "Button")      
+                            .setEvent(org.instantlogic.designer.event.DataEvent.INSTANCE)      
+                            .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
+                    )        
             ); 
 	
 	private static final org.instantlogic.fabric.text.TextTemplate TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Welcome").getTextTemplate();

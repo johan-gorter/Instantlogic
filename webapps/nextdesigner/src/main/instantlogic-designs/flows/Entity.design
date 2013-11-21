@@ -34,7 +34,7 @@ HzUbOesnseewsgam_24cf8348_bee1:     children+EbzywymkUudwscsq_694457bc_e5b4:Frag
 EbzywymkUudwscsq_694457bc_e5b4:      name
 EbzywymkUudwscsq_694457bc_e5b4:      isCustomized
 EbzywymkUudwscsq_694457bc_e5b4:      previewMode
-EbzywymkUudwscsq_694457bc_e5b4:      editorOpen
+EbzywymkUudwscsq_694457bc_e5b4:      editorOpen=false
 EbzywymkUudwscsq_694457bc_e5b4:      styleNames[
 EbzywymkUudwscsq_694457bc_e5b4:      styleNames+"card"
 EbzywymkUudwscsq_694457bc_e5b4:      styleNames]
@@ -50,7 +50,7 @@ FcfuyuxEAiary_je_c3b904f5_0c73:       children+MzIggteeguboIlkz_d7aafa71_ae1c:Fr
 MzIggteeguboIlkz_d7aafa71_ae1c:        name
 MzIggteeguboIlkz_d7aafa71_ae1c:        isCustomized
 MzIggteeguboIlkz_d7aafa71_ae1c:        previewMode
-MzIggteeguboIlkz_d7aafa71_ae1c:        editorOpen
+MzIggteeguboIlkz_d7aafa71_ae1c:        editorOpen=false
 MzIggteeguboIlkz_d7aafa71_ae1c:        styleNames[
 MzIggteeguboIlkz_d7aafa71_ae1c:        styleNames]
 MzIggteeguboIlkz_d7aafa71_ae1c:        fragmentTypeName="Heading3"
@@ -138,14 +138,15 @@ FcfuyuxEAiary_je_c3b904f5_0c73:       children+SitUnfhtyafaagIA_5fea674d_2202:Fr
 SitUnfhtyafaagIA_5fea674d_2202:        name
 SitUnfhtyafaagIA_5fea674d_2202:        isCustomized
 SitUnfhtyafaagIA_5fea674d_2202:        previewMode
-SitUnfhtyafaagIA_5fea674d_2202:        editorOpen
+SitUnfhtyafaagIA_5fea674d_2202:        editorOpen=false
 SitUnfhtyafaagIA_5fea674d_2202:        styleNames[
 SitUnfhtyafaagIA_5fea674d_2202:        styleNames+"btn"
 SitUnfhtyafaagIA_5fea674d_2202:        styleNames]
-SitUnfhtyafaagIA_5fea674d_2202:        fragmentTypeName="Button"
+SitUnfhtyafaagIA_5fea674d_2202:        fragmentTypeName=""
 SitUnfhtyafaagIA_5fea674d_2202:        fragmentFilters[
 SitUnfhtyafaagIA_5fea674d_2202:        fragmentFilters]
 SitUnfhtyafaagIA_5fea674d_2202:        event="Icptoxqovmdnmi_p_2eb5b775_bcfb"
+SitUnfhtyafaagIA_5fea674d_2202:        type="OxAljslywa_vAfrg_f0cd313a_a9c2"
 SitUnfhtyafaagIA_5fea674d_2202:        properties[
 SitUnfhtyafaagIA_5fea674d_2202:        properties+MiilkfgowqfhAkEh_10b8f2b2_61ca:PropertyDesign{
 MiilkfgowqfhAkEh_10b8f2b2_61ca:         propertyName="content"
@@ -188,7 +189,7 @@ FcfuyuxEAiary_je_c3b904f5_0c73:       children+ZUrxkwAvzyfrwfcI_5ce39865_6536:Fr
 ZUrxkwAvzyfrwfcI_5ce39865_6536:        name
 ZUrxkwAvzyfrwfcI_5ce39865_6536:        isCustomized
 ZUrxkwAvzyfrwfcI_5ce39865_6536:        previewMode
-ZUrxkwAvzyfrwfcI_5ce39865_6536:        editorOpen
+ZUrxkwAvzyfrwfcI_5ce39865_6536:        editorOpen=false
 ZUrxkwAvzyfrwfcI_5ce39865_6536:        styleNames[
 ZUrxkwAvzyfrwfcI_5ce39865_6536:        styleNames]
 ZUrxkwAvzyfrwfcI_5ce39865_6536:        fragmentTypeName="Input"

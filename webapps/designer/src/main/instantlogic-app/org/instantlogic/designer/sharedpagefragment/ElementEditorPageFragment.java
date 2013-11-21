@@ -194,6 +194,11 @@ null
 )
         
                                                 )        
+                                                .addChild("content",
+                                                    new org.instantlogic.interaction.page.FragmentTemplate("BpygxmOAvig_ycaU_13e9ce18_841e", "Button")      
+                                                        .setEvent(org.instantlogic.designer.event.DataEvent.INSTANCE)      
+                                                        .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
+                                                )        
                                         ),
 null
 )

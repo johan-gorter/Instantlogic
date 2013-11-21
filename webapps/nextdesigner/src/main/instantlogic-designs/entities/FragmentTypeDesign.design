@@ -103,6 +103,16 @@ Fbdbvtfvzmghskmt_5465677d_1139:  }YkjzuolOlIcEedyh_e89c4a2a_b218
 Fbdbvtfvzmghskmt_5465677d_1139:  attributes]
 Fbdbvtfvzmghskmt_5465677d_1139:  staticInstances[
 Fbdbvtfvzmghskmt_5465677d_1139:  staticInstances]
+Fbdbvtfvzmghskmt_5465677d_1139:  dataType=Ecm_ntfw_Iaailbl_71050c6e_7734:DataTypeDesign{
+Ecm_ntfw_Iaailbl_71050c6e_7734:   ordered
+Ecm_ntfw_Iaailbl_71050c6e_7734:   javaClassName
+Ecm_ntfw_Iaailbl_71050c6e_7734:   multivalue
+Ecm_ntfw_Iaailbl_71050c6e_7734:   formatted
+Ecm_ntfw_Iaailbl_71050c6e_7734:   wholeNumber
+Ecm_ntfw_Iaailbl_71050c6e_7734:   multiLine
+Ecm_ntfw_Iaailbl_71050c6e_7734:   exactRounding
+Ecm_ntfw_Iaailbl_71050c6e_7734:   percentage
+Fbdbvtfvzmghskmt_5465677d_1139:  }Ecm_ntfw_Iaailbl_71050c6e_7734
 Fbdbvtfvzmghskmt_5465677d_1139:  validations[
 Fbdbvtfvzmghskmt_5465677d_1139:  validations]
 Fbdbvtfvzmghskmt_5465677d_1139: }Fbdbvtfvzmghskmt_5465677d_1139

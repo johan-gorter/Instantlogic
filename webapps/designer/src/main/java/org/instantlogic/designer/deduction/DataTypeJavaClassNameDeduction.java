@@ -19,7 +19,7 @@ public class DataTypeJavaClassNameDeduction extends Deduction<String> {
 		if (result!=null) {
 			return ValueAndLevel.rule(result.getName());
 		}
-		if (dataType.getDataCategory() == DataCategoryDesign.entity) {
+		if (dataType.getDataCategory() == DataCategoryDesign.entity && dataType.getEntity()!=null) {
 			return ValueAndLevel.rule(dataType.getEntity().getApplication().getRootPackageName()+"."+dataType.getEntity().getTechnicalNameCapitalized());
 		}
 		return ValueAndLevel.inconclusive();
