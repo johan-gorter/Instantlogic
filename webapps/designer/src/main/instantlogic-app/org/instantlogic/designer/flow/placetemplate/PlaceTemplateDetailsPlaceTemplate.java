@@ -1,5 +1,6 @@
 package org.instantlogic.designer.flow.placetemplate;
 
+
 public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interaction.flow.PlaceTemplate {
 
 	public static final PlaceTemplateDetailsPlaceTemplate INSTANCE = new PlaceTemplateDetailsPlaceTemplate();
@@ -82,12 +83,20 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
                                     ))
         
                     )        
-            ); 
+            );
 	
 	private static final org.instantlogic.fabric.text.TextTemplate TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction3()).add(" (Place)").getTextTemplate();
 	@Override
 	protected org.instantlogic.fabric.text.TextTemplate getTitle() {
 		return TITLE;
+	}
+	
+	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
+	};
+
+	@Override
+	public org.instantlogic.fabric.model.Entity[] getParameters() {
+		return PARAMETERS;
 	}
 	
 	@Override

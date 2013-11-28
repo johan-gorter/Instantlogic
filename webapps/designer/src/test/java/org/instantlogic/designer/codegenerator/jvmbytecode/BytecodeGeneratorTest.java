@@ -51,7 +51,7 @@ public class BytecodeGeneratorTest extends AbstractBytecodeGeneratorTest {
 		
 		TravelerInfo travelerInfo = new TravelerInfo("travelerId");
 		travelerInfo.setAuthenticatedUsername("user1");
-		RenderContext renderContext = RenderContext.create(izzy.getMainFlow(), "dashboard/"+user.getMetadata().getUniqueId()+"/dashboard", project, "caseId", travelerInfo);
+		RenderContext renderContext = RenderContext.create(izzy.getPlaceTemplates(), izzy.getMainFlow(), "dashboard/"+user.getMetadata().getUniqueId()+"/dashboard", project, "caseId", travelerInfo);
 		PlaceTemplate placeTemplate = (PlaceTemplate)renderContext.getFlowContext().getFlowStack().getCurrentNode();
 		Map<String, Object> rendering = placeTemplate.render(renderContext);
 		System.out.println(CasePersister.gson.toJson(rendering));

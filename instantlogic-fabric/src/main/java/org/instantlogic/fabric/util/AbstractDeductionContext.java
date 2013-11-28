@@ -20,6 +20,14 @@ public abstract class AbstractDeductionContext extends DeductionContext {
 	public AbstractDeductionContext(DeductionContext parent) {
 		this.parent = parent;
 	}
+	
+	public Instance[] getSelectedInstances(Entity<?>[] entities) {
+		Instance[] result = new Instance[entities.length];
+		for (int i=0;i<entities.length;i++) {
+			result[i] = getSelectedInstance(entities[i]);
+		}
+		return result;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

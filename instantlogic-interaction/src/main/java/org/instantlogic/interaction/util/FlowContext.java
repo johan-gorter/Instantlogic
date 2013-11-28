@@ -11,11 +11,11 @@ import org.instantlogic.interaction.flow.FlowNodeBase;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.flow.impl.SimpleFlow;
 
-
+// TODO: Rename to PlaceContext
 public class FlowContext extends DeductionContext {
 
-	public static FlowContext create(Flow mainFlow, String path, Instance caseInstance, String caseId, TravelerInfo travelerInfo) {
-		FlowStack flowStack = FlowStack.create(mainFlow, path, caseInstance);
+	public static FlowContext create(PlaceTemplate[] placeTemplates, Flow mainFlow, String path, Instance caseInstance, String caseId, TravelerInfo travelerInfo) {
+		FlowStack flowStack = FlowStack.create(placeTemplates, mainFlow, path, caseInstance);
 		FlowContext result = new FlowContext(caseInstance, caseId, travelerInfo);
 		result.setFlowStack(flowStack);
 		if (flowStack.getCurrentNode()==null && path!=null) {
@@ -68,7 +68,20 @@ public class FlowContext extends DeductionContext {
 	public FlowEventOccurrence step(FlowEventOccurrence occurrence) {
 		lastOccurrence = occurrence;
 		lastNode = flowStack.getCurrentNode();
-		return flowStack.getFlow().step(flowStack.getCurrentNode(), occurrence, this);
+		
+		if (occurrence.getDestination()!=null) {
+			PlaceTemplate destination = occurrence.getDestination();
+			FlowStack result = new FlowStack(null, null);
+			result.setCurrentNode(destination);
+			for(Entity<?> parameter: destination.getParameters()) {
+				result.pushSelectedInstance(getSelectedInstance(parameter));
+			}
+			flowStack = result;
+			return destination.enter(this);
+		} else {
+			// Old
+			return flowStack.getFlow().step(flowStack.getCurrentNode(), occurrence, this);
+		}
 	}
 
 	public FlowStack getFlowStack() {

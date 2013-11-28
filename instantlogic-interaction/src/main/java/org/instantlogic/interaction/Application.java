@@ -10,11 +10,14 @@ import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEvent;
+import org.instantlogic.interaction.flow.PlaceTemplate;
 
 
 public abstract class Application implements AutoCloseable {
 	
 	private static final String[] NO_THEMES = new String[0];
+	private static final PlaceTemplate[] NO_PLACE_TEMPLATES = new PlaceTemplate[0];
+	
 
 	private List<AutoCloseable> resourcesToClose = new ArrayList<AutoCloseable>();
 
@@ -49,10 +52,20 @@ public abstract class Application implements AutoCloseable {
 		}
 	}
 	
+	public PlaceTemplate getStartPlace() {
+		return null;
+	}
+	
+	public PlaceTemplate[] getPlaceTemplates() {
+		return NO_PLACE_TEMPLATES;
+	}
+	
+	@Deprecated
 	public Flow getMainFlow() {
 		return null;
 	}
 
+	@Deprecated
 	public FlowEvent getStartEvent() {
 		return null;
 	}
@@ -83,5 +96,4 @@ public abstract class Application implements AutoCloseable {
 	// Injected dependency
 	public void setEnvironment(ApplicationEnvironment environment, String applicationName) {
 	}
-
 }

@@ -180,6 +180,29 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 
 	
+	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, PlaceTemplateDesign> placeTemplates
+		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.placeTemplates);
+		
+	public org.instantlogic.fabric.value.RelationValues<ApplicationDesign, PlaceTemplateDesign> getPlaceTemplatesRelationValue() {
+		return placeTemplates;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.PlaceTemplateDesign> getPlaceTemplates() {
+		return placeTemplates.getValue();
+	}
+	
+	public ApplicationDesign addToPlaceTemplates(PlaceTemplateDesign item) {
+		placeTemplates.addValue(item);
+		return (ApplicationDesign)this;
+	}
+	
+	public ApplicationDesign removeFromPlaceTemplates(PlaceTemplateDesign item) {
+		placeTemplates.removeValue(item);
+		return (ApplicationDesign)this;
+	}
+	
+	
+	
 	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, EventDesign> startEvent
 		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.startEvent);
 		

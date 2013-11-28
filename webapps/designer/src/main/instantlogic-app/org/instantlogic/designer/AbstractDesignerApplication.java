@@ -22,6 +22,14 @@ public abstract class AbstractDesignerApplication extends org.instantlogic.inter
 		return org.instantlogic.designer.event.HomeEvent.INSTANCE;
 	}
 
+	
+	private static final org.instantlogic.interaction.flow.PlaceTemplate[] PLACE_TEMPLATES = new org.instantlogic.interaction.flow.PlaceTemplate[]{
+	};
+	
+	@Override
+	public org.instantlogic.interaction.flow.PlaceTemplate[] getPlaceTemplates() {
+		return PLACE_TEMPLATES;
+	}
 
     private static final String[] THEME_NAMES = new String[]{"designer", "margin"};	
 	@Override

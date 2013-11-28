@@ -55,9 +55,11 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 	// Relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> event;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> attribute;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> linkToPlaceTemplate;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> type;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> entity;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign> properties;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.DestinationDesign, org.instantlogic.designer.DestinationDesign> destination;
 	
 	// Reverse relations
 
@@ -85,6 +87,10 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
 				"KUAxdzOAmycIU_Oo_9b3909e0_74aa", "attribute", INSTANCE, "attribute", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
 		attribute = $attribute;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $linkToPlaceTemplate
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
+				"NzOgiyu_Uaftialv_2536eadf_ad0f", "linkToPlaceTemplate", INSTANCE, "linkToPlaceTemplate", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		linkToPlaceTemplate = $linkToPlaceTemplate;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> $type
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign>(
 				"OsnyuuyfaecfeccI_856ffd3a_072e", "type", INSTANCE, "type", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
@@ -97,6 +103,10 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign>(
 				"TsknhpgqyIemimo_0a66322c_fc4c", "properties", INSTANCE, "properties", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
 		properties = $properties;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.DestinationDesign, org.instantlogic.designer.DestinationDesign> $destination
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.DestinationDesign, org.instantlogic.designer.DestinationDesign>(
+				"imrshdqayIg_a_rf_ae2137d1_f648", "destination", INSTANCE, "destination", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
+		destination = $destination;
 		// Reverse relations
 		
 		// Phase 2
@@ -114,6 +124,9 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 		$attribute.to = org.instantlogic.designer.entity.AttributeDesignEntity.INSTANCE;
 		$attribute.setReverseRelation(org.instantlogic.designer.entity.AttributeDesignEntity.attributeOnFragmentTemplateDesign);
 		$attribute.options = (org.instantlogic.fabric.deduction.Deduction)createDeduction0();
+		$linkToPlaceTemplate.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
+		$linkToPlaceTemplate.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
+		$linkToPlaceTemplate.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.incomingLinksFromFragmentTemplates);
 		$type.valueClass = org.instantlogic.designer.FragmentTypeDesign.class;
 		$type.to = org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE;
 		$type.setReverseRelation(org.instantlogic.designer.entity.FragmentTypeDesignEntity.usages);
@@ -127,6 +140,10 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 		$properties.setReverseRelation(org.instantlogic.designer.entity.PropertyDesignEntity.fragment);
 		$properties.owner = true;
 		$properties.multivalue = true;
+		$destination.valueClass = org.instantlogic.designer.DestinationDesign.class;
+		$destination.to = org.instantlogic.designer.entity.DestinationDesignEntity.INSTANCE;
+		$destination.setReverseRelation(org.instantlogic.designer.entity.DestinationDesignEntity.destinationOnFragmentTemplateDesign);
+		$destination.owner = true;
 
 	}
 
@@ -158,9 +175,11 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		event,
 		attribute,
+		linkToPlaceTemplate,
 		type,
 		entity,
 		properties,
+		destination,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};

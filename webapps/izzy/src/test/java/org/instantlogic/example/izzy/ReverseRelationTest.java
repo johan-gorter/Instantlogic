@@ -14,6 +14,7 @@ import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.TestDeductionContext;
 import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.interaction.Application;
+import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.util.RenderContext;
 import org.instantlogic.interaction.util.TravelerInfo;
 import org.junit.Test;
@@ -39,7 +40,7 @@ public class ReverseRelationTest {
 		
 		TravelerInfo travelerInfo = new TravelerInfo("travelerId");
 		travelerInfo.setAuthenticatedUsername("user1");
-		RenderContext renderContext = RenderContext.create(MainFlow.INSTANCE, "dashboard/"+user.getMetadata().getUniqueId()+"/dashboard", project, "caseId", travelerInfo);
+		RenderContext renderContext = RenderContext.create(new PlaceTemplate[0], MainFlow.INSTANCE, "dashboard/"+user.getMetadata().getUniqueId()+"/dashboard", project, "caseId", travelerInfo);
 		System.out.println(new Gson().toJson(DashboardPlaceTemplate.INSTANCE.render(renderContext)));
 	}
 	

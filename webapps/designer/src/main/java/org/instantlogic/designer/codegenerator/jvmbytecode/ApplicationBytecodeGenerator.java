@@ -5,7 +5,7 @@ import java.net.URL;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel;
-import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.PlaceTemplateClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SharedPageFragmentClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SubFlowClassModel;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
@@ -75,7 +75,7 @@ public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcess
 			}
 		}
 		
-		for (PlaceClassModel placeTemplate: classModels.updatedPlaces) {
+		for (PlaceTemplateClassModel placeTemplate: classModels.updatedPlaces) {
 			if (placeTemplate.isDeleted) {
 				updateableApplication.removeClassBytes(placeTemplate.getFullClassName());
 			} else {

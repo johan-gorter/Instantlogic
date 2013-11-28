@@ -102,7 +102,7 @@ public class FlowWithDataExplorer extends FlowWrapper {
 	
 	@Override
 	public FlowEventOccurrence step(FlowNodeBase currentNode, FlowEventOccurrence occurrence, FlowContext flowContext) {
-		if ("ExploreData".equals(occurrence.getEvent().getName())) {
+		if (occurrence.getEvent()!=null && "ExploreData".equals(occurrence.getEvent().getName())) {
 			flowContext.getFlowStack().setCurrentNode(dataExplorerRootSubFlow);
 			flowContext.logOccurrence(occurrence);
 			return dataExplorerRootFlow.enter(occurrence, flowContext);

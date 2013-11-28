@@ -34,6 +34,17 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 		return ${rootPackageName}.event.${loggedInEvent}Event.INSTANCE;
 	}
 	</#if>
+	
+	private static final org.instantlogic.interaction.flow.PlaceTemplate[] PLACE_TEMPLATES = new org.instantlogic.interaction.flow.PlaceTemplate[]{
+	<#list placeTemplates as placeTemplate>
+		${rootPackageName}.placetemplate.${placeTemplate}PlaceTemplate.INSTANCE,
+	</#list>
+	};
+	
+	@Override
+	public org.instantlogic.interaction.flow.PlaceTemplate[] getPlaceTemplates() {
+		return PLACE_TEMPLATES;
+	}
 
     <#if themeNames??>
     private static final String[] THEME_NAMES = new String[]{<#list themeNames as name>"${name}"<#if name_has_next>, </#if></#list>};	

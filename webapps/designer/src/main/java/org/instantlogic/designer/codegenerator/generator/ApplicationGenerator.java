@@ -1,6 +1,5 @@
 package org.instantlogic.designer.codegenerator.generator;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,9 +9,9 @@ import org.instantlogic.designer.Design;
 import org.instantlogic.designer.EntityDesign;
 import org.instantlogic.designer.EventDesign;
 import org.instantlogic.designer.FlowDesign;
+import org.instantlogic.designer.PlaceTemplateDesign;
 import org.instantlogic.designer.SharedElementDefinitionDesign;
 import org.instantlogic.designer.codegenerator.classmodel.ApplicationClassModel;
-import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGenerator;
 import org.instantlogic.designer.deduction.TechnicalNameDeduction;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 
@@ -30,6 +29,7 @@ public class ApplicationGenerator extends AbstractGenerator<ApplicationClassMode
 	private Map<String, EntityGenerator> entityGenerators=new HashMap<String, EntityGenerator>();
 	private Map<String, EventGenerator> eventGenerators = new HashMap<String, EventGenerator>(); 
 	private Map<String, FlowGenerator> flowGenerators = new HashMap<String, FlowGenerator>(); 
+	private Map<String, PlaceTemplateGenerator> placeTemplateGenerators = new HashMap<String, PlaceTemplateGenerator>(); 
 	private Map<String, SharedElementDefinitionGenerator> sharedPageFragmentGenerators = new HashMap<String, SharedElementDefinitionGenerator>();
 
 	public ApplicationGenerator(ApplicationDesign applicationInstance) {
@@ -43,6 +43,7 @@ public class ApplicationGenerator extends AbstractGenerator<ApplicationClassMode
 		entityGenerators.clear();
 		eventGenerators.clear();
 		flowGenerators.clear();
+		placeTemplateGenerators.clear();
 		sharedPageFragmentGenerators.clear();
 		// TODO: remove the memory leak here
 	}
@@ -63,6 +64,7 @@ public class ApplicationGenerator extends AbstractGenerator<ApplicationClassMode
 			updateAll(entityGenerators.values(), context);
 			updateAll(eventGenerators.values(), context);
 			updateAll(flowGenerators.values(), context);
+			updateAll(placeTemplateGenerators.values(), context);
 			updateAll(sharedPageFragmentGenerators.values(), context);
 			return null;
 		}
@@ -80,6 +82,10 @@ public class ApplicationGenerator extends AbstractGenerator<ApplicationClassMode
 		for (EntityDesign entity: applicationInstance.getEntities()) {
 			model.entities.add(entity.getTechnicalNameCapitalized());
 		}
+		for (PlaceTemplateDesign placeTemplate: applicationInstance.getPlaceTemplates()) {
+			model.placeTemplates.add(placeTemplate.getTechnicalNameCapitalized());
+		}
+		// TODO: StartPlace
 		if (applicationInstance.getCaseEntity()!=null && applicationInstance.getCaseEntity().isValidForCodeGeneration()) {
 			model.caseEntity = applicationInstance.getCaseEntity().getTechnicalNameCapitalized();
 		}
@@ -120,12 +126,20 @@ public class ApplicationGenerator extends AbstractGenerator<ApplicationClassMode
 			eventGenerator.update(context);
 			eventGenerators.put(newEvent.getName(), eventGenerator);
 		}
-		
+
+		// Old
 		List<Design> newFlows = updateGenerators(flowGenerators, applicationInstance.getFlows(), context);
 		for(Design newFlow : newFlows) {
 			FlowGenerator flowGenerator = new FlowGenerator((FlowDesign)newFlow);
 			flowGenerator.update(context);
 			flowGenerators.put(newFlow.getName(), flowGenerator);
+		}
+		
+		List<Design> newPlaceTemplates = updateGenerators(placeTemplateGenerators, applicationInstance.getPlaceTemplates(), context);
+		for(Design newPlaceTemplate : newPlaceTemplates) {
+			PlaceTemplateGenerator placeTemplateGenerator = new PlaceTemplateGenerator((PlaceTemplateDesign)newPlaceTemplate);
+			placeTemplateGenerator.update(context);
+			placeTemplateGenerators.put(newPlaceTemplate.getName(), placeTemplateGenerator);
 		}
 		
 		this.observations = new ObservationsOutdatedObserver(applicationInstance.getMetadata().getCaseAdministration().stopRecordingObservations(), null);

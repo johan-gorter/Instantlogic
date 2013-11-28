@@ -34,6 +34,7 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> parametersOnFlowDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> entityOnFragmentTemplateDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> application;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceParameterDesign> placeParameter;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign> reverseRelations;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> entityOnDataTypeDesign;
 
@@ -102,6 +103,10 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
 				"SttwUOEnjyecu_Eh_2c178686_aa27", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEntityDesign.class);
 		application = $application;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceParameterDesign> $placeParameter
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceParameterDesign>(
+				"XIqyktqegmblwcrg_aef86c1e_920b", "placeParameter", INSTANCE, "placeParameter", org.instantlogic.designer.AbstractEntityDesign.class);
+		placeParameter = $placeParameter;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign> $reverseRelations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign>(
 				"_tjconnpIIecadOt_52b47f1d_ddb6", "reverseRelations", INSTANCE, "reverseRelations", org.instantlogic.designer.AbstractEntityDesign.class);
@@ -184,6 +189,10 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		$application.valueClass = org.instantlogic.designer.ApplicationDesign.class;
 		$application.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
 		$application.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
+		$placeParameter.reverse = true;
+		$placeParameter.valueClass = org.instantlogic.designer.PlaceParameterDesign.class;
+		$placeParameter.to = org.instantlogic.designer.entity.PlaceParameterDesignEntity.INSTANCE;
+		$placeParameter.setReverseRelation(org.instantlogic.designer.entity.PlaceParameterDesignEntity.entity);
 		$reverseRelations.reverse = true;
 		$reverseRelations.valueClass = org.instantlogic.designer.RelationDesign.class;
 		$reverseRelations.to = org.instantlogic.designer.entity.RelationDesignEntity.INSTANCE;
@@ -235,6 +244,7 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		parametersOnFlowDesign,
 		entityOnFragmentTemplateDesign,
 		application,
+		placeParameter,
 		reverseRelations,
 		entityOnDataTypeDesign,
 	};

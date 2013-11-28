@@ -171,7 +171,7 @@ public class Traveler extends AbstractTraveler {
 	private RenderContext locatePlace() {
 		try {
 			Application application = this.caseManager.getApplication();
-			return RenderContext.create(application.getMainFlow(), getCurrentPlace().getUrl(), caseManager.getCase(), caseManager.getCaseId(), travelerInfo);
+			return RenderContext.create(application.getPlaceTemplates(), application.getMainFlow(), getCurrentPlace().getUrl(), caseManager.getCase(), caseManager.getCaseId(), travelerInfo);
 		} catch (NoSuchElementException e) {
 			return null;
 		} catch (InvalidFlowCoordinatesException e2) {

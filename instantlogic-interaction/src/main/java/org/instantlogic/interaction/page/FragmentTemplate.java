@@ -13,6 +13,7 @@ import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.text.TextTemplate;
 import org.instantlogic.interaction.flow.FlowEvent;
+import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.util.ChangeContext;
 import org.instantlogic.interaction.util.SubmitContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
@@ -32,7 +33,7 @@ public class FragmentTemplate extends Element {
 	private String[] styleNames;
 
 	private FieldFilter field;
-	private ActionFilter event;
+	private ActionFilter action;
 
 	private List<FragmentFilter> filters;
 	
@@ -43,8 +44,8 @@ public class FragmentTemplate extends Element {
 			if (field!=null) {
 				filters.add(field);
 			}
-			if (event!=null) {
-				filters.add(event);
+			if (action!=null) {
+				filters.add(action);
 			}
 		}
 	}
@@ -136,7 +137,12 @@ public class FragmentTemplate extends Element {
 	}
 	
 	public FragmentTemplate setEvent(FlowEvent event) {
-		this.event = new ActionFilter(event);
+		this.action = new ActionFilter(event);
+		return this;
+	}
+
+	public FragmentTemplate setDestination(PlaceTemplate destination) {
+		this.action = new ActionFilter(destination);
 		return this;
 	}
 	

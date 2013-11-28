@@ -37,6 +37,7 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTypeDesign>, org.instantlogic.designer.FragmentTypeDesign> fragmentTypes;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> caseEntity;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> mainFlow;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.PlaceTemplateDesign>, org.instantlogic.designer.PlaceTemplateDesign> placeTemplates;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> startEvent;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign> sharedElements;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> flows;
@@ -83,6 +84,10 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
 				"FhUhveqney_rydgk_cecaa4f2_3fbd", "mainFlow", INSTANCE, "mainFlow", org.instantlogic.designer.AbstractApplicationDesign.class);
 		mainFlow = $mainFlow;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.PlaceTemplateDesign>, org.instantlogic.designer.PlaceTemplateDesign> $placeTemplates
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.PlaceTemplateDesign>, org.instantlogic.designer.PlaceTemplateDesign>(
+				"IeIasvhvnm_lqlww_e8627169_003f", "placeTemplates", INSTANCE, "placeTemplates", org.instantlogic.designer.AbstractApplicationDesign.class);
+		placeTemplates = $placeTemplates;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $startEvent
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
 				"JbenElef_yfyihIl_39835988_8137", "startEvent", INSTANCE, "startEvent", org.instantlogic.designer.AbstractApplicationDesign.class);
@@ -132,6 +137,11 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		$mainFlow.valueClass = org.instantlogic.designer.FlowDesign.class;
 		$mainFlow.to = org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE;
 		$mainFlow.setReverseRelation(org.instantlogic.designer.entity.FlowDesignEntity.mainFlowOnApplicationDesign);
+		$placeTemplates.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
+		$placeTemplates.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
+		$placeTemplates.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.application);
+		$placeTemplates.owner = true;
+		$placeTemplates.multivalue = true;
 		$startEvent.valueClass = org.instantlogic.designer.EventDesign.class;
 		$startEvent.to = org.instantlogic.designer.entity.EventDesignEntity.INSTANCE;
 		$startEvent.setReverseRelation(org.instantlogic.designer.entity.EventDesignEntity.startEventOnApplicationDesign);
@@ -199,6 +209,7 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		fragmentTypes,
 		caseEntity,
 		mainFlow,
+		placeTemplates,
 		startEvent,
 		sharedElements,
 		flows,

@@ -14,6 +14,7 @@ import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.value.AttributeValue;
 import org.instantlogic.fabric.value.AttributeValues;
 import org.instantlogic.interaction.flow.Flow;
+import org.instantlogic.interaction.flow.PlaceTemplate;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -21,8 +22,8 @@ import com.google.gson.JsonElement;
 
 public class ChangeContext extends RenderContext {
 
-	public static ChangeContext create(Flow mainFlow, String path, Instance caseInstance, String caseId, String pageElementId, JsonElement value, TravelerInfo travelerInfo) {
-		FlowContext flowContext = FlowContext.create(mainFlow, path, caseInstance, caseId, travelerInfo);
+	public static ChangeContext create(PlaceTemplate[] placeTemplates, Flow mainFlow, String path, Instance caseInstance, String caseId, String pageElementId, JsonElement value, TravelerInfo travelerInfo) {
+		FlowContext flowContext = FlowContext.create(placeTemplates, mainFlow, path, caseInstance, caseId, travelerInfo);
 		return new ChangeContext(flowContext, path, pageElementId, value);
 	}
 	

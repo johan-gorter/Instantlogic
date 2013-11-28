@@ -44,6 +44,11 @@
       <#list 1..depth as i>    </#list><#t>
       .setEvent(${rootPackageName}.event.${content.event}Event.INSTANCE)<#t>
     </#if>
+    <#if content.destination??>
+      <#nt>
+      <#list 1..depth as i>    </#list><#t>
+      .setDestination(${rootPackageName}.placetemplate.${content.destination}PlaceTemplate.INSTANCE)<#t>
+    </#if>
     <#if content.attribute??>
       <#nt>
       <#list 1..depth as i>    </#list><#t>

@@ -5,24 +5,65 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.instantlogic.fabric.Instance;
+import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.AbstractDeductionContext;
 import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEdge;
 import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.FlowNodeBase;
+import org.instantlogic.interaction.flow.InvalidFlowCoordinatesException;
+import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.flow.impl.SimpleFlow;
 
 public class FlowStack extends AbstractDeductionContext {
 	
-	public static FlowStack create(Flow mainFlow, String path, Instance caseInstance) {
+	private static Instance getInstance(Entity entity, String instanceId, Instance caseInstance) {
+		Instance instance = caseInstance.getMetadata().getCaseAdministration().getInstanceByUniqueId(instanceId);
+		if (instance==null) {
+			if (instanceId.contains("!")) {
+				int index = instanceId.indexOf('!');
+				Entity<?> instanceEntity = caseInstance.getMetadata().getCaseAdministration().getAllEntities().get(instanceId.substring(0, index));
+				if (instanceEntity!=null) {
+					instance = instanceEntity.getStaticInstances().get(instanceId.substring(index+1));
+				}
+			} 
+			if (instance==null){
+				throw new InvalidFlowCoordinatesException("Unknown instance "+instanceId);
+			}
+		}
+		if (!entity.getInstanceClass().isAssignableFrom(instance.getClass())) {
+			throw new InvalidFlowCoordinatesException("Selected instance is not a "+entity.getInstanceClass().getName());
+		}
+		return instance;
+	}
+	
+	public static FlowStack create(PlaceTemplate[] placeTemplates, Flow mainFlow, String path, Instance caseInstance) {
 		if (path==null) return new FlowStack(null, mainFlow);
 		String[] pathElements = path.split("/");
+		if (pathElements.length>0) {
+			for(PlaceTemplate placeTemplate : placeTemplates) {
+				if (placeTemplate.getName().equals(pathElements[0])) {
+					// The new way
+					int index = 1;
+					FlowStack result = new FlowStack(null, null);
+					result.currentNode = placeTemplate;
+					for(Entity<?> parameter: placeTemplate.getParameters()) {
+						result.pushSelectedInstance(getInstance(parameter, pathElements[index++], caseInstance));
+					}
+					if (index!=pathElements.length) {
+						throw new RuntimeException("Too many parameter values");
+					}
+				}
+			}
+		}
+		// The old way
 		Iterator<String> iterator = Arrays.asList(pathElements).iterator();
 		return mainFlow.createFlowStack(null, mainFlow, pathElements[0], iterator, caseInstance);
 	}
 	
 	private final FlowStack parent;
 	
+	@Deprecated
 	private final Flow flow;
 	
 	private FlowNodeBase currentNode;

@@ -3,7 +3,7 @@ package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 import java.io.PrintWriter;
 
 import org.instantlogic.designer.codegenerator.classmodel.DeductionSchemeModel;
-import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.PlaceTemplateClassModel;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
@@ -16,7 +16,7 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 	
 	public static final boolean TRACE = false;
 
-	public static byte[] generate(PlaceClassModel model) {
+	public static byte[] generate(PlaceTemplateClassModel model) {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 
 		ClassVisitor cw;
@@ -30,8 +30,10 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 		FieldVisitor fv;
 		MethodVisitor mv;
 
-		String concreteClassName = model.getRootPackageInternalPrefix()+"flow/"+model.flowname.toLowerCase()+ "/"+ model.technicalNameCapitalized+"PlaceTemplate";
-		String className = model.isCustomized?model.getRootPackageInternalPrefix()+"flow/"+model.flowname.toLowerCase()+ "/Abstract" + model.technicalNameCapitalized+"PlaceTemplate":concreteClassName;
+		String subPackageName = model.flowname==null?"placetemplate":"flow/"+model.flowname.toLowerCase();
+		
+		String concreteClassName = model.getRootPackageInternalPrefix()+subPackageName+ "/"+ model.technicalNameCapitalized+"PlaceTemplate";
+		String className = model.isCustomized?model.getRootPackageInternalPrefix()+subPackageName+ "/Abstract" + model.technicalNameCapitalized+"PlaceTemplate":concreteClassName;
 
 		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, className, null, "org/instantlogic/interaction/flow/PlaceTemplate", null);
 
@@ -68,7 +70,11 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 
 			// Phase 2
 			
-			dumpContent(mv, className, model.content);
+			if (model.content!=null) {
+				dumpContent(mv, className, model.content);
+			} else {
+				mv.visitInsn(ACONST_NULL);
+			}
 			mv.visitFieldInsn(PUTSTATIC, className, "CONTENT", "Lorg/instantlogic/interaction/page/FragmentTemplate;");
 
 

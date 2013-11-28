@@ -75,7 +75,100 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
 		return newValue;
 	}
 
+	
+	private final org.instantlogic.fabric.value.RelationValueList<PlaceTemplateDesign, PlaceParameterDesign> parameters
+		= createRelationValueList(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.parameters);
+		
+	public org.instantlogic.fabric.value.RelationValueList<PlaceTemplateDesign, PlaceParameterDesign> getParametersRelationValue() {
+		return parameters;
+	}
+
+	public org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.PlaceParameterDesign> getParameters() {
+		return parameters.getValue();
+	}
+	
+	public PlaceTemplateDesign addToParameters(PlaceParameterDesign item) {
+		parameters.addValue(item);
+		return (PlaceTemplateDesign)this;
+	}
+	
+	public PlaceTemplateDesign removeFromParameters(PlaceParameterDesign item) {
+		parameters.removeValue(item);
+		return (PlaceTemplateDesign)this;
+	}
+	
+	public PlaceTemplateDesign removeFromParameters(int index) {
+		parameters.removeValue(index);
+		return (PlaceTemplateDesign)this;
+	}
+
+	public PlaceTemplateDesign addToParameters(PlaceParameterDesign item, int index) {
+		parameters.insertValue(item, index);
+		return (PlaceTemplateDesign)this;
+	}	
+	
 
 	// Reverse relations
+	
+	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> application
+		= createReverseRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.application);
+
+	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> getApplicationRelationValue() {
+		return application;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getApplication() {
+		return application.getValue();
+	}
+
+    public PlaceTemplateDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
+        application.setValue(newValue);
+        return (PlaceTemplateDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<PlaceTemplateDesign, FragmentTemplateDesign> incomingLinksFromFragmentTemplates
+		= createReverseRelationValues(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.incomingLinksFromFragmentTemplates);
+
+	public org.instantlogic.fabric.value.RelationValues<PlaceTemplateDesign, FragmentTemplateDesign> getIncomingLinksFromFragmentTemplatesRelationValue() {
+		return incomingLinksFromFragmentTemplates;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign> getIncomingLinksFromFragmentTemplates() {
+		return incomingLinksFromFragmentTemplates.getValue();
+	}
+
+    public PlaceTemplateDesign addToIncomingLinksFromFragmentTemplates(FragmentTemplateDesign item) {
+        incomingLinksFromFragmentTemplates.addValue(item);
+        return (PlaceTemplateDesign)this;
+    }
+
+    public PlaceTemplateDesign removeFromIncomingLinksFromFragmentTemplates(FragmentTemplateDesign item) {
+        incomingLinksFromFragmentTemplates.removeValue(item);
+        return (PlaceTemplateDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<PlaceTemplateDesign, DestinationDesign> incomingLinks
+		= createReverseRelationValues(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.incomingLinks);
+
+	public org.instantlogic.fabric.value.RelationValues<PlaceTemplateDesign, DestinationDesign> getIncomingLinksRelationValue() {
+		return incomingLinks;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.DestinationDesign> getIncomingLinks() {
+		return incomingLinks.getValue();
+	}
+
+    public PlaceTemplateDesign addToIncomingLinks(DestinationDesign item) {
+        incomingLinks.addValue(item);
+        return (PlaceTemplateDesign)this;
+    }
+
+    public PlaceTemplateDesign removeFromIncomingLinks(DestinationDesign item) {
+        incomingLinks.removeValue(item);
+        return (PlaceTemplateDesign)this;
+    }
+
 
 }

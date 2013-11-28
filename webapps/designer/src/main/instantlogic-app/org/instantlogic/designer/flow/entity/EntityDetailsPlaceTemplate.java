@@ -1,5 +1,6 @@
 package org.instantlogic.designer.flow.entity;
 
+
 public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flow.PlaceTemplate {
 
 	public static final EntityDetailsPlaceTemplate INSTANCE = new EntityDetailsPlaceTemplate();
@@ -103,12 +104,20 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
                             .setEvent(org.instantlogic.designer.event.AddAttributeEvent.INSTANCE)      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Add attribute").getTextTemplate())        
                     )        
-            ); 
+            );
 	
 	private static final org.instantlogic.fabric.text.TextTemplate TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction3()).add(" (Entity)").getTextTemplate();
 	@Override
 	protected org.instantlogic.fabric.text.TextTemplate getTitle() {
 		return TITLE;
+	}
+	
+	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
+	};
+
+	@Override
+	public org.instantlogic.fabric.model.Entity[] getParameters() {
+		return PARAMETERS;
 	}
 	
 	@Override

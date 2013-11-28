@@ -354,6 +354,23 @@ public abstract class AbstractEntityDesign extends Design {
     }
 
 	
+	private final org.instantlogic.fabric.value.RelationValue<EntityDesign, PlaceParameterDesign> placeParameter
+		= createReverseRelationValue(org.instantlogic.designer.entity.EntityDesignEntity.placeParameter);
+
+	public org.instantlogic.fabric.value.RelationValue<EntityDesign, PlaceParameterDesign> getPlaceParameterRelationValue() {
+		return placeParameter;
+	}
+
+	public org.instantlogic.designer.PlaceParameterDesign getPlaceParameter() {
+		return placeParameter.getValue();
+	}
+
+    public EntityDesign setPlaceParameter(org.instantlogic.designer.PlaceParameterDesign newValue) {
+        placeParameter.setValue(newValue);
+        return (EntityDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, RelationDesign> reverseRelations
 		= createReverseRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.reverseRelations);
 

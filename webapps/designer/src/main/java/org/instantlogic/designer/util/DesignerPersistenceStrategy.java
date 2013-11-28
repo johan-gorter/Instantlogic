@@ -228,13 +228,22 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 					} else {
 						if (value.subInstances.size()>0) {
 							InstanceNode subNode = value.subInstances.get(0);
-							Instance result = entities.get(subNode.entityName).createInstance();
-							result.getMetadata().initUniqueId(subNode.uniqueId);
-							attributeValue.setOrAdd(result);
-							InstanceStorageInfo subStorageInfo = new InstanceStorageInfo();
-							subStorageInfo.node = subNode;
-							result.getMetadata().setStorageInfo(subStorageInfo);
-							createStructure(result, subNode, entities, rootStorage);
+							Entity<?> entity = entities.get(subNode.entityName);
+							if (entity!=null) {
+								Instance result = entity.createInstance();
+								result.getMetadata().initUniqueId(subNode.uniqueId);
+								try {
+									attributeValue.setOrAdd(result);
+								} catch (ClassCastException e) {
+									logger.warn("Could not set ["+attributeValue+"] to ["+result+"]");
+								}
+								InstanceStorageInfo subStorageInfo = new InstanceStorageInfo();
+								subStorageInfo.node = subNode;
+								result.getMetadata().setStorageInfo(subStorageInfo);
+								createStructure(result, subNode, entities, rootStorage);
+							} else {
+								logger.warn("Could not load instance ["+subNode.uniqueId+"] of unknown entity ["+subNode.entityName+"]");
+							}
 						}
 					}
 				}

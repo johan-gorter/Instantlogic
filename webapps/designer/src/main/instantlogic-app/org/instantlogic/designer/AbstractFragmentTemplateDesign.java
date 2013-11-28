@@ -138,6 +138,24 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	
 
 	
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, PlaceTemplateDesign> linkToPlaceTemplate
+		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.linkToPlaceTemplate);
+		
+	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, PlaceTemplateDesign> getLinkToPlaceTemplateRelationValue() {
+		return linkToPlaceTemplate;
+	}
+
+	public org.instantlogic.designer.PlaceTemplateDesign getLinkToPlaceTemplate() {
+		return linkToPlaceTemplate.getValue();
+	}
+	
+	public FragmentTemplateDesign setLinkToPlaceTemplate(org.instantlogic.designer.PlaceTemplateDesign newValue) {
+		linkToPlaceTemplate.setValue(newValue);
+		return (FragmentTemplateDesign)this;
+	}
+	
+
+	
 	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, FragmentTypeDesign> type
 		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.type);
 		
@@ -196,6 +214,29 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	}
 	
 	
+	
+	private final org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, DestinationDesign> destination
+		= createRelationValue(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.destination);
+		
+	public org.instantlogic.fabric.value.RelationValue<FragmentTemplateDesign, DestinationDesign> getDestinationRelationValue() {
+		return destination;
+	}
+
+	public org.instantlogic.designer.DestinationDesign getDestination() {
+		return destination.getValue();
+	}
+	
+	public FragmentTemplateDesign setDestination(org.instantlogic.designer.DestinationDesign newValue) {
+		destination.setValue(newValue);
+		return (FragmentTemplateDesign)this;
+	}
+	
+	public org.instantlogic.designer.DestinationDesign newDestination() {
+		org.instantlogic.designer.DestinationDesign newValue = new org.instantlogic.designer.DestinationDesign(); 
+		destination.setValue(newValue);
+		return newValue;
+	}
+
 
 	// Reverse relations
 

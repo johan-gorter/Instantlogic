@@ -3,6 +3,7 @@ package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 import java.io.PrintWriter;
 
 import org.instantlogic.designer.codegenerator.classmodel.ApplicationClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel.FlowNode;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
@@ -48,6 +49,12 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			fv.visitEnd();
 		}
 		
+		//	private static final org.instantlogic.interaction.flow.PlaceTemplate[] PLACE_TEMPLATES = new org.instantlogic.interaction.flow.PlaceTemplate[]{
+		{
+			fv = cw.visitField(ACC_PRIVATE + ACC_FINAL + ACC_STATIC, "PLACE_TEMPLATES", "[Lorg/instantlogic/interaction/flow/PlaceTemplate;", null, null);
+			fv.visitEnd();
+		}
+		
 		{
 			mv = cw.visitMethod(ACC_STATIC, "<clinit>", "()V", null, null);
 			mv.visitCode();
@@ -67,6 +74,18 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv.visitInsn(AASTORE);
 			}
 			mv.visitFieldInsn(PUTSTATIC, className, "THEME_NAMES", "[Ljava/lang/String;");
+
+			index = 0;
+			mv.visitIntInsn(BIPUSH, model.placeTemplates.size());
+			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/interaction/flow/PlaceTemplate");			
+			for (String placeTemplate:model.placeTemplates) {
+				mv.visitInsn(DUP);
+				mv.visitIntInsn(BIPUSH, index++);
+				emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"placetemplate/", placeTemplate+"PlaceTemplate");
+				mv.visitInsn(AASTORE);
+			}
+			mv.visitFieldInsn(PUTSTATIC, className, "PLACE_TEMPLATES", "[Lorg/instantlogic/interaction/flow/PlaceTemplate;");
+			
 			mv.visitInsn(RETURN);
 			mv.visitMaxs(0, 0);
 			mv.visitEnd();
@@ -139,6 +158,16 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitMaxs(0, 0);
 			mv.visitEnd();
 		}
+		
+		// public org.instantlogic.interaction.flow.PlaceTemplate[] getPlaceTemplates()
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "getPlaceTemplates", "()[Lorg/instantlogic/interaction/flow/PlaceTemplate;", null, null);
+			mv.visitCode();
+			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/izzy/IzzyApplication", "PLACE_TEMPLATES", "[Lorg/instantlogic/interaction/flow/PlaceTemplate;");
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}		
 		
 		// public String getName()
 		{

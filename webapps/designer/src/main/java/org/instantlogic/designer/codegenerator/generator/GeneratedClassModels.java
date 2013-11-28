@@ -9,7 +9,7 @@ import org.instantlogic.designer.codegenerator.classmodel.ApplicationClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel;
-import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.PlaceTemplateClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SharedPageFragmentClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SubFlowClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.ValidationClassModel;
@@ -33,7 +33,7 @@ public class GeneratedClassModels {
 	
 	public final List<FlowClassModel> updatedFlows = new ArrayList<FlowClassModel>();
 	
-	public final List<PlaceClassModel> updatedPlaces = new ArrayList<PlaceClassModel>();
+	public final List<PlaceTemplateClassModel> updatedPlaces = new ArrayList<PlaceTemplateClassModel>();
 	
 	public final List<SubFlowClassModel> updatedSubFlows = new ArrayList<SubFlowClassModel>();
 
@@ -77,7 +77,7 @@ public class GeneratedClassModels {
 			updatedFlows.add(updatedFlow);
 		}
 		// Places
-		for (PlaceClassModel updatedPlace: newer.updatedPlaces) {
+		for (PlaceTemplateClassModel updatedPlace: newer.updatedPlaces) {
 			removeClassModel(updatedPlaces, updatedPlace);
 			updatedPlaces.add(updatedPlace);
 		}

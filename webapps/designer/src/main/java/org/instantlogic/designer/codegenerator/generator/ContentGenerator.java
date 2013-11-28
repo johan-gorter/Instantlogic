@@ -55,6 +55,9 @@ public abstract class ContentGenerator extends AbstractGenerator {
 					model.values.put(propertyName, deductionIndex);
 				}
 			}
+			if (fragmentTemplate.getDestination()!=null) {
+				model.destination = fragmentTemplate.getDestination().getPlaceTemplate().getTechnicalNameCapitalized();
+			}
 			if (fragmentTemplate.getEvent()!=null) {
 				model.event = fragmentTemplate.getEvent().getTechnicalNameCapitalized();
 			}

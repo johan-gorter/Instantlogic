@@ -6,7 +6,7 @@ import java.io.File;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EventClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel;
-import org.instantlogic.designer.codegenerator.classmodel.PlaceClassModel;
+import org.instantlogic.designer.codegenerator.classmodel.PlaceTemplateClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SharedPageFragmentClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.SubFlowClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.ValidationClassModel;
@@ -32,6 +32,7 @@ public class ApplicationJavacodeGenerator extends AbstractJavacodeGenerator impl
 				applicationRoot.mkdirs();
 				new File(applicationRoot, "entity").mkdirs();
 				new File(applicationRoot, "event").mkdirs();
+				new File(applicationRoot, "placetemplate").mkdirs();
 				new File(applicationRoot, "flow").mkdirs();
 				new File(applicationRoot, "validation").mkdirs();
 				new File(applicationRoot, "sharedpagefragment").mkdirs();
@@ -69,11 +70,20 @@ public class ApplicationJavacodeGenerator extends AbstractJavacodeGenerator impl
 				generateFile(AbstractJavacodeGenerator.eventTemplate, event, "event", "Event", applicationRoot);
 			}
 		}
-		for (PlaceClassModel page:context.updatedPlaces) {
-			if (page.isDeleted) {
-				deleteFile("flow/"+page.flowname.toLowerCase(), page, "Page", applicationRoot);	
+		for (PlaceTemplateClassModel placeTemplate:context.updatedPlaces) {
+			if (placeTemplate.flowname==null) {
+				if (placeTemplate.isDeleted) {
+					deleteFile("placetemplate", placeTemplate, "PlaceTemplate", applicationRoot);	
+				} else {
+					generateFile(AbstractJavacodeGenerator.placeTemplateTemplate, placeTemplate, "placetemplate", "PlaceTemplate", applicationRoot);
+				}
 			} else {
-				generateFile(AbstractJavacodeGenerator.placeTemplateTemplate, page, "flow/"+page.flowname.toLowerCase(), "PlaceTemplate", applicationRoot);
+				// Old
+				if (placeTemplate.isDeleted) {
+					deleteFile("flow/"+placeTemplate.flowname.toLowerCase(), placeTemplate, "PlaceTemplate", applicationRoot);	
+				} else {
+					generateFile(AbstractJavacodeGenerator.placeTemplateTemplate, placeTemplate, "flow/"+placeTemplate.flowname.toLowerCase(), "PlaceTemplate", applicationRoot);
+				}
 			}
 		}
 		for (FlowClassModel flow:context.updatedFlows) {

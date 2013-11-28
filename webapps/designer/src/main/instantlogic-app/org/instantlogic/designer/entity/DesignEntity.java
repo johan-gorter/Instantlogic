@@ -94,6 +94,7 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 			org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.FragmentTypeDesignEntity.INSTANCE,
+			org.instantlogic.designer.entity.PlaceParameterDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.StaticInstanceDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE,

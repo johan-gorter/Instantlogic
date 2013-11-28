@@ -1,5 +1,6 @@
 package org.instantlogic.designer.flow.deductionscheme;
 
+
 public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.flow.PlaceTemplate {
 
 	public static final DeductionSchemePlaceTemplate INSTANCE = new DeductionSchemePlaceTemplate();
@@ -230,12 +231,20 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
         
                             )        
                     )        
-            ); 
+            );
 	
 	private static final org.instantlogic.fabric.text.TextTemplate TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("DeductionScheme").getTextTemplate();
 	@Override
 	protected org.instantlogic.fabric.text.TextTemplate getTitle() {
 		return TITLE;
+	}
+	
+	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
+	};
+
+	@Override
+	public org.instantlogic.fabric.model.Entity[] getParameters() {
+		return PARAMETERS;
 	}
 	
 	@Override

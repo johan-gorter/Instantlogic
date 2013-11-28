@@ -1,5 +1,6 @@
 package org.instantlogic.designer.flow.attribute;
 
+
 public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.flow.PlaceTemplate {
 
 	public static final AttributeDetailsPlaceTemplate INSTANCE = new AttributeDetailsPlaceTemplate();
@@ -178,12 +179,20 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
                                     .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Deduction scheme").getTextTemplate()))
         
                     )        
-            ); 
+            );
 	
 	private static final org.instantlogic.fabric.text.TextTemplate TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction5()).add(" (Attribute)").getTextTemplate();
 	@Override
 	protected org.instantlogic.fabric.text.TextTemplate getTitle() {
 		return TITLE;
+	}
+	
+	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
+	};
+
+	@Override
+	public org.instantlogic.fabric.model.Entity[] getParameters() {
+		return PARAMETERS;
 	}
 	
 	@Override

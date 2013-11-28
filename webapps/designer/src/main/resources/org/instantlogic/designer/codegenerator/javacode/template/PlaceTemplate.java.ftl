@@ -1,4 +1,9 @@
+<#if flowname??>
 package ${rootPackageName}.flow.${flowname?lower_case};
+<#else>
+package ${rootPackageName}.placetemplate;
+</#if>
+
 <#include "Content.java.ftl">
 <#include "Text.java.ftl">
 <#include "DeductionScheme.java.ftl">
@@ -17,7 +22,11 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 </#list>
 	
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
-<@content_macro content=content depth=3 />; 
+<#if content??>
+<@content_macro content=content depth=3 />;
+<#else>
+		null;
+</#if>
 	
 	<#if title??>
 	private static final org.instantlogic.fabric.text.TextTemplate TITLE = <@text_macro text=title />;
@@ -26,6 +35,17 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 		return TITLE;
 	}
 	</#if>
+	
+	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
+	<#list parameters as parameter>
+		${rootPackageName}.entity.${parameter}Entity.INSTANCE,
+	</#list>
+	};
+
+	@Override
+	public org.instantlogic.fabric.model.Entity[] getParameters() {
+		return PARAMETERS;
+	}
 	
 	@Override
 	public org.instantlogic.interaction.page.FragmentTemplate getRootContainer() {

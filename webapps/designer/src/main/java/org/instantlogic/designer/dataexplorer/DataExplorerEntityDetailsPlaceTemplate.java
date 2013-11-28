@@ -76,7 +76,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 		// Reverse relations
 		for (Relation relation : entity.getReverseRelations()) {
 			if (!relation.getReverseRelation().isOwner()) {
-				String id = "relation-"+relation.getUniqueId();
+				String id = "reverserelation-"+relation.getUniqueId();
 				Deduction selectValue = createSelectReverseRelationDeduction(relation); 
 	
 				page.addChild("mainContent", relationAsField(id, relation, selectValue));

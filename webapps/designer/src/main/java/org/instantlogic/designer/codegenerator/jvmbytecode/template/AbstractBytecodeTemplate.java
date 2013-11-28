@@ -186,6 +186,11 @@ public class AbstractBytecodeTemplate implements Opcodes {
 			    	emitGetInstanceField(mv, content.getRootPackageInternalPrefix()+"event/", content.event+"Event");
 			    	mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "setEvent", "(Lorg/instantlogic/interaction/flow/FlowEvent;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
 			    }
+			    if (content.destination!=null) {
+			    	// .setDestination(org.instantlogic.designer.placetemplate.XYZ.INSTANCE)
+			    	emitGetInstanceField(mv, content.getRootPackageInternalPrefix()+"placetemplate/", content.destination+"PlaceTemplate");
+			    	mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/interaction/page/FragmentTemplate", "setDestination", "(Lorg/instantlogic/interaction/flow/PlaceTemplate;)Lorg/instantlogic/interaction/page/FragmentTemplate;");
+			    }
 			    if (content.attribute!=null) {
 			    	//.setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity)
 			    	emitGetInstanceField(mv, content.getRootPackageInternalPrefix()+"entity/", content.entity+"Entity");

@@ -12,6 +12,9 @@ public class ApplicationClassModel extends AbstractClassModel {
 	public String[] themeNames;
 	public final List<String> entities = new ArrayList<String>();
 	
+	public final List<String> placeTemplates = new ArrayList<String>();
+	public String startPlace;
+	
 	public String getCaseEntity() {
 		return caseEntity;
 	}
@@ -29,5 +32,11 @@ public class ApplicationClassModel extends AbstractClassModel {
 	}
 	public String getLoggedInEvent() {
 		return loggedInEvent;
+	}
+	public List<String> getPlaceTemplates() {
+		return placeTemplates;
+	}
+	public String getStartPlace() {
+		return startPlace;
 	}
 }

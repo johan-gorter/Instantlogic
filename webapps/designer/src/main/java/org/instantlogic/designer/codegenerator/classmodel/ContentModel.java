@@ -30,6 +30,8 @@ public class ContentModel {
 	public boolean readOnly;
 	public String relationEntity;
 	public String relationName;
+	public String destination;
+	@Deprecated
 	public String event;
 	public boolean isCustomized;
 	public String[] styleNames;
@@ -125,5 +127,8 @@ public class ContentModel {
 	}
 	public String[] getFragmentFilters() {
 		return fragmentFilters;
+	}
+	public String getDestination() {
+		return destination;
 	}
 }
