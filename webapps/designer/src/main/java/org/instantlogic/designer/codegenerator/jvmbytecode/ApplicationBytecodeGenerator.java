@@ -32,7 +32,7 @@ public class ApplicationBytecodeGenerator implements GeneratedClassModelsProcess
 
 	public static void update(GeneratedClassModels classModels, JvmBytecodeApplication updateableApplication) {
 		if (classModels.updatedApplication!=null) {
-			String fullApplicationClassName = classModels.updatedApplication.rootPackageName+"." + (classModels.updatedApplication.isCustomized?"Abstract":"") +classModels.updatedApplication.name+"Application";
+			String fullApplicationClassName = classModels.updatedApplication.rootPackageName+"." + (classModels.updatedApplication.isCustomized?"Abstract":"") +classModels.updatedApplication.technicalNameCapitalized+"Application";
 			if (classModels.updatedApplication.isDeleted) {
 				updateableApplication.removeClassBytes(fullApplicationClassName);
 			} else {

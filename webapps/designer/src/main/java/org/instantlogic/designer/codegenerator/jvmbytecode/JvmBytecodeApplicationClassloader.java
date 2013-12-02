@@ -27,10 +27,16 @@ public class JvmBytecodeApplicationClassloader extends URLClassLoader {
 	public JvmBytecodeApplication getJvmBytecodeApplication() {
 		return updateableApplication;
 	}
+	
+	public static String capitalizeFirst(String name) {
+		StringBuffer result = new StringBuffer(name);
+		result.setCharAt(0, Character.toUpperCase(result.charAt(0)));
+		return result.toString();
+	}
 
 	public Application getApplication(String rootPackageName, String applicationName) {
 		try {
-			Class<?> applicationClass = loadClass(rootPackageName+"."+applicationName+"Application");
+			Class<?> applicationClass = loadClass(rootPackageName+"."+capitalizeFirst(applicationName)+"Application");
 			return (Application) applicationClass.getField("INSTANCE").get(null);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

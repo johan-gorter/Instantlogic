@@ -28,8 +28,8 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 		FieldVisitor fv;
 		MethodVisitor mv;
 		
-		String concreteClassName = model.getRootPackageInternalPrefix()+model.name+"Application";
-		String className = model.isCustomized?model.getRootPackageInternalPrefix()+"Abstract"+model.name+"Application":concreteClassName;
+		String concreteClassName = model.getRootPackageInternalPrefix()+model.technicalNameCapitalized+"Application";
+		String className = model.isCustomized?model.getRootPackageInternalPrefix()+"Abstract"+model.technicalNameCapitalized+"Application":concreteClassName;
 		
 		if (model.isCustomized) {
 			cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER + ACC_ABSTRACT, className, null, "org/instantlogic/interaction/Application", null);

@@ -46,6 +46,7 @@ public abstract class PlaceTemplate extends FlowNodeBase {
 	public Map<String, Object> render(final RenderContext renderContext) {
 		List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
 		TextTemplate title = getTitle();
+		// TODO: handle absence of rootContainer gracefully
 		getRootContainer().render(renderContext, result);
 		if (result.size()!=1) throw new RuntimeException("Rendering resulted in more than one page root");
 		Map<String, Object> fragment = result.get(0);

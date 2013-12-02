@@ -6,6 +6,7 @@ import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.ApplicationEnvironment;
 import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEvent;
+import org.instantlogic.interaction.flow.PlaceTemplate;
 
 // Wraps another application and adds the DataExplorer flows
 public class ApplicationWrapper extends Application {
@@ -14,6 +15,11 @@ public class ApplicationWrapper extends Application {
 
 	public ApplicationWrapper(Application delegate) {
 		this.delegate = delegate;
+	}
+	
+	@Override
+	public PlaceTemplate[] getPlaceTemplates() {
+		return delegate.getPlaceTemplates();
 	}
 
 	public Flow getMainFlow() {

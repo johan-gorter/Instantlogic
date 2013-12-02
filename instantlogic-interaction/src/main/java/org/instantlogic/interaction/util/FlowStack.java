@@ -39,20 +39,25 @@ public class FlowStack extends AbstractDeductionContext {
 	
 	public static FlowStack create(PlaceTemplate[] placeTemplates, Flow mainFlow, String path, Instance caseInstance) {
 		if (path==null) return new FlowStack(null, mainFlow);
-		String[] pathElements = path.split("/");
+		String[] pathElements = path.split("[/(,)]");
 		if (pathElements.length>0) {
 			for(PlaceTemplate placeTemplate : placeTemplates) {
-				if (placeTemplate.getName().equals(pathElements[0])) {
+				if (placeTemplate.getTechnicalName().equals(pathElements[0])) {
 					// The new way
 					int index = 1;
 					FlowStack result = new FlowStack(null, null);
 					result.currentNode = placeTemplate;
 					for(Entity<?> parameter: placeTemplate.getParameters()) {
-						result.pushSelectedInstance(getInstance(parameter, pathElements[index++], caseInstance));
+						String[] keyValue = pathElements[index++].split(":");
+						if (keyValue.length!=2 || !parameter.getName().equals(keyValue[0])) {
+							throw new RuntimeException("Invalid place parameter value "+pathElements[index-1]);
+						}
+						result.pushSelectedInstance(getInstance(parameter, keyValue[1], caseInstance));
 					}
 					if (index!=pathElements.length) {
 						throw new RuntimeException("Too many parameter values");
 					}
+					return result;
 				}
 			}
 		}
@@ -97,23 +102,47 @@ public class FlowStack extends AbstractDeductionContext {
 	}
 	
 	void toPath(StringBuilder result) {
+		if (this.getCurrentNode() instanceof PlaceTemplate) {
+			PlaceTemplate place = (PlaceTemplate) this.getCurrentNode();
+			if (place.getParameters().length>0) {
+				// New
+				if (place.getParameters().length>0) {
+					result.append(place.getTechnicalName());
+					result.append("(");
+					for (Entity<?> parameter: place.getParameters()) {
+						result.append(parameter.getName());
+						result.append(":");
+						appendInstanceId(result, getSelectedInstance(parameter));
+						result.append(",");
+					}
+					result.setLength(result.length()-1);
+					result.append(")");
+					return;
+				}
+			}
+		}
+		// Old
 		if (parent!=null) {
 			parent.toPath(result);
 			result.append("/");
 			for (Instance instance: selectedInstances) {
-				if (instance.getMetadata().isStatic()) {
-					result.append(instance.getMetadata().getEntity().getName());
-					result.append("!");
-					result.append(instance.getMetadata().getStaticName());
-				} else {
-					result.append(instance.getMetadata().getUniqueId());					
-				}
+				appendInstanceId(result, instance);
 				result.append("/");
 			}
 		}
 		result.append(this.getCurrentNode().getName());
 	}
 	
+	private void appendInstanceId(StringBuilder result, Instance instance) {
+		if (instance.getMetadata().isStatic()) {
+			result.append(instance.getMetadata().getEntity().getName());
+			result.append("!");
+			result.append(instance.getMetadata().getStaticName());
+		} else {
+			result.append(instance.getMetadata().getUniqueId());					
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "("+currentNode+" in "+flow+")"+(parent==null?"":"-->"+parent);
