@@ -15,11 +15,16 @@ import org.instantlogic.interaction.util.RenderContext;
 
 public abstract class PlaceTemplate extends FlowNodeBase {
 	
-	public Entity<?>[] NO_PARAMETERS = new Entity<?>[0];
+	public static final Entity<?>[] NO_PARAMETERS = new Entity<?>[0];
 	
 	public abstract FragmentTemplate getRootContainer();
 	
 	public abstract String getId();
+
+	public String getTechnicalName()
+	{
+		return getName();
+	}
 
 	public FlowEventOccurrence submit(SubmitContext submitContext) {
 		return getRootContainer().submit(submitContext);

@@ -73,8 +73,9 @@ public class FlowContext extends DeductionContext {
 			PlaceTemplate destination = occurrence.getDestination();
 			FlowStack result = new FlowStack(null, null);
 			result.setCurrentNode(destination);
-			for(Entity<?> parameter: destination.getParameters()) {
-				result.pushSelectedInstance(getSelectedInstance(parameter));
+			
+			for(Instance parameterValue: occurrence.getParameters()) {
+				result.pushSelectedInstance(parameterValue);
 			}
 			flowStack = result;
 			return destination.enter(this);

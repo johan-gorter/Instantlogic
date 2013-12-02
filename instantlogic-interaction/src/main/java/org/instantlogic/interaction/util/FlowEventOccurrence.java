@@ -18,7 +18,7 @@ public class FlowEventOccurrence {
 	
 	public FlowEventOccurrence(PlaceTemplate destination, Instance[] placeParameters) {
 		this.destination = destination;
-		this.parameters = parameters;
+		this.parameters = placeParameters;
 	}
 
 	public PlaceTemplate getDestination() {

@@ -56,4 +56,9 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
     public String getName() {
         return "${name}";
     }
+	
+    @Override
+    public String getTechnicalName() {
+        return "${technicalNameCapitalized}";
+    }
 }

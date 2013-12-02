@@ -48,6 +48,14 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 			fv = cw.visitField(ACC_PRIVATE + ACC_STATIC, "CONTENT", "Lorg/instantlogic/interaction/page/FragmentTemplate;", null, null);
 			fv.visitEnd();
 		}		
+
+		//	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
+		//		org.instantlogic.example.izzy.entity.IssueEntity.INSTANCE,
+		//	};
+		{
+			fv = cw.visitField(ACC_PRIVATE + ACC_FINAL + ACC_STATIC, "PARAMETERS", "[Lorg/instantlogic/fabric/model/Entity;", null, null);
+			fv.visitEnd();
+		}
 		
 		if (model.title!=null)
 		{
@@ -68,8 +76,7 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitMethodInsn(INVOKESPECIAL, concreteClassName, "<init>", "()V");
 			mv.visitFieldInsn(PUTSTATIC, className, "INSTANCE", "L"+concreteClassName+";");
 
-			// Phase 2
-			
+			// Phase 2			
 			if (model.content!=null) {
 				dumpContent(mv, className, model.content);
 			} else {
@@ -77,12 +84,25 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 			}
 			mv.visitFieldInsn(PUTSTATIC, className, "CONTENT", "Lorg/instantlogic/interaction/page/FragmentTemplate;");
 
-
 			if (model.title!=null) {
 				// TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction3()).add("'s dashboard").getTextTemplate();
 				dumpText(mv, className, model.title);
 				mv.visitFieldInsn(PUTSTATIC, className, "TITLE", "Lorg/instantlogic/fabric/text/TextTemplate;");
 			}
+			
+			mv.visitIntInsn(BIPUSH, model.parameters.size());
+			mv.visitTypeInsn(ANEWARRAY, "org/instantlogic/fabric/model/Entity");
+			
+			int i = 0;
+			for (String parameter:model.parameters) {
+				mv.visitInsn(DUP);
+				mv.visitIntInsn(BIPUSH, i);
+				//Better use: emitGetInstanceField(mv, flowPackage, node.name+node.type);
+				mv.visitFieldInsn(GETSTATIC, model.getRootPackageInternalPrefix()+"entity/"+parameter+"Entity", "INSTANCE", "L"+model.getRootPackageInternalPrefix()+"entity/"+parameter+"Entity;");
+				mv.visitInsn(AASTORE);
+				i++;
+			}			
+			mv.visitFieldInsn(PUTSTATIC, className, "PARAMETERS", "[Lorg/instantlogic/fabric/model/Entity;");
 			
 			mv.visitInsn(RETURN);
 			mv.visitMaxs(99, 9);
@@ -153,7 +173,33 @@ public class PlaceTemplateBytecodeTemplate extends AbstractBytecodeTemplate {
 			mv.visitInsn(ARETURN);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();
-		}		
+		}
+
+		//public String getTechnicalName() {
+		//    return "Dashboard";
+		//}
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "getTechnicalName", "()Ljava/lang/String;", null, null);
+			mv.visitCode();
+			mv.visitLdcInsn(model.technicalNameCapitalized);
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}
+		
+//		@Override
+//		public org.instantlogic.fabric.model.Entity[] getParameters() {
+//			return PARAMETERS;
+//		}
+		{
+			mv = cw.visitMethod(ACC_PUBLIC, "getParameters", "()[Lorg/instantlogic/fabric/model/Entity;", null, null);
+			mv.visitCode();
+			mv.visitFieldInsn(GETSTATIC, className, "PARAMETERS", "[Lorg/instantlogic/fabric/model/Entity;");
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(1, 1);
+			mv.visitEnd();
+		}
+
 		
 		cw.visitEnd();
 		return cwriter.toByteArray();
