@@ -45,7 +45,7 @@ public class FlowStack extends AbstractDeductionContext {
 				if (placeTemplate.getTechnicalName().equals(pathElements[0])) {
 					// The new way
 					int index = 1;
-					FlowStack result = new FlowStack(null, null);
+					FlowStack result = new FlowStack(null, mainFlow);
 					result.currentNode = placeTemplate;
 					for(Entity<?> parameter: placeTemplate.getParameters()) {
 						String[] keyValue = pathElements[index++].split(":");

@@ -42,10 +42,10 @@ VUzAlsAzqagkmirz_17c1de35_9779:       propertyName="content"
 VUzAlsAzqagkmirz_17c1de35_9779:       collapsed
 VUzAlsAzqagkmirz_17c1de35_9779:       children[
 VUzAlsAzqagkmirz_17c1de35_9779:       children+iImudnzezyexwicf_97f8136c_dc75:FragmentTemplateDesign{
-iImudnzezyexwicf_97f8136c_dc75:        name
+iImudnzezyexwicf_97f8136c_dc75:        name="create issue button"
 iImudnzezyexwicf_97f8136c_dc75:        isCustomized
 iImudnzezyexwicf_97f8136c_dc75:        previewMode
-iImudnzezyexwicf_97f8136c_dc75:        editorOpen
+iImudnzezyexwicf_97f8136c_dc75:        editorOpen=true
 iImudnzezyexwicf_97f8136c_dc75:        styleNames[
 iImudnzezyexwicf_97f8136c_dc75:        styleNames]
 iImudnzezyexwicf_97f8136c_dc75:        fragmentTypeName="Button"
@@ -91,6 +91,8 @@ Kr_UgkIsymbUsdqn_a0f23aa2_8adf:         }eUzaegcvnqdzuhrq_1d73e785_5b98
 Kr_UgkIsymbUsdqn_a0f23aa2_8adf:         children]
 iImudnzezyexwicf_97f8136c_dc75:        }Kr_UgkIsymbUsdqn_a0f23aa2_8adf
 iImudnzezyexwicf_97f8136c_dc75:        properties]
+iImudnzezyexwicf_97f8136c_dc75:        destination=akhtsitwkugAobqe_b88d4eab_0605:DestinationDesign{
+iImudnzezyexwicf_97f8136c_dc75:        }akhtsitwkugAobqe_b88d4eab_0605
 VUzAlsAzqagkmirz_17c1de35_9779:       }iImudnzezyexwicf_97f8136c_dc75
 VUzAlsAzqagkmirz_17c1de35_9779:       children+owtnUE_OlienIjIq_3dd74d18_cfe4:FragmentTemplateDesign{
 owtnUE_OlienIjIq_3dd74d18_cfe4:        name
@@ -624,6 +626,8 @@ OhAzngvtrqgrUlhr_65629f32_f645:     constantText="\u0027s dashboard"
 TuOcciytkIekgcAp_4c6e2cf0_a16a:    }OhAzngvtrqgrUlhr_65629f32_f645
 TuOcciytkIekgcAp_4c6e2cf0_a16a:    untranslated]
 FteitytbpqbOUkAi_a4083dec_387e:   }TuOcciytkIekgcAp_4c6e2cf0_a16a
+FteitytbpqbOUkAi_a4083dec_387e:   parameters[
+FteitytbpqbOUkAi_a4083dec_387e:   parameters]
 IqUU_wautqaAebgU_a29c35eb_15dd:  }FteitytbpqbOUkAi_a4083dec_387e
 IqUU_wautqaAebgU_a29c35eb_15dd:  nodes]
 IqUU_wautqaAebgU_a29c35eb_15dd:  edges[

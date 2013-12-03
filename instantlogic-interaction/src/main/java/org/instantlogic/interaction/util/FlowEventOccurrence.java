@@ -1,7 +1,5 @@
 package org.instantlogic.interaction.util;
 
-import java.util.Map;
-
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
@@ -16,7 +14,7 @@ public class FlowEventOccurrence {
 	
 	private PlaceTemplate destination;
 	
-	public FlowEventOccurrence(PlaceTemplate destination, Instance[] placeParameters) {
+	public FlowEventOccurrence(PlaceTemplate destination, Instance... placeParameters) {
 		this.destination = destination;
 		this.parameters = placeParameters;
 	}
