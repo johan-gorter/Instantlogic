@@ -400,7 +400,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 						throw new RuntimeException("No storage info");
 					}
 					if (event.isMultivalueUpdate() && event.getInstance().getMetadata().getInstanceOwner()==null && attribute instanceof Relation) {
-						// Add/remove a file
+						// direct descendant of Application: Add/remove a file
 						Instance value = (Instance) event.getItemValue();
 						if (event.getMultiValueUpdateType()== MultiValueUpdateType.DELETE) {
 							if (value.getMetadata().getStorageInfo()!=null) {
@@ -409,7 +409,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 							}
 						}
 						if (event.getMultiValueUpdateType()== MultiValueUpdateType.INSERT) {
-							InstanceStorageInfo subStorage = initRootInstanceNode(value, event.getAttribute().getName(), instancesToSave);
+							InstanceStorageInfo subStorage = initRootInstanceNode(value, attribute.getName(), instancesToSave);
 							storageInfo.root.addSubStorage(attribute.getName(), subStorage);
 						}
 					} else {
@@ -428,7 +428,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 								 } else {
 									 Instance newChild =(Instance)event.getNewStoredValue(); 
 									 if (newChild!=null) {
-										 InstanceNode newNode = initSubInstanceNode(instance, instancesToSave, storageInfo);
+										 InstanceNode newNode = initSubInstanceNode(newChild, instancesToSave, storageInfo);
 										 storageInfo.node.setInstance(event.getAttribute(), newNode);
 									 }
 								 }
