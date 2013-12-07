@@ -127,6 +127,23 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
     }
 
 	
+	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> loggedInPlaceOnApplicationDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.loggedInPlaceOnApplicationDesign);
+
+	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> getLoggedInPlaceOnApplicationDesignRelationValue() {
+		return loggedInPlaceOnApplicationDesign;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getLoggedInPlaceOnApplicationDesign() {
+		return loggedInPlaceOnApplicationDesign.getValue();
+	}
+
+    public PlaceTemplateDesign setLoggedInPlaceOnApplicationDesign(org.instantlogic.designer.ApplicationDesign newValue) {
+        loggedInPlaceOnApplicationDesign.setValue(newValue);
+        return (PlaceTemplateDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValues<PlaceTemplateDesign, FragmentTemplateDesign> incomingLinksFromFragmentTemplates
 		= createReverseRelationValues(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.incomingLinksFromFragmentTemplates);
 
@@ -145,6 +162,23 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
 
     public PlaceTemplateDesign removeFromIncomingLinksFromFragmentTemplates(FragmentTemplateDesign item) {
         incomingLinksFromFragmentTemplates.removeValue(item);
+        return (PlaceTemplateDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> startPlaceOnApplication
+		= createReverseRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.startPlaceOnApplication);
+
+	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> getStartPlaceOnApplicationRelationValue() {
+		return startPlaceOnApplication;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getStartPlaceOnApplication() {
+		return startPlaceOnApplication.getValue();
+	}
+
+    public PlaceTemplateDesign setStartPlaceOnApplication(org.instantlogic.designer.ApplicationDesign newValue) {
+        startPlaceOnApplication.setValue(newValue);
         return (PlaceTemplateDesign)this;
     }
 

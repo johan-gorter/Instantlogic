@@ -267,6 +267,42 @@ public abstract class AbstractApplicationDesign extends org.instantlogic.fabric.
 	
 	
 	
+	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, PlaceTemplateDesign> loggedInPlace
+		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.loggedInPlace);
+		
+	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, PlaceTemplateDesign> getLoggedInPlaceRelationValue() {
+		return loggedInPlace;
+	}
+
+	public org.instantlogic.designer.PlaceTemplateDesign getLoggedInPlace() {
+		return loggedInPlace.getValue();
+	}
+	
+	public ApplicationDesign setLoggedInPlace(org.instantlogic.designer.PlaceTemplateDesign newValue) {
+		loggedInPlace.setValue(newValue);
+		return (ApplicationDesign)this;
+	}
+	
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<ApplicationDesign, PlaceTemplateDesign> startPlace
+		= createRelationValue(org.instantlogic.designer.entity.ApplicationDesignEntity.startPlace);
+		
+	public org.instantlogic.fabric.value.RelationValue<ApplicationDesign, PlaceTemplateDesign> getStartPlaceRelationValue() {
+		return startPlace;
+	}
+
+	public org.instantlogic.designer.PlaceTemplateDesign getStartPlace() {
+		return startPlace.getValue();
+	}
+	
+	public ApplicationDesign setStartPlace(org.instantlogic.designer.PlaceTemplateDesign newValue) {
+		startPlace.setValue(newValue);
+		return (ApplicationDesign)this;
+	}
+	
+
+	
 	private final org.instantlogic.fabric.value.RelationValues<ApplicationDesign, DeductionOperationDesign> customDeductionOperations
 		= createRelationValues(org.instantlogic.designer.entity.ApplicationDesignEntity.customDeductionOperations);
 		

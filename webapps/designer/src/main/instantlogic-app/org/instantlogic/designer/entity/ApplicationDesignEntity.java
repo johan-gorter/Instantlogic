@@ -41,6 +41,8 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> startEvent;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.SharedElementDefinitionDesign>, org.instantlogic.designer.SharedElementDefinitionDesign> sharedElements;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> flows;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> loggedInPlace;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> startPlace;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign> customDeductionOperations;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> entities;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> loggedInEvent;
@@ -100,6 +102,14 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign>(
 				"LczmUnotIygvsnwq_9acb01e1_656a", "flows", INSTANCE, "flows", org.instantlogic.designer.AbstractApplicationDesign.class);
 		flows = $flows;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $loggedInPlace
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
+				"MjgOujqxzidxulUp_c10e22ff_3f1b", "loggedInPlace", INSTANCE, "loggedInPlace", org.instantlogic.designer.AbstractApplicationDesign.class);
+		loggedInPlace = $loggedInPlace;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $startPlace
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
+				"Rlreusummyeemjut_838db6d5_b94d", "startPlace", INSTANCE, "startPlace", org.instantlogic.designer.AbstractApplicationDesign.class);
+		startPlace = $startPlace;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign> $customDeductionOperations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ApplicationDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign>(
 				"RpphyhkeqIaskkmn_90c964a5_5fff", "customDeductionOperations", INSTANCE, "customDeductionOperations", org.instantlogic.designer.AbstractApplicationDesign.class);
@@ -155,6 +165,12 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		$flows.setReverseRelation(org.instantlogic.designer.entity.FlowDesignEntity.application);
 		$flows.owner = true;
 		$flows.multivalue = true;
+		$loggedInPlace.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
+		$loggedInPlace.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
+		$loggedInPlace.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.loggedInPlaceOnApplicationDesign);
+		$startPlace.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
+		$startPlace.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
+		$startPlace.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.startPlaceOnApplication);
 		$customDeductionOperations.valueClass = org.instantlogic.designer.DeductionOperationDesign.class;
 		$customDeductionOperations.to = org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE;
 		$customDeductionOperations.setReverseRelation(org.instantlogic.designer.entity.DeductionOperationDesignEntity.customDeductionOperationsOnApplicationDesign);
@@ -213,6 +229,8 @@ public class ApplicationDesignEntity extends org.instantlogic.fabric.model.Entit
 		startEvent,
 		sharedElements,
 		flows,
+		loggedInPlace,
+		startPlace,
 		customDeductionOperations,
 		entities,
 		loggedInEvent,

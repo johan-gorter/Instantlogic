@@ -129,4 +129,9 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
     public String getName() {
         return "EntityDetails";
     }
+	
+    @Override
+    public String getTechnicalName() {
+        return "EntityDetails";
+    }
 }

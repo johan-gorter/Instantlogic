@@ -114,4 +114,9 @@ public class FlowDetailsPlaceTemplate extends org.instantlogic.interaction.flow.
     public String getName() {
         return "FlowDetails";
     }
+	
+    @Override
+    public String getTechnicalName() {
+        return "FlowDetails";
+    }
 }

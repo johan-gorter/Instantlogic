@@ -3,7 +3,6 @@ package org.instantlogic.designer.codegenerator.jvmbytecode.template;
 import java.io.PrintWriter;
 
 import org.instantlogic.designer.codegenerator.classmodel.ApplicationClassModel;
-import org.instantlogic.designer.codegenerator.classmodel.FlowClassModel.FlowNode;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
@@ -144,6 +143,28 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 				mv = cw.visitMethod(ACC_PUBLIC, "getLoggedInEvent", "()Lorg/instantlogic/interaction/flow/FlowEvent;", null, null);
 				mv.visitCode();
 				emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"event/", model.loggedInEvent+"Event");
+				mv.visitInsn(ARETURN);
+				mv.visitMaxs(1, 1);
+				mv.visitEnd();
+			}
+		}
+		if (model.startPlace!=null) {
+			// public org.instantlogic.interaction.flow.PlaceTempalte getStartPlace()
+			{
+				mv = cw.visitMethod(ACC_PUBLIC, "getStartPlace", "()Lorg/instantlogic/interaction/flow/PlaceTemplate;", null, null);
+				mv.visitCode();
+				emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"placetemplate/", model.startPlace+"PlaceTemplate");
+				mv.visitInsn(ARETURN);
+				mv.visitMaxs(1, 1);
+				mv.visitEnd();
+			}
+		}
+		if (model.loggedInPlace!=null) {
+			// public org.instantlogic.interaction.flow.PlaceTemplate getLoggedInPlace()
+			{
+				mv = cw.visitMethod(ACC_PUBLIC, "getLoggedInPlace", "()Lorg/instantlogic/interaction/flow/PlaceTemplate;", null, null);
+				mv.visitCode();
+				emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"placeTemplate/", model.loggedInPlace+"PlaceTemplate");
 				mv.visitInsn(ARETURN);
 				mv.visitMaxs(1, 1);
 				mv.visitEnd();

@@ -151,4 +151,9 @@ public class WelcomePlaceTemplate extends org.instantlogic.interaction.flow.Plac
     public String getName() {
         return "Welcome";
     }
+	
+    @Override
+    public String getTechnicalName() {
+        return "Welcome";
+    }
 }

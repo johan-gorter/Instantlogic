@@ -56,6 +56,10 @@ public abstract class Application implements AutoCloseable {
 		return null;
 	}
 	
+	public PlaceTemplate getLoggedInPlace() {
+		return null;
+	}
+	
 	public PlaceTemplate[] getPlaceTemplates() {
 		return NO_PLACE_TEMPLATES;
 	}

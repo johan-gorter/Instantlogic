@@ -23,7 +23,9 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 	
 	// Reverse relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> application;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> loggedInPlaceOnApplicationDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> incomingLinksFromFragmentTemplates;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> startPlaceOnApplication;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DestinationDesign>, org.instantlogic.designer.DestinationDesign> incomingLinks;
 
 	static {
@@ -47,10 +49,18 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
 				"IeIasvhvnm_lqlww_e8627169_003f", "application", INSTANCE, "application", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
 		application = $application;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $loggedInPlaceOnApplicationDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
+				"MjgOujqxzidxulUp_c10e22ff_3f1b", "loggedInPlaceOnApplicationDesign", INSTANCE, "loggedInPlaceOnApplicationDesign", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+		loggedInPlaceOnApplicationDesign = $loggedInPlaceOnApplicationDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $incomingLinksFromFragmentTemplates
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign>(
 				"NzOgiyu_Uaftialv_2536eadf_ad0f", "incomingLinksFromFragmentTemplates", INSTANCE, "incomingLinksFromFragmentTemplates", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
 		incomingLinksFromFragmentTemplates = $incomingLinksFromFragmentTemplates;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $startPlaceOnApplication
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
+				"Rlreusummyeemjut_838db6d5_b94d", "startPlaceOnApplication", INSTANCE, "startPlaceOnApplication", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+		startPlaceOnApplication = $startPlaceOnApplication;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DestinationDesign>, org.instantlogic.designer.DestinationDesign> $incomingLinks
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DestinationDesign>, org.instantlogic.designer.DestinationDesign>(
 				"avqpegEnte_osmph_73500193_ff7a", "incomingLinks", INSTANCE, "incomingLinks", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
@@ -77,11 +87,19 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 		$application.valueClass = org.instantlogic.designer.ApplicationDesign.class;
 		$application.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
 		$application.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.placeTemplates);
+		$loggedInPlaceOnApplicationDesign.reverse = true;
+		$loggedInPlaceOnApplicationDesign.valueClass = org.instantlogic.designer.ApplicationDesign.class;
+		$loggedInPlaceOnApplicationDesign.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
+		$loggedInPlaceOnApplicationDesign.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.loggedInPlace);
 		$incomingLinksFromFragmentTemplates.reverse = true;
 		$incomingLinksFromFragmentTemplates.valueClass = org.instantlogic.designer.FragmentTemplateDesign.class;
 		$incomingLinksFromFragmentTemplates.to = org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE;
 		$incomingLinksFromFragmentTemplates.setReverseRelation(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.linkToPlaceTemplate);
 		$incomingLinksFromFragmentTemplates.multivalue = true;
+		$startPlaceOnApplication.reverse = true;
+		$startPlaceOnApplication.valueClass = org.instantlogic.designer.ApplicationDesign.class;
+		$startPlaceOnApplication.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
+		$startPlaceOnApplication.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.startPlace);
 		$incomingLinks.reverse = true;
 		$incomingLinks.valueClass = org.instantlogic.designer.DestinationDesign.class;
 		$incomingLinks.to = org.instantlogic.designer.entity.DestinationDesignEntity.INSTANCE;
@@ -118,7 +136,9 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		application,
+		loggedInPlaceOnApplicationDesign,
 		incomingLinksFromFragmentTemplates,
+		startPlaceOnApplication,
 		incomingLinks,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{

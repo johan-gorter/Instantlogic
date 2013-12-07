@@ -108,4 +108,9 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
     public String getName() {
         return "PlaceTemplateDetails";
     }
+	
+    @Override
+    public String getTechnicalName() {
+        return "PlaceTemplateDetails";
+    }
 }

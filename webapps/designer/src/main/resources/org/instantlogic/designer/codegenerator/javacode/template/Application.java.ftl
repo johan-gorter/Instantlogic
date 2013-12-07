@@ -34,6 +34,21 @@ public<#if isCustomized> abstract</#if> class <#if isCustomized>Abstract</#if>${
 		return ${rootPackageName}.event.${loggedInEvent}Event.INSTANCE;
 	}
 	</#if>
+
+    <#if startPlace??>	
+	@Override
+	public org.instantlogic.interaction.flow.PlaceTemplate getStartPlace() {
+		return ${rootPackageName}.placetemplate.${startPlace}PlaceTemplate.INSTANCE;
+	}
+	</#if>
+
+    <#if loggedInPlace??>	
+	@Override
+	public org.instantlogic.interaction.flow.PlaceTemplate getLoggedInPlace() {
+		return ${rootPackageName}.placetemplate.${loggedInPlace}PlaceTemplate.INSTANCE;
+	}
+	</#if>
+
 	
 	private static final org.instantlogic.interaction.flow.PlaceTemplate[] PLACE_TEMPLATES = new org.instantlogic.interaction.flow.PlaceTemplate[]{
 	<#list placeTemplates as placeTemplate>

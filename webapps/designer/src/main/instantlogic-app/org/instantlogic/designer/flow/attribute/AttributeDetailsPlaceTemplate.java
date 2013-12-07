@@ -204,4 +204,9 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
     public String getName() {
         return "AttributeDetails";
     }
+	
+    @Override
+    public String getTechnicalName() {
+        return "AttributeDetails";
+    }
 }

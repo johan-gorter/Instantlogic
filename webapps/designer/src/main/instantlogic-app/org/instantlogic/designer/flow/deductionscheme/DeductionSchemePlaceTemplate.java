@@ -256,4 +256,9 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
     public String getName() {
         return "DeductionScheme";
     }
+	
+    @Override
+    public String getTechnicalName() {
+        return "DeductionScheme";
+    }
 }

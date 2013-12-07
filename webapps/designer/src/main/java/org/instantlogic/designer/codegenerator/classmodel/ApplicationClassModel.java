@@ -14,6 +14,7 @@ public class ApplicationClassModel extends AbstractClassModel {
 	
 	public final List<String> placeTemplates = new ArrayList<String>();
 	public String startPlace;
+	public String loggedInPlace;
 	
 	public String getCaseEntity() {
 		return caseEntity;
@@ -38,5 +39,8 @@ public class ApplicationClassModel extends AbstractClassModel {
 	}
 	public String getStartPlace() {
 		return startPlace;
+	}
+	public String getLoggedInPlace() {
+		return loggedInPlace;
 	}
 }

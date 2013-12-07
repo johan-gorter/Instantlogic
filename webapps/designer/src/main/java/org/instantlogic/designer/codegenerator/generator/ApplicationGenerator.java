@@ -85,6 +85,12 @@ public class ApplicationGenerator extends AbstractGenerator<ApplicationClassMode
 		for (PlaceTemplateDesign placeTemplate: applicationInstance.getPlaceTemplates()) {
 			model.placeTemplates.add(placeTemplate.getTechnicalNameCapitalized());
 		}
+		if (applicationInstance.getStartPlace()!=null) {
+			model.startPlace = applicationInstance.getStartPlace().getTechnicalNameCapitalized();
+		}
+		if (applicationInstance.getLoggedInPlace()!=null) {
+			model.loggedInPlace = applicationInstance.getLoggedInPlace().getTechnicalNameCapitalized();
+		}
 		// TODO: StartPlace
 		if (applicationInstance.getCaseEntity()!=null && applicationInstance.getCaseEntity().isValidForCodeGeneration()) {
 			model.caseEntity = applicationInstance.getCaseEntity().getTechnicalNameCapitalized();

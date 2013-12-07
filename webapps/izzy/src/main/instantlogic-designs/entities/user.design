@@ -97,4 +97,14 @@ FAolijwamqbzuhrv_5d3aad44_36b2:  staticInstances[
 FAolijwamqbzuhrv_5d3aad44_36b2:  staticInstances]
 FAolijwamqbzuhrv_5d3aad44_36b2:  validations[
 FAolijwamqbzuhrv_5d3aad44_36b2:  validations]
+FAolijwamqbzuhrv_5d3aad44_36b2:  dataType=GEgtcfiariawafxd_e3cc9cec_2d80:DataTypeDesign{
+GEgtcfiariawafxd_e3cc9cec_2d80:   ordered
+GEgtcfiariawafxd_e3cc9cec_2d80:   javaClassName
+GEgtcfiariawafxd_e3cc9cec_2d80:   multivalue
+GEgtcfiariawafxd_e3cc9cec_2d80:   formatted
+GEgtcfiariawafxd_e3cc9cec_2d80:   wholeNumber
+GEgtcfiariawafxd_e3cc9cec_2d80:   multiLine
+GEgtcfiariawafxd_e3cc9cec_2d80:   exactRounding
+GEgtcfiariawafxd_e3cc9cec_2d80:   percentage
+FAolijwamqbzuhrv_5d3aad44_36b2:  }GEgtcfiariawafxd_e3cc9cec_2d80
 FAolijwamqbzuhrv_5d3aad44_36b2: }FAolijwamqbzuhrv_5d3aad44_36b2
