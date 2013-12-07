@@ -36,7 +36,7 @@ public abstract class AbstractBytecodeGeneratorTest {
 
 		ApplicationBytecodeGenerator.update(classModels, updateableApplication);
 		
-		applicationClassLoader = new JvmBytecodeApplicationClassloader(getClass().getClassLoader(), updateableApplication, customizationUrls);
+		applicationClassLoader = new JvmBytecodeApplicationClassloader(getClass().getClassLoader(), updateableApplication, "Dummy", customizationUrls);
 		this.restoreClassLoader = Thread.currentThread().getContextClassLoader(); 
 		
 		Thread.currentThread().setContextClassLoader(applicationClassLoader);

@@ -80,7 +80,7 @@ RkqbcUzezmcEofwO_11c52219_2358:    children+KcpzOgnoEeaEwfsg_283f83f9_eb10:Fragm
 KcpzOgnoEeaEwfsg_283f83f9_eb10:     name
 KcpzOgnoEeaEwfsg_283f83f9_eb10:     isCustomized
 KcpzOgnoEeaEwfsg_283f83f9_eb10:     previewMode
-KcpzOgnoEeaEwfsg_283f83f9_eb10:     editorOpen
+KcpzOgnoEeaEwfsg_283f83f9_eb10:     editorOpen=false
 KcpzOgnoEeaEwfsg_283f83f9_eb10:     styleNames[
 KcpzOgnoEeaEwfsg_283f83f9_eb10:     styleNames+"btn"
 KcpzOgnoEeaEwfsg_283f83f9_eb10:     styleNames]
@@ -127,6 +127,9 @@ iismoOktkuepchno_ed14c817_751b:       untranslated]
 Fk_bdaqAxIehUixj_214cf5b6_b1a0:      }iismoOktkuepchno_ed14c817_751b
 KcpzOgnoEeaEwfsg_283f83f9_eb10:     }Fk_bdaqAxIehUixj_214cf5b6_b1a0
 KcpzOgnoEeaEwfsg_283f83f9_eb10:     properties]
+KcpzOgnoEeaEwfsg_283f83f9_eb10:     destination=BE_Ajipnyagpyfau_f5b7f2d3_db57:DestinationDesign{
+BE_Ajipnyagpyfau_f5b7f2d3_db57:      PlaceTemplate="Niob_fdtOecdgcAk_fbe7623d_a51b"
+KcpzOgnoEeaEwfsg_283f83f9_eb10:     }BE_Ajipnyagpyfau_f5b7f2d3_db57
 RkqbcUzezmcEofwO_11c52219_2358:    }KcpzOgnoEeaEwfsg_283f83f9_eb10
 RkqbcUzezmcEofwO_11c52219_2358:    children+LwEOIhoIvedcifvw_8670d89f_346b:IfElseDesign{
 LwEOIhoIvedcifvw_8670d89f_346b:     name
@@ -163,6 +166,9 @@ IsoUAqkeII_IulUq_d5b9669e_d87a:        untranslated]
 KddbI_prmqdzioIq_7bf6de4e_6f6a:       }IsoUAqkeII_IulUq_d5b9669e_d87a
 F_pmzipvpI_AcfjI_4ed1d0bb_53c6:      }KddbI_prmqdzioIq_7bf6de4e_6f6a
 F_pmzipvpI_AcfjI_4ed1d0bb_53c6:      properties]
+F_pmzipvpI_AcfjI_4ed1d0bb_53c6:      destination=TyEezhw_IIfngaxO_9fbc869b_8dad:DestinationDesign{
+TyEezhw_IIfngaxO_9fbc869b_8dad:       PlaceTemplate="Zcpixuevneakg_fg_5c0e2d08_3ea5"
+F_pmzipvpI_AcfjI_4ed1d0bb_53c6:      }TyEezhw_IIfngaxO_9fbc869b_8dad
 LwEOIhoIvedcifvw_8670d89f_346b:     }F_pmzipvpI_AcfjI_4ed1d0bb_53c6
 LwEOIhoIvedcifvw_8670d89f_346b:     condition=UbvfrtIqsibAwaUp_8cd99f3a_5466:DeductionSchemeDesign{
 UbvfrtIqsibAwaUp_8cd99f3a_5466:      output="Rfkbb_rrIyfnimpj_80421ece_8e11"
@@ -288,6 +294,9 @@ JzcieadtwagxIepi_399f1530_0af8:          untranslated]
 BdrjvucugmdrIamx_64263468_52c8:         }JzcieadtwagxIepi_399f1530_0af8
 YwOghA_qnidvukgl_7bbe5e89_9743:        }BdrjvucugmdrIamx_64263468_52c8
 YwOghA_qnidvukgl_7bbe5e89_9743:        properties]
+YwOghA_qnidvukgl_7bbe5e89_9743:        destination=LjywitiebIbaqlEt_3d6fbeaa_ebb1:DestinationDesign{
+LjywitiebIbaqlEt_3d6fbeaa_ebb1:         PlaceTemplate="PefUqmtcqq_iUgmd_ff6fd280_165d"
+YwOghA_qnidvukgl_7bbe5e89_9743:        }LjywitiebIbaqlEt_3d6fbeaa_ebb1
 _yOOnxOkcibzc_Um_5ff1bdd2_b0d3:       }YwOghA_qnidvukgl_7bbe5e89_9743
 _yOOnxOkcibzc_Um_5ff1bdd2_b0d3:       children+XlI_l_oxlaffyayp_75bdec4f_85ee:FragmentTemplateDesign{
 XlI_l_oxlaffyayp_75bdec4f_85ee:        name
@@ -319,6 +328,9 @@ LoiwUcIu_ucxaalm_a05d22f5_3dc6:          untranslated]
 WkqplwamAmfEi_xe_4800297e_2460:         }LoiwUcIu_ucxaalm_a05d22f5_3dc6
 XlI_l_oxlaffyayp_75bdec4f_85ee:        }WkqplwamAmfEi_xe_4800297e_2460
 XlI_l_oxlaffyayp_75bdec4f_85ee:        properties]
+XlI_l_oxlaffyayp_75bdec4f_85ee:        destination=EmfhpOvtzugbmmpu_2368fdaf_a2a5:DestinationDesign{
+EmfhpOvtzugbmmpu_2368fdaf_a2a5:         PlaceTemplate="EjEaxkqaqmcowgws_eb687e0b_0f2f"
+XlI_l_oxlaffyayp_75bdec4f_85ee:        }EmfhpOvtzugbmmpu_2368fdaf_a2a5
 _yOOnxOkcibzc_Um_5ff1bdd2_b0d3:       }XlI_l_oxlaffyayp_75bdec4f_85ee
 _yOOnxOkcibzc_Um_5ff1bdd2_b0d3:       children]
 Syxu_fkOxIfcqkmU_a4fdeb13_2ac1:      }_yOOnxOkcibzc_Um_5ff1bdd2_b0d3
@@ -432,6 +444,9 @@ adUlravzUebes_Ix_4f5a6705_cac9:        untranslated]
 udeIyIv_oqegigUt_476674e5_59ff:       }adUlravzUebes_Ix_4f5a6705_cac9
 ihrcgfxIdafxsmqu_f2b01279_8e36:      }udeIyIv_oqegigUt_476674e5_59ff
 ihrcgfxIdafxsmqu_f2b01279_8e36:      properties]
+ihrcgfxIdafxsmqu_f2b01279_8e36:      destination=PIIIqisoxibqaizb_e2c16eb3_3739:DestinationDesign{
+PIIIqisoxibqaizb_e2c16eb3_3739:       PlaceTemplate="PefUqmtcqq_iUgmd_ff6fd280_165d"
+ihrcgfxIdafxsmqu_f2b01279_8e36:      }PIIIqisoxibqaizb_e2c16eb3_3739
 RainIlgdaqfnUefi_946497d2_1fa8:     }ihrcgfxIdafxsmqu_f2b01279_8e36
 RainIlgdaqfnUefi_946497d2_1fa8:     condition=NigiAyfwUI_cobcx_22f517cc_8f1a:DeductionSchemeDesign{
 NigiAyfwUI_cobcx_22f517cc_8f1a:      output="BdeUErjpkIbcagvg_d8ace607_3f23"
@@ -542,6 +557,9 @@ VjcowaOzyabfUn_g_688558e3_c0ba:        untranslated]
 IraktvrAxiekmiyt_89fca538_df1d:       }VjcowaOzyabfUn_g_688558e3_c0ba
 A_uxmtbibmadidve_33bed856_95e2:      }IraktvrAxiekmiyt_89fca538_df1d
 A_uxmtbibmadidve_33bed856_95e2:      properties]
+A_uxmtbibmadidve_33bed856_95e2:      destination=ZOgchvjjzue_micI_0438b3db_3de5:DestinationDesign{
+ZOgchvjjzue_micI_0438b3db_3de5:       PlaceTemplate="PefUqmtcqq_iUgmd_ff6fd280_165d"
+A_uxmtbibmadidve_33bed856_95e2:      }ZOgchvjjzue_micI_0438b3db_3de5
 eitIhvbjdi_uajwc_926cc37c_857a:     }A_uxmtbibmadidve_33bed856_95e2
 eitIhvbjdi_uajwc_926cc37c_857a:     condition=esUzamznIIezo_hh_79dea88b_4cab:DeductionSchemeDesign{
 esUzamznIIezo_hh_79dea88b_4cab:      output="OixfzAlEiebgqlei_6af22f6f_1f6f"

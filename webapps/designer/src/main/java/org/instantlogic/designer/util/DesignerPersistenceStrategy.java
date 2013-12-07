@@ -428,7 +428,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 								 } else {
 									 Instance newChild =(Instance)event.getNewStoredValue(); 
 									 if (newChild!=null) {
-										 InstanceNode newNode = initSubInstanceNode(newChild, instancesToSave, storageInfo);
+										 InstanceNode newNode = initSubInstanceNode(newChild, instancesToSave, storageInfo.root);
 										 storageInfo.node.setInstance(event.getAttribute(), newNode);
 									 }
 								 }
@@ -465,6 +465,9 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 		}
 		for(InstanceStorageInfo storageInfo: instancesToSave) {
 			logger.debug("Saving design {}/{}", storageInfo.subDirectory, storageInfo.fileName);
+			if (storageInfo.fileName==null) {
+				throw new RuntimeException("Storage is not a root");
+			}
 			File subDir = storageInfo.subDirectory==null?dir:new File(dir, storageInfo.subDirectory);
 			if (!subDir.exists()) {
 				subDir.mkdirs();
