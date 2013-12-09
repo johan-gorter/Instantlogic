@@ -34,6 +34,14 @@ public class ApplicationWrapper extends Application {
 		return delegate.getLoggedInEvent();
 	}
 	
+	public PlaceTemplate getStartPlace() {
+		return delegate.getStartPlace();
+	}
+	
+	public PlaceTemplate getLoggedInPlace() {
+		return delegate.getLoggedInPlace();
+	}
+	
 	public String[] getThemeNames() {
 		return delegate.getThemeNames();
 	}

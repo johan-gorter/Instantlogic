@@ -104,21 +104,23 @@ public class FlowStack extends AbstractDeductionContext {
 	void toPath(StringBuilder result) {
 		if (this.getCurrentNode() instanceof PlaceTemplate) {
 			PlaceTemplate place = (PlaceTemplate) this.getCurrentNode();
-			if (place.getParameters().length>0) {
+			if (this.flow==null) {
 				// New
-				if (place.getParameters().length>0) {
-					result.append(place.getTechnicalName());
-					result.append("(");
-					for (Entity<?> parameter: place.getParameters()) {
-						result.append(parameter.getName());
-						result.append(":");
-						appendInstanceId(result, getSelectedInstance(parameter));
+				result.append(place.getTechnicalName());
+				result.append("(");
+				boolean first = true;
+				for (Entity<?> parameter: place.getParameters()) {
+					if (!first) {
 						result.append(",");
+					} else {
+						first = false;
 					}
-					result.setLength(result.length()-1);
-					result.append(")");
-					return;
+					result.append(parameter.getName());
+					result.append(":");
+					appendInstanceId(result, getSelectedInstance(parameter));
 				}
+				result.append(")");
+				return;
 			}
 		}
 		// Old

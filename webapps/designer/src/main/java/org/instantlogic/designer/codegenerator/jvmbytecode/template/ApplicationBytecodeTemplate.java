@@ -164,7 +164,7 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 			{
 				mv = cw.visitMethod(ACC_PUBLIC, "getLoggedInPlace", "()Lorg/instantlogic/interaction/flow/PlaceTemplate;", null, null);
 				mv.visitCode();
-				emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"placeTemplate/", model.loggedInPlace+"PlaceTemplate");
+				emitGetInstanceField(mv, model.getRootPackageInternalPrefix()+"placetemplate/", model.loggedInPlace+"PlaceTemplate");
 				mv.visitInsn(ARETURN);
 				mv.visitMaxs(1, 1);
 				mv.visitEnd();

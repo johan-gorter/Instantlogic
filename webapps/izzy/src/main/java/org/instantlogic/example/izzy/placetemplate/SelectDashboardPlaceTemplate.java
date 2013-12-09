@@ -3,7 +3,6 @@ package org.instantlogic.example.izzy.placetemplate;
 import org.instantlogic.example.izzy.Project;
 import org.instantlogic.example.izzy.User;
 import org.instantlogic.example.izzy.entity.ProjectEntity;
-import org.instantlogic.example.izzy.event.NotLoggedInEvent;
 import org.instantlogic.interaction.util.FlowContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 
@@ -12,7 +11,7 @@ public class SelectDashboardPlaceTemplate extends AbstractSelectDashboardPlaceTe
 	@Override
 	public FlowEventOccurrence enter(FlowContext context) {
 		String username = context.getTraveler().getAuthenticatedUsername();
-		if (username==null) return new FlowEventOccurrence(NotLoggedInEvent.INSTANCE);
+		if (username==null) return new FlowEventOccurrence(NewNotLoggedInPlaceTemplate.INSTANCE);
 		Project project = context.getSelectedInstance(ProjectEntity.INSTANCE);
 		User user = null;
 		for (User candidateUser : project.getUsers()) {

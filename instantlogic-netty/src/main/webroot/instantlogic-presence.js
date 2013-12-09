@@ -117,7 +117,7 @@ YUI.add('instantlogic-presence', function (Y) {
         	},
         	findTravelersInPlace: function(instanceId) { // returns list of objects who are visiting a place which contains the instanceId
         		var result = [];
-        		var placeUrlSubstring = '/'+instanceId+'/';
+        		var placeUrlSubstring = ':'+instanceId;
         		for (var i=0;i<this.model.users.length;i++) {
         			var user = this.model.users[i];
         			for (var ii=0;ii<user.travelers.length;ii++) {

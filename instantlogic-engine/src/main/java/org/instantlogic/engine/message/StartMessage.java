@@ -35,10 +35,14 @@ public class StartMessage extends Message {
 			eventOccurrence = new FlowEventOccurrence(event, instances);
 		} else {
 			logger.info("Traveler {}-{} starting", new Object[]{traveler.getTravelerInfo().getAuthenticatedUsername(), traveler.getTravelerInfo().getTravelerId()});
-			if (application.getStartEvent()==null) {
-				throw new RuntimeException("There is no start event is defined");
+			if (application.getStartPlace()!=null) {
+				eventOccurrence = new FlowEventOccurrence(application.getStartPlace());
+			} else {
+				if (application.getStartEvent()==null) {
+					throw new RuntimeException("There is no start event is defined");
+				}
+				eventOccurrence = new FlowEventOccurrence(application.getStartEvent());
 			}
-			eventOccurrence = new FlowEventOccurrence(application.getStartEvent());
 		}
 		while (eventOccurrence!=null) {
 			eventOccurrence = flowContext.step(eventOccurrence);

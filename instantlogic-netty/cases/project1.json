@@ -2,7 +2,7 @@
   "instanceId": "Lruwoktaxucicnhv_cfa4d5c2_0295",
   "entityName": "project",
   "version": 0,
-  "last issue number": 60,
+  "last issue number": 61,
   "issues": [
     {
       "instanceId": "AejmpcAuOy_iucqO_d10bbffb_b030",
@@ -39,7 +39,7 @@
       "headline": "The fruit requires careful handling, rapid transport to ports, cooling, and refrigerated shipping.",
       "number": 46,
       "status": {
-        "instanceName": "resolved",
+        "instanceName": "open",
         "entityName": "issueStatus"
       },
       "comments": [
@@ -66,19 +66,6 @@
       "comments": [],
       "reporter": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
       "assignee": "a63e47f6-839d-452e-85e3-7d754d304ec3"
-    },
-    {
-      "instanceId": "LtussUzpumcusawu_59f26e7e_25a4",
-      "entityName": "issue",
-      "description": "The end of flows is near",
-      "headline": "Issue created using place",
-      "number": 60,
-      "status": {
-        "instanceName": "closed",
-        "entityName": "issueStatus"
-      },
-      "comments": [],
-      "reporter": "0c7089e7-cd6e-4954-8f7d-7ec8d5fbdbc8"
     },
     {
       "instanceId": "OqhbzwAntqdlmeEv_398317e2_7566",
@@ -131,6 +118,12 @@
       "username": "johan@instantlogic.org"
     },
     {
+      "instanceId": "EfIzEhiEmicOqkr__e6771322_bdc6",
+      "entityName": "user",
+      "name": "Sec",
+      "username": "sec@instantlogic.org"
+    },
+    {
       "instanceId": "WyfzAmjEdqfjuhoo_96ba133b_e046",
       "entityName": "user",
       "name": "Monkey",
@@ -147,6 +140,12 @@
       "entityName": "user",
       "name": "Alice",
       "username": "alice@instantlogic.org"
+    },
+    {
+      "instanceId": "eyfalqlUvedlwjtt_0c8c8bd7_a350",
+      "entityName": "user",
+      "name": "Jgo",
+      "username": "jgo@instantlogic.org"
     }
   ]
 }
