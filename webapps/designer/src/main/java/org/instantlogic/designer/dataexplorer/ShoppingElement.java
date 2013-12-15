@@ -20,14 +20,14 @@ public class ShoppingElement extends Element {
 
 	
 	private Entity<?> potentialCandidateEntity;
-	private DataExplorerRootFlow root;
+	private DataExplorerAdministration administration;
 
-	public ShoppingElement(DataExplorerRootFlow root) {
-		this.root = root;
+	public ShoppingElement(DataExplorerAdministration administration) {
+		this.administration = administration;
 	}
 
-	public ShoppingElement(DataExplorerRootFlow root, Entity<?> potentialCandidateEntity) {
-		this(root);
+	public ShoppingElement(DataExplorerAdministration administration, Entity<?> potentialCandidateEntity) {
+		this(administration);
 		this.potentialCandidateEntity = potentialCandidateEntity;
 	}
 
@@ -89,10 +89,10 @@ public class ShoppingElement extends Element {
 				cartToRemove = cart;
 			}
 			if ((id+"-gotoInstance").equals(context.getPageElementId())) {
-				return new FlowEventOccurrence(root.getEntityDetailsEvent(cart.getInstance().getMetadata().getEntity()), cart.getInstance());
+				return new FlowEventOccurrence(administration.getEntityDetailsPlaceTemplate(cart.getInstance().getMetadata().getEntity()), cart.getInstance());
 			}
 			if ((id+"-gotoRelation").equals(context.getPageElementId())) {
-				return new FlowEventOccurrence(root.getEntityFlow(cart.getInstance().getMetadata().getEntity()).getRelationDetailsEvent(cart.getRelation()), cart.getInstance());
+				return new FlowEventOccurrence(administration.getRelationPlaceTemplate(cart.getInstance().getMetadata().getEntity(), cart.getRelation().getUniqueId()), cart.getInstance());
 			}
 			context.exitScope();
 		}

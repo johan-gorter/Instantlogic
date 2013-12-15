@@ -1,29 +1,39 @@
 package org.instantlogic.designer.dataexplorer;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.instantlogic.interaction.Application;
-import org.instantlogic.interaction.flow.Flow;
 import org.instantlogic.interaction.flow.FlowEvent;
+import org.instantlogic.interaction.flow.PlaceTemplate;
 
 // Wraps another application and adds the DataExplorer flows
 public class ApplicationWithDataExplorer extends ApplicationWrapper {
 
-	private final FlowWithDataExplorer mainFlow;
+	private final DataExplorerAdministration administration;
+	private PlaceTemplate[] placeTemplates;
 
 	public ApplicationWithDataExplorer(Application delegate) {
 		super(delegate);
-		mainFlow = new FlowWithDataExplorer(delegate.getMainFlow(), delegate);
+		administration = new DataExplorerAdministration(delegate);
 	}
 
-	public Flow getMainFlow() {
-		return mainFlow;
+	@Override
+	public PlaceTemplate getStartPlace() {
+		PlaceTemplate startPlace = super.getStartPlace();
+		if (startPlace==null) {
+			return administration.getEntityDetailsPlaceTemplate(getCaseEntity());
+		}
+		return super.getStartPlace();
 	}
 	
 	@Override
-	public FlowEvent getStartEvent() {
-		FlowEvent startEvent = super.getStartEvent();
-		if (startEvent==null) {
-			return ExploreDataEvent.INSTANCE;
+	public PlaceTemplate[] getPlaceTemplates() {
+		if (placeTemplates == null) {
+			List<PlaceTemplate> newPlaceTemplates = administration.getPlaceTemplates();
+			newPlaceTemplates.addAll(Arrays.asList(super.getPlaceTemplates()));
+			placeTemplates = newPlaceTemplates.toArray(new PlaceTemplate[newPlaceTemplates.size()]);
 		}
-		return startEvent;
+		return placeTemplates;
 	}
 }

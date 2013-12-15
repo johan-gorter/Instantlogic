@@ -20,17 +20,13 @@ import org.instantlogic.interaction.page.SelectionElement;
 public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
-	private DataExplorerEntityFlow entityFlow;
-	private List<FlowEvent> directEvents;
+//	private List<FlowEvent> directEvents;
 	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
-	private DataExplorerRootFlow rootFlow;
+	private DataExplorerAdministration administration;
 
-	public DataExplorerEntityDetailsPlaceTemplate(DataExplorerEntityFlow entityFlow, List<FlowEvent> directEvents, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerRootFlow dataExplorerRootFlow) {
-		this.entity = entityFlow.getEntity();
-		this.entityFlow = entityFlow;
-		this.directEvents = directEvents;
-		this.breadcrumbElement = breadcrumbElement;
-		this.rootFlow = dataExplorerRootFlow;
+	public DataExplorerEntityDetailsPlaceTemplate(Entity<?> entity, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerAdministration administration) {
+		this.entity = entity;
+		this.administration = administration;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -43,7 +39,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 			.addChild("mainContent", new FragmentTemplate("staticinstances-link", "Link")
 				.putText("text", new TextTemplate().getUntranslated().add("Static instances").getTextTemplate())
 				.setEvent(ExploreStaticInstancesEvent.INSTANCE))
-			.addChild("mainContent", new ShoppingElement(rootFlow, entity))
+			.addChild("mainContent", new ShoppingElement(administration, entity))
 		    .addChild("mainContent", breadcrumbElement)
 			.addChild("mainContent",
                 new FragmentTemplate("h1", "Heading1")      
@@ -53,10 +49,11 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
             );
 		
 		// DirectEvent buttons
-		for (FlowEvent directEvent : directEvents) {
-			page.addChild("mainContent", new FragmentTemplate("direct-"+directEvent.getName(), "Button")
-				.putText("text", new TextTemplate().getUntranslated().add(directEvent.getName()).getTextTemplate())
-				.setEvent(directEvent)
+		List<PlaceTemplate> placeTemplates = administration.getPlacesWithSingleParameter(entity);
+		for (PlaceTemplate placeTemplate : placeTemplates) {
+			page.addChild("mainContent", new FragmentTemplate("direct-"+placeTemplate.getTechnicalName(), "Button")
+				.putText("text", new TextTemplate().getUntranslated().add(placeTemplate.getName()).getTextTemplate())
+				.setDestination(placeTemplate)
 			);
 		}
 		
@@ -108,7 +105,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 						.addChild("content", 
 							new FragmentTemplate(id+"detailsButton", "Button").setStyleNames(new String[]{"btn"})
 								.putText("text", new TextTemplate().getUntranslated().add("Relation").getTextTemplate())
-								.setEvent(entityFlow.getRelationDetailsEvent(relation))
+								.setDestination(administration.getRelationPlaceTemplate(entity, relation.getUniqueId()))
 						)
 					)
 		);

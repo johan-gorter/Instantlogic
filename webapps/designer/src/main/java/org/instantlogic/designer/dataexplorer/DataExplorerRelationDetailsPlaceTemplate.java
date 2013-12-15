@@ -3,13 +3,13 @@ package org.instantlogic.designer.dataexplorer;
 import java.util.Map.Entry;
 
 import org.instantlogic.designer.deduction.EntityNameDeduction;
+import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.deduction.AttributeDeduction;
 import org.instantlogic.fabric.deduction.IdDeduction;
 import org.instantlogic.fabric.deduction.SelectedInstanceDeduction;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
-import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.page.FragmentTemplate;
 import org.instantlogic.interaction.page.SelectionElement;
@@ -19,18 +19,18 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
 	private Relation<?, ?, ?> relation;
-	private DataExplorerRelationFlow flow;
 	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
-	private DataExplorerRootFlow rootFlow;
+	private DataExplorerAdministration administration;
+	private DataExplorerRelationAdministration relationAdministration;
 
-	public DataExplorerRelationDetailsPlaceTemplate(DataExplorerRelationFlow flow, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerRootFlow dataExplorerRootFlow) {
-		this.entity = flow.getEntity();
-		this.relation = flow.getRelation();
-		this.flow = flow;
+	public DataExplorerRelationDetailsPlaceTemplate(DataExplorerAdministration administration, DataExplorerRelationAdministration relationAdministration, DataExplorerOwnerBreadcrumbElement breadcrumbElement, Entity<?> entity, Relation<?, ? extends Object, ? extends Instance> relation) {
+		this.entity = entity;
+		this.relation = relation;
+		this.relationAdministration = relationAdministration;
 		this.breadcrumbElement = breadcrumbElement;
-		this.rootFlow = dataExplorerRootFlow;
+		this.administration = administration;
 	}
-	
+
 	@Override
 	public FragmentTemplate getRootContainer() {
 		FragmentTemplate page = new FragmentTemplate(relation.getUniqueId()+"-details", "Page")
@@ -39,7 +39,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 		.addChild("mainContent", new FragmentTemplate("staticinstances-link", "Link")
 			.putText("text", new TextTemplate().getUntranslated().add("Static instances").getTextTemplate())
 			.setEvent(ExploreStaticInstancesEvent.INSTANCE))
-		.addChild("mainContent", new ShoppingElement(rootFlow))
+		.addChild("mainContent", new ShoppingElement(administration))
 		.addChild("mainContent", breadcrumbElement)
 		.addChild("mainContent",
                 new FragmentTemplate("h1", "Heading1")      
@@ -57,23 +57,23 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 			)
 		);
 		
-		for (Entry<Entity, FlowEvent> entry : flow.getAddNewEvents().entrySet()) {
+		for (Entry<Entity, DataExplorerCreateInstancePlaceTemplate> entry : relationAdministration.createPlaceTemplates.entrySet()) {
 			Entity entity = entry.getKey();
 			page.addChild("mainContent",
 				new FragmentTemplate("add-"+entity.getUniqueId(), "Button")
 					.putText("text", new TextTemplate().getUntranslated().add("Add new "+entity.getName()).getTextTemplate())
-					.setEvent(entry.getValue())
+					.setDestination(entry.getValue())
 			);
 		}
 		
-		if (flow.getShopForInstancesEvent()!=null) {
+		if (relationAdministration.shopPlaceTemplate!=null) {
 			page.addChild("mainContent",
 				new FragmentTemplate("shopForInstancesOuter", "Block")
 					.addChild("content", 
 						new FragmentTemplate("shopForInstances", "Button")
 							.addChild("content", new FragmentTemplate("shopping-icon","Icon").setStyleNames(new String[]{"icon-shopping-cart"}))
 							.putText("text", new TextTemplate().getUntranslated().add("Start shopping for instances").getTextTemplate())
-							.setEvent(flow.getShopForInstancesEvent())
+							.setDestination(relationAdministration.shopPlaceTemplate)
 					)
 			);
 		}
@@ -109,7 +109,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 								new FragmentTemplate("cell-operations", "Cell")
 									.addChild("content", new FragmentTemplate("delete", "Button").setStyleNames(new String[]{"btn-small", "btn-danger"})
 										.addChild("content", new FragmentTemplate("delete-icon","Icon").setStyleNames(new String[]{"icon-remove"}))
-										.setEvent(flow.removeInstanceEvent)
+										.setDestination(new DataExplorerRemoveInstancePlaceTemplate(entity, relation, administration))
 									)
 							)
 					)

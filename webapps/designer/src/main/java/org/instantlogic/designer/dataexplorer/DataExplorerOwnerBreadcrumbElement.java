@@ -11,6 +11,7 @@ import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.interaction.flow.FlowEvent;
+import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.flow.impl.SimpleFlowEvent;
 import org.instantlogic.interaction.page.Element;
 import org.instantlogic.interaction.util.ChangeContext;
@@ -22,12 +23,12 @@ public class DataExplorerOwnerBreadcrumbElement extends Element {
 
 	private static final String[] STYLENAMES_BREADCRUMB_NODE = new String[]{"breadcrumb-node"};
 	private final Entity<?> entity;
-	private final DataExplorerRootFlow root;
+	private final DataExplorerAdministration administration;
 	private boolean includeSelf;
 	
-	public DataExplorerOwnerBreadcrumbElement(Entity<?> forEntity, DataExplorerRootFlow root, boolean includeSelf) {
+	public DataExplorerOwnerBreadcrumbElement(Entity<?> forEntity, DataExplorerAdministration administration, boolean includeSelf) {
 		this.entity = forEntity;
-		this.root = root;
+		this.administration = administration;
 		this.includeSelf = includeSelf;
 	}
 	
@@ -97,7 +98,7 @@ public class DataExplorerOwnerBreadcrumbElement extends Element {
 					}
 					// The owners hierarchy first
 					context.pushSelectedInstance(owner);
-					DataExplorerOwnerBreadcrumbElement ownerElement = root.getBreadcrumbElement(reverseRelation.getTo());
+					DataExplorerOwnerBreadcrumbElement ownerElement = administration.getBreadcrumbElement(reverseRelation.getTo());
 					ownerElement.renderAndWrap(context, appendTo, node1, depth+2);
 					context.popSelectedInstance();
 					return;
@@ -121,14 +122,13 @@ public class DataExplorerOwnerBreadcrumbElement extends Element {
 				String relationName = suffix.substring(0, suffix.indexOf('-'));
 				String uniqueId = suffix.substring(suffix.indexOf('-')+1);
 				Instance instance = caseAdministration.getInstanceByUniqueId(uniqueId);
-				DataExplorerEntityFlow entityFlow = root.getEntityFlow(instance.getMetadata().getEntity());
-				FlowEvent relationDetailsEvent = entityFlow.getRelationDetailsEvent(relationName);
-				return new FlowEventOccurrence(relationDetailsEvent, instance);
+				PlaceTemplate relationDetailsPlaceTemplate = administration.getRelationPlaceTemplate(instance.getMetadata().getEntity(), relationName);
+				return new FlowEventOccurrence(relationDetailsPlaceTemplate, instance);
 			} else if (suffix.startsWith("-instance-")) {
 				String uniqueId = suffix.substring("-instance-".length());
 				Instance instance = caseAdministration.getInstanceByUniqueId(uniqueId);
-				SimpleFlowEvent entityDetailsEvent = root.getEntityDetailsEvent(instance.getMetadata().getEntity());
-				return new FlowEventOccurrence(entityDetailsEvent, instance);
+				PlaceTemplate entityDetailsPlaceTemplate = administration.getEntityDetailsPlaceTemplate(instance.getMetadata().getEntity());
+				return new FlowEventOccurrence(entityDetailsPlaceTemplate, instance);
 			}
 		}
 		return null;
