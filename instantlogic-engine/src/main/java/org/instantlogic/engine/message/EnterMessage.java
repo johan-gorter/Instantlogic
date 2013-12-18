@@ -7,6 +7,7 @@ import org.instantlogic.interaction.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Deprecated
 public class EnterMessage extends Message {
 
 	private static final Logger logger = LoggerFactory.getLogger(EnterMessage.class);

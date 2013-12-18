@@ -13,7 +13,7 @@ public class DataExplorerRemoveInstancePlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
 	private final String entityId;
-	private final String relationName;
+	private final String relationId;
 	private final DataExplorerAdministration administration;
 	@SuppressWarnings("rawtypes")
 	private Relation relation;
@@ -25,7 +25,7 @@ public class DataExplorerRemoveInstancePlaceTemplate extends PlaceTemplate {
 		this.entity = entity;
 		this.entityId = entity.getUniqueId();
 		this.relation = relation;
-		this.relationName = relation.getName();
+		this.relationId = relation.getUniqueId();
 		this.administration = administration;
 		this.parameters = new Entity<?>[]{entity, relation.getTo()};
 	}
@@ -47,7 +47,7 @@ public class DataExplorerRemoveInstancePlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getName() {
-		return "_DataExplorer-"+entityId+"-remove-from-"+relationName;
+		return "_DataExplorer-"+entityId+"-remove-from-"+relationId;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -56,6 +56,6 @@ public class DataExplorerRemoveInstancePlaceTemplate extends PlaceTemplate {
 		Instance instance = context.getSelectedInstance(entity);
 		Instance instanceToRemove = context.getSelectedInstance(null);
 		((WriteableAttributeValue)relation.get(instance)).clearOrRemove(instanceToRemove);
-		return new FlowEventOccurrence(administration.getRelationPlaceTemplate(entity, relationName), instance);
+		return new FlowEventOccurrence(administration.getRelationPlaceTemplate(entity, relationId), instance);
 	}
 }

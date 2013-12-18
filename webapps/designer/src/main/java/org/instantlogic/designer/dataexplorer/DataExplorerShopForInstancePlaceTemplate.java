@@ -14,7 +14,7 @@ public class DataExplorerShopForInstancePlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
 	private final String entityId;
-	private final String relationName;
+	private final String relationId;
 	private final DataExplorerAdministration administration;
 	@SuppressWarnings("rawtypes")
 	private Relation relation;
@@ -25,7 +25,7 @@ public class DataExplorerShopForInstancePlaceTemplate extends PlaceTemplate {
 		this.entity = entity;
 		this.entityId = entity.getUniqueId();
 		this.relation = relation;
-		this.relationName = relation.getName();
+		this.relationId = relation.getUniqueId();
 		this.administration = administration;
 		this.parameters = new Entity<?>[]{entity};
 	}
@@ -47,7 +47,7 @@ public class DataExplorerShopForInstancePlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getName() {
-		return "_DataExplorer-"+entityId+"-shop-for-"+relationName;
+		return "_DataExplorer-"+entityId+"-shop-for-"+relationId;
 	}
 
 	@Override
@@ -55,6 +55,6 @@ public class DataExplorerShopForInstancePlaceTemplate extends PlaceTemplate {
 		Instance instance = context.getSelectedInstance(entity);
 		List<RelationInstanceShopping> shoppingFor = context.getTraveler().getOrCreateExtension(RelationInstanceShopping.TravelerExtension.class).getCurrentlyShoppingFor();
 		shoppingFor.add(new RelationInstanceShopping(relation, instance));
-		return new FlowEventOccurrence(administration.getRelationPlaceTemplate(entity, relationName), instance);
+		return new FlowEventOccurrence(administration.getRelationPlaceTemplate(entity, relationId), instance);
 	}
 }

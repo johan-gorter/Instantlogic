@@ -31,7 +31,7 @@ public class FlowStack extends AbstractDeductionContext {
 				throw new InvalidFlowCoordinatesException("Unknown instance "+instanceId);
 			}
 		}
-		if (!entity.getInstanceClass().isAssignableFrom(instance.getClass())) {
+		if (entity != null && !entity.getInstanceClass().isAssignableFrom(instance.getClass())) {
 			throw new InvalidFlowCoordinatesException("Selected instance is not a "+entity.getInstanceClass().getName());
 		}
 		return instance;
@@ -49,7 +49,7 @@ public class FlowStack extends AbstractDeductionContext {
 					result.currentNode = placeTemplate;
 					for(Entity<?> parameter: placeTemplate.getParameters()) {
 						String[] keyValue = pathElements[index++].split(":");
-						if (keyValue.length!=2 || !parameter.getName().equals(keyValue[0])) {
+						if (keyValue.length!=2 || (parameter!=null && !parameter.getName().equals(keyValue[0]))) {
 							throw new RuntimeException("Invalid place parameter value "+pathElements[index-1]);
 						}
 						result.pushSelectedInstance(getInstance(parameter, keyValue[1], caseInstance));

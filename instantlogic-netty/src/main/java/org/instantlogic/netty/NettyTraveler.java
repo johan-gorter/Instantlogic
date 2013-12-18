@@ -123,8 +123,8 @@ public class NettyTraveler implements TravelerProxy {
 				if (eventElement!=null) event = eventElement.getAsString();
 				messages.add(new StartMessage(location, event));
 			} else if ("enter".equals(messageName)) {
-				String newLocation = message.getAsJsonObject().get("location").getAsString();
-				messages.add(new EnterMessage(newLocation));
+				JsonElement newLocation = message.getAsJsonObject().get("location");
+				messages.add(new EnterMessage(newLocation==null?null:newLocation.getAsString()));
 			} else if ("leave".equals(messageName)) {
 				messages.add(new LeaveMessage());
 			} else if ("presence".equals(messageName)) {

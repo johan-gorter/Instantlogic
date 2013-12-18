@@ -22,6 +22,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
 	private DataExplorerAdministration administration;
 	private DataExplorerRelationAdministration relationAdministration;
+	private Entity<?>[] parameters;
 
 	public DataExplorerRelationDetailsPlaceTemplate(DataExplorerAdministration administration, DataExplorerRelationAdministration relationAdministration, DataExplorerOwnerBreadcrumbElement breadcrumbElement, Entity<?> entity, Relation<?, ? extends Object, ? extends Instance> relation) {
 		this.entity = entity;
@@ -29,6 +30,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 		this.relationAdministration = relationAdministration;
 		this.breadcrumbElement = breadcrumbElement;
 		this.administration = administration;
+		this.parameters = new Entity<?>[]{entity};
 	}
 
 	@Override
@@ -38,7 +40,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 			.putText("text", new TextTemplate().getUntranslated().add("Data Explorer").getTextTemplate()))
 		.addChild("mainContent", new FragmentTemplate("staticinstances-link", "Link")
 			.putText("text", new TextTemplate().getUntranslated().add("Static instances").getTextTemplate())
-			.setEvent(ExploreStaticInstancesEvent.INSTANCE))
+			.setDestination(administration.getStaticInstancesPlaceTemplate()))
 		.addChild("mainContent", new ShoppingElement(administration))
 		.addChild("mainContent", breadcrumbElement)
 		.addChild("mainContent",
@@ -53,7 +55,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 					.addChild("content", new FragmentTemplate(entity.getUniqueId()+"link1", "Text").putText("text", new TextTemplate().getUntranslated().add(entity.getName() + " '").getTextTemplate()))
 					.addChild("content", new FragmentTemplate(entity.getUniqueId()+"link2", "Text").putText("text", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(entity)))
 					.addChild("content", new FragmentTemplate(entity.getUniqueId()+"link3", "Text").putText("text", new TextTemplate().getUntranslated().add("'").getTextTemplate()))
-					.setEvent(ExploreDataEvent.INSTANCE)
+					.setDestination(administration.getEntityDetailsPlaceTemplate(entity))
 			)
 		);
 		
@@ -104,12 +106,12 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 									.addChild("content", 
 										new FragmentTemplate("toInstance", "Link")
 											.putText("text", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(relation.getTo()))
-											.setEvent(ExploreDataEvent.INSTANCE)
+											.setDestination(administration.getEntityDetailsPlaceTemplate(relation.getTo()))
 									),
 								new FragmentTemplate("cell-operations", "Cell")
 									.addChild("content", new FragmentTemplate("delete", "Button").setStyleNames(new String[]{"btn-small", "btn-danger"})
 										.addChild("content", new FragmentTemplate("delete-icon","Icon").setStyleNames(new String[]{"icon-remove"}))
-										.setDestination(new DataExplorerRemoveInstancePlaceTemplate(entity, relation, administration))
+										.setDestination(relationAdministration.removePlaceTemplate)
 									)
 							)
 					)
@@ -143,14 +145,19 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 		result.setEntityOfInstance(selectedInstance);
 		return result;
 	}
-
+	
 	@Override
-	public String getId() {
-		return relation.getUniqueId();
+	public Entity<?>[] getParameters() {
+		return parameters;
 	}
 
 	@Override
 	public String getName() {
-		return "details";
+		return "_DataExplorer-"+entity.getUniqueId()+"-"+relation.getName();
+	}
+
+	@Override
+	public String getId() {
+		return getName();
 	}
 }

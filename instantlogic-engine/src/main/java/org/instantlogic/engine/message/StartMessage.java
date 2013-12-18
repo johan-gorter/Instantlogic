@@ -26,6 +26,7 @@ public class StartMessage extends Message {
 		FlowEventOccurrence eventOccurrence;
 		FlowContext flowContext = FlowContext.create(application.getPlaceTemplates(), application.getMainFlow(), location, theCase, presence.getCaseName(), traveler.getTravelerInfo());
 		if (event!=null) {
+			// Old
 			String[] components = event.split("/");
 			Instance[] instances = new Instance[components.length-1];
 			for (int i=1;i<components.length;i++) {
@@ -33,7 +34,11 @@ public class StartMessage extends Message {
 			}
 			FlowEvent event = flowContext.getFlowStack().findEvent(components[0]);
 			eventOccurrence = new FlowEventOccurrence(event, instances);
+		} else if (location!=null) {
+			logger.info("Traveler {}-{} starting at {}", new Object[]{traveler.getTravelerInfo().getAuthenticatedUsername(), traveler.getTravelerInfo().getTravelerId(), location});
+			eventOccurrence = flowContext.getPage().enter(flowContext);		
 		} else {
+			// Old
 			logger.info("Traveler {}-{} starting", new Object[]{traveler.getTravelerInfo().getAuthenticatedUsername(), traveler.getTravelerInfo().getTravelerId()});
 			if (application.getStartPlace()!=null) {
 				eventOccurrence = new FlowEventOccurrence(application.getStartPlace());

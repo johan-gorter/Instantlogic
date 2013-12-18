@@ -12,7 +12,6 @@ import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
 import org.instantlogic.fabric.util.DeductionContext;
 import org.instantlogic.fabric.util.ValueAndLevel;
-import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.page.FragmentTemplate;
 import org.instantlogic.interaction.page.SelectionElement;
@@ -20,13 +19,15 @@ import org.instantlogic.interaction.page.SelectionElement;
 public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
-//	private List<FlowEvent> directEvents;
 	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
 	private DataExplorerAdministration administration;
+	private Entity<?>[] parameters;
 
 	public DataExplorerEntityDetailsPlaceTemplate(Entity<?> entity, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerAdministration administration) {
 		this.entity = entity;
 		this.administration = administration;
+		this.breadcrumbElement = breadcrumbElement;
+		this.parameters = new Entity<?>[]{entity};
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -38,7 +39,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 				.putText("text", new TextTemplate().getUntranslated().add("Data Explorer").getTextTemplate()))
 			.addChild("mainContent", new FragmentTemplate("staticinstances-link", "Link")
 				.putText("text", new TextTemplate().getUntranslated().add("Static instances").getTextTemplate())
-				.setEvent(ExploreStaticInstancesEvent.INSTANCE))
+				.setDestination(administration.getStaticInstancesPlaceTemplate()))
 			.addChild("mainContent", new ShoppingElement(administration, entity))
 		    .addChild("mainContent", breadcrumbElement)
 			.addChild("mainContent",
@@ -99,7 +100,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 								new FragmentTemplate(id+"-linkBlock", "Block").addChild("content", 
 									new FragmentTemplate(id+"-link", "Link")
 										.putText("text", getEntityTitle(relation.getTo()))
-										.setEvent(ExploreDataEvent.INSTANCE))
+										.setDestination(administration.getEntityDetailsPlaceTemplate(relation.getTo())))
 								)
 						)
 						.addChild("content", 
@@ -142,15 +143,17 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 		};
 	}
 
+	@Override
+	public String getName() {
+		return "_DataExplorer-"+entity.getUniqueId();
+	}
 
 	@Override
 	public String getId() {
-		return entity.getUniqueId();
+		return getName();
 	}
 
-	@Override
-	public String getName() {
-		return "details";
+	public Entity<?>[] getParameters() {
+		return parameters;
 	}
-
 }

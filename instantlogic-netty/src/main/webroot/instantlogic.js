@@ -61,11 +61,10 @@ YUI.add('instantlogic', function (Y) {
         	this.history = new Y.HistoryHash();
         	this.history.on('locationChange', this.onLocationChange, this);
         	this.history.on('locationRemove', this.onLocationChange, this);
-        	this.history.on('eventChange', this.onEventChange, this);
-            this.location = this.history.get('location');
+            this.location = null;
             this.presenceNode.setContent('One moment...');
             this.setState('connecting');
-            this.sendEnter();
+            this.sendStart(this.history.get('location'));
             var me = this;
             window.onbeforeunload = function() {
             	me.stop();
@@ -87,19 +86,11 @@ YUI.add('instantlogic', function (Y) {
         
         onLocationChange: function(e) {
         	if (e.src !== Y.HistoryBase.SRC_ADD && e.src !== Y.HistoryBase.SRC_REPLACE && 
-        			!this.history.get('event') && this.location != this.history.get('location')) {
-        		this.location = e.newVal;
-        		this.sendEnter();
+        			this.location != this.history.get('location')) {
+        		this.sendStart(e.newVal);
         	}
         },
 
-        onEventChange: function(e) {
-        	if (e.src !== Y.HistoryBase.SRC_ADD && e.src !== Y.HistoryBase.SRC_REPLACE) {
-        		this.location = this.history.get('location');
-        		this.sendEnter();
-        	}
-        },
-        
         recomposePlace: function () {
         	var model = this.placeFragmentHolder.fragment.model;
         	this.placeFragmentHolder.destroy();
@@ -228,16 +219,8 @@ YUI.add('instantlogic', function (Y) {
         	}
         },
         
-        sendEnter: function() {
-    		var event = this.history.get('event');
-        	if (this.location && !event) {
-        		this.enqueueMessage({message:'enter', location: this.location});
-        	} else {
-	    		this.enqueueMessage({message:'start', event: event, location: this.location});
-        	}
-    		if (event) {
-    			this.history.replaceValue('event', null);
-    		}
+        sendStart: function(location) {
+    		this.enqueueMessage({message:'start', location: location});
         },
         
         sendSubmit: function(id) {
@@ -287,7 +270,7 @@ YUI.add('instantlogic', function (Y) {
                             var me = this;
                         	setTimeout(function () {
                         		me.setState('connecting');
-                        		me.sendEnter(); 
+                        		me.sendStart(this.history.get('location')); 
                         	}, 300);
                         } else {
                         	this.setState('error');
@@ -466,10 +449,12 @@ YUI.add('instantlogic', function (Y) {
         		dataExplorer.on('click', function(e) {
         			e.preventDefault();
         			e.stopPropagation();
-        			engine.history.replaceValue('event', 'ExploreData/' + engine.location);
-        			engine.location = null;
-        			engine.history.replaceValue('location', null);
-        			engine.sendEnter();
+        			var tail = ')';
+        			var index = engine.location.lastIndexOf(':');
+        			if (index>=0) {
+        				tail = 'instance'+engine.location.substr(index);
+        			}
+        			engine.sendStart('_DataExplorer-explore('+tail);
         		});
         		this.node.appendChild(dataExplorer);
         	}

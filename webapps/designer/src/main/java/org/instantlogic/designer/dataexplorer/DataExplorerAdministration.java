@@ -30,10 +30,10 @@ public class DataExplorerAdministration {
 		
 		SortedMap<String,Entity<?>> allEntitiesById = CaseAdministration.getAllEntitiesById(application.getCaseEntity());
 		for (Entity<?> entity : allEntitiesById.values()) {
-			DataExplorerOwnerBreadcrumbElement breadcrumbElement = new DataExplorerOwnerBreadcrumbElement(entity, this, false);
+			DataExplorerOwnerBreadcrumbElement breadcrumbElement = new DataExplorerOwnerBreadcrumbElement(entity, this, true);
 			breadcrumbElements.put(entity.getUniqueId(), breadcrumbElement);
 			DataExplorerEntityDetailsPlaceTemplate entityPlaceTemplate 
-				= new DataExplorerEntityDetailsPlaceTemplate(entity, new DataExplorerOwnerBreadcrumbElement(entity, this, true), this);
+				= new DataExplorerEntityDetailsPlaceTemplate(entity, new DataExplorerOwnerBreadcrumbElement(entity, this, false), this);
 			entityDetailsPlaceTemplates.put(entity.getUniqueId(), entityPlaceTemplate);
 			
 			relationPlaceTemplates.put(entity.getUniqueId(), new HashMap<String, DataExplorerRelationAdministration>());
@@ -50,17 +50,17 @@ public class DataExplorerAdministration {
 	private void addRelationDetails(Entity<?> entity, Relation<?, ? extends Object, ? extends Instance> relation, DataExplorerOwnerBreadcrumbElement breadcrumbElement) {
 		DataExplorerRelationAdministration relationAdministration = new DataExplorerRelationAdministration(relation, this, breadcrumbElement);
 		Map<String, DataExplorerRelationAdministration> relationsForEntity = relationPlaceTemplates.get(entity.getUniqueId());
-		relationsForEntity.put(relation.getName(), relationAdministration);
+		relationsForEntity.put(relation.getUniqueId(), relationAdministration);
 	}
 
 	@SuppressWarnings("rawtypes")
 	public PlaceTemplate getEntityDetailsPlaceTemplate(Entity entity) {
-		return entityDetailsPlaceTemplates.get(entity);
+		return entityDetailsPlaceTemplates.get(entity.getUniqueId());
 	}
 
 	@SuppressWarnings("rawtypes")
-	public PlaceTemplate getRelationPlaceTemplate(Entity entity, String relationName) {
-		return relationPlaceTemplates.get(entity.getUniqueId()).get(relationName).relationDetailsPlaceTemplate;
+	public PlaceTemplate getRelationPlaceTemplate(Entity entity, String relationId) {
+		return relationPlaceTemplates.get(entity.getUniqueId()).get(relationId).relationDetailsPlaceTemplate;
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -97,6 +97,12 @@ public class DataExplorerAdministration {
 				relationAdministration.addPlaceTemplates(placeTemplates);
 			}
 		}
+		placeTemplates.add(staticInstancesPlaceTemplate);
+		placeTemplates.add(new DataExplorerExplorePlaceTemplate(this));
 		return placeTemplates;
+	}
+
+	public DataExplorerStaticInstancesPlaceTemplate getStaticInstancesPlaceTemplate() {
+		return staticInstancesPlaceTemplate;
 	}
 }

@@ -39,7 +39,7 @@
       "headline": "The fruit requires careful handling, rapid transport to ports, cooling, and refrigerated shipping.",
       "number": 46,
       "status": {
-        "instanceName": "open",
+        "instanceName": "resolved",
         "entityName": "issueStatus"
       },
       "comments": [
@@ -65,7 +65,7 @@
       },
       "comments": [],
       "reporter": "Yhyiwkmz_i__aaoj_6d3418cd_89d3",
-      "assignee": "a63e47f6-839d-452e-85e3-7d754d304ec3"
+      "assignee": "WyfzAmjEdqfjuhoo_96ba133b_e046"
     },
     {
       "instanceId": "OqhbzwAntqdlmeEv_398317e2_7566",
@@ -88,7 +88,7 @@
       "headline": "yellow",
       "number": 57,
       "status": {
-        "instanceName": "resolved",
+        "instanceName": "closed",
         "entityName": "issueStatus"
       },
       "comments": [],

@@ -65,12 +65,12 @@ public class DataExplorerStaticInstancesPlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getId() {
-		return "staticinstances";
+		return getName();
 	}
 
 	@Override
 	public String getName() {
-		return "Static instances";
+		return "staticinstances";
 	}
 
 }

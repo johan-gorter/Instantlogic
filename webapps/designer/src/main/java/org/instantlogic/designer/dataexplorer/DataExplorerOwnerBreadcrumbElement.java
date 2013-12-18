@@ -89,7 +89,7 @@ public class DataExplorerOwnerBreadcrumbElement extends Element {
 					// Relation link
 					Map<String, Object> ownerRelation = new LinkedHashMap<String, Object>();
 					ownerRelation.put("type", "Link");
-					ownerRelation.put("id", id+"-relation-"+reverseRelation.getReverseRelation().getName()+"-"+owner.getMetadata().getUniqueId());
+					ownerRelation.put("id", id+"-relation-"+reverseRelation.getReverseRelation().getUniqueId()+"-"+owner.getMetadata().getUniqueId());
 					ownerRelation.put("text", reverseRelation.getReverseRelation().getName());
 					node2Children.add(ownerRelation);
 					// Content
@@ -119,10 +119,10 @@ public class DataExplorerOwnerBreadcrumbElement extends Element {
 			CaseAdministration caseAdministration = context.getCaseInstance().getMetadata().getCaseAdministration();
 			if (suffix.startsWith("-relation-")) {
 				suffix = suffix.substring("-relation-".length());
-				String relationName = suffix.substring(0, suffix.indexOf('-'));
+				String relationId = suffix.substring(0, suffix.indexOf('-'));
 				String uniqueId = suffix.substring(suffix.indexOf('-')+1);
 				Instance instance = caseAdministration.getInstanceByUniqueId(uniqueId);
-				PlaceTemplate relationDetailsPlaceTemplate = administration.getRelationPlaceTemplate(instance.getMetadata().getEntity(), relationName);
+				PlaceTemplate relationDetailsPlaceTemplate = administration.getRelationPlaceTemplate(instance.getMetadata().getEntity(), relationId);
 				return new FlowEventOccurrence(relationDetailsPlaceTemplate, instance);
 			} else if (suffix.startsWith("-instance-")) {
 				String uniqueId = suffix.substring("-instance-".length());

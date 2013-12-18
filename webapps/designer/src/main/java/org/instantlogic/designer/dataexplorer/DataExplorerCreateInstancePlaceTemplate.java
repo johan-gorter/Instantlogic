@@ -13,7 +13,7 @@ public class DataExplorerCreateInstancePlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
 	private final String entityId;
-	private final String relationName;
+	private final String relationId;
 	private final Entity<?> entityToBeAdded;
 	private final String entityToBeAddedId;
 	private final DataExplorerAdministration administration;
@@ -27,7 +27,7 @@ public class DataExplorerCreateInstancePlaceTemplate extends PlaceTemplate {
 		this.entity = entity;
 		this.entityId = entity.getUniqueId();
 		this.relation = relation;
-		this.relationName = relation.getName();
+		this.relationId = relation.getUniqueId();
 		this.entityToBeAdded = entityToBeAdded;
 		this.entityToBeAddedId = entityToBeAdded.getUniqueId();
 		this.administration = administration;
@@ -40,20 +40,20 @@ public class DataExplorerCreateInstancePlaceTemplate extends PlaceTemplate {
 	}
 
 	@Override
-	public String getId() {
-		return getName();
-	}
-	
-	@Override
 	public Entity<?>[] getParameters() {
 		return parameters;
 	}
 
 	@Override
 	public String getName() {
-		return "_DataExplorer-"+entityId+"-add-"+entityToBeAddedId+"-to-"+relationName;
+		return "_DataExplorer-"+entityId+"-add-"+entityToBeAddedId+"-to-"+relationId;
 	}
 
+	@Override
+	public String getId() {
+		return getName();
+	}
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public FlowEventOccurrence enter(FlowContext context) {
@@ -61,6 +61,6 @@ public class DataExplorerCreateInstancePlaceTemplate extends PlaceTemplate {
 		Instance newInstance = entityToBeAdded.createInstance();
 		((WriteableAttributeValue)relation.get(instance)).setOrAdd(newInstance);
 		//return new FlowEventOccurrence(administration.getRelationPlaceTemplate(entity, relationName), instance);
-		return new FlowEventOccurrence(administration.getEntityDetailsPlaceTemplate(entity), newInstance);
+		return new FlowEventOccurrence(administration.getEntityDetailsPlaceTemplate(entityToBeAdded), newInstance);
 	}
 }
