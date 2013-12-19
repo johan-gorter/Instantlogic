@@ -48,6 +48,9 @@ public class FlowStack extends AbstractDeductionContext {
 					FlowStack result = new FlowStack(null, mainFlow);
 					result.currentNode = placeTemplate;
 					for(Entity<?> parameter: placeTemplate.getParameters()) {
+						if (pathElements.length<=index) {
+							throw new RuntimeException("Not enough parameters");
+						}
 						String[] keyValue = pathElements[index++].split(":");
 						if (keyValue.length!=2 || (parameter!=null && !parameter.getName().equals(keyValue[0]))) {
 							throw new RuntimeException("Invalid place parameter value "+pathElements[index-1]);

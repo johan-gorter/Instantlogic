@@ -184,7 +184,7 @@ public class ApplicationBytecodeTemplate extends AbstractBytecodeTemplate {
 		{
 			mv = cw.visitMethod(ACC_PUBLIC, "getPlaceTemplates", "()[Lorg/instantlogic/interaction/flow/PlaceTemplate;", null, null);
 			mv.visitCode();
-			mv.visitFieldInsn(GETSTATIC, "org/instantlogic/example/izzy/IzzyApplication", "PLACE_TEMPLATES", "[Lorg/instantlogic/interaction/flow/PlaceTemplate;");
+			mv.visitFieldInsn(GETSTATIC, className, "PLACE_TEMPLATES", "[Lorg/instantlogic/interaction/flow/PlaceTemplate;");
 			mv.visitInsn(ARETURN);
 			mv.visitMaxs(1, 1);
 			mv.visitEnd();

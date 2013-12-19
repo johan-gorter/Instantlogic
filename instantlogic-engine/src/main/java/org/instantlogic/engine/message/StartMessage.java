@@ -24,7 +24,7 @@ public class StartMessage extends Message {
 	@Override
 	public void execute(Application application, Traveler traveler, Presence presence, Instance theCase) {
 		FlowEventOccurrence eventOccurrence;
-		FlowContext flowContext = FlowContext.create(application.getPlaceTemplates(), application.getMainFlow(), location, theCase, presence.getCaseName(), traveler.getTravelerInfo());
+		FlowContext flowContext = FlowContext.create(application.getPlaceTemplates(), null, location, theCase, presence.getCaseName(), traveler.getTravelerInfo());
 		if (event!=null) {
 			// Old
 			String[] components = event.split("/");
