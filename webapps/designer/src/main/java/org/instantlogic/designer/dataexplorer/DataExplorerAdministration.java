@@ -22,10 +22,12 @@ public class DataExplorerAdministration {
 	private final Entity<? extends Instance> caseEntity;
 	private final Application application;
 	private final DataExplorerStaticInstancesPlaceTemplate staticInstancesPlaceTemplate;
+	private DataExplorerExplorePlaceTemplate explore;
 	
 	public DataExplorerAdministration(Application application) {
 		this.caseEntity = application.getCaseEntity();
 		this.application = application;
+		this.explore = new DataExplorerExplorePlaceTemplate(this);
 		Collection<Entity<?>> entities = application.getAllEntities().values();
 		
 		SortedMap<String,Entity<?>> allEntitiesById = CaseAdministration.getAllEntitiesById(application.getCaseEntity());
@@ -98,11 +100,15 @@ public class DataExplorerAdministration {
 			}
 		}
 		placeTemplates.add(staticInstancesPlaceTemplate);
-		placeTemplates.add(new DataExplorerExplorePlaceTemplate(this));
+		placeTemplates.add(explore);
 		return placeTemplates;
 	}
 
 	public DataExplorerStaticInstancesPlaceTemplate getStaticInstancesPlaceTemplate() {
 		return staticInstancesPlaceTemplate;
+	}
+
+	public DataExplorerExplorePlaceTemplate getExplorePlaceTemplate() {
+		return explore;
 	}
 }

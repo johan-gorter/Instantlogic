@@ -106,7 +106,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 									.addChild("content", 
 										new FragmentTemplate("toInstance", "Link")
 											.putText("text", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(relation.getTo()))
-											.setDestination(administration.getEntityDetailsPlaceTemplate(relation.getTo()))
+											.setDestination(administration.getExplorePlaceTemplate())
 									),
 								new FragmentTemplate("cell-operations", "Cell")
 									.addChild("content", new FragmentTemplate("delete", "Button").setStyleNames(new String[]{"btn-small", "btn-danger"})

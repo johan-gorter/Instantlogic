@@ -100,7 +100,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 								new FragmentTemplate(id+"-linkBlock", "Block").addChild("content", 
 									new FragmentTemplate(id+"-link", "Link")
 										.putText("text", getEntityTitle(relation.getTo()))
-										.setDestination(administration.getEntityDetailsPlaceTemplate(relation.getTo())))
+										.setDestination(administration.getExplorePlaceTemplate()))
 								)
 						)
 						.addChild("content", 
