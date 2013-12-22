@@ -370,7 +370,7 @@ ibzxfpnbemczi_di_50573b82_2c8b:       styleNames]
 ibzxfpnbemczi_di_50573b82_2c8b:       fragmentTypeName="Button"
 ibzxfpnbemczi_di_50573b82_2c8b:       fragmentFilters[
 ibzxfpnbemczi_di_50573b82_2c8b:       fragmentFilters]
-ibzxfpnbemczi_di_50573b82_2c8b:       event="FUEkhsdvtugwebcp_5d1252c6_299b"
+ibzxfpnbemczi_di_50573b82_2c8b:       event
 ibzxfpnbemczi_di_50573b82_2c8b:       properties[
 ibzxfpnbemczi_di_50573b82_2c8b:       properties+ScoqacpxeabuAjof_0be995de_46a1:PropertyDesign{
 ScoqacpxeabuAjof_0be995de_46a1:        propertyName="text"
@@ -388,6 +388,9 @@ QzlpifrokIggqodu_ded475cb_3f2b:         untranslated]
 ScoqacpxeabuAjof_0be995de_46a1:        }QzlpifrokIggqodu_ded475cb_3f2b
 ibzxfpnbemczi_di_50573b82_2c8b:       }ScoqacpxeabuAjof_0be995de_46a1
 ibzxfpnbemczi_di_50573b82_2c8b:       properties]
+ibzxfpnbemczi_di_50573b82_2c8b:       destination=BhxzsEurjmagkaOw_815ac798_42c5:DestinationDesign{
+BhxzsEurjmagkaOw_815ac798_42c5:        PlaceTemplate="DuawItvIweblklgr_b0aa3f45_9878"
+ibzxfpnbemczi_di_50573b82_2c8b:       }BhxzsEurjmagkaOw_815ac798_42c5
 XwUreecnbydes_Ol_5dfe43f7_9781:      }ibzxfpnbemczi_di_50573b82_2c8b
 XwUreecnbydes_Ol_5dfe43f7_9781:      children+ovErkojjaIbokdme_72dc7c04_9e40:FragmentTemplateDesign{
 ovErkojjaIbokdme_72dc7c04_9e40:       name="TableOfPlaceTemplates"

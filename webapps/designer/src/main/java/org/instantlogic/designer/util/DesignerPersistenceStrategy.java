@@ -399,7 +399,7 @@ public class DesignerPersistenceStrategy extends FileCasePersister {
 					if (storageInfo==null) {
 						throw new RuntimeException("No storage info");
 					}
-					if (event.isMultivalueUpdate() && event.getInstance().getMetadata().getInstanceOwner()==null && attribute instanceof Relation) {
+					if (event.isMultivalueUpdate() && "ApplicationDesign".equals(event.getInstance().getMetadata().getEntity().getName()) && attribute instanceof Relation) {
 						// direct descendant of Application: Add/remove a file
 						Instance value = (Instance) event.getItemValue();
 						if (event.getMultiValueUpdateType()== MultiValueUpdateType.DELETE) {
