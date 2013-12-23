@@ -183,7 +183,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
                                                                                 .addChild("content",
                                                                                     new org.instantlogic.interaction.page.FragmentTemplate("MUOsieielacdinnq_743b6e88_6632", "Button")      
                                                                                         .setStyleNames(new String[]{"after-previous-field"})      
-                                                                                        .setEvent(org.instantlogic.designer.event.NewAttributeForFragmentTemplateEvent.INSTANCE)      
+                                                                                        .setDestination(org.instantlogic.designer.placetemplate.NewAttributeForFragmentTemplatePlaceTemplate.INSTANCE)      
                                                                                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("New attribute").getTextTemplate())        
                                                                                 ),
 null
@@ -196,7 +196,7 @@ null
                                                 )        
                                                 .addChild("content",
                                                     new org.instantlogic.interaction.page.FragmentTemplate("BpygxmOAvig_ycaU_13e9ce18_841e", "Button")      
-                                                        .setEvent(org.instantlogic.designer.event.DataEvent.INSTANCE)      
+                                                        .setDestination(org.instantlogic.designer.placetemplate.ToDataExplorerPlaceTemplate.INSTANCE)      
                                                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
                                                 )        
                                         ),
@@ -229,14 +229,14 @@ null
                                                     new org.instantlogic.interaction.page.IfElseElement(createDeduction5(),
                                                             new org.instantlogic.interaction.page.FragmentTemplate("BUphcpOdiicyu_bn_db29faf7_353f", "Button")      
                                                                 .setStyleNames(new String[]{"active", "btn-small"})      
-                                                                .setEvent(org.instantlogic.designer.event.CloseEditorEvent.INSTANCE)        
+                                                                .setDestination(org.instantlogic.designer.placetemplate.CloseEditorPlaceTemplate.INSTANCE)        
                                                                 .addChild("content",
                                                                     new org.instantlogic.interaction.page.FragmentTemplate("HmuEkqmujagqgekt_798561c9_7489", "Icon")      
                                                                         .setStyleNames(new String[]{"icon-pencil"})        
                                                                 ),
                                                             new org.instantlogic.interaction.page.FragmentTemplate("Vgfk_qfwpufEajEm_e1cc2b35_c0aa", "Button")      
                                                                 .setStyleNames(new String[]{"btn-small"})      
-                                                                .setEvent(org.instantlogic.designer.event.OpenEditorEvent.INSTANCE)        
+                                                                .setDestination(org.instantlogic.designer.placetemplate.OpenEditorPlaceTemplate.INSTANCE)        
                                                                 .addChild("content",
                                                                     new org.instantlogic.interaction.page.FragmentTemplate("uagrOoAguIdiodo_3c05fedd_24dd", "Icon")      
                                                                         .setStyleNames(new String[]{"icon-pencil"})        
@@ -246,7 +246,7 @@ null
                                                 .addChild("content",
                                                     new org.instantlogic.interaction.page.FragmentTemplate("ByefgUAv_yb_Aaay_e7ac8911_c439", "Button")      
                                                         .setStyleNames(new String[]{"btn-small", "btn-success"})      
-                                                        .setEvent(org.instantlogic.designer.event.InsertFragmentTemplateBelowEvent.INSTANCE)        
+                                                        .setDestination(org.instantlogic.designer.placetemplate.InsertFragmentTemplateBelowPlaceTemplate.INSTANCE)        
                                                         .addChild("content",
                                                             new org.instantlogic.interaction.page.FragmentTemplate("ZeEtyvIuiifjIkgg_f6851aac_d61c", "Icon")      
                                                                 .setStyleNames(new String[]{"icon-hand-down"})        
@@ -255,7 +255,7 @@ null
                                                 .addChild("content",
                                                     new org.instantlogic.interaction.page.FragmentTemplate("_e_mIAkAhactempk_badf6377_d1df", "Button")      
                                                         .setStyleNames(new String[]{"btn-danger", "btn-small"})      
-                                                        .setEvent(org.instantlogic.designer.event.RemoveFragmentTemplateEvent.INSTANCE)        
+                                                        .setDestination(org.instantlogic.designer.placetemplate.RemoveFragmentTemplatePlaceTemplate.INSTANCE)        
                                                         .addChild("content",
                                                             new org.instantlogic.interaction.page.FragmentTemplate("RcoxdIOAha_oAcnz_d50cb594_ea88", "Icon")      
                                                                 .setStyleNames(new String[]{"icon-remove"})        

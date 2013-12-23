@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.instantlogic.interaction.Application;
-import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 
 // Wraps another application and adds the DataExplorer flows

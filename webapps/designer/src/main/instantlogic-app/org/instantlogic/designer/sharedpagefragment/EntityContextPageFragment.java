@@ -23,7 +23,7 @@ public class EntityContextPageFragment extends org.instantlogic.interaction.page
         )        
         .addChild("content",
             new org.instantlogic.interaction.page.FragmentTemplate("PtytUfAgrecyAheo_a018c3b2_05ba", "Link")      
-                .setEvent(org.instantlogic.designer.event.EntityDetailsEvent.INSTANCE)        
+                .setDestination(org.instantlogic.designer.placetemplate.EntityDetailsPlaceTemplate.INSTANCE)        
                 .addChild("content",
                     new org.instantlogic.interaction.page.FragmentTemplate("Kpj_mq_vnIdaymzb_223d1928_260e", "Block")      
                         .setStyleNames(new String[]{"inactive-card"})        

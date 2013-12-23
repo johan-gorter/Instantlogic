@@ -22,8 +22,7 @@ public class FlowContextPageFragment extends org.instantlogic.interaction.page.S
         
         )        
         .addChild("content",
-            new org.instantlogic.interaction.page.FragmentTemplate("KsbjItpudeerAcAi_d69801fc_04d3", "Link")      
-                .setEvent(org.instantlogic.designer.event.FlowDetailsEvent.INSTANCE)        
+            new org.instantlogic.interaction.page.FragmentTemplate("KsbjItpudeerAcAi_d69801fc_04d3", "Link")        
                 .addChild("content",
                     new org.instantlogic.interaction.page.FragmentTemplate("JIciceammubhyaaA_55f3382c_b966", "Block")      
                         .setStyleNames(new String[]{"inactive-card"})        

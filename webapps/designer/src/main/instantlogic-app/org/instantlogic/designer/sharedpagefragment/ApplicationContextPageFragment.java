@@ -17,7 +17,7 @@ public class ApplicationContextPageFragment extends org.instantlogic.interaction
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
     new org.instantlogic.interaction.page.FragmentTemplate("_sotaErrsqaUknzq_06679f9e_5088", "Link")      
-        .setEvent(org.instantlogic.designer.event.HomeEvent.INSTANCE)        
+        .setDestination(org.instantlogic.designer.placetemplate.WelcomePlaceTemplate.INSTANCE)        
         .addChild("content",
             new org.instantlogic.interaction.page.FragmentTemplate("WtdObrjplqeOe_OE_8b5e0580_12f3", "Block")      
                 .setStyleNames(new String[]{"inactive-card"})        
