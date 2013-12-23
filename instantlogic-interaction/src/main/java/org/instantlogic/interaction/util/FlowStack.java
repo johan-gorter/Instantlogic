@@ -8,12 +8,10 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.AbstractDeductionContext;
 import org.instantlogic.interaction.flow.Flow;
-import org.instantlogic.interaction.flow.FlowEdge;
 import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.FlowNodeBase;
 import org.instantlogic.interaction.flow.InvalidFlowCoordinatesException;
 import org.instantlogic.interaction.flow.PlaceTemplate;
-import org.instantlogic.interaction.flow.impl.SimpleFlow;
 
 public class FlowStack extends AbstractDeductionContext {
 	

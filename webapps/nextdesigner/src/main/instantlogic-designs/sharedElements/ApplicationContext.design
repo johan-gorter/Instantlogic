@@ -11,7 +11,7 @@ _sotaErrsqaUknzq_06679f9e_5088:   styleNames]
 _sotaErrsqaUknzq_06679f9e_5088:   fragmentTypeName="Link"
 _sotaErrsqaUknzq_06679f9e_5088:   fragmentFilters[
 _sotaErrsqaUknzq_06679f9e_5088:   fragmentFilters]
-_sotaErrsqaUknzq_06679f9e_5088:   event="Xamqispagifwycvn_311a5082_ce92"
+_sotaErrsqaUknzq_06679f9e_5088:   event
 _sotaErrsqaUknzq_06679f9e_5088:   properties[
 _sotaErrsqaUknzq_06679f9e_5088:   properties+PUcepmhfdIblkfda_18ea8c5a_198f:PropertyDesign{
 PUcepmhfdIblkfda_18ea8c5a_198f:    propertyName="content"
@@ -112,5 +112,8 @@ PUcepmhfdIblkfda_18ea8c5a_198f:    }WtdObrjplqeOe_OE_8b5e0580_12f3
 PUcepmhfdIblkfda_18ea8c5a_198f:    children]
 _sotaErrsqaUknzq_06679f9e_5088:   }PUcepmhfdIblkfda_18ea8c5a_198f
 _sotaErrsqaUknzq_06679f9e_5088:   properties]
+_sotaErrsqaUknzq_06679f9e_5088:   destination=ZpuhOyxeyedOilcA_820f9959_7b20:DestinationDesign{
+ZpuhOyxeyedOilcA_820f9959_7b20:    PlaceTemplate="AE_aEEdseefvefjx_9725acb0_b1a3"
+_sotaErrsqaUknzq_06679f9e_5088:   }ZpuhOyxeyedOilcA_820f9959_7b20
 Flzgvswwuacbecbg_4bef9e87_c5c8:  }_sotaErrsqaUknzq_06679f9e_5088
 Flzgvswwuacbecbg_4bef9e87_c5c8: }Flzgvswwuacbecbg_4bef9e87_c5c8

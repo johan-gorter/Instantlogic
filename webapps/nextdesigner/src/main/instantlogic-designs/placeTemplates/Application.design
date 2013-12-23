@@ -203,7 +203,7 @@ NkEqesgwkaesadEU_127a2b06_df15:             propertyName="content"
 NkEqesgwkaesadEU_127a2b06_df15:             collapsed
 NkEqesgwkaesadEU_127a2b06_df15:             children[
 NkEqesgwkaesadEU_127a2b06_df15:             children+Ncvaspwgqacuod_p_f40abbb7_09e3:FragmentTemplateDesign{
-Ncvaspwgqacuod_p_f40abbb7_09e3:              name
+Ncvaspwgqacuod_p_f40abbb7_09e3:              name="Ncvaspwgqacuod_p_f40abbb7_09e"
 Ncvaspwgqacuod_p_f40abbb7_09e3:              isCustomized
 Ncvaspwgqacuod_p_f40abbb7_09e3:              previewMode
 Ncvaspwgqacuod_p_f40abbb7_09e3:              editorOpen
@@ -212,7 +212,7 @@ Ncvaspwgqacuod_p_f40abbb7_09e3:              styleNames]
 Ncvaspwgqacuod_p_f40abbb7_09e3:              fragmentTypeName="Link"
 Ncvaspwgqacuod_p_f40abbb7_09e3:              fragmentFilters[
 Ncvaspwgqacuod_p_f40abbb7_09e3:              fragmentFilters]
-Ncvaspwgqacuod_p_f40abbb7_09e3:              event="QxkzznUakm__geql_bc54f8b9_709a"
+Ncvaspwgqacuod_p_f40abbb7_09e3:              event
 Ncvaspwgqacuod_p_f40abbb7_09e3:              properties[
 Ncvaspwgqacuod_p_f40abbb7_09e3:              properties+YA__ffUcgufzajgq_ee2a8f8b_ae10:PropertyDesign{
 YA__ffUcgufzajgq_ee2a8f8b_ae10:               propertyName="text"
@@ -271,6 +271,9 @@ HrstdicxUIdtk_fj_8cc912f5_18b8:                untranslated]
 YA__ffUcgufzajgq_ee2a8f8b_ae10:               }HrstdicxUIdtk_fj_8cc912f5_18b8
 Ncvaspwgqacuod_p_f40abbb7_09e3:              }YA__ffUcgufzajgq_ee2a8f8b_ae10
 Ncvaspwgqacuod_p_f40abbb7_09e3:              properties]
+Ncvaspwgqacuod_p_f40abbb7_09e3:              destination=ShtzIqbwiebusgEb_89c30eb1_4aad:DestinationDesign{
+ShtzIqbwiebusgEb_89c30eb1_4aad:               PlaceTemplate="_OypskyjqefrgofI_59445822_b262"
+Ncvaspwgqacuod_p_f40abbb7_09e3:              }ShtzIqbwiebusgEb_89c30eb1_4aad
 NkEqesgwkaesadEU_127a2b06_df15:             }Ncvaspwgqacuod_p_f40abbb7_09e3
 NkEqesgwkaesadEU_127a2b06_df15:             children]
 Hhc_UOghua_zqcqi_c02afb00_768e:            }NkEqesgwkaesadEU_127a2b06_df15
@@ -617,7 +620,7 @@ AIeEamgyoieqoecl_976c5758_7f5b:       styleNames]
 AIeEamgyoieqoecl_976c5758_7f5b:       fragmentTypeName
 AIeEamgyoieqoecl_976c5758_7f5b:       fragmentFilters[
 AIeEamgyoieqoecl_976c5758_7f5b:       fragmentFilters]
-AIeEamgyoieqoecl_976c5758_7f5b:       event="Icptoxqovmdnmi_p_2eb5b775_bcfb"
+AIeEamgyoieqoecl_976c5758_7f5b:       event
 AIeEamgyoieqoecl_976c5758_7f5b:       type="OxAljslywa_vAfrg_f0cd313a_a9c2"
 AIeEamgyoieqoecl_976c5758_7f5b:       properties[
 AIeEamgyoieqoecl_976c5758_7f5b:       properties+BEv_ngmpcaaumhtg_0e042fca_0d9f:PropertyDesign{
@@ -640,6 +643,9 @@ YzbxfwcqtIdAccoI_2d9c0890_db5e:         untranslated]
 BEv_ngmpcaaumhtg_0e042fca_0d9f:        }YzbxfwcqtIdAccoI_2d9c0890_db5e
 AIeEamgyoieqoecl_976c5758_7f5b:       }BEv_ngmpcaaumhtg_0e042fca_0d9f
 AIeEamgyoieqoecl_976c5758_7f5b:       properties]
+AIeEamgyoieqoecl_976c5758_7f5b:       destination=Pzymvcdslycqaenv_e467f7a9_e9a7:DestinationDesign{
+Pzymvcdslycqaenv_e467f7a9_e9a7:        PlaceTemplate="QOpEglqdsedteirA_a44dc9ed_4ecc"
+AIeEamgyoieqoecl_976c5758_7f5b:       }Pzymvcdslycqaenv_e467f7a9_e9a7
 XwUreecnbydes_Ol_5dfe43f7_9781:      }AIeEamgyoieqoecl_976c5758_7f5b
 XwUreecnbydes_Ol_5dfe43f7_9781:      children]
 IsEmrfxohIfbwmes_1da4c3d1_7c1b:     }XwUreecnbydes_Ol_5dfe43f7_9781

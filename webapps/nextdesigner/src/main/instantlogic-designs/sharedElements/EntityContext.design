@@ -33,7 +33,7 @@ PtytUfAgrecyAheo_a018c3b2_05ba:     styleNames]
 PtytUfAgrecyAheo_a018c3b2_05ba:     fragmentTypeName="Link"
 PtytUfAgrecyAheo_a018c3b2_05ba:     fragmentFilters[
 PtytUfAgrecyAheo_a018c3b2_05ba:     fragmentFilters]
-PtytUfAgrecyAheo_a018c3b2_05ba:     event="QxkzznUakm__geql_bc54f8b9_709a"
+PtytUfAgrecyAheo_a018c3b2_05ba:     event
 PtytUfAgrecyAheo_a018c3b2_05ba:     properties[
 PtytUfAgrecyAheo_a018c3b2_05ba:     properties+JIUjzApdyy_rq_pl_3fdebd17_7477:PropertyDesign{
 JIUjzApdyy_rq_pl_3fdebd17_7477:      propertyName="content"
@@ -134,6 +134,9 @@ JIUjzApdyy_rq_pl_3fdebd17_7477:      }Kpj_mq_vnIdaymzb_223d1928_260e
 JIUjzApdyy_rq_pl_3fdebd17_7477:      children]
 PtytUfAgrecyAheo_a018c3b2_05ba:     }JIUjzApdyy_rq_pl_3fdebd17_7477
 PtytUfAgrecyAheo_a018c3b2_05ba:     properties]
+PtytUfAgrecyAheo_a018c3b2_05ba:     destination=NjfuedkvAyaqwlbo_e68ec1ec_9ea6:DestinationDesign{
+NjfuedkvAyaqwlbo_e68ec1ec_9ea6:      PlaceTemplate="_OypskyjqefrgofI_59445822_b262"
+PtytUfAgrecyAheo_a018c3b2_05ba:     }NjfuedkvAyaqwlbo_e68ec1ec_9ea6
 Ornyymyxme_nAhtk_334be6fb_63fc:    }PtytUfAgrecyAheo_a018c3b2_05ba
 Ornyymyxme_nAhtk_334be6fb_63fc:    children]
 Rzaw_ngIea_swfcp_7918aa1c_3282:   }Ornyymyxme_nAhtk_334be6fb_63fc
