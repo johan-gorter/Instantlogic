@@ -1,14 +1,13 @@
 package org.instantlogic.interaction.util;
 
 import org.instantlogic.fabric.Instance;
-import org.instantlogic.interaction.flow.Flow;
-import org.instantlogic.interaction.flow.PlaceTemplate;
+import org.instantlogic.interaction.Application;
 
 
 public class SubmitContext extends RenderContext {
 
-	public static SubmitContext create(PlaceTemplate[] placeTemplates, Flow mainFlow, String path, Instance caseInstance, String caseId, String pageElementId, TravelerInfo travelerInfo) {
-		FlowContext flowContext = FlowContext.create(placeTemplates, mainFlow, path, caseInstance, caseId, travelerInfo);
+	public static SubmitContext create(Application application, String path, Instance caseInstance, String caseId, String pageElementId, TravelerInfo travelerInfo) {
+		FlowContext flowContext = FlowContext.create(application, path, caseInstance, caseId, travelerInfo);
 		return new SubmitContext(flowContext, path, pageElementId);
 	}
 	

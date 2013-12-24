@@ -10,9 +10,7 @@ import java.util.NoSuchElementException;
 import org.instantlogic.engine.TravelerProxy;
 import org.instantlogic.engine.manager.CaseManager;
 import org.instantlogic.engine.manager.Update;
-import org.instantlogic.engine.presence.flow.MainFlow;
-import org.instantlogic.engine.presence.flow.TravelerFlow;
-import org.instantlogic.engine.presence.flow.traveler.TravelerPlaceTemplate;
+import org.instantlogic.engine.presence.placetemplate.TravelerPlaceTemplate;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.Observations;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
@@ -22,7 +20,6 @@ import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.flow.InvalidFlowCoordinatesException;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.util.FlowContext;
-import org.instantlogic.interaction.util.FlowStack;
 import org.instantlogic.interaction.util.RenderContext;
 import org.instantlogic.interaction.util.TravelerInfo;
 
@@ -114,7 +111,7 @@ public class Traveler extends AbstractTraveler {
 			update.setRootFragment(PLACE_NOT_FOUND);
 			return update;
 		}
-		PlaceTemplate placeTemplate = (PlaceTemplate)renderContext.getFlowContext().getFlowStack().getCurrentNode();
+		PlaceTemplate placeTemplate = (PlaceTemplate)renderContext.getFlowContext().getCurrentPlaceTemplate();
 		
 		CaseAdministration caseAdministration = renderContext.getCaseInstance().getMetadata().getCaseAdministration();
 		caseAdministration.startRecordingObservations();
@@ -132,23 +129,21 @@ public class Traveler extends AbstractTraveler {
 	
 	public void queuePresenceIfNeeded() {
 		if (this.presenceOutdated) {
-			String location = "Traveler/"+getMetadata().getUniqueId()+"/Presence";
-			FlowStack flowStack = new FlowStack(null, MainFlow.INSTANCE);
-			flowStack = new FlowStack(flowStack, TravelerFlow.INSTANCE);
-			flowStack.pushSelectedInstance(this);
-			queue.add(0, renderPresence(location, flowStack, TravelerPlaceTemplate.INSTANCE)); // Presence is always the first message
+			String location = "Traveler(traveler:"+getMetadata().getUniqueId()+")";
+			queue.add(0, renderPresence(location, TravelerPlaceTemplate.INSTANCE)); // Presence is always the first message
 		}
 	}
 	
-	public Update renderPresence(String location, FlowStack flowStack, PlaceTemplate placeTemplate) {
+	public Update renderPresence(String location, PlaceTemplate placeTemplate) {
 		if (presenceOutdatedObserver!=null) {
 			presenceOutdatedObserver.remove();
 			presenceOutdatedObserver = null;
 		}
 
-		FlowContext flowContext = new FlowContext(caseManager.getPresence(), "presence", getTravelerInfo());
-		flowContext.setFlowStack(flowStack);
+		FlowContext flowContext = new FlowContext(PresenceApplication.INSTANCE, caseManager.getPresence(), "presence", getTravelerInfo());
+		flowContext.setCurrentPlaceTemplate(TravelerPlaceTemplate.INSTANCE);
 		RenderContext renderContext = new RenderContext(flowContext, location);
+		renderContext.pushSelectedInstance(this);
 		CaseAdministration caseAdministration = caseManager.getPresence().getMetadata().getCaseAdministration();
 		caseAdministration.startRecordingObservations();
 		Map<String, Object> result = placeTemplate.render(renderContext);
@@ -171,7 +166,7 @@ public class Traveler extends AbstractTraveler {
 	private RenderContext locatePlace() {
 		try {
 			Application application = this.caseManager.getApplication();
-			return RenderContext.create(application.getPlaceTemplates(), null, getCurrentPlace().getUrl(), caseManager.getCase(), caseManager.getCaseId(), travelerInfo);
+			return RenderContext.create(application, getCurrentPlace().getUrl(), caseManager.getCase(), caseManager.getCaseId(), travelerInfo);
 		} catch (NoSuchElementException e) {
 			return null;
 		} catch (InvalidFlowCoordinatesException e2) {

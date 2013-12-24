@@ -34,8 +34,8 @@ public class ApplicationDesign extends AbstractApplicationDesign {
 		for (SharedElementDefinitionDesign sharedTemplate: getSharedElements()) {
 			sharedTemplate.init();
 		}
-		for (FlowDesign flow: getFlows()) {
-			flow.init();
+		for (PlaceTemplateDesign placeTemplate: getPlaceTemplates()) {
+			placeTemplate.init();
 		}
 	}
 
@@ -53,14 +53,10 @@ public class ApplicationDesign extends AbstractApplicationDesign {
             		entryName = entryName.substring(0, entryName.lastIndexOf('.'));
 					Class<?> cl = getClass().getClassLoader().loadClass(packageName+"."+entryName);
 					cl.getField("ENTITY").get(null);
-                } else if (entryName.endsWith("EventGenerator.class")) {
+                } else if (entryName.endsWith("PlaceTemplateGenerator.class")) {
             		entryName = entryName.substring(0, entryName.lastIndexOf('.'));
 					Class<?> cl = getClass().getClassLoader().loadClass(packageName+"."+entryName);
-					cl.getField("EVENT").get(null);
-                } else if (entryName.endsWith("FlowGenerator.class")) {
-            		entryName = entryName.substring(0, entryName.lastIndexOf('.'));
-					Class<?> cl = getClass().getClassLoader().loadClass(packageName+"."+entryName);
-					cl.getField("FLOW").get(null);
+					cl.getField("PLACE").get(null);
                 } else if (entryName.endsWith("SharedElementGenerator.class")) {
             		entryName = entryName.substring(0, entryName.lastIndexOf('.'));
 					Class<?> cl = getClass().getClassLoader().loadClass(packageName+"."+entryName);

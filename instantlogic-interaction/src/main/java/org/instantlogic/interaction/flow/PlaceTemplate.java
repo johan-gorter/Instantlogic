@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.instantlogic.fabric.model.Concept;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.text.TextTemplate;
 import org.instantlogic.interaction.page.FragmentTemplate;
@@ -13,7 +14,7 @@ import org.instantlogic.interaction.util.SubmitContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.RenderContext;
 
-public abstract class PlaceTemplate extends FlowNodeBase {
+public abstract class PlaceTemplate extends Concept {
 	
 	public static final Entity<?>[] NO_PARAMETERS = new Entity<?>[0];
 	

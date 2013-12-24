@@ -43,13 +43,13 @@ public class RandomAgent extends Agent {
 		if (!state.isInitialized()) return;
 		if (state.isInError()) {
 			logger.info("Agent in error");
-			sendMessages(new StartMessage(null,  null)); // Start over
+			sendMessages(new StartMessage(null)); // Start over
 			return;
 		}
 		List<Map<String, Object>> interactiveElements = FragmentQuery.findAll(state.place.getRootFragment(), INTERACTIVE_ELEMENTS);
 		if (interactiveElements.size()==0) {
 			logger.info("Agent stuck");
-			sendMessages(new StartMessage(null,  null)); // Start over
+			sendMessages(new StartMessage(null)); // Start over
 			return;
 		}
 		Map<String, Object> focussedElement = null;

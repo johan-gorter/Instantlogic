@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.DeductionOperationDesign;
 import org.instantlogic.designer.tools.Generator;
-import org.instantlogic.engine.presence.flow.MainFlowGenerator;
+import org.instantlogic.engine.presence.placetemplate.TravelerPlaceTemplateGenerator;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
 import org.instantlogic.tools.persistence.json.CasePersister;
 
@@ -30,7 +30,7 @@ public class PresenceApplicationGenerator extends ApplicationDesign {
         setName("Presence");
         setRootPackageName("org.instantlogic.engine.presence");
         setCaseEntity(PresenceEntityGenerator.ENTITY);
-        setMainFlow(MainFlowGenerator.FLOW);
+        setStartPlace(TravelerPlaceTemplateGenerator.PLACE);
 
         init();
     }

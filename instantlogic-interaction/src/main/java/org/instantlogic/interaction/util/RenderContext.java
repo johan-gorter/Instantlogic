@@ -5,16 +5,15 @@ import java.util.List;
 
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.util.AbstractDeductionContext;
-import org.instantlogic.interaction.flow.Flow;
-import org.instantlogic.interaction.flow.PlaceTemplate;
+import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.page.FragmentTemplate;
 import org.instantlogic.interaction.page.SharedElementHolder;
 
 
 public class RenderContext extends AbstractDeductionContext {
 
-	public static RenderContext create(PlaceTemplate[] placeTemplates, Flow mainFlow, String path, Instance caseInstance, String caseId, TravelerInfo travelerInfo) {
-		FlowContext flowContext = FlowContext.create(placeTemplates, mainFlow, path, caseInstance, caseId, travelerInfo);
+	public static RenderContext create(Application application, String path, Instance caseInstance, String caseId, TravelerInfo travelerInfo) {
+		FlowContext flowContext = FlowContext.create(application, path, caseInstance, caseId, travelerInfo);
 		return new RenderContext(flowContext, path);
 	}
 	

@@ -12,12 +12,11 @@ import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.text.TextTemplate;
-import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.util.ChangeContext;
-import org.instantlogic.interaction.util.SubmitContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.RenderContext;
+import org.instantlogic.interaction.util.SubmitContext;
 
 public class FragmentTemplate extends Element {
 
@@ -133,11 +132,6 @@ public class FragmentTemplate extends Element {
 	
 	public FragmentTemplate setField(Entity<?> entity, Attribute<?, ?, ?> attribute) {
 		this.field = new FieldFilter(entity, attribute);
-		return this;
-	}
-	
-	public FragmentTemplate setEvent(FlowEvent event) {
-		this.action = new ActionFilter(event);
 		return this;
 	}
 

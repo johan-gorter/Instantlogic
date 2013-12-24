@@ -1,7 +1,6 @@
 package org.instantlogic.designer.dataexplorer;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,6 @@ public class DataExplorerAdministration {
 		this.caseEntity = application.getCaseEntity();
 		this.application = application;
 		this.explore = new DataExplorerExplorePlaceTemplate(this);
-		Collection<Entity<?>> entities = application.getAllEntities().values();
 		
 		SortedMap<String,Entity<?>> allEntitiesById = CaseAdministration.getAllEntitiesById(application.getCaseEntity());
 		for (Entity<?> entity : allEntitiesById.values()) {

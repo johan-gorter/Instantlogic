@@ -46,7 +46,7 @@ public class Agent implements TravelerProxy {
 	
 	public void start(CaseProcessor caseProcessor) {
 		this.caseProcessor = caseProcessor;
-		caseProcessor.processMessagesAndSendUpdates(this, Collections.singletonList((Message)new StartMessage(null, null)));
+		caseProcessor.processMessagesAndSendUpdates(this, Collections.singletonList((Message)new StartMessage(null)));
 	}
 	
 	public void exit() {

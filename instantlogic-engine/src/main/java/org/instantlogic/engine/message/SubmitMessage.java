@@ -25,14 +25,14 @@ public class SubmitMessage extends Message {
 
 	@Override
 	public void execute(Application application, Traveler traveler, Presence presence, Instance theCase) {
-		SubmitContext submitContext = SubmitContext.create(application.getPlaceTemplates(), null, traveler.getCurrentPlace().getUrl(), theCase, presence.getCaseName(), placeElementId, traveler.getTravelerInfo());
+		SubmitContext submitContext = SubmitContext.create(application, traveler.getCurrentPlace().getUrl(), theCase, presence.getCaseName(), placeElementId, traveler.getTravelerInfo());
 		FlowContext flowContext = submitContext.getFlowContext();
-		PlaceTemplate placeTemplate = (PlaceTemplate)flowContext.getFlowStack().getCurrentNode();
+		PlaceTemplate placeTemplate = flowContext.getCurrentPlaceTemplate();
 		FlowEventOccurrence eventOccurrence = placeTemplate.submit(submitContext);
 		while (eventOccurrence!=null) {
 			eventOccurrence = flowContext.step(eventOccurrence);
 		}
-		traveler.getPresence().enter(traveler, flowContext.getFlowStack().toPath());
+		traveler.getPresence().enter(traveler, flowContext.toPath());
 	}
 
 	@Override

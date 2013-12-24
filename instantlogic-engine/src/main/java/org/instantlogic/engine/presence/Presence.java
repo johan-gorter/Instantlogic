@@ -50,21 +50,13 @@ public class Presence extends AbstractPresence {
 				traveler.setUser(findOrActivateUser((String)value));
 
 				if (application.getLoggedInPlace()!=null) {
-					FlowContext flowContext = FlowContext.create(application.getPlaceTemplates(), application.getMainFlow(), null, theCase, getCaseName(), traveler.getTravelerInfo());
+					FlowContext flowContext = FlowContext.create(application, null, theCase, getCaseName(), traveler.getTravelerInfo());
 					FlowEventOccurrence eventOccurrence = new FlowEventOccurrence(application.getLoggedInPlace());
 					while (eventOccurrence!=null) {
 						eventOccurrence = flowContext.step(eventOccurrence);
 					}
-					traveler.getPresence().enter(traveler, flowContext.getFlowStack().toPath());
-				} else if (application.getLoggedInEvent()!=null) {
-					FlowContext flowContext = FlowContext.create(application.getPlaceTemplates(), application.getMainFlow(), null, theCase, getCaseName(), traveler.getTravelerInfo());
-					FlowEventOccurrence eventOccurrence = new FlowEventOccurrence(application.getLoggedInEvent());
-					while (eventOccurrence!=null) {
-						eventOccurrence = flowContext.step(eventOccurrence);
-					}
-					traveler.getPresence().enter(traveler, flowContext.getFlowStack().toPath());
+					traveler.getPresence().enter(traveler, flowContext.toPath());
 				}
-
 				break;
 			case "logout":
 				traveler.getTravelerInfo().setAuthenticatedUsername(null);

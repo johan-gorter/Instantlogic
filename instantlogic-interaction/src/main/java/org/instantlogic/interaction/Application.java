@@ -8,8 +8,6 @@ import java.util.TreeMap;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
-import org.instantlogic.interaction.flow.Flow;
-import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 
 
@@ -62,20 +60,6 @@ public abstract class Application implements AutoCloseable {
 	
 	public PlaceTemplate[] getPlaceTemplates() {
 		return NO_PLACE_TEMPLATES;
-	}
-	
-	@Deprecated
-	public Flow getMainFlow() {
-		return null;
-	}
-
-	@Deprecated
-	public FlowEvent getStartEvent() {
-		return null;
-	}
-	
-	public FlowEvent getLoggedInEvent() {
-		return null;
 	}
 	
 	public String[] getThemeNames() {

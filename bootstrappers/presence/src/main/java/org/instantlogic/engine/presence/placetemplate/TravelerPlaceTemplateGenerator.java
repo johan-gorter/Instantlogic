@@ -1,10 +1,10 @@
-package org.instantlogic.engine.presence.flow.traveler;
+package org.instantlogic.engine.presence.placetemplate;
 
-import org.instantlogic.designer.DeductionOperationDesign;
 import org.instantlogic.designer.DeductionSchemeDesign;
 import org.instantlogic.designer.ElementDesign;
 import org.instantlogic.designer.FragmentTemplateDesign;
 import org.instantlogic.designer.IfElseDesign;
+import org.instantlogic.designer.PlaceParameterDesign;
 import org.instantlogic.designer.PlaceTemplateDesign;
 import org.instantlogic.designer.SelectionDesign;
 import org.instantlogic.engine.presence.PlaceEntityGenerator;
@@ -19,6 +19,7 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 	
 	private TravelerPlaceTemplateGenerator() {
 		setName("Traveler");
+		setApplication(PresenceApplicationGenerator.APPLICATION);
 	}
 	
 	@Override
@@ -26,6 +27,11 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 		DeductionSchemeDesign applicationNameDeduction, caseNameDeduction, userHasValue, user, userUsername, userAvatarUrl, userName, 
 			activeUsers, username, avatarUrl, name, userTravelers, travelerId, travelerPlaceUrl, travelerPlaceTitle, visitors, username2, name2, avatarUrl2, focus, isMe, currentPlace;
 		FragmentTemplateDesign debugVisible;
+		
+		PlaceParameterDesign travelerParameter = new PlaceParameterDesign();
+		travelerParameter.setName("traveler");
+		addToParameters(travelerParameter);
+		travelerParameter.setEntity(TravelerEntityGenerator.ENTITY);
 		
 		setContent(
 			new FragmentTemplateDesign("Group")

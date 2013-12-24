@@ -11,6 +11,8 @@ import org.instantlogic.interaction.util.FlowEventOccurrence;
 
 public class DataExplorerExplorePlaceTemplate extends PlaceTemplate {
 
+	public static final String NAME = "_DataExplorer-explore";
+	
 	private DataExplorerAdministration administration;
 	private Entity<?>[] parameters;
 	
@@ -31,7 +33,7 @@ public class DataExplorerExplorePlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getName() {
-		return "_DataExplorer-explore";
+		return NAME;
 	}
 
 	@Override

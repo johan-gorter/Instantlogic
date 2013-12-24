@@ -4,8 +4,6 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.ApplicationEnvironment;
-import org.instantlogic.interaction.flow.Flow;
-import org.instantlogic.interaction.flow.FlowEvent;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 
 // Wraps another application and adds the DataExplorer flows
@@ -22,18 +20,6 @@ public class ApplicationWrapper extends Application {
 		return delegate.getPlaceTemplates();
 	}
 
-	public Flow getMainFlow() {
-		return delegate.getMainFlow();
-	}
-
-	public FlowEvent getStartEvent() {
-		return delegate.getStartEvent();
-	}
-	
-	public FlowEvent getLoggedInEvent() {
-		return delegate.getLoggedInEvent();
-	}
-	
 	public PlaceTemplate getStartPlace() {
 		return delegate.getStartPlace();
 	}
