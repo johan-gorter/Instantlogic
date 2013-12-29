@@ -2,5 +2,10 @@ NrUqpnIchackqbat_4b4634a8_0166: NrUqpnIchackqbat_4b4634a8_0166:PlaceTemplateDesi
 NrUqpnIchackqbat_4b4634a8_0166:  name="RemoveFragmentTemplate"
 NrUqpnIchackqbat_4b4634a8_0166:  isCustomized=true
 NrUqpnIchackqbat_4b4634a8_0166:  parameters[
+NrUqpnIchackqbat_4b4634a8_0166:  parameters+DioOwzrqAqgEIiue_cb488814_5bb0:PlaceParameterDesign{
+DioOwzrqAqgEIiue_cb488814_5bb0:   name="element"
+DioOwzrqAqgEIiue_cb488814_5bb0:   isCustomized
+DioOwzrqAqgEIiue_cb488814_5bb0:   entity="QgArvl_sqIbnsgjw_55852685_31f4"
+NrUqpnIchackqbat_4b4634a8_0166:  }DioOwzrqAqgEIiue_cb488814_5bb0
 NrUqpnIchackqbat_4b4634a8_0166:  parameters]
 NrUqpnIchackqbat_4b4634a8_0166: }NrUqpnIchackqbat_4b4634a8_0166

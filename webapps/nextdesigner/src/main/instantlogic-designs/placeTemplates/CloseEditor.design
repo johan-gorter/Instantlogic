@@ -2,5 +2,10 @@ GtAksIEagi_sskzz_66b9bde6_5bb9: GtAksIEagi_sskzz_66b9bde6_5bb9:PlaceTemplateDesi
 GtAksIEagi_sskzz_66b9bde6_5bb9:  name="CloseEditor"
 GtAksIEagi_sskzz_66b9bde6_5bb9:  isCustomized=true
 GtAksIEagi_sskzz_66b9bde6_5bb9:  parameters[
+GtAksIEagi_sskzz_66b9bde6_5bb9:  parameters+AevcqjcIum_gUmE__a8ac587d_0436:PlaceParameterDesign{
+AevcqjcIum_gUmE__a8ac587d_0436:   name="element"
+AevcqjcIum_gUmE__a8ac587d_0436:   isCustomized
+AevcqjcIum_gUmE__a8ac587d_0436:   entity="QgArvl_sqIbnsgjw_55852685_31f4"
+GtAksIEagi_sskzz_66b9bde6_5bb9:  }AevcqjcIum_gUmE__a8ac587d_0436
 GtAksIEagi_sskzz_66b9bde6_5bb9:  parameters]
 GtAksIEagi_sskzz_66b9bde6_5bb9: }GtAksIEagi_sskzz_66b9bde6_5bb9

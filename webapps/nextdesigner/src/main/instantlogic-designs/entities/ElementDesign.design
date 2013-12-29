@@ -86,4 +86,14 @@ QgArvl_sqIbnsgjw_55852685_31f4:  staticInstances[
 QgArvl_sqIbnsgjw_55852685_31f4:  staticInstances]
 QgArvl_sqIbnsgjw_55852685_31f4:  validations[
 QgArvl_sqIbnsgjw_55852685_31f4:  validations]
+QgArvl_sqIbnsgjw_55852685_31f4:  dataType=DqOtoykA_adhcenc_f3354278_3f8e:DataTypeDesign{
+DqOtoykA_adhcenc_f3354278_3f8e:   ordered
+DqOtoykA_adhcenc_f3354278_3f8e:   javaClassName
+DqOtoykA_adhcenc_f3354278_3f8e:   multivalue
+DqOtoykA_adhcenc_f3354278_3f8e:   formatted
+DqOtoykA_adhcenc_f3354278_3f8e:   wholeNumber
+DqOtoykA_adhcenc_f3354278_3f8e:   multiLine
+DqOtoykA_adhcenc_f3354278_3f8e:   exactRounding
+DqOtoykA_adhcenc_f3354278_3f8e:   percentage
+QgArvl_sqIbnsgjw_55852685_31f4:  }DqOtoykA_adhcenc_f3354278_3f8e
 QgArvl_sqIbnsgjw_55852685_31f4: }QgArvl_sqIbnsgjw_55852685_31f4

@@ -16,6 +16,7 @@ public abstract class AbstractOpenEditorPlaceTemplate extends org.instantlogic.i
 	
 	
 	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
+		org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE,
 	};
 
 	@Override

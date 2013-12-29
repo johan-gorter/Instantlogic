@@ -51,6 +51,10 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 		
 		// DirectEvent buttons
 		List<PlaceTemplate> placeTemplates = administration.getPlacesWithSingleParameter(entity);
+		if (administration.getApplication().getStartPlace()!=null) {
+			placeTemplates.add(administration.getApplication().getStartPlace());
+		}
+		// TODO: for every reverse owner-relation do a select recursively and add direct- buttons
 		for (PlaceTemplate placeTemplate : placeTemplates) {
 			page.addChild("mainContent", new FragmentTemplate("direct-"+placeTemplate.getTechnicalName(), "Button")
 				.putText("text", new TextTemplate().getUntranslated().add(placeTemplate.getName()).getTextTemplate())

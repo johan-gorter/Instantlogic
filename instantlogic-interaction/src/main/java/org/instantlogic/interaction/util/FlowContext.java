@@ -14,31 +14,34 @@ public class FlowContext extends AbstractDeductionContext {
 
 	public static FlowContext create(Application application, String path, Instance caseInstance, String caseId, TravelerInfo travelerInfo) {
 		FlowContext result = new FlowContext(application, caseInstance, caseId, travelerInfo);
-		String[] pathElements = path.split("[/(,)]");
-		if (pathElements.length>0) {
-			for(PlaceTemplate placeTemplate : application.getPlaceTemplates()) {
-				if (placeTemplate.getTechnicalName().equals(pathElements[0])) {
-					int index = 1;
-					result.setCurrentPlaceTemplate(placeTemplate);
-					for(Entity<?> parameter: placeTemplate.getParameters()) {
-						if (pathElements.length<=index) {
-							throw new RuntimeException("Not enough parameters");
+		if (path == null || path.length()==0) {
+			result.setCurrentPlaceTemplate(application.getStartPlace());
+		} else {
+			String[] pathElements = path.split("[/(,)]");
+			if (pathElements.length>0) {
+				for(PlaceTemplate placeTemplate : application.getPlaceTemplates()) {
+					if (placeTemplate.getTechnicalName().equals(pathElements[0])) {
+						int index = 1;
+						result.setCurrentPlaceTemplate(placeTemplate);
+						for(Entity<?> parameter: placeTemplate.getParameters()) {
+							if (pathElements.length<=index) {
+								throw new RuntimeException("Not enough parameters");
+							}
+							String[] keyValue = pathElements[index++].split(":");
+							if (keyValue.length!=2 || (parameter!=null && !parameter.getName().equals(keyValue[0]))) {
+								throw new RuntimeException("Invalid place parameter value "+pathElements[index-1]);
+							}
+							result.pushSelectedInstance(getInstance(parameter, keyValue[1], caseInstance));
 						}
-						String[] keyValue = pathElements[index++].split(":");
-						if (keyValue.length!=2 || (parameter!=null && !parameter.getName().equals(keyValue[0]))) {
-							throw new RuntimeException("Invalid place parameter value "+pathElements[index-1]);
+						if (index!=pathElements.length) {
+							throw new RuntimeException("Too many parameter values");
 						}
-						result.pushSelectedInstance(getInstance(parameter, keyValue[1], caseInstance));
+						return result;
 					}
-					if (index!=pathElements.length) {
-						throw new RuntimeException("Too many parameter values");
-					}
-					return result;
 				}
 			}
 		}
-		
-		if (result.getCurrentPlaceTemplate()==null && path!=null) {
+		if (result.getCurrentPlaceTemplate()==null) {
 			throw new NoSuchElementException();
 		}
 		return result;

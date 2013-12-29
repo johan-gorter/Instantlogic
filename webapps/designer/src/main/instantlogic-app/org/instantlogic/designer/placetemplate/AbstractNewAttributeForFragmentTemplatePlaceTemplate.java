@@ -16,6 +16,7 @@ public abstract class AbstractNewAttributeForFragmentTemplatePlaceTemplate exten
 	
 	
 	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
+		org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE,
 	};
 
 	@Override

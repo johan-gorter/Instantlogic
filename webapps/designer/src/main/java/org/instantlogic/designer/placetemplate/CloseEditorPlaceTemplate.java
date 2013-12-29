@@ -12,6 +12,6 @@ public class CloseEditorPlaceTemplate extends AbstractCloseEditorPlaceTemplate {
 	public FlowEventOccurrence enter(FlowContext context) {
 		ElementDesign element = (ElementDesign) context.getSelectedInstance(ElementDesignEntity.INSTANCE);
 		element.setEditorOpen(false);
-		return new FlowEventOccurrence(PlaceTemplateDetailsPlaceTemplate.INSTANCE, context.getSelectedInstance(PlaceTemplateDesignEntity.INSTANCE));
+		return PlaceTemplateUtil.toContentOwner(element);
 	}
 }

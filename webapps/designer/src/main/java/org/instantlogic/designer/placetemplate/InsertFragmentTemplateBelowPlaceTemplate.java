@@ -3,7 +3,6 @@ package org.instantlogic.designer.placetemplate;
 import org.instantlogic.designer.FragmentTemplateDesign;
 import org.instantlogic.designer.PropertyDesign;
 import org.instantlogic.designer.entity.FragmentTemplateDesignEntity;
-import org.instantlogic.designer.entity.PlaceTemplateDesignEntity;
 import org.instantlogic.interaction.util.FlowContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 
@@ -17,6 +16,6 @@ public class InsertFragmentTemplateBelowPlaceTemplate extends AbstractInsertFrag
 		FragmentTemplateDesign newFragmentTemplate = new FragmentTemplateDesign();
 		property.addToChildren(newFragmentTemplate, index+1);
 		newFragmentTemplate.setEditorOpen(true);
-		return new FlowEventOccurrence(PlaceTemplateDetailsPlaceTemplate.INSTANCE, context.getSelectedInstance(PlaceTemplateDesignEntity.INSTANCE));
+		return PlaceTemplateUtil.toContentOwner(fragmentTemplate);
 	}
 }

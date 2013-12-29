@@ -10,7 +10,8 @@ public class RemoveFragmentTemplatePlaceTemplate extends AbstractRemoveFragmentT
 	@Override
 	public FlowEventOccurrence enter(FlowContext context) {
 		FragmentTemplateDesign fragmentTemplate = context.getSelectedInstance(FragmentTemplateDesignEntity.INSTANCE);
+		FlowEventOccurrence result = PlaceTemplateUtil.toContentOwner(fragmentTemplate);
 		fragmentTemplate.getChildrenForFragment().removeFromChildren(fragmentTemplate);
-		return new FlowEventOccurrence(WelcomePlaceTemplate.INSTANCE);
+		return result;
 	}
 }

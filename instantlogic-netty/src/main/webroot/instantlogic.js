@@ -270,7 +270,7 @@ YUI.add('instantlogic', function (Y) {
                             var me = this;
                         	setTimeout(function () {
                         		me.setState('connecting');
-                        		me.sendStart(this.history.get('location')); 
+                        		me.sendStart(me.history.get('location')); 
                         	}, 300);
                         } else {
                         	this.setState('error');
