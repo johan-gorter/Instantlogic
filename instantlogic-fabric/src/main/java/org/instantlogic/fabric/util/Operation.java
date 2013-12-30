@@ -22,6 +22,9 @@ public class Operation implements AutoCloseable {
 	private List<TransactionListener> transactionListeners;
 
 	public Operation(CaseAdministration caseAdministration, Operation partOfOperation) {
+		if (partOfOperation!=null && (partOfOperation.state==OperationState.COMPLETED || partOfOperation.state==OperationState.CLOSED)) {
+			throw new IllegalStateException("Cannot start an operation while parent operation is "+partOfOperation.state);
+		}
 		this.caseAdministration = caseAdministration;
 		this.partOfOperation = partOfOperation;
 	}

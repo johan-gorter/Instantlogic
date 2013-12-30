@@ -16,6 +16,7 @@ public abstract class AbstractDeleteEntityPlaceTemplate extends org.instantlogic
 	
 	
 	private static final org.instantlogic.fabric.model.Entity[] PARAMETERS = new org.instantlogic.fabric.model.Entity[]{
+		org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE,
 	};
 
 	@Override

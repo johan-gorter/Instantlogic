@@ -13,7 +13,7 @@ public class AddAttributePlaceTemplate extends AbstractAddAttributePlaceTemplate
 		EntityDesign entity = context.getSelectedInstance(EntityDesignEntity.INSTANCE);
 		AttributeDesign result = new AttributeDesign();
 		entity.addToAttributes(result);
-		return new FlowEventOccurrence(AddAttributePlaceTemplate.INSTANCE, result);
+		return new FlowEventOccurrence(AttributeDetailsPlaceTemplate.INSTANCE, result);
 	}
 
 }

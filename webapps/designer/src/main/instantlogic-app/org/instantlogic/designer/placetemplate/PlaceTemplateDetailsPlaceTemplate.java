@@ -12,16 +12,6 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 	
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
-		  	org.instantlogic.fabric.deduction.ReverseRelationDeduction d0 = new org.instantlogic.fabric.deduction.ReverseRelationDeduction();
-		    d0.setRelation(org.instantlogic.designer.entity.FlowDesignEntity.nodes);
-		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
-		    d1.setOfEntity(org.instantlogic.designer.entity.FlowNodeBaseDesignEntity.INSTANCE);
-		    d0.setToInstance(d1);
-		return d0;
-	}
-
-
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
@@ -31,7 +21,7 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.content);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
@@ -41,7 +31,7 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 	}
 
 
-	private static org.instantlogic.fabric.deduction.Deduction createDeduction3() {
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction2() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
 		    d0.setAttribute(org.instantlogic.designer.entity.DesignEntity.name);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
@@ -54,9 +44,7 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
         new org.instantlogic.interaction.page.FragmentTemplate("FplOUcwOmqchmcyx_937e80f1_b2d0", "Page")        
             .addChild("mainContent",
-                new org.instantlogic.interaction.page.SelectionElement(createDeduction0(),
-                            new org.instantlogic.interaction.page.SharedElementHolder("JtIIvOaigegIcawf_753f982f_9c77", org.instantlogic.designer.sharedpagefragment.FlowContextPageFragment.INSTANCE)
-)
+                    new org.instantlogic.interaction.page.SharedElementHolder("JtIIvOaigegIcawf_753f982f_9c77", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
             )        
             .addChild("mainContent",
@@ -64,7 +52,7 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
                     .setStyleNames(new String[]{"card"})        
                     .addChild("content",
                         new org.instantlogic.interaction.page.FragmentTemplate("_dpmvgh_iieeIdui_0ee75e57_7037", "Heading3")      
-                            .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction1()).add(" (Place template)").getTextTemplate())        
+                            .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Place template)").getTextTemplate())        
                     )        
                     .addChild("content",
                         new org.instantlogic.interaction.page.FragmentTemplate("HA_e_aiabafIqofo_bed4991f_649f", "Input")      
@@ -75,7 +63,7 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Content").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.SelectionElement(createDeduction2(),
+                        new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
                                 new org.instantlogic.interaction.page.FragmentTemplate("ecucjAngvibmofEl_4f11bd0b_3671", "ElementEditor")        
                                     .addChild("content",
                                             new org.instantlogic.interaction.page.SharedElementHolder("XUedooAg_maxqeit_86d12b9c_6d00", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
@@ -85,7 +73,7 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
                     )        
             );
 	
-	private static final org.instantlogic.fabric.text.TextTemplate TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction3()).add(" (Place)").getTextTemplate();
+	private static final org.instantlogic.fabric.text.TextTemplate TITLE = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction2()).add(" (Place)").getTextTemplate();
 	@Override
 	protected org.instantlogic.fabric.text.TextTemplate getTitle() {
 		return TITLE;

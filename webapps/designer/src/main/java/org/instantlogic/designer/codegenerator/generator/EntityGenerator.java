@@ -70,18 +70,18 @@ public class EntityGenerator extends AbstractGenerator<EntityClassModel> {
 			attribute.technicalName = attributeDesign.getTechnicalName();
 			attribute.technicalNameCapitalized = attributeDesign.getTechnicalNameCapitalized();
 			attribute.javaIdentifier = attributeDesign.getJavaIdentifier();
-			if (attribute.getDataType()!=null && attributeDesign.getDataType().getJavaClassName()!=null) {
+			if (attributeDesign.getDataTypeRelationValue().hasStoredValue() && attributeDesign.getDataType().getJavaClassName()!=null) {
 				setDatatype(attribute, attributeDesign.getDataType());
 				attribute.itemClassName = attributeDesign.getDataType().getJavaClassName();
 				attribute.internalClassName = attribute.itemClassName.replace('.', '/');
+				attribute.multivalue = (attributeDesign.getDataType().getMultivalue()==Boolean.TRUE);
+				attribute.ordered = (attributeDesign.getDataType().getOrdered()==Boolean.TRUE);
 			} else {
 				// Work in progress, just do not crash
 				attribute.dataType.put("category", "text");
 				attribute.itemClassName = "java.lang.String";
 				attribute.internalClassName = attribute.itemClassName.replace('.', '/');
 			}
-			attribute.multivalue = (attributeDesign.getDataType().getMultivalue()==Boolean.TRUE);
-			attribute.ordered = (attributeDesign.getDataType().getOrdered()==Boolean.TRUE);
 			if (attribute.multivalue) {
 				String valuesClassName = attribute.ordered?"ValueList":"Values";
 				attribute.className="org.instantlogic.fabric.value."+valuesClassName+"<"+attribute.itemClassName+">";

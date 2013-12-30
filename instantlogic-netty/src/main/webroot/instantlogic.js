@@ -476,17 +476,16 @@ YUI.add('instantlogic', function (Y) {
         			id = id.substr(id.lastIndexOf('+')+1);
         		}
         		var placeTemplateId = me.fragment.findAncestor('Page').model.placeTemplateId;
-        		var placeTemplateDetailsUrl = designerUrl+'PlaceTemplate/'+placeTemplateId+'/PlaceTemplateDetails';
         		openMenu = new Y.Overlay({
         			bodyContent:
 	        			menuBody = h.div({className: 'fragment-debug-menu'},
 	        				h.ul(
 	        					h.li(logLink = h.a({href:'#'}, 'Log fragment data')),
-	        					h.li(locateLink = h.a({href:placeTemplateDetailsUrl, target:'designer'}, 'Go to template')),
-	        					h.li(editLink = h.a({href:placeTemplateDetailsUrl+'&event=OpenEditor/'+id, target:'designer'}, 'Edit')),
-	        					h.li(insertAboveLink = h.a({href:'#', target:'designer'}, 'Insert above')),
+	        					h.li(locateLink = h.a({href:designerUrl+'PlaceTemplateDetails(PlaceTemplateDesign:'+placeTemplateId+')', target:'designer'}, 'Go to template')),
+	        					h.li(editLink = h.a({href:designerUrl+'OpenEditor(ElementDesign:'+id+')', target:'designer'}, 'Edit')),
+	        					/*h.li(insertAboveLink = h.a({href:'TODO', target:'designer'}, 'Insert above')),*/
 	        					// TODO Insert inside: (start of) each fragmentList
-	        					h.li(insertBelowLink = h.a({href:placeTemplateDetailsUrl+'&event=InsertFragmentTemplateBelow/'+id, target:'designer'}, 'Insert below'))
+	        					h.li(insertBelowLink = h.a({href:designerUrl+'InsertFragmentTemplateBelow(ElementDesign:'+id+')', target:'designer'}, 'Insert below'))
 	        				)
 	        			),
 	        		align: {node: button, points: [Y.WidgetPositionAlign.TL, Y.WidgetPositionAlign.TR]},
