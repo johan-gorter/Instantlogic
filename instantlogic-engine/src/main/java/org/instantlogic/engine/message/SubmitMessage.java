@@ -25,7 +25,7 @@ public class SubmitMessage extends Message {
 
 	@Override
 	public void execute(Application application, Traveler traveler, Presence presence, Instance theCase) {
-		SubmitContext submitContext = SubmitContext.create(application, traveler.getCurrentPlace().getUrl(), theCase, presence.getCaseName(), placeElementId, traveler.getTravelerInfo());
+		SubmitContext submitContext = SubmitContext.create(application, traveler.getCurrentPlace().getLocation().getUrl(), theCase, presence.getCaseName(), placeElementId, traveler.getTravelerInfo());
 		FlowContext flowContext = submitContext.getFlowContext();
 		PlaceTemplate placeTemplate = flowContext.getCurrentPlaceTemplate();
 		FlowEventOccurrence eventOccurrence = placeTemplate.submit(submitContext);

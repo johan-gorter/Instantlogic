@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Concept;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.text.TextTemplate;
 import org.instantlogic.interaction.page.FragmentTemplate;
 import org.instantlogic.interaction.util.ChangeContext;
 import org.instantlogic.interaction.util.FlowContext;
+import org.instantlogic.interaction.util.LocationInfo;
 import org.instantlogic.interaction.util.SubmitContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.RenderContext;
@@ -60,5 +62,15 @@ public abstract class PlaceTemplate extends Concept {
 
 	public Entity<?>[] getParameters() {
 		return NO_PARAMETERS;
+	}
+
+	public LocationInfo provideInfo(RenderContext renderContext) {
+		TextTemplate title = getTitle();
+		String renderedTitle = "?";
+		if (title!=null) {
+			renderedTitle = title.renderText(renderContext);
+		}
+		Instance aboutInstance = renderContext.getSelectedInstance(null);
+		return new LocationInfo(renderContext.getLocation(), renderedTitle, aboutInstance!=null?aboutInstance.getMetadata().getUniqueId():null , null);
 	}
 }

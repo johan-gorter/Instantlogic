@@ -122,7 +122,7 @@ YUI.add('instantlogic-presence', function (Y) {
         			var user = this.model.users[i];
         			for (var ii=0;ii<user.travelers.length;ii++) {
         				var traveler = user.travelers[ii];
-        				if (traveler.placeUrl && traveler.placeUrl.indexOf(placeUrlSubstring)>=0) {
+        				if (traveler.place && traveler.place.url.indexOf(placeUrlSubstring)>=0) {
         					result.push({username: user.username, name: user.name, avatarUrl: user.avatarUrl});
         				}
         			}
@@ -168,11 +168,11 @@ YUI.add('instantlogic-presence', function (Y) {
     		return [[this.link, model.placeTitle]];
     	},
     	postInit: function(model) {
-    		this.link.set('href', '#location='+model.placeUrl);
+    		this.link.set('href', '#location='+model.place.url);
     	},
     	postUpdate: function(newModel, diff) {
-    		if (this.oldModel.placeUrl!=newModel.placeUrl) {
-    			this.link.set('href', '#location='+newModel.placeUrl);
+    		if (this.oldModel.place.url!=newModel.place.url) {
+    			this.link.set('href', '#location='+newModel.place?newModel.place.url:"");
     		}
     	}
     	

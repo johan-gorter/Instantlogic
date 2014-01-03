@@ -4,7 +4,47 @@
 /* Element editor */
 .element-editor {padding-left:25px;}
 .collapsable-content {margin-left: 15px;padding-left:0px;overflow:visible;clear:both;}
-.collapse-button {position:absolute;left:-15px;z-index:1;}
+
+.collapsable-content::before{
+    content: '';
+	position: absolute; 
+    top: -0px;
+	width: 1px; 
+    height: 100%;
+	right: auto; 
+    left: -25px;
+	border-left: 1px solid #ccc;
+    bottom: 50px;
+}
+.collapsable-content::after{
+    content: '';
+	position: absolute; 
+    top: 10px; 
+	width: 15px; 
+    height: 20px;
+	right: auto; 
+    left: -25px;
+	border-top: 1px solid #ccc;
+}
+
+.collapse-button::before {
+	/* outgoing */
+    content: '';
+	position: absolute; 
+    top: 15px;
+	width: 1px; 
+    height: 15px;
+	right: auto; 
+    left: 6px;
+	border-left: 1px solid #ccc;
+}
+
+/*Remove connectors after last child*/
+.fragment:last-child > .element > span > div > span > .collapsable-content::before { 
+    height: 10px;
+}
+
+.collapse-button {position:absolute;left:-16px;z-index:1;height: 100%;overflow:hidden;}
 .designer .preview-line {width:100%;margin-right:600px;}
 .designer .preview-line .preview-container {display:inline-block;width:600px;float:right;line-height:0;}
 .designer .preview-line .preview-container iframe {width: 600px;height:20px;overflow:hidden;border:0;}

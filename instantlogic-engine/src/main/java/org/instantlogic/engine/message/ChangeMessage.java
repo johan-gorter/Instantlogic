@@ -21,7 +21,7 @@ public class ChangeMessage extends Message {
 
 	@Override
 	public void execute(Application application, Traveler traveler, Presence presence, Instance theCase) {
-		ChangeContext changeContext = ChangeContext.create(application, traveler.getCurrentPlace().getUrl(), theCase, presence.getCaseName(), placeElementId, value, traveler.getTravelerInfo());
+		ChangeContext changeContext = ChangeContext.create(application, traveler.getCurrentPlace().getLocation().getUrl(), theCase, presence.getCaseName(), placeElementId, value, traveler.getTravelerInfo());
 		PlaceTemplate placeTemplate = (PlaceTemplate)changeContext.getFlowContext().getCurrentPlaceTemplate();
 		placeTemplate.change(changeContext);
 	}

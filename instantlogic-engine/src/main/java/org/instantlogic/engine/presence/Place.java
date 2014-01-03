@@ -16,11 +16,11 @@ public class Place extends AbstractPlace {
 		public void valueChanged(ValueChangeEvent event) {
 			Traveler traveler = (Traveler)event.getItemValue();
 			if (event.getMultiValueUpdateType()==MultiValueUpdateType.INSERT) {
-				logger.debug("Traveler {} enters place {}", traveler.getId(), getUrl());
+				logger.debug("Traveler {} enters place {}", traveler.getId(), getLocation().getUrl());
 			} else if (event.getMultiValueUpdateType()==MultiValueUpdateType.DELETE) {
-				logger.debug("Traveler {} exits place {}", traveler.getId(), getUrl());
+				logger.debug("Traveler {} exits place {}", traveler.getId(), getLocation().getUrl());
 				if (getVisitingTravelers().size()==0) {
-					logger.debug("Deactivating place {}", getUrl());
+					logger.debug("Deactivating place {}", getLocation().getUrl());
 					getPresence().removeFromActivePlaces(Place.this);
 				}
 			}

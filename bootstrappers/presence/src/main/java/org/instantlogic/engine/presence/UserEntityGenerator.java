@@ -3,6 +3,7 @@ package org.instantlogic.engine.presence;
 import org.instantlogic.designer.AttributeDesign;
 import org.instantlogic.designer.DataCategoryDesign;
 import org.instantlogic.designer.EntityDesign;
+import org.instantlogic.interaction.util.LocationInfo;
 
 public class UserEntityGenerator extends EntityDesign {
 
@@ -19,6 +20,7 @@ public class UserEntityGenerator extends EntityDesign {
     public static final AttributeDesign email = addAttribute(ENTITY, "email", DataCategoryDesign.text);
     public static final AttributeDesign name = addAttribute(ENTITY, "name", DataCategoryDesign.text);
     public static final AttributeDesign avatarUrl = addAttribute(ENTITY, "avatarUrl", DataCategoryDesign.text);
+    public static final AttributeDesign bookmarks = addAttribute(ENTITY, "bookmarks", LocationInfo.class).multivalue().ordered();
     
     // Relations
     

@@ -77,6 +77,8 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 							.putText("text", new TextTemplate().getUntranslated().add("Start shopping for instances").getTextTemplate())
 							.setDestination(relationAdministration.shopPlaceTemplate)
 					)
+					.addChild("content", 
+						new AddItemsFromHistoryElement(relation))
 			);
 		}
 		

@@ -10,11 +10,15 @@ public class DataExplorerInstanceTitleDeduction extends Deduction<String> {
 	@Override
 	protected ValueAndLevel<String> execute(DeductionContext context) {
 		Instance instance = context.getSelectedInstance(null);
+		String title = renderTitle(instance);
+		return ValueAndLevel.rule(title);
+	}
+	
+	public static String renderTitle(Instance instance) {
 		String title = instance.renderTitle();
-		String name = instance.getMetadata().getEntity().getName();
 		if (title.length()>30) {
 			title = title.substring(0,30)+"...";
 		}
-		return ValueAndLevel.rule(name+" '"+title+"'");
+		return title;
 	}
 }

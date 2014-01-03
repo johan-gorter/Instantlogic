@@ -57,4 +57,17 @@ public final class TravelerInfo {
 		}
 		return result;
 	}
+	
+	public <T> void registerExtension(Class<? extends T> extensionInterface, T extensionInstance) {
+		Object old = travelerExtensions.put(extensionInterface, extensionInstance);
+		if (old!=null) {
+			travelerExtensions.put(extensionInterface, old);
+			throw new RuntimeException("Extension already registered");
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> T getExtension(Class<T> extensionClass) {
+		return (T)travelerExtensions.get(extensionClass);
+	}
 }

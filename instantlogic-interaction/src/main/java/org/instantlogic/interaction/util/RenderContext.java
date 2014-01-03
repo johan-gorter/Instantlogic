@@ -20,11 +20,11 @@ public class RenderContext extends AbstractDeductionContext {
 	private final FlowContext flowContext;
 	
 	public List<String> prefixes = new ArrayList<String>();
-	private final String pageCoordinates;
+	private final String location;
 
-	public RenderContext(FlowContext flowContext, String pageCoordinates) {
+	public RenderContext(FlowContext flowContext, String location) {
 		super(flowContext);
-		this.pageCoordinates = pageCoordinates;
+		this.location = location;
 		this.flowContext = flowContext;
 	}
 
@@ -77,8 +77,8 @@ public class RenderContext extends AbstractDeductionContext {
 		return flowContext.getCaseId();
 	}
 
-	public String getPageCoordinates() {
-		return pageCoordinates;
+	public String getLocation() {
+		return location;
 	}
 
 	public FlowContext getFlowContext() {

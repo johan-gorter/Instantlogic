@@ -1,12 +1,13 @@
 package org.instantlogic.engine.presence;
 
 import org.instantlogic.fabric.util.ValueChangeEvent;
-import org.instantlogic.fabric.util.ValueChangeObserver;
 import org.instantlogic.fabric.util.ValueChangeEvent.MultiValueUpdateType;
+import org.instantlogic.fabric.util.ValueChangeObserver;
+import org.instantlogic.interaction.util.BookmarkExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class User extends AbstractUser {
+public class User extends AbstractUser implements BookmarkExtension {
 	
 	private static final Logger logger = LoggerFactory.getLogger(User.class);
 	

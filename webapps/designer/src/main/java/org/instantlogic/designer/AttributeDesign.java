@@ -56,4 +56,9 @@ public class AttributeDesign extends AbstractAttributeDesign {
 		return this;
 	}
 
+	public AttributeDesign multivalue() {
+		getDataType().setMultivalue(true);
+		return this;
+	}
+
 }

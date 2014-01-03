@@ -25,7 +25,7 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 	@Override
 	public void init() {
 		DeductionSchemeDesign applicationNameDeduction, caseNameDeduction, userHasValue, user, userUsername, userAvatarUrl, userName, 
-			activeUsers, username, avatarUrl, name, userTravelers, travelerId, travelerPlaceUrl, travelerPlaceTitle, visitors, username2, name2, avatarUrl2, focus, isMe, currentPlace;
+			activeUsers, username, avatarUrl, name, userTravelers, travelerId, travelerPlace, travelerPlaceTitle, visitors, username2, name2, avatarUrl2, focus, isMe, currentPlace;
 		FragmentTemplateDesign debugVisible;
 		
 		PlaceParameterDesign travelerParameter = new PlaceParameterDesign();
@@ -67,7 +67,7 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 																	.setSelection(userTravelers = new DeductionSchemeDesign())
 																	.setChild(new FragmentTemplateDesign("Traveler")
 																		.setValue("travelerId", travelerId = new DeductionSchemeDesign())
-																		.setValue("placeUrl", travelerPlaceUrl = new DeductionSchemeDesign())
+																		.setValue("place", travelerPlace = new DeductionSchemeDesign())
 																		.setValue("placeTitle", travelerPlaceTitle = new DeductionSchemeDesign())
 																	)
 															)
@@ -115,9 +115,9 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 		userTravelers.deduceReverseRelation(TravelerEntityGenerator.user, 
 			userTravelers.deduceSelectedInstance(UserEntityGenerator.ENTITY));
 		travelerId.deduceAttribute(TravelerEntityGenerator.id);
-		travelerPlaceUrl.deduceAttribute(PlaceEntityGenerator.url, 
-			travelerPlaceUrl.deduceRelation(TravelerEntityGenerator.currentPlace));
-		travelerPlaceTitle.deduceAttribute(PlaceEntityGenerator.title, 
+		travelerPlace.deduceAttribute(PlaceEntityGenerator.location, 
+			travelerPlace.deduceRelation(TravelerEntityGenerator.currentPlace));
+		travelerPlaceTitle.deduceAttribute(PlaceEntityGenerator.currentTitle, 
 			travelerPlaceTitle.deduceRelation(TravelerEntityGenerator.currentPlace));
 		visitors.deduceReverseRelation(TravelerEntityGenerator.currentPlace, visitors.deduceSelectedInstance(PlaceEntityGenerator.ENTITY));
 

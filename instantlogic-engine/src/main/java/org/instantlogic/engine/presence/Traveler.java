@@ -11,22 +11,26 @@ import org.instantlogic.engine.TravelerProxy;
 import org.instantlogic.engine.manager.CaseManager;
 import org.instantlogic.engine.manager.Update;
 import org.instantlogic.engine.presence.placetemplate.TravelerPlaceTemplate;
+import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.Observations;
 import org.instantlogic.fabric.util.ObservationsOutdatedObserver;
 import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.fabric.util.ValueChangeObserver;
+import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.flow.InvalidFlowCoordinatesException;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.util.FlowContext;
+import org.instantlogic.interaction.util.HistoryExtension;
+import org.instantlogic.interaction.util.LocationInfo;
 import org.instantlogic.interaction.util.RenderContext;
 import org.instantlogic.interaction.util.TravelerInfo;
 
 /**
  * Represents a traveler in the Presence application. Returning messages is possible through the TravelerProxy.
  */
-public class Traveler extends AbstractTraveler {
+public class Traveler extends AbstractTraveler implements HistoryExtension {
 
 	private static final Map<String, Object> PLACE_NOT_FOUND = new LinkedHashMap<String, Object>();
 	static  {
@@ -104,7 +108,7 @@ public class Traveler extends AbstractTraveler {
 		
 		Update update = new Update();
 		update.setName("place");
-		update.setLocation(getCurrentPlace().getUrl());
+		update.setLocation(getCurrentPlace().getLocation().getUrl());
 		
 		RenderContext renderContext = locatePlace();
 		if (renderContext==null) {
@@ -115,13 +119,22 @@ public class Traveler extends AbstractTraveler {
 		
 		CaseAdministration caseAdministration = renderContext.getCaseInstance().getMetadata().getCaseAdministration();
 		caseAdministration.startRecordingObservations();
+		// Record observations on the presence during rendering as well (for bookmarks in data-explorer for example)
+		getMetadata().getCaseAdministration().startRecordingObservations(); 
+		LocationInfo locationInfo =  placeTemplate.provideInfo(renderContext);
 		update.setRootFragment(placeTemplate.render(renderContext));
 		String title = (String)update.getRootFragment().get("title");
 		if (title==null) title = "?";
-		getCurrentPlace().setTitle(title);
+		getCurrentPlace().setCurrentTitle(title);
+		getCurrentPlace().setLocation(locationInfo);
+		
 		update.getRootFragment().put("themeNames", caseManager.getApplication().getThemeNames());
+		Observations presenceObservations = getMetadata().getCaseAdministration().stopRecordingObservations();
 		Observations observations = caseAdministration.stopRecordingObservations();
-
+		for (ReadOnlyAttributeValue<? extends Instance, ? extends Object> observation : presenceObservations.getValuesObserved()) {
+			observations.add(observation);
+		}
+		
 		placeOutdated = false;
 		placeOutdatedObserver = new ObservationsOutdatedObserver(observations, placeOutdatedValueChangeObserver);
 		return update;
@@ -166,7 +179,7 @@ public class Traveler extends AbstractTraveler {
 	private RenderContext locatePlace() {
 		try {
 			Application application = this.caseManager.getApplication();
-			return RenderContext.create(application, getCurrentPlace().getUrl(), caseManager.getCase(), caseManager.getCaseId(), travelerInfo);
+			return RenderContext.create(application, getCurrentPlace().getLocation().getUrl(), caseManager.getCase(), caseManager.getCaseId(), travelerInfo);
 		} catch (NoSuchElementException e) {
 			return null;
 		} catch (InvalidFlowCoordinatesException e2) {
