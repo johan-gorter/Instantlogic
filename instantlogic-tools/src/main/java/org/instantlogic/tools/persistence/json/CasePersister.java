@@ -13,7 +13,8 @@ public class CasePersister {
 	public static final Gson gson = new GsonBuilder()
 				.setDateFormat("yyyy-MM-dd")
 				.setPrettyPrinting()
-				.registerTypeHierarchyAdapter(Instance.class, new GsonInstanceAdapter()).create();
+				.registerTypeHierarchyAdapter(Instance.class, new GsonInstanceAdapter())
+				.create();
 
 	public void save(Instance caseInstance, OutputStreamWriter writer) {
 		gson.toJson(caseInstance, writer);

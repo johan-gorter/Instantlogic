@@ -77,6 +77,17 @@ public class Presence extends AbstractPresence {
 			case "setFocus":
 				traveler.setFocus((String)value);
 				break;
+			case "toggleBookmarks":
+				traveler.setShowingBookmarks(traveler.getShowingBookmarks()!=Boolean.TRUE);
+				break;
+			case "addBookmark":
+				traveler.getUser().addToBookmarks(traveler.getCurrentPlace().getLocation());
+				break;
+			case "removeBookmark":
+				traveler.getUser().removeFromBookmarks(((Number)value).intValue());
+				break;
+			default:
+				throw new RuntimeException("Unknown presence command: "+command);
 		}
 	}
 	
@@ -101,7 +112,9 @@ public class Presence extends AbstractPresence {
 			if (traveler.getUser()==null || !travelerInfo.getAuthenticatedUsername().equals(traveler.getUser().getUsername())) {
 				user = findOrActivateUser(travelerInfo.getAuthenticatedUsername());
 				traveler.setUser(user);
-				travelerInfo.registerExtension(BookmarkExtension.class, user);
+				if (travelerInfo.getExtension(BookmarkExtension.class)==null) {
+					travelerInfo.registerExtension(BookmarkExtension.class, user);
+				}
 			}
 		} else {
 			traveler.setUser(null);

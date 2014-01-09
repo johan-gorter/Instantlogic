@@ -7,6 +7,8 @@ import org.instantlogic.designer.IfElseDesign;
 import org.instantlogic.designer.PlaceParameterDesign;
 import org.instantlogic.designer.PlaceTemplateDesign;
 import org.instantlogic.designer.SelectionDesign;
+import org.instantlogic.designer.StringTemplateDesign;
+import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.engine.presence.PlaceEntityGenerator;
 import org.instantlogic.engine.presence.PresenceApplicationGenerator;
 import org.instantlogic.engine.presence.PresenceEntityGenerator;
@@ -25,8 +27,9 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 	@Override
 	public void init() {
 		DeductionSchemeDesign applicationNameDeduction, caseNameDeduction, userHasValue, user, userUsername, userAvatarUrl, userName, 
-			activeUsers, username, avatarUrl, name, userTravelers, travelerId, travelerPlace, travelerPlaceTitle, visitors, username2, name2, avatarUrl2, focus, isMe, currentPlace;
-		FragmentTemplateDesign debugVisible;
+			activeUsers, username, avatarUrl, name, userTravelers, travelerId, travelerPlace, travelerPlaceTitle, visitors, username2, name2, avatarUrl2, 
+			focus, isMe, currentPlace, showingBookmarks, selectBookmarks;
+		FragmentTemplateDesign debugVisible, bookmarksToggle, bookmarksPopup, bookmarkLinks;
 		
 		PlaceParameterDesign travelerParameter = new PlaceParameterDesign();
 		travelerParameter.setName("traveler");
@@ -53,6 +56,7 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 														.setValue("avatarUrl", userAvatarUrl = new DeductionSchemeDesign())
 														.setValue("name", userName = new DeductionSchemeDesign())
 												),
+											bookmarksToggle = new FragmentTemplateDesign("ToggleBookmarks"),
 											debugVisible = new FragmentTemplateDesign("DebugVisibleToggle"),
 											new FragmentTemplateDesign("Communicator")
 												.setChildren("users", 
@@ -72,6 +76,10 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 																	)
 															)
 														)
+												),
+											new IfElseDesign()
+												.setCondition(showingBookmarks = new DeductionSchemeDesign())
+												.setIfChild(bookmarksPopup = new FragmentTemplateDesign("BookmarksPopup")
 												)
 										)
 								)
@@ -128,7 +136,19 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 		currentPlace.deduceRelation(TravelerEntityGenerator.currentPlace);
 		focus.deduceAttribute(TravelerEntityGenerator.focus);
 		isMe.deduceCustom(PresenceApplicationGenerator.IsMeDeduction);
-		
+
 		debugVisible.setEntity(TravelerEntityGenerator.ENTITY).setAttribute(TravelerEntityGenerator.debugVisible);
+		
+		showingBookmarks.deduceAttribute(TravelerEntityGenerator.showingBookmarks);
+		
+		bookmarksToggle.setEntity(TravelerEntityGenerator.ENTITY).setAttribute(TravelerEntityGenerator.showingBookmarks);
+		TextTemplateDesign addBookmarkText = new TextTemplateDesign();
+		bookmarksPopup.setText("currentPlaceTitle", addBookmarkText);
+		DeductionSchemeDesign currentTitle = new DeductionSchemeDesign();
+		addBookmarkText.addToUntranslated(new StringTemplateDesign().setDeduction(currentTitle));
+		currentTitle.deduceAttribute(PlaceEntityGenerator.currentTitle, currentTitle.deduceRelation(TravelerEntityGenerator.currentPlace));
+		
+		bookmarksPopup.setValue("bookmarksData", selectBookmarks = new DeductionSchemeDesign());
+		selectBookmarks.deduceAttribute(UserEntityGenerator.bookmarks, selectBookmarks.deduceRelation(TravelerEntityGenerator.user));
 	}
 }

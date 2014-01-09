@@ -2,6 +2,7 @@ YUI.add('instantlogic-presence', function (Y) {
 
     var ns = Y.namespace('instantlogic.presence');
     var html = Y.html;
+    var util = Y.instantlogic.util;
     var FragmentList = Y.instantlogic.FragmentList;
 
     // Presence
@@ -54,7 +55,7 @@ YUI.add('instantlogic-presence', function (Y) {
     		var markup = html.span({className: 'me'},
 				this.avatarDiv = html.span({className: 'avatar'}, html.img({src: model.avatarUrl, width:'23px', height:'23px;'})),
 				this.loginNameSpan = html.span({className: 'username'}, model.name || ''),
-				this.logoutButton = html.a({className: 'btn btn-inverse'}, 'Log out')
+				this.logoutButton = html.a({className: 'btn btn-default navbar-btn'}, 'Log out')
     		)
     		this.logoutButton.on('click', this.logoutClick, this);
     		this.parentNode.appendChild(markup);
@@ -157,6 +158,10 @@ YUI.add('instantlogic-presence', function (Y) {
     	}
     });
 
+    var getUrl = function(place) {
+    	return place?place.url:null;
+    };
+    
     // Traveler
     ns.Traveler = Y.instantlogic.createFragment({
     	createMarkup: function(model) {
@@ -168,11 +173,11 @@ YUI.add('instantlogic-presence', function (Y) {
     		return [[this.link, model.placeTitle]];
     	},
     	postInit: function(model) {
-    		this.link.set('href', '#location='+model.place.url);
+    		this.link.set('href', '#location='+getUrl(model.place));
     	},
     	postUpdate: function(newModel, diff) {
-    		if (this.oldModel.place.url!=newModel.place.url) {
-    			this.link.set('href', '#location='+newModel.place?newModel.place.url:"");
+    		if (getUrl(this.oldModel.place)!=getUrl(newModel.place)) {
+    			this.link.set('href', '#location='+getUrl(newModel.place));
     		}
     	}
     	
@@ -249,6 +254,80 @@ YUI.add('instantlogic-presence', function (Y) {
     	}
     });
     
+    ns.ToggleBookmarks = Y.instantlogic.createFragment({
+    	createMarkup: function(model) {
+    		this.button = html.a({className: 'btn btn-default navbar-btn'}, 'Bookmarks');
+    		this.button.on("click", this.logoutClick, this);
+    		return this.button;
+    	},
+    	overrides: {
+	    	logoutClick: function(evt) {
+	    		this.engine.enqueueMessage({message: 'presence', command: 'toggleBookmarks'});
+	    		evt.preventDefault();
+	    	}
+    	}
+    });
+    
+    ns.BookmarksPopup = Y.instantlogic.createFragment({
+    	createMarkup: function(model) {
+    		this.markup = html.div({className: 'modal'}, 
+	    		html.div({className: 'modal-dialog'},
+	    			html.div({className: 'modal-content'},
+    	    			html.div({className: 'modal-body'},
+    	    				this.addButton = html.button({className:'btn btn-primary'}, 
+    	    					'Add bookmark: ', 
+    	    					this.currentPlaceTitleSpan = html.span()
+    	    				),
+    	    				this.bookmarksDiv = html.div()
+    	    			)
+	    			)
+	    		)
+    		);
+    		this.markup.on("click", this.markupClicked, this);
+    		this.markup.setStyle("display", "block");
+    		this.addButton.on("click", this.addClicked, this);
+    		return this.markup;
+    	},
+    	texts: function(model) {
+    		return [[this.currentPlaceTitleSpan, model.currentPlaceTitle]];
+    	},
+    	postInit: function(model) {
+    		this.renderBookmarks(model.bookmarksData);
+    	},
+    	postUpdate: function(newModel) {
+    		if (!util.equals(this.oldModel.bookmarksData, newModel.bookmarksData)) {
+    			this.bookmarksDiv.empty();
+    			this.renderBookmarks(newModel.bookmarksData);
+    		}
+    	},
+    	overrides: {
+    		markupClicked: function(evt) {
+	    		this.engine.enqueueMessage({message: 'presence', command: 'toggleBookmarks'});
+	    		evt.preventDefault();
+	    	},
+	    	addClicked: function(evt) {
+	    		this.engine.enqueueMessage({message: 'presence', command: 'addBookmark'});
+	    		evt.preventDefault();
+	    	},
+	    	renderBookmarks: function(data) {
+	    		var me = this;
+	    		data.forEach(function(bookmark, index) {
+	    			var removeLink;
+	    			var bookmarkDiv = html.div({className: 'bookmark'},
+	    				html.a({href:'#location='+bookmark.url}, bookmark.title),
+	    				removeLink = html.a({className: 'bookmark-remove'}, 'Remove')
+	    			)
+					removeLink.on('click', function(evt){
+			    		me.engine.enqueueMessage({message: 'presence', command: 'removeBookmark', value: index});
+			    		evt.preventDefault();
+			    		evt.stopPropagation();
+					});
+	    			me.bookmarksDiv.append(bookmarkDiv);
+	    		}, this);
+	    	}
+    	}
+    });
+    
     ns.DebugVisibleToggle = Y.instantlogic.createFragment({
     	createMarkup: function(model) {
     		var markup = html.form({ action: '.', className: 'form-inline debug-visible' },
@@ -291,7 +370,7 @@ YUI.add('instantlogic-presence', function (Y) {
     		var markup = html.form({ action: '.', className: 'form-inline' },
 //    			html.div({className:'input-append'},
 					this.usernameInput = html.input({type:'text'}),
-					this.loginButton = html.button({className:'btn'}, 'Login')
+					this.loginButton = html.button({className:'btn btn-default navbar-btn'}, 'Login')
 //				)
     		);
     		this.usernameInput.on('focus', this.inputFocus, this);

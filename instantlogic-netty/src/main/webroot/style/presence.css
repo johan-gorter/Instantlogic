@@ -3,18 +3,19 @@
 #presence {height:25px;} 
 
 /* Page elements */
-.navbar-fixed-top .application-name {color: #EE4444;font-weight:bold;font-size:20px;}
-.navbar-fixed-top .minus {color: #DDDDDD;font-weight:bold;font-style:italic;font-size:20px;}
-.navbar-fixed-top .case-name {color: #DDDDDD;font-weight:bold;font-style:italic;font-size:20px;}
+.navbar-fixed-top .application-name {color: #EE4444;font-weight:bold;font-size:18px;line-height:20px;}
+.navbar-fixed-top .minus {color: #DDDDDD;font-weight:bold;font-style:italic;font-size:18px;line-height:20px;}
+.navbar-fixed-top .case-name {color: #DDDDDD;font-weight:bold;font-style:italic;font-size:18px;line-height:20px;}
+.navbar-fixed-top .case-name span {line-height:20px;}
 .navbar-fixed-top .me .avatar {width:23px; height:23px;overflow:hidden;background-color:white;margin: 3px; }
-.navbar-fixed-top .me .avatar img {width:23px; height:23px;}
+.navbar-fixed-top .me .avatar img {width:23px; height:23px; top:-3px;}
 .navbar-fixed-top .me .username {white-space: nowrap; margin:0 10px 0 0;}
 .show-communicator-button {}
 .debug-visible {display:inline-block;margin:0 10px;}
 .communicator-space {width:210px;display:inline-block;}
 .communicator {position:fixed; top:0px; right:0px;width:200px;height:40px; background-color:#1B1B1B; color: #FFFFFF;overflow:hidden;}
 .top-right {position:absolute; top:0px;right:0px;}
-.navbar-fixed-top .btn {margin-top:0px; color:#999;}
+.navbar-fixed-top .btn {margin-top:0px; }
 
 .focus-bar {position:absolute;z-index: -1000;width:100%; height:58px; background-color:#FDFDFD;background: linear-gradient(to bottom, #FFFFFF 1%,#E0E0E0 50%,#FFFFFF 100%);}
 .focus-bar.me {z-index: -999;background-color:#FFFFB0;background: linear-gradient(to bottom, #ffffff 1%,#FFFFAA 50%,#ffffff 100%);}

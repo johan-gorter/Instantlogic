@@ -21,6 +21,7 @@ public class TravelerEntityGenerator extends EntityDesign {
     public static final AttributeDesign debugVisible = addAttribute(ENTITY, "debugVisible", DataCategoryDesign._boolean);
     public static final AttributeDesign focus = addAttribute(ENTITY, "focus", DataCategoryDesign.text);
     public static final AttributeDesign history = addAttribute(ENTITY, "history", LocationInfo.class).multivalue().ordered();
+    public static final AttributeDesign showingBookmarks = addAttribute(ENTITY, "showingBookmarks", DataCategoryDesign._boolean);
 
     // Relations
     public static final RelationDesign currentPlace = addRelation(ENTITY, "currentPlace", RelationType.ManyToZeroOrOne, PlaceEntityGenerator.ENTITY)
@@ -31,5 +32,6 @@ public class TravelerEntityGenerator extends EntityDesign {
     @Override
     public void init() {
     	debugVisible.setQuestion(createConstantText("debug"));
+    	showingBookmarks.setQuestion(createConstantText("bookmarks"));
     }
 }

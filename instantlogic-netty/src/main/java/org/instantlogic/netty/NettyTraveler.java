@@ -22,6 +22,7 @@ import org.instantlogic.engine.message.Message;
 import org.instantlogic.engine.message.PresenceMessage;
 import org.instantlogic.engine.message.StartMessage;
 import org.instantlogic.engine.message.SubmitMessage;
+import org.instantlogic.fabric.value.Values;
 import org.instantlogic.interaction.util.TravelerInfo;
 import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.Channel;
@@ -40,6 +41,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -54,7 +56,11 @@ public class NettyTraveler implements TravelerProxy {
 	
 	private static final Logger logger = LoggerFactory.getLogger(NettyTraveler.class);
 
-	private static final Gson gson = new Gson();
+	public static final Gson gson = new GsonBuilder()
+        .setPrettyPrinting()
+		.registerTypeHierarchyAdapter(Values.class, new org.instantlogic.engine.util.ValuesAdapter())
+		.create();
+
 
 	private final TravelerInfo travelerInfo;
 	private final CaseProcessor caseProcessor;
