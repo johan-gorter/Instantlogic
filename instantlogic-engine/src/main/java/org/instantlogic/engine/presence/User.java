@@ -1,13 +1,17 @@
 package org.instantlogic.engine.presence;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.fabric.util.ValueChangeEvent.MultiValueUpdateType;
 import org.instantlogic.fabric.util.ValueChangeObserver;
-import org.instantlogic.interaction.util.BookmarkExtension;
+import org.instantlogic.interaction.util.LocationInfo;
+import org.instantlogic.interaction.util.UserExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class User extends AbstractUser implements BookmarkExtension {
+public class User extends AbstractUser implements UserExtension {
 	
 	private static final Logger logger = LoggerFactory.getLogger(User.class);
 	
@@ -29,5 +33,14 @@ public class User extends AbstractUser implements BookmarkExtension {
 	public User() {
 		super();
 		getTravelersRelationValue().addValueChangeObserver(travelersObserver);
+	}
+
+	@Override
+	public List<LocationInfo> getTravelerLocations() {
+		ArrayList<LocationInfo> result = new ArrayList<>();
+		for (Traveler  traveler : getTravelers()) {
+			result.add(traveler.getCurrentPlace().getLocation());
+		}
+		return result;
 	}
 }

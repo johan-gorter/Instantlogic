@@ -191,7 +191,7 @@ public class DeductionSchemePlaceTemplate extends org.instantlogic.interaction.f
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
                             .addChild("content",
                                 new org.instantlogic.interaction.page.FragmentTemplate("ucnjaEuifqbhIek_07ec67cf_c357", "Icon")      
-                                    .setStyleNames(new String[]{"icon-wrench"})        
+                                    .setStyleNames(new String[]{"glyphicon-wrench"})        
                             )        
                     )        
                     .addChild("content",

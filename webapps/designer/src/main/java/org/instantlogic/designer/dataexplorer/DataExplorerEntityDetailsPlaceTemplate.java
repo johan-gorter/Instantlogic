@@ -22,6 +22,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
 	private DataExplorerAdministration administration;
 	private Entity<?>[] parameters;
+	private TextTemplate title = new TextTemplate().getUntranslated().add(createInstanceTitleDeduction()).getTextTemplate();
 
 	public DataExplorerEntityDetailsPlaceTemplate(Entity<?> entity, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerAdministration administration) {
 		this.entity = entity;
@@ -93,12 +94,15 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	private FragmentTemplate relationAsField(String id, Relation relation, Deduction selectValue) {
 		return new FragmentTemplate(id, "Block").setStyleNames(new String[]{"control-group", "form-horizontal"})
 			.addChild("content",
-				new FragmentTemplate(id+"label", "Div").setStyleNames(new String[]{"input"})
+				new FragmentTemplate(id+"label", "Div").setStyleNames(new String[]{"form-group"})
 					.addChild("content", 
-						new FragmentTemplate(id+"label", "Div").setStyleNames(new String[]{"control-label"}).addChild("content", 
-							new FragmentTemplate(id+"-text", "Text").putText("text", new TextTemplate().getUntranslated().add(relation.getName()).getTextTemplate()))
+						new FragmentTemplate(id+"label", "Div").setStyleNames(new String[]{"control-label col-sm-2"}).addChild("content", 
+							new FragmentTemplate(id+"-link", "Link")
+								.putText("text", new TextTemplate().getUntranslated().add(relation.getName()).getTextTemplate())
+								.setDestination(administration.getRelationPlaceTemplate(entity, relation.getUniqueId()))
+						)
 					)
-					.addChild("content", new FragmentTemplate(id+"controls relations", "Div").setStyleNames(new String[]{"controls"})
+					.addChild("content", new FragmentTemplate(id+"controls relations", "Div").setStyleNames(new String[]{"controls relation-values", "col-sm-10"})
 						.addChild("content", 
 							new SelectionElement(selectValue,
 								new FragmentTemplate(id+"-linkBlock", "Block").addChild("content", 
@@ -107,11 +111,11 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 										.setDestination(administration.getExplorePlaceTemplate()))
 								)
 						)
-						.addChild("content", 
-							new FragmentTemplate(id+"detailsButton", "Button").setStyleNames(new String[]{"btn"})
-								.putText("text", new TextTemplate().getUntranslated().add("Relation").getTextTemplate())
-								.setDestination(administration.getRelationPlaceTemplate(entity, relation.getUniqueId()))
-						)
+//						.addChild("content", 
+//							new FragmentTemplate(id+"detailsButton", "Button").setStyleNames(new String[]{"btn"})
+//								.putText("text", new TextTemplate().getUntranslated().add("Relation").getTextTemplate())
+//								.setDestination(administration.getRelationPlaceTemplate(entity, relation.getUniqueId()))
+//						)
 					)
 		);
 	}
@@ -155,6 +159,11 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	@Override
 	public String getId() {
 		return getName();
+	}
+	
+	@Override
+	protected TextTemplate getTitle() {
+		return title;
 	}
 
 	public Entity<?>[] getParameters() {

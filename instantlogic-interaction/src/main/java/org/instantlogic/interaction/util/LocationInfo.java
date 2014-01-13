@@ -1,5 +1,8 @@
 package org.instantlogic.interaction.util;
 
+import org.instantlogic.fabric.Instance;
+import org.instantlogic.fabric.model.Entity;
+
 public class LocationInfo {
 
 	private final String url;
@@ -73,6 +76,15 @@ public class LocationInfo {
 		} else if (!url.equals(other.url))
 			return false;
 		return true;
+	}
+
+	public Instance getAboutInstance(Instance caseInstance) {
+		if (aboutInstanceId.indexOf("!")>=0) {
+			String[] split = aboutInstanceId.split("!");
+			Entity<?> entity = caseInstance.getMetadata().getCaseAdministration().getAllEntities().get(split[0]);
+			return entity.getStaticInstances().get(split[1]);
+		}
+		return caseInstance.getMetadata().getCaseAdministration().getInstanceByUniqueId(aboutInstanceId);
 	}
 	
 	

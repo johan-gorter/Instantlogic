@@ -73,17 +73,24 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 				new FragmentTemplate("shopForInstancesOuter", "Block")
 					.addChild("content", 
 						new FragmentTemplate("shopForInstances", "Button")
-							.addChild("content", new FragmentTemplate("shopping-icon","Icon").setStyleNames(new String[]{"icon-shopping-cart"}))
+							.addChild("content", new FragmentTemplate("shopping-icon","Icon").setStyleNames(new String[]{"glyphicon-shopping-cart"}))
 							.putText("text", new TextTemplate().getUntranslated().add("Start shopping for instances").getTextTemplate())
 							.setDestination(relationAdministration.shopPlaceTemplate)
 					)
 					.addChild("content", 
+						new AddItemsFromOtherTravelersElement(relation))					
+					.addChild("content", 
 						new AddItemsFromHistoryElement(relation))
+					.addChild("content", 
+						new AddItemsFromBookmarksElement(relation))
 			);
 		}
 		
 		page.addChild("mainContent",
 			new FragmentTemplate("Table", "Table")
+				.addChild("columns", 
+					new FragmentTemplate("c1","Column").setStyleNames(new String[]{"instance-title"})
+						.putText("header", new TextTemplate().getUntranslated().add("Title").getTextTemplate()))
 				.addChild("columns", 
 					new FragmentTemplate("c1","Column").setStyleNames(new String[]{"instance-entity"})
 						.putText("header", new TextTemplate().getUntranslated().add("Entity").getTextTemplate()))
@@ -91,28 +98,25 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 					new FragmentTemplate("c1","Column").setStyleNames(new String[]{"instance-id"})
 						.putText("header", new TextTemplate().getUntranslated().add("Id").getTextTemplate()))
 				.addChild("columns", 
-					new FragmentTemplate("c1","Column").setStyleNames(new String[]{"instance-title"})
-						.putText("header", new TextTemplate().getUntranslated().add("Title").getTextTemplate()))
-				.addChild("columns", 
-					new FragmentTemplate("c2","Column")
+					new FragmentTemplate("c2","Column").setStyleNames(new String[]{"instance-operations"})
 						.putText("header", new TextTemplate().getUntranslated().add("").getTextTemplate()))
 				.addChild("rows",
 					new SelectionElement(createSelectRelationDeduction(relation),
 						new FragmentTemplate("instance-row", "Row")
 							.putChildren("cells", 
-								new FragmentTemplate("cell-entity", "Cell")
-									.putText("text", new TextTemplate().getUntranslated().add(createSelectEntityNameDeduction()).getTextTemplate()),
-								new FragmentTemplate("cell-id", "Cell")
-									.putText("text", new TextTemplate().getUntranslated().add(createSelectInstanceIdDeduction()).getTextTemplate()),
-								new FragmentTemplate("cell-title", "Cell")
+								new FragmentTemplate("cell-title", "Cell").setStyleNames(new String[]{"instance-title"})
 									.addChild("content", 
 										new FragmentTemplate("toInstance", "Link")
 											.putText("text", DataExplorerEntityDetailsPlaceTemplate.getEntityTitle(relation.getTo()))
 											.setDestination(administration.getExplorePlaceTemplate())
 									),
-								new FragmentTemplate("cell-operations", "Cell")
+								new FragmentTemplate("cell-entity", "Cell").setStyleNames(new String[]{"instance-entity"})
+									.putText("text", new TextTemplate().getUntranslated().add(createSelectEntityNameDeduction()).getTextTemplate()),
+								new FragmentTemplate("cell-id", "Cell").setStyleNames(new String[]{"instance-id"})
+									.putText("text", new TextTemplate().getUntranslated().add(createSelectInstanceIdDeduction()).getTextTemplate()),
+								new FragmentTemplate("cell-operations", "Cell").setStyleNames(new String[]{"instance-operations"})
 									.addChild("content", new FragmentTemplate("delete", "Button").setStyleNames(new String[]{"btn-small", "btn-danger"})
-										.addChild("content", new FragmentTemplate("delete-icon","Icon").setStyleNames(new String[]{"icon-remove"}))
+										.addChild("content", new FragmentTemplate("delete-icon","Icon").setStyleNames(new String[]{"glyphicon-remove"}))
 										.setDestination(relationAdministration.removePlaceTemplate)
 									)
 							)

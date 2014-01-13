@@ -1,7 +1,7 @@
 package org.instantlogic.designer;
 
 @SuppressWarnings({"unchecked","rawtypes","unused"})
-public class ElementDesign extends Design { 
+public class ElementDesign extends org.instantlogic.fabric.Instance { 
 
 	private static final java.util.Map<String, ElementDesign> _staticInstances = new java.util.LinkedHashMap<String, ElementDesign>();
 	

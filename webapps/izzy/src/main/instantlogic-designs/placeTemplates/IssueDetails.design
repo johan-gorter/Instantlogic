@@ -12,7 +12,7 @@ JvOcydAkhI__ybnp_710cdef6_1d31:  content=NjAlxzOdhqamedws_96f05008_1698:Fragment
 NjAlxzOdhqamedws_96f05008_1698:   name
 NjAlxzOdhqamedws_96f05008_1698:   isCustomized
 NjAlxzOdhqamedws_96f05008_1698:   previewMode
-NjAlxzOdhqamedws_96f05008_1698:   editorOpen
+NjAlxzOdhqamedws_96f05008_1698:   editorOpen=false
 NjAlxzOdhqamedws_96f05008_1698:   styleNames[
 NjAlxzOdhqamedws_96f05008_1698:   styleNames]
 NjAlxzOdhqamedws_96f05008_1698:   fragmentTypeName="Page"
@@ -101,9 +101,9 @@ BuvuOwyhuagwcmaq_59cc01de_a60a:      children+ifbevxgvImbIihpd_561531a6_9bfb:Fra
 ifbevxgvImbIihpd_561531a6_9bfb:       name
 ifbevxgvImbIihpd_561531a6_9bfb:       isCustomized
 ifbevxgvImbIihpd_561531a6_9bfb:       previewMode
-ifbevxgvImbIihpd_561531a6_9bfb:       editorOpen=false
+ifbevxgvImbIihpd_561531a6_9bfb:       editorOpen=true
 ifbevxgvImbIihpd_561531a6_9bfb:       styleNames[
-ifbevxgvImbIihpd_561531a6_9bfb:       styleNames+"icon-remove"
+ifbevxgvImbIihpd_561531a6_9bfb:       styleNames+"glyphicon-remove"
 ifbevxgvImbIihpd_561531a6_9bfb:       styleNames]
 ifbevxgvImbIihpd_561531a6_9bfb:       fragmentTypeName="Icon"
 ifbevxgvImbIihpd_561531a6_9bfb:       fragmentFilters[

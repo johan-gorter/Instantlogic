@@ -49,8 +49,8 @@
 .designer .preview-line .preview-container {display:inline-block;width:600px;float:right;line-height:0;}
 .designer .preview-line .preview-container iframe {width: 600px;height:20px;overflow:hidden;border:0;}
 
-.designer .editor {border: solid 1px #606060;background-color: #F0FF90;float:right;width:730px;margin-bottom:13px;overflow:visible;padding-bottom:10px;margin-right:10px;margin-top:10px;z-index:auto;}
-.designer .editor .arrow {border-top-color: #F0FF90;padding:0;overflow:visible;left:24.7%}
+.designer .editor {border: solid 1px #606060;background-color: #F0FF90;float:right;width:830px;max-width:830px;margin-bottom:13px;overflow:visible;padding-bottom:10px;margin-right:10px;margin-top:10px;z-index:auto;}
+.designer .editor .arrow {border-top-color: #F0FF90;padding:0;overflow:visible;left:17%}
 .designer .editor .arrow::after {border-top-width:11px;display:block;border-top-color: #000000;}
 
 .preview-line {min-height: 35px;}
@@ -64,3 +64,9 @@ div.element-edit-options {position:absolute;right:630px;top:0px;}
 a.btn.after-previous-field {position:absolute;top:0px;left:410px;}
 
 .deduction-scheme { width: 600px;height: 600px;}
+
+.relation-values {padding-top: 7px;}
+.instance-title {width: 300px;}
+.instance-id {width: 240px;}
+.instance-operations {width: 40px;}
+.instance-entity {width: 120px;}

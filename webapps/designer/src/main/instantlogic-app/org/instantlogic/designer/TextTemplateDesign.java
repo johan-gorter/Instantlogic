@@ -1,7 +1,7 @@
 package org.instantlogic.designer;
 
 @SuppressWarnings({"unchecked","rawtypes","unused"})
-public class TextTemplateDesign extends Design { 
+public class TextTemplateDesign extends org.instantlogic.fabric.Instance { 
 
 	private static final java.util.Map<String, TextTemplateDesign> _staticInstances = new java.util.LinkedHashMap<String, TextTemplateDesign>();
 	

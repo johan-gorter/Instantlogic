@@ -58,9 +58,9 @@ YUI.add('instantlogic-fragments', function (Y) {
     	createMarkup: function() {
     		return html.div({className: 'animate-vertically'},
 	    		html.form({ action: '.', className: 'form-horizontal input' },
-		        	html.div({className: 'control-group'},
-		                this.questionDiv = html.div({ className: 'control-label' }),
-		                this.answerDiv = html.div({ className: 'controls' })
+		        	html.div({className: 'form-group'},
+		                this.questionDiv = html.div({ className: 'col-sm-2 control-label' }),
+		                this.answerDiv = html.div({ className: 'col-sm-10' })
 		            )
 	    		)
     		);
@@ -104,7 +104,7 @@ YUI.add('instantlogic-fragments', function (Y) {
     
     ns.Icon = createFragment({
     	createMarkup: function() {
-    		return html.i(); // A styleName of icon-something is expected here
+    		return html.span({className: "glyphicon"}); // A styleName of icon-something is expected here
     	}
     }),
     
@@ -157,7 +157,7 @@ YUI.add('instantlogic-fragments', function (Y) {
     	baseClass: ns.Link,
     	overrides: {
     		cssClassName: function() {
-    			return 'btn';
+    			return 'btn btn-default';
     		}
     	}
     });

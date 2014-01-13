@@ -154,10 +154,10 @@ public class DesignerApplicationGenerator extends ApplicationDesign {
 	}
 
 	public static void main(String[] args) throws Exception {
-		try (FileWriter fileWriter = new FileWriter(new File("../../webapps/nextdesigner/src/main/instantlogic-designs/nextdesigner.json"))) {
+/*		try (FileWriter fileWriter = new FileWriter(new File("../../webapps/nextdesigner/src/main/instantlogic-designs/nextdesigner.json"))) {
 			new CasePersister().save(APPLICATION, fileWriter);
 		}
 		System.out.println("nextdesigner.json written");
-		Generator.scanForInstantlogicDesigns(new File("../../webapps/nextdesigner"));
+*/		Generator.scanForInstantlogicDesigns(new File("../../webapps/nextdesigner"));
     }
 }

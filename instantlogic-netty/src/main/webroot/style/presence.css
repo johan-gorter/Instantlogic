@@ -35,6 +35,30 @@
 
 .buttons {width: 100%;margin:5px 0;}
 
+.bookmark {
+	position: relative;
+	padding: 5px;
+	overflow: hidden;
+}
+
+.bookmark a {
+	display: inline-block;
+	white-space: nowrap; 
+}
+
+.bookmark-add {
+	max-width: 490px;
+	overflow: hidden;
+}
+
+.bookmark-remove {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding: 5px;
+	background-color: white;
+}
+
 /* Debugger labels */
 #presence .fragment-debug {display:none;}
 .fragment-debug-holder {position:absolute; display:inline-block; width:8px; height:14px; }

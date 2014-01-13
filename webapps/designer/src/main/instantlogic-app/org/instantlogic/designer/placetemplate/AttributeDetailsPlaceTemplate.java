@@ -93,7 +93,7 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
                             .addChild("content",
                                 new org.instantlogic.interaction.page.FragmentTemplate("NhaOIgwwEmejiasz_4f2cb48d_6b65", "Icon")      
-                                    .setStyleNames(new String[]{"icon-wrench"})        
+                                    .setStyleNames(new String[]{"glyphicon-wrench"})        
                             )        
                     )        
                     .addChild("content",
@@ -103,7 +103,7 @@ public class AttributeDetailsPlaceTemplate extends org.instantlogic.interaction.
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Delete").getTextTemplate())        
                             .addChild("content",
                                 new org.instantlogic.interaction.page.FragmentTemplate("iEbbbysr_IbtieUa_78065d00_d6a7", "Icon")      
-                                    .setStyleNames(new String[]{"icon-remove"})        
+                                    .setStyleNames(new String[]{"glyphicon-remove"})        
                             )        
                     )        
                     .addChild("content",

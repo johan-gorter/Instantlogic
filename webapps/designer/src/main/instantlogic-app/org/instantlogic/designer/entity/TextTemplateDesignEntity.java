@@ -5,10 +5,6 @@ public class TextTemplateDesignEntity extends org.instantlogic.fabric.model.Enti
 
 	public static final TextTemplateDesignEntity INSTANCE = new TextTemplateDesignEntity();
 	
-	@Override
-	public org.instantlogic.fabric.model.Entity extendsEntity() {
-		return org.instantlogic.designer.entity.DesignEntity.INSTANCE;
-	}
 
 	
 	// Deductions

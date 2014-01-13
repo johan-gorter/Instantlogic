@@ -33,7 +33,6 @@ public class ContentModel {
 	public String destination;
 	@Deprecated
 	public String event;
-	public boolean isCustomized;
 	public String[] styleNames;
 	public String[] fragmentFilters;
 	public ContentModel child;
@@ -73,9 +72,6 @@ public class ContentModel {
 	}
 	public String getEvent() {
 		return event;
-	}
-	public boolean getIsCustomized() {
-		return isCustomized;
 	}
 	public int getDeductionIndex() {
 		return deductionIndex;

@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
@@ -39,9 +40,16 @@ public class ChangeContext extends RenderContext {
 	public void setValue(Entity entity, Attribute attribute, JsonElement value) {
 		if (attribute.isMultivalue()) {
 			AttributeValues attributeValues = (AttributeValues)getAttributeValue(entity, attribute);
-			// TODO:
-			//attributeValues.removeValue(item)
-			//value.getAsJsonArray().iterator();
+			while (true) {
+				Iterator iterator = attributeValues.getStoredValue().iterator();
+				if (!iterator.hasNext()) {
+					break;
+				}
+				attributeValues.removeValue(iterator.next());
+			}
+			for (JsonElement element : value.getAsJsonArray()) {
+				attributeValues.addValue(parse(element, attribute));
+			}
 		} else {
 			AttributeValue attributeValue = (AttributeValue)getAttributeValue(entity, attribute);
 			attributeValue.setValue(parse(value, attribute));

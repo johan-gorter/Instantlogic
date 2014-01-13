@@ -212,7 +212,7 @@ null
                                         .setStyleNames(new String[]{"collapse-button"})        
                                         .addChild("content",
                                             new org.instantlogic.interaction.page.FragmentTemplate("ZiUaufOxgebwInbt_9731a2e7_3cf1", "Icon")      
-                                                .setStyleNames(new String[]{"icon-chevron-down"})        
+                                                .setStyleNames(new String[]{"glyphicon-chevron-down"})        
                                         )        
                                 )        
                                 .addChild("content",
@@ -232,14 +232,14 @@ null
                                                                 .setDestination(org.instantlogic.designer.placetemplate.CloseEditorPlaceTemplate.INSTANCE)        
                                                                 .addChild("content",
                                                                     new org.instantlogic.interaction.page.FragmentTemplate("HmuEkqmujagqgekt_798561c9_7489", "Icon")      
-                                                                        .setStyleNames(new String[]{"icon-pencil"})        
+                                                                        .setStyleNames(new String[]{"glyphicon-pencil"})        
                                                                 ),
                                                             new org.instantlogic.interaction.page.FragmentTemplate("Vgfk_qfwpufEajEm_e1cc2b35_c0aa", "Button")      
                                                                 .setStyleNames(new String[]{"btn-small"})      
                                                                 .setDestination(org.instantlogic.designer.placetemplate.OpenEditorPlaceTemplate.INSTANCE)        
                                                                 .addChild("content",
                                                                     new org.instantlogic.interaction.page.FragmentTemplate("uagrOoAguIdiodo_3c05fedd_24dd", "Icon")      
-                                                                        .setStyleNames(new String[]{"icon-pencil"})        
+                                                                        .setStyleNames(new String[]{"glyphicon-pencil"})        
                                                                 ))
         
                                                 )        
@@ -249,7 +249,7 @@ null
                                                         .setDestination(org.instantlogic.designer.placetemplate.InsertFragmentTemplateBelowPlaceTemplate.INSTANCE)        
                                                         .addChild("content",
                                                             new org.instantlogic.interaction.page.FragmentTemplate("ZeEtyvIuiifjIkgg_f6851aac_d61c", "Icon")      
-                                                                .setStyleNames(new String[]{"icon-hand-down"})        
+                                                                .setStyleNames(new String[]{"glyphicon-hand-down"})        
                                                         )        
                                                 )        
                                                 .addChild("content",
@@ -258,7 +258,7 @@ null
                                                         .setDestination(org.instantlogic.designer.placetemplate.RemoveFragmentTemplatePlaceTemplate.INSTANCE)        
                                                         .addChild("content",
                                                             new org.instantlogic.interaction.page.FragmentTemplate("RcoxdIOAha_oAcnz_d50cb594_ea88", "Icon")      
-                                                                .setStyleNames(new String[]{"icon-remove"})        
+                                                                .setStyleNames(new String[]{"glyphicon-remove"})        
                                                         )        
                                                 )        
                                         )        
@@ -290,7 +290,7 @@ null
                                 .setStyleNames(new String[]{"collapse-button"})        
                                 .addChild("content",
                                     new org.instantlogic.interaction.page.FragmentTemplate("KndcxaUdEqfmqlUy_216d60a1_eae1", "Icon")      
-                                        .setStyleNames(new String[]{"icon-chevron-down"})        
+                                        .setStyleNames(new String[]{"glyphicon-chevron-down"})        
                                 )        
                         )        
                         .addChild("content",
@@ -312,7 +312,7 @@ null
                                 .setStyleNames(new String[]{"collapse-button"})        
                                 .addChild("content",
                                     new org.instantlogic.interaction.page.FragmentTemplate("Fqdgo_vgxycow_oa_33421ff1_d5ed", "Icon")      
-                                        .setStyleNames(new String[]{"icon-chevron-down"})        
+                                        .setStyleNames(new String[]{"glyphicon-chevron-down"})        
                                 )        
                         )        
                         .addChild("content",

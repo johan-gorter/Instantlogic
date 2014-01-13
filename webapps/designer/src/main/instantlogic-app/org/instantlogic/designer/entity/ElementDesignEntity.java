@@ -5,10 +5,6 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 
 	public static final ElementDesignEntity INSTANCE = new ElementDesignEntity();
 	
-	@Override
-	public org.instantlogic.fabric.model.Entity extendsEntity() {
-		return org.instantlogic.designer.entity.DesignEntity.INSTANCE;
-	}
 
 	private static final org.instantlogic.fabric.model.Entity<?>[] EXTENSIONS;
 	 

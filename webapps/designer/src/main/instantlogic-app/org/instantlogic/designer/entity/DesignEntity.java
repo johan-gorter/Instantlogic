@@ -88,7 +88,6 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 			org.instantlogic.designer.entity.DeductionOperationDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.DeductionOperationInputDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.DeductionOperationParameterDesignEntity.INSTANCE,
-			org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.EventDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.FlowDesignEntity.INSTANCE,
@@ -97,7 +96,6 @@ public class DesignEntity extends org.instantlogic.fabric.model.Entity<org.insta
 			org.instantlogic.designer.entity.PlaceParameterDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.StaticInstanceDesignEntity.INSTANCE,
-			org.instantlogic.designer.entity.TextTemplateDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.ValidationDesignEntity.INSTANCE
 		};
 		$name.dataType.put("category", "text");

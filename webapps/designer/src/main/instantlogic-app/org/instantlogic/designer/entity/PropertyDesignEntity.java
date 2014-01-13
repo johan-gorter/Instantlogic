@@ -10,12 +10,28 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	// Deductions
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.PropertyDesignEntity.propertyName);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d1 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d1.setOfEntity(org.instantlogic.designer.entity.PropertyDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
+		return d0;
+	}
+
+
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
 		    d0.setValue(true);
 		return d0;
 	}
 
 
+	// Title
+	private static final org.instantlogic.fabric.text.TextTemplate title;
+	@Override
+	public org.instantlogic.fabric.text.TextTemplate getTitle() {
+		return title;
+	}
 	
 	// Attributes
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.PropertyDesign, java.lang.String, java.lang.String> propertyName; 
@@ -62,7 +78,7 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Phase 2
 		$propertyName.dataType.put("category", "text");
 		$collapsed.dataType.put("category", "boolean");
-		$collapsed._default = createDeduction0();
+		$collapsed._default = createDeduction1();
 
 		$children.valueClass = org.instantlogic.designer.ElementDesign.class;
 		$children.to = org.instantlogic.designer.entity.ElementDesignEntity.INSTANCE;
@@ -83,6 +99,8 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		$fragment.valueClass = org.instantlogic.designer.FragmentTemplateDesign.class;
 		$fragment.to = org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE;
 		$fragment.setReverseRelation(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.properties);
+
+		title = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).getTextTemplate();
 	}
 
 	@Override

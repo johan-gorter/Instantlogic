@@ -17,13 +17,13 @@ import org.instantlogic.interaction.util.LocationInfo;
 import org.instantlogic.interaction.util.RenderContext;
 import org.instantlogic.interaction.util.SubmitContext;
 
-public class AddItemsFromBookmarksElement extends Element {
+public class AddItemsFromOtherTravelersElement extends Element {
 	
 	@SuppressWarnings("rawtypes")
 	private final Relation relation;
 
 	@SuppressWarnings("rawtypes")
-	public AddItemsFromBookmarksElement(Relation relation) {
+	public AddItemsFromOtherTravelersElement(Relation relation) {
 		this.relation = relation;
 	}
 
@@ -37,9 +37,9 @@ public class AddItemsFromBookmarksElement extends Element {
 			result.put("type", "Button");
 			result.put("id", id);
 			if (relation.isMultivalue()) {
-				result.put("text", "Add bookmarked: "+ DataExplorerInstanceTitleDeduction.renderTitle(relevantInstance));
+				result.put("text", "Add from other window: "+ DataExplorerInstanceTitleDeduction.renderTitle(relevantInstance));
 			} else {
-				result.put("text", "Set to bookmarked: "+ DataExplorerInstanceTitleDeduction.renderTitle(relevantInstance));
+				result.put("text", "Set from other window: "+ DataExplorerInstanceTitleDeduction.renderTitle(relevantInstance));
 			}
 			appendTo.add(result);
 			context.exitScope();
@@ -50,7 +50,7 @@ public class AddItemsFromBookmarksElement extends Element {
 	private List<Instance> findRelevantInstances(RenderContext context) {
 		List<Instance> result = new ArrayList<Instance>();
 		UserExtension extension = (context.getTraveler().getExtension(UserExtension.class));
-		for (LocationInfo location : extension.getBookmarks()) {
+		for (LocationInfo location : extension.getTravelerLocations()) {
 			if (location.getAboutInstanceId()!=null) {
 				Instance candidate = location.getAboutInstance(context.getCaseInstance());
 				if (Entity.extendsFrom(candidate.getMetadata().getEntity(), relation.getTo())) {
@@ -86,5 +86,4 @@ public class AddItemsFromBookmarksElement extends Element {
 	@Override
 	public void change(ChangeContext changeContext) {
 	}
-	
 }

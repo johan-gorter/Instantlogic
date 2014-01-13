@@ -4,7 +4,7 @@ import org.instantlogic.engine.TravelerProxy;
 import org.instantlogic.engine.manager.CaseManager;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.interaction.Application;
-import org.instantlogic.interaction.util.BookmarkExtension;
+import org.instantlogic.interaction.util.UserExtension;
 import org.instantlogic.interaction.util.FlowContext;
 import org.instantlogic.interaction.util.FlowEventOccurrence;
 import org.instantlogic.interaction.util.HistoryExtension;
@@ -112,8 +112,8 @@ public class Presence extends AbstractPresence {
 			if (traveler.getUser()==null || !travelerInfo.getAuthenticatedUsername().equals(traveler.getUser().getUsername())) {
 				user = findOrActivateUser(travelerInfo.getAuthenticatedUsername());
 				traveler.setUser(user);
-				if (travelerInfo.getExtension(BookmarkExtension.class)==null) {
-					travelerInfo.registerExtension(BookmarkExtension.class, user);
+				if (travelerInfo.getExtension(UserExtension.class)==null) {
+					travelerInfo.registerExtension(UserExtension.class, user);
 				}
 			}
 		} else {

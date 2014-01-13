@@ -274,7 +274,7 @@ YUI.add('instantlogic-presence', function (Y) {
 	    		html.div({className: 'modal-dialog'},
 	    			html.div({className: 'modal-content'},
     	    			html.div({className: 'modal-body'},
-    	    				this.addButton = html.button({className:'btn btn-primary'}, 
+    	    				this.addButton = html.button({className:'btn btn-primary bookmark-add'}, 
     	    					'Add bookmark: ', 
     	    					this.currentPlaceTitleSpan = html.span()
     	    				),
@@ -302,8 +302,11 @@ YUI.add('instantlogic-presence', function (Y) {
     	},
     	overrides: {
     		markupClicked: function(evt) {
-	    		this.engine.enqueueMessage({message: 'presence', command: 'toggleBookmarks'});
-	    		evt.preventDefault();
+    			var linkTo = evt.target.get('href');
+				this.engine.enqueueMessage({message: 'presence', command: 'toggleBookmarks'});
+    			if (!linkTo) {
+    				evt.preventDefault();
+    			}
 	    	},
 	    	addClicked: function(evt) {
 	    		this.engine.enqueueMessage({message: 'presence', command: 'addBookmark'});

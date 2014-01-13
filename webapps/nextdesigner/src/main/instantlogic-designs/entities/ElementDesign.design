@@ -3,7 +3,7 @@ QgArvl_sqIbnsgjw_55852685_31f4:  name="ElementDesign"
 QgArvl_sqIbnsgjw_55852685_31f4:  isCustomized
 QgArvl_sqIbnsgjw_55852685_31f4:  relations[
 QgArvl_sqIbnsgjw_55852685_31f4:  relations]
-QgArvl_sqIbnsgjw_55852685_31f4:  extendsFrom="amIEkUwhbyddogAg_1ff66f0a_47dc"
+QgArvl_sqIbnsgjw_55852685_31f4:  extendsFrom
 QgArvl_sqIbnsgjw_55852685_31f4:  attributes[
 QgArvl_sqIbnsgjw_55852685_31f4:  attributes+NvnbsdpniIfUcguU_99e8f545_9dcc:AttributeDesign{
 NvnbsdpniIfUcguU_99e8f545_9dcc:   name="previewMode"

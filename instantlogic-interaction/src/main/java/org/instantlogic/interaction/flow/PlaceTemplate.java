@@ -71,6 +71,16 @@ public abstract class PlaceTemplate extends Concept {
 			renderedTitle = title.renderText(renderContext);
 		}
 		Instance aboutInstance = renderContext.getSelectedInstance(null);
-		return new LocationInfo(renderContext.getLocation(), renderedTitle, aboutInstance!=null?aboutInstance.getMetadata().getUniqueId():null , null);
+		return new LocationInfo(renderContext.getLocation(), renderedTitle, getInstanceId(aboutInstance), null);
+	}
+	
+	protected String getInstanceId(Instance instance) {
+		if (instance==null) {
+			return null;
+		}
+		if (instance.getMetadata().isStatic()) {
+			return instance.getMetadata().getEntity().getName()+"!" + instance.getMetadata().getStaticName();
+		}
+		return instance.getMetadata().getUniqueId();
 	}
 }

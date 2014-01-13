@@ -1,13 +1,14 @@
-/* Provides a margin at offset2 (180px) and has some simple defaults */
+/* Provides some simple defaults */
 /* Can be used as a base for more specific stylesheets */
-.margin .main {padding-top:40px;padding-left:180px;}
-.margin .main .input {margin-left:-180px;}
-.margin .main .no-margin {padding-left:0px;}
+div.form-group {margin-bottom: 5px; /*More condensed than the default of 15 */}
 
 /* Global rules */
 .margin .error {color:red;}
-.animate-vertically {display:block;overflow:hidden;position:relative;margin-left:-180px;padding-left:180px;}
+.animate-vertically {display:block;overflow:hidden;position:relative;}
+input[type="text"], textarea {min-width: 80%;background-color:transparent;}
+select {min-width: 40%;}
 
+.main { padding-top: 35px;}
 /* Fragments */
 .divtable-header {font-weight: bold;color:white;background-color:#444444;}
 .divtable-cells {display:inline-block;border-bottom: solid 1px black;}
@@ -19,3 +20,4 @@
 .btn-group .btn {margin-right:auto;}
 
 .controls textarea, .controls input, .controls select {background-color: rgba(255,255,255,0.7);}
+.btn-small {padding-top:0px;padding-bottom:0px;border-radius:0px;}

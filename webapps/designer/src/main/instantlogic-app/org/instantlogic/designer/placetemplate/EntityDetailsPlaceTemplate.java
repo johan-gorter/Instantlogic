@@ -75,7 +75,7 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
                             .addChild("content",
                                 new org.instantlogic.interaction.page.FragmentTemplate("WphjmwpOwe_qUhaE_5a9fed89_1b22", "Icon")      
-                                    .setStyleNames(new String[]{"icon-wrench"})        
+                                    .setStyleNames(new String[]{"glyphicon-wrench"})        
                             )        
                     )        
                     .addChild("content",

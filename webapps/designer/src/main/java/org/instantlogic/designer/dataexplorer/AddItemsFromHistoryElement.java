@@ -51,7 +51,7 @@ public class AddItemsFromHistoryElement extends Element {
 		HistoryExtension extension = (context.getTraveler().getExtension(HistoryExtension.class));
 		for (LocationInfo location : extension.getHistory()) {
 			if (location.getAboutInstanceId()!=null) {
-				Instance candidate = context.getCaseInstance().getMetadata().getCaseAdministration().getInstanceByUniqueId(location.getAboutInstanceId());
+				Instance candidate = location.getAboutInstance(context.getCaseInstance());
 				if (Entity.extendsFrom(candidate.getMetadata().getEntity(), relation.getTo())) {
 					latestRelevantInstance = candidate;
 				}
@@ -73,6 +73,7 @@ public class AddItemsFromHistoryElement extends Element {
 					WriteableAttributeValue value = (WriteableAttributeValue) relation.get(instance);
 					value.setOrAdd(latestRelevantInstance);
 				}
+				context.exitScope();
 			}
 		}
 		context.exitScope();
