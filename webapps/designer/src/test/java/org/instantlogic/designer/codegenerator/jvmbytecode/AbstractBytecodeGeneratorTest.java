@@ -1,8 +1,6 @@
 package org.instantlogic.designer.codegenerator.jvmbytecode;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.codegenerator.generator.ApplicationGenerator;

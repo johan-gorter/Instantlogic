@@ -14,9 +14,10 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.TestDeductionContext;
-import org.instantlogic.fabric.value.ValueList;
+import org.instantlogic.fabric.value.Values;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.flow.PlaceTemplate;
+import org.instantlogic.interaction.util.FlowContext;
 import org.instantlogic.interaction.util.RenderContext;
 import org.instantlogic.interaction.util.TravelerInfo;
 import org.instantlogic.tools.persistence.json.CasePersister;
@@ -29,7 +30,7 @@ public class BytecodeGeneratorTest extends AbstractBytecodeGeneratorTest {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test
 	public void testReverseRelation() throws Exception {
-		File customIzzyCompiledClasses = new File("../webapps/izzy/target/classes"); 
+		File customIzzyCompiledClasses = new File("../../webapps/izzy/target/classes"); 
 		assertTrue("Izzy customizations are compiled", customIzzyCompiledClasses.isDirectory() && customIzzyCompiledClasses.list().length>0);
 		Application izzy = generate(IzzyApplicationGenerator.DESIGN, customIzzyCompiledClasses.toURI().toURL());
 
@@ -46,20 +47,23 @@ public class BytecodeGeneratorTest extends AbstractBytecodeGeneratorTest {
 		
 		assertEquals(project, get(issue, "project"));
 		assertEquals(user, get(issue, "reporter"));
-		assertTrue(((ValueList)get(user, "assigned issues")).contains(issue));
+		assertTrue(((Values)get(user, "assigned issues")).contains(issue));
 		
 		
 		TravelerInfo travelerInfo = new TravelerInfo("travelerId");
 		travelerInfo.setAuthenticatedUsername("user1");
-		RenderContext renderContext = RenderContext.create(izzy.getPlaceTemplates(), izzy.getMainFlow(), "dashboard/"+user.getMetadata().getUniqueId()+"/dashboard", project, "caseId", travelerInfo);
-		PlaceTemplate placeTemplate = (PlaceTemplate)renderContext.getFlowContext().getFlowStack().getCurrentNode();
+		RenderContext renderContext = new RenderContext(FlowContext.create(izzy, project, "caseId", travelerInfo, izzy.getPlaceTemplate("Dashboard"), user), "dashboard(...)");
+		PlaceTemplate placeTemplate = (PlaceTemplate)renderContext.getFlowContext().getCurrentPlaceTemplate();
 		Map<String, Object> rendering = placeTemplate.render(renderContext);
 		System.out.println(CasePersister.gson.toJson(rendering));
 	}
 
+	@Ignore("Only runs if izzy is compiled first")
 	@Test
 	public void testTitle() throws Exception {
-		Application izzy = generate(IzzyApplicationGenerator.DESIGN);
+		File customIzzyCompiledClasses = new File("../../webapps/izzy/target/classes"); 
+		assertTrue("Izzy customizations are compiled", customIzzyCompiledClasses.isDirectory() && customIzzyCompiledClasses.list().length>0);
+		Application izzy = generate(IzzyApplicationGenerator.DESIGN, customIzzyCompiledClasses.toURI().toURL());
 		
 		Entity<? extends Instance> projectEntity = izzy.getCaseEntity();
 		Instance project = projectEntity.createInstance();

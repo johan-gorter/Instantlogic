@@ -82,6 +82,7 @@ public class EngineManager {
 		Class<?> applicationClass = classLoader.loadClass(findApplicationClassName(customizationsDir, preGeneratedDir));
 		logger.info("Application [{}] loaded", name);
 		Application application = (Application)applicationClass.getField("INSTANCE").get(null);
+		application.addCloseableResource(classLoader); //TODO: Untested, this may introduce problems
 		return registerApplication(application, name);
 	}
 	

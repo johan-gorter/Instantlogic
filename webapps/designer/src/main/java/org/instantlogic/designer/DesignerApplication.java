@@ -1,5 +1,6 @@
 package org.instantlogic.designer;
 
+import org.instantlogic.designer.util.DesignerCasePersister;
 import org.instantlogic.designer.util.DesignerPersistenceStrategy;
 import org.instantlogic.interaction.Application;
 import org.instantlogic.interaction.ApplicationEnvironment;
@@ -11,7 +12,7 @@ public class DesignerApplication extends AbstractDesignerApplication {
 	
 	@Override
 	public void setEnvironment(ApplicationEnvironment environment, String applicationName) {
-		DesignerPersistenceStrategy designerPersistenceStrategy = new DesignerPersistenceStrategy((DesignerApplicationEnvironment) environment, applicationName.equals("designer"));
+		DesignerCasePersister designerPersistenceStrategy = new DesignerPersistenceStrategy((DesignerApplicationEnvironment) environment, applicationName.equals("designer"));
 		environment.setPersistenceStrategy(designerPersistenceStrategy);
 	}
 }

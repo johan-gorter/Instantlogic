@@ -2,6 +2,7 @@ package org.instantlogic.interaction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -83,5 +84,14 @@ public abstract class Application implements AutoCloseable {
 
 	// Injected dependency
 	public void setEnvironment(ApplicationEnvironment environment, String applicationName) {
+	}
+
+	public PlaceTemplate getPlaceTemplate(String technicalName) {
+		for (PlaceTemplate placeTemplate : getPlaceTemplates()) {
+			if (placeTemplate.getTechnicalName().equals(technicalName)) {
+				return placeTemplate;
+			}
+		}
+		throw new NoSuchElementException("Placetemplate with technicalName "+technicalName);
 	}
 }

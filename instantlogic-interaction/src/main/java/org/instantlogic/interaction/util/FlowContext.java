@@ -46,7 +46,16 @@ public class FlowContext extends AbstractDeductionContext {
 		}
 		return result;
 	}
-	
+
+	public static FlowContext create(Application application, Instance caseInstance, String caseId, TravelerInfo travelerInfo, PlaceTemplate placeTemplate, Instance... placeParameters) {
+		FlowContext result = new FlowContext(application, caseInstance, caseId, travelerInfo);
+		result.setCurrentPlaceTemplate(placeTemplate);
+		for (Instance instance : placeParameters) {
+			result.pushSelectedInstance(instance);
+		}
+		return result;
+	}
+
 	private static Instance getInstance(Entity entity, String instanceId, Instance caseInstance) {
 		Instance instance = caseInstance.getMetadata().getCaseAdministration().getInstanceByUniqueId(instanceId);
 		if (instance==null) {

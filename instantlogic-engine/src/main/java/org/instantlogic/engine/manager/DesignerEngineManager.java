@@ -12,7 +12,7 @@ public class DesignerEngineManager extends EngineManager {
 		if (applicationName.equals("designer")) {
 			return super.doLoadApplication(appDir, applicationName);
 		} else {
-			CaseProcessor caseProcessor = getCaseProcessor("designer", applicationName); // This will call updateApplication
+			getCaseProcessor("designer", applicationName); // This will call updateApplication
 			return applicationManagers.get(applicationName);
 		}
 	}

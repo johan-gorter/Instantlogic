@@ -26,6 +26,8 @@ public class ApplicationUpdate {
 		this.application = application;
 	}
 
+	// This does not work anymore and unrecognized data gets lost
+	@Deprecated()
 	public Instance loadFrom(Instance oldCase) {
 		Instance newCase = application.getCaseEntity().createInstance();
 		recreateStructure(newCase, oldCase, newCase.getMetadata().getCaseAdministration()); // aggregate relations only
@@ -155,7 +157,7 @@ public class ApplicationUpdate {
 							if (newRelation.isMultivalue()) {
 								WriteableAttributeValue oldRelationValues = (WriteableAttributeValue)oldRelation.get(oldInstance);
 								WriteableAttributeValue newRelationValues = (WriteableAttributeValue)newRelation.get(newInstance);
-								for (Instance oldChildInstance : (ValueList<? extends Instance>)oldRelationValues.getValue()) {
+								for (Instance oldChildInstance : (Values<? extends Instance>)oldRelationValues.getValue()) {
 									Instance newChildInstance = createInstance(oldChildInstance, newCaseAdministration);
 									if (newChildInstance!=null) {
 										newRelationValues.setOrAdd(newChildInstance);

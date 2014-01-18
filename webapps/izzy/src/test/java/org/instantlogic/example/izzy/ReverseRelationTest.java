@@ -6,15 +6,13 @@ import static org.instantlogic.fabric.util.InstanceUtil.set;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.instantlogic.example.izzy.flow.MainFlow;
-import org.instantlogic.example.izzy.flow.dashboard.DashboardPlaceTemplate;
+import org.instantlogic.example.izzy.placetemplate.DashboardPlaceTemplate;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.TestDeductionContext;
-import org.instantlogic.fabric.value.ValueList;
+import org.instantlogic.fabric.value.Values;
 import org.instantlogic.interaction.Application;
-import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.util.RenderContext;
 import org.instantlogic.interaction.util.TravelerInfo;
 import org.junit.Test;
@@ -40,7 +38,7 @@ public class ReverseRelationTest {
 		
 		TravelerInfo travelerInfo = new TravelerInfo("travelerId");
 		travelerInfo.setAuthenticatedUsername("user1");
-		RenderContext renderContext = RenderContext.create(new PlaceTemplate[0], MainFlow.INSTANCE, "dashboard/"+user.getMetadata().getUniqueId()+"/dashboard", project, "caseId", travelerInfo);
+		RenderContext renderContext = RenderContext.create(IzzyApplication.INSTANCE, "Dashboard(user:"+user.getMetadata().getUniqueId()+")", project, "caseId", travelerInfo);
 		System.out.println(new Gson().toJson(DashboardPlaceTemplate.INSTANCE.render(renderContext)));
 	}
 	
@@ -61,7 +59,7 @@ public class ReverseRelationTest {
 		
 		assertEquals(project, get(issue, "project"));
 		assertEquals(user, get(issue, "reporter"));
-		assertTrue(((ValueList)get(user, "assigned issues")).contains(issue));
+		assertTrue(((Values)get(user, "assigned issues")).contains(issue));
 	}
 	
 	@Test

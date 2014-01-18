@@ -31,12 +31,12 @@ public class PlaceManagerTest {
 	public void test() {
 		ApplicationManager applicationManager = new ApplicationManager(IzzyApplication.INSTANCE);
 		CaseManager case1 = applicationManager.getOrCreateCase("project1");
-		case1.processMessages(traveler1, Collections.singletonList((Message)new StartMessage(null, null)));
+		case1.processMessages(traveler1, Collections.singletonList((Message)new StartMessage(null)));
 		case1.sendUpdates();
 		Assert.assertEquals(2, traveler1.getLastUpdates().size());
 		traveler1.clearLastUpdates();
 		((Project)case1.getCase()).addToIssues(new Issue());
 		case1.sendUpdates();
-		Assert.assertEquals(2, traveler1.getLastUpdates().size());
+		Assert.assertEquals(1, traveler1.getLastUpdates().size());
 	}
 }

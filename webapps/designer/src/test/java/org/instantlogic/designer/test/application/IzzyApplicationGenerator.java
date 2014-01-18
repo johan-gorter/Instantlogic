@@ -1,23 +1,14 @@
 package org.instantlogic.designer.test.application;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
 import org.instantlogic.designer.ApplicationDesign;
-import org.instantlogic.tools.persistence.json.CasePersister;
+import org.instantlogic.designer.DesignerApplication;
+import org.instantlogic.designer.util.DesignerCasePersister;
 
 public class IzzyApplicationGenerator {
 
 	public static final ApplicationDesign DESIGN;
 	
 	static {
-		File file = new File("../webapps/izzy/src/main/instantlogic-designs/izzy.json");
-		try (FileReader reader = new FileReader(file)) {
-			DESIGN = new CasePersister().load(ApplicationDesign.class, reader);
-		} catch (IOException e) {
-			System.err.println(file.getAbsolutePath());
-			throw new RuntimeException(e);
-		}
+		DESIGN = (ApplicationDesign) new DesignerCasePersister().loadOrCreate("izzy", ApplicationDesign.class, DesignerApplication.INSTANCE);
 	}
 }
