@@ -3,10 +3,10 @@
 <head>
 <title>FragmentList Test</title>
 
-<script src="../yui-3.5.1/yui/yui.js"></script>
+<script src="../webjars/yui/3.7.3/yui/yui.js"></script>
 <script src="../html.js"></script>
 <script src="../instantlogic.js"></script>
-<script src="../instantlogic-fragment.js"></script>
+<script src="../instantlogic-fragments.js"></script>
 
 <script>
 YUI({useBrowserConsole: true}).use('test', 'node', 'instantlogic', function (Y) {
@@ -42,7 +42,8 @@ YUI({useBrowserConsole: true}).use('test', 'node', 'instantlogic', function (Y) 
         },
 
         'a simple fragment tree should be initialized' : function () {
-            var fragment = new Y.instantlogic.Fragment(Y.one('#testarea'), instantlogicMock);
+        	debugger
+            var fragment = new Y.instantlogic.Fragment(Y.one('#testarea'), null, instantlogicMock);
             fragment.init(model)
         },
         

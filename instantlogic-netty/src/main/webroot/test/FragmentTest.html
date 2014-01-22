@@ -3,15 +3,15 @@
 <head>
 <title>FragmentList Test</title>
 
-<script src="../yui-3.5.1/yui/yui-debug.js"></script>
+<script src="../webjars/yui/3.7.3/yui/yui-debug.js"></script>
 <script src="../html.js"></script>
 <script src="../instantlogic.js"></script>
-<script src="../instantlogic-fragment.js"></script>
+<script src="../instantlogic-fragments.js"></script>
 
     <script>
         YUI({
             useBrowserConsole: true, filter: 'RAW', throwFail: true, errorFn: function () { return false; }
-        }).use('test', 'node', 'instantlogic', 'instantlogic-fragment', function (Y) {
+        }).use('test', 'node', 'instantlogic', 'instantlogic-fragments', function (Y) {
 
             var instantlogic;
 
@@ -26,11 +26,13 @@
                 name: "Fragment Test",
 
                 setUp: function () {
+                	debugger
                     Y.one('#testarea').setContent('');
-                    instantlogic = new Y.instantlogic.Engine('dummyTravelerId', Y.one('#testarea'), [Y.instantlogic.fragment]);
+                    instantlogic = new Y.instantlogic.Engine('','','dummyTravelerId', null, Y.one('#testarea'), {fragmentNamespaces:[Y.instantlogic.fragments], createAnswer: function(){}});
                 },
 
                 'a simple page should be created': function () {
+                	debugger
                     instantlogic.updatePlace(model);
                 },
 

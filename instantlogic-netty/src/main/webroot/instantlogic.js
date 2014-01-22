@@ -94,9 +94,11 @@ YUI.add('instantlogic', function (Y) {
         recomposePlace: function () {
         	var model = this.placeFragmentHolder.fragment.model;
         	this.placeFragmentHolder.destroy();
-        	this.placeFragmentHolder.node.remove();
+        	var diff = new ns.Diff();
+        	this.placeFragmentHolder.remove(diff);
+        	diff.applyNow();
             this.placeFragmentHolder = new Y.instantlogic.FragmentHolder(model.id, null, this);
-            this.placeNode.appendChild(this.placeFragmentHolder.node);
+            this.placeFragmentHolder.appendTo(this.placeNode);
             this.placeFragmentHolder.init(model);
         },
 
@@ -168,9 +170,9 @@ YUI.add('instantlogic', function (Y) {
             var diff = new ns.Diff();
             if (!this.presenceFragmentHolder) {
                 this.presenceFragmentHolder = new Y.instantlogic.FragmentHolder(model.id, null, this);
-                this.presenceNode.appendChild(this.presenceFragmentHolder.node);
-                diff.nodeAdded(this.presenceFragmentHolder.node);
+                this.presenceFragmentHolder.appendTo(this.presenceNode);
                 this.presenceFragmentHolder.init(model);
+                this.presenceFragmentHolder.registerNodesAsAdded(diff);
                 diff.apply(false);
             } else {
                 this.presenceFragmentHolder.update(model, diff);
@@ -182,30 +184,30 @@ YUI.add('instantlogic', function (Y) {
             var diff = new ns.Diff();
             if (!this.placeFragmentHolder || this.placeFragmentHolder.id != model.id) {
                 if (this.placeFragmentHolder) {
-                    diff.nodeToRemove(this.placeFragmentHolder.node);
                     this.placeFragmentHolder.destroy();
+                	this.placeFragmentHolder.remove(diff);
                 }
                 this.placeFragmentHolder = new Y.instantlogic.FragmentHolder(model.id, null, this);
-                this.placeNode.appendChild(this.placeFragmentHolder.node);
-                diff.nodeAdded(this.placeFragmentHolder.node);
+                this.placeFragmentHolder.appendTo(this.placeNode);
                 this.placeFragmentHolder.init(model);
+                this.placeFragmentHolder.registerNodesAsAdded(diff);
                 diff.apply(false);
-                this.initializeFocus(this.placeFragmentHolder.node);
+                this.initializeFocus(this.placeNode);
             } else {
                 this.placeFragmentHolder.update(model, diff);
                 diff.apply(!this.configuration.noAnimation);
             }
         },
 
-        createFragment: function (name, parentNode, parentFragment, engine) {
+        createFragment: function (name, fragmentHolder, parentFragment, engine) {
         	if (!engine) Y.error();
             for (var i = 0; i < this.fragmentNamespaces.length; i++) {
                 var fns = this.fragmentNamespaces[i];
                 if (fns[name]) {
-                    return new fns[name](parentNode, parentFragment, engine || this);
+                    return new fns[name](fragmentHolder, parentFragment, engine || this);
                 }
             }
-            return new ns.MessageFragment(parentNode, parentFragment, engine || this, 'No fragmentnamespace provides a fragment called ' + name, 'error');
+            return new ns.MessageFragment(fragmentHolder, parentFragment, engine || this, 'No fragmentnamespace provides a fragment called ' + name, 'error');
         },
         
         createAnswer: function(model, parentNode, parentFragment, engine) {
@@ -331,21 +333,20 @@ YUI.add('instantlogic', function (Y) {
         },
         scanNodeForRemoval: function(node) {
         	var deleteMe=true;
+        	if (node.hasClass('animate-vertically')) {
+				node.transition({duration:1, easing:'ease-out', height:0, opacity:0});
+				deleteMe = false;
+        	}
         	node.get('children').each(function(subNode) {
         		if (subNode.get('nodeType')!=1) {
         			subNode.remove();
         		} else { // An element
-        			if (subNode.hasClass('animate-vertically')) {
-        				subNode.transition({duration:1, eading:'ease-out', height:0, opacity:0});
-        				deleteMe = false;
-        			} else {
-        				var deleteSubNode = this.scanNodeForRemoval(subNode);
-        				if (deleteSubNode) {
-        					subNode.remove();
-        				} else {
-        					deleteMe = false;
-        				}
-        			}
+    				var deleteSubNode = this.scanNodeForRemoval(subNode);
+    				if (deleteSubNode) {
+    					subNode.remove();
+    				} else {
+    					deleteMe = false;
+    				}
         		}
         	}, this);
     		return deleteMe;
@@ -355,7 +356,7 @@ YUI.add('instantlogic', function (Y) {
         		var height = node.get('clientHeight');
         		var oldHeight = node.getStyle('height');
         	  node.setStyle('height', '0px');
-        		node.transition({duration:1, eading:'ease-out', height:height+'px'}, function() {
+        		node.transition({duration:1, easing:'ease-out', height:height+'px'}, function() {
         			node.setStyle('height', null);
         		});
         	} else {
@@ -380,15 +381,67 @@ YUI.add('instantlogic', function (Y) {
         this.parentFragment = parentFragment;
         this.options = options || {};
         this.fragment = null;
-        this.node =  (this.options.elementFactory ||  Y.html.span)({ 'data-fragment-id': id, className: 'fragment' });
+        this.startElement = document.createComment("fragment start "+id);
+        this.endElement  = document.createComment("fragment end "+id);
     };
 
     ns.FragmentHolder.prototype = {
+    		
+    	appendTo: function(parentNode) {
+    		// Must be called before init()
+    		parentNode.appendChild(this.startElement);
+    		parentNode.appendChild(this.endElement);
+    	},
+    	
+    	insertBefore: function(fragmentHolder) {
+    		// Must be called before init()
+    		fragmentHolder.insertBeforeMe(this.endElement);
+    		this.endElement.parentNode.insertBefore(this.startElement, this.endElement)
+    	},
+    	
+    	clear: function(diff) {
+    		var nextElement = this.startElement.nextSibling;
+    		while (nextElement !== this.endElement) {
+    			var element = nextElement;
+    			nextElement = nextElement.nextSibling;
+    			if (diff) {
+    				diff.nodeToRemove(Y.one(element));
+    			} else {
+    				element.parentNode.removeChild(element);
+    			}
+    		} 
+    	},
+    	
+    	remove: function(diff) {
+    		this.clear(diff);
+    		this.startElement.parentNode.removeChild(this.startElement);
+    		this.endElement.parentNode.removeChild(this.endElement);
+    	},
+    	
+    	insertBeforeMe: function(element) {
+    		// Is only called from another FragmentHolder
+    		this.startElement.parentNode.insertBefore(element, this.startElement);
+    	},
+    	
+    	appendChild: function(node) {
+    		// This is the only function that may be called from the Fragment within
+    		Y.one(this.endElement.parentNode).insertBefore(node, this.endElement);
+    	},
+    	
         init: function (model) {
             this.fragmentType = model.type;
             if (this.engine.configuration.debug) this.addDebugTool();
-            this.fragment = this.engine.createFragment(this.fragmentType, this.node, this.parentFragment, this.engine);
+            this.fragment = this.engine.createFragment(this.fragmentType, this, this.parentFragment, this.engine);
             this.fragment.init(model);
+        },
+        
+        registerNodesAsAdded: function(diff) {
+    		var nextElement = this.startElement.nextSibling;
+    		while (nextElement !== this.endElement) {
+    			var element = nextElement;
+    			nextElement = nextElement.nextSibling;
+    			diff.nodeAdded(Y.one(element));
+    		} 
         },
 
         update: function (newModel, diff) {
@@ -402,19 +455,14 @@ YUI.add('instantlogic', function (Y) {
 
         recreateFragment: function (newModel, diff) {
             this.fragment.destroy();
-            var oldNode = this.node;
-            this.node = (this.options.elementFactory ||  Y.html.span)({ 'data-fragment-id': newModel.id, className: 'fragment' });
-            oldNode.ancestor().insertBefore(this.node, oldNode);
-            // Wrong visual effect:
-            //diff.nodeToRemove(oldNode);
-            //diff.nodeAdded(this.node);
-            diff.nodeUpdated(oldNode.ancestor());
-            oldNode.remove();
-            this.fragment = this.engine.createFragment(newModel.type, this.node, this.parentFragment, this.engine);
+            this.clear(null);
+            diff.nodeUpdated(Y.one(this.startElement.parentNode));
+            this.fragment = this.engine.createFragment(newModel.type, this, this.parentFragment, this.engine);
             this.fragment.init(newModel);
         },
 
         destroy: function () {
+        	// The nodes are purposely left behind for animation purposes
             this.fragment.destroy();
         },
         
@@ -442,7 +490,7 @@ YUI.add('instantlogic', function (Y) {
         			),
         			button = h.div({className: 'fragment-debug-button'}, this.fragmentType.substr(0,1).toLowerCase())
         		);
-        	this.node.appendChild(debugTool);
+        	this.appendChild(debugTool);
         	if (this.fragmentType === 'Page') {
         		var engine = this.engine;
         		var dataExplorer = h.div({className: 'explore-data-button'}, h.span({className: 'inner'}, 'Explore data'));
@@ -514,7 +562,7 @@ YUI.add('instantlogic', function (Y) {
     	if (!engine) Y.error();
         this.engine = engine;
         this.parentFragment = parentFragment;
-        this.parentNode = parentNode;
+        this.parentNode = parentNode; // Note: ParentNode may be anything with an appendChild function (so also a FragmentHolder)
         this.options = options || {};
     };
 
@@ -525,7 +573,7 @@ YUI.add('instantlogic', function (Y) {
             this.fragmentHolders = [];
             for (var i = 0; i < models.length; i++) {
                 var fragmentHolder = new ns.FragmentHolder(models[i].id, this.parentFragment, this.engine, this.options.fragmentHolderOptions);
-                this.parentNode.appendChild(fragmentHolder.node);
+                fragmentHolder.appendTo(this.parentNode);
                 fragmentHolder.init(models[i]);
                 this.fragmentHolders.push(fragmentHolder);
             }
@@ -559,8 +607,8 @@ YUI.add('instantlogic', function (Y) {
                     if (findOldIndex >= 0) {
                         // remove child fragments
                         for (i = newIndex; i < newIndex + findOldIndex - oldIndex; i++) {
-                            diff.nodeToRemove(this.fragmentHolders[i].node);
                             this.fragmentHolders[i].destroy();
+                        	this.fragmentHolders[i].remove(diff);
                         }
                         this.fragmentHolders.splice(newIndex, findOldIndex - oldIndex);
                         oldIndex = findOldIndex + 1;
@@ -570,12 +618,12 @@ YUI.add('instantlogic', function (Y) {
                         var fragmentHolder = new ns.FragmentHolder(newModel.id, this.parentFragment, this.engine, this.options.fragmentHolderOptions);
                         this.fragmentHolders.splice(newIndex, 0, fragmentHolder);
                         if (this.fragmentHolders.length > newIndex + 1) {
-                            this.parentNode.insertBefore(fragmentHolder.node, this.fragmentHolders[newIndex + 1].node);
+                        	fragmentHolder.insertBefore(this.fragmentHolders[newIndex + 1]);
                         } else {
-                            this.parentNode.appendChild(fragmentHolder.node);
+                        	fragmentHolder.appendTo(this.parentNode);
                         }
                         fragmentHolder.init(newModel);
-                        diff.nodeAdded(fragmentHolder.node);
+                        fragmentHolder.registerNodesAsAdded(diff);
                     }
                 } else {
                     this.fragmentHolders[newIndex].update(newModel, diff);
@@ -586,8 +634,8 @@ YUI.add('instantlogic', function (Y) {
             if (this.fragmentHolders.length > newIndex) {
                 // Remove child fragments
                 for (i = newIndex; i < this.fragmentHolders.length; i++) {
-                    diff.nodeToRemove(this.fragmentHolders[i].node);
                     this.fragmentHolders[i].destroy();
+                    this.fragmentHolders[i].remove(diff);
                 }
                 this.fragmentHolders.length = newIndex;
             }
@@ -605,13 +653,14 @@ YUI.add('instantlogic', function (Y) {
     };
 
     // Fragment
-    ns.Fragment = function (parentNode, parentFragment, engine) {
-    	if (!parentNode) Y.error();
+    ns.Fragment = function (fragmentHolder, parentFragment, engine) {
+    	if (!fragmentHolder) Y.error();
     	if (!engine) Y.error();
         this.engine = engine;
         this.parentFragment = parentFragment;
         this.oldModel = {};
-        this.parentNode = parentNode;
+        this.parentNode = fragmentHolder; // deprecated
+        this.fragmentHolder = fragmentHolder;
         this.model = null;
     };
 
@@ -754,7 +803,7 @@ YUI.add('instantlogic', function (Y) {
      * - destroy: function(), called when the fragment is destoyed
      * */
     ns.createFragment = function(options) {
-      var constructor = function (parentNode, parentFragment, engine) {
+      var constructor = function (fragmentHolder, parentFragment, engine) {
         constructor.superclass.constructor.apply(this, arguments);
         this.statePerSubclass = { next: this.statePerSubclass };
       };
@@ -773,7 +822,7 @@ YUI.add('instantlogic', function (Y) {
 	    				this.markup.addClass(model.styleNames[i]);
 	    			}
 	    		}
-	    		this.parentNode.appendChild(this.markup);
+	    		this.fragmentHolder.appendChild(this.markup);
     		}
     		if (options.fragmentLists) {
     			state.fragmentLists = []; // Scope: this subclass only

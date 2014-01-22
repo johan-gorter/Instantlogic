@@ -13,19 +13,17 @@ YUI.add('instantlogic-presence', function (Y) {
     Y.extend(ns.Presence, Y.instantlogic.Fragment, {
     	init: function(model) {
             ns.Presence.superclass.init.call(this, model);
-            var markup = html.div({ className: 'navbar navbar-inverse navbar-fixed-top' },
-            	html.div({className: 'navbar-inner'},
-            		html.div({className:'container'},
-	            		html.p({className: 'navbar-text pull-left'},
-	            			this.applicationNameSpan = html.span({className: 'application-name'}, model.applicationName || ''),
-		            		html.span({className: 'minus'}, ' - '),
-		            		html.span({className: 'case-name'},
-		            			this.caseNameSpan = html.span(model.caseName || '')
-		            		)
-	            		)
-        			),
-            		this.contentDiv = html.p({className: 'navbar-text top-right'})
-                )
+            var markup = html.nav({ className: 'navbar navbar-inverse navbar-static-top' },
+        		html.div({className:'container'},
+            		html.p({className: 'navbar-header'},
+            			this.homeLink = html.a({className: 'navbar-brand', href: '#'}, 
+            				this.applicationNameSpan = html.span(model.applicationName || ''),
+            				html.span(' - '),
+            				this.caseNameSpan = html.span({className: 'case-name'}, model.caseName || '')
+            			)
+            		)
+    			),
+        		this.contentDiv = html.p({className: 'navbar-text top-right'})
             );
             this.parentNode.appendChild(markup);
             
