@@ -46,7 +46,7 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 							new IfElseDesign()
 								.setCondition(userHasValue = new DeductionSchemeDesign()) // Logged in
 								.setIfChild(
-									new FragmentTemplateDesign("Block")
+									new FragmentTemplateDesign("Group")
 										.setChildren("content",
 											new SelectionDesign()
 												.setSelection(user = new DeductionSchemeDesign())

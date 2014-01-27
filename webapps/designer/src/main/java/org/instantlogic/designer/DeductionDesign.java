@@ -16,6 +16,9 @@ public class DeductionDesign extends AbstractDeductionDesign {
 
 		@Override
 		public void valueChanged(ValueChangeEvent event) {
+			if (event.isUndoEvent()) {
+				return;
+			}
 			DeductionOperationDesign newOperation = getOperation();
 			if (newOperation != null) {
 				// Inputs
@@ -73,7 +76,7 @@ public class DeductionDesign extends AbstractDeductionDesign {
 	};
 
 	public DeductionDesign() {
-		//TODO: getOperationRelationValue().addValueChangeObserver(operationChanged);
+		getOperationRelationValue().addValueChangeObserver(operationChanged);
 	}
 
 	protected DeductionParameterDesign findParameter(

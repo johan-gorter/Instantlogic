@@ -15,15 +15,15 @@ YUI.add('instantlogic-presence', function (Y) {
             ns.Presence.superclass.init.call(this, model);
             var markup = html.nav({ className: 'navbar navbar-inverse navbar-static-top' },
         		html.div({className:'container'},
-            		html.p({className: 'navbar-header'},
+            		html.div({className: 'navbar-header'},
             			this.homeLink = html.a({className: 'navbar-brand', href: '#'}, 
-            				this.applicationNameSpan = html.span(model.applicationName || ''),
+            				this.applicationNameSpan = html.span({className: 'application-name'}, model.applicationName || ''),
             				html.span(' - '),
             				this.caseNameSpan = html.span({className: 'case-name'}, model.caseName || '')
             			)
             		)
     			),
-        		this.contentDiv = html.p({className: 'navbar-text top-right'})
+        		this.contentDiv = html.div({className: 'collapse navbar-collapse top-right'})
             );
             this.parentNode.appendChild(markup);
             
@@ -49,14 +49,15 @@ YUI.add('instantlogic-presence', function (Y) {
     
     Y.extend(ns.Me, Y.instantlogic.Fragment, {
     	init: function(model) {
+    		this.model = model;
     		ns.Me.superclass.init.call(this, model);
-    		var markup = html.span({className: 'me'},
-				this.avatarDiv = html.span({className: 'avatar'}, html.img({src: model.avatarUrl, width:'23px', height:'23px;'})),
-				this.loginNameSpan = html.span({className: 'username'}, model.name || ''),
-				this.logoutButton = html.a({className: 'btn btn-default navbar-btn'}, 'Log out')
-    		)
+    		this.parentNode.appendChild(html.p({className: 'navbar-text navbar-left me'},
+    			html.span('Logged in as: '),
+    			html.img({className: 'avatar', src: model.avatarUrl, width:'23px', height:'23px;'}),
+    			this.loginNameSpan = html.span({className: 'username'}, model.name || ''),
+    			this.logoutButton = html.a({className: ''}, 'Log out')
+    		));
     		this.logoutButton.on('click', this.logoutClick, this);
-    		this.parentNode.appendChild(markup);
     	},
     	logoutClick: function(evt) {
     		this.engine.enqueueMessage({message: 'presence', command: 'logout'});
@@ -67,22 +68,15 @@ YUI.add('instantlogic-presence', function (Y) {
     // Communicator
     ns.Communicator = Y.instantlogic.createFragment({
     	createMarkup: function() {
-    		var markup = html.span(
-    			html.div({className:'communicator-space'}),
-    			this.communicatorDiv = html.div({className:'communicator'},
-    				html.ul({className:'nav'},
-    					this.dropdown = html.li({className:'dropdown'},
-			    			this.showButton = html.a({className:'dropdown-toggle'},'Communicator ', html.b({className:'caret'})),
-			    			this.hideButton = html.a({className:'dropdown-toggle'},'Communicator ', html.b({className:'caret'})),
-			    			this.usersDiv = html.div()
-			    		)
-			    	)
-	    		)
-	    	);
-    		this.showButton.on('click', this.onShowClick, this);
-    		this.hideButton.on('click', this.onHideClick, this);
+            var markup = html.ul({className: 'nav navbar-nav navbar-left'},
+            	this.dropdown = html.li({className: 'communicator dropdown'},
+                	this.usersDiv = html.div({className:'communicator-userlist'}),
+            		this.showHideButton = html.a({href: '#', className:'dropdown-toggle'}, 'Communicator ', html.b({className:'caret'}))
+            	)
+            );
+            this.visible = false;
+    		this.showHideButton.on('click', this.onShowHideClick, this);
     		this.usersDiv.hide();
-    		this.hideButton.hide();
             return markup;
     	},
     	fragmentLists: function(model) {
@@ -98,21 +92,16 @@ YUI.add('instantlogic-presence', function (Y) {
     	},
     	overrides: {
     		subscribers : [],
-        	onHideClick: function() {
-        		this.dropdown.removeClass('active');
-        		this.communicatorDiv.setStyle('height', '40px');
-        		this.communicatorDiv.setStyle('background-color', null);
-        		this.hideButton.hide();
-        		this.showButton.show();
-        		this.usersDiv.hide();
-        	},
-        	onShowClick: function() {
-        		this.dropdown.addClass('active');
-        		this.communicatorDiv.setStyle('height', '100%');
-        		this.communicatorDiv.setStyle('background-color', '#111');
-        		this.showButton.hide();
-        		this.hideButton.show();
-        		this.usersDiv.show();
+        	onShowHideClick: function(evt) {
+        		this.visible = !this.visible;
+        		if (this.visible) {
+            		this.dropdown.addClass('active');
+            		this.usersDiv.show();
+        		} else {
+            		this.dropdown.removeClass('active');
+            		this.usersDiv.hide();
+        		}
+        		evt.preventDefault();
         	},
         	findTravelersInPlace: function(instanceId) { // returns list of objects who are visiting a place which contains the instanceId
         		var result = [];
@@ -144,12 +133,21 @@ YUI.add('instantlogic-presence', function (Y) {
     ns.User = Y.instantlogic.createFragment({ 
     	createMarkup: function() {
     		return html.div({className:'user'},
+    			this.avatarImg = html.img({className: 'avatar', width:'23px', height:'23px;'}),
     			this.usernameDiv = html.div({className:'username'}),
     			this.travelersDiv = html.div({className: 'travelers'})
     		);
     	},
+    	postInit: function(model) {
+    		this.avatarImg.set('src', model.avatarUrl);
+    	},
+    	postUpdate: function(newModel, diff) {
+    		if (newModel.avatarUrl !== this.oldModel.avatarUrl) {
+    			this.avatarImg.set('src', newModel.avatarUrl);
+    		}
+    	},
     	texts: function(model) {
-    		return [[this.usernameDiv, model.username]];
+    		return [[this.usernameDiv, model.name]];
     	},
     	fragmentLists: function(model) {
     		return [[this.travelersDiv, model.travelers]];
@@ -254,12 +252,12 @@ YUI.add('instantlogic-presence', function (Y) {
     
     ns.ToggleBookmarks = Y.instantlogic.createFragment({
     	createMarkup: function(model) {
-    		this.button = html.a({className: 'btn btn-default navbar-btn'}, 'Bookmarks');
-    		this.button.on("click", this.logoutClick, this);
-    		return this.button;
+    		this.button = html.a({className: ''}, 'Bookmarks');
+    		this.button.on("click", this.click, this);
+    		return html.ul({className: 'nav navbar-nav  navbar-left'}, html.li(this.button));
     	},
     	overrides: {
-	    	logoutClick: function(evt) {
+	    	click: function(evt) {
 	    		this.engine.enqueueMessage({message: 'presence', command: 'toggleBookmarks'});
 	    		evt.preventDefault();
 	    	}
@@ -331,27 +329,31 @@ YUI.add('instantlogic-presence', function (Y) {
     
     ns.DebugVisibleToggle = Y.instantlogic.createFragment({
     	createMarkup: function(model) {
-    		var markup = html.form({ action: '.', className: 'form-inline debug-visible' },
-    			html.label({className:'checkbox'},
-    				this.input = html.input({type:'checkbox'}), 'Debug'
-    			)
-    		);
-    		this.input.on('change', this.inputChange, this);
-    		return markup;
+    		this.button = html.a({className: ''}, 'Debug');
+    		this.button.on("click", this.click, this);
+    		return html.ul({className: 'nav navbar-nav  navbar-left'}, 
+    			this.li = html.li(this.button)
+    		);    		
     	},
     	postInit: function(model) {
-    		this.input.set('checked', model.value);
+    		if (model.value) {
+    			this.li.addClass('active');
+    		}
     		this.setDebug(model.value);
     	},
     	postUpdate: function(newModel, diff) {
     		if (newModel.value!=this.oldModel.value) {
-    			this.input.set('checked', newModel.value);
+    			if (newModel.value) {
+    				this.li.addClass('active');
+    			} else {
+    				this.li.removeClass('active');
+    			}
         		this.setDebug(newModel.value);
     		}
     	},
     	overrides: {
-            inputChange: function() {
-            	this.engine.enqueueMessage({message: 'presence', command: 'setDebugVisible', value: this.input.get('checked')});
+            click: function() {
+            	this.engine.enqueueMessage({message: 'presence', command: 'setDebugVisible', value: !this.model.value});
             },
             setDebug:function(newValue) {
             	var engine = this.engine;

@@ -28,7 +28,7 @@ RkqbcUzezmcEofwO_11c52219_2358:    children+TIerzv_hkecfufkU_44148ba2_9dca:Fragm
 TIerzv_hkecfufkU_44148ba2_9dca:     name
 TIerzv_hkecfufkU_44148ba2_9dca:     isCustomized
 TIerzv_hkecfufkU_44148ba2_9dca:     previewMode
-TIerzv_hkecfufkU_44148ba2_9dca:     editorOpen
+TIerzv_hkecfufkU_44148ba2_9dca:     editorOpen=false
 TIerzv_hkecfufkU_44148ba2_9dca:     styleNames[
 TIerzv_hkecfufkU_44148ba2_9dca:     styleNames+"btn-link"
 TIerzv_hkecfufkU_44148ba2_9dca:     styleNames]
@@ -101,7 +101,7 @@ BuvuOwyhuagwcmaq_59cc01de_a60a:      children+ifbevxgvImbIihpd_561531a6_9bfb:Fra
 ifbevxgvImbIihpd_561531a6_9bfb:       name
 ifbevxgvImbIihpd_561531a6_9bfb:       isCustomized
 ifbevxgvImbIihpd_561531a6_9bfb:       previewMode
-ifbevxgvImbIihpd_561531a6_9bfb:       editorOpen=true
+ifbevxgvImbIihpd_561531a6_9bfb:       editorOpen=false
 ifbevxgvImbIihpd_561531a6_9bfb:       styleNames[
 ifbevxgvImbIihpd_561531a6_9bfb:       styleNames+"glyphicon-remove"
 ifbevxgvImbIihpd_561531a6_9bfb:       styleNames]

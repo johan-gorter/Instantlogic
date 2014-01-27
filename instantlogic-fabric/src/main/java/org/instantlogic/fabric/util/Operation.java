@@ -65,11 +65,11 @@ public class Operation implements AutoCloseable {
 		}
 	}
 	
-	public void popEventToUndo(ValueChangeEvent event) {
+	public void removeEventToUndo(ValueChangeEvent event) {
 		if (recordingUndoEventsPaused==0) {
-			ValueChangeEvent check = this.eventsToUndo.remove(eventsToUndo.size()-1);
-			if (event!=check) {
-				throw new RuntimeException("wrong event to pop in eventsToUndo");
+			boolean check = this.eventsToUndo.remove(event);
+			if (!check) {
+				throw new RuntimeException("wrong event to remove in eventsToUndo");
 			}
 		}
 	}

@@ -372,7 +372,7 @@ YUI.add('instantlogic', function (Y) {
         }
     };
 
-    //FragmentHolder
+    // FragmentHolder
     ns.FragmentHolder = function (id, parentFragment, engine, options) {
     	if (!id) Y.error();
     	if (!engine) Y.error();
@@ -504,7 +504,7 @@ YUI.add('instantlogic', function (Y) {
         			}
         			engine.sendStart('_DataExplorer-explore('+tail);
         		});
-        		this.node.appendChild(dataExplorer);
+        		Y.one(this.startElement).insert(dataExplorer, 'after');
         	}
         	button.on('hover', function() { debugTool.addClass('hover'); }, function() { debugTool.removeClass('hover'); checkMenuClose();});
         	button.on('click', function(e) {

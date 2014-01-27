@@ -162,14 +162,19 @@ YUI.add('instantlogic-fragments', function (Y) {
     	}
     });
 
-    // Group: Just renders its content, essentially just a span.
-    ns.Group = createFragment({
-    	createMarkup: function() {
-    		return html.span();
+    // Group: Just renders its content right inside the fragmentHolder.
+    ns.Group = function (fragmentHolder, parentFragment, engine) {
+        ns.Group.superclass.constructor.apply(this, arguments);
+    };
+    Y.extend(ns.Group, Y.instantlogic.Fragment, {
+    	init: function(model) {
+    		this.model = model;
+    		this.fragmentList = new Y.instantlogic.FragmentList(this.fragmentHolder, this.parentFragment, this.engine, {});
+    		this.fragmentList.init(model.content);
     	},
-		fragmentLists: function(model) {
-			return [[this.markup, model.content]];
-		}
+    	update: function(newModel, diff) {
+    		this.fragmentList.update(newModel.content, diff);
+    	}
     });
     
     // Block: Renders its content on a new line, essentially just a div.
