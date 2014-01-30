@@ -225,7 +225,7 @@ public class ReadOnlyAttributeValueImpl<I extends Instance, Value extends Object
 				metadata.iteratingNextValueChangeObservers = false;
 			} else {
 				// The rollback procedure
-				//TODO: make the case read-only!
+				event.getOperation().undoAllEventsRecordedAfter(event);
 				try {
 					ValueChangeEvent undoEvent = event.getUndoEvent();
 					cached = (ValueAndLevel<Value>) event.getOldValue();
@@ -241,7 +241,7 @@ public class ReadOnlyAttributeValueImpl<I extends Instance, Value extends Object
 					if (iterator!=null) {
 						if (iterator.hasNext()) {
 							if (!instanceInformed) {
-								iterator.next(); // Do not reinform the observer that crashed
+								iterator.next(); // Do not re-inform the observer that crashed
 							}
 							while (iterator.hasNext()) {
 								iterator.next().valueChanged(undoEvent);

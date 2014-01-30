@@ -67,8 +67,8 @@ public class Operation implements AutoCloseable {
 	
 	public void removeEventToUndo(ValueChangeEvent event) {
 		if (recordingUndoEventsPaused==0) {
-			boolean check = this.eventsToUndo.remove(event);
-			if (!check) {
+			ValueChangeEvent check = this.eventsToUndo.remove(this.eventsToUndo.size()-1);
+			if (check != event) {
 				throw new RuntimeException("wrong event to remove in eventsToUndo");
 			}
 		}
@@ -76,7 +76,7 @@ public class Operation implements AutoCloseable {
 
 	@Override
 	public void close() {
-		if (state==OperationState.STARTED) { // We were not completed, we should undo (called from a finally block)
+		if (state==OperationState.STARTED || state==OperationState.UNDOING) { // We were not completed, we should undo (called from a finally block)
 			if (partOfOperation!=null && partOfOperation.state == OperationState.UNDOING) return; // The undo operation on our parent crashed here, we have done enough damage.
 			undo();
 			state=OperationState.CLOSED;
@@ -126,29 +126,34 @@ public class Operation implements AutoCloseable {
 		try {
 			for (int i=eventsToUndo.size()-1;i>=0;i--) {
 				ValueChangeEvent event = eventsToUndo.get(i);
-				if (event.isMultivalueUpdate() && event.getAttribute().isOrderedMultivalue()) {
-					AttributeValueList attributeValues = (AttributeValueList)((Attribute)event.getAttribute()).get(event.getInstance());
-					if (event.getMultiValueUpdateType()==MultiValueUpdateType.INSERT) {
-						attributeValues.removeValue(event.getIndex());
-					}
-					if (event.getMultiValueUpdateType()==MultiValueUpdateType.DELETE) {
-						attributeValues.insertValue(event.getItemValue(), event.getIndex());
-					}
-				} else if (event.isMultivalueUpdate()) {
-					AttributeValues attributeValues = (AttributeValues)((Attribute)event.getAttribute()).get(event.getInstance());
-					if (event.getMultiValueUpdateType()==MultiValueUpdateType.INSERT) {
-						attributeValues.removeValue(event.getItemValue());
-					}
-					if (event.getMultiValueUpdateType()==MultiValueUpdateType.DELETE) {
-						attributeValues.addValue(event.getItemValue());
-					}
-				} else {
-					AttributeValue attributeValue = (AttributeValue)((Attribute)event.getAttribute()).get(event.getInstance());
-					attributeValue.setValue(event.getOldStoredValue());
-				}
+				undoEvent(event);
 			}
 		} finally {
 			resumeRecordingUndoEvents();
+		}
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private void undoEvent(ValueChangeEvent event) {
+		if (event.isMultivalueUpdate() && event.getAttribute().isOrderedMultivalue()) {
+			AttributeValueList attributeValues = (AttributeValueList)((Attribute)event.getAttribute()).get(event.getInstance());
+			if (event.getMultiValueUpdateType()==MultiValueUpdateType.INSERT) {
+				attributeValues.removeValue(event.getIndex());
+			}
+			if (event.getMultiValueUpdateType()==MultiValueUpdateType.DELETE) {
+				attributeValues.insertValue(event.getItemValue(), event.getIndex());
+			}
+		} else if (event.isMultivalueUpdate()) {
+			AttributeValues attributeValues = (AttributeValues)((Attribute)event.getAttribute()).get(event.getInstance());
+			if (event.getMultiValueUpdateType()==MultiValueUpdateType.INSERT) {
+				attributeValues.removeValue(event.getItemValue());
+			}
+			if (event.getMultiValueUpdateType()==MultiValueUpdateType.DELETE) {
+				attributeValues.addValue(event.getItemValue());
+			}
+		} else {
+			AttributeValue attributeValue = (AttributeValue)((Attribute)event.getAttribute()).get(event.getInstance());
+			attributeValue.setValue(event.getOldStoredValue());
 		}
 	}
 
@@ -159,5 +164,22 @@ public class Operation implements AutoCloseable {
 	private void resumeRecordingUndoEvents() {
 		if (recordingUndoEventsPaused==0) throw new IllegalStateException();
 		this.recordingUndoEventsPaused --;
+	}
+
+	public void undoAllEventsRecordedAfter(ValueChangeEvent event) {
+		if (state!=OperationState.STARTED) {
+			throw new IllegalStateException();
+		}
+		pauseRecordingUndoEvents();
+		state = OperationState.UNDOING;
+		int index = this.eventsToUndo.size()-1;
+		ValueChangeEvent candidate = this.eventsToUndo.get(index);
+		while (candidate != event) {
+			undoEvent(candidate);
+			this.eventsToUndo.remove(index);
+			index--;
+			candidate = this.eventsToUndo.get(index);
+		}
+		resumeRecordingUndoEvents();
 	}
 }

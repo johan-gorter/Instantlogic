@@ -47,8 +47,7 @@ public class DeductionDesign extends AbstractDeductionDesign {
 				}
 
 				// Parameters
-				List<DeductionParameterDesign> parameterRemovalCandidates = new ArrayList<>(
-						getParameters().asCollection());
+				List<DeductionParameterDesign> parameterRemovalCandidates = new ArrayList<>(getParameters().asCollection());
 				for (DeductionOperationParameterDesign operationParameter : newOperation.getParameters()) {
 					DeductionParameterDesign existingParameter = findParameter(operationParameter);
 					if (existingParameter != null) {
@@ -64,11 +63,11 @@ public class DeductionDesign extends AbstractDeductionDesign {
 					}
 				}
 				// Remove old parameters
-				for (DeductionInputDesign removeInput : inputRemovalCandidates) {
+				for (DeductionParameterDesign removeParameter : parameterRemovalCandidates) {
 					// Policy: Never throw away data without explicit
 					// instruction from the user
-					if (removeInput.getInputs().size() == 0) {
-						removeFromInputs(removeInput);
+					if (removeParameter.getEntityValue() == null && removeParameter.getAttributeValue() == null && removeParameter.getValue() == null) {
+						removeFromParameters(removeParameter);
 					}
 				}
 			}
