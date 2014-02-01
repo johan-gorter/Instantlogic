@@ -17,7 +17,7 @@ public class Generator {
 		if (args.length>0) {
 			scanForInstantlogicDesigns(new File(args[0]));
 		} else {
-			for(File webapp : new File("../webapps").listFiles()) {
+			for(File webapp : new File("../").listFiles()) {
 				scanForInstantlogicDesigns(webapp);
 			}
 			for(File app : new File("..").listFiles()) {
@@ -31,17 +31,19 @@ public class Generator {
 		if (designsDirectory.isDirectory()) {
 			for(File file : designsDirectory.listFiles()) {
 				String designName = file.getName();
-				designName = designName.substring(0, designName.lastIndexOf('.'));
-				System.out.println(file.getAbsolutePath());
-				try (FileReader reader = new FileReader(file)) {
-					ApplicationDesign app = new CasePersister().load(ApplicationDesign.class, reader);
-			        GeneratedClassModels classModelUpdates = app.getApplicationGenerator().getClassModelUpdates();
-			        File generatedDir = new File(new File(webapp, "target/generated-sources/instantlogic-app"), designName);
-			        generatedDir.mkdirs();
-			        System.out.println(" -> " + generatedDir.getAbsolutePath());
-			        new ApplicationJavacodeGenerator(generatedDir).generate(classModelUpdates);
-				} catch (IOException e) {
-					throw new RuntimeException(e);
+				if (designName.toLowerCase().endsWith(".design")) {
+					designName = designName.substring(0, designName.lastIndexOf('.'));
+					System.out.println(file.getAbsolutePath());
+					try (FileReader reader = new FileReader(file)) {
+						ApplicationDesign app = new CasePersister().load(ApplicationDesign.class, reader);
+				        GeneratedClassModels classModelUpdates = app.getApplicationGenerator().getClassModelUpdates();
+				        File generatedDir = new File(new File(webapp, "target/generated-sources/instantlogic-app"), designName);
+				        generatedDir.mkdirs();
+				        System.out.println(" -> " + generatedDir.getAbsolutePath());
+				        new ApplicationJavacodeGenerator(generatedDir).generate(classModelUpdates);
+					} catch (IOException e) {
+						throw new RuntimeException(e);
+					}
 				}
 			}
 		}

@@ -167,12 +167,15 @@ public class Operation implements AutoCloseable {
 	}
 
 	public void undoAllEventsRecordedAfter(ValueChangeEvent event) {
-		if (state!=OperationState.STARTED) {
+		if (state!=OperationState.STARTED && state!=OperationState.UNDOING) {
 			throw new IllegalStateException();
 		}
 		pauseRecordingUndoEvents();
 		state = OperationState.UNDOING;
 		int index = this.eventsToUndo.size()-1;
+		if (this.eventsToUndo.indexOf(event)<0) {
+			return; // Event was not recorded for undo (the stored value did not change)
+		}
 		ValueChangeEvent candidate = this.eventsToUndo.get(index);
 		while (candidate != event) {
 			undoEvent(candidate);

@@ -63,10 +63,11 @@
         <artifactId>maven-plugin-plugin</artifactId>
         <version>3.2</version>
         <configuration>
-          <goalPrefix>instantlogic-maven-plugin</goalPrefix>
+          <goalPrefix>instantlogic</goalPrefix>
           <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
         </configuration>
         <executions>
+<!-- 
           <execution>
             <id>mojo-descriptor</id>
             <goals>
@@ -79,6 +80,7 @@
               <goal>helpmojo</goal>
             </goals>
           </execution>
+ -->
         </executions>
       </plugin>
     </plugins>

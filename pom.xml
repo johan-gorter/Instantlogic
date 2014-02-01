@@ -8,16 +8,17 @@
         <module>instantlogic-fabric</module>
         <module>instantlogic-interaction</module>
         <module>instantlogic-tools</module>
-        <module>designer</module>
+        <module>webapps/designer</module>
         <module>instantlogic-maven-plugin</module>
         <module>instantlogic-engine</module>
 		<module>instantlogic-netty</module>
 		
         <module>webapps/izzy</module>
         <module>webapps/nextdesigner</module>
-		
+<!--
         <module>bootstrappers/izzy</module>
         <module>bootstrappers/designer</module>
+-->
         <module>bootstrappers/presence</module>
     </modules>
     <packaging>pom</packaging>
