@@ -16,17 +16,23 @@ public class Operation implements AutoCloseable {
 	private final CaseAdministration caseAdministration;
 	private final List<ValueChangeEvent> eventsToUndo = new ArrayList<ValueChangeEvent>();
 	private final Operation partOfOperation;
+	private final boolean loading;
 	private OperationState state;
 	private int recordingUndoEventsPaused;
 	// Only used on the Operation root, allows for temporary listeners on the current transaction
 	private List<TransactionListener> transactionListeners;
 
 	public Operation(CaseAdministration caseAdministration, Operation partOfOperation) {
+		this(caseAdministration, partOfOperation, false);
+	}
+
+	public Operation(CaseAdministration caseAdministration, Operation partOfOperation, boolean loading) {
 		if (partOfOperation!=null && (partOfOperation.state==OperationState.COMPLETED || partOfOperation.state==OperationState.CLOSED)) {
 			throw new IllegalStateException("Cannot start an operation while parent operation is "+partOfOperation.state);
 		}
 		this.caseAdministration = caseAdministration;
 		this.partOfOperation = partOfOperation;
+		this.loading = loading;
 	}
 	
 	public void addTransactionListener(TransactionListener transactionListener) {
@@ -61,6 +67,9 @@ public class Operation implements AutoCloseable {
 	 */
 	public void addEventToUndo(ValueChangeEvent event) {
 		if (recordingUndoEventsPaused==0) {
+			if (state != OperationState.STARTED) {
+				throw new IllegalStateException("No stored values may change while operation is "+state);
+			}
 			this.eventsToUndo.add(event);
 		}
 	}
@@ -184,5 +193,16 @@ public class Operation implements AutoCloseable {
 			candidate = this.eventsToUndo.get(index);
 		}
 		resumeRecordingUndoEvents();
+	}
+	
+	public Operation getTransaction() {
+		if (partOfOperation==null) {
+			return this;
+		}
+		return partOfOperation.getTransaction();
+	}
+
+	public boolean isLoading() {
+		return loading;
 	}
 }

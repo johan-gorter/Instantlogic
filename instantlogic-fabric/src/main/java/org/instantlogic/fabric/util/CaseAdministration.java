@@ -157,9 +157,16 @@ public class CaseAdministration {
 	public void setVersion(long version) {
 		this.version = version;
 	}
-
+	
 	public Operation startOperation() {
-		Operation operation = new Operation(this, currentOperation);
+		return startOperation(currentOperation != null && currentOperation.isLoading());
+	}
+
+	public Operation startOperation(boolean loading) {
+		if (!loading && currentOperation!=null && currentOperation.isLoading()) {
+			throw new IllegalArgumentException("loading");
+		}
+		Operation operation = new Operation(this, currentOperation, loading);
 		currentOperation = operation;
 		operation.start();
 		return operation;

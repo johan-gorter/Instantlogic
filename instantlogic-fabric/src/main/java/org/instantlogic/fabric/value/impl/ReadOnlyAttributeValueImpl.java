@@ -163,14 +163,14 @@ public class ReadOnlyAttributeValueImpl<I extends Instance, Value extends Object
 	
 	protected void fireValueChanged(ValueAndLevel<Value> oldValue, Value oldStoredValue, Value newStoredValue, Operation operation) {
 		ValueChangeEvent event = new ValueChangeEvent(this, oldValue, oldStoredValue, newStoredValue, operation);
-		fireEvent(event);
+		fireEvent(event, operation);
 	}
 	
 	/**
 	 * Takes extra care to undo pending changes when exceptions occur
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected void fireEvent(ValueChangeEvent event) {
+	protected void fireEvent(ValueChangeEvent event, Operation operation) {
 		boolean clearIteratingOnExit = false;
 		int lastInformedNextIndex = metadata.nextValueChangeObservers.size();
 		boolean success = false;
@@ -191,31 +191,33 @@ public class ReadOnlyAttributeValueImpl<I extends Instance, Value extends Object
 				event.getOperation().addEventToUndo(event);
 				undoEventRecorded = true;
 			}
-			// NextValueChangeObservers
-			metadata.iteratingNextValueChangeObservers = true;
-			lastInformedNextIndex = metadata.nextValueChangeObservers.size(); // observers may have changed since beforeFiringChange
-			while (lastInformedNextIndex>0) {
-				ValueChangeObserver observer = metadata.nextValueChangeObservers.get(lastInformedNextIndex-1);
-				if (observer!=null) {
-					observer.valueChanged(event);
+			if (!operation.isLoading()) {
+				// NextValueChangeObservers
+				metadata.iteratingNextValueChangeObservers = true;
+				lastInformedNextIndex = metadata.nextValueChangeObservers.size(); // observers may have changed since beforeFiringChange
+				while (lastInformedNextIndex>0) {
+					ValueChangeObserver observer = metadata.nextValueChangeObservers.get(lastInformedNextIndex-1);
+					if (observer!=null) {
+						observer.valueChanged(event);
+					}
+					lastInformedNextIndex--;
+					metadata.nextValueChangeObservers.remove(lastInformedNextIndex);
 				}
-				lastInformedNextIndex--;
-				metadata.nextValueChangeObservers.remove(lastInformedNextIndex);
+				// ValueChangeObservers
+				if (metadata.iteratingValueChangeObservers != metadata.valueChangeObservers) {
+					metadata.iteratingValueChangeObservers = metadata.valueChangeObservers;
+					clearIteratingOnExit = true;
+				}
+				iterating = metadata.iteratingValueChangeObservers;
+				iterator = iterating.listIterator(iterating.size());
+				while (iterator.hasPrevious()) {
+					ValueChangeObserver listener = iterator.previous();
+					listener.valueChanged(event);
+				}
+				// Observers on the Instance and Instances above
+				instanceInformed = true;
+				forInstance.getMetadata().fireValueChanged(event, true);
 			}
-			// ValueChangeObservers
-			if (metadata.iteratingValueChangeObservers != metadata.valueChangeObservers) {
-				metadata.iteratingValueChangeObservers = metadata.valueChangeObservers;
-				clearIteratingOnExit = true;
-			}
-			iterating = metadata.iteratingValueChangeObservers;
-			iterator = iterating.listIterator(iterating.size());
-			while (iterator.hasPrevious()) {
-				ValueChangeObserver listener = iterator.previous();
-				listener.valueChanged(event);
-			}
-			// Observers on the Instance and Instances above
-			instanceInformed = true;
-			forInstance.getMetadata().fireValueChanged(event, true);
 			success = true;
 		} finally {
 			if (success) {

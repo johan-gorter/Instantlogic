@@ -26,6 +26,7 @@ import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.util.InstanceStorageInfo;
 import org.instantlogic.fabric.util.InstanceStorageInfo.AttributeValueNode;
 import org.instantlogic.fabric.util.InstanceStorageInfo.InstanceNode;
+import org.instantlogic.fabric.util.Operation;
 import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.fabric.util.ValueChangeEvent.MultiValueUpdateType;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
@@ -70,11 +71,10 @@ public class DesignerCasePersister extends FileCasePersister {
 			if (!dir.exists()) {
 				dir.mkdirs();
 			}
-			InstanceStorageInfo storage = load(dir, caseId);
+			InstanceStorageInfo storage = loadStorages(dir, caseId);
 			
-			//TODO: move these to a place where the application reload can take place (also for non-designer applications)
-			Instance result = createStructure(storage, application.getAllEntities());
-			loadData(result, result.getMetadata().getCaseAdministration());
+			Instance result = loadFromStorages(storage, application.getAllEntities());
+			
 			
 	//		OutputStreamWriter osw = new OutputStreamWriter(System.out);
 	//		super.save(result, osw);
@@ -146,8 +146,10 @@ public class DesignerCasePersister extends FileCasePersister {
 		return result;
 	}
 
-	private Instance createStructure(InstanceStorageInfo storage, SortedMap<String, Entity<?>> entities) {
+	private Instance loadFromStorages(InstanceStorageInfo storage, SortedMap<String, Entity<?>> entities) {
 		Instance result = entities.get(storage.node.entityName).createInstance();
+		CaseAdministration caseAdministration = result.getMetadata().getCaseAdministration();
+		Operation loadingOperation = caseAdministration.startOperation(true);
 		result.getMetadata().initUniqueId(storage.node.uniqueId);
 		result.getMetadata().setStorageInfo(storage);
 		createStructure(result, storage.node, entities, storage);
@@ -164,6 +166,9 @@ public class DesignerCasePersister extends FileCasePersister {
 				}
 			}
 		}
+		loadData(result, caseAdministration);
+		loadingOperation.complete();
+		loadingOperation.close();
 		return result;
 	}
 
@@ -211,7 +216,7 @@ public class DesignerCasePersister extends FileCasePersister {
 				}
 			}
 
-	private InstanceStorageInfo load(File dir, String caseId) {
+	private InstanceStorageInfo loadStorages(File dir, String caseId) {
 		File[] designs = dir.listFiles(DESIGNS);
 		if (designs.length>1) {
 			throw new RuntimeException(designs.length+" .design files exist in "+dir+" expected 1");
@@ -644,10 +649,9 @@ public class DesignerCasePersister extends FileCasePersister {
 			}
 
 	public ApplicationDesign loadApplicationDesign(File folder) {
-		InstanceStorageInfo storage = load(folder, folder.getName());
+		InstanceStorageInfo storage = loadStorages(folder, folder.getName());
 		
-		Instance result = createStructure(storage, DesignerApplication.INSTANCE.getAllEntities());
-		loadData(result, result.getMetadata().getCaseAdministration());
+		Instance result = loadFromStorages(storage, DesignerApplication.INSTANCE.getAllEntities());
 		
 		return (ApplicationDesign) result;
 	}

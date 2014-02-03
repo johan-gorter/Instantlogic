@@ -21,10 +21,13 @@ public class PresenceApplicationGenerator extends ApplicationDesign {
     	APPLICATION = this;
 		getMetadata().getCaseAdministration().setIdGenerator(new SequencePerLabelIdGenerator()); // predictable Id's for better source control
     	addToCustomDeductionOperations(UserNameDefaultDeduction);
+    	UserNameDefaultDeduction.setName("userNameDefault");
 		UserNameDefaultDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction");
 		addToCustomDeductionOperations(UserAvatarUrlDefaultDeduction);
+		UserAvatarUrlDefaultDeduction.setName("userAvatarUrlDefault");
 		UserAvatarUrlDefaultDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.UserAvatarUrlDefaultDeduction");
 		addToCustomDeductionOperations(IsMeDeduction);
+		IsMeDeduction.setName("isMe");
 		IsMeDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.IsMeDeduction");
         setName("Presence");
         setRootPackageName("org.instantlogic.engine.presence");

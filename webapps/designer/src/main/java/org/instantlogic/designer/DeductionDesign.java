@@ -75,7 +75,7 @@ public class DeductionDesign extends AbstractDeductionDesign {
 	};
 
 	public DeductionDesign() {
-		// TODO: getOperationRelationValue().addValueChangeObserver(operationChanged);
+		getOperationRelationValue().addValueChangeObserver(operationChanged);
 	}
 
 	protected DeductionParameterDesign findParameter(DeductionOperationParameterDesign operationParameter) {

@@ -85,7 +85,7 @@ public class AttributeValueListImpl<I extends Instance, Item extends Object>
 	
 	protected void fireChange(MultiValueUpdateType type, int index, Item item, Operation operation) {
 		ValueChangeEvent event = new ValueChangeEvent(this, getValueAndLevel(), type, index, item, operation);
-		fireEvent(event);
+		fireEvent(event, operation);
 	}
 	
 	@Override

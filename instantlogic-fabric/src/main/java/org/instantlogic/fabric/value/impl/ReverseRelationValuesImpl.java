@@ -45,7 +45,7 @@ public class ReverseRelationValuesImpl<I extends Instance, From extends Instance
 			addDuplicate(reverseValue);
 		}
 		if (operation!=null) {
-			fireEvent(new ValueChangeEvent(this, ValueAndLevel.rule(this.reverseValue), MultiValueUpdateType.INSERT, reverseValue, operation));
+			fireEvent(new ValueChangeEvent(this, ValueAndLevel.rule(this.reverseValue), MultiValueUpdateType.INSERT, reverseValue, operation), operation);
 		}
 	}
 
@@ -65,7 +65,7 @@ public class ReverseRelationValuesImpl<I extends Instance, From extends Instance
 				throw new RuntimeException("Reverse value not found: "+reverseValue);
 			}
 		} 
-		fireEvent(new ValueChangeEvent(this, ValueAndLevel.rule(this.reverseValue), MultiValueUpdateType.DELETE, reverseValue, operation));
+		fireEvent(new ValueChangeEvent(this, ValueAndLevel.rule(this.reverseValue), MultiValueUpdateType.DELETE, reverseValue, operation), operation);
 	}
 	
 	private boolean removeDuplicate(From from) {

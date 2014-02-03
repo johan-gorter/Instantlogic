@@ -198,8 +198,8 @@ public class IzzyGenerator extends Design {
 		DeductionDesign headline = scheme.deduceAttribute(issueHeadline, issueInstance);
 		DeductionDesign hasValue = new DeductionDesign();
 		scheme.addToDeductions(hasValue);
-		hasValue.setOperation(DeductionOperationDesign.hasValue);
 		hasValue.addInput(DeductionOperationInputDesign.hasValueInput, headline);
+		hasValue.setOperation(DeductionOperationDesign.hasValue);
 		DeductionDesign separator = scheme.deduceConstant(String.class, ": ");
 		DeductionDesign conditionalSeparator = new DeductionDesign();
 		scheme.addToDeductions(conditionalSeparator);
@@ -210,8 +210,8 @@ public class IzzyGenerator extends Design {
 		DeductionDesign concatenate = new DeductionDesign();
 		scheme.addToDeductions(concatenate);
 		scheme.setOutput(concatenate);
-		concatenate.setOperation(DeductionOperationDesign.concatenate);
 		concatenate.addInput(DeductionOperationInputDesign.concatenateStrings, number, conditionalSeparator, headline);
+		concatenate.setOperation(DeductionOperationDesign.concatenate);
 	}
 
 	// Flows

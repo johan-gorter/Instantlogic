@@ -13,12 +13,12 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		DeductionDesign deductionDesign = new DeductionDesign();
 		addToDeductions(deductionDesign);
 		setOutput(deductionDesign);
-		deductionDesign.setOperation(DeductionOperationDesign.selectedInstance);
 		
 		DeductionParameterDesign parameter = new DeductionParameterDesign().setOperationParameter(DeductionOperationParameterDesign.selectedInstanceEntity);
 		deductionDesign.addToParameters(parameter);
 		parameter.setEntityValue(entity);
 		
+		deductionDesign.setOperation(DeductionOperationDesign.selectedInstance);
 		return deductionDesign;
 	}
 
@@ -35,7 +35,6 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(attributeDeductionDesign);
 		setOutput(attributeDeductionDesign);
 		
-		attributeDeductionDesign.setOperation(DeductionOperationDesign.attribute);
 		DeductionInputDesign input = new DeductionInputDesign()
 			.setOperationInput(DeductionOperationInputDesign.attributeInstance);
 		
@@ -46,6 +45,7 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		attributeDeductionDesign.addToParameters(parameter);
 		parameter.setAttributeValue(attribute);
 
+		attributeDeductionDesign.setOperation(DeductionOperationDesign.attribute);
 		return attributeDeductionDesign;
 	}
 
@@ -66,12 +66,12 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(deductionDesign);
 		setOutput(deductionDesign);
 		
-		deductionDesign.setOperation(DeductionOperationDesign.constant);
 
 		DeductionParameterDesign parameter = new DeductionParameterDesign().setOperationParameter(DeductionOperationParameterDesign.constantValue);
 		deductionDesign.addToParameters(parameter);
 		parameter.setStaticInstanceValue(staticInstance);
 		
+		deductionDesign.setOperation(DeductionOperationDesign.constant);
 		return deductionDesign;
 	}
 	
@@ -81,12 +81,12 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(deductionDesign);
 		setOutput(deductionDesign);
 		
-		deductionDesign.setOperation(DeductionOperationDesign.constant);
 
 		DeductionParameterDesign parameter = new DeductionParameterDesign().setOperationParameter(DeductionOperationParameterDesign.constantValue);
 		deductionDesign.addToParameters(parameter);
 		parameter.setValue(value);
 		
+		deductionDesign.setOperation(DeductionOperationDesign.constant);
 		return deductionDesign;
 	}
 	
@@ -152,7 +152,6 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(result);
 		setOutput(result);
 		
-		result.setOperation(DeductionOperationDesign.cast);
 		DeductionInputDesign deductionInput = new DeductionInputDesign()
 			.setOperationInput(DeductionOperationInputDesign.castInstance);
 		
@@ -165,6 +164,7 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		parameter.setEntityValue(to);
 		parameter.setOperationParameter(DeductionOperationParameterDesign.castToEntity);
 		
+		result.setOperation(DeductionOperationDesign.cast);
 		return result;
 	}
 
@@ -174,7 +174,6 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(result);
 		setOutput(result);
 
-		result.setOperation(DeductionOperationDesign.equals);
 		DeductionInputDesign deductionInput = new DeductionInputDesign()
 			.setOperationInput(DeductionOperationInputDesign.equalsOperands);
 		result.addToInputs(deductionInput);
@@ -183,6 +182,7 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 			deductionInput.addToInputs(input);
 		}
 		
+		result.setOperation(DeductionOperationDesign.equals);
 		return result;
 	}
 	
@@ -192,7 +192,6 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		addToDeductions(result);
 		setOutput(result);
 
-		result.setOperation(DeductionOperationDesign.reverseRelation);
 		DeductionInputDesign input = new DeductionInputDesign()
 			.setOperationInput(DeductionOperationInputDesign.reverseRelationToInstance);
 		
@@ -203,6 +202,7 @@ public class DeductionSchemeDesign extends AbstractDeductionSchemeDesign {
 		result.addToParameters(parameter);
 		parameter.setOperationParameter(DeductionOperationParameterDesign.reverseRelationRelation);
 		parameter.setAttributeValue(relation);
+		result.setOperation(DeductionOperationDesign.reverseRelation);
 		return result; 
 	}
 
