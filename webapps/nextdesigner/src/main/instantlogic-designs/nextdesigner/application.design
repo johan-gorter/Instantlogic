@@ -1,0 +1,14 @@
+Applicationdesgn__0001: Applicationdesgn__0001:ApplicationDesign{
+Applicationdesgn__0001:  name="Designer"
+Applicationdesgn__0001:  isCustomized=true
+Applicationdesgn__0001:  sourcePath="target/generated-sources/instantlogic-app"
+Applicationdesgn__0001:  themeNames[
+Applicationdesgn__0001:  themeNames+"designer"
+Applicationdesgn__0001:  themeNames+"margin"
+Applicationdesgn__0001:  themeNames]
+Applicationdesgn__0001:  rootPackageName="org.instantlogic.designer"
+Applicationdesgn__0001:  caseEntity="Fzpbnqxblqcqmlcl_0d62e8ec_a092"
+Applicationdesgn__0001:  mainFlow="_civoObmreceIftb_4618f94b_10ae"
+Applicationdesgn__0001:  startEvent
+Applicationdesgn__0001:  startPlace="AE_aEEdseefvefjx_9725acb0_b1a3"
+Applicationdesgn__0001: }Applicationdesgn__0001

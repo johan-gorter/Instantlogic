@@ -17,6 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.instantlogic.designer.ApplicationDesign;
+import org.instantlogic.designer.DesignerApplication;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
@@ -224,7 +225,7 @@ public class DesignerCasePersister extends FileCasePersister {
 				root.node = new InstanceNode();
 				root.node.entityName = "ApplicationDesign";
 				root.node.uniqueId = new ApplicationDesign().getMetadata().getUniqueId();
-				root.fileName = caseId+".design";
+				root.fileName = "application.design";
 				AttributeValueNode nameValue = new AttributeValueNode();
 				nameValue.attributeName = "name";
 				nameValue.values.add("\""+caseId+"\"");
@@ -326,6 +327,7 @@ public class DesignerCasePersister extends FileCasePersister {
 		if (instance.getMetadata().getStorageInfo() == null) {
 			// Has never been saved yet
 			initRootInstanceNode(instance, null, instancesToSave);
+			instance.getMetadata().getStorageInfo().fileName="application.design";
 		} else {
 			for (ValueChangeEvent event : events) {
 				if (event.storedValueChanged()) {
@@ -640,4 +642,13 @@ public class DesignerCasePersister extends FileCasePersister {
 					}
 				}
 			}
+
+	public ApplicationDesign loadApplicationDesign(File folder) {
+		InstanceStorageInfo storage = load(folder, folder.getName());
+		
+		Instance result = createStructure(storage, DesignerApplication.INSTANCE.getAllEntities());
+		loadData(result, result.getMetadata().getCaseAdministration());
+		
+		return (ApplicationDesign) result;
+	}
 }

@@ -1,14 +1,13 @@
 package org.instantlogic.engine.presence;
 
 import java.io.File;
-import java.io.FileWriter;
 
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.DeductionOperationDesign;
 import org.instantlogic.designer.tools.Generator;
+import org.instantlogic.designer.util.DesignerCasePersister;
 import org.instantlogic.engine.presence.placetemplate.TravelerPlaceTemplateGenerator;
 import org.instantlogic.fabric.util.id.SequencePerLabelIdGenerator;
-import org.instantlogic.tools.persistence.json.CasePersister;
 
 public class PresenceApplicationGenerator extends ApplicationDesign {
 
@@ -36,10 +35,9 @@ public class PresenceApplicationGenerator extends ApplicationDesign {
     }
     
     public static void main(String[] args) throws Exception {
-		try (FileWriter fileWriter = new FileWriter(new File("../../instantlogic-engine/src/main/instantlogic-designs/presence.json"))) {
-			new CasePersister().save(APPLICATION, fileWriter);
-		}
-		System.out.println("presence.json written");
+		new DesignerCasePersister().save(APPLICATION, new File("../../instantlogic-engine/src/main/instantlogic-designs/presence/"), null);
+
+		System.out.println("presence written");
 		Generator.scanForInstantlogicDesigns(new File("../../instantlogic-engine"));
     }
 }

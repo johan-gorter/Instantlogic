@@ -75,11 +75,10 @@ public class DeductionDesign extends AbstractDeductionDesign {
 	};
 
 	public DeductionDesign() {
-		getOperationRelationValue().addValueChangeObserver(operationChanged);
+		// TODO: getOperationRelationValue().addValueChangeObserver(operationChanged);
 	}
 
-	protected DeductionParameterDesign findParameter(
-			DeductionOperationParameterDesign operationParameter) {
+	protected DeductionParameterDesign findParameter(DeductionOperationParameterDesign operationParameter) {
 		// Find exact match
 		for (DeductionParameterDesign candidate : getParameters()) {
 			if (candidate.getOperationParameter() == operationParameter) {
@@ -97,8 +96,7 @@ public class DeductionDesign extends AbstractDeductionDesign {
 		return null;
 	}
 
-	protected DeductionInputDesign findInput(
-			DeductionOperationInputDesign operationInput) {
+	protected DeductionInputDesign findInput(DeductionOperationInputDesign operationInput) {
 		// Find exact match
 		for (DeductionInputDesign candidate : getInputs()) {
 			if (candidate.getOperationInput() == operationInput) {
@@ -116,9 +114,7 @@ public class DeductionDesign extends AbstractDeductionDesign {
 		return null;
 	}
 
-	public DeductionInputDesign addInput(
-			DeductionOperationInputDesign operationInput,
-			DeductionDesign... inputs) {
+	public DeductionInputDesign addInput(DeductionOperationInputDesign operationInput, DeductionDesign... inputs) {
 		DeductionInputDesign result = new DeductionInputDesign();
 		addToInputs(result);
 		result.setOperationInput(operationInput);

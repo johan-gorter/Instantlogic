@@ -1,21 +1,5 @@
 package org.instantlogic.maven;
 
-/*
- * Copyright 2001-2005 The Apache Software Foundation.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -28,6 +12,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.codegenerator.generator.GeneratedClassModels;
 import org.instantlogic.designer.codegenerator.javacode.ApplicationJavacodeGenerator;
+import org.instantlogic.designer.util.DesignerCasePersister;
 import org.instantlogic.tools.persistence.json.CasePersister;
 
 /**
@@ -50,20 +35,29 @@ public class GenerateJavaMojo extends AbstractMojo
 		if (instantlogicDesignsDirectory.isDirectory()) {
 			getLog().info("Scanning for instantlogic designs in " + instantlogicDesignsDirectory.getAbsolutePath());
 			for(File file : instantlogicDesignsDirectory.listFiles()) {
-				String designName = file.getName();
-				designName = designName.substring(0, designName.lastIndexOf('.'));
-				getLog().info("Creating java code from design "+ file.getAbsolutePath());
-				try (FileReader reader = new FileReader(file)) {
-					ApplicationDesign app = new CasePersister().load(ApplicationDesign.class, reader);
-			        GeneratedClassModels classModelUpdates = app.getApplicationGenerator().getClassModelUpdates();
-			        File generatedDir = new File(new File(outputDirectory, "generated-sources/instantlogic-app"), designName);
-			        generatedDir.mkdirs();
-			        getLog().info("Generating into: " + generatedDir.getAbsolutePath());
-			        new ApplicationJavacodeGenerator(generatedDir).generate(classModelUpdates);
-				} catch (IOException e) {
-					throw new MojoExecutionException("Exception creating java code", e);
+				if (file.isDirectory()) {
+					ApplicationDesign app = new DesignerCasePersister().loadApplicationDesign(file);
+			        generateCode(app, file.getName());
+				} else {
+					String designName = file.getName();
+					designName = designName.substring(0, designName.lastIndexOf('.'));
+					getLog().info("Creating java code from design "+ file.getAbsolutePath());
+					try (FileReader reader = new FileReader(file)) {
+						ApplicationDesign app = new CasePersister().load(ApplicationDesign.class, reader);
+				        generateCode(app, designName);
+					} catch (IOException e) {
+						throw new MojoExecutionException("Exception creating java code", e);
+					}
 				}
 			}
 		}
     }
+
+	private void generateCode(ApplicationDesign app, String applicationDesignName) {
+		GeneratedClassModels classModelUpdates = app.getApplicationGenerator().getClassModelUpdates();
+		File generatedDir = new File(new File(outputDirectory, "generated-sources/instantlogic-app"), applicationDesignName);
+		generatedDir.mkdirs();
+		getLog().info("Generating into: " + generatedDir.getAbsolutePath());
+		new ApplicationJavacodeGenerator(generatedDir).generate(classModelUpdates);
+	}
 }
