@@ -18,6 +18,13 @@
         <artifactId>instantlogic-fabric</artifactId>
     	<version>${project.version}</version>
 	  </dependency>
+	  
+	  <!-- External dependencies -->
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+	  </dependency>
+	  
     </dependencies>
 
 </project>
