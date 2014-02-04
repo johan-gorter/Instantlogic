@@ -19,5 +19,7 @@ select {min-width: 40%;}
 .btn {margin-right:4px;}
 .btn-group .btn {margin-right:auto;}
 
+.modal {background-color: rgba(10, 10, 10, 0.2)}
+
 .controls textarea, .controls input, .controls select {background-color: rgba(255,255,255,0.7);}
 .btn-small {padding-top:0px;padding-bottom:0px;border-radius:0px;}

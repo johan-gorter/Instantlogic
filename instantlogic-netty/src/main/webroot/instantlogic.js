@@ -35,24 +35,36 @@ YUI.add('instantlogic', function (Y) {
         this.placeFragmentHolder = null;
         this.presenceFragmentHolder = null;
 
-        this.oneMomentPleasePanel = new Y.Panel({
-            bodyContent: 'ONE MOMENT PLEASE',
-            visible: false,
-            centered: true,
-            zIndex: 10,
-            disabled: true,
-            modal: true,
-            render: true
-        });
-        this.errorPanel = new Y.Panel({
-            bodyContent: 'ERROR',
-            visible: false,
-            centered: true,
-            zIndex: 10,
-            disabled: true,
-            modal: true,
-            render: true
-        });
+        var h = Y.html;
+        
+        
+        this.oneMomentPleasePanel = 
+        	h.div({className:'modal'}, 
+	        	h.div({className:'modal-dialog modal-sm'}, 
+    	        	h.div({className:'modal-content'},
+				    	h.div({className:'modal-header'},
+				    		h.h4({className:'modal-title'}, "One moment please...")
+				    	)
+			    	)
+	        	)
+        	);
+
+        presenceNode.insert(this.oneMomentPleasePanel, 'before');
+                
+        this.errorPanel = 
+        	h.div({className:'modal'}, 
+	        	h.div({className:'modal-dialog modal-sm'}, 
+    	        	h.div({className:'modal-content'},
+	    	        	h.div({className:'modal-header'},
+	    	        		h.h4({className:'modal-title'}, 'Error')
+	    	        	),
+    	        		h.div({className:'modal-body'}, 'Sorry, an error has occurred on the server')
+    	        	)
+	        	)
+        	);
+        
+        presenceNode.insert(this.errorPanel, 'before');
+
     };
 
     ns.Engine.prototype = {
@@ -110,7 +122,7 @@ YUI.add('instantlogic', function (Y) {
                 this.oneMomentPleasePanel.hide();
             };
             if (state == 'connecting' || state == 'disconnected') {
-                this.oneMomentPleasePanel.show();
+                this.oneMomentPleasePanel.setStyle('display', 'block');
                 this.placeNode.setContent('');
                 if (this.placeFragmentHolder) {
                     this.placeFragmentHolder.destroy();
@@ -123,7 +135,7 @@ YUI.add('instantlogic', function (Y) {
                 }
             }
             if (state == 'error') {
-            	this.errorPanel.show();
+            	this.errorPanel.setStyle('display', 'block');
             } else {
             	this.errorPanel.hide();
             }
@@ -944,4 +956,4 @@ YUI.add('instantlogic', function (Y) {
 		}
     };
     
-}, '0.7.0', { requires: ['io-base', 'node', 'oop', 'panel', 'json', 'event', 'html', 'history', 'overlay', 'transition'] });
+}, '0.7.0', { requires: ['io-base', 'node', 'oop', 'json', 'event', 'html', 'history', 'transition'] });
