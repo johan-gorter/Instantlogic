@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.DesignerApplication;
+import org.instantlogic.designer.deduction.TechnicalNameDeduction;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
@@ -466,7 +467,7 @@ public class DesignerCasePersister extends FileCasePersister {
 		if (nameAttribute!=null) {
 			String name = (String)nameAttribute.get(instance).getValue();
 			if (name!=null) {
-				return name+".design";
+				return TechnicalNameDeduction.capitalizeFirst(TechnicalNameDeduction.makeTechnicalName(name))+".design";
 			}
 		}
 		return instance.getMetadata().getUniqueId()+".design";
