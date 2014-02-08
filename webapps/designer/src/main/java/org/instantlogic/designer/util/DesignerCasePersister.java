@@ -576,13 +576,13 @@ public class DesignerCasePersister extends FileCasePersister {
 		StringBuilder sb = new StringBuilder();
 		if (MERGE_CONFLICT_PREVENTION>0) {
 			int length = forNode.uniqueId.length();
-			if (length>30) {
+			if (length>=30) {
 				sb.append(forNode.uniqueId.substring(length-30));
 				sb.append(": ");
 			} else {
 				sb.append(forNode.uniqueId);
 				sb.append(": ");
-				for (int i=length;i<=25;i++) {
+				for (int i=length;i<29;i++) {
 					sb.append(' ');
 				}
 			}
@@ -593,6 +593,8 @@ public class DesignerCasePersister extends FileCasePersister {
 	private void writeInstance(OutputStreamWriter writer, InstanceNode rootNode) throws IOException {
 		String prefix = buildPrefix(rootNode);
 		writer.write(prefix);
+		writer.write(rootNode.uniqueId);
+		writer.write(":");
 		writer.write(rootNode.entityName);
 		writer.write("{\n");
 		
@@ -608,9 +610,11 @@ public class DesignerCasePersister extends FileCasePersister {
 			String nextIndent) throws IOException {
 				for (AttributeValueNode attribute : rootNode.values) {
 					if (attribute.multivalue) {
-						writer.write(prefix);
-						writer.write(attribute.attributeName);
-						writer.write("[\n");
+						if (MERGE_CONFLICT_PREVENTION>1) {
+							writer.write(prefix);
+							writer.write(attribute.attributeName);
+							writer.write("[\n");
+						}
 						
 						for (String value : attribute.values) {
 							writer.write(prefix);
@@ -638,13 +642,15 @@ public class DesignerCasePersister extends FileCasePersister {
 							writer.write("\n");
 						}
 						
-						writer.write(prefix);
-						writer.write(attribute.attributeName);
-						writer.write("]\n");
+						if (MERGE_CONFLICT_PREVENTION>1) {
+							writer.write(prefix);
+							writer.write(attribute.attributeName);
+							writer.write("]\n");
+						}
 					} else {
-						writer.write(prefix);
-						writer.write(attribute.attributeName);
 						if (attribute.subInstances.size()>0) {
+							writer.write(prefix);
+							writer.write(attribute.attributeName);
 							InstanceNode subInstance = attribute.subInstances.get(0);
 							writer.write("=");
 							writer.write(subInstance.uniqueId);
@@ -658,11 +664,18 @@ public class DesignerCasePersister extends FileCasePersister {
 							writer.write(prefix);
 							writer.write("}");
 							writer.write(subInstance.uniqueId);
+							writer.write("\n");
 						} else if (attribute.values.size()>0) {
+							writer.write(prefix);
+							writer.write(attribute.attributeName);
 							writer.write("=");
 							writer.write(attribute.values.get(0));
+							writer.write("\n");
+						} else if (MERGE_CONFLICT_PREVENTION>1) {
+							writer.write(prefix);
+							writer.write(attribute.attributeName);
+							writer.write("\n");
 						}
-						writer.write("\n");
 					}
 				}
 			}

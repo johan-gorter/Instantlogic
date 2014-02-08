@@ -1,6 +1,4 @@
-XoUvowapmedyq_cv_90b5a6ba_f79e: XoUvowapmedyq_cv_90b5a6ba_f79e:PlaceTemplateDesign{
-XoUvowapmedyq_cv_90b5a6ba_f79e:  name="select dashboard"
-XoUvowapmedyq_cv_90b5a6ba_f79e:  isCustomized=true
-XoUvowapmedyq_cv_90b5a6ba_f79e:  parameters[
-XoUvowapmedyq_cv_90b5a6ba_f79e:  parameters]
-XoUvowapmedyq_cv_90b5a6ba_f79e: }XoUvowapmedyq_cv_90b5a6ba_f79e
+TemplateDesign_selectDashboard: PlaceTemplateDesign_selectDashboard:PlaceTemplateDesign{
+TemplateDesign_selectDashboard:  name="select dashboard"
+TemplateDesign_selectDashboard:  isCustomized=true
+TemplateDesign_selectDashboard: }PlaceTemplateDesign_selectDashboard

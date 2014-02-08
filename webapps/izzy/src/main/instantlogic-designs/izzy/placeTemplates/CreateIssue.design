@@ -1,6 +1,4 @@
-X__IqvnuhmdoIntv_b813c15c_7bcd: X__IqvnuhmdoIntv_b813c15c_7bcd:PlaceTemplateDesign{
-X__IqvnuhmdoIntv_b813c15c_7bcd:  name="create issue"
-X__IqvnuhmdoIntv_b813c15c_7bcd:  isCustomized=true
-X__IqvnuhmdoIntv_b813c15c_7bcd:  parameters[
-X__IqvnuhmdoIntv_b813c15c_7bcd:  parameters]
-X__IqvnuhmdoIntv_b813c15c_7bcd: }X__IqvnuhmdoIntv_b813c15c_7bcd
+laceTemplateDesign_createIssue: PlaceTemplateDesign_createIssue:PlaceTemplateDesign{
+laceTemplateDesign_createIssue:  name="create issue"
+laceTemplateDesign_createIssue:  isCustomized=true
+laceTemplateDesign_createIssue: }PlaceTemplateDesign_createIssue

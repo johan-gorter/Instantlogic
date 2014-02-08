@@ -1,8 +1,3 @@
-FqoOst__licOuhbU_4dedd3ec_e618: FqoOst__licOuhbU_4dedd3ec_e618:FragmentTypeDesign{
-FqoOst__licOuhbU_4dedd3ec_e618:  name="Cell"
-FqoOst__licOuhbU_4dedd3ec_e618:  isCustomized
-FqoOst__licOuhbU_4dedd3ec_e618:  fragmentFilters[
-FqoOst__licOuhbU_4dedd3ec_e618:  fragmentFilters]
-FqoOst__licOuhbU_4dedd3ec_e618:  hasAttribute
-FqoOst__licOuhbU_4dedd3ec_e618:  hasEvent
-FqoOst__licOuhbU_4dedd3ec_e618: }FqoOst__licOuhbU_4dedd3ec_e618
+FragmentTypeDesign_Cell:       FragmentTypeDesign_Cell:FragmentTypeDesign{
+FragmentTypeDesign_Cell:        name="Cell"
+FragmentTypeDesign_Cell:       }FragmentTypeDesign_Cell

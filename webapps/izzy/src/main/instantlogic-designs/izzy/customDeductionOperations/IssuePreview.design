@@ -1,0 +1,4 @@
+onOperationDesign_issuePreview: DeductionOperationDesign_issuePreview:DeductionOperationDesign{
+onOperationDesign_issuePreview:  name="issue preview"
+onOperationDesign_issuePreview:  javaClassName="org.instantlogic.example.izzy.deduction.IssuePreviewDeduction"
+onOperationDesign_issuePreview: }DeductionOperationDesign_issuePreview

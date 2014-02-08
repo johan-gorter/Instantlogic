@@ -1,8 +1,3 @@
-DtmbndhyEafOqbwE_2e840673_da7e: DtmbndhyEafOqbwE_2e840673_da7e:FragmentTypeDesign{
-DtmbndhyEafOqbwE_2e840673_da7e:  name="Row"
-DtmbndhyEafOqbwE_2e840673_da7e:  isCustomized
-DtmbndhyEafOqbwE_2e840673_da7e:  fragmentFilters[
-DtmbndhyEafOqbwE_2e840673_da7e:  fragmentFilters]
-DtmbndhyEafOqbwE_2e840673_da7e:  hasAttribute
-DtmbndhyEafOqbwE_2e840673_da7e:  hasEvent
-DtmbndhyEafOqbwE_2e840673_da7e: }DtmbndhyEafOqbwE_2e840673_da7e
+FragmentTypeDesign_Row:        FragmentTypeDesign_Row:FragmentTypeDesign{
+FragmentTypeDesign_Row:         name="Row"
+FragmentTypeDesign_Row:        }FragmentTypeDesign_Row

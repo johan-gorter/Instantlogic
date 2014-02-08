@@ -1,11 +1,8 @@
-Zcpixuevneakg_fg_5c0e2d08_3ea5: Zcpixuevneakg_fg_5c0e2d08_3ea5:PlaceTemplateDesign{
-Zcpixuevneakg_fg_5c0e2d08_3ea5:  name="resolve issue"
-Zcpixuevneakg_fg_5c0e2d08_3ea5:  isCustomized=true
-Zcpixuevneakg_fg_5c0e2d08_3ea5:  parameters[
-Zcpixuevneakg_fg_5c0e2d08_3ea5:  parameters+SyafeEgvyechadOO_4fe0f786_1f75:PlaceParameterDesign{
-SyafeEgvyechadOO_4fe0f786_1f75:   name="issue"
-SyafeEgvyechadOO_4fe0f786_1f75:   isCustomized
-SyafeEgvyechadOO_4fe0f786_1f75:   entity="UukUrImfumbiooAz_f84b7e63_638e"
-Zcpixuevneakg_fg_5c0e2d08_3ea5:  }SyafeEgvyechadOO_4fe0f786_1f75
-Zcpixuevneakg_fg_5c0e2d08_3ea5:  parameters]
-Zcpixuevneakg_fg_5c0e2d08_3ea5: }Zcpixuevneakg_fg_5c0e2d08_3ea5
+aceTemplateDesign_resolveIssue: PlaceTemplateDesign_resolveIssue:PlaceTemplateDesign{
+aceTemplateDesign_resolveIssue:  name="resolve issue"
+aceTemplateDesign_resolveIssue:  isCustomized=true
+aceTemplateDesign_resolveIssue:  parameters+PlaceParameterDesign_issue_3:PlaceParameterDesign{
+PlaceParameterDesign_issue_3:     name="issue"
+PlaceParameterDesign_issue_3:     entity="EntityDesign_issue"
+aceTemplateDesign_resolveIssue:  }PlaceParameterDesign_issue_3
+aceTemplateDesign_resolveIssue: }PlaceTemplateDesign_resolveIssue

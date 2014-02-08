@@ -1,11 +1,8 @@
-PefUqmtcqq_iUgmd_ff6fd280_165d: PefUqmtcqq_iUgmd_ff6fd280_165d:PlaceTemplateDesign{
-PefUqmtcqq_iUgmd_ff6fd280_165d:  name="open issue"
-PefUqmtcqq_iUgmd_ff6fd280_165d:  isCustomized=true
-PefUqmtcqq_iUgmd_ff6fd280_165d:  parameters[
-PefUqmtcqq_iUgmd_ff6fd280_165d:  parameters+ThdcilEvoyafofUn_3e68b486_87a0:PlaceParameterDesign{
-ThdcilEvoyafofUn_3e68b486_87a0:   name="issue"
-ThdcilEvoyafofUn_3e68b486_87a0:   isCustomized
-ThdcilEvoyafofUn_3e68b486_87a0:   entity="UukUrImfumbiooAz_f84b7e63_638e"
-PefUqmtcqq_iUgmd_ff6fd280_165d:  }ThdcilEvoyafofUn_3e68b486_87a0
-PefUqmtcqq_iUgmd_ff6fd280_165d:  parameters]
-PefUqmtcqq_iUgmd_ff6fd280_165d: }PefUqmtcqq_iUgmd_ff6fd280_165d
+PlaceTemplateDesign_openIssue: PlaceTemplateDesign_openIssue:PlaceTemplateDesign{
+PlaceTemplateDesign_openIssue:  name="open issue"
+PlaceTemplateDesign_openIssue:  isCustomized=true
+PlaceTemplateDesign_openIssue:  parameters+PlaceParameterDesign_issue_2:PlaceParameterDesign{
+PlaceParameterDesign_issue_2:     name="issue"
+PlaceParameterDesign_issue_2:     entity="EntityDesign_issue"
+PlaceTemplateDesign_openIssue:  }PlaceParameterDesign_issue_2
+PlaceTemplateDesign_openIssue: }PlaceTemplateDesign_openIssue
