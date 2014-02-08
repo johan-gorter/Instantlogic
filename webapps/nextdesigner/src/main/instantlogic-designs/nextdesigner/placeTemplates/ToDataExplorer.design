@@ -1,6 +1,4 @@
-QOpEglqdsedteirA_a44dc9ed_4ecc: QOpEglqdsedteirA_a44dc9ed_4ecc:PlaceTemplateDesign{
-QOpEglqdsedteirA_a44dc9ed_4ecc:  name="ToDataExplorer"
-QOpEglqdsedteirA_a44dc9ed_4ecc:  isCustomized=true
-QOpEglqdsedteirA_a44dc9ed_4ecc:  parameters[
-QOpEglqdsedteirA_a44dc9ed_4ecc:  parameters]
-QOpEglqdsedteirA_a44dc9ed_4ecc: }QOpEglqdsedteirA_a44dc9ed_4ecc
+eTemplateDesign_ToDataExplorer: PlaceTemplateDesign_ToDataExplorer:PlaceTemplateDesign{
+eTemplateDesign_ToDataExplorer:  name="ToDataExplorer"
+eTemplateDesign_ToDataExplorer:  isCustomized=true
+eTemplateDesign_ToDataExplorer: }PlaceTemplateDesign_ToDataExplorer

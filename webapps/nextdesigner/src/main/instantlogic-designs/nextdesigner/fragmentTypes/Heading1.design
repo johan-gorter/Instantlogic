@@ -1,8 +1,3 @@
-TpkxmmixjueOohta_03658c28_aca9: TpkxmmixjueOohta_03658c28_aca9:FragmentTypeDesign{
-TpkxmmixjueOohta_03658c28_aca9:  name="Heading1"
-TpkxmmixjueOohta_03658c28_aca9:  isCustomized
-TpkxmmixjueOohta_03658c28_aca9:  fragmentFilters[
-TpkxmmixjueOohta_03658c28_aca9:  fragmentFilters]
-TpkxmmixjueOohta_03658c28_aca9:  hasAttribute
-TpkxmmixjueOohta_03658c28_aca9:  hasEvent
-TpkxmmixjueOohta_03658c28_aca9: }TpkxmmixjueOohta_03658c28_aca9
+FragmentTypeDesign_Heading1:   FragmentTypeDesign_Heading1:FragmentTypeDesign{
+FragmentTypeDesign_Heading1:    name="Heading1"
+FragmentTypeDesign_Heading1:   }FragmentTypeDesign_Heading1

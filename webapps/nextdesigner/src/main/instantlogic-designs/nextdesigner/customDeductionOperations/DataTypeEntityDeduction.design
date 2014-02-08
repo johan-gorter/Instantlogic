@@ -1,9 +1,4 @@
-DoeovpsafmfimoUd_dba71810_5ea0: DoeovpsafmfimoUd_dba71810_5ea0:DeductionOperationDesign{
-DoeovpsafmfimoUd_dba71810_5ea0:  name="DataTypeEntityDeduction"
-DoeovpsafmfimoUd_dba71810_5ea0:  isCustomized
-DoeovpsafmfimoUd_dba71810_5ea0:  javaClassName="org.instantlogic.designer.deduction.DataTypeEntityDeduction"
-DoeovpsafmfimoUd_dba71810_5ea0:  inputs[
-DoeovpsafmfimoUd_dba71810_5ea0:  inputs]
-DoeovpsafmfimoUd_dba71810_5ea0:  parameters[
-DoeovpsafmfimoUd_dba71810_5ea0:  parameters]
-DoeovpsafmfimoUd_dba71810_5ea0: }DoeovpsafmfimoUd_dba71810_5ea0
+Design_DataTypeEntityDeduction: DeductionOperationDesign_DataTypeEntityDeduction:DeductionOperationDesign{
+Design_DataTypeEntityDeduction:  name="DataTypeEntityDeduction"
+Design_DataTypeEntityDeduction:  javaClassName="org.instantlogic.designer.deduction.DataTypeEntityDeduction"
+Design_DataTypeEntityDeduction: }DeductionOperationDesign_DataTypeEntityDeduction

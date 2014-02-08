@@ -1,8 +1,3 @@
-QIIUatltluekqgft_b56fd080_7726: QIIUatltluekqgft_b56fd080_7726:FragmentTypeDesign{
-QIIUatltluekqgft_b56fd080_7726:  name="Login"
-QIIUatltluekqgft_b56fd080_7726:  isCustomized
-QIIUatltluekqgft_b56fd080_7726:  fragmentFilters[
-QIIUatltluekqgft_b56fd080_7726:  fragmentFilters]
-QIIUatltluekqgft_b56fd080_7726:  hasAttribute
-QIIUatltluekqgft_b56fd080_7726:  hasEvent
-QIIUatltluekqgft_b56fd080_7726: }QIIUatltluekqgft_b56fd080_7726
+FragmentTypeDesign_Login:      FragmentTypeDesign_Login:FragmentTypeDesign{
+FragmentTypeDesign_Login:       name="Login"
+FragmentTypeDesign_Login:      }FragmentTypeDesign_Login

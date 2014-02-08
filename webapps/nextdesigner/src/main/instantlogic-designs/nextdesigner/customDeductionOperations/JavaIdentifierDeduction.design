@@ -1,9 +1,4 @@
-IxxufkAkpadykgsk_344568dd_78ff: IxxufkAkpadykgsk_344568dd_78ff:DeductionOperationDesign{
-IxxufkAkpadykgsk_344568dd_78ff:  name="JavaIdentifierDeduction"
-IxxufkAkpadykgsk_344568dd_78ff:  isCustomized
-IxxufkAkpadykgsk_344568dd_78ff:  javaClassName="org.instantlogic.designer.deduction.JavaIdentifierDeduction"
-IxxufkAkpadykgsk_344568dd_78ff:  inputs[
-IxxufkAkpadykgsk_344568dd_78ff:  inputs]
-IxxufkAkpadykgsk_344568dd_78ff:  parameters[
-IxxufkAkpadykgsk_344568dd_78ff:  parameters]
-IxxufkAkpadykgsk_344568dd_78ff: }IxxufkAkpadykgsk_344568dd_78ff
+Design_JavaIdentifierDeduction: DeductionOperationDesign_JavaIdentifierDeduction:DeductionOperationDesign{
+Design_JavaIdentifierDeduction:  name="JavaIdentifierDeduction"
+Design_JavaIdentifierDeduction:  javaClassName="org.instantlogic.designer.deduction.JavaIdentifierDeduction"
+Design_JavaIdentifierDeduction: }DeductionOperationDesign_JavaIdentifierDeduction

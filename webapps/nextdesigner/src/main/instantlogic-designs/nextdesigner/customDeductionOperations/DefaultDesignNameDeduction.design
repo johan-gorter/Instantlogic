@@ -1,9 +1,4 @@
-oosaAUg__qerodkj_2b7873e3_edbe: oosaAUg__qerodkj_2b7873e3_edbe:DeductionOperationDesign{
-oosaAUg__qerodkj_2b7873e3_edbe:  name="DefaultDesignNameDeduction"
-oosaAUg__qerodkj_2b7873e3_edbe:  isCustomized
-oosaAUg__qerodkj_2b7873e3_edbe:  javaClassName="org.instantlogic.designer.deduction.DefaultDesignNameDeduction"
-oosaAUg__qerodkj_2b7873e3_edbe:  inputs[
-oosaAUg__qerodkj_2b7873e3_edbe:  inputs]
-oosaAUg__qerodkj_2b7873e3_edbe:  parameters[
-oosaAUg__qerodkj_2b7873e3_edbe:  parameters]
-oosaAUg__qerodkj_2b7873e3_edbe: }oosaAUg__qerodkj_2b7873e3_edbe
+ign_DefaultDesignNameDeduction: DeductionOperationDesign_DefaultDesignNameDeduction:DeductionOperationDesign{
+ign_DefaultDesignNameDeduction:  name="DefaultDesignNameDeduction"
+ign_DefaultDesignNameDeduction:  javaClassName="org.instantlogic.designer.deduction.DefaultDesignNameDeduction"
+ign_DefaultDesignNameDeduction: }DeductionOperationDesign_DefaultDesignNameDeduction

@@ -1,9 +1,4 @@
-Lgdzllhhzyblsghi_2df542de_01dd: Lgdzllhhzyblsghi_2df542de_01dd:DeductionOperationDesign{
-Lgdzllhhzyblsghi_2df542de_01dd:  name="DataTypeMultivalueDeduction"
-Lgdzllhhzyblsghi_2df542de_01dd:  isCustomized
-Lgdzllhhzyblsghi_2df542de_01dd:  javaClassName="org.instantlogic.designer.deduction.DataTypeMultivalueDeduction"
-Lgdzllhhzyblsghi_2df542de_01dd:  inputs[
-Lgdzllhhzyblsghi_2df542de_01dd:  inputs]
-Lgdzllhhzyblsghi_2df542de_01dd:  parameters[
-Lgdzllhhzyblsghi_2df542de_01dd:  parameters]
-Lgdzllhhzyblsghi_2df542de_01dd: }Lgdzllhhzyblsghi_2df542de_01dd
+gn_DataTypeMultivalueDeduction: DeductionOperationDesign_DataTypeMultivalueDeduction:DeductionOperationDesign{
+gn_DataTypeMultivalueDeduction:  name="DataTypeMultivalueDeduction"
+gn_DataTypeMultivalueDeduction:  javaClassName="org.instantlogic.designer.deduction.DataTypeMultivalueDeduction"
+gn_DataTypeMultivalueDeduction: }DeductionOperationDesign_DataTypeMultivalueDeduction

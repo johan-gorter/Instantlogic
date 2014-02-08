@@ -1,6 +1,4 @@
-DuawItvIweblklgr_b0aa3f45_9878: DuawItvIweblklgr_b0aa3f45_9878:PlaceTemplateDesign{
-DuawItvIweblklgr_b0aa3f45_9878:  name="AddEntity"
-DuawItvIweblklgr_b0aa3f45_9878:  isCustomized=true
-DuawItvIweblklgr_b0aa3f45_9878:  parameters[
-DuawItvIweblklgr_b0aa3f45_9878:  parameters]
-DuawItvIweblklgr_b0aa3f45_9878: }DuawItvIweblklgr_b0aa3f45_9878
+PlaceTemplateDesign_AddEntity: PlaceTemplateDesign_AddEntity:PlaceTemplateDesign{
+PlaceTemplateDesign_AddEntity:  name="AddEntity"
+PlaceTemplateDesign_AddEntity:  isCustomized=true
+PlaceTemplateDesign_AddEntity: }PlaceTemplateDesign_AddEntity

@@ -1,9 +1,4 @@
-_lEriceqdIeqoldj_ef2edc6c_d236: _lEriceqdIeqoldj_ef2edc6c_d236:DeductionOperationDesign{
-_lEriceqdIeqoldj_ef2edc6c_d236:  name="DataTypeDataCategoryDeduction"
-_lEriceqdIeqoldj_ef2edc6c_d236:  isCustomized
-_lEriceqdIeqoldj_ef2edc6c_d236:  javaClassName="org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction"
-_lEriceqdIeqoldj_ef2edc6c_d236:  inputs[
-_lEriceqdIeqoldj_ef2edc6c_d236:  inputs]
-_lEriceqdIeqoldj_ef2edc6c_d236:  parameters[
-_lEriceqdIeqoldj_ef2edc6c_d236:  parameters]
-_lEriceqdIeqoldj_ef2edc6c_d236: }_lEriceqdIeqoldj_ef2edc6c_d236
+_DataTypeDataCategoryDeduction: DeductionOperationDesign_DataTypeDataCategoryDeduction:DeductionOperationDesign{
+_DataTypeDataCategoryDeduction:  name="DataTypeDataCategoryDeduction"
+_DataTypeDataCategoryDeduction:  javaClassName="org.instantlogic.designer.deduction.DataTypeDataCategoryDeduction"
+_DataTypeDataCategoryDeduction: }DeductionOperationDesign_DataTypeDataCategoryDeduction

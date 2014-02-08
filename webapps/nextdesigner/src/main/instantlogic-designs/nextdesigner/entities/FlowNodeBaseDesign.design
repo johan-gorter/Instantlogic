@@ -1,13 +1,4 @@
-Taavqurgtadfudxz_22c2a0ce_371a: Taavqurgtadfudxz_22c2a0ce_371a:EntityDesign{
-Taavqurgtadfudxz_22c2a0ce_371a:  name="FlowNodeBaseDesign"
-Taavqurgtadfudxz_22c2a0ce_371a:  isCustomized
-Taavqurgtadfudxz_22c2a0ce_371a:  relations[
-Taavqurgtadfudxz_22c2a0ce_371a:  relations]
-Taavqurgtadfudxz_22c2a0ce_371a:  extendsFrom="amIEkUwhbyddogAg_1ff66f0a_47dc"
-Taavqurgtadfudxz_22c2a0ce_371a:  attributes[
-Taavqurgtadfudxz_22c2a0ce_371a:  attributes]
-Taavqurgtadfudxz_22c2a0ce_371a:  staticInstances[
-Taavqurgtadfudxz_22c2a0ce_371a:  staticInstances]
-Taavqurgtadfudxz_22c2a0ce_371a:  validations[
-Taavqurgtadfudxz_22c2a0ce_371a:  validations]
-Taavqurgtadfudxz_22c2a0ce_371a: }Taavqurgtadfudxz_22c2a0ce_371a
+ntityDesign_FlowNodeBaseDesign: EntityDesign_FlowNodeBaseDesign:EntityDesign{
+ntityDesign_FlowNodeBaseDesign:  name="FlowNodeBaseDesign"
+ntityDesign_FlowNodeBaseDesign:  extendsFrom="EntityDesign_Design"
+ntityDesign_FlowNodeBaseDesign: }EntityDesign_FlowNodeBaseDesign

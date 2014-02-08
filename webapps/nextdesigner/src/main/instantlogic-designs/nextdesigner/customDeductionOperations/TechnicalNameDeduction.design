@@ -1,9 +1,4 @@
-ahqvcdIitebIAmUx_9e3bb43a_a303: ahqvcdIitebIAmUx_9e3bb43a_a303:DeductionOperationDesign{
-ahqvcdIitebIAmUx_9e3bb43a_a303:  name="TechnicalNameDeduction"
-ahqvcdIitebIAmUx_9e3bb43a_a303:  isCustomized
-ahqvcdIitebIAmUx_9e3bb43a_a303:  javaClassName="org.instantlogic.designer.deduction.TechnicalNameDeduction"
-ahqvcdIitebIAmUx_9e3bb43a_a303:  inputs[
-ahqvcdIitebIAmUx_9e3bb43a_a303:  inputs]
-ahqvcdIitebIAmUx_9e3bb43a_a303:  parameters[
-ahqvcdIitebIAmUx_9e3bb43a_a303:  parameters]
-ahqvcdIitebIAmUx_9e3bb43a_a303: }ahqvcdIitebIAmUx_9e3bb43a_a303
+nDesign_TechnicalNameDeduction: DeductionOperationDesign_TechnicalNameDeduction:DeductionOperationDesign{
+nDesign_TechnicalNameDeduction:  name="TechnicalNameDeduction"
+nDesign_TechnicalNameDeduction:  javaClassName="org.instantlogic.designer.deduction.TechnicalNameDeduction"
+nDesign_TechnicalNameDeduction: }DeductionOperationDesign_TechnicalNameDeduction

@@ -1,9 +1,4 @@
-MmrpOonkdia_Acru_eb1fdac8_3e10: MmrpOonkdia_Acru_eb1fdac8_3e10:DeductionOperationDesign{
-MmrpOonkdia_Acru_eb1fdac8_3e10:  name="ReverseTechnicalNameDeduction"
-MmrpOonkdia_Acru_eb1fdac8_3e10:  isCustomized
-MmrpOonkdia_Acru_eb1fdac8_3e10:  javaClassName="org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction"
-MmrpOonkdia_Acru_eb1fdac8_3e10:  inputs[
-MmrpOonkdia_Acru_eb1fdac8_3e10:  inputs]
-MmrpOonkdia_Acru_eb1fdac8_3e10:  parameters[
-MmrpOonkdia_Acru_eb1fdac8_3e10:  parameters]
-MmrpOonkdia_Acru_eb1fdac8_3e10: }MmrpOonkdia_Acru_eb1fdac8_3e10
+_ReverseTechnicalNameDeduction: DeductionOperationDesign_ReverseTechnicalNameDeduction:DeductionOperationDesign{
+_ReverseTechnicalNameDeduction:  name="ReverseTechnicalNameDeduction"
+_ReverseTechnicalNameDeduction:  javaClassName="org.instantlogic.designer.deduction.ReverseTechnicalNameDeduction"
+_ReverseTechnicalNameDeduction: }DeductionOperationDesign_ReverseTechnicalNameDeduction
