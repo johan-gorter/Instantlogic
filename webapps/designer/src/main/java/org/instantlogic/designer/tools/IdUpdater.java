@@ -119,7 +119,11 @@ public class IdUpdater {
 	
 
 	private static Instance findInstance(Instance oldInstance, List<Instance> oldInstances, List<Instance> newInstances) {
-		return newInstances.get(oldInstances.indexOf(oldInstance));
+		if (oldInstance.getMetadata().isStatic()) {
+			return oldInstance;
+		}
+		int index = oldInstances.indexOf(oldInstance);
+		return newInstances.get(index);
 	}
 
 	private static Instance createInstance(Instance oldChildInstance, String id) {
@@ -154,7 +158,7 @@ public class IdUpdater {
 								Instance oldChildInstance = (Instance)oldRelation.get(oldInstance).getValue();
 								Instance newChildInstance = createInstance(oldChildInstance, generateNewId(oldChildInstance, newCaseAdministration));
 								((RelationValue)newRelation.get(newInstance)).setValue(newChildInstance);
-								recreateStructure(oldChildInstance, newChildInstance, oldInstances, newInstances, newCaseAdministration);
+								recreateStructure(newChildInstance, oldChildInstance, oldInstances, newInstances, newCaseAdministration);
 							}
 						}
 					}

@@ -318,7 +318,7 @@ public class DesignerCasePersister extends FileCasePersister {
 				matcher = ENTITY_END_LINE.matcher(line); 
 				if (matcher.matches()) {
 					if (!current.uniqueId.equals(matcher.group(2))) 
-						throw new RuntimeException("Wrong instance close");
+						throw new RuntimeException("Wrong instance close, expected "+current.uniqueId+", was "+matcher.group(2));
 					current = stack.pop();
 				}
 			}
@@ -576,8 +576,8 @@ public class DesignerCasePersister extends FileCasePersister {
 		StringBuilder sb = new StringBuilder();
 		if (MERGE_CONFLICT_PREVENTION>0) {
 			int length = forNode.uniqueId.length();
-			if (length>25) {
-				sb.append(forNode.uniqueId.substring(length-25));
+			if (length>30) {
+				sb.append(forNode.uniqueId.substring(length-30));
 				sb.append(": ");
 			} else {
 				sb.append(forNode.uniqueId);
