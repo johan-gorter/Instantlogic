@@ -62,7 +62,7 @@ public class DesignerCasePersister extends FileCasePersister {
 
 	@Override
 	protected File getCaseDir(Application application, String caseId) {
-		return new File("../../webapps/"+caseId+"/src/main/instantlogic-designs");
+		return new File("../../webapps/"+caseId+"/src/main/instantlogic-designs/"+caseId+"/");
 	}
 
 	@Override

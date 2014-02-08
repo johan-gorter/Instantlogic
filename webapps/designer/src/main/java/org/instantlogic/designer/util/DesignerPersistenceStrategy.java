@@ -28,7 +28,7 @@ public class DesignerPersistenceStrategy extends DesignerCasePersister {
 
 	@Override
 	protected File getCaseDir(Application application, String caseId) {
-		return new File(applicationEnvironment.getApplicationRoot(caseId), "src/main/instantlogic-designs");
+		return new File(applicationEnvironment.getApplicationRoot(caseId), "src/main/instantlogic-designs/"+caseId+"/");
 	}
 
 	

@@ -956,4 +956,4 @@ YUI.add('instantlogic', function (Y) {
 		}
     };
     
-}, '0.7.0', { requires: ['io-base', 'node', 'oop', 'json', 'event', 'html', 'history', 'transition'] });
+}, '0.7.0', { requires: ['io-base', 'node', 'oop', 'json', 'event', 'html', 'history', 'transition', 'widget-position-align','overlay'] });
