@@ -45,6 +45,8 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
 public class DesignerCasePersister extends FileCasePersister {
+	
+	private static final int MERGE_CONFLICT_PREVENTION = 1; // 0 = no, 1 = normal, 2 = extreme
 
 	protected static final Logger logger = LoggerFactory.getLogger(DesignerPersistenceStrategy.class);
 	protected static final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
@@ -568,12 +570,28 @@ public class DesignerCasePersister extends FileCasePersister {
 		}
 		return "\""+value.getMetadata().getUniqueId()+"\"";
 	}
+	
+	private String buildPrefix(InstanceNode forNode) throws IOException {
+		StringBuilder sb = new StringBuilder();
+		if (MERGE_CONFLICT_PREVENTION>0) {
+			int length = forNode.uniqueId.length();
+			if (length>25) {
+				sb.append(forNode.uniqueId.substring(length-25));
+				sb.append(": ");
+			} else {
+				sb.append(forNode.uniqueId);
+				sb.append(": ");
+				for (int i=length;i<=25;i++) {
+					sb.append(' ');
+				}
+			}
+		}
+		return sb.toString();
+	}
 
 	private void writeInstance(OutputStreamWriter writer, InstanceNode rootNode) throws IOException {
-		String prefix = rootNode.uniqueId+": ";
+		String prefix = buildPrefix(rootNode);
 		writer.write(prefix);
-		writer.write(rootNode.uniqueId);
-		writer.write(":");
 		writer.write(rootNode.entityName);
 		writer.write("{\n");
 		
@@ -611,7 +629,7 @@ public class DesignerCasePersister extends FileCasePersister {
 							writer.write("{\n");
 							
 							
-							writeAttributes(writer, subInstance, subInstance.uniqueId+":"+nextIndent, nextIndent+" ");
+							writeAttributes(writer, subInstance, buildPrefix(subInstance)+nextIndent, nextIndent+" ");
 			
 							writer.write(prefix);
 							writer.write("}");
@@ -634,7 +652,7 @@ public class DesignerCasePersister extends FileCasePersister {
 							writer.write("{\n");
 							
 							
-							writeAttributes(writer, subInstance, subInstance.uniqueId+":"+nextIndent, nextIndent+" ");
+							writeAttributes(writer, subInstance, buildPrefix(subInstance)+nextIndent, nextIndent+" ");
 			
 							writer.write(prefix);
 							writer.write("}");
