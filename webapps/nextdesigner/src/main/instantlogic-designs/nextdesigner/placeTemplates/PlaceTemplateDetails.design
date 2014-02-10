@@ -1,7 +1,7 @@
 ateDesign_PlaceTemplateDetails: PlaceTemplateDesign_PlaceTemplateDetails:PlaceTemplateDesign{
 ateDesign_PlaceTemplateDetails:  name="PlaceTemplateDetails"
 ateDesign_PlaceTemplateDetails:  content=FragmentTemplateDesign_16:FragmentTemplateDesign{
-FragmentTemplateDesign_16:        fragmentTypeName="Page"
+FragmentTemplateDesign_16:        type="FragmentTypeDesign_Page"
 FragmentTemplateDesign_16:        properties+PropertyDesign_18:PropertyDesign{
 PropertyDesign_18:                 propertyName="mainContent"
 PropertyDesign_18:                 children+SharedElementDesign:SharedElementDesign{
@@ -9,11 +9,11 @@ SharedElementDesign:                definition="SharedElementDefinitionDesign_Ap
 PropertyDesign_18:                 }SharedElementDesign
 PropertyDesign_18:                 children+FragmentTemplateDesign_17:FragmentTemplateDesign{
 FragmentTemplateDesign_17:          styleNames+"card"
-FragmentTemplateDesign_17:          fragmentTypeName="Block"
+FragmentTemplateDesign_17:          type="FragmentTypeDesign_Block"
 FragmentTemplateDesign_17:          properties+PropertyDesign_19:PropertyDesign{
 PropertyDesign_19:                   propertyName="content"
 PropertyDesign_19:                   children+FragmentTemplateDesign_18:FragmentTemplateDesign{
-FragmentTemplateDesign_18:            fragmentTypeName="Heading3"
+FragmentTemplateDesign_18:            type="FragmentTypeDesign_Heading3"
 FragmentTemplateDesign_18:            properties+PropertyDesign_20:PropertyDesign{
 PropertyDesign_20:                     propertyName="text"
 PropertyDesign_20:                     text=TextTemplateDesign_9:TextTemplateDesign{
@@ -47,12 +47,12 @@ PropertyDesign_20:                     }TextTemplateDesign_9
 FragmentTemplateDesign_18:            }PropertyDesign_20
 PropertyDesign_19:                   }FragmentTemplateDesign_18
 PropertyDesign_19:                   children+FragmentTemplateDesign_19:FragmentTemplateDesign{
-FragmentTemplateDesign_19:            fragmentTypeName="Input"
+FragmentTemplateDesign_19:            type="FragmentTypeDesign_Input"
 FragmentTemplateDesign_19:            attribute="AttributeDesign_name_1"
 FragmentTemplateDesign_19:            entity="EntityDesign_Design"
 PropertyDesign_19:                   }FragmentTemplateDesign_19
 PropertyDesign_19:                   children+FragmentTemplateDesign_20:FragmentTemplateDesign{
-FragmentTemplateDesign_20:            fragmentTypeName="Heading4"
+FragmentTemplateDesign_20:            type="FragmentTypeDesign_Heading4"
 FragmentTemplateDesign_20:            properties+PropertyDesign_21:PropertyDesign{
 PropertyDesign_21:                     propertyName="text"
 PropertyDesign_21:                     text=TextTemplateDesign_10:TextTemplateDesign{
@@ -64,7 +64,7 @@ FragmentTemplateDesign_20:            }PropertyDesign_21
 PropertyDesign_19:                   }FragmentTemplateDesign_20
 PropertyDesign_19:                   children+SelectionDesign_2:SelectionDesign{
 SelectionDesign_2:                    child=FragmentTemplateDesign_21:FragmentTemplateDesign{
-FragmentTemplateDesign_21:             fragmentTypeName="ElementEditor"
+FragmentTemplateDesign_21:             type="FragmentTypeDesign_ElementEditor"
 FragmentTemplateDesign_21:             properties+PropertyDesign_22:PropertyDesign{
 PropertyDesign_22:                      propertyName="content"
 PropertyDesign_22:                      children+SharedElementDesign_1:SharedElementDesign{

@@ -1,19 +1,16 @@
 PlaceTemplateDesign_dashboard: PlaceTemplateDesign_dashboard:PlaceTemplateDesign{
 PlaceTemplateDesign_dashboard:  name="dashboard"
 PlaceTemplateDesign_dashboard:  content=FragmentTemplateDesign:FragmentTemplateDesign{
-FragmentTemplateDesign:           fragmentTypeName="Page"
 FragmentTemplateDesign:           type="FragmentTypeDesign_Page"
 FragmentTemplateDesign:           properties+PropertyDesign:PropertyDesign{
 PropertyDesign:                    propertyName="mainContent"
 PropertyDesign:                    children+FragmentTemplateDesign_1:FragmentTemplateDesign{
 FragmentTemplateDesign_1:           styleNames+"no-margin"
-FragmentTemplateDesign_1:           fragmentTypeName="Block"
 FragmentTemplateDesign_1:           type="FragmentTypeDesign_Block"
 FragmentTemplateDesign_1:           properties+PropertyDesign_1:PropertyDesign{
 PropertyDesign_1:                    propertyName="content"
 PropertyDesign_1:                    children+FragmentTemplateDesign_2:FragmentTemplateDesign{
 FragmentTemplateDesign_2:             editorOpen=false
-FragmentTemplateDesign_2:             fragmentTypeName="Button"
 FragmentTemplateDesign_2:             type="FragmentTypeDesign_Button"
 FragmentTemplateDesign_2:             properties+PropertyDesign_2:PropertyDesign{
 PropertyDesign_2:                      propertyName="text"
@@ -27,7 +24,6 @@ FragmentTemplateDesign_2:             properties+PropertyDesign_3:PropertyDesign
 PropertyDesign_3:                      propertyName="content"
 PropertyDesign_3:                      children+FragmentTemplateDesign_3:FragmentTemplateDesign{
 FragmentTemplateDesign_3:               styleNames+"icon-plus"
-FragmentTemplateDesign_3:               fragmentTypeName="Icon"
 FragmentTemplateDesign_3:               type="FragmentTypeDesign_Icon"
 PropertyDesign_3:                      }FragmentTemplateDesign_3
 FragmentTemplateDesign_2:             }PropertyDesign_3
@@ -36,7 +32,6 @@ DestinationDesign:                     PlaceTemplate="PlaceTemplateDesign_create
 FragmentTemplateDesign_2:             }DestinationDesign
 PropertyDesign_1:                    }FragmentTemplateDesign_2
 PropertyDesign_1:                    children+FragmentTemplateDesign_4:FragmentTemplateDesign{
-FragmentTemplateDesign_4:             fragmentTypeName="Heading2"
 FragmentTemplateDesign_4:             type="FragmentTypeDesign_Heading2"
 FragmentTemplateDesign_4:             properties+PropertyDesign_4:PropertyDesign{
 PropertyDesign_4:                      propertyName="text"
@@ -71,7 +66,6 @@ PropertyDesign_4:                      }TextTemplateDesign_1
 FragmentTemplateDesign_4:             }PropertyDesign_4
 PropertyDesign_1:                    }FragmentTemplateDesign_4
 PropertyDesign_1:                    children+FragmentTemplateDesign_5:FragmentTemplateDesign{
-FragmentTemplateDesign_5:             fragmentTypeName="Heading4"
 FragmentTemplateDesign_5:             type="FragmentTypeDesign_Heading4"
 FragmentTemplateDesign_5:             properties+PropertyDesign_5:PropertyDesign{
 PropertyDesign_5:                      propertyName="text"
@@ -83,7 +77,6 @@ PropertyDesign_5:                      }TextTemplateDesign_2
 FragmentTemplateDesign_5:             }PropertyDesign_5
 PropertyDesign_1:                    }FragmentTemplateDesign_5
 PropertyDesign_1:                    children+FragmentTemplateDesign_6:FragmentTemplateDesign{
-FragmentTemplateDesign_6:             fragmentTypeName="Table"
 FragmentTemplateDesign_6:             type="FragmentTypeDesign_Table"
 FragmentTemplateDesign_6:             properties+PropertyDesign_6:PropertyDesign{
 PropertyDesign_6:                      propertyName="rows"
@@ -118,7 +111,6 @@ FragmentTemplateDesign_6:             properties+PropertyDesign_7:PropertyDesign
 PropertyDesign_7:                      propertyName="columns"
 PropertyDesign_7:                      children+FragmentTemplateDesign_7:FragmentTemplateDesign{
 FragmentTemplateDesign_7:               styleNames+"issueNr"
-FragmentTemplateDesign_7:               fragmentTypeName="Column"
 FragmentTemplateDesign_7:               type="FragmentTypeDesign_Column"
 FragmentTemplateDesign_7:               properties+PropertyDesign_8:PropertyDesign{
 PropertyDesign_8:                        propertyName="header"
@@ -131,7 +123,6 @@ FragmentTemplateDesign_7:               }PropertyDesign_8
 PropertyDesign_7:                      }FragmentTemplateDesign_7
 PropertyDesign_7:                      children+FragmentTemplateDesign_8:FragmentTemplateDesign{
 FragmentTemplateDesign_8:               styleNames+"issue"
-FragmentTemplateDesign_8:               fragmentTypeName="Column"
 FragmentTemplateDesign_8:               type="FragmentTypeDesign_Column"
 FragmentTemplateDesign_8:               properties+PropertyDesign_9:PropertyDesign{
 PropertyDesign_9:                        propertyName="header"
@@ -144,7 +135,6 @@ FragmentTemplateDesign_8:               }PropertyDesign_9
 PropertyDesign_7:                      }FragmentTemplateDesign_8
 PropertyDesign_7:                      children+FragmentTemplateDesign_9:FragmentTemplateDesign{
 FragmentTemplateDesign_9:               styleNames+"assignee"
-FragmentTemplateDesign_9:               fragmentTypeName="Column"
 FragmentTemplateDesign_9:               type="FragmentTypeDesign_Column"
 FragmentTemplateDesign_9:               properties+PropertyDesign_10:PropertyDesign{
 PropertyDesign_10:                       propertyName="header"
@@ -158,7 +148,7 @@ PropertyDesign_7:                      }FragmentTemplateDesign_9
 FragmentTemplateDesign_6:             }PropertyDesign_7
 PropertyDesign_1:                    }FragmentTemplateDesign_6
 PropertyDesign_1:                    children+FragmentTemplateDesign_10:FragmentTemplateDesign{
-FragmentTemplateDesign_10:            fragmentTypeName="Heading4"
+FragmentTemplateDesign_10:            type="FragmentTypeDesign_Heading4"
 FragmentTemplateDesign_10:            type="FragmentTypeDesign_Heading4"
 FragmentTemplateDesign_10:            properties+PropertyDesign_11:PropertyDesign{
 PropertyDesign_11:                     propertyName="text"
@@ -170,7 +160,7 @@ PropertyDesign_11:                     }TextTemplateDesign_6
 FragmentTemplateDesign_10:            }PropertyDesign_11
 PropertyDesign_1:                    }FragmentTemplateDesign_10
 PropertyDesign_1:                    children+FragmentTemplateDesign_11:FragmentTemplateDesign{
-FragmentTemplateDesign_11:            fragmentTypeName="Table"
+FragmentTemplateDesign_11:            type="FragmentTypeDesign_Table"
 FragmentTemplateDesign_11:            type="FragmentTypeDesign_Table"
 FragmentTemplateDesign_11:            properties+PropertyDesign_12:PropertyDesign{
 PropertyDesign_12:                     propertyName="rows"
@@ -205,7 +195,7 @@ FragmentTemplateDesign_11:            properties+PropertyDesign_13:PropertyDesig
 PropertyDesign_13:                     propertyName="columns"
 PropertyDesign_13:                     children+FragmentTemplateDesign_12:FragmentTemplateDesign{
 FragmentTemplateDesign_12:              styleNames+"issueNr"
-FragmentTemplateDesign_12:              fragmentTypeName="Column"
+FragmentTemplateDesign_12:              type="FragmentTypeDesign_Column"
 FragmentTemplateDesign_12:              type="FragmentTypeDesign_Column"
 FragmentTemplateDesign_12:              properties+PropertyDesign_14:PropertyDesign{
 PropertyDesign_14:                       propertyName="header"
@@ -218,7 +208,7 @@ FragmentTemplateDesign_12:              }PropertyDesign_14
 PropertyDesign_13:                     }FragmentTemplateDesign_12
 PropertyDesign_13:                     children+FragmentTemplateDesign_13:FragmentTemplateDesign{
 FragmentTemplateDesign_13:              styleNames+"issue"
-FragmentTemplateDesign_13:              fragmentTypeName="Column"
+FragmentTemplateDesign_13:              type="FragmentTypeDesign_Column"
 FragmentTemplateDesign_13:              type="FragmentTypeDesign_Column"
 FragmentTemplateDesign_13:              properties+PropertyDesign_15:PropertyDesign{
 PropertyDesign_15:                       propertyName="header"
@@ -231,7 +221,7 @@ FragmentTemplateDesign_13:              }PropertyDesign_15
 PropertyDesign_13:                     }FragmentTemplateDesign_13
 PropertyDesign_13:                     children+FragmentTemplateDesign_14:FragmentTemplateDesign{
 FragmentTemplateDesign_14:              styleNames+"assignee"
-FragmentTemplateDesign_14:              fragmentTypeName="Column"
+FragmentTemplateDesign_14:              type="FragmentTypeDesign_Column"
 FragmentTemplateDesign_14:              type="FragmentTypeDesign_Column"
 FragmentTemplateDesign_14:              properties+PropertyDesign_16:PropertyDesign{
 PropertyDesign_16:                       propertyName="header"

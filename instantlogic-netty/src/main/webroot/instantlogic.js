@@ -714,6 +714,7 @@ YUI.add('instantlogic', function (Y) {
     		ns.Answer.superclass.init.call(this, model);
     		this.markup = this.createMarkup();
     		if (!this.markup) Y.error('no markup');
+    		this.markup.setAttribute('data-fragment-id', model.id);
     		this.parentNode.appendChild(this.markup);
         	this.updateValue(model.value); // Convenient
         	if (model.readOnly) this.updateReadOnly(true);

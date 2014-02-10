@@ -229,8 +229,8 @@ YUI.add('instantlogic-presence', function (Y) {
     			}
     			if (this.model.focus) {
     				var node = Y.one('[data-fragment-id="'+this.model.focus+'"]');
-    				if (node && node.get('firstChild')) {
-    					var region = node.get('firstChild').get('region');
+    				if (node) {
+    					var region = node.get('region');
     					y = region.top;
     				}
     			}

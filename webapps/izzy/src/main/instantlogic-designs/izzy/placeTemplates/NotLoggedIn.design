@@ -1,12 +1,12 @@
 laceTemplateDesign_notLoggedIn: PlaceTemplateDesign_notLoggedIn:PlaceTemplateDesign{
 laceTemplateDesign_notLoggedIn:  name="not logged in"
 laceTemplateDesign_notLoggedIn:  content=FragmentTemplateDesign_31:FragmentTemplateDesign{
-FragmentTemplateDesign_31:        fragmentTypeName="Page"
+FragmentTemplateDesign_31:        type="FragmentTypeDesign_Page"
 FragmentTemplateDesign_31:        type="FragmentTypeDesign_Page"
 FragmentTemplateDesign_31:        properties+PropertyDesign_29:PropertyDesign{
 PropertyDesign_29:                 propertyName="mainContent"
 PropertyDesign_29:                 children+FragmentTemplateDesign_32:FragmentTemplateDesign{
-FragmentTemplateDesign_32:          fragmentTypeName="Paragraph"
+FragmentTemplateDesign_32:          type="FragmentTypeDesign_Paragraph"
 FragmentTemplateDesign_32:          type="FragmentTypeDesign_Paragraph"
 FragmentTemplateDesign_32:          properties+PropertyDesign_30:PropertyDesign{
 PropertyDesign_30:                   propertyName="text"
@@ -18,7 +18,7 @@ PropertyDesign_30:                   }TextTemplateDesign_20
 FragmentTemplateDesign_32:          }PropertyDesign_30
 PropertyDesign_29:                 }FragmentTemplateDesign_32
 PropertyDesign_29:                 children+FragmentTemplateDesign_33:FragmentTemplateDesign{
-FragmentTemplateDesign_33:          fragmentTypeName="Paragraph"
+FragmentTemplateDesign_33:          type="FragmentTypeDesign_Paragraph"
 FragmentTemplateDesign_33:          type="FragmentTypeDesign_Paragraph"
 FragmentTemplateDesign_33:          properties+PropertyDesign_31:PropertyDesign{
 PropertyDesign_31:                   propertyName="text"
@@ -30,11 +30,11 @@ PropertyDesign_31:                   }TextTemplateDesign_21
 FragmentTemplateDesign_33:          }PropertyDesign_31
 PropertyDesign_29:                 }FragmentTemplateDesign_33
 PropertyDesign_29:                 children+FragmentTemplateDesign_34:FragmentTemplateDesign{
-FragmentTemplateDesign_34:          fragmentTypeName="Login"
+FragmentTemplateDesign_34:          type="FragmentTypeDesign_Login"
 FragmentTemplateDesign_34:          type="FragmentTypeDesign_Login"
 PropertyDesign_29:                 }FragmentTemplateDesign_34
 PropertyDesign_29:                 children+FragmentTemplateDesign_35:FragmentTemplateDesign{
-FragmentTemplateDesign_35:          fragmentTypeName="Paragraph"
+FragmentTemplateDesign_35:          type="FragmentTypeDesign_Paragraph"
 FragmentTemplateDesign_35:          type="FragmentTypeDesign_Paragraph"
 FragmentTemplateDesign_35:          properties+PropertyDesign_32:PropertyDesign{
 PropertyDesign_32:                   propertyName="text"
