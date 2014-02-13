@@ -113,6 +113,8 @@ RelationDesign_properties:        dataType=DataTypeDesign_7:DataTypeDesign{
 DataTypeDesign_7:                  multivalue=true
 RelationDesign_properties:        }DataTypeDesign_7
 RelationDesign_properties:        to="EntityDesign_PropertyDesign"
+RelationDesign_properties:        reverseDataType=VhUzodearybqemze_c5d19f9e_56eb:DataTypeDesign{
+RelationDesign_properties:        }VhUzodearybqemze_c5d19f9e_56eb
 yDesign_FragmentTemplateDesign:  }RelationDesign_properties
 yDesign_FragmentTemplateDesign:  relations+RelationDesign_type:RelationDesign{
 RelationDesign_type:              name="type"

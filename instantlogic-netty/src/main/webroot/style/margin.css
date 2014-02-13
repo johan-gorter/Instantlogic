@@ -23,3 +23,7 @@ select {min-width: 40%;}
 
 .controls textarea, .controls input, .controls select {background-color: rgba(255,255,255,0.7);}
 .btn-small {padding-top:0px;padding-bottom:0px;border-radius:0px;}
+
+@media (min-width: 768px) {
+  .form-control-aligned {margin-left: 16.666666666666664%;} /* .col-sm-offset-2 */
+}
