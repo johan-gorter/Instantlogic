@@ -28,23 +28,6 @@ public class RelationDesign extends AttributeDesign {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.Boolean> hasOptions
-		= createAttributeValue(org.instantlogic.designer.entity.RelationDesignEntity.hasOptions);
-	
-	public java.lang.Boolean getHasOptions() {
-		return hasOptions.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.Boolean> getHasOptionsAttributeValue() {
-		return hasOptions;
-	}
-
-	public RelationDesign setHasOptions(java.lang.Boolean newValue) {
-		hasOptions.setValue(newValue);
-		return (RelationDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.Boolean> autoCreate
 		= createAttributeValue(org.instantlogic.designer.entity.RelationDesignEntity.autoCreate);
 	
@@ -58,6 +41,23 @@ public class RelationDesign extends AttributeDesign {
 
 	public RelationDesign setAutoCreate(java.lang.Boolean newValue) {
 		autoCreate.setValue(newValue);
+		return (RelationDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.Boolean> hasOptions
+		= createAttributeValue(org.instantlogic.designer.entity.RelationDesignEntity.hasOptions);
+	
+	public java.lang.Boolean getHasOptions() {
+		return hasOptions.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.Boolean> getHasOptionsAttributeValue() {
+		return hasOptions;
+	}
+
+	public RelationDesign setHasOptions(java.lang.Boolean newValue) {
+		hasOptions.setValue(newValue);
 		return (RelationDesign)this;
 	}
 	
@@ -79,18 +79,6 @@ public class RelationDesign extends AttributeDesign {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<RelationDesign, java.lang.String> reverseTechnicalName
-		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.RelationDesignEntity.reverseTechnicalName);
-	
-	public java.lang.String getReverseTechnicalName() {
-		return reverseTechnicalName.getValue();
-	}
-
-	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<RelationDesign, java.lang.String> getReverseTechnicalNameAttributeValue() {
-		return reverseTechnicalName;
-	}
-
-	
 	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<RelationDesign, java.lang.String> reverseJavaIdentifier
 		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.RelationDesignEntity.reverseJavaIdentifier);
 	
@@ -102,6 +90,23 @@ public class RelationDesign extends AttributeDesign {
 		return reverseJavaIdentifier;
 	}
 
+	
+	private final org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.Boolean> reverseMultivalue
+		= createAttributeValue(org.instantlogic.designer.entity.RelationDesignEntity.reverseMultivalue);
+	
+	public java.lang.Boolean getReverseMultivalue() {
+		return reverseMultivalue.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.Boolean> getReverseMultivalueAttributeValue() {
+		return reverseMultivalue;
+	}
+
+	public RelationDesign setReverseMultivalue(java.lang.Boolean newValue) {
+		reverseMultivalue.setValue(newValue);
+		return (RelationDesign)this;
+	}
+	
 	
 	private final org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.String> reverseName
 		= createAttributeValue(org.instantlogic.designer.entity.RelationDesignEntity.reverseName);
@@ -120,22 +125,17 @@ public class RelationDesign extends AttributeDesign {
 	}
 	
 	
-	private final org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.Boolean> reverseMultivalue
-		= createAttributeValue(org.instantlogic.designer.entity.RelationDesignEntity.reverseMultivalue);
+	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<RelationDesign, java.lang.String> reverseTechnicalName
+		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.RelationDesignEntity.reverseTechnicalName);
 	
-	public java.lang.Boolean getReverseMultivalue() {
-		return reverseMultivalue.getValue();
+	public java.lang.String getReverseTechnicalName() {
+		return reverseTechnicalName.getValue();
 	}
 
-	public org.instantlogic.fabric.value.AttributeValue<RelationDesign, java.lang.Boolean> getReverseMultivalueAttributeValue() {
-		return reverseMultivalue;
+	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<RelationDesign, java.lang.String> getReverseTechnicalNameAttributeValue() {
+		return reverseTechnicalName;
 	}
 
-	public RelationDesign setReverseMultivalue(java.lang.Boolean newValue) {
-		reverseMultivalue.setValue(newValue);
-		return (RelationDesign)this;
-	}
-	
 	
 	// Relations
 	

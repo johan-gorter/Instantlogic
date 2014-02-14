@@ -7,7 +7,7 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 
 	@Override
 	public String getId() {
-		return "OUg_nhnAxuepUksx_f2cac060_a97b";
+		return "PlaceTemplateDesign_PlaceTemplateDetails";
 	}
 	
 
@@ -42,31 +42,31 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
 
 	
 	private static org.instantlogic.interaction.page.FragmentTemplate CONTENT = 
-        new org.instantlogic.interaction.page.FragmentTemplate("FplOUcwOmqchmcyx_937e80f1_b2d0", "Page")        
+        new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_16", "Page")        
             .addChild("mainContent",
-                    new org.instantlogic.interaction.page.SharedElementHolder("JtIIvOaigegIcawf_753f982f_9c77", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+                    new org.instantlogic.interaction.page.SharedElementHolder("SharedElementDesign", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
             )        
             .addChild("mainContent",
-                new org.instantlogic.interaction.page.FragmentTemplate("QushzOfUdqgem_Av_2e1af939_6fb7", "Block")      
+                new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_17", "Block")      
                     .setStyleNames(new String[]{"card"})        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("_dpmvgh_iieeIdui_0ee75e57_7037", "Heading3")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_18", "Heading3")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Place template)").getTextTemplate())        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("HA_e_aiabafIqofo_bed4991f_649f", "Input")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_19", "Input")      
                             .setField(org.instantlogic.designer.entity.DesignEntity.INSTANCE, org.instantlogic.designer.entity.DesignEntity.name)        
                     )        
                     .addChild("content",
-                        new org.instantlogic.interaction.page.FragmentTemplate("EbqsiwcIyq_rcblu_8723f502_8007", "Heading4")      
+                        new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_20", "Heading4")      
                             .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Content").getTextTemplate())        
                     )        
                     .addChild("content",
                         new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
-                                new org.instantlogic.interaction.page.FragmentTemplate("ecucjAngvibmofEl_4f11bd0b_3671", "ElementEditor")        
+                                new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_21", "WorkInProgress")        
                                     .addChild("content",
-                                            new org.instantlogic.interaction.page.SharedElementHolder("XUedooAg_maxqeit_86d12b9c_6d00", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
+                                            new org.instantlogic.interaction.page.SharedElementHolder("SharedElementDesign_1", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
         
                                     ))
         

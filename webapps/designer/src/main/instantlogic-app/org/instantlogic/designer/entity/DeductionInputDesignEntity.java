@@ -25,16 +25,16 @@ public class DeductionInputDesignEntity extends org.instantlogic.fabric.model.En
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign> $inputs
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign>(
-				"WzA_AoIxqygpogeq_aeef531d_58c1", "inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionInputDesign.class);
+				"RelationDesign_inputs_1", "inputs", INSTANCE, "inputs", org.instantlogic.designer.DeductionInputDesign.class);
 		inputs = $inputs;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationInputDesign> $operationInput
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationInputDesign>(
-				"udyim_mtiiczUfow_72eba5f5_aa7b", "operationInput", INSTANCE, "operationInput", org.instantlogic.designer.DeductionInputDesign.class);
+				"RelationDesign_operationInput", "operationInput", INSTANCE, "operationInput", org.instantlogic.designer.DeductionInputDesign.class);
 		operationInput = $operationInput;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign> $deduction
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign>(
-				"_yUympgfbyfrI_qr_001e9a3e_781a", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionInputDesign.class);
+				"RelationDesign_inputs_2", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionInputDesign.class);
 		deduction = $deduction;
 		
 		// Phase 2
@@ -66,7 +66,7 @@ public class DeductionInputDesignEntity extends org.instantlogic.fabric.model.En
 	
 	@Override
 	public String getUniqueId() {
-		return "UclyfUapxufAimxi_b136c9d3_afe7";
+		return "EntityDesign_DeductionInputDesign";
 	}
 	
 	@Override

@@ -26,20 +26,20 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> $endNode
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign>(
-				"Mfasf_gx_eammmIj_17dc0360_5f9f", "endNode", INSTANCE, "endNode", org.instantlogic.designer.FlowEdgeDesign.class);
+				"RelationDesign_endNode", "endNode", INSTANCE, "endNode", org.instantlogic.designer.FlowEdgeDesign.class);
 		endNode = $endNode;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $event
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
-				"TzoUgEvleIglemrA_c58e8ad6_3404", "event", INSTANCE, "event", org.instantlogic.designer.FlowEdgeDesign.class);
+				"RelationDesign_event_1", "event", INSTANCE, "event", org.instantlogic.designer.FlowEdgeDesign.class);
 		event = $event;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> $startNode
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign>(
-				"_OzpwIsqrigyAaun_7da1966e_3629", "startNode", INSTANCE, "startNode", org.instantlogic.designer.FlowEdgeDesign.class);
+				"RelationDesign_startNode", "startNode", INSTANCE, "startNode", org.instantlogic.designer.FlowEdgeDesign.class);
 		startNode = $startNode;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> $owner
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
-				"uzgimc_lAadnucwu_880ccf0f_c494", "owner", INSTANCE, "owner", org.instantlogic.designer.FlowEdgeDesign.class);
+				"RelationDesign_edges", "owner", INSTANCE, "owner", org.instantlogic.designer.FlowEdgeDesign.class);
 		owner = $owner;
 		
 		// Phase 2
@@ -72,7 +72,7 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	
 	@Override
 	public String getUniqueId() {
-		return "SerlhshxEifAqjyz_837372e0_0f69";
+		return "EntityDesign_FlowEdgeDesign";
 	}
 	
 	@Override

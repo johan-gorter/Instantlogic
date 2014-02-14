@@ -28,6 +28,18 @@ public class DeductionParameterDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
+	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<DeductionParameterDesign, java.lang.String> valueDescription
+		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.valueDescription);
+	
+	public java.lang.String getValueDescription() {
+		return valueDescription.getValue();
+	}
+
+	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<DeductionParameterDesign, java.lang.String> getValueDescriptionAttributeValue() {
+		return valueDescription;
+	}
+
+	
 	private final org.instantlogic.fabric.value.AttributeValue<DeductionParameterDesign, java.lang.Object> value
 		= createAttributeValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.value);
 	
@@ -44,18 +56,6 @@ public class DeductionParameterDesign extends org.instantlogic.fabric.Instance {
 		return (DeductionParameterDesign)this;
 	}
 	
-	
-	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<DeductionParameterDesign, java.lang.String> valueDescription
-		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.valueDescription);
-	
-	public java.lang.String getValueDescription() {
-		return valueDescription.getValue();
-	}
-
-	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<DeductionParameterDesign, java.lang.String> getValueDescriptionAttributeValue() {
-		return valueDescription;
-	}
-
 	
 	// Relations
 	
@@ -95,24 +95,6 @@ public class DeductionParameterDesign extends org.instantlogic.fabric.Instance {
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<DeductionParameterDesign, StaticInstanceDesign> staticInstanceValue
-		= createRelationValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.staticInstanceValue);
-		
-	public org.instantlogic.fabric.value.RelationValue<DeductionParameterDesign, StaticInstanceDesign> getStaticInstanceValueRelationValue() {
-		return staticInstanceValue;
-	}
-
-	public org.instantlogic.designer.StaticInstanceDesign getStaticInstanceValue() {
-		return staticInstanceValue.getValue();
-	}
-	
-	public DeductionParameterDesign setStaticInstanceValue(org.instantlogic.designer.StaticInstanceDesign newValue) {
-		staticInstanceValue.setValue(newValue);
-		return (DeductionParameterDesign)this;
-	}
-	
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<DeductionParameterDesign, DeductionOperationParameterDesign> operationParameter
 		= createRelationValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.operationParameter);
 		
@@ -126,6 +108,24 @@ public class DeductionParameterDesign extends org.instantlogic.fabric.Instance {
 	
 	public DeductionParameterDesign setOperationParameter(org.instantlogic.designer.DeductionOperationParameterDesign newValue) {
 		operationParameter.setValue(newValue);
+		return (DeductionParameterDesign)this;
+	}
+	
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionParameterDesign, StaticInstanceDesign> staticInstanceValue
+		= createRelationValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.staticInstanceValue);
+		
+	public org.instantlogic.fabric.value.RelationValue<DeductionParameterDesign, StaticInstanceDesign> getStaticInstanceValueRelationValue() {
+		return staticInstanceValue;
+	}
+
+	public org.instantlogic.designer.StaticInstanceDesign getStaticInstanceValue() {
+		return staticInstanceValue.getValue();
+	}
+	
+	public DeductionParameterDesign setStaticInstanceValue(org.instantlogic.designer.StaticInstanceDesign newValue) {
+		staticInstanceValue.setValue(newValue);
 		return (DeductionParameterDesign)this;
 	}
 	

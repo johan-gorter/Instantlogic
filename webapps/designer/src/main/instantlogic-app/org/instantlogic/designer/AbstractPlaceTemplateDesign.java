@@ -53,29 +53,6 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
 	}
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, TextTemplateDesign> title
-		= createRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.title);
-		
-	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, TextTemplateDesign> getTitleRelationValue() {
-		return title;
-	}
-
-	public org.instantlogic.designer.TextTemplateDesign getTitle() {
-		return title.getValue();
-	}
-	
-	public PlaceTemplateDesign setTitle(org.instantlogic.designer.TextTemplateDesign newValue) {
-		title.setValue(newValue);
-		return (PlaceTemplateDesign)this;
-	}
-	
-	public org.instantlogic.designer.TextTemplateDesign newTitle() {
-		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
-		title.setValue(newValue);
-		return newValue;
-	}
-
-	
 	private final org.instantlogic.fabric.value.RelationValueList<PlaceTemplateDesign, PlaceParameterDesign> parameters
 		= createRelationValueList(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.parameters);
 		
@@ -107,39 +84,50 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
 		return (PlaceTemplateDesign)this;
 	}	
 	
+	
+	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, TextTemplateDesign> title
+		= createRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.title);
+		
+	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, TextTemplateDesign> getTitleRelationValue() {
+		return title;
+	}
+
+	public org.instantlogic.designer.TextTemplateDesign getTitle() {
+		return title.getValue();
+	}
+	
+	public PlaceTemplateDesign setTitle(org.instantlogic.designer.TextTemplateDesign newValue) {
+		title.setValue(newValue);
+		return (PlaceTemplateDesign)this;
+	}
+	
+	public org.instantlogic.designer.TextTemplateDesign newTitle() {
+		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
+		title.setValue(newValue);
+		return newValue;
+	}
+
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> application
-		= createReverseRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.application);
+	private final org.instantlogic.fabric.value.RelationValues<PlaceTemplateDesign, DestinationDesign> incomingLinks
+		= createReverseRelationValues(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.incomingLinks);
 
-	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> getApplicationRelationValue() {
-		return application;
+	public org.instantlogic.fabric.value.RelationValues<PlaceTemplateDesign, DestinationDesign> getIncomingLinksRelationValue() {
+		return incomingLinks;
 	}
 
-	public org.instantlogic.designer.ApplicationDesign getApplication() {
-		return application.getValue();
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.DestinationDesign> getIncomingLinks() {
+		return incomingLinks.getValue();
 	}
 
-    public PlaceTemplateDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
-        application.setValue(newValue);
+    public PlaceTemplateDesign addToIncomingLinks(DestinationDesign item) {
+        incomingLinks.addValue(item);
         return (PlaceTemplateDesign)this;
     }
 
-	
-	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> loggedInPlaceOnApplicationDesign
-		= createReverseRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.loggedInPlaceOnApplicationDesign);
-
-	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> getLoggedInPlaceOnApplicationDesignRelationValue() {
-		return loggedInPlaceOnApplicationDesign;
-	}
-
-	public org.instantlogic.designer.ApplicationDesign getLoggedInPlaceOnApplicationDesign() {
-		return loggedInPlaceOnApplicationDesign.getValue();
-	}
-
-    public PlaceTemplateDesign setLoggedInPlaceOnApplicationDesign(org.instantlogic.designer.ApplicationDesign newValue) {
-        loggedInPlaceOnApplicationDesign.setValue(newValue);
+    public PlaceTemplateDesign removeFromIncomingLinks(DestinationDesign item) {
+        incomingLinks.removeValue(item);
         return (PlaceTemplateDesign)this;
     }
 
@@ -166,6 +154,40 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
     }
 
 	
+	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> loggedInPlaceOnApplicationDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.loggedInPlaceOnApplicationDesign);
+
+	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> getLoggedInPlaceOnApplicationDesignRelationValue() {
+		return loggedInPlaceOnApplicationDesign;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getLoggedInPlaceOnApplicationDesign() {
+		return loggedInPlaceOnApplicationDesign.getValue();
+	}
+
+    public PlaceTemplateDesign setLoggedInPlaceOnApplicationDesign(org.instantlogic.designer.ApplicationDesign newValue) {
+        loggedInPlaceOnApplicationDesign.setValue(newValue);
+        return (PlaceTemplateDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> application
+		= createReverseRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.application);
+
+	public org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> getApplicationRelationValue() {
+		return application;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getApplication() {
+		return application.getValue();
+	}
+
+    public PlaceTemplateDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
+        application.setValue(newValue);
+        return (PlaceTemplateDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValue<PlaceTemplateDesign, ApplicationDesign> startPlaceOnApplication
 		= createReverseRelationValue(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.startPlaceOnApplication);
 
@@ -179,28 +201,6 @@ public abstract class AbstractPlaceTemplateDesign extends FlowNodeBaseDesign {
 
     public PlaceTemplateDesign setStartPlaceOnApplication(org.instantlogic.designer.ApplicationDesign newValue) {
         startPlaceOnApplication.setValue(newValue);
-        return (PlaceTemplateDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValues<PlaceTemplateDesign, DestinationDesign> incomingLinks
-		= createReverseRelationValues(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.incomingLinks);
-
-	public org.instantlogic.fabric.value.RelationValues<PlaceTemplateDesign, DestinationDesign> getIncomingLinksRelationValue() {
-		return incomingLinks;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.DestinationDesign> getIncomingLinks() {
-		return incomingLinks.getValue();
-	}
-
-    public PlaceTemplateDesign addToIncomingLinks(DestinationDesign item) {
-        incomingLinks.addValue(item);
-        return (PlaceTemplateDesign)this;
-    }
-
-    public PlaceTemplateDesign removeFromIncomingLinks(DestinationDesign item) {
-        incomingLinks.removeValue(item);
         return (PlaceTemplateDesign)this;
     }
 

@@ -28,12 +28,12 @@ public class PlaceParameterDesignEntity extends org.instantlogic.fabric.model.En
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $entity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"XIqyktqegmblwcrg_aef86c1e_920b", "entity", INSTANCE, "entity", org.instantlogic.designer.PlaceParameterDesign.class);
+				"RelationDesign_entity_1", "entity", INSTANCE, "entity", org.instantlogic.designer.PlaceParameterDesign.class);
 		entity = $entity;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $placeTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
-				"iutfOibjcIcoafjm_2852f3ef_662a", "placeTemplateDesign", INSTANCE, "placeTemplateDesign", org.instantlogic.designer.PlaceParameterDesign.class);
+				"RelationDesign_parameters", "placeTemplateDesign", INSTANCE, "placeTemplateDesign", org.instantlogic.designer.PlaceParameterDesign.class);
 		placeTemplateDesign = $placeTemplateDesign;
 		
 		// Phase 2
@@ -60,7 +60,7 @@ public class PlaceParameterDesignEntity extends org.instantlogic.fabric.model.En
 	
 	@Override
 	public String getUniqueId() {
-		return "U_lfeggvEIdwmnmc_d015fb8d_0707";
+		return "EntityDesign_PlaceParameterDesign";
 	}
 	
 	@Override

@@ -7,7 +7,7 @@ public abstract class AbstractInsertFragmentTemplateBelowPlaceTemplate extends o
 
 	@Override
 	public String getId() {
-		return "uzyaAtkthicteiOb_f3664684_1a40";
+		return "PlaceTemplateDesign_InsertFragmentTemplateBelow";
 	}
 	
 	

@@ -85,6 +85,102 @@ public class FragmentTypeDesign extends Design {
 	}
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValueList<FragmentTypeDesign, java.lang.String> valuePropertyNames
+		= createAttributeValueList(org.instantlogic.designer.entity.FragmentTypeDesignEntity.valuePropertyNames);
+	
+	public org.instantlogic.fabric.value.ValueList<java.lang.String> getValuePropertyNames() {
+		return valuePropertyNames.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValueList<FragmentTypeDesign, java.lang.String> getValuePropertyNamesAttributeValue() {
+		return valuePropertyNames;
+	}
+
+	public FragmentTypeDesign addToValuePropertyNames(java.lang.String item) {
+		valuePropertyNames.addValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign removeFromValuePropertyNames(java.lang.String item) {
+		valuePropertyNames.removeValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign addToValuePropertyNames(java.lang.String item, int index) {
+		valuePropertyNames.insertValue(item, index);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign removeFromValuePropertyNames(int index) {
+		valuePropertyNames.removeValue(index);
+		return (FragmentTypeDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValueList<FragmentTypeDesign, java.lang.String> textPropertyNames
+		= createAttributeValueList(org.instantlogic.designer.entity.FragmentTypeDesignEntity.textPropertyNames);
+	
+	public org.instantlogic.fabric.value.ValueList<java.lang.String> getTextPropertyNames() {
+		return textPropertyNames.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValueList<FragmentTypeDesign, java.lang.String> getTextPropertyNamesAttributeValue() {
+		return textPropertyNames;
+	}
+
+	public FragmentTypeDesign addToTextPropertyNames(java.lang.String item) {
+		textPropertyNames.addValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign removeFromTextPropertyNames(java.lang.String item) {
+		textPropertyNames.removeValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign addToTextPropertyNames(java.lang.String item, int index) {
+		textPropertyNames.insertValue(item, index);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign removeFromTextPropertyNames(int index) {
+		textPropertyNames.removeValue(index);
+		return (FragmentTypeDesign)this;
+	}
+	
+	
+	private final org.instantlogic.fabric.value.AttributeValueList<FragmentTypeDesign, java.lang.String> contentPropertyNames
+		= createAttributeValueList(org.instantlogic.designer.entity.FragmentTypeDesignEntity.contentPropertyNames);
+	
+	public org.instantlogic.fabric.value.ValueList<java.lang.String> getContentPropertyNames() {
+		return contentPropertyNames.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValueList<FragmentTypeDesign, java.lang.String> getContentPropertyNamesAttributeValue() {
+		return contentPropertyNames;
+	}
+
+	public FragmentTypeDesign addToContentPropertyNames(java.lang.String item) {
+		contentPropertyNames.addValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign removeFromContentPropertyNames(java.lang.String item) {
+		contentPropertyNames.removeValue(item);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign addToContentPropertyNames(java.lang.String item, int index) {
+		contentPropertyNames.insertValue(item, index);
+		return (FragmentTypeDesign)this;
+	}
+	
+	public FragmentTypeDesign removeFromContentPropertyNames(int index) {
+		contentPropertyNames.removeValue(index);
+		return (FragmentTypeDesign)this;
+	}
+	
+	
 	// Relations
 
 	// Reverse relations

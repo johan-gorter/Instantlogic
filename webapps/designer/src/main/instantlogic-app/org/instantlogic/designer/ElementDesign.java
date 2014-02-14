@@ -28,23 +28,6 @@ public class ElementDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.String> previewMode
-		= createAttributeValue(org.instantlogic.designer.entity.ElementDesignEntity.previewMode);
-	
-	public java.lang.String getPreviewMode() {
-		return previewMode.getValue();
-	}
-
-	public org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.String> getPreviewModeAttributeValue() {
-		return previewMode;
-	}
-
-	public ElementDesign setPreviewMode(java.lang.String newValue) {
-		previewMode.setValue(newValue);
-		return (ElementDesign)this;
-	}
-	
-	
 	private final org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.Boolean> editorOpen
 		= createAttributeValue(org.instantlogic.designer.entity.ElementDesignEntity.editorOpen);
 	
@@ -62,9 +45,43 @@ public class ElementDesign extends org.instantlogic.fabric.Instance {
 	}
 	
 	
+	private final org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.String> previewMode
+		= createAttributeValue(org.instantlogic.designer.entity.ElementDesignEntity.previewMode);
+	
+	public java.lang.String getPreviewMode() {
+		return previewMode.getValue();
+	}
+
+	public org.instantlogic.fabric.value.AttributeValue<ElementDesign, java.lang.String> getPreviewModeAttributeValue() {
+		return previewMode;
+	}
+
+	public ElementDesign setPreviewMode(java.lang.String newValue) {
+		previewMode.setValue(newValue);
+		return (ElementDesign)this;
+	}
+	
+	
 	// Relations
 
 	// Reverse relations
+	
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> childOfSelection
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
+
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> getChildOfSelectionRelationValue() {
+		return childOfSelection;
+	}
+
+	public org.instantlogic.designer.SelectionDesign getChildOfSelection() {
+		return childOfSelection.getValue();
+	}
+
+    public ElementDesign setChildOfSelection(org.instantlogic.designer.SelectionDesign newValue) {
+        childOfSelection.setValue(newValue);
+        return (ElementDesign)this;
+    }
+
 	
 	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, PropertyDesign> childrenForFragment
 		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childrenForFragment);
@@ -100,40 +117,6 @@ public class ElementDesign extends org.instantlogic.fabric.Instance {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, IfElseDesign> ifChildOnIfElseDesign
-		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.ifChildOnIfElseDesign);
-
-	public org.instantlogic.fabric.value.RelationValue<ElementDesign, IfElseDesign> getIfChildOnIfElseDesignRelationValue() {
-		return ifChildOnIfElseDesign;
-	}
-
-	public org.instantlogic.designer.IfElseDesign getIfChildOnIfElseDesign() {
-		return ifChildOnIfElseDesign.getValue();
-	}
-
-    public ElementDesign setIfChildOnIfElseDesign(org.instantlogic.designer.IfElseDesign newValue) {
-        ifChildOnIfElseDesign.setValue(newValue);
-        return (ElementDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> childOfSelection
-		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.childOfSelection);
-
-	public org.instantlogic.fabric.value.RelationValue<ElementDesign, SelectionDesign> getChildOfSelectionRelationValue() {
-		return childOfSelection;
-	}
-
-	public org.instantlogic.designer.SelectionDesign getChildOfSelection() {
-		return childOfSelection.getValue();
-	}
-
-    public ElementDesign setChildOfSelection(org.instantlogic.designer.SelectionDesign newValue) {
-        childOfSelection.setValue(newValue);
-        return (ElementDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, IfElseDesign> elseChildOnIfElseDesign
 		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.elseChildOnIfElseDesign);
 
@@ -164,6 +147,23 @@ public class ElementDesign extends org.instantlogic.fabric.Instance {
 
     public ElementDesign setPartOfSharedElementDefinition(org.instantlogic.designer.SharedElementDefinitionDesign newValue) {
         partOfSharedElementDefinition.setValue(newValue);
+        return (ElementDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<ElementDesign, IfElseDesign> ifChildOnIfElseDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.ElementDesignEntity.ifChildOnIfElseDesign);
+
+	public org.instantlogic.fabric.value.RelationValue<ElementDesign, IfElseDesign> getIfChildOnIfElseDesignRelationValue() {
+		return ifChildOnIfElseDesign;
+	}
+
+	public org.instantlogic.designer.IfElseDesign getIfChildOnIfElseDesign() {
+		return ifChildOnIfElseDesign.getValue();
+	}
+
+    public ElementDesign setIfChildOnIfElseDesign(org.instantlogic.designer.IfElseDesign newValue) {
+        ifChildOnIfElseDesign.setValue(newValue);
         return (ElementDesign)this;
     }
 

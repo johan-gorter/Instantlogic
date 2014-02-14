@@ -17,70 +17,70 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
-		    d0.setValue("mobile");
+		    d0.setValue(false);
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
-		    d0.setValue(false);
+		    d0.setValue("mobile");
 		return d0;
 	}
 
 
 	
 	// Attributes
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ElementDesign, java.lang.String, java.lang.String> previewMode; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ElementDesign, java.lang.Boolean, java.lang.Boolean> editorOpen; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.ElementDesign, java.lang.String, java.lang.String> previewMode; 
 	
 	// Relations
 	
 	// Reverse relations
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign> childOfSelection;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.PropertyDesign> childrenForFragment;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> contentOfPage;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign> ifChildOnIfElseDesign;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign> childOfSelection;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign> elseChildOnIfElseDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDefinitionDesign> partOfSharedElementDefinition;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign> ifChildOnIfElseDesign;
 
 	static {
 		// Phase 1
 		// Attributes
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ElementDesign, java.lang.String, java.lang.String> $previewMode
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ElementDesign, java.lang.String, java.lang.String>(
-				"NvnbsdpniIfUcguU_99e8f545_9dcc", "previewMode", INSTANCE, java.lang.String.class, "previewMode", org.instantlogic.designer.ElementDesign.class);
-		previewMode = $previewMode;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ElementDesign, java.lang.Boolean, java.lang.Boolean> $editorOpen
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ElementDesign, java.lang.Boolean, java.lang.Boolean>(
-				"Tolibtsciuelonmj_3cb44069_cfef", "editorOpen", INSTANCE, java.lang.Boolean.class, "editorOpen", org.instantlogic.designer.ElementDesign.class);
+				"AttributeDesign_editorOpen", "editorOpen", INSTANCE, java.lang.Boolean.class, "editorOpen", org.instantlogic.designer.ElementDesign.class);
 		editorOpen = $editorOpen;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ElementDesign, java.lang.String, java.lang.String> $previewMode
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.ElementDesign, java.lang.String, java.lang.String>(
+				"AttributeDesign_previewMode", "previewMode", INSTANCE, java.lang.String.class, "previewMode", org.instantlogic.designer.ElementDesign.class);
+		previewMode = $previewMode;
 		// Relations
 		// Reverse relations
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign> $childOfSelection
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign>(
+				"RelationDesign_child", "childOfSelection", INSTANCE, "childOfSelection", org.instantlogic.designer.ElementDesign.class);
+		childOfSelection = $childOfSelection;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.PropertyDesign> $childrenForFragment
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.PropertyDesign>(
-				"EodOspApymcuy_sz_65607c6e_ccd1", "childrenForFragment", INSTANCE, "childrenForFragment", org.instantlogic.designer.ElementDesign.class);
+				"RelationDesign_children", "childrenForFragment", INSTANCE, "childrenForFragment", org.instantlogic.designer.ElementDesign.class);
 		childrenForFragment = $childrenForFragment;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $contentOfPage
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
-				"KltgvgzezebwkmdE_acaa2c56_3f2a", "contentOfPage", INSTANCE, "contentOfPage", org.instantlogic.designer.ElementDesign.class);
+				"RelationDesign_content", "contentOfPage", INSTANCE, "contentOfPage", org.instantlogic.designer.ElementDesign.class);
 		contentOfPage = $contentOfPage;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign> $ifChildOnIfElseDesign
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign>(
-				"OEybAE_nomfkkjOw_033f4de0_86e1", "ifChildOnIfElseDesign", INSTANCE, "ifChildOnIfElseDesign", org.instantlogic.designer.ElementDesign.class);
-		ifChildOnIfElseDesign = $ifChildOnIfElseDesign;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign> $childOfSelection
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign>(
-				"UAcuIsixhi_jecAw_62209cd2_0804", "childOfSelection", INSTANCE, "childOfSelection", org.instantlogic.designer.ElementDesign.class);
-		childOfSelection = $childOfSelection;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign> $elseChildOnIfElseDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign>(
-				"esnfqzyexageoain_f9f3d6b8_5087", "elseChildOnIfElseDesign", INSTANCE, "elseChildOnIfElseDesign", org.instantlogic.designer.ElementDesign.class);
+				"RelationDesign_elseChild", "elseChildOnIfElseDesign", INSTANCE, "elseChildOnIfElseDesign", org.instantlogic.designer.ElementDesign.class);
 		elseChildOnIfElseDesign = $elseChildOnIfElseDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDefinitionDesign> $partOfSharedElementDefinition
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDefinitionDesign>(
-				"odtmutjyIy_kabms_052ed2e3_496b", "partOfSharedElementDefinition", INSTANCE, "partOfSharedElementDefinition", org.instantlogic.designer.ElementDesign.class);
+				"RelationDesign_fragment", "partOfSharedElementDefinition", INSTANCE, "partOfSharedElementDefinition", org.instantlogic.designer.ElementDesign.class);
 		partOfSharedElementDefinition = $partOfSharedElementDefinition;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign> $ifChildOnIfElseDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign>(
+				"RelationDesign_ifChild", "ifChildOnIfElseDesign", INSTANCE, "ifChildOnIfElseDesign", org.instantlogic.designer.ElementDesign.class);
+		ifChildOnIfElseDesign = $ifChildOnIfElseDesign;
 		
 		// Phase 2
 		EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
@@ -89,12 +89,16 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 			org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE,
 			org.instantlogic.designer.entity.SharedElementDesignEntity.INSTANCE
 		};
-		$previewMode.dataType.put("category", "text");
-		$previewMode._default = createDeduction0();
 		$editorOpen.dataType.put("category", "boolean");
-		$editorOpen._default = createDeduction1();
+		$editorOpen._default = createDeduction0();
+		$previewMode.dataType.put("category", "text");
+		$previewMode._default = createDeduction1();
 
 
+		$childOfSelection.reverse = true;
+		$childOfSelection.valueClass = org.instantlogic.designer.SelectionDesign.class;
+		$childOfSelection.to = org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE;
+		$childOfSelection.setReverseRelation(org.instantlogic.designer.entity.SelectionDesignEntity.child);
 		$childrenForFragment.reverse = true;
 		$childrenForFragment.valueClass = org.instantlogic.designer.PropertyDesign.class;
 		$childrenForFragment.to = org.instantlogic.designer.entity.PropertyDesignEntity.INSTANCE;
@@ -103,14 +107,6 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 		$contentOfPage.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
 		$contentOfPage.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
 		$contentOfPage.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.content);
-		$ifChildOnIfElseDesign.reverse = true;
-		$ifChildOnIfElseDesign.valueClass = org.instantlogic.designer.IfElseDesign.class;
-		$ifChildOnIfElseDesign.to = org.instantlogic.designer.entity.IfElseDesignEntity.INSTANCE;
-		$ifChildOnIfElseDesign.setReverseRelation(org.instantlogic.designer.entity.IfElseDesignEntity.ifChild);
-		$childOfSelection.reverse = true;
-		$childOfSelection.valueClass = org.instantlogic.designer.SelectionDesign.class;
-		$childOfSelection.to = org.instantlogic.designer.entity.SelectionDesignEntity.INSTANCE;
-		$childOfSelection.setReverseRelation(org.instantlogic.designer.entity.SelectionDesignEntity.child);
 		$elseChildOnIfElseDesign.reverse = true;
 		$elseChildOnIfElseDesign.valueClass = org.instantlogic.designer.IfElseDesign.class;
 		$elseChildOnIfElseDesign.to = org.instantlogic.designer.entity.IfElseDesignEntity.INSTANCE;
@@ -119,6 +115,10 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 		$partOfSharedElementDefinition.valueClass = org.instantlogic.designer.SharedElementDefinitionDesign.class;
 		$partOfSharedElementDefinition.to = org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.INSTANCE;
 		$partOfSharedElementDefinition.setReverseRelation(org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.fragment);
+		$ifChildOnIfElseDesign.reverse = true;
+		$ifChildOnIfElseDesign.valueClass = org.instantlogic.designer.IfElseDesign.class;
+		$ifChildOnIfElseDesign.to = org.instantlogic.designer.entity.IfElseDesignEntity.INSTANCE;
+		$ifChildOnIfElseDesign.setReverseRelation(org.instantlogic.designer.entity.IfElseDesignEntity.ifChild);
 	}
 
 	@Override
@@ -133,7 +133,7 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 	
 	@Override
 	public String getUniqueId() {
-		return "QgArvl_sqIbnsgjw_55852685_31f4";
+		return "EntityDesign_ElementDesign";
 	}
 	
 	@Override
@@ -142,18 +142,18 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
-		previewMode,
 		editorOpen,
+		previewMode,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
+		childOfSelection,
 		childrenForFragment,
 		contentOfPage,
-		ifChildOnIfElseDesign,
-		childOfSelection,
 		elseChildOnIfElseDesign,
 		partOfSharedElementDefinition,
+		ifChildOnIfElseDesign,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

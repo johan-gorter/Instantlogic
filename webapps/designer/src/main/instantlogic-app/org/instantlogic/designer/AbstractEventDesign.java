@@ -55,23 +55,6 @@ public abstract class AbstractEventDesign extends Design {
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> startEventOnApplicationDesign
-		= createReverseRelationValue(org.instantlogic.designer.entity.EventDesignEntity.startEventOnApplicationDesign);
-
-	public org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> getStartEventOnApplicationDesignRelationValue() {
-		return startEventOnApplicationDesign;
-	}
-
-	public org.instantlogic.designer.ApplicationDesign getStartEventOnApplicationDesign() {
-		return startEventOnApplicationDesign.getValue();
-	}
-
-    public EventDesign setStartEventOnApplicationDesign(org.instantlogic.designer.ApplicationDesign newValue) {
-        startEventOnApplicationDesign.setValue(newValue);
-        return (EventDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValues<EventDesign, FragmentTemplateDesign> eventOnFragmentTemplateDesign
 		= createReverseRelationValues(org.instantlogic.designer.entity.EventDesignEntity.eventOnFragmentTemplateDesign);
 
@@ -116,6 +99,23 @@ public abstract class AbstractEventDesign extends Design {
     }
 
 	
+	private final org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> application
+		= createReverseRelationValue(org.instantlogic.designer.entity.EventDesignEntity.application);
+
+	public org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> getApplicationRelationValue() {
+		return application;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getApplication() {
+		return application.getValue();
+	}
+
+    public EventDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
+        application.setValue(newValue);
+        return (EventDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> loggedInEventOnApplicationDesign
 		= createReverseRelationValue(org.instantlogic.designer.entity.EventDesignEntity.loggedInEventOnApplicationDesign);
 
@@ -133,19 +133,19 @@ public abstract class AbstractEventDesign extends Design {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> application
-		= createReverseRelationValue(org.instantlogic.designer.entity.EventDesignEntity.application);
+	private final org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> startEventOnApplicationDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.EventDesignEntity.startEventOnApplicationDesign);
 
-	public org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> getApplicationRelationValue() {
-		return application;
+	public org.instantlogic.fabric.value.RelationValue<EventDesign, ApplicationDesign> getStartEventOnApplicationDesignRelationValue() {
+		return startEventOnApplicationDesign;
 	}
 
-	public org.instantlogic.designer.ApplicationDesign getApplication() {
-		return application.getValue();
+	public org.instantlogic.designer.ApplicationDesign getStartEventOnApplicationDesign() {
+		return startEventOnApplicationDesign.getValue();
 	}
 
-    public EventDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
-        application.setValue(newValue);
+    public EventDesign setStartEventOnApplicationDesign(org.instantlogic.designer.ApplicationDesign newValue) {
+        startEventOnApplicationDesign.setValue(newValue);
         return (EventDesign)this;
     }
 

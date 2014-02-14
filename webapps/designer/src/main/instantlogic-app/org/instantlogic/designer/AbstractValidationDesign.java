@@ -53,29 +53,6 @@ public abstract class AbstractValidationDesign extends Design {
 	
 	
 	
-	private final org.instantlogic.fabric.value.RelationValue<ValidationDesign, DeductionSchemeDesign> rule
-		= createRelationValue(org.instantlogic.designer.entity.ValidationDesignEntity.rule);
-		
-	public org.instantlogic.fabric.value.RelationValue<ValidationDesign, DeductionSchemeDesign> getRuleRelationValue() {
-		return rule;
-	}
-
-	public org.instantlogic.designer.DeductionSchemeDesign getRule() {
-		return rule.getValue();
-	}
-	
-	public ValidationDesign setRule(org.instantlogic.designer.DeductionSchemeDesign newValue) {
-		rule.setValue(newValue);
-		return (ValidationDesign)this;
-	}
-	
-	public org.instantlogic.designer.DeductionSchemeDesign newRule() {
-		org.instantlogic.designer.DeductionSchemeDesign newValue = new org.instantlogic.designer.DeductionSchemeDesign(); 
-		rule.setValue(newValue);
-		return newValue;
-	}
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<ValidationDesign, TextTemplateDesign> message
 		= createRelationValue(org.instantlogic.designer.entity.ValidationDesignEntity.message);
 		
@@ -95,6 +72,29 @@ public abstract class AbstractValidationDesign extends Design {
 	public org.instantlogic.designer.TextTemplateDesign newMessage() {
 		org.instantlogic.designer.TextTemplateDesign newValue = new org.instantlogic.designer.TextTemplateDesign(); 
 		message.setValue(newValue);
+		return newValue;
+	}
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<ValidationDesign, DeductionSchemeDesign> rule
+		= createRelationValue(org.instantlogic.designer.entity.ValidationDesignEntity.rule);
+		
+	public org.instantlogic.fabric.value.RelationValue<ValidationDesign, DeductionSchemeDesign> getRuleRelationValue() {
+		return rule;
+	}
+
+	public org.instantlogic.designer.DeductionSchemeDesign getRule() {
+		return rule.getValue();
+	}
+	
+	public ValidationDesign setRule(org.instantlogic.designer.DeductionSchemeDesign newValue) {
+		rule.setValue(newValue);
+		return (ValidationDesign)this;
+	}
+	
+	public org.instantlogic.designer.DeductionSchemeDesign newRule() {
+		org.instantlogic.designer.DeductionSchemeDesign newValue = new org.instantlogic.designer.DeductionSchemeDesign(); 
+		rule.setValue(newValue);
 		return newValue;
 	}
 

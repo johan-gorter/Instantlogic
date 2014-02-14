@@ -7,7 +7,7 @@ public abstract class AbstractDeleteEntityPlaceTemplate extends org.instantlogic
 
 	@Override
 	public String getId() {
-		return "Tlmvzqcobefqujkj_55ecd174_fea3";
+		return "PlaceTemplateDesign_DeleteEntity";
 	}
 	
 	

@@ -7,7 +7,7 @@ public abstract class AbstractOpenEditorPlaceTemplate extends org.instantlogic.i
 
 	@Override
 	public String getId() {
-		return "BetgAgfkuubIkgeE_c5f1e47f_da66";
+		return "PlaceTemplateDesign_OpenEditor";
 	}
 	
 	

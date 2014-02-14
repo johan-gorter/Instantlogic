@@ -24,12 +24,12 @@ public class DestinationDesignEntity extends org.instantlogic.fabric.model.Entit
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DestinationDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $PlaceTemplate
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DestinationDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
-				"avqpegEnte_osmph_73500193_ff7a", "PlaceTemplate", INSTANCE, "PlaceTemplate", org.instantlogic.designer.DestinationDesign.class);
+				"RelationDesign_PlaceTemplate", "PlaceTemplate", INSTANCE, "PlaceTemplate", org.instantlogic.designer.DestinationDesign.class);
 		PlaceTemplate = $PlaceTemplate;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DestinationDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $destinationOnFragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DestinationDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
-				"imrshdqayIg_a_rf_ae2137d1_f648", "destinationOnFragmentTemplateDesign", INSTANCE, "destinationOnFragmentTemplateDesign", org.instantlogic.designer.DestinationDesign.class);
+				"RelationDesign_destination", "destinationOnFragmentTemplateDesign", INSTANCE, "destinationOnFragmentTemplateDesign", org.instantlogic.designer.DestinationDesign.class);
 		destinationOnFragmentTemplateDesign = $destinationOnFragmentTemplateDesign;
 		
 		// Phase 2
@@ -56,7 +56,7 @@ public class DestinationDesignEntity extends org.instantlogic.fabric.model.Entit
 	
 	@Override
 	public String getUniqueId() {
-		return "ZErmAjEahigfIcAq_bd9ee49e_d638";
+		return "EntityDesign_DestinationDesign";
 	}
 	
 	@Override

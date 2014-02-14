@@ -16,19 +16,19 @@ public class EntityContextPageFragment extends org.instantlogic.interaction.page
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-    new org.instantlogic.interaction.page.FragmentTemplate("Rzaw_ngIea_swfcp_7918aa1c_3282", "Group")        
+    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_69", "Group")        
         .addChild("content",
-                new org.instantlogic.interaction.page.SharedElementHolder("orrlvUrAIigbUloI_ce50e543_042a", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+                new org.instantlogic.interaction.page.SharedElementHolder("SharedElementDesign_4", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
         )        
         .addChild("content",
-            new org.instantlogic.interaction.page.FragmentTemplate("PtytUfAgrecyAheo_a018c3b2_05ba", "Link")      
+            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_70", "Link")      
                 .setDestination(org.instantlogic.designer.placetemplate.EntityDetailsPlaceTemplate.INSTANCE)        
                 .addChild("content",
-                    new org.instantlogic.interaction.page.FragmentTemplate("Kpj_mq_vnIdaymzb_223d1928_260e", "Block")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_71", "Block")      
                         .setStyleNames(new String[]{"inactive-card"})        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("uaUrnxbnAadtedwj_d28eb1bb_0083", "Heading3")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_72", "Heading3")      
                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Entity)").getTextTemplate())        
                         )        
                 )        

@@ -55,23 +55,6 @@ public abstract class AbstractSharedElementDefinitionDesign extends Design {
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<SharedElementDefinitionDesign, ApplicationDesign> application
-		= createReverseRelationValue(org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.application);
-
-	public org.instantlogic.fabric.value.RelationValue<SharedElementDefinitionDesign, ApplicationDesign> getApplicationRelationValue() {
-		return application;
-	}
-
-	public org.instantlogic.designer.ApplicationDesign getApplication() {
-		return application.getValue();
-	}
-
-    public SharedElementDefinitionDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
-        application.setValue(newValue);
-        return (SharedElementDefinitionDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValues<SharedElementDefinitionDesign, SharedElementDesign> usages
 		= createReverseRelationValues(org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.usages);
 
@@ -90,6 +73,23 @@ public abstract class AbstractSharedElementDefinitionDesign extends Design {
 
     public SharedElementDefinitionDesign removeFromUsages(SharedElementDesign item) {
         usages.removeValue(item);
+        return (SharedElementDefinitionDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<SharedElementDefinitionDesign, ApplicationDesign> application
+		= createReverseRelationValue(org.instantlogic.designer.entity.SharedElementDefinitionDesignEntity.application);
+
+	public org.instantlogic.fabric.value.RelationValue<SharedElementDefinitionDesign, ApplicationDesign> getApplicationRelationValue() {
+		return application;
+	}
+
+	public org.instantlogic.designer.ApplicationDesign getApplication() {
+		return application.getValue();
+	}
+
+    public SharedElementDefinitionDesign setApplication(org.instantlogic.designer.ApplicationDesign newValue) {
+        application.setValue(newValue);
         return (SharedElementDefinitionDesign)this;
     }
 

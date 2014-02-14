@@ -81,36 +81,19 @@ public class TextTemplateDesign extends org.instantlogic.fabric.Instance {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, EntityDesign> titleOfEntity
-		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfEntity);
+	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, AttributeDesign> explanationOnAttributeDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.explanationOnAttributeDesign);
 
-	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, EntityDesign> getTitleOfEntityRelationValue() {
-		return titleOfEntity;
+	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, AttributeDesign> getExplanationOnAttributeDesignRelationValue() {
+		return explanationOnAttributeDesign;
 	}
 
-	public org.instantlogic.designer.EntityDesign getTitleOfEntity() {
-		return titleOfEntity.getValue();
+	public org.instantlogic.designer.AttributeDesign getExplanationOnAttributeDesign() {
+		return explanationOnAttributeDesign.getValue();
 	}
 
-    public TextTemplateDesign setTitleOfEntity(org.instantlogic.designer.EntityDesign newValue) {
-        titleOfEntity.setValue(newValue);
-        return (TextTemplateDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, AttributeDesign> questionOnAttributeDesign
-		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.questionOnAttributeDesign);
-
-	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, AttributeDesign> getQuestionOnAttributeDesignRelationValue() {
-		return questionOnAttributeDesign;
-	}
-
-	public org.instantlogic.designer.AttributeDesign getQuestionOnAttributeDesign() {
-		return questionOnAttributeDesign.getValue();
-	}
-
-    public TextTemplateDesign setQuestionOnAttributeDesign(org.instantlogic.designer.AttributeDesign newValue) {
-        questionOnAttributeDesign.setValue(newValue);
+    public TextTemplateDesign setExplanationOnAttributeDesign(org.instantlogic.designer.AttributeDesign newValue) {
+        explanationOnAttributeDesign.setValue(newValue);
         return (TextTemplateDesign)this;
     }
 
@@ -132,6 +115,23 @@ public class TextTemplateDesign extends org.instantlogic.fabric.Instance {
     }
 
 	
+	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, AttributeDesign> questionOnAttributeDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.questionOnAttributeDesign);
+
+	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, AttributeDesign> getQuestionOnAttributeDesignRelationValue() {
+		return questionOnAttributeDesign;
+	}
+
+	public org.instantlogic.designer.AttributeDesign getQuestionOnAttributeDesign() {
+		return questionOnAttributeDesign.getValue();
+	}
+
+    public TextTemplateDesign setQuestionOnAttributeDesign(org.instantlogic.designer.AttributeDesign newValue) {
+        questionOnAttributeDesign.setValue(newValue);
+        return (TextTemplateDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PropertyDesign> textOnPropertyDesign
 		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.textOnPropertyDesign);
 
@@ -149,23 +149,6 @@ public class TextTemplateDesign extends org.instantlogic.fabric.Instance {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, AttributeDesign> explanationOnAttributeDesign
-		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.explanationOnAttributeDesign);
-
-	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, AttributeDesign> getExplanationOnAttributeDesignRelationValue() {
-		return explanationOnAttributeDesign;
-	}
-
-	public org.instantlogic.designer.AttributeDesign getExplanationOnAttributeDesign() {
-		return explanationOnAttributeDesign.getValue();
-	}
-
-    public TextTemplateDesign setExplanationOnAttributeDesign(org.instantlogic.designer.AttributeDesign newValue) {
-        explanationOnAttributeDesign.setValue(newValue);
-        return (TextTemplateDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PlaceTemplateDesign> titleOfPlaceTemplate
 		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfPlaceTemplate);
 
@@ -179,6 +162,23 @@ public class TextTemplateDesign extends org.instantlogic.fabric.Instance {
 
     public TextTemplateDesign setTitleOfPlaceTemplate(org.instantlogic.designer.PlaceTemplateDesign newValue) {
         titleOfPlaceTemplate.setValue(newValue);
+        return (TextTemplateDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, EntityDesign> titleOfEntity
+		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfEntity);
+
+	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, EntityDesign> getTitleOfEntityRelationValue() {
+		return titleOfEntity;
+	}
+
+	public org.instantlogic.designer.EntityDesign getTitleOfEntity() {
+		return titleOfEntity.getValue();
+	}
+
+    public TextTemplateDesign setTitleOfEntity(org.instantlogic.designer.EntityDesign newValue) {
+        titleOfEntity.setValue(newValue);
         return (TextTemplateDesign)this;
     }
 

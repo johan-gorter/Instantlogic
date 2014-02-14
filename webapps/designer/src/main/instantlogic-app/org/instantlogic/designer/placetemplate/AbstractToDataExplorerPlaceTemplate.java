@@ -7,7 +7,7 @@ public abstract class AbstractToDataExplorerPlaceTemplate extends org.instantlog
 
 	@Override
 	public String getId() {
-		return "QOpEglqdsedteirA_a44dc9ed_4ecc";
+		return "PlaceTemplateDesign_ToDataExplorer";
 	}
 	
 	

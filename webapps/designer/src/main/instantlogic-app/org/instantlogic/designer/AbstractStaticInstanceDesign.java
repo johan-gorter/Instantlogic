@@ -78,19 +78,24 @@ public abstract class AbstractStaticInstanceDesign extends Design {
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, EntityDesign> entity
-		= createReverseRelationValue(org.instantlogic.designer.entity.StaticInstanceDesignEntity.entity);
+	private final org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> valueOfStaticInstances
+		= createReverseRelationValues(org.instantlogic.designer.entity.StaticInstanceDesignEntity.valueOfStaticInstances);
 
-	public org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, EntityDesign> getEntityRelationValue() {
-		return entity;
+	public org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> getValueOfStaticInstancesRelationValue() {
+		return valueOfStaticInstances;
 	}
 
-	public org.instantlogic.designer.EntityDesign getEntity() {
-		return entity.getValue();
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign> getValueOfStaticInstances() {
+		return valueOfStaticInstances.getValue();
 	}
 
-    public StaticInstanceDesign setEntity(org.instantlogic.designer.EntityDesign newValue) {
-        entity.setValue(newValue);
+    public StaticInstanceDesign addToValueOfStaticInstances(StaticInstanceValueDesign item) {
+        valueOfStaticInstances.addValue(item);
+        return (StaticInstanceDesign)this;
+    }
+
+    public StaticInstanceDesign removeFromValueOfStaticInstances(StaticInstanceValueDesign item) {
+        valueOfStaticInstances.removeValue(item);
         return (StaticInstanceDesign)this;
     }
 
@@ -117,24 +122,19 @@ public abstract class AbstractStaticInstanceDesign extends Design {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> valueOfStaticInstances
-		= createReverseRelationValues(org.instantlogic.designer.entity.StaticInstanceDesignEntity.valueOfStaticInstances);
+	private final org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, EntityDesign> entity
+		= createReverseRelationValue(org.instantlogic.designer.entity.StaticInstanceDesignEntity.entity);
 
-	public org.instantlogic.fabric.value.RelationValues<StaticInstanceDesign, StaticInstanceValueDesign> getValueOfStaticInstancesRelationValue() {
-		return valueOfStaticInstances;
+	public org.instantlogic.fabric.value.RelationValue<StaticInstanceDesign, EntityDesign> getEntityRelationValue() {
+		return entity;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign> getValueOfStaticInstances() {
-		return valueOfStaticInstances.getValue();
+	public org.instantlogic.designer.EntityDesign getEntity() {
+		return entity.getValue();
 	}
 
-    public StaticInstanceDesign addToValueOfStaticInstances(StaticInstanceValueDesign item) {
-        valueOfStaticInstances.addValue(item);
-        return (StaticInstanceDesign)this;
-    }
-
-    public StaticInstanceDesign removeFromValueOfStaticInstances(StaticInstanceValueDesign item) {
-        valueOfStaticInstances.removeValue(item);
+    public StaticInstanceDesign setEntity(org.instantlogic.designer.EntityDesign newValue) {
+        entity.setValue(newValue);
         return (StaticInstanceDesign)this;
     }
 

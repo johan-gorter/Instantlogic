@@ -7,7 +7,7 @@ public abstract class AbstractNewAttributeForFragmentTemplatePlaceTemplate exten
 
 	@Override
 	public String getId() {
-		return "Rm_hIIlrkqabynde_d78afa6e_d33b";
+		return "PlaceTemplateDesign_NewAttributeForFragmentTemplate";
 	}
 	
 	

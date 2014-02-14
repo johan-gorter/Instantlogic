@@ -24,7 +24,7 @@ public class DataCategoryDesignEntity extends org.instantlogic.fabric.model.Enti
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataCategoryOnDataTypeDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"HlxAieAgiybdIgyr_afb6f13f_b418", "dataCategoryOnDataTypeDesign", INSTANCE, "dataCategoryOnDataTypeDesign", org.instantlogic.designer.DataCategoryDesign.class);
+				"RelationDesign_dataCategory", "dataCategoryOnDataTypeDesign", INSTANCE, "dataCategoryOnDataTypeDesign", org.instantlogic.designer.DataCategoryDesign.class);
 		dataCategoryOnDataTypeDesign = $dataCategoryOnDataTypeDesign;
 		
 		// Phase 2
@@ -48,7 +48,7 @@ public class DataCategoryDesignEntity extends org.instantlogic.fabric.model.Enti
 	
 	@Override
 	public String getUniqueId() {
-		return "LudtEqcewefnccdu_e01c62e8_2c13";
+		return "EntityDesign_DataCategoryDesign";
 	}
 	
 	@Override

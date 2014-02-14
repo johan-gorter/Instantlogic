@@ -7,7 +7,7 @@ public abstract class AbstractRemoveFragmentTemplatePlaceTemplate extends org.in
 
 	@Override
 	public String getId() {
-		return "NrUqpnIchackqbat_4b4634a8_0166";
+		return "PlaceTemplateDesign_RemoveFragmentTemplate";
 	}
 	
 	

@@ -23,21 +23,21 @@ public abstract class AbstractDesignerApplication extends org.instantlogic.inter
 
 	
 	private static final org.instantlogic.interaction.flow.PlaceTemplate[] PLACE_TEMPLATES = new org.instantlogic.interaction.flow.PlaceTemplate[]{
-		org.instantlogic.designer.placetemplate.WelcomePlaceTemplate.INSTANCE,
-		org.instantlogic.designer.placetemplate.RemoveAttributePlaceTemplate.INSTANCE,
-		org.instantlogic.designer.placetemplate.OpenEditorPlaceTemplate.INSTANCE,
-		org.instantlogic.designer.placetemplate.AddEntityPlaceTemplate.INSTANCE,
 		org.instantlogic.designer.placetemplate.AddAttributePlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.AddEntityPlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.AttributeDetailsPlaceTemplate.INSTANCE,
 		org.instantlogic.designer.placetemplate.CloseEditorPlaceTemplate.INSTANCE,
-		org.instantlogic.designer.placetemplate.RemoveFragmentTemplatePlaceTemplate.INSTANCE,
-		org.instantlogic.designer.placetemplate.PlaceTemplateDetailsPlaceTemplate.INSTANCE,
-		org.instantlogic.designer.placetemplate.ToDataExplorerPlaceTemplate.INSTANCE,
 		org.instantlogic.designer.placetemplate.DeductionSchemePlaceTemplate.INSTANCE,
-		org.instantlogic.designer.placetemplate.NewAttributeForFragmentTemplatePlaceTemplate.INSTANCE,
 		org.instantlogic.designer.placetemplate.DeleteEntityPlaceTemplate.INSTANCE,
 		org.instantlogic.designer.placetemplate.EntityDetailsPlaceTemplate.INSTANCE,
-		org.instantlogic.designer.placetemplate.AttributeDetailsPlaceTemplate.INSTANCE,
 		org.instantlogic.designer.placetemplate.InsertFragmentTemplateBelowPlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.NewAttributeForFragmentTemplatePlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.OpenEditorPlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.PlaceTemplateDetailsPlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.RemoveAttributePlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.RemoveFragmentTemplatePlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.ToDataExplorerPlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.WelcomePlaceTemplate.INSTANCE,
 	};
 	
 	@Override

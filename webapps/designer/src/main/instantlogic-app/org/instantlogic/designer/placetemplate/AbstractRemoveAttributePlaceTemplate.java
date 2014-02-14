@@ -7,7 +7,7 @@ public abstract class AbstractRemoveAttributePlaceTemplate extends org.instantlo
 
 	@Override
 	public String getId() {
-		return "AzzvOUtdhybpqarn_79bf310d_cb02";
+		return "PlaceTemplateDesign_RemoveAttribute";
 	}
 	
 	

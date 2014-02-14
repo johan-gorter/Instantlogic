@@ -20,11 +20,11 @@ public class EventDesignEntity extends org.instantlogic.fabric.model.Entity<org.
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> parameters;
 	
 	// Reverse relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> startEventOnApplicationDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> eventOnFragmentTemplateDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign> eventOnFlowEdgeDesign;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> loggedInEventOnApplicationDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> application;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> loggedInEventOnApplicationDesign;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> startEventOnApplicationDesign;
 
 	static {
 		// Phase 1
@@ -32,29 +32,29 @@ public class EventDesignEntity extends org.instantlogic.fabric.model.Entity<org.
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> $parameters
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
-				"GvflEnapkIflyawo_e12a08d5_7314", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractEventDesign.class);
+				"RelationDesign_parameters_1", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractEventDesign.class);
 		parameters = $parameters;
 		// Reverse relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $startEventOnApplicationDesign
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"JbenElef_yfyihIl_39835988_8137", "startEventOnApplicationDesign", INSTANCE, "startEventOnApplicationDesign", org.instantlogic.designer.AbstractEventDesign.class);
-		startEventOnApplicationDesign = $startEventOnApplicationDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $eventOnFragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign>(
-				"JfudmgkjUIafk_bv_07444757_3706", "eventOnFragmentTemplateDesign", INSTANCE, "eventOnFragmentTemplateDesign", org.instantlogic.designer.AbstractEventDesign.class);
+				"RelationDesign_event", "eventOnFragmentTemplateDesign", INSTANCE, "eventOnFragmentTemplateDesign", org.instantlogic.designer.AbstractEventDesign.class);
 		eventOnFragmentTemplateDesign = $eventOnFragmentTemplateDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign> $eventOnFlowEdgeDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign>(
-				"TzoUgEvleIglemrA_c58e8ad6_3404", "eventOnFlowEdgeDesign", INSTANCE, "eventOnFlowEdgeDesign", org.instantlogic.designer.AbstractEventDesign.class);
+				"RelationDesign_event_1", "eventOnFlowEdgeDesign", INSTANCE, "eventOnFlowEdgeDesign", org.instantlogic.designer.AbstractEventDesign.class);
 		eventOnFlowEdgeDesign = $eventOnFlowEdgeDesign;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $loggedInEventOnApplicationDesign
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"__AyOglzkmbyenf_f731a527_700e", "loggedInEventOnApplicationDesign", INSTANCE, "loggedInEventOnApplicationDesign", org.instantlogic.designer.AbstractEventDesign.class);
-		loggedInEventOnApplicationDesign = $loggedInEventOnApplicationDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"_jcnfudwIm_tmcIn_f419d0d6_1374", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEventDesign.class);
+				"RelationDesign_events", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEventDesign.class);
 		application = $application;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $loggedInEventOnApplicationDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
+				"RelationDesign_loggedInEvent", "loggedInEventOnApplicationDesign", INSTANCE, "loggedInEventOnApplicationDesign", org.instantlogic.designer.AbstractEventDesign.class);
+		loggedInEventOnApplicationDesign = $loggedInEventOnApplicationDesign;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $startEventOnApplicationDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
+				"RelationDesign_startEvent", "startEventOnApplicationDesign", INSTANCE, "startEventOnApplicationDesign", org.instantlogic.designer.AbstractEventDesign.class);
+		startEventOnApplicationDesign = $startEventOnApplicationDesign;
 		
 		// Phase 2
 
@@ -63,10 +63,6 @@ public class EventDesignEntity extends org.instantlogic.fabric.model.Entity<org.
 		$parameters.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.parametersOnEventDesign);
 		$parameters.multivalue = true;
 
-		$startEventOnApplicationDesign.reverse = true;
-		$startEventOnApplicationDesign.valueClass = org.instantlogic.designer.ApplicationDesign.class;
-		$startEventOnApplicationDesign.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
-		$startEventOnApplicationDesign.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.startEvent);
 		$eventOnFragmentTemplateDesign.reverse = true;
 		$eventOnFragmentTemplateDesign.valueClass = org.instantlogic.designer.FragmentTemplateDesign.class;
 		$eventOnFragmentTemplateDesign.to = org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE;
@@ -77,14 +73,18 @@ public class EventDesignEntity extends org.instantlogic.fabric.model.Entity<org.
 		$eventOnFlowEdgeDesign.to = org.instantlogic.designer.entity.FlowEdgeDesignEntity.INSTANCE;
 		$eventOnFlowEdgeDesign.setReverseRelation(org.instantlogic.designer.entity.FlowEdgeDesignEntity.event);
 		$eventOnFlowEdgeDesign.multivalue = true;
-		$loggedInEventOnApplicationDesign.reverse = true;
-		$loggedInEventOnApplicationDesign.valueClass = org.instantlogic.designer.ApplicationDesign.class;
-		$loggedInEventOnApplicationDesign.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
-		$loggedInEventOnApplicationDesign.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.loggedInEvent);
 		$application.reverse = true;
 		$application.valueClass = org.instantlogic.designer.ApplicationDesign.class;
 		$application.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
 		$application.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.events);
+		$loggedInEventOnApplicationDesign.reverse = true;
+		$loggedInEventOnApplicationDesign.valueClass = org.instantlogic.designer.ApplicationDesign.class;
+		$loggedInEventOnApplicationDesign.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
+		$loggedInEventOnApplicationDesign.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.loggedInEvent);
+		$startEventOnApplicationDesign.reverse = true;
+		$startEventOnApplicationDesign.valueClass = org.instantlogic.designer.ApplicationDesign.class;
+		$startEventOnApplicationDesign.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
+		$startEventOnApplicationDesign.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.startEvent);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class EventDesignEntity extends org.instantlogic.fabric.model.Entity<org.
 	
 	@Override
 	public String getUniqueId() {
-		return "Qm_oEelEpueiiewg_441de02a_a8a0";
+		return "EntityDesign_EventDesign";
 	}
 	
 	@Override
@@ -113,11 +113,11 @@ public class EventDesignEntity extends org.instantlogic.fabric.model.Entity<org.
 		parameters,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		startEventOnApplicationDesign,
 		eventOnFragmentTemplateDesign,
 		eventOnFlowEdgeDesign,
-		loggedInEventOnApplicationDesign,
 		application,
+		loggedInEventOnApplicationDesign,
+		startEventOnApplicationDesign,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

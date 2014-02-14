@@ -15,22 +15,22 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
-		    d0.setValue(false);
+		    d0.setValue("primary");
 		return d0;
 	}
 
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction1() {
 		  	org.instantlogic.fabric.deduction.ConstantDeduction d0 = new org.instantlogic.fabric.deduction.ConstantDeduction();
-		    d0.setValue("primary");
+		    d0.setValue(false);
 		return d0;
 	}
 
 
 	
 	// Attributes
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean> multivalue; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.String, java.lang.String> diagramPosition; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean> multivalue; 
 	
 	// Relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> dataType;
@@ -42,34 +42,34 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 	static {
 		// Phase 1
 		// Attributes
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean> $multivalue
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean>(
-				"Ndouqc_zui_hqkfv_4da9edb9_ed9a", "multivalue", INSTANCE, java.lang.Boolean.class, "multivalue", org.instantlogic.designer.DeductionOperationInputDesign.class);
-		multivalue = $multivalue;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.String, java.lang.String> $diagramPosition
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.String, java.lang.String>(
-				"uykzypltcuatqiOl_70c815e6_88f8", "diagramPosition", INSTANCE, java.lang.String.class, "diagramPosition", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"AttributeDesign_diagramPosition_1", "diagramPosition", INSTANCE, java.lang.String.class, "diagramPosition", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		diagramPosition = $diagramPosition;
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean> $multivalue
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionOperationInputDesign, java.lang.Boolean, java.lang.Boolean>(
+				"AttributeDesign_multivalue_1", "multivalue", INSTANCE, java.lang.Boolean.class, "multivalue", org.instantlogic.designer.DeductionOperationInputDesign.class);
+		multivalue = $multivalue;
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"Sbz_uhIiAmcyuaou_5ab7f140_072f", "dataType", INSTANCE, "dataType", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"RelationDesign_dataType_3", "dataType", INSTANCE, "dataType", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		dataType = $dataType;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
-				"AkyAxExAjqcnUjoA_ad16f82b_688a", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"RelationDesign_inputs", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		operation = $operation;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $operationInputOnDeductionInputDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
-				"udyim_mtiiczUfow_72eba5f5_aa7b", "operationInputOnDeductionInputDesign", INSTANCE, "operationInputOnDeductionInputDesign", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"RelationDesign_operationInput", "operationInputOnDeductionInputDesign", INSTANCE, "operationInputOnDeductionInputDesign", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		operationInputOnDeductionInputDesign = $operationInputOnDeductionInputDesign;
 		
 		// Phase 2
-		$multivalue.dataType.put("category", "boolean");
-		$multivalue._default = createDeduction0();
 		$diagramPosition.dataType.put("category", "text");
-		$diagramPosition._default = createDeduction1();
+		$diagramPosition._default = createDeduction0();
+		$multivalue.dataType.put("category", "boolean");
+		$multivalue._default = createDeduction1();
 
 		$dataType.valueClass = org.instantlogic.designer.DataTypeDesign.class;
 		$dataType.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
@@ -98,7 +98,7 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 	
 	@Override
 	public String getUniqueId() {
-		return "iEsAfy_EaibzkcEm_80d4ec53_74fb";
+		return "EntityDesign_DeductionOperationInputDesign";
 	}
 	
 	@Override
@@ -107,8 +107,8 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
-		multivalue,
 		diagramPosition,
+		multivalue,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		dataType,

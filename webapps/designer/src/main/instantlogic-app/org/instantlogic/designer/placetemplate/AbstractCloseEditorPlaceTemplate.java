@@ -7,7 +7,7 @@ public abstract class AbstractCloseEditorPlaceTemplate extends org.instantlogic.
 
 	@Override
 	public String getId() {
-		return "GtAksIEagi_sskzz_66b9bde6_5bb9";
+		return "PlaceTemplateDesign_CloseEditor";
 	}
 	
 	

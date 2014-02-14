@@ -7,7 +7,7 @@ public abstract class AbstractAddAttributePlaceTemplate extends org.instantlogic
 
 	@Override
 	public String getId() {
-		return "FpzUsfyyqmcdsbAz_3257fd06_3294";
+		return "PlaceTemplateDesign_AddAttribute";
 	}
 	
 	
