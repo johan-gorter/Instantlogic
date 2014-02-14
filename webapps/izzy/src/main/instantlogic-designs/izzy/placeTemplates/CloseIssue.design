@@ -1,6 +1,6 @@
 PlaceTemplateDesign_closeIssue: PlaceTemplateDesign_closeIssue:PlaceTemplateDesign{
-PlaceTemplateDesign_closeIssue:  name="close issue"
 PlaceTemplateDesign_closeIssue:  isCustomized=true
+PlaceTemplateDesign_closeIssue:  name="close issue"
 PlaceTemplateDesign_closeIssue:  parameters+PlaceParameterDesign_issue:PlaceParameterDesign{
 PlaceParameterDesign_issue:       name="issue"
 PlaceParameterDesign_issue:       entity="EntityDesign_issue"

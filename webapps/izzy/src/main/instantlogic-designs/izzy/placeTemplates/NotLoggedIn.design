@@ -1,50 +1,45 @@
 laceTemplateDesign_notLoggedIn: PlaceTemplateDesign_notLoggedIn:PlaceTemplateDesign{
 laceTemplateDesign_notLoggedIn:  name="not logged in"
 laceTemplateDesign_notLoggedIn:  content=FragmentTemplateDesign_31:FragmentTemplateDesign{
-FragmentTemplateDesign_31:        type="FragmentTypeDesign_Page"
-FragmentTemplateDesign_31:        type="FragmentTypeDesign_Page"
 FragmentTemplateDesign_31:        properties+PropertyDesign_29:PropertyDesign{
 PropertyDesign_29:                 propertyName="mainContent"
 PropertyDesign_29:                 children+FragmentTemplateDesign_32:FragmentTemplateDesign{
-FragmentTemplateDesign_32:          type="FragmentTypeDesign_Paragraph"
-FragmentTemplateDesign_32:          type="FragmentTypeDesign_Paragraph"
 FragmentTemplateDesign_32:          properties+PropertyDesign_30:PropertyDesign{
 PropertyDesign_30:                   propertyName="text"
-PropertyDesign_30:                   text=TextTemplateDesign_20:TextTemplateDesign{
-TextTemplateDesign_20:                untranslated+StringTemplateDesign_31:StringTemplateDesign{
-StringTemplateDesign_31:               constantText="In order to access your dashboard, you need to log in."
-TextTemplateDesign_20:                }StringTemplateDesign_31
-PropertyDesign_30:                   }TextTemplateDesign_20
+PropertyDesign_30:                   text=TextTemplateDesign_28:TextTemplateDesign{
+TextTemplateDesign_28:                untranslated+StringTemplateDesign_39:StringTemplateDesign{
+StringTemplateDesign_39:               constantText="In order to access your dashboard, you need to log in."
+TextTemplateDesign_28:                }StringTemplateDesign_39
+PropertyDesign_30:                   }TextTemplateDesign_28
 FragmentTemplateDesign_32:          }PropertyDesign_30
+FragmentTemplateDesign_32:          type="FragmentTypeDesign_Paragraph"
 PropertyDesign_29:                 }FragmentTemplateDesign_32
 PropertyDesign_29:                 children+FragmentTemplateDesign_33:FragmentTemplateDesign{
-FragmentTemplateDesign_33:          type="FragmentTypeDesign_Paragraph"
-FragmentTemplateDesign_33:          type="FragmentTypeDesign_Paragraph"
 FragmentTemplateDesign_33:          properties+PropertyDesign_31:PropertyDesign{
 PropertyDesign_31:                   propertyName="text"
-PropertyDesign_31:                   text=TextTemplateDesign_21:TextTemplateDesign{
-TextTemplateDesign_21:                untranslated+StringTemplateDesign_32:StringTemplateDesign{
-StringTemplateDesign_32:               constantText="In order to see your avatar picture, you can supply an e-mail address registered with Gravatar."
-TextTemplateDesign_21:                }StringTemplateDesign_32
-PropertyDesign_31:                   }TextTemplateDesign_21
+PropertyDesign_31:                   text=TextTemplateDesign_29:TextTemplateDesign{
+TextTemplateDesign_29:                untranslated+StringTemplateDesign_40:StringTemplateDesign{
+StringTemplateDesign_40:               constantText="In order to see your avatar picture, you can supply an e-mail address registered with Gravatar."
+TextTemplateDesign_29:                }StringTemplateDesign_40
+PropertyDesign_31:                   }TextTemplateDesign_29
 FragmentTemplateDesign_33:          }PropertyDesign_31
+FragmentTemplateDesign_33:          type="FragmentTypeDesign_Paragraph"
 PropertyDesign_29:                 }FragmentTemplateDesign_33
 PropertyDesign_29:                 children+FragmentTemplateDesign_34:FragmentTemplateDesign{
 FragmentTemplateDesign_34:          type="FragmentTypeDesign_Login"
-FragmentTemplateDesign_34:          type="FragmentTypeDesign_Login"
 PropertyDesign_29:                 }FragmentTemplateDesign_34
 PropertyDesign_29:                 children+FragmentTemplateDesign_35:FragmentTemplateDesign{
-FragmentTemplateDesign_35:          type="FragmentTypeDesign_Paragraph"
-FragmentTemplateDesign_35:          type="FragmentTypeDesign_Paragraph"
 FragmentTemplateDesign_35:          properties+PropertyDesign_32:PropertyDesign{
 PropertyDesign_32:                   propertyName="text"
-PropertyDesign_32:                   text=TextTemplateDesign_22:TextTemplateDesign{
-TextTemplateDesign_22:                untranslated+StringTemplateDesign_33:StringTemplateDesign{
-StringTemplateDesign_33:               constantText="Note: There is no security."
-TextTemplateDesign_22:                }StringTemplateDesign_33
-PropertyDesign_32:                   }TextTemplateDesign_22
+PropertyDesign_32:                   text=TextTemplateDesign_30:TextTemplateDesign{
+TextTemplateDesign_30:                untranslated+StringTemplateDesign_41:StringTemplateDesign{
+StringTemplateDesign_41:               constantText="Note: There is no security."
+TextTemplateDesign_30:                }StringTemplateDesign_41
+PropertyDesign_32:                   }TextTemplateDesign_30
 FragmentTemplateDesign_35:          }PropertyDesign_32
+FragmentTemplateDesign_35:          type="FragmentTypeDesign_Paragraph"
 PropertyDesign_29:                 }FragmentTemplateDesign_35
 FragmentTemplateDesign_31:        }PropertyDesign_29
+FragmentTemplateDesign_31:        type="FragmentTypeDesign_Page"
 laceTemplateDesign_notLoggedIn:  }FragmentTemplateDesign_31
 laceTemplateDesign_notLoggedIn: }PlaceTemplateDesign_notLoggedIn

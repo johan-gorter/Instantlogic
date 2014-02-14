@@ -1,6 +1,6 @@
-ScIfIb_fbadEkoIh_e27989e8_5734: ScIfIb_fbadEkoIh_e27989e8_5734:EntityDesign{
-ScIfIb_fbadEkoIh_e27989e8_5734:  name="FragmentTemplateTextDesign"
-Ftkkadkc_ue_yoof_6ccd5515_8729:  extendsFrom="EntityDesign_PropertyDesign"
-ScIfIb_fbadEkoIh_e27989e8_5734:  dataType=SOOIdjcyqm_Eqd_n_70daa67c_f980:DataTypeDesign{
-ScIfIb_fbadEkoIh_e27989e8_5734:  }SOOIdjcyqm_Eqd_n_70daa67c_f980
-ScIfIb_fbadEkoIh_e27989e8_5734: }ScIfIb_fbadEkoIh_e27989e8_5734
+ign_FragmentTemplateTextDesign: EntityDesign_FragmentTemplateTextDesign:EntityDesign{
+ign_FragmentTemplateTextDesign:  name="FragmentTemplateTextDesign"
+ign_FragmentTemplateTextDesign:  dataType=DataTypeDesign_174:DataTypeDesign{
+ign_FragmentTemplateTextDesign:  }DataTypeDesign_174
+ign_FragmentTemplateTextDesign:  extendsFrom="EntityDesign_PropertyDesign"
+ign_FragmentTemplateTextDesign: }EntityDesign_FragmentTemplateTextDesign

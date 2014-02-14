@@ -1,6 +1,6 @@
 aceTemplateDesign_resolveIssue: PlaceTemplateDesign_resolveIssue:PlaceTemplateDesign{
-aceTemplateDesign_resolveIssue:  name="resolve issue"
 aceTemplateDesign_resolveIssue:  isCustomized=true
+aceTemplateDesign_resolveIssue:  name="resolve issue"
 aceTemplateDesign_resolveIssue:  parameters+PlaceParameterDesign_issue_3:PlaceParameterDesign{
 PlaceParameterDesign_issue_3:     name="issue"
 PlaceParameterDesign_issue_3:     entity="EntityDesign_issue"

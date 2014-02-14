@@ -1,6 +1,6 @@
 laceTemplateDesign_deleteIssue: PlaceTemplateDesign_deleteIssue:PlaceTemplateDesign{
-laceTemplateDesign_deleteIssue:  name="delete issue"
 laceTemplateDesign_deleteIssue:  isCustomized=true
+laceTemplateDesign_deleteIssue:  name="delete issue"
 laceTemplateDesign_deleteIssue:  parameters+PlaceParameterDesign_issue_1:PlaceParameterDesign{
 PlaceParameterDesign_issue_1:     name="issue"
 PlaceParameterDesign_issue_1:     entity="EntityDesign_issue"

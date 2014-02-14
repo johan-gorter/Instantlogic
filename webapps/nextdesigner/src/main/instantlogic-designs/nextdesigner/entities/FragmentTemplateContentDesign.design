@@ -1,6 +1,6 @@
-VovUwpOthmgjuobI_9f4f7787_72d2: VovUwpOthmgjuobI_9f4f7787_72d2:EntityDesign{
-VovUwpOthmgjuobI_9f4f7787_72d2:  name="FragmentTemplateContentDesign"
-Ftkkadkc_ue_yoof_6ccd5515_8729:  extendsFrom="EntityDesign_PropertyDesign"
-VovUwpOthmgjuobI_9f4f7787_72d2:  dataType=_yhxfpfuribtcczm_efbf3cf4_c3be:DataTypeDesign{
-VovUwpOthmgjuobI_9f4f7787_72d2:  }_yhxfpfuribtcczm_efbf3cf4_c3be
-VovUwpOthmgjuobI_9f4f7787_72d2: }VovUwpOthmgjuobI_9f4f7787_72d2
+_FragmentTemplateContentDesign: EntityDesign_FragmentTemplateContentDesign:EntityDesign{
+_FragmentTemplateContentDesign:  name="FragmentTemplateContentDesign"
+_FragmentTemplateContentDesign:  dataType=DataTypeDesign_175:DataTypeDesign{
+_FragmentTemplateContentDesign:  }DataTypeDesign_175
+_FragmentTemplateContentDesign:  extendsFrom="EntityDesign_PropertyDesign"
+_FragmentTemplateContentDesign: }EntityDesign_FragmentTemplateContentDesign

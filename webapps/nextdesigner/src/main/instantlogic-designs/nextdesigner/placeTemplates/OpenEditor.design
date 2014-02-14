@@ -1,8 +1,8 @@
 PlaceTemplateDesign_OpenEditor: PlaceTemplateDesign_OpenEditor:PlaceTemplateDesign{
-PlaceTemplateDesign_OpenEditor:  name="OpenEditor"
 PlaceTemplateDesign_OpenEditor:  isCustomized=true
-PlaceTemplateDesign_OpenEditor:  parameters+PlaceParameterDesign_element:PlaceParameterDesign{
-PlaceParameterDesign_element:     name="element"
-PlaceParameterDesign_element:     entity="EntityDesign_ElementDesign"
-PlaceTemplateDesign_OpenEditor:  }PlaceParameterDesign_element
+PlaceTemplateDesign_OpenEditor:  name="OpenEditor"
+PlaceTemplateDesign_OpenEditor:  parameters+PlaceParameterDesign_element_2:PlaceParameterDesign{
+PlaceParameterDesign_element_2:    name="element"
+PlaceParameterDesign_element_2:    entity="EntityDesign_ElementDesign"
+PlaceTemplateDesign_OpenEditor:  }PlaceParameterDesign_element_2
 PlaceTemplateDesign_OpenEditor: }PlaceTemplateDesign_OpenEditor

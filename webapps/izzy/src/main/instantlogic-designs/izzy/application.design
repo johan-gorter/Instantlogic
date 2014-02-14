@@ -1,9 +1,9 @@
 Application_izzy:              Application_izzy:ApplicationDesign{
 Application_izzy:               name="izzy"
+Application_izzy:               rootPackageName="org.instantlogic.example.izzy"
 Application_izzy:               sourcePath="../izzy/target/generated-sources/instantlogic-app"
 Application_izzy:               themeNames+"izzy"
 Application_izzy:               themeNames+"margin"
-Application_izzy:               rootPackageName="org.instantlogic.example.izzy"
 Application_izzy:               caseEntity="EntityDesign_project"
 Application_izzy:               loggedInPlace="PlaceTemplateDesign_selectDashboard"
 Application_izzy:               startPlace="PlaceTemplateDesign_selectDashboard"

@@ -1,6 +1,6 @@
 PlaceTemplateDesign_openIssue: PlaceTemplateDesign_openIssue:PlaceTemplateDesign{
-PlaceTemplateDesign_openIssue:  name="open issue"
 PlaceTemplateDesign_openIssue:  isCustomized=true
+PlaceTemplateDesign_openIssue:  name="open issue"
 PlaceTemplateDesign_openIssue:  parameters+PlaceParameterDesign_issue_2:PlaceParameterDesign{
 PlaceParameterDesign_issue_2:     name="issue"
 PlaceParameterDesign_issue_2:     entity="EntityDesign_issue"

@@ -51,6 +51,7 @@ public class IdUpdater {
 			        }
 			        operation.complete();
 			        operation.close();
+			        Migrator.applyMigrations(newApp);
 			        deleteFolder(file, true);
 			        new DesignerCasePersister().save(newApp, file, null);
 				}

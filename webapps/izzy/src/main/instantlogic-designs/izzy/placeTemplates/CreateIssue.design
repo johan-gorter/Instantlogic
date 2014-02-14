@@ -1,4 +1,4 @@
 laceTemplateDesign_createIssue: PlaceTemplateDesign_createIssue:PlaceTemplateDesign{
-laceTemplateDesign_createIssue:  name="create issue"
 laceTemplateDesign_createIssue:  isCustomized=true
+laceTemplateDesign_createIssue:  name="create issue"
 laceTemplateDesign_createIssue: }PlaceTemplateDesign_createIssue
