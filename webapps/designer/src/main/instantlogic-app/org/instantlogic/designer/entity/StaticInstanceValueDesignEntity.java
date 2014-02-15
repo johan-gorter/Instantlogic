@@ -25,7 +25,7 @@ public class StaticInstanceValueDesignEntity extends org.instantlogic.fabric.mod
 		// Attributes
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StaticInstanceValueDesign, java.lang.Object, java.lang.Object> $value
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.StaticInstanceValueDesign, java.lang.Object, java.lang.Object>(
-				"AttributeDesign_value", "value", INSTANCE, java.lang.Object.class, "value", org.instantlogic.designer.StaticInstanceValueDesign.class);
+				"AttributeDesign_value_1", "value", INSTANCE, java.lang.Object.class, "value", org.instantlogic.designer.StaticInstanceValueDesign.class);
 		value = $value;
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceValueDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> $attribute
@@ -39,7 +39,7 @@ public class StaticInstanceValueDesignEntity extends org.instantlogic.fabric.mod
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceValueDesign, org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.StaticInstanceDesign> $valuesOnStaticInstanceDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceValueDesign, org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.StaticInstanceDesign>(
-				"RelationDesign_values", "valuesOnStaticInstanceDesign", INSTANCE, "valuesOnStaticInstanceDesign", org.instantlogic.designer.StaticInstanceValueDesign.class);
+				"RelationDesign_values_1", "valuesOnStaticInstanceDesign", INSTANCE, "valuesOnStaticInstanceDesign", org.instantlogic.designer.StaticInstanceValueDesign.class);
 		valuesOnStaticInstanceDesign = $valuesOnStaticInstanceDesign;
 		
 		// Phase 2

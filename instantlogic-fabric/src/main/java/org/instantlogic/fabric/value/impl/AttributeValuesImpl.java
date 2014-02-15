@@ -1,5 +1,6 @@
 package org.instantlogic.fabric.value.impl;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.TreeSet;
 
@@ -46,6 +47,23 @@ public class AttributeValuesImpl<I extends Instance, Item extends Object>
 			operation.complete();
 		} finally {
 			operation.close();
+		}
+	}
+	
+	public void clear() {
+		if (storedValues!=null) {
+			Operation operation = startOperation();
+			try {
+				Iterator<Item> iterator = storedValues.iterator();
+				while (iterator.hasNext()) {
+					Item item = iterator.next();
+					iterator.remove();
+					fireChange(ValueChangeEvent.MultiValueUpdateType.DELETE, item, operation);
+				}
+				operation.complete();
+			} finally {
+				operation.close();
+			}
 		}
 	}
 	

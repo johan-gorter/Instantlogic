@@ -223,23 +223,6 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<DataTypeDesign, EntityDesign> forEntity
-		= createReverseRelationValue(org.instantlogic.designer.entity.DataTypeDesignEntity.forEntity);
-
-	public org.instantlogic.fabric.value.RelationValue<DataTypeDesign, EntityDesign> getForEntityRelationValue() {
-		return forEntity;
-	}
-
-	public org.instantlogic.designer.EntityDesign getForEntity() {
-		return forEntity.getValue();
-	}
-
-    public DataTypeDesign setForEntity(org.instantlogic.designer.EntityDesign newValue) {
-        forEntity.setValue(newValue);
-        return (DataTypeDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValues<DataTypeDesign, DeductionDesign> dataTypeOnDeductionDesign
 		= createReverseRelationValues(org.instantlogic.designer.entity.DataTypeDesignEntity.dataTypeOnDeductionDesign);
 
@@ -280,6 +263,23 @@ public class DataTypeDesign extends org.instantlogic.fabric.Instance {
 
     public DataTypeDesign removeFromDataTypeOnDeductionOperationInputDesign(DeductionOperationInputDesign item) {
         dataTypeOnDeductionOperationInputDesign.removeValue(item);
+        return (DataTypeDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<DataTypeDesign, EntityDesign> forEntity
+		= createReverseRelationValue(org.instantlogic.designer.entity.DataTypeDesignEntity.forEntity);
+
+	public org.instantlogic.fabric.value.RelationValue<DataTypeDesign, EntityDesign> getForEntityRelationValue() {
+		return forEntity;
+	}
+
+	public org.instantlogic.designer.EntityDesign getForEntity() {
+		return forEntity.getValue();
+	}
+
+    public DataTypeDesign setForEntity(org.instantlogic.designer.EntityDesign newValue) {
+        forEntity.setValue(newValue);
         return (DataTypeDesign)this;
     }
 

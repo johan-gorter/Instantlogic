@@ -55,28 +55,6 @@ public abstract class AbstractEventDesign extends Design {
 
 	// Reverse relations
 	
-	private final org.instantlogic.fabric.value.RelationValues<EventDesign, FragmentTemplateDesign> eventOnFragmentTemplateDesign
-		= createReverseRelationValues(org.instantlogic.designer.entity.EventDesignEntity.eventOnFragmentTemplateDesign);
-
-	public org.instantlogic.fabric.value.RelationValues<EventDesign, FragmentTemplateDesign> getEventOnFragmentTemplateDesignRelationValue() {
-		return eventOnFragmentTemplateDesign;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign> getEventOnFragmentTemplateDesign() {
-		return eventOnFragmentTemplateDesign.getValue();
-	}
-
-    public EventDesign addToEventOnFragmentTemplateDesign(FragmentTemplateDesign item) {
-        eventOnFragmentTemplateDesign.addValue(item);
-        return (EventDesign)this;
-    }
-
-    public EventDesign removeFromEventOnFragmentTemplateDesign(FragmentTemplateDesign item) {
-        eventOnFragmentTemplateDesign.removeValue(item);
-        return (EventDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValues<EventDesign, FlowEdgeDesign> eventOnFlowEdgeDesign
 		= createReverseRelationValues(org.instantlogic.designer.entity.EventDesignEntity.eventOnFlowEdgeDesign);
 
@@ -95,6 +73,28 @@ public abstract class AbstractEventDesign extends Design {
 
     public EventDesign removeFromEventOnFlowEdgeDesign(FlowEdgeDesign item) {
         eventOnFlowEdgeDesign.removeValue(item);
+        return (EventDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValues<EventDesign, FragmentTemplateDesign> eventOnFragmentTemplateDesign
+		= createReverseRelationValues(org.instantlogic.designer.entity.EventDesignEntity.eventOnFragmentTemplateDesign);
+
+	public org.instantlogic.fabric.value.RelationValues<EventDesign, FragmentTemplateDesign> getEventOnFragmentTemplateDesignRelationValue() {
+		return eventOnFragmentTemplateDesign;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign> getEventOnFragmentTemplateDesign() {
+		return eventOnFragmentTemplateDesign.getValue();
+	}
+
+    public EventDesign addToEventOnFragmentTemplateDesign(FragmentTemplateDesign item) {
+        eventOnFragmentTemplateDesign.addValue(item);
+        return (EventDesign)this;
+    }
+
+    public EventDesign removeFromEventOnFragmentTemplateDesign(FragmentTemplateDesign item) {
+        eventOnFragmentTemplateDesign.removeValue(item);
         return (EventDesign)this;
     }
 

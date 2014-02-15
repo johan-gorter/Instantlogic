@@ -115,7 +115,7 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 		relevance = $relevance;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $rule
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"RelationDesign_rule_1", "rule", INSTANCE, "rule", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"RelationDesign_rule", "rule", INSTANCE, "rule", org.instantlogic.designer.AbstractAttributeDesign.class);
 		rule = $rule;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $attributeOnFragmentTemplateDesign

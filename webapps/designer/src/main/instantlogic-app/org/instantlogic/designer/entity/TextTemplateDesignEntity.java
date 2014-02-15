@@ -21,8 +21,8 @@ public class TextTemplateDesignEntity extends org.instantlogic.fabric.model.Enti
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.ValidationDesign, org.instantlogic.designer.ValidationDesign> messageOfValidation;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> questionOnAttributeDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.PropertyDesign> textOnPropertyDesign;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> titleOfPlaceTemplate;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> titleOfEntity;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> titleOfPlaceTemplate;
 
 	static {
 		// Phase 1
@@ -53,14 +53,14 @@ public class TextTemplateDesignEntity extends org.instantlogic.fabric.model.Enti
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.PropertyDesign>(
 				"RelationDesign_text", "textOnPropertyDesign", INSTANCE, "textOnPropertyDesign", org.instantlogic.designer.TextTemplateDesign.class);
 		textOnPropertyDesign = $textOnPropertyDesign;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $titleOfPlaceTemplate
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
-				"RelationDesign_title", "titleOfPlaceTemplate", INSTANCE, "titleOfPlaceTemplate", org.instantlogic.designer.TextTemplateDesign.class);
-		titleOfPlaceTemplate = $titleOfPlaceTemplate;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $titleOfEntity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"RelationDesign_title_1", "titleOfEntity", INSTANCE, "titleOfEntity", org.instantlogic.designer.TextTemplateDesign.class);
+				"RelationDesign_title", "titleOfEntity", INSTANCE, "titleOfEntity", org.instantlogic.designer.TextTemplateDesign.class);
 		titleOfEntity = $titleOfEntity;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $titleOfPlaceTemplate
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
+				"RelationDesign_title_1", "titleOfPlaceTemplate", INSTANCE, "titleOfPlaceTemplate", org.instantlogic.designer.TextTemplateDesign.class);
+		titleOfPlaceTemplate = $titleOfPlaceTemplate;
 		
 		// Phase 2
 
@@ -91,14 +91,14 @@ public class TextTemplateDesignEntity extends org.instantlogic.fabric.model.Enti
 		$textOnPropertyDesign.valueClass = org.instantlogic.designer.PropertyDesign.class;
 		$textOnPropertyDesign.to = org.instantlogic.designer.entity.PropertyDesignEntity.INSTANCE;
 		$textOnPropertyDesign.setReverseRelation(org.instantlogic.designer.entity.PropertyDesignEntity.text);
-		$titleOfPlaceTemplate.reverse = true;
-		$titleOfPlaceTemplate.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
-		$titleOfPlaceTemplate.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
-		$titleOfPlaceTemplate.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.title);
 		$titleOfEntity.reverse = true;
 		$titleOfEntity.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$titleOfEntity.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
 		$titleOfEntity.setReverseRelation(org.instantlogic.designer.entity.EntityDesignEntity.title);
+		$titleOfPlaceTemplate.reverse = true;
+		$titleOfPlaceTemplate.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
+		$titleOfPlaceTemplate.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
+		$titleOfPlaceTemplate.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.title);
 	}
 
 	@Override
@@ -132,8 +132,8 @@ public class TextTemplateDesignEntity extends org.instantlogic.fabric.model.Enti
 		messageOfValidation,
 		questionOnAttributeDesign,
 		textOnPropertyDesign,
-		titleOfPlaceTemplate,
 		titleOfEntity,
+		titleOfPlaceTemplate,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};

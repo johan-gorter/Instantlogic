@@ -244,24 +244,19 @@ public abstract class AbstractEntityDesign extends Design {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, FragmentTemplateDesign> entityOnFragmentTemplateDesign
-		= createReverseRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.entityOnFragmentTemplateDesign);
+	private final org.instantlogic.fabric.value.RelationValue<EntityDesign, DataTypeDesign> entityOnDataTypeDesign
+		= createReverseRelationValue(org.instantlogic.designer.entity.EntityDesignEntity.entityOnDataTypeDesign);
 
-	public org.instantlogic.fabric.value.RelationValues<EntityDesign, FragmentTemplateDesign> getEntityOnFragmentTemplateDesignRelationValue() {
-		return entityOnFragmentTemplateDesign;
+	public org.instantlogic.fabric.value.RelationValue<EntityDesign, DataTypeDesign> getEntityOnDataTypeDesignRelationValue() {
+		return entityOnDataTypeDesign;
 	}
 
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign> getEntityOnFragmentTemplateDesign() {
-		return entityOnFragmentTemplateDesign.getValue();
+	public org.instantlogic.designer.DataTypeDesign getEntityOnDataTypeDesign() {
+		return entityOnDataTypeDesign.getValue();
 	}
 
-    public EntityDesign addToEntityOnFragmentTemplateDesign(FragmentTemplateDesign item) {
-        entityOnFragmentTemplateDesign.addValue(item);
-        return (EntityDesign)this;
-    }
-
-    public EntityDesign removeFromEntityOnFragmentTemplateDesign(FragmentTemplateDesign item) {
-        entityOnFragmentTemplateDesign.removeValue(item);
+    public EntityDesign setEntityOnDataTypeDesign(org.instantlogic.designer.DataTypeDesign newValue) {
+        entityOnDataTypeDesign.setValue(newValue);
         return (EntityDesign)this;
     }
 
@@ -288,6 +283,28 @@ public abstract class AbstractEntityDesign extends Design {
     }
 
 	
+	private final org.instantlogic.fabric.value.RelationValues<EntityDesign, FragmentTemplateDesign> entityOnFragmentTemplateDesign
+		= createReverseRelationValues(org.instantlogic.designer.entity.EntityDesignEntity.entityOnFragmentTemplateDesign);
+
+	public org.instantlogic.fabric.value.RelationValues<EntityDesign, FragmentTemplateDesign> getEntityOnFragmentTemplateDesignRelationValue() {
+		return entityOnFragmentTemplateDesign;
+	}
+
+	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign> getEntityOnFragmentTemplateDesign() {
+		return entityOnFragmentTemplateDesign.getValue();
+	}
+
+    public EntityDesign addToEntityOnFragmentTemplateDesign(FragmentTemplateDesign item) {
+        entityOnFragmentTemplateDesign.addValue(item);
+        return (EntityDesign)this;
+    }
+
+    public EntityDesign removeFromEntityOnFragmentTemplateDesign(FragmentTemplateDesign item) {
+        entityOnFragmentTemplateDesign.removeValue(item);
+        return (EntityDesign)this;
+    }
+
+	
 	private final org.instantlogic.fabric.value.RelationValue<EntityDesign, PlaceParameterDesign> placeParameter
 		= createReverseRelationValue(org.instantlogic.designer.entity.EntityDesignEntity.placeParameter);
 
@@ -301,23 +318,6 @@ public abstract class AbstractEntityDesign extends Design {
 
     public EntityDesign setPlaceParameter(org.instantlogic.designer.PlaceParameterDesign newValue) {
         placeParameter.setValue(newValue);
-        return (EntityDesign)this;
-    }
-
-	
-	private final org.instantlogic.fabric.value.RelationValue<EntityDesign, DataTypeDesign> entityOnDataTypeDesign
-		= createReverseRelationValue(org.instantlogic.designer.entity.EntityDesignEntity.entityOnDataTypeDesign);
-
-	public org.instantlogic.fabric.value.RelationValue<EntityDesign, DataTypeDesign> getEntityOnDataTypeDesignRelationValue() {
-		return entityOnDataTypeDesign;
-	}
-
-	public org.instantlogic.designer.DataTypeDesign getEntityOnDataTypeDesign() {
-		return entityOnDataTypeDesign.getValue();
-	}
-
-    public EntityDesign setEntityOnDataTypeDesign(org.instantlogic.designer.DataTypeDesign newValue) {
-        entityOnDataTypeDesign.setValue(newValue);
         return (EntityDesign)this;
     }
 

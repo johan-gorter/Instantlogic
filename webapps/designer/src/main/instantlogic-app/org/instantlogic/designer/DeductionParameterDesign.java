@@ -28,18 +28,6 @@ public class DeductionParameterDesign extends org.instantlogic.fabric.Instance {
 
 	// Attributes
 	
-	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<DeductionParameterDesign, java.lang.String> valueDescription
-		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.valueDescription);
-	
-	public java.lang.String getValueDescription() {
-		return valueDescription.getValue();
-	}
-
-	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<DeductionParameterDesign, java.lang.String> getValueDescriptionAttributeValue() {
-		return valueDescription;
-	}
-
-	
 	private final org.instantlogic.fabric.value.AttributeValue<DeductionParameterDesign, java.lang.Object> value
 		= createAttributeValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.value);
 	
@@ -56,6 +44,18 @@ public class DeductionParameterDesign extends org.instantlogic.fabric.Instance {
 		return (DeductionParameterDesign)this;
 	}
 	
+	
+	private final org.instantlogic.fabric.value.ReadOnlyAttributeValue<DeductionParameterDesign, java.lang.String> valueDescription
+		= createReadOnlyAttributeValue(org.instantlogic.designer.entity.DeductionParameterDesignEntity.valueDescription);
+	
+	public java.lang.String getValueDescription() {
+		return valueDescription.getValue();
+	}
+
+	public org.instantlogic.fabric.value.ReadOnlyAttributeValue<DeductionParameterDesign, java.lang.String> getValueDescriptionAttributeValue() {
+		return valueDescription;
+	}
+
 	
 	// Relations
 	

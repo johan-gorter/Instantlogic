@@ -176,23 +176,6 @@ public abstract class AbstractDeductionSchemeDesign extends org.instantlogic.fab
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, ValidationDesign> ruleForValidation
-		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.ruleForValidation);
-
-	public org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, ValidationDesign> getRuleForValidationRelationValue() {
-		return ruleForValidation;
-	}
-
-	public org.instantlogic.designer.ValidationDesign getRuleForValidation() {
-		return ruleForValidation.getValue();
-	}
-
-    public DeductionSchemeDesign setRuleForValidation(org.instantlogic.designer.ValidationDesign newValue) {
-        ruleForValidation.setValue(newValue);
-        return (DeductionSchemeDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, AttributeDesign> ruleOfAttribute
 		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.ruleOfAttribute);
 
@@ -206,6 +189,23 @@ public abstract class AbstractDeductionSchemeDesign extends org.instantlogic.fab
 
     public DeductionSchemeDesign setRuleOfAttribute(org.instantlogic.designer.AttributeDesign newValue) {
         ruleOfAttribute.setValue(newValue);
+        return (DeductionSchemeDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, ValidationDesign> ruleForValidation
+		= createReverseRelationValue(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.ruleForValidation);
+
+	public org.instantlogic.fabric.value.RelationValue<DeductionSchemeDesign, ValidationDesign> getRuleForValidationRelationValue() {
+		return ruleForValidation;
+	}
+
+	public org.instantlogic.designer.ValidationDesign getRuleForValidation() {
+		return ruleForValidation.getValue();
+	}
+
+    public DeductionSchemeDesign setRuleForValidation(org.instantlogic.designer.ValidationDesign newValue) {
+        ruleForValidation.setValue(newValue);
         return (DeductionSchemeDesign)this;
     }
 

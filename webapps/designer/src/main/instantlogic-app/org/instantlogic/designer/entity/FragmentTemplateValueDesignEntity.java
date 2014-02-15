@@ -28,7 +28,7 @@ public class FragmentTemplateValueDesignEntity extends org.instantlogic.fabric.m
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateValueDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $valuesOnFragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateValueDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
-				"OlwEoeynwm_mekEq_07f156e1_20ca", "valuesOnFragmentTemplateDesign", INSTANCE, "valuesOnFragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateValueDesign.class);
+				"RelationDesign_values", "valuesOnFragmentTemplateDesign", INSTANCE, "valuesOnFragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateValueDesign.class);
 		valuesOnFragmentTemplateDesign = $valuesOnFragmentTemplateDesign;
 		
 		// Phase 2
@@ -52,7 +52,7 @@ public class FragmentTemplateValueDesignEntity extends org.instantlogic.fabric.m
 	
 	@Override
 	public String getUniqueId() {
-		return "Ftkkadkc_ue_yoof_6ccd5515_8729";
+		return "EntityDesign_FragmentTemplateValueDesign";
 	}
 	
 	@Override

@@ -147,41 +147,41 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_73", "Block")      
+    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_69", "Block")      
         .setStyleNames(new String[]{"element"})        
         .addChild("content",
             new org.instantlogic.interaction.page.SelectionElement(createDeduction0(),
-                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_74", "Block")        
+                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_70", "Block")        
                         .addChild("content",
                             new org.instantlogic.interaction.page.IfElseElement(createDeduction1(),
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_75", "Block")        
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_71", "Block")        
                                         .addChild("content",
-                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_76", "Block")      
+                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_72", "Block")      
                                                 .setStyleNames(new String[]{"editor", "popover", "top"})        
                                                 .addChild("content",
-                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_77", "Block")      
+                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_73", "Block")      
                                                         .setStyleNames(new String[]{"arrow"})        
                                                 )        
                                                 .addChild("content",
-                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_78", "Input")      
+                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_74", "Input")      
                                                         .setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.type)        
                                                 )        
                                                 .addChild("content",
                                                     new org.instantlogic.interaction.page.IfElseElement(createDeduction2(),
-                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_79", "Block")        
+                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_75", "Block")        
                                                                 .addChild("content",
-                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_80", "Input")      
+                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_76", "Input")      
                                                                         .setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity)        
                                                                 )        
                                                                 .addChild("content",
                                                                     new org.instantlogic.interaction.page.IfElseElement(createDeduction3(),
-                                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_81", "Block")        
+                                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_77", "Block")        
                                                                                 .addChild("content",
-                                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_82", "Input")      
+                                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_78", "Input")      
                                                                                         .setField(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE, org.instantlogic.designer.entity.FragmentTemplateDesignEntity.attribute)        
                                                                                 )        
                                                                                 .addChild("content",
-                                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_83", "Button")      
+                                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_79", "Button")      
                                                                                         .setStyleNames(new String[]{"after-previous-field"})      
                                                                                         .setDestination(org.instantlogic.designer.placetemplate.NewAttributeForFragmentTemplatePlaceTemplate.INSTANCE)      
                                                                                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("New attribute").getTextTemplate())        
@@ -195,7 +195,7 @@ null
         
                                                 )        
                                                 .addChild("content",
-                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_84", "Button")      
+                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_80", "Button")      
                                                         .setDestination(org.instantlogic.designer.placetemplate.ToDataExplorerPlaceTemplate.INSTANCE)      
                                                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Data").getTextTemplate())        
                                                 )        
@@ -205,67 +205,67 @@ null
         
                         )        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_85", "Block")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_81", "Block")      
                                 .setStyleNames(new String[]{"collapsable-content"})        
                                 .addChild("content",
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_86", "Link")      
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_82", "Link")      
                                         .setStyleNames(new String[]{"collapse-button"})        
                                         .addChild("content",
-                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_87", "Icon")      
+                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_83", "Icon")      
                                                 .setStyleNames(new String[]{"glyphicon-chevron-down"})        
                                         )        
                                 )        
                                 .addChild("content",
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_88", "WorkInProgress")      
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_84", "WorkInProgress")      
                                         .putValue("previewMode", createDeduction6())        
                                         .addChild("content",
-                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_89", "WorkInProgress")      
+                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_85", "WorkInProgress")      
                                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction4()).getTextTemplate())        
                                         )        
                                         .addChild("content",
-                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_90", "Block")      
+                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_86", "Block")      
                                                 .setStyleNames(new String[]{"btn-group", "element-edit-options"})        
                                                 .addChild("content",
                                                     new org.instantlogic.interaction.page.IfElseElement(createDeduction5(),
-                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_91", "Button")      
+                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_89", "Button")      
                                                                 .setStyleNames(new String[]{"active", "btn-small"})      
                                                                 .setDestination(org.instantlogic.designer.placetemplate.CloseEditorPlaceTemplate.INSTANCE)        
                                                                 .addChild("content",
-                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_92", "Icon")      
+                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_90", "Icon")      
                                                                         .setStyleNames(new String[]{"glyphicon-pencil"})        
                                                                 ),
-                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_93", "Button")      
+                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_87", "Button")      
                                                                 .setStyleNames(new String[]{"btn-small"})      
                                                                 .setDestination(org.instantlogic.designer.placetemplate.OpenEditorPlaceTemplate.INSTANCE)        
                                                                 .addChild("content",
-                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_94", "Icon")      
+                                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_88", "Icon")      
                                                                         .setStyleNames(new String[]{"glyphicon-pencil"})        
                                                                 ))
         
                                                 )        
                                                 .addChild("content",
-                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_95", "Button")      
+                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_91", "Button")      
                                                         .setStyleNames(new String[]{"btn-small", "btn-success"})      
                                                         .setDestination(org.instantlogic.designer.placetemplate.InsertFragmentTemplateBelowPlaceTemplate.INSTANCE)        
                                                         .addChild("content",
-                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_96", "Icon")      
+                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_92", "Icon")      
                                                                 .setStyleNames(new String[]{"glyphicon-hand-down"})        
                                                         )        
                                                 )        
                                                 .addChild("content",
-                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_97", "Button")      
+                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_93", "Button")      
                                                         .setStyleNames(new String[]{"btn-danger", "btn-small"})      
                                                         .setDestination(org.instantlogic.designer.placetemplate.RemoveFragmentTemplatePlaceTemplate.INSTANCE)        
                                                         .addChild("content",
-                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_98", "Icon")      
+                                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_94", "Icon")      
                                                                 .setStyleNames(new String[]{"glyphicon-remove"})        
                                                         )        
                                                 )        
                                         )        
                                         .addChild("content",
-                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_99", "WorkInProgress")        
+                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_95", "WorkInProgress")        
                                                 .addChild("content",
-                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_100", "WorkInProgress")      
+                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_96", "WorkInProgress")      
                                                         .addCustomFilter(new org.instantlogic.designer.fragmentfilter.PreviewFragmentFilter())        
                                                 )        
                                         )        
@@ -273,7 +273,7 @@ null
                                 .addChild("content",
                                     new org.instantlogic.interaction.page.SelectionElement(createDeduction7(),
                                             new org.instantlogic.interaction.page.SelectionElement(createDeduction8(),
-                                                        new org.instantlogic.interaction.page.SharedElementHolder("SharedElementDesign_5", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
+                                                        new org.instantlogic.interaction.page.SharedElementHolder("SharedElementDesign_4", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
 )
 )
         
@@ -283,21 +283,21 @@ null
         )        
         .addChild("content",
             new org.instantlogic.interaction.page.SelectionElement(createDeduction9(),
-                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_101", "Block")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_97", "Block")      
                         .setStyleNames(new String[]{"collapsable-content"})        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_102", "Link")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_98", "Link")      
                                 .setStyleNames(new String[]{"collapse-button"})        
                                 .addChild("content",
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_103", "Icon")      
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_99", "Icon")      
                                         .setStyleNames(new String[]{"glyphicon-chevron-down"})        
                                 )        
                         )        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_104", "WorkInProgress")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_100", "WorkInProgress")      
                                 .putValue("previewMode", createDeduction10())        
                                 .addChild("content",
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_105", "WorkInProgress")      
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_101", "WorkInProgress")      
                                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("[IfElse]").getTextTemplate())        
                                 )        
                         ))
@@ -305,21 +305,21 @@ null
         )        
         .addChild("content",
             new org.instantlogic.interaction.page.SelectionElement(createDeduction11(),
-                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_106", "Block")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_102", "Block")      
                         .setStyleNames(new String[]{"collapsable-content"})        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_107", "Link")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_103", "Link")      
                                 .setStyleNames(new String[]{"collapse-button"})        
                                 .addChild("content",
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_108", "Icon")      
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_104", "Icon")      
                                         .setStyleNames(new String[]{"glyphicon-chevron-down"})        
                                 )        
                         )        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_109", "WorkInProgress")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_105", "WorkInProgress")      
                                 .putValue("previewMode", createDeduction12())        
                                 .addChild("content",
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_110", "WorkInProgress")      
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_106", "WorkInProgress")      
                                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("[Selection]").getTextTemplate())        
                                 )        
                         ))

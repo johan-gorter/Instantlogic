@@ -16,19 +16,19 @@ public class EntityContextPageFragment extends org.instantlogic.interaction.page
 
 	
 	public static final org.instantlogic.interaction.page.Element SHARED_INSTANCE = 
-    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_69", "Group")        
+    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_107", "Group")        
         .addChild("content",
-                new org.instantlogic.interaction.page.SharedElementHolder("SharedElementDesign_4", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
+                new org.instantlogic.interaction.page.SharedElementHolder("SharedElementDesign_5", org.instantlogic.designer.sharedpagefragment.ApplicationContextPageFragment.INSTANCE)
         
         )        
         .addChild("content",
-            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_70", "Link")      
+            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_108", "Link")      
                 .setDestination(org.instantlogic.designer.placetemplate.EntityDetailsPlaceTemplate.INSTANCE)        
                 .addChild("content",
-                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_71", "Block")      
+                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_109", "Block")      
                         .setStyleNames(new String[]{"inactive-card"})        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_72", "Heading3")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_110", "Heading3")      
                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).add(" (Entity)").getTextTemplate())        
                         )        
                 )        

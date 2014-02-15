@@ -34,7 +34,7 @@ public class DeductionInputDesignEntity extends org.instantlogic.fabric.model.En
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign> $deduction
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionInputDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign>(
-				"RelationDesign_inputs_2", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionInputDesign.class);
+				"RelationDesign_inputs", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionInputDesign.class);
 		deduction = $deduction;
 		
 		// Phase 2

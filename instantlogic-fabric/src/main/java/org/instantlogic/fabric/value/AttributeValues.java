@@ -8,6 +8,8 @@ public interface AttributeValues<I extends Instance, Item extends Object> extend
 
 	public void removeValue(Item item);
 	
+	public void clear();
+	
 	public Values<Item> getStoredValue();
 	
 }

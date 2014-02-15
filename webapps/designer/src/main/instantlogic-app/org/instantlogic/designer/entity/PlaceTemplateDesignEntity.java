@@ -38,11 +38,11 @@ public class PlaceTemplateDesignEntity extends org.instantlogic.fabric.model.Ent
 		content = $content;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.PlaceParameterDesign>, org.instantlogic.designer.PlaceParameterDesign> $parameters
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.PlaceParameterDesign>, org.instantlogic.designer.PlaceParameterDesign>(
-				"RelationDesign_parameters", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+				"RelationDesign_parameters_4", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
 		parameters = $parameters;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $title
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"RelationDesign_title", "title", INSTANCE, "title", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
+				"RelationDesign_title_1", "title", INSTANCE, "title", org.instantlogic.designer.AbstractPlaceTemplateDesign.class);
 		title = $title;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DestinationDesign>, org.instantlogic.designer.DestinationDesign> $incomingLinks

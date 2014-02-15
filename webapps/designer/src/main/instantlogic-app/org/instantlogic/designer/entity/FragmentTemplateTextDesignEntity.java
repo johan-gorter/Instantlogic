@@ -28,7 +28,7 @@ public class FragmentTemplateTextDesignEntity extends org.instantlogic.fabric.mo
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateTextDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $fragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateTextDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
-				"DrvmanhvIqdmkhEe_cb506554_d6d4", "fragmentTemplateDesign", INSTANCE, "fragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateTextDesign.class);
+				"RelationDesign_texts", "fragmentTemplateDesign", INSTANCE, "fragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateTextDesign.class);
 		fragmentTemplateDesign = $fragmentTemplateDesign;
 		
 		// Phase 2
@@ -52,7 +52,7 @@ public class FragmentTemplateTextDesignEntity extends org.instantlogic.fabric.mo
 	
 	@Override
 	public String getUniqueId() {
-		return "ScIfIb_fbadEkoIh_e27989e8_5734";
+		return "EntityDesign_FragmentTemplateTextDesign";
 	}
 	
 	@Override

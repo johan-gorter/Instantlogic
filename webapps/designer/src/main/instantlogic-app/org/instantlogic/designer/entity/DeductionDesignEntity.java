@@ -106,11 +106,11 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"RelationDesign_dataType_2", "dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"RelationDesign_dataType_1", "dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractDeductionDesign.class);
 		dataType = $dataType;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $inputs
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
-				"RelationDesign_inputs_2", "inputs", INSTANCE, "inputs", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"RelationDesign_inputs", "inputs", INSTANCE, "inputs", org.instantlogic.designer.AbstractDeductionDesign.class);
 		inputs = $inputs;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
@@ -118,7 +118,7 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		operation = $operation;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> $parameters
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
-				"RelationDesign_parameters_3", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"RelationDesign_parameters", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractDeductionDesign.class);
 		parameters = $parameters;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $scheme

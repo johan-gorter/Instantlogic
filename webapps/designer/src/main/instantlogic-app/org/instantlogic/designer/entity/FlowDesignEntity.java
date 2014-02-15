@@ -40,7 +40,7 @@ public class FlowDesignEntity extends org.instantlogic.fabric.model.Entity<org.i
 		nodes = $nodes;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> $parameters
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
-				"RelationDesign_parameters_4", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractFlowDesign.class);
+				"RelationDesign_parameters_3", "parameters", INSTANCE, "parameters", org.instantlogic.designer.AbstractFlowDesign.class);
 		parameters = $parameters;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.designer.SubFlowDesign, org.instantlogic.designer.SubFlowDesign> $subFlowIn

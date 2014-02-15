@@ -138,4 +138,17 @@ public class ReverseRelationValuesImpl<I extends Instance, From extends Instance
 	public void clearOrRemove(From valueToBeRemoved) {
 		removeValue(valueToBeRemoved);
 	}
+
+	@Override
+	public void clear() {
+		Operation operation = forInstance.getMetadata().getCaseAdministration().startOperation();
+		try {
+			while (values.size()>0) {
+				From next = values.iterator().next();
+				removeValue(next);
+			}
+		} finally {
+			operation.close();
+		}
+	}
 }

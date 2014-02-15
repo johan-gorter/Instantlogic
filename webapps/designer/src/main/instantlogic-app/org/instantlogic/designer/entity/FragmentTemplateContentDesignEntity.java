@@ -28,7 +28,7 @@ public class FragmentTemplateContentDesignEntity extends org.instantlogic.fabric
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateContentDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $fragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateContentDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
-				"JOeIbrvdbqbcaons_2cf4ca98_3f84", "fragmentTemplateDesign", INSTANCE, "fragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateContentDesign.class);
+				"RelationDesign_contents", "fragmentTemplateDesign", INSTANCE, "fragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateContentDesign.class);
 		fragmentTemplateDesign = $fragmentTemplateDesign;
 		
 		// Phase 2
@@ -52,7 +52,7 @@ public class FragmentTemplateContentDesignEntity extends org.instantlogic.fabric
 	
 	@Override
 	public String getUniqueId() {
-		return "VovUwpOthmgjuobI_9f4f7787_72d2";
+		return "EntityDesign_FragmentTemplateContentDesign";
 	}
 	
 	@Override

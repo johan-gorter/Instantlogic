@@ -38,7 +38,7 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 		operationParameterOnDeductionParameterDesign = $operationParameterOnDeductionParameterDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
-				"RelationDesign_parameters_2", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationParameterDesign.class);
+				"RelationDesign_parameters_1", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationParameterDesign.class);
 		operation = $operation;
 		
 		// Phase 2

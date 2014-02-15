@@ -30,7 +30,7 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		endNode = $endNode;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> $event
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign>(
-				"RelationDesign_event_1", "event", INSTANCE, "event", org.instantlogic.designer.FlowEdgeDesign.class);
+				"RelationDesign_event", "event", INSTANCE, "event", org.instantlogic.designer.FlowEdgeDesign.class);
 		event = $event;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign> $startNode
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowNodeBaseDesign, org.instantlogic.designer.FlowNodeBaseDesign>(

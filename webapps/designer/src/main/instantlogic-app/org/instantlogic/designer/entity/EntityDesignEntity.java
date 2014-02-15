@@ -29,10 +29,10 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> belongsToEntityOnAttributeDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> caseEntityOnApplicationDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> application;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> entityOnFragmentTemplateDesign;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> entityValueOnDeductionParameterDesign;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceParameterDesign> placeParameter;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> entityOnDataTypeDesign;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> entityValueOnDeductionParameterDesign;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> entityOnFragmentTemplateDesign;
+	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceParameterDesign> placeParameter;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> extensions;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign> parametersOnEventDesign;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> parametersOnFlowDesign;
@@ -48,7 +48,7 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		attributes = $attributes;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataType
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"RelationDesign_dataType_1", "dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractEntityDesign.class);
+				"RelationDesign_dataType_3", "dataType", INSTANCE, "dataType", org.instantlogic.designer.AbstractEntityDesign.class);
 		dataType = $dataType;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $extendsFrom
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
@@ -64,7 +64,7 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		staticInstances = $staticInstances;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign> $title
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.TextTemplateDesign, org.instantlogic.designer.TextTemplateDesign>(
-				"RelationDesign_title_1", "title", INSTANCE, "title", org.instantlogic.designer.AbstractEntityDesign.class);
+				"RelationDesign_title", "title", INSTANCE, "title", org.instantlogic.designer.AbstractEntityDesign.class);
 		title = $title;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign> $validations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign>(
@@ -83,33 +83,33 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
 				"RelationDesign_entities", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEntityDesign.class);
 		application = $application;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $entityOnFragmentTemplateDesign
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign>(
-				"RelationDesign_entity", "entityOnFragmentTemplateDesign", INSTANCE, "entityOnFragmentTemplateDesign", org.instantlogic.designer.AbstractEntityDesign.class);
-		entityOnFragmentTemplateDesign = $entityOnFragmentTemplateDesign;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $entityOnDataTypeDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
+				"RelationDesign_entity", "entityOnDataTypeDesign", INSTANCE, "entityOnDataTypeDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+		entityOnDataTypeDesign = $entityOnDataTypeDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> $entityValueOnDeductionParameterDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
 				"RelationDesign_entityValue", "entityValueOnDeductionParameterDesign", INSTANCE, "entityValueOnDeductionParameterDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		entityValueOnDeductionParameterDesign = $entityValueOnDeductionParameterDesign;
+		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $entityOnFragmentTemplateDesign
+			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign>(
+				"RelationDesign_entity_1", "entityOnFragmentTemplateDesign", INSTANCE, "entityOnFragmentTemplateDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+		entityOnFragmentTemplateDesign = $entityOnFragmentTemplateDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceParameterDesign> $placeParameter
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceParameterDesign>(
-				"RelationDesign_entity_1", "placeParameter", INSTANCE, "placeParameter", org.instantlogic.designer.AbstractEntityDesign.class);
+				"RelationDesign_entity_2", "placeParameter", INSTANCE, "placeParameter", org.instantlogic.designer.AbstractEntityDesign.class);
 		placeParameter = $placeParameter;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $entityOnDataTypeDesign
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"RelationDesign_entity_2", "entityOnDataTypeDesign", INSTANCE, "entityOnDataTypeDesign", org.instantlogic.designer.AbstractEntityDesign.class);
-		entityOnDataTypeDesign = $entityOnDataTypeDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> $extensions
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
 				"RelationDesign_extendsFrom", "extensions", INSTANCE, "extensions", org.instantlogic.designer.AbstractEntityDesign.class);
 		extensions = $extensions;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign> $parametersOnEventDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign>(
-				"RelationDesign_parameters_1", "parametersOnEventDesign", INSTANCE, "parametersOnEventDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+				"RelationDesign_parameters_2", "parametersOnEventDesign", INSTANCE, "parametersOnEventDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		parametersOnEventDesign = $parametersOnEventDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> $parametersOnFlowDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign>(
-				"RelationDesign_parameters_4", "parametersOnFlowDesign", INSTANCE, "parametersOnFlowDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+				"RelationDesign_parameters_3", "parametersOnFlowDesign", INSTANCE, "parametersOnFlowDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		parametersOnFlowDesign = $parametersOnFlowDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign> $reverseRelations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign>(
@@ -164,24 +164,24 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		$application.valueClass = org.instantlogic.designer.ApplicationDesign.class;
 		$application.to = org.instantlogic.designer.entity.ApplicationDesignEntity.INSTANCE;
 		$application.setReverseRelation(org.instantlogic.designer.entity.ApplicationDesignEntity.entities);
-		$entityOnFragmentTemplateDesign.reverse = true;
-		$entityOnFragmentTemplateDesign.valueClass = org.instantlogic.designer.FragmentTemplateDesign.class;
-		$entityOnFragmentTemplateDesign.to = org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE;
-		$entityOnFragmentTemplateDesign.setReverseRelation(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity);
-		$entityOnFragmentTemplateDesign.multivalue = true;
+		$entityOnDataTypeDesign.reverse = true;
+		$entityOnDataTypeDesign.valueClass = org.instantlogic.designer.DataTypeDesign.class;
+		$entityOnDataTypeDesign.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
+		$entityOnDataTypeDesign.setReverseRelation(org.instantlogic.designer.entity.DataTypeDesignEntity.entity);
 		$entityValueOnDeductionParameterDesign.reverse = true;
 		$entityValueOnDeductionParameterDesign.valueClass = org.instantlogic.designer.DeductionParameterDesign.class;
 		$entityValueOnDeductionParameterDesign.to = org.instantlogic.designer.entity.DeductionParameterDesignEntity.INSTANCE;
 		$entityValueOnDeductionParameterDesign.setReverseRelation(org.instantlogic.designer.entity.DeductionParameterDesignEntity.entityValue);
 		$entityValueOnDeductionParameterDesign.multivalue = true;
+		$entityOnFragmentTemplateDesign.reverse = true;
+		$entityOnFragmentTemplateDesign.valueClass = org.instantlogic.designer.FragmentTemplateDesign.class;
+		$entityOnFragmentTemplateDesign.to = org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE;
+		$entityOnFragmentTemplateDesign.setReverseRelation(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.entity);
+		$entityOnFragmentTemplateDesign.multivalue = true;
 		$placeParameter.reverse = true;
 		$placeParameter.valueClass = org.instantlogic.designer.PlaceParameterDesign.class;
 		$placeParameter.to = org.instantlogic.designer.entity.PlaceParameterDesignEntity.INSTANCE;
 		$placeParameter.setReverseRelation(org.instantlogic.designer.entity.PlaceParameterDesignEntity.entity);
-		$entityOnDataTypeDesign.reverse = true;
-		$entityOnDataTypeDesign.valueClass = org.instantlogic.designer.DataTypeDesign.class;
-		$entityOnDataTypeDesign.to = org.instantlogic.designer.entity.DataTypeDesignEntity.INSTANCE;
-		$entityOnDataTypeDesign.setReverseRelation(org.instantlogic.designer.entity.DataTypeDesignEntity.entity);
 		$extensions.reverse = true;
 		$extensions.valueClass = org.instantlogic.designer.EntityDesign.class;
 		$extensions.to = org.instantlogic.designer.entity.EntityDesignEntity.INSTANCE;
@@ -239,10 +239,10 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		belongsToEntityOnAttributeDesign,
 		caseEntityOnApplicationDesign,
 		application,
-		entityOnFragmentTemplateDesign,
-		entityValueOnDeductionParameterDesign,
-		placeParameter,
 		entityOnDataTypeDesign,
+		entityValueOnDeductionParameterDesign,
+		entityOnFragmentTemplateDesign,
+		placeParameter,
 		extensions,
 		parametersOnEventDesign,
 		parametersOnFlowDesign,

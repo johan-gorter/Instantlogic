@@ -33,8 +33,8 @@ public class DeductionParameterDesignEntity extends org.instantlogic.fabric.mode
 	}
 	
 	// Attributes
-	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionParameterDesign, java.lang.String, java.lang.String> valueDescription; 
 	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionParameterDesign, java.lang.Object, java.lang.Object> value; 
+	public static final org.instantlogic.fabric.model.Attribute<org.instantlogic.designer.DeductionParameterDesign, java.lang.String, java.lang.String> valueDescription; 
 	
 	// Relations
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.DeductionParameterDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> attributeValue;
@@ -48,14 +48,14 @@ public class DeductionParameterDesignEntity extends org.instantlogic.fabric.mode
 	static {
 		// Phase 1
 		// Attributes
+		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionParameterDesign, java.lang.Object, java.lang.Object> $value
+			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionParameterDesign, java.lang.Object, java.lang.Object>(
+				"AttributeDesign_value", "value", INSTANCE, java.lang.Object.class, "value", org.instantlogic.designer.DeductionParameterDesign.class);
+		value = $value;
 		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionParameterDesign, java.lang.String, java.lang.String> $valueDescription
 			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionParameterDesign, java.lang.String, java.lang.String>(
 				"AttributeDesign_valueDescription", "valueDescription", INSTANCE, java.lang.String.class, "valueDescription", org.instantlogic.designer.DeductionParameterDesign.class);
 		valueDescription = $valueDescription;
-		org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionParameterDesign, java.lang.Object, java.lang.Object> $value
-			= new org.instantlogic.fabric.model.impl.SimpleAttribute<org.instantlogic.designer.DeductionParameterDesign, java.lang.Object, java.lang.Object>(
-				"AttributeDesign_value_1", "value", INSTANCE, java.lang.Object.class, "value", org.instantlogic.designer.DeductionParameterDesign.class);
-		value = $value;
 		// Relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionParameterDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> $attributeValue
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionParameterDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
@@ -76,7 +76,7 @@ public class DeductionParameterDesignEntity extends org.instantlogic.fabric.mode
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionParameterDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign> $deduction
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionParameterDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign>(
-				"RelationDesign_parameters_3", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionParameterDesign.class);
+				"RelationDesign_parameters", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionParameterDesign.class);
 		deduction = $deduction;
 		
 		// Phase 2
@@ -126,8 +126,8 @@ public class DeductionParameterDesignEntity extends org.instantlogic.fabric.mode
 	}
 
 	private static final org.instantlogic.fabric.model.Attribute[] ATTRIBUTES = new org.instantlogic.fabric.model.Attribute[]{
-		valueDescription,
 		value,
+		valueDescription,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] RELATIONS = new org.instantlogic.fabric.model.Relation[]{
 		attributeValue,

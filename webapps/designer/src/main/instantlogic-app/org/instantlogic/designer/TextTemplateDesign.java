@@ -149,23 +149,6 @@ public class TextTemplateDesign extends org.instantlogic.fabric.Instance {
     }
 
 	
-	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PlaceTemplateDesign> titleOfPlaceTemplate
-		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfPlaceTemplate);
-
-	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PlaceTemplateDesign> getTitleOfPlaceTemplateRelationValue() {
-		return titleOfPlaceTemplate;
-	}
-
-	public org.instantlogic.designer.PlaceTemplateDesign getTitleOfPlaceTemplate() {
-		return titleOfPlaceTemplate.getValue();
-	}
-
-    public TextTemplateDesign setTitleOfPlaceTemplate(org.instantlogic.designer.PlaceTemplateDesign newValue) {
-        titleOfPlaceTemplate.setValue(newValue);
-        return (TextTemplateDesign)this;
-    }
-
-	
 	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, EntityDesign> titleOfEntity
 		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfEntity);
 
@@ -179,6 +162,23 @@ public class TextTemplateDesign extends org.instantlogic.fabric.Instance {
 
     public TextTemplateDesign setTitleOfEntity(org.instantlogic.designer.EntityDesign newValue) {
         titleOfEntity.setValue(newValue);
+        return (TextTemplateDesign)this;
+    }
+
+	
+	private final org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PlaceTemplateDesign> titleOfPlaceTemplate
+		= createReverseRelationValue(org.instantlogic.designer.entity.TextTemplateDesignEntity.titleOfPlaceTemplate);
+
+	public org.instantlogic.fabric.value.RelationValue<TextTemplateDesign, PlaceTemplateDesign> getTitleOfPlaceTemplateRelationValue() {
+		return titleOfPlaceTemplate;
+	}
+
+	public org.instantlogic.designer.PlaceTemplateDesign getTitleOfPlaceTemplate() {
+		return titleOfPlaceTemplate.getValue();
+	}
+
+    public TextTemplateDesign setTitleOfPlaceTemplate(org.instantlogic.designer.PlaceTemplateDesign newValue) {
+        titleOfPlaceTemplate.setValue(newValue);
         return (TextTemplateDesign)this;
     }
 
