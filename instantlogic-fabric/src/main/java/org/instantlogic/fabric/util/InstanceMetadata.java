@@ -19,6 +19,7 @@ import org.instantlogic.fabric.value.RelationValueList;
 import org.instantlogic.fabric.value.RelationValues;
 import org.instantlogic.fabric.value.ValueList;
 import org.instantlogic.fabric.value.Values;
+import org.instantlogic.fabric.value.WriteableAttributeValue;
 
 public class InstanceMetadata {
 
@@ -26,6 +27,8 @@ public class InstanceMetadata {
 	private final Entity<? extends Instance> entity;
 	private String uniqueId;
 	private Instance owner = null;
+	@SuppressWarnings("rawtypes")
+	private WriteableAttributeValue ownerRelationValue;
 	private List<GlobalValueChangeListener> globalValueChangeListeners = new ArrayList<GlobalValueChangeListener>();
 	// When this value is the same as globalValueChangeListeners, copy globalValueChangeListeners on write and clear this field.
 	private List<GlobalValueChangeListener> iteratingGlobalValueChangeListeners = null; 
@@ -143,44 +146,74 @@ public class InstanceMetadata {
 	
 	/**
 	 * Registers this as the owner of instance.
+	 * Internal method, do not call directly!
 	 * @param instance the owned instance.
 	 */
-	public void adopt(Instance instance) {
+	public void adopt(Instance instance, WriteableAttributeValue<? ,?, ?> relation) {
 		if (children==null) {
 			children = new HashSet<Instance>();
 			this.unmodifiableChildren = Collections.unmodifiableSet(children);
 		}
 		children.add(instance);
-		instance.getMetadata().registerOwner(this.instance);
+		instance.getMetadata().registerOwner(this.instance, relation);
 	}
 	
 	/**
 	 * Opposite of adopt, clears the owner of instance
+	 * Internal method, do not call directly!
 	 * @param instance
 	 */
 	public void reject(Instance instance) {
+		// TODO: readonly while transaction is not committed
 		boolean found = children.remove(instance);
 		if (!found) throw new RuntimeException("This instance was not adopted: "+instance);
-		instance.getMetadata().registerOwner(null);
+		instance.getMetadata().clearOwner(this.instance);
 	}
-	
-	protected void registerOwner(Instance owner) {
+
+	protected void clearOwner(Instance oldOwner) {
+		if (this.owner==oldOwner) {
+			// We are not in the middle of a migration
+			registerOwner(null, null);
+		}
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	protected void registerOwner(Instance owner, WriteableAttributeValue<?, ?, ?> ownerRelationValue) {
 		if (this.isStatic() && !owner.getMetadata().isStatic()) throw new RuntimeException("Static instances cannot be owned by a case, they are global");
 		if (this.owner!=null && owner!=null) {
-			// 'Migration' to another owner is not allowed
-			throw new RuntimeException("This instance ["+instance+"] is already owned by "+this.owner);
+			if (this.owner.getMetadata().getCaseAdministration()!=owner.getMetadata().getCaseAdministration()) {
+				// 'Migration' to another case is not allowed
+				throw new RuntimeException("This instance ["+instance+"] is already owned by ["+this.owner+"]. call detach() first.");
+			}
 		}
 		if (this.owner!=null) {
 			this.caseAdministration = this.owner.getMetadata().getCaseAdministration(); // temporary
 		}
+		if (ownerRelationValue != null) {
+			if (ownerRelationValue.getInstance() != owner) {
+				throw new IllegalArgumentException();
+			}
+		} else if (owner!=null) {
+			throw new IllegalArgumentException();
+		}
+
+		WriteableAttributeValue oldOwnerRelationValue = this.ownerRelationValue;
 		this.owner = owner;
+		this.ownerRelationValue = ownerRelationValue;
+		
+		if (oldOwnerRelationValue!=null && ownerRelationValue!=null) {
+			oldOwnerRelationValue.clearOrRemove(instance);
+		}
 		
 		if (owner==null) {
 			clearRelationsAfterSplit(this.instance);
 			this.caseAdministration = null;
 		} else {
 			this.caseAdministration = null; // Fallthrough to the owner
-			registerUniqueIdsWithCaseAdministration(getCaseAdministration());
+			if (oldOwnerRelationValue==null) {
+				// We did move to a new case
+				registerUniqueIdsWithCaseAdministration(getCaseAdministration());
+			}
 		}
 	}
 	
@@ -339,5 +372,10 @@ public class InstanceMetadata {
 
 	public String getUniqueIdIfInitialized() {
 		return uniqueId;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void detach() {
+		this.ownerRelationValue.clearOrRemove(instance);
 	}
 }

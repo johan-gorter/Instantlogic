@@ -1,12 +1,15 @@
 package org.instantlogic.designer.tools;
 
 import org.instantlogic.designer.ApplicationDesign;
+import org.instantlogic.designer.DeductionSchemeDesign;
+import org.instantlogic.designer.ElementDesign;
 import org.instantlogic.designer.FragmentTemplateContentDesign;
 import org.instantlogic.designer.FragmentTemplateDesign;
 import org.instantlogic.designer.FragmentTemplateTextDesign;
 import org.instantlogic.designer.FragmentTemplateValueDesign;
 import org.instantlogic.designer.FragmentTypeDesign;
 import org.instantlogic.designer.PropertyDesign;
+import org.instantlogic.designer.TextTemplateDesign;
 import org.instantlogic.fabric.value.AttributeValueList;
 
 public class Migrator {
@@ -29,7 +32,8 @@ public class Migrator {
 				content.setPropertyName(property.getPropertyName());
 				template.addToContents(content);
 				while (property.getChildren().size()>0) {
-					content.addToChildren(property.getChildren().get(0));
+					ElementDesign element = property.getChildren().get(0);
+					content.addToChildren(element);
 				}
 			} else if (property.getText()!=null && property.getText().getUntranslated().size()>0) {
 				System.out.println(type.getName()+" text: "+property.getPropertyName());
@@ -37,14 +41,16 @@ public class Migrator {
 				FragmentTemplateTextDesign text = new FragmentTemplateTextDesign();
 				template.addToTexts(text);
 				text.setPropertyName(property.getPropertyName());
-				text.setText(property.getText());
+				TextTemplateDesign textTemplate = property.getText();
+				text.setText(textTemplate);
 			} else if (property.getValue()!=null && property.getValue().getOutput()!=null) {
 				System.out.println(type.getName()+" value: "+property.getPropertyName());
 				addIfNotPresent(property.getPropertyName(), type.getValuePropertyNamesAttributeValue());
 				FragmentTemplateValueDesign value = new FragmentTemplateValueDesign();
-				value.setPropertyName(property.getPropertyName());
-				value.setValue(property.getValue());
 				template.addToValues(value);
+				value.setPropertyName(property.getPropertyName());
+				DeductionSchemeDesign deductionScheme = property.getValue();
+				value.setValue(deductionScheme);
 			} else {
 				System.out.println(type.getName()+" NOTHING!");
 			}

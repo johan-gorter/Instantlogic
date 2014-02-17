@@ -25,7 +25,7 @@ public class RelationValueListImpl<I extends Instance, To extends Instance>
 	
 	@Override
 	protected void beforeFiringChange(ValueChangeEvent event) {
-		RelationValueUtil.adoptOrReject(event, model, forInstance);
+		RelationValueUtil.adoptOrReject(event, model, forInstance, this);
 		super.beforeFiringChange(event);
 		RelationValueUtil.updateReverse(event, model, forInstance);
 	};

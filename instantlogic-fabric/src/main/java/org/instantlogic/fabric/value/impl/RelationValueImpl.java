@@ -70,7 +70,7 @@ public class RelationValueImpl<I extends Instance, To extends Instance>
 				forInstance.getMetadata().reject(oldStoredValue);
 			}
 			if (newStoredValue!=null) {
-				forInstance.getMetadata().adopt(newStoredValue);
+				forInstance.getMetadata().adopt(newStoredValue, this);
 			}
 		}
 		if (model.getReverseRelation()!=null) {
