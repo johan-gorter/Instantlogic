@@ -145,6 +145,10 @@ public abstract class Instance implements Comparable<Instance> {
 		return metadata;
 	}
 	
+	public void detach() {
+		metadata.detach();
+	}
+	
 	// compareTo, equals and hashcode are based on the uniqueId
 	
 	public int compareTo(Instance other) {

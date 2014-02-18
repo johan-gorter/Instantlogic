@@ -5,6 +5,7 @@ import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.util.Operation;
 import org.instantlogic.fabric.util.ValueChangeEvent;
 import org.instantlogic.fabric.util.ValueChangeEvent.MultiValueUpdateType;
+import org.instantlogic.fabric.value.WriteableAttributeValue;
 
 class RelationValueUtil {
 
@@ -18,12 +19,12 @@ class RelationValueUtil {
 	};
 	
 	@SuppressWarnings("rawtypes")
-	static void adoptOrReject(ValueChangeEvent event, Relation model, Instance forInstance) {
+	static void adoptOrReject(ValueChangeEvent event, Relation model, Instance forInstance, WriteableAttributeValue<?, ?, ?> relationValue) {
 		MultiValueUpdateType type = event.getMultiValueUpdateType();
 		Instance item = (Instance) event.getItemValue();
 		if (model.isOwner()) {
 			if (type == MultiValueUpdateType.INSERT) {
-				forInstance.getMetadata().adopt(item);
+				forInstance.getMetadata().adopt(item, relationValue);
 			} else { // Remove
 				forInstance.getMetadata().reject(item);
 			}

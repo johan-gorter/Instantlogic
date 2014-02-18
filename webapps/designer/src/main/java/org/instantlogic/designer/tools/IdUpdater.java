@@ -22,6 +22,7 @@ import org.instantlogic.fabric.value.WriteableAttributeValue;
 /**
  * Provides a main class that generates javacode for all (web)apps found under ../ and ../webapps/
  */
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class IdUpdater {
 	
 	public static void main(String[] args) {
@@ -36,7 +37,6 @@ public class IdUpdater {
 		File designsDirectory = new File(webapp, "src/main/instantlogic-designs");
 		if (designsDirectory.isDirectory()) {
 			for(File file : designsDirectory.listFiles()) {
-				String designName = file.getName();
 				if (file.isDirectory()) {
 					System.out.println(file.getAbsolutePath());
 					ApplicationDesign app = new DesignerCasePersister().loadApplicationDesign(file);
@@ -92,7 +92,6 @@ public class IdUpdater {
 		}
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static void copyRelationValue(Instance oldInstance, Relation oldRelation, Instance newInstance, Entity<?> newEntity, List<Instance> oldInstances, List<Instance> newInstances) {
 		ReadOnlyAttributeValue relationValue = oldRelation.get(oldInstance);
 		if (relationValue.hasStoredValue()) {
@@ -168,7 +167,6 @@ public class IdUpdater {
 		}
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static void copyValue(Instance oldInstance, Attribute oldAttribute, Instance newInstance, Entity<?> newEntity) {
 		ReadOnlyAttributeValue attributeValue = oldAttribute.get(oldInstance);
 		if (attributeValue.hasStoredValue()) {
@@ -193,7 +191,6 @@ public class IdUpdater {
 	}
 	
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static String generateNewId(Instance oldInstance, CaseAdministration newCaseAdministration) {
 		Entity<?> entity = oldInstance.getMetadata().getEntity();
 		String id = entity.getName();
