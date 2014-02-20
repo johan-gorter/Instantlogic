@@ -25,6 +25,9 @@ import org.instantlogic.fabric.value.WriteableAttributeValue;
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class IdUpdater {
 	
+	private static final boolean DRY_RUN = true;
+
+
 	public static void main(String[] args) {
 		if (args.length>0) {
 			loadAndUpdate(new File(args[0]));
@@ -52,8 +55,10 @@ public class IdUpdater {
 			        operation.complete();
 			        operation.close();
 			        Migrator.applyMigrations(newApp);
-			        //deleteFolder(file, true);
-			        //new DesignerCasePersister().save(newApp, file, null);
+			        if (!DRY_RUN) {
+				        deleteFolder(file, true);
+				        new DesignerCasePersister().save(newApp, file, null);
+			        }
 				}
 			}
 		}

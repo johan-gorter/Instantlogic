@@ -20,6 +20,11 @@ public class Migrator {
 				updateTemplate(template);
 			}
 		}
+		for (FragmentTypeDesign type: newApp.getFragmentTypes()) {
+			for (FragmentTemplateDesign template : type.getUsages()) {
+				template.afterTypeChange();
+			}
+		}
 	}
 
 	private static void updateTemplate(FragmentTemplateDesign template) {
