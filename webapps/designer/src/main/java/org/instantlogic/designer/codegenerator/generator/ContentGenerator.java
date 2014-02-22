@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.instantlogic.designer.ElementDesign;
+import org.instantlogic.designer.FragmentTemplateContentDesign;
 import org.instantlogic.designer.FragmentTemplateDesign;
+import org.instantlogic.designer.FragmentTemplateTextDesign;
+import org.instantlogic.designer.FragmentTemplateValueDesign;
 import org.instantlogic.designer.IfElseDesign;
 import org.instantlogic.designer.PropertyDesign;
 import org.instantlogic.designer.RelationDesign;
@@ -33,9 +36,31 @@ public abstract class ContentGenerator extends AbstractGenerator {
 			} else {
 				model.fragmentTypeName = fragmentTemplate.getFragmentTypeName(); // Unofficial way				
 			}
-			for (PropertyDesign property:fragmentTemplate.getProperties()) {
-				String propertyName = property.getPropertyName();
-				if (propertyName==null) continue;
+			
+			// TODO: REMOVE
+//			for (PropertyDesign property:fragmentTemplate.getProperties()) {
+//				String propertyName = property.getPropertyName();
+//				if (propertyName==null) continue;
+//				if (property.getChildren().size()>0) {
+//					List<ContentModel> children = new ArrayList<ContentModel>();
+//					for (ElementDesign child : property.getChildren()) {
+//						ContentModel childElement = generate(child, deductionHolder);
+//						if (childElement!=null) {
+//							children.add(childElement);
+//						}
+//					}
+//					model.childLists.put(propertyName, children);
+//				} 
+//				if (property.getText()!=null) {
+//					model.texts.put(propertyName, TextGenerator.generate(property.getText(), deductionHolder));
+//				} 
+//				if (property.getValue()!=null) {
+//					int deductionIndex = deductionHolder.addDeductionScheme(DeductionSchemeGenerator.generate(deductionHolder.rootPackageName, property.getValue()));
+//					model.values.put(propertyName, deductionIndex);
+//				}
+//			}
+			
+			for (FragmentTemplateContentDesign property:fragmentTemplate.getContents()) {
 				if (property.getChildren().size()>0) {
 					List<ContentModel> children = new ArrayList<ContentModel>();
 					for (ElementDesign child : property.getChildren()) {
@@ -44,16 +69,21 @@ public abstract class ContentGenerator extends AbstractGenerator {
 							children.add(childElement);
 						}
 					}
-					model.childLists.put(propertyName, children);
-				} 
-				if (property.getText()!=null) {
-					model.texts.put(propertyName, TextGenerator.generate(property.getText(), deductionHolder));
-				} 
-				if (property.getValue()!=null) {
-					int deductionIndex = deductionHolder.addDeductionScheme(DeductionSchemeGenerator.generate(deductionHolder.rootPackageName, property.getValue()));
-					model.values.put(propertyName, deductionIndex);
+					model.childLists.put(property.getPropertyName(), children);
 				}
 			}
+			for (FragmentTemplateTextDesign property: fragmentTemplate.getTexts()) {
+				if (property.getText()!=null) {
+					model.texts.put(property.getPropertyName(), TextGenerator.generate(property.getText(), deductionHolder));
+				} 			
+			}
+			for (FragmentTemplateValueDesign property: fragmentTemplate.getValues()) {
+				if (property.getValue()!=null) {
+					int deductionIndex = deductionHolder.addDeductionScheme(DeductionSchemeGenerator.generate(deductionHolder.rootPackageName, property.getValue()));
+					model.values.put(property.getPropertyName(), deductionIndex);
+				}
+			}
+			
 			if (fragmentTemplate.getDestination()!=null && fragmentTemplate.getDestination().getPlaceTemplate()!=null) {
 				model.destination = fragmentTemplate.getDestination().getPlaceTemplate().getTechnicalNameCapitalized();
 			}

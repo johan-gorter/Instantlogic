@@ -150,7 +150,8 @@ public class DesignerCasePersister extends FileCasePersister {
 	}
 
 	private Instance loadFromStorages(InstanceStorageInfo storage, SortedMap<String, Entity<?>> entities) {
-		Instance result = entities.get(storage.node.entityName).createInstance();
+		Entity<?> entity = entities.get(storage.node.entityName);
+		Instance result = entity.createInstance();
 		CaseAdministration caseAdministration = result.getMetadata().getCaseAdministration();
 		Operation loadingOperation = caseAdministration.startOperation(true);
 		result.getMetadata().initUniqueId(storage.node.uniqueId);
