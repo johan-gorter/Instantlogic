@@ -126,7 +126,7 @@ public class DesignerCasePersister extends FileCasePersister {
 									  break;
 									}
 								} else if (REFERENCES_MUST_RESOLVE) {
-									throw new RuntimeException("Instance not found: "+parsed.getAsString());
+									throw new RuntimeException("Instance not found: "+parsed.getAsString()+" in "+instance);
 								}
 							} else {
 								String entityName = parsed.getAsJsonObject().get("entityName").getAsString();
