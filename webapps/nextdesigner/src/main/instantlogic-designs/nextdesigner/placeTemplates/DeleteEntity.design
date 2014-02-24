@@ -1,6 +1,6 @@
 aceTemplateDesign_DeleteEntity: PlaceTemplateDesign_DeleteEntity:PlaceTemplateDesign{
-aceTemplateDesign_DeleteEntity:  isCustomized=true
 aceTemplateDesign_DeleteEntity:  name="DeleteEntity"
+aceTemplateDesign_DeleteEntity:  isCustomized=true
 aceTemplateDesign_DeleteEntity:  parameters+PlaceParameterDesign_entity_1:PlaceParameterDesign{
 PlaceParameterDesign_entity_1:    name="entity"
 PlaceParameterDesign_entity_1:    entity="EntityDesign_EntityDesign"

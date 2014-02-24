@@ -1,10 +1,10 @@
 Application_Designer:          Application_Designer:ApplicationDesign{
-Application_Designer:           isCustomized=true
 Application_Designer:           name="Designer"
-Application_Designer:           rootPackageName="org.instantlogic.designer"
+Application_Designer:           isCustomized=true
 Application_Designer:           sourcePath="target/generated-sources/instantlogic-app"
 Application_Designer:           themeNames+"designer"
 Application_Designer:           themeNames+"margin"
+Application_Designer:           rootPackageName="org.instantlogic.designer"
 Application_Designer:           caseEntity="EntityDesign_ApplicationDesign"
 Application_Designer:           startPlace="PlaceTemplateDesign_Welcome"
 Application_Designer:          }Application_Designer

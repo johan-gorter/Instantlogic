@@ -1,6 +1,6 @@
 ewAttributeForFragmentTemplate: PlaceTemplateDesign_NewAttributeForFragmentTemplate:PlaceTemplateDesign{
-ewAttributeForFragmentTemplate:  isCustomized=true
 ewAttributeForFragmentTemplate:  name="NewAttributeForFragmentTemplate"
+ewAttributeForFragmentTemplate:  isCustomized=true
 ewAttributeForFragmentTemplate:  parameters+PlaceParameterDesign_fragmentTemplate:PlaceParameterDesign{
 rameterDesign_fragmentTemplate:    name="fragmentTemplate"
 rameterDesign_fragmentTemplate:    entity="EntityDesign_FragmentTemplateDesign"

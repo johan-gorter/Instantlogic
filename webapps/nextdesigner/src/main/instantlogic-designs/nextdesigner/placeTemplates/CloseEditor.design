@@ -1,8 +1,8 @@
 laceTemplateDesign_CloseEditor: PlaceTemplateDesign_CloseEditor:PlaceTemplateDesign{
-laceTemplateDesign_CloseEditor:  isCustomized=true
 laceTemplateDesign_CloseEditor:  name="CloseEditor"
-laceTemplateDesign_CloseEditor:  parameters+PlaceParameterDesign_element:PlaceParameterDesign{
-PlaceParameterDesign_element:     name="element"
-PlaceParameterDesign_element:     entity="EntityDesign_ElementDesign"
-laceTemplateDesign_CloseEditor:  }PlaceParameterDesign_element
+laceTemplateDesign_CloseEditor:  isCustomized=true
+laceTemplateDesign_CloseEditor:  parameters+PlaceParameterDesign_element_1:PlaceParameterDesign{
+PlaceParameterDesign_element_1:    name="element"
+PlaceParameterDesign_element_1:    entity="EntityDesign_ElementDesign"
+laceTemplateDesign_CloseEditor:  }PlaceParameterDesign_element_1
 laceTemplateDesign_CloseEditor: }PlaceTemplateDesign_CloseEditor

@@ -1,3 +1,5 @@
 FragmentTypeDesign_Table:      FragmentTypeDesign_Table:FragmentTypeDesign{
 FragmentTypeDesign_Table:       name="Table"
+FragmentTypeDesign_Table:       contentPropertyNames+"rows"
+FragmentTypeDesign_Table:       contentPropertyNames+"columns"
 FragmentTypeDesign_Table:      }FragmentTypeDesign_Table
