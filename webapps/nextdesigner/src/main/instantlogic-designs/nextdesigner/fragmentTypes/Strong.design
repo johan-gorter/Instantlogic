@@ -1,3 +1,4 @@
-FragmentTypeDesign_Paragraph:  FragmentTypeDesign_Strong:FragmentTypeDesign{
-FragmentTypeDesign_Paragraph:   name="Strong"
-FragmentTypeDesign_Paragraph:  }FragmentTypeDesign_Strong
+FragmentTypeDesign_Strong:     FragmentTypeDesign_Strong:FragmentTypeDesign{
+FragmentTypeDesign_Strong:      name="Strong"
+FragmentTypeDesign_Strong:      textPropertyNames+"text"
+FragmentTypeDesign_Strong:     }FragmentTypeDesign_Strong

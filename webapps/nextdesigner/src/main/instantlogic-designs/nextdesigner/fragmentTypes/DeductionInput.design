@@ -1,3 +1,6 @@
-FragmentTypeDesign_Paragraph:  FragmentTypeDesign_DeductionInput:FragmentTypeDesign{
-FragmentTypeDesign_Paragraph:   name="DeductionInput"
-FragmentTypeDesign_Paragraph:  }FragmentTypeDesign_DeductionInput
+gmentTypeDesign_DeductionInput: FragmentTypeDesign_DeductionInput:FragmentTypeDesign{
+gmentTypeDesign_DeductionInput:  name="DeductionInput"
+gmentTypeDesign_DeductionInput:  textPropertyNames+"operationInputName"
+gmentTypeDesign_DeductionInput:  valuePropertyNames+"diagramPosition"
+gmentTypeDesign_DeductionInput:  valuePropertyNames+"deductionInputId"
+gmentTypeDesign_DeductionInput: }FragmentTypeDesign_DeductionInput

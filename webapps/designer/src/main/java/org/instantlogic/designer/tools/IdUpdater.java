@@ -25,7 +25,7 @@ import org.instantlogic.fabric.value.WriteableAttributeValue;
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class IdUpdater {
 	
-	private static final boolean DRY_RUN = true;
+	private static final boolean DRY_RUN = false;
 
 
 	public static void main(String[] args) {

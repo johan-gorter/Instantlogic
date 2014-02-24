@@ -1,3 +1,4 @@
-FragmentTypeDesign_Paragraph:  FragmentTypeDesign_Output:FragmentTypeDesign{
-FragmentTypeDesign_Paragraph:   name="Output"
-FragmentTypeDesign_Paragraph:  }FragmentTypeDesign_Output
+FragmentTypeDesign_Output:     FragmentTypeDesign_Output:FragmentTypeDesign{
+FragmentTypeDesign_Output:      name="Output"
+FragmentTypeDesign_Output:      valuePropertyNames+"toDeductionInputId"
+FragmentTypeDesign_Output:     }FragmentTypeDesign_Output

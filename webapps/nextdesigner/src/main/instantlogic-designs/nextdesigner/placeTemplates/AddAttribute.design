@@ -1,6 +1,6 @@
 aceTemplateDesign_AddAttribute: PlaceTemplateDesign_AddAttribute:PlaceTemplateDesign{
-aceTemplateDesign_AddAttribute:  name="AddAttribute"
 aceTemplateDesign_AddAttribute:  isCustomized=true
+aceTemplateDesign_AddAttribute:  name="AddAttribute"
 aceTemplateDesign_AddAttribute:  parameters+PlaceParameterDesign_entity:PlaceParameterDesign{
 PlaceParameterDesign_entity:      name="entity"
 PlaceParameterDesign_entity:      entity="EntityDesign_EntityDesign"

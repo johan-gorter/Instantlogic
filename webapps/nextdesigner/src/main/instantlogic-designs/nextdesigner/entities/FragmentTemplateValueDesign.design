@@ -1,6 +1,6 @@
-Ftkkadkc_ue_yoof_6ccd5515_8729: Ftkkadkc_ue_yoof_6ccd5515_8729:EntityDesign{
-Ftkkadkc_ue_yoof_6ccd5515_8729:  name="FragmentTemplateValueDesign"
-Ftkkadkc_ue_yoof_6ccd5515_8729:  extendsFrom="EntityDesign_PropertyDesign"
-Ftkkadkc_ue_yoof_6ccd5515_8729:  dataType=OvcegcnxgagIiavb_98195b5f_ddd5:DataTypeDesign{
-Ftkkadkc_ue_yoof_6ccd5515_8729:  }OvcegcnxgagIiavb_98195b5f_ddd5
-Ftkkadkc_ue_yoof_6ccd5515_8729: }Ftkkadkc_ue_yoof_6ccd5515_8729
+gn_FragmentTemplateValueDesign: EntityDesign_FragmentTemplateValueDesign:EntityDesign{
+gn_FragmentTemplateValueDesign:  name="FragmentTemplateValueDesign"
+gn_FragmentTemplateValueDesign:  dataType=DataTypeDesign_179:DataTypeDesign{
+gn_FragmentTemplateValueDesign:  }DataTypeDesign_179
+gn_FragmentTemplateValueDesign:  extendsFrom="EntityDesign_PropertyDesign"
+gn_FragmentTemplateValueDesign: }EntityDesign_FragmentTemplateValueDesign

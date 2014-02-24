@@ -1,4 +1,4 @@
 PlaceTemplateDesign_AddEntity: PlaceTemplateDesign_AddEntity:PlaceTemplateDesign{
-PlaceTemplateDesign_AddEntity:  name="AddEntity"
 PlaceTemplateDesign_AddEntity:  isCustomized=true
+PlaceTemplateDesign_AddEntity:  name="AddEntity"
 PlaceTemplateDesign_AddEntity: }PlaceTemplateDesign_AddEntity

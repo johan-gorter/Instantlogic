@@ -1,3 +1,4 @@
-FragmentTypeDesign_Block:      FragmentTypeDesign_ElementEditor:FragmentTypeDesign{
-FragmentTypeDesign_Block:       name="ElementEditor"
-FragmentTypeDesign_Block:      }FragmentTypeDesign_ElementEditor
+agmentTypeDesign_ElementEditor: FragmentTypeDesign_ElementEditor:FragmentTypeDesign{
+agmentTypeDesign_ElementEditor:  name="ElementEditor"
+agmentTypeDesign_ElementEditor:  contentPropertyNames+"content"
+agmentTypeDesign_ElementEditor: }FragmentTypeDesign_ElementEditor
