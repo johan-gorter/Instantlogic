@@ -48,6 +48,8 @@ import com.google.gson.JsonPrimitive;
 public class DesignerCasePersister extends FileCasePersister {
 	
 	private static final int MERGE_CONFLICT_PREVENTION = 1; // 0 = no, 1 = normal, 2 = extreme
+	
+	private static final boolean REFERENCES_MUST_RESOLVE = true; 
 
 	protected static final Logger logger = LoggerFactory.getLogger(DesignerPersistenceStrategy.class);
 	protected static final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
@@ -123,6 +125,8 @@ public class DesignerCasePersister extends FileCasePersister {
 									if (!relation.isMultivalue()) {
 									  break;
 									}
+								} else if (REFERENCES_MUST_RESOLVE) {
+									throw new RuntimeException("Instance not found: "+parsed.getAsString());
 								}
 							} else {
 								String entityName = parsed.getAsJsonObject().get("entityName").getAsString();
@@ -211,7 +215,11 @@ public class DesignerCasePersister extends FileCasePersister {
 										result.getMetadata().setStorageInfo(subStorageInfo);
 										createStructure(result, subNode, entities, rootStorage);
 									} else {
-										logger.warn("Could not load instance ["+subNode.uniqueId+"] of unknown entity ["+subNode.entityName+"]");
+										if (REFERENCES_MUST_RESOLVE) {
+											throw new RuntimeException("Could not load instance ["+subNode.uniqueId+"] of unknown entity ["+subNode.entityName+"]");
+										} else {
+											logger.warn("Could not load instance ["+subNode.uniqueId+"] of unknown entity ["+subNode.entityName+"]");
+										}
 									}
 								}
 							}
