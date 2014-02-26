@@ -35,7 +35,7 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 		description = $description;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> $values
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
-				"RelationDesign_values_1", "values", INSTANCE, "values", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"RelationDesign_values_2", "values", INSTANCE, "values", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		values = $values;
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> $valueOfStaticInstances

@@ -64,7 +64,7 @@ public class PlaceTemplateDetailsPlaceTemplate extends org.instantlogic.interact
                     )        
                     .addChild("content",
                         new org.instantlogic.interaction.page.SelectionElement(createDeduction1(),
-                                new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_49", "WorkInProgress")        
+                                new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_49", "ElementEditor")        
                                     .addChild("content",
                                             new org.instantlogic.interaction.page.SharedElementHolder("SharedElementDesign_3", org.instantlogic.designer.sharedpagefragment.ElementEditorPageFragment.INSTANCE)
         
