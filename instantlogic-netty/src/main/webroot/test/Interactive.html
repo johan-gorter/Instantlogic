@@ -10,11 +10,11 @@
 <link rel="stylesheet" type="text/css" href="../style/designer.css">
 <link rel="stylesheet" type="text/css" href="../style/izzy.css">
 
-<!--    
   <script src="http://yui.yahooapis.com/3.10.3/build/yui/yui.js"></script>
+<!--    
+<script type="text/javascript" src="/webjars/yui/3.7.3/yui/yui.js"></script>
 -->
 
-<script type="text/javascript" src="/webjars/yui/3.7.3/yui/yui.js"></script>
 
 <script src="../html.js"></script>
 <script src="../instantlogic.js"></script>
@@ -23,12 +23,14 @@
 <script src="../instantlogic-answers.js"></script>
 <script src="../instantlogic-designer.js"></script>
 <script src="../instantlogic-designer-diagram.js"></script>
+<script src="../instantlogic-designer-graph.js"></script>
+<script src="../physicsjs-full-0.5.4.js"></script>
 
 
     <script>
         YUI({
             useBrowserConsole: true, filter: 'RAW', throwFail: true, errorFn: function () { return false; }
-        }).use('test', 'node', 'instantlogic', 'instantlogic-presence', 'instantlogic-fragments', 'instantlogic-answers', 'instantlogic-designer', 'instantlogic-designer-diagram', function (Y) {
+        }).use('test', 'node', 'instantlogic', 'instantlogic-presence', 'instantlogic-fragments', 'instantlogic-answers', 'instantlogic-designer', 'instantlogic-designer-diagram', 'instantlogic-designer-graph', function (Y) {
 
         	var modelJson = window.localStorage["interactiveModel"];
         	var model = null;

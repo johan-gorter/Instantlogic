@@ -16,20 +16,20 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
   var sqr = function (a) {
     return a * a;
   };
-  
-  var toGrid = function(x) {
-	  return 10*Math.round(x/10);
-  }
-  
-  var differentXYWidthHeight = function(oldModel, newModel) {
-	  if (!oldModel && !newModel) {
-		  return false
-	  };
-	  return (oldModel.xy.top!=newModel.xy.top || 
-			  oldModel.xy.left!=newModel.xy.left ||
-			  oldModel.width!=newModel.width ||
-			  oldModel.height!=newModel.height);
-  }
+
+  var toGrid = function (x) {
+    return 10 * Math.round(x / 10);
+  };
+
+  var differentXYWidthHeight = function (oldModel, newModel) {
+    if(!oldModel && !newModel) {
+      return false;
+    };
+    return (oldModel.xy.top != newModel.xy.top ||
+      oldModel.xy.left != newModel.xy.left ||
+      oldModel.width != newModel.width ||
+      oldModel.height != newModel.height);
+  };
 
   var setXYWidthHeight = function(elements, x, y, width, height) {
     elements.forEach(function(element) {
@@ -47,16 +47,16 @@ YUI.add('instantlogic-designer-diagram', function(Y) {
 		  return "cyan";
 	  } else return "yellow";
   };
-  
-  var getInputXY = function(deductionModel, inputModel) {
-	  if (inputModel.diagramPosition==='primary') {
-		  return [deductionModel.xy.left, deductionModel.xy.top+deductionModel.height+3];
-	  } else if (inputModel.diagramPosition==='control') {
-		  return [deductionModel.xy.left-deductionModel.width/2-3, deductionModel.xy.top+deductionModel.height/2];
-	  } else { // secondary
-		  return [deductionModel.xy.left+deductionModel.width/4, deductionModel.xy.top+deductionModel.height+3];
-	  }
-  }
+
+  var getInputXY = function (deductionModel, inputModel) {
+    if (inputModel.diagramPosition === 'primary') {
+      return [deductionModel.xy.left, deductionModel.xy.top + deductionModel.height + 3];
+    } else if (inputModel.diagramPosition === 'control') {
+      return [deductionModel.xy.left - deductionModel.width / 2 - 3, deductionModel.xy.top + deductionModel.height / 2];
+    } else { // secondary
+      return [deductionModel.xy.left + deductionModel.width / 4, deductionModel.xy.top + deductionModel.height + 3];
+    }
+  };
 
   ns.DeductionScheme = createFragment({
     createMarkup: function() {
