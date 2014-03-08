@@ -8,9 +8,9 @@ RelationDesign_fragment:          autoCreate=false
 RelationDesign_fragment:          owner=true
 RelationDesign_fragment:          reverseMultivalue=false
 RelationDesign_fragment:          reverseName="partOfSharedElementDefinition"
-RelationDesign_fragment:          dataType=DataTypeDesign_157:DataTypeDesign{
-DataTypeDesign_157:                multivalue=false
-RelationDesign_fragment:          }DataTypeDesign_157
+RelationDesign_fragment:          dataType=DataTypeDesign_163:DataTypeDesign{
+DataTypeDesign_163:                multivalue=false
+RelationDesign_fragment:          }DataTypeDesign_163
 RelationDesign_fragment:          to="EntityDesign_ElementDesign"
 _SharedElementDefinitionDesign:  }RelationDesign_fragment
 _SharedElementDefinitionDesign: }EntityDesign_SharedElementDefinitionDesign

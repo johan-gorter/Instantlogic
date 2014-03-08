@@ -1,3 +1,4 @@
 FragmentTypeDesign_Heading3:   FragmentTypeDesign_Heading3:FragmentTypeDesign{
 FragmentTypeDesign_Heading3:    name="Heading3"
+FragmentTypeDesign_Heading3:    textPropertyNames+"text"
 FragmentTypeDesign_Heading3:   }FragmentTypeDesign_Heading3

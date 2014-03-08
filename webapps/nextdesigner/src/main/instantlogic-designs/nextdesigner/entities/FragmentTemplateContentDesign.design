@@ -1,6 +1,6 @@
 _FragmentTemplateContentDesign: EntityDesign_FragmentTemplateContentDesign:EntityDesign{
 _FragmentTemplateContentDesign:  name="FragmentTemplateContentDesign"
-_FragmentTemplateContentDesign:  dataType=DataTypeDesign_175:DataTypeDesign{
-_FragmentTemplateContentDesign:  }DataTypeDesign_175
+_FragmentTemplateContentDesign:  dataType=DataTypeDesign_181:DataTypeDesign{
+_FragmentTemplateContentDesign:  }DataTypeDesign_181
 _FragmentTemplateContentDesign:  extendsFrom="EntityDesign_PropertyDesign"
 _FragmentTemplateContentDesign: }EntityDesign_FragmentTemplateContentDesign

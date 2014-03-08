@@ -1,3 +1,4 @@
 FragmentTypeDesign_Paragraph:  FragmentTypeDesign_Paragraph:FragmentTypeDesign{
 FragmentTypeDesign_Paragraph:   name="Paragraph"
+FragmentTypeDesign_Paragraph:   textPropertyNames+"text"
 FragmentTypeDesign_Paragraph:  }FragmentTypeDesign_Paragraph

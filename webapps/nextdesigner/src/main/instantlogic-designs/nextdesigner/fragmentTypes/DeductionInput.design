@@ -1,0 +1,6 @@
+gmentTypeDesign_DeductionInput: FragmentTypeDesign_DeductionInput:FragmentTypeDesign{
+gmentTypeDesign_DeductionInput:  name="DeductionInput"
+gmentTypeDesign_DeductionInput:  textPropertyNames+"operationInputName"
+gmentTypeDesign_DeductionInput:  valuePropertyNames+"diagramPosition"
+gmentTypeDesign_DeductionInput:  valuePropertyNames+"deductionInputId"
+gmentTypeDesign_DeductionInput: }FragmentTypeDesign_DeductionInput

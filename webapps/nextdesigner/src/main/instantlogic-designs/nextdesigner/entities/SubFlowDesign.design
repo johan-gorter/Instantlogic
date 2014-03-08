@@ -7,9 +7,9 @@ RelationDesign_flow:              autoCreate=false
 RelationDesign_flow:              owner=false
 RelationDesign_flow:              reverseMultivalue=false
 RelationDesign_flow:              reverseName="subFlowIn"
-RelationDesign_flow:              dataType=DataTypeDesign_167:DataTypeDesign{
-DataTypeDesign_167:                multivalue=false
-RelationDesign_flow:              }DataTypeDesign_167
+RelationDesign_flow:              dataType=DataTypeDesign_173:DataTypeDesign{
+DataTypeDesign_173:                multivalue=false
+RelationDesign_flow:              }DataTypeDesign_173
 RelationDesign_flow:              to="EntityDesign_FlowDesign"
 EntityDesign_SubFlowDesign:     }RelationDesign_flow
 EntityDesign_SubFlowDesign:    }EntityDesign_SubFlowDesign

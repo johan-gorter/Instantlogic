@@ -1,4 +1,5 @@
 FragmentTypeDesign_Link:       FragmentTypeDesign_Link:FragmentTypeDesign{
 FragmentTypeDesign_Link:        name="Link"
+FragmentTypeDesign_Link:        contentPropertyNames+"content"
 FragmentTypeDesign_Link:        hasEvent=true
 FragmentTypeDesign_Link:       }FragmentTypeDesign_Link

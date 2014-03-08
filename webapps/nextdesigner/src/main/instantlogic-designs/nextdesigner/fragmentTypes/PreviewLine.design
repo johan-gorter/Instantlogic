@@ -1,0 +1,5 @@
+FragmentTypeDesign_PreviewLine: FragmentTypeDesign_PreviewLine:FragmentTypeDesign{
+FragmentTypeDesign_PreviewLine:  name="PreviewLine"
+FragmentTypeDesign_PreviewLine:  contentPropertyNames+"content"
+FragmentTypeDesign_PreviewLine:  valuePropertyNames+"previewMode"
+FragmentTypeDesign_PreviewLine: }FragmentTypeDesign_PreviewLine

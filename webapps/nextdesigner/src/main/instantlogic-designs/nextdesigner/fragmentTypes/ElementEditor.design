@@ -1,0 +1,4 @@
+agmentTypeDesign_ElementEditor: FragmentTypeDesign_ElementEditor:FragmentTypeDesign{
+agmentTypeDesign_ElementEditor:  name="ElementEditor"
+agmentTypeDesign_ElementEditor:  contentPropertyNames+"content"
+agmentTypeDesign_ElementEditor: }FragmentTypeDesign_ElementEditor

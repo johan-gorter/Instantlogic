@@ -1,6 +1,6 @@
 ign_FragmentTemplateTextDesign: EntityDesign_FragmentTemplateTextDesign:EntityDesign{
 ign_FragmentTemplateTextDesign:  name="FragmentTemplateTextDesign"
-ign_FragmentTemplateTextDesign:  dataType=DataTypeDesign_174:DataTypeDesign{
-ign_FragmentTemplateTextDesign:  }DataTypeDesign_174
+ign_FragmentTemplateTextDesign:  dataType=DataTypeDesign_180:DataTypeDesign{
+ign_FragmentTemplateTextDesign:  }DataTypeDesign_180
 ign_FragmentTemplateTextDesign:  extendsFrom="EntityDesign_PropertyDesign"
 ign_FragmentTemplateTextDesign: }EntityDesign_FragmentTemplateTextDesign

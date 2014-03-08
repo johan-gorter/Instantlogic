@@ -1,6 +1,6 @@
 package org.instantlogic.designer;
 
-@SuppressWarnings({"rawtypes","unused"})
+@SuppressWarnings({"unchecked","rawtypes","unused"})
 public class FragmentTemplateContentDesign extends PropertyDesign { 
 
 	private static final java.util.Map<String, FragmentTemplateContentDesign> _staticInstances = new java.util.LinkedHashMap<String, FragmentTemplateContentDesign>();

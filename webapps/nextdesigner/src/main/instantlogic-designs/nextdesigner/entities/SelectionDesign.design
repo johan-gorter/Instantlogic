@@ -7,9 +7,9 @@ RelationDesign_child:             autoCreate=false
 RelationDesign_child:             owner=true
 RelationDesign_child:             reverseMultivalue=false
 RelationDesign_child:             reverseName="childOfSelection"
-RelationDesign_child:             dataType=DataTypeDesign_155:DataTypeDesign{
-DataTypeDesign_155:                multivalue=false
-RelationDesign_child:             }DataTypeDesign_155
+RelationDesign_child:             dataType=DataTypeDesign_161:DataTypeDesign{
+DataTypeDesign_161:                multivalue=false
+RelationDesign_child:             }DataTypeDesign_161
 RelationDesign_child:             to="EntityDesign_ElementDesign"
 EntityDesign_SelectionDesign:   }RelationDesign_child
 EntityDesign_SelectionDesign:   relations+RelationDesign_selection:RelationDesign{
@@ -18,9 +18,9 @@ RelationDesign_selection:         autoCreate=true
 RelationDesign_selection:         owner=true
 RelationDesign_selection:         reverseMultivalue=false
 RelationDesign_selection:         reverseName="selectionElement"
-RelationDesign_selection:         dataType=DataTypeDesign_156:DataTypeDesign{
-DataTypeDesign_156:                multivalue=false
-RelationDesign_selection:         }DataTypeDesign_156
+RelationDesign_selection:         dataType=DataTypeDesign_162:DataTypeDesign{
+DataTypeDesign_162:                multivalue=false
+RelationDesign_selection:         }DataTypeDesign_162
 RelationDesign_selection:         to="EntityDesign_DeductionSchemeDesign"
 EntityDesign_SelectionDesign:   }RelationDesign_selection
 EntityDesign_SelectionDesign:  }EntityDesign_SelectionDesign

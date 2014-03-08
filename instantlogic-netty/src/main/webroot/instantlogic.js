@@ -7,7 +7,7 @@ YUI.add('instantlogic', function (Y) {
 
   ns.createBaseConfiguration = function (YUI) {
     return {
-      fragmentNamespaces: [YUI.instantlogic.fragments, YUI.instantlogic.presence, YUI.instantlogic.designer, YUI.instantlogic.designer.diagram],
+      fragmentNamespaces: [YUI.instantlogic.fragments, YUI.instantlogic.presence, YUI.instantlogic.designer, YUI.instantlogic.designer.diagram, YUI.instantlogic.designer.graph],
       createAnswer: YUI.instantlogic.answers.createAnswer
     };
   };
@@ -37,33 +37,34 @@ YUI.add('instantlogic', function (Y) {
 
         var h = Y.html;
         
-        
-        this.oneMomentPleasePanel = 
-        	h.div({className:'modal'}, 
-	        	h.div({className:'modal-dialog modal-sm'}, 
-    	        	h.div({className:'modal-content'},
-				    	h.div({className:'modal-header'},
-				    		h.h4({className:'modal-title'}, "One moment please...")
+        if (presenceNode) {
+	        this.oneMomentPleasePanel = 
+	        	h.div({className:'modal'}, 
+		        	h.div({className:'modal-dialog modal-sm'}, 
+	    	        	h.div({className:'modal-content'},
+					    	h.div({className:'modal-header'},
+					    		h.h4({className:'modal-title'}, "One moment please...")
+					    	)
 				    	)
-			    	)
-	        	)
-        	);
-
-        presenceNode.insert(this.oneMomentPleasePanel, 'before');
-                
-        this.errorPanel = 
-        	h.div({className:'modal'}, 
-	        	h.div({className:'modal-dialog modal-sm'}, 
-    	        	h.div({className:'modal-content'},
-	    	        	h.div({className:'modal-header'},
-	    	        		h.h4({className:'modal-title'}, 'Error')
-	    	        	),
-    	        		h.div({className:'modal-body'}, 'Sorry, an error has occurred on the server')
-    	        	)
-	        	)
-        	);
-        
-        presenceNode.insert(this.errorPanel, 'before');
+		        	)
+	        	);
+	
+	        presenceNode.insert(this.oneMomentPleasePanel, 'before');
+	                
+	        this.errorPanel = 
+	        	h.div({className:'modal'}, 
+		        	h.div({className:'modal-dialog modal-sm'}, 
+	    	        	h.div({className:'modal-content'},
+		    	        	h.div({className:'modal-header'},
+		    	        		h.h4({className:'modal-title'}, 'Error')
+		    	        	),
+	    	        		h.div({className:'modal-body'}, 'Sorry, an error has occurred on the server')
+	    	        	)
+		        	)
+	        	);
+	        
+	        presenceNode.insert(this.errorPanel, 'before');
+        }
 
     };
 

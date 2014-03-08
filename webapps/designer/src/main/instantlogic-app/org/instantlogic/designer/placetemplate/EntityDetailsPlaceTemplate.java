@@ -93,7 +93,7 @@ public class EntityDetailsPlaceTemplate extends org.instantlogic.interaction.flo
                                     .addChild("content",
                                         new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_41", "Block")        
                                             .addChild("content",
-                                                new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_42", "WorkInProgress")      
+                                                new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_42", "Strong")      
                                                     .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction2()).getTextTemplate())        
                                             )        
                                     ))

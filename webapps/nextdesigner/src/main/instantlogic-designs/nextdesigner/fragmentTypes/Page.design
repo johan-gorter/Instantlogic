@@ -1,3 +1,4 @@
 FragmentTypeDesign_Page:       FragmentTypeDesign_Page:FragmentTypeDesign{
 FragmentTypeDesign_Page:        name="Page"
+FragmentTypeDesign_Page:        contentPropertyNames+"mainContent"
 FragmentTypeDesign_Page:       }FragmentTypeDesign_Page

@@ -3,6 +3,7 @@ package org.instantlogic.designer.tools;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.deduction.TechnicalNameDeduction;
@@ -23,8 +24,12 @@ import org.instantlogic.fabric.value.WriteableAttributeValue;
  * Provides a main class that generates javacode for all (web)apps found under ../ and ../webapps/
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class IdUpdater {
+public class Updater {
 	
+	private static final boolean DRY_RUN = true;
+	private static final boolean MAKE_FRIENDLY_IDS = true;
+
+
 	public static void main(String[] args) {
 		if (args.length>0) {
 			loadAndUpdate(new File(args[0]));
@@ -52,8 +57,10 @@ public class IdUpdater {
 			        operation.complete();
 			        operation.close();
 			        Migrator.applyMigrations(newApp);
-			        //deleteFolder(file, true);
-			        //new DesignerCasePersister().save(newApp, file, null);
+			        if (!DRY_RUN) {
+				        deleteFolder(file, true);
+				        new DesignerCasePersister().save(newApp, file, null);
+			        }
 				}
 			}
 		}
@@ -148,7 +155,7 @@ public class IdUpdater {
 								WriteableAttributeValue oldRelationValues = (WriteableAttributeValue)oldRelation.get(oldInstance);
 								WriteableAttributeValue newRelationValues = (WriteableAttributeValue)newRelation.get(newInstance);
 								for (Instance oldChildInstance : (Values<? extends Instance>)oldRelationValues.getValue()) {
-									Instance newChildInstance = createInstance(oldChildInstance, generateNewId(oldChildInstance, newCaseAdministration));
+									Instance newChildInstance = createInstance(oldChildInstance, generateNewId(oldChildInstance, newCaseAdministration, oldInstance.getMetadata().getCaseAdministration()));
 									newRelationValues.setOrAdd(newChildInstance);
 									recreateStructure(newChildInstance, oldChildInstance, oldInstances, newInstances, newCaseAdministration);
 								}
@@ -156,7 +163,7 @@ public class IdUpdater {
 						} else {
 							if (!newRelation.isMultivalue()) {
 								Instance oldChildInstance = (Instance)oldRelation.get(oldInstance).getValue();
-								Instance newChildInstance = createInstance(oldChildInstance, generateNewId(oldChildInstance, newCaseAdministration));
+								Instance newChildInstance = createInstance(oldChildInstance, generateNewId(oldChildInstance, newCaseAdministration, oldInstance.getMetadata().getCaseAdministration()));
 								((RelationValue)newRelation.get(newInstance)).setValue(newChildInstance);
 								recreateStructure(newChildInstance, oldChildInstance, oldInstances, newInstances, newCaseAdministration);
 							}
@@ -191,7 +198,11 @@ public class IdUpdater {
 	}
 	
 
-	private static String generateNewId(Instance oldInstance, CaseAdministration newCaseAdministration) {
+	private static String generateNewId(Instance oldInstance, CaseAdministration oldCaseAdministration, CaseAdministration newCaseAdministration) {
+		String oldId = oldInstance.getMetadata().getUniqueId();
+		if (!MAKE_FRIENDLY_IDS || isFriendly(oldId)) {
+			return oldId;
+		}
 		Entity<?> entity = oldInstance.getMetadata().getEntity();
 		String id = entity.getName();
 		Attribute nameAttribute = entity.tryGetAttribute("name");
@@ -201,7 +212,8 @@ public class IdUpdater {
 				id = id+"_"+TechnicalNameDeduction.makeTechnicalName(name);
 			}
 		}
-		if (newCaseAdministration.getInstanceByUniqueId(id)==null) {
+		if (newCaseAdministration.getInstanceByUniqueId(id)==null && oldCaseAdministration.getInstanceByUniqueId(id) == null) {
+			System.out.println(oldId+ " -> "+ id);
 			return id;
 		}
 		int index = 0;
@@ -209,7 +221,14 @@ public class IdUpdater {
 		do {
 			index++;
 			indexedId = id+"_"+index;
-		} while (newCaseAdministration.getInstanceByUniqueId(indexedId)!=null);
+		} while (newCaseAdministration.getInstanceByUniqueId(indexedId)!=null || oldCaseAdministration.getInstanceByUniqueId(id) != null);
+		System.out.println(oldId+ " -> "+ indexedId);
 		return indexedId;
+	}
+	
+	private static final Pattern UNFRIENDLY = Pattern.compile("\\d[^\\d]");
+
+	private static boolean isFriendly(String id) {
+		return !UNFRIENDLY.matcher(id).find();
 	}
 }

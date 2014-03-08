@@ -7,9 +7,9 @@ RelationDesign_definition:        autoCreate=false
 RelationDesign_definition:        owner=false
 RelationDesign_definition:        reverseMultivalue=true
 RelationDesign_definition:        reverseName="usages"
-RelationDesign_definition:        dataType=DataTypeDesign_158:DataTypeDesign{
-DataTypeDesign_158:                multivalue=false
-RelationDesign_definition:        }DataTypeDesign_158
+RelationDesign_definition:        dataType=DataTypeDesign_164:DataTypeDesign{
+DataTypeDesign_164:                multivalue=false
+RelationDesign_definition:        }DataTypeDesign_164
 RelationDesign_definition:        to="EntityDesign_SharedElementDefinitionDesign"
 tityDesign_SharedElementDesign:  }RelationDesign_definition
 tityDesign_SharedElementDesign: }EntityDesign_SharedElementDesign

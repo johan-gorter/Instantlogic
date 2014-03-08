@@ -1,0 +1,5 @@
+mentTypeDesign_DeductionScheme: FragmentTypeDesign_DeductionScheme:FragmentTypeDesign{
+mentTypeDesign_DeductionScheme:  name="DeductionScheme"
+mentTypeDesign_DeductionScheme:  contentPropertyNames+"deductions"
+mentTypeDesign_DeductionScheme:  valuePropertyNames+"output"
+mentTypeDesign_DeductionScheme: }FragmentTypeDesign_DeductionScheme

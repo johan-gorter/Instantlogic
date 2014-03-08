@@ -22,6 +22,7 @@ public class PlaceTemplateDesign extends AbstractPlaceTemplateDesign {
     	lookUpTypes(element);
     }
 
+    @Deprecated
 	private void lookUpTypes(ElementDesign element) {
 		if (element instanceof FragmentTemplateDesign) {
 			FragmentTemplateDesign fragmentTemplate = (FragmentTemplateDesign)element;

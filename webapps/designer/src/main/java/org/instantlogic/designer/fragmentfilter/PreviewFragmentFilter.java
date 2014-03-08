@@ -43,15 +43,30 @@ public class PreviewFragmentFilter implements FragmentFilter {
 			if (template.getStyleNames()!=null && template.getStyleNames().size()>0) {
 				result.put("styleNames", template.getStyleNames().asCollection().toArray());
 			}
-			for (PropertyDesign property : template.getProperties()) {
+			for (PropertyDesign property : template.getContents()) {
 				if (property.getChildren().size()>0) {
 					result.put(property.getPropertyName(), new Object[]{ createDummyBlock(property.getPropertyName(), id)});
-				} else if (property.getText()!=null) {
+				}
+			}
+			for (PropertyDesign property : template.getTexts()) {
+				if (property.getText()!=null) {
 					result.put(property.getPropertyName(), renderText(property.getText()));
-				} else if (property.getValue()!=null) {
+				}
+			}
+			for (PropertyDesign property : template.getValues()) {
+				if (property.getValue()!=null) {
 					result.put(property.getPropertyName(), fakeResult(property.getValue()));
 				}
 			}
+//			for (PropertyDesign property : template.getProperties()) {
+//				if (property.getChildren().size()>0) {
+//					result.put(property.getPropertyName(), new Object[]{ createDummyBlock(property.getPropertyName(), id)});
+//				} else if (property.getText()!=null) {
+//					result.put(property.getPropertyName(), renderText(property.getText()));
+//				} else if (property.getValue()!=null) {
+//					result.put(property.getPropertyName(), fakeResult(property.getValue()));
+//				}
+//			}
 			if (template.getAttribute()!=null && template.getEntity()!=null) {
 				addField(result, template.getAttribute(), template.getEntity());
 			}

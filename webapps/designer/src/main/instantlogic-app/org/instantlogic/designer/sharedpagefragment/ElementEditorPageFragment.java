@@ -216,10 +216,10 @@ null
                                         )        
                                 )        
                                 .addChild("content",
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_84", "WorkInProgress")      
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_84", "PreviewLine")      
                                         .putValue("previewMode", createDeduction6())        
                                         .addChild("content",
-                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_85", "WorkInProgress")      
+                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_85", "Strong")      
                                                 .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction4()).getTextTemplate())        
                                         )        
                                         .addChild("content",
@@ -263,9 +263,9 @@ null
                                                 )        
                                         )        
                                         .addChild("content",
-                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_95", "WorkInProgress")        
+                                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_95", "Preview")        
                                                 .addChild("content",
-                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_96", "WorkInProgress")      
+                                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_96", "PreviewPlaceholder")      
                                                         .addCustomFilter(new org.instantlogic.designer.fragmentfilter.PreviewFragmentFilter())        
                                                 )        
                                         )        
@@ -294,10 +294,10 @@ null
                                 )        
                         )        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_100", "WorkInProgress")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_100", "PreviewLine")      
                                 .putValue("previewMode", createDeduction10())        
                                 .addChild("content",
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_101", "WorkInProgress")      
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_101", "Strong")      
                                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("[IfElse]").getTextTemplate())        
                                 )        
                         ))
@@ -316,10 +316,10 @@ null
                                 )        
                         )        
                         .addChild("content",
-                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_105", "WorkInProgress")      
+                            new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_105", "PreviewLine")      
                                 .putValue("previewMode", createDeduction12())        
                                 .addChild("content",
-                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_106", "WorkInProgress")      
+                                    new org.instantlogic.interaction.page.FragmentTemplate("FragmentTemplateDesign_106", "Strong")      
                                         .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("[Selection]").getTextTemplate())        
                                 )        
                         ))

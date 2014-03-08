@@ -1,6 +1,6 @@
 gn_FragmentTemplateValueDesign: EntityDesign_FragmentTemplateValueDesign:EntityDesign{
 gn_FragmentTemplateValueDesign:  name="FragmentTemplateValueDesign"
-gn_FragmentTemplateValueDesign:  dataType=DataTypeDesign_173:DataTypeDesign{
-gn_FragmentTemplateValueDesign:  }DataTypeDesign_173
+gn_FragmentTemplateValueDesign:  dataType=DataTypeDesign_179:DataTypeDesign{
+gn_FragmentTemplateValueDesign:  }DataTypeDesign_179
 gn_FragmentTemplateValueDesign:  extendsFrom="EntityDesign_PropertyDesign"
 gn_FragmentTemplateValueDesign: }EntityDesign_FragmentTemplateValueDesign
