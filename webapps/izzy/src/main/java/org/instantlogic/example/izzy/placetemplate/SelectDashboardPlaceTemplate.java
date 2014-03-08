@@ -11,7 +11,7 @@ public class SelectDashboardPlaceTemplate extends AbstractSelectDashboardPlaceTe
 	@Override
 	public FlowEventOccurrence enter(FlowContext context) {
 		String username = context.getTraveler().getAuthenticatedUsername();
-		if (username==null) return new FlowEventOccurrence(NewNotLoggedInPlaceTemplate.INSTANCE);
+		if (username==null) return new FlowEventOccurrence(NotLoggedInPlaceTemplate.INSTANCE);
 		Project project = context.getSelectedInstance(ProjectEntity.INSTANCE);
 		User user = null;
 		for (User candidateUser : project.getUsers()) {

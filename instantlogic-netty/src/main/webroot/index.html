@@ -17,6 +17,7 @@
 <!-- JS -->
 <script type="text/javascript" src="/webjars/yui/3.7.3/yui/yui.js"></script>
 <script type="text/javascript" src="/html.js"></script>
+<script type="text/javascript" src="/physicsjs-full-0.5.4.js"></script>
 
 <script type="text/javascript" src="/webjars/jquery/1.10.2/jquery.js"></script>
 <script type="text/javascript" src="/webjars/bootstrap/3.0.3/js/bootstrap.js"></script>
@@ -29,6 +30,7 @@
 <script type="text/javascript" src="/instantlogic-answers.js"></script>
 <script type="text/javascript" src="/instantlogic-designer.js"></script>
 <script type="text/javascript" src="/instantlogic-designer-diagram.js"></script>
+<script type="text/javascript" src="/instantlogic-designer-graph.js"></script>
 
 <script type="text/javascript">
 
@@ -36,7 +38,7 @@
 
 	var travelerId = ''+Math.floor(Math.random()*100000000000);
 
-	YUI({filter: 'raw'}).use('node', 'instantlogic', 'instantlogic-presence', 'instantlogic-fragments', 'instantlogic-answers', 'instantlogic-designer', 'instantlogic-designer-diagram', 'html', 'history', function(Y) {
+	YUI({filter: 'raw'}).use('node', 'instantlogic', 'instantlogic-presence', 'instantlogic-fragments', 'instantlogic-answers', 'instantlogic-designer', 'instantlogic-designer-diagram', 'instantlogic-designer-graph', 'html', 'history', function(Y) {
         var applicationMatch = /application=([^&]*)/g.exec(location.search);
         if (!applicationMatch) Y.error('Missing application querystring parameter');
         var caseMatch = /case=([^&]*)/g.exec(location.search);
