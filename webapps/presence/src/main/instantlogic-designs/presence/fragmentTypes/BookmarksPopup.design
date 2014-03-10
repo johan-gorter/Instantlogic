@@ -1,4 +1,6 @@
-FragmentTypeDesign_BookmarskPopup:      FragmentTypeDesign_BookmarskPopup:FragmentTypeDesign{
-FragmentTypeDesign_BookmarskPopup:       name="BookmarskPopup"
-FragmentTypeDesign_BookmarskPopup:       contentPropertyNames+"content"
-FragmentTypeDesign_BookmarskPopup:      }FragmentTypeDesign_BookmarskPopup
+gmentTypeDesign_BookmarksPopup: FragmentTypeDesign_BookmarksPopup:FragmentTypeDesign{
+gmentTypeDesign_BookmarksPopup:  name="BookmarksPopup"
+gmentTypeDesign_BookmarksPopup:  contentPropertyNames+"content"
+gmentTypeDesign_BookmarksPopup:  textPropertyNames+"currentPlaceTitle"
+gmentTypeDesign_BookmarksPopup:  valuePropertyNames+"bookmarksData"
+gmentTypeDesign_BookmarksPopup: }FragmentTypeDesign_BookmarksPopup

@@ -1,4 +1,7 @@
-FragmentTypeDesign_Traveler:      FragmentTypeDesign_Traveler:FragmentTypeDesign{
-FragmentTypeDesign_Traveler:       name="Traveler"
-FragmentTypeDesign_Traveler:       contentPropertyNames+"content"
-FragmentTypeDesign_Traveler:      }FragmentTypeDesign_Traveler
+FragmentTypeDesign_Traveler:   FragmentTypeDesign_Traveler:FragmentTypeDesign{
+FragmentTypeDesign_Traveler:    name="Traveler"
+FragmentTypeDesign_Traveler:    contentPropertyNames+"content"
+FragmentTypeDesign_Traveler:    valuePropertyNames+"placeTitle"
+FragmentTypeDesign_Traveler:    valuePropertyNames+"travelerId"
+FragmentTypeDesign_Traveler:    valuePropertyNames+"place"
+FragmentTypeDesign_Traveler:   }FragmentTypeDesign_Traveler

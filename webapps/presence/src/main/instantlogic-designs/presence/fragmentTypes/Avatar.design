@@ -1,4 +1,9 @@
-FragmentTypeDesign_Avatar:      FragmentTypeDesign_Avatar:FragmentTypeDesign{
-FragmentTypeDesign_Avatar:       name="Avatar"
-FragmentTypeDesign_Avatar:       contentPropertyNames+"content"
-FragmentTypeDesign_Avatar:      }FragmentTypeDesign_Avatar
+FragmentTypeDesign_Avatar:     FragmentTypeDesign_Avatar:FragmentTypeDesign{
+FragmentTypeDesign_Avatar:      name="Avatar"
+FragmentTypeDesign_Avatar:      contentPropertyNames+"content"
+FragmentTypeDesign_Avatar:      valuePropertyNames+"username"
+FragmentTypeDesign_Avatar:      valuePropertyNames+"avatarUrl"
+FragmentTypeDesign_Avatar:      valuePropertyNames+"focus"
+FragmentTypeDesign_Avatar:      valuePropertyNames+"isMe"
+FragmentTypeDesign_Avatar:      valuePropertyNames+"name"
+FragmentTypeDesign_Avatar:     }FragmentTypeDesign_Avatar

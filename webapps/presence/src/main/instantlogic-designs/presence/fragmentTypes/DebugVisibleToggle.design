@@ -1,4 +1,4 @@
-FragmentTypeDesign_DebugVisibleToggle:      FragmentTypeDesign_DebugVisibleToggle:FragmentTypeDesign{
-FragmentTypeDesign_DebugVisibleToggle:       name="DebugVisibleToggle"
-FragmentTypeDesign_DebugVisibleToggle:       contentPropertyNames+"content"
-FragmentTypeDesign_DebugVisibleToggle:      }FragmentTypeDesign_DebugVisibleToggle
+tTypeDesign_DebugVisibleToggle: FragmentTypeDesign_DebugVisibleToggle:FragmentTypeDesign{
+tTypeDesign_DebugVisibleToggle:  name="DebugVisibleToggle"
+tTypeDesign_DebugVisibleToggle:  contentPropertyNames+"content"
+tTypeDesign_DebugVisibleToggle: }FragmentTypeDesign_DebugVisibleToggle

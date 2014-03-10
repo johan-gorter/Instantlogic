@@ -15,6 +15,7 @@
 	<module>instantlogic-testing</module>
 		
         <module>webapps/izzy</module>
+        <module>webapps/presence</module>
         <module>webapps/nextdesigner</module>
 <!--
         <module>bootstrappers/izzy</module>

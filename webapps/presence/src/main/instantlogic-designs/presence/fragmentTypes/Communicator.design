@@ -1,4 +1,5 @@
-FragmentTypeDesign_Communicator:      FragmentTypeDesign_Communicator:FragmentTypeDesign{
-FragmentTypeDesign_Communicator:       name="Communicator"
-FragmentTypeDesign_Communicator:       contentPropertyNames+"content"
-FragmentTypeDesign_Communicator:      }FragmentTypeDesign_Communicator
+ragmentTypeDesign_Communicator: FragmentTypeDesign_Communicator:FragmentTypeDesign{
+ragmentTypeDesign_Communicator:  name="Communicator"
+ragmentTypeDesign_Communicator:  contentPropertyNames+"content"
+ragmentTypeDesign_Communicator:  contentPropertyNames+"users"
+ragmentTypeDesign_Communicator: }FragmentTypeDesign_Communicator

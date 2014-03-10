@@ -26,6 +26,11 @@
 	  </dependency>
       <dependency>
     	<groupId>org.instantlogic</groupId>
+        <artifactId>presence</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
         <artifactId>instantlogic-tools</artifactId>
     	<version>${project.version}</version>
 	  </dependency>
@@ -43,41 +48,6 @@
     </dependencies>
     
     <build>
-    <plugins>
-      <plugin>
-        <groupId>org.instantlogic</groupId>
-        <artifactId>instantlogic-maven-plugin</artifactId>
-        <version>${project.version}</version>
-        <executions>
-          <execution>
-            <id>generate-java</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>generate-java</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-            <id>add-source</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>target/generated-sources/instantlogic-app/presence/</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
     <pluginManagement>
     	<plugins>
     		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->

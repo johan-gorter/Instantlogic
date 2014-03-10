@@ -1,0 +1,4 @@
+mentTypeDesign_ToggleBookmarks: FragmentTypeDesign_ToggleBookmarks:FragmentTypeDesign{
+mentTypeDesign_ToggleBookmarks:  name="ToggleBookmarks"
+mentTypeDesign_ToggleBookmarks:  contentPropertyNames+"content"
+mentTypeDesign_ToggleBookmarks: }FragmentTypeDesign_ToggleBookmarks

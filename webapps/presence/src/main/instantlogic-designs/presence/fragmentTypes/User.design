@@ -1,4 +1,8 @@
-FragmentTypeDesign_User:      FragmentTypeDesign_User:FragmentTypeDesign{
-FragmentTypeDesign_User:       name="User"
-FragmentTypeDesign_User:       contentPropertyNames+"content"
-FragmentTypeDesign_User:      }FragmentTypeDesign_User
+FragmentTypeDesign_User:       FragmentTypeDesign_User:FragmentTypeDesign{
+FragmentTypeDesign_User:        name="User"
+FragmentTypeDesign_User:        contentPropertyNames+"content"
+FragmentTypeDesign_User:        contentPropertyNames+"travelers"
+FragmentTypeDesign_User:        valuePropertyNames+"avatarUrl"
+FragmentTypeDesign_User:        valuePropertyNames+"username"
+FragmentTypeDesign_User:        valuePropertyNames+"name"
+FragmentTypeDesign_User:       }FragmentTypeDesign_User
