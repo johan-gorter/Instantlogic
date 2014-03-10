@@ -1,9 +1,4 @@
-WEcbghIaAIcpUdeA_37ce0242_31cd: WEcbghIaAIcpUdeA_37ce0242_31cd:DeductionOperationDesign{
-WEcbghIaAIcpUdeA_37ce0242_31cd:  name="userNameDefault"
-WEcbghIaAIcpUdeA_37ce0242_31cd:  isCustomized
-WEcbghIaAIcpUdeA_37ce0242_31cd:  javaClassName="org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction"
-WEcbghIaAIcpUdeA_37ce0242_31cd:  inputs[
-WEcbghIaAIcpUdeA_37ce0242_31cd:  inputs]
-WEcbghIaAIcpUdeA_37ce0242_31cd:  parameters[
-WEcbghIaAIcpUdeA_37ce0242_31cd:  parameters]
-WEcbghIaAIcpUdeA_37ce0242_31cd: }WEcbghIaAIcpUdeA_37ce0242_31cd
+perationDesign_userNameDefault: DeductionOperationDesign_userNameDefault:DeductionOperationDesign{
+perationDesign_userNameDefault:  name="userNameDefault"
+perationDesign_userNameDefault:  javaClassName="org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction"
+perationDesign_userNameDefault: }DeductionOperationDesign_userNameDefault

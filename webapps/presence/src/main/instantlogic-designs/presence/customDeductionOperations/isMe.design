@@ -1,9 +1,4 @@
-AqcdUiauUqcbolnr_06c71642_03a5: AqcdUiauUqcbolnr_06c71642_03a5:DeductionOperationDesign{
-AqcdUiauUqcbolnr_06c71642_03a5:  name="isMe"
-AqcdUiauUqcbolnr_06c71642_03a5:  isCustomized
-AqcdUiauUqcbolnr_06c71642_03a5:  javaClassName="org.instantlogic.engine.presence.deduction.IsMeDeduction"
-AqcdUiauUqcbolnr_06c71642_03a5:  inputs[
-AqcdUiauUqcbolnr_06c71642_03a5:  inputs]
-AqcdUiauUqcbolnr_06c71642_03a5:  parameters[
-AqcdUiauUqcbolnr_06c71642_03a5:  parameters]
-AqcdUiauUqcbolnr_06c71642_03a5: }AqcdUiauUqcbolnr_06c71642_03a5
+DeductionOperationDesign_isMe: DeductionOperationDesign_isMe:DeductionOperationDesign{
+DeductionOperationDesign_isMe:  name="isMe"
+DeductionOperationDesign_isMe:  javaClassName="org.instantlogic.engine.presence.deduction.IsMeDeduction"
+DeductionOperationDesign_isMe: }DeductionOperationDesign_isMe

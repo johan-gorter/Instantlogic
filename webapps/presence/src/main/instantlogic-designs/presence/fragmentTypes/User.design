@@ -1,0 +1,4 @@
+FragmentTypeDesign_User:      FragmentTypeDesign_User:FragmentTypeDesign{
+FragmentTypeDesign_User:       name="User"
+FragmentTypeDesign_User:       contentPropertyNames+"content"
+FragmentTypeDesign_User:      }FragmentTypeDesign_User

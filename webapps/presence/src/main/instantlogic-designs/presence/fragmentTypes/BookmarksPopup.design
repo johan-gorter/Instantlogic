@@ -1,0 +1,4 @@
+FragmentTypeDesign_BookmarskPopup:      FragmentTypeDesign_BookmarskPopup:FragmentTypeDesign{
+FragmentTypeDesign_BookmarskPopup:       name="BookmarskPopup"
+FragmentTypeDesign_BookmarskPopup:       contentPropertyNames+"content"
+FragmentTypeDesign_BookmarskPopup:      }FragmentTypeDesign_BookmarskPopup

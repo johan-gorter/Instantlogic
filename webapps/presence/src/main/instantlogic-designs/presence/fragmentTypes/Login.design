@@ -1,0 +1,4 @@
+FragmentTypeDesign_Login:      FragmentTypeDesign_Login:FragmentTypeDesign{
+FragmentTypeDesign_Login:       name="Login"
+FragmentTypeDesign_Login:       contentPropertyNames+"content"
+FragmentTypeDesign_Login:      }FragmentTypeDesign_Login

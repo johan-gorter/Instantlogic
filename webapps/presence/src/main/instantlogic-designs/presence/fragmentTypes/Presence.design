@@ -1,0 +1,4 @@
+FragmentTypeDesign_Presence:      FragmentTypeDesign_Presence:FragmentTypeDesign{
+FragmentTypeDesign_Presence:       name="Presence"
+FragmentTypeDesign_Presence:       contentPropertyNames+"content"
+FragmentTypeDesign_Presence:      }FragmentTypeDesign_Presence

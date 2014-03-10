@@ -1,10 +1,6 @@
-Applicationdesgn__0001: Applicationdesgn__0001:ApplicationDesign{
-Applicationdesgn__0001:  name="Presence"
-Applicationdesgn__0001:  isCustomized
-Applicationdesgn__0001:  sourcePath
-Applicationdesgn__0001:  themeNames[
-Applicationdesgn__0001:  themeNames]
-Applicationdesgn__0001:  rootPackageName="org.instantlogic.engine.presence"
-Applicationdesgn__0001:  caseEntity="HgIbcsImxqfcwaqv_a9c1de41_7ef8"
-Applicationdesgn__0001:  startPlace="eejaxamzueckaopf_de57ce40_d204"
-Applicationdesgn__0001: }Applicationdesgn__0001
+Application_Presence:          Application_Presence:ApplicationDesign{
+Application_Presence:           name="Presence"
+Application_Presence:           rootPackageName="org.instantlogic.engine.presence"
+Application_Presence:           caseEntity="EntityDesign_Presence"
+Application_Presence:           startPlace="PlaceTemplateDesign_Traveler"
+Application_Presence:          }Application_Presence

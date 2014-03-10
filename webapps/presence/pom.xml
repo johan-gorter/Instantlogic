@@ -71,7 +71,7 @@
             </goals>
             <configuration>
               <sources>
-                <source>target/generated-sources/instantlogic-app/izzy/</source>
+                <source>target/generated-sources/instantlogic-app/presence/</source>
               </sources>
             </configuration>
           </execution>

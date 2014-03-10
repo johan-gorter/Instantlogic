@@ -26,7 +26,7 @@ import org.instantlogic.fabric.value.WriteableAttributeValue;
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class Updater {
 	
-	private static final boolean DRY_RUN = true;
+	private static final boolean DRY_RUN = false;
 	private static final boolean MAKE_FRIENDLY_IDS = true;
 
 
@@ -221,7 +221,7 @@ public class Updater {
 		do {
 			index++;
 			indexedId = id+"_"+index;
-		} while (newCaseAdministration.getInstanceByUniqueId(indexedId)!=null || oldCaseAdministration.getInstanceByUniqueId(id) != null);
+		} while (newCaseAdministration.getInstanceByUniqueId(indexedId)!=null || oldCaseAdministration.getInstanceByUniqueId(indexedId) != null);
 		System.out.println(oldId+ " -> "+ indexedId);
 		return indexedId;
 	}
