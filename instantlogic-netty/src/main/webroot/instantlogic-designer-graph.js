@@ -37,6 +37,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
   var dragFactor = 0.08;
   var repelFactor = 4;
   var accFactor = speed / 1000000;
+
   edgeTypes = {
     inherits: { // subclass -> superclass
       preferredDx: 0,
@@ -45,6 +46,38 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       dxShrink: 10,
       dyGrow: 100, // repel hard
       dyShrink: 30 // attract
+    },
+    one: { 
+      preferredDx: 100,
+      preferredDy: -50,
+      dxGrow: 10,
+      dxShrink: 10,
+      dyGrow: 10,
+      dyShrink: 10
+    },
+    many: { 
+      preferredDx: 100,
+      preferredDy: 50,
+      dxGrow: 10,
+      dxShrink: 10,
+      dyGrow: 10,
+      dyShrink: 10
+    },
+    ownsOne: { 
+      preferredDx: 50,
+      preferredDy: -100,
+      dxGrow: 10,
+      dxShrink: 10,
+      dyGrow: 10,
+      dyShrink: 10
+    },
+    ownsMany: { 
+      preferredDx: -50,
+      preferredDy: -100,
+      dxGrow: 10,
+      dxShrink: 10,
+      dyGrow: 10,
+      dyShrink: 10
     }
   };
 

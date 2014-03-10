@@ -13,6 +13,7 @@ import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.util.CaseAdministration;
 import org.instantlogic.fabric.value.AttributeValue;
+import org.instantlogic.fabric.value.AttributeValueList;
 import org.instantlogic.fabric.value.AttributeValues;
 import org.instantlogic.interaction.Application;
 
@@ -39,16 +40,25 @@ public class ChangeContext extends RenderContext {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void setValue(Entity entity, Attribute attribute, JsonElement value) {
 		if (attribute.isMultivalue()) {
-			AttributeValues attributeValues = (AttributeValues)getAttributeValue(entity, attribute);
-			while (true) {
-				Iterator iterator = attributeValues.getStoredValue().iterator();
-				if (!iterator.hasNext()) {
-					break;
+			if (attribute.isOrderedMultivalue()) {
+				AttributeValueList attributeValues = (AttributeValueList)getAttributeValue(entity, attribute);
+				while (true) {
+					Iterator iterator = attributeValues.getStoredValue().iterator();
+					if (!iterator.hasNext()) {
+						break;
+					}
+					attributeValues.removeValue(iterator.next());
 				}
-				attributeValues.removeValue(iterator.next());
-			}
-			for (JsonElement element : value.getAsJsonArray()) {
-				attributeValues.addValue(parse(element, attribute));
+				for (JsonElement element : value.getAsJsonArray()) {
+					attributeValues.addValue(parse(element, attribute));
+				}
+				
+			} else {
+				AttributeValues attributeValues = (AttributeValues)getAttributeValue(entity, attribute);
+				attributeValues.clear();
+				for (JsonElement element : value.getAsJsonArray()) {
+					attributeValues.addValue(parse(element, attribute));
+				}
 			}
 		} else {
 			AttributeValue attributeValue = (AttributeValue)getAttributeValue(entity, attribute);

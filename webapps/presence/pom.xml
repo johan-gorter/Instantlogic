@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic</artifactId>
+        <version>0.9-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>presence</artifactId>
+    <name>Presence domain for the engine</name>
+
+    <dependencies>
+      <!-- Instantlogic dependencies -->
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-fabric</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+      <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-interaction</artifactId>
+    	<version>${project.version}</version>
+	  </dependency>
+	  
+	  <!-- External dependencies -->
+	  <dependency>
+		<groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+	  </dependency>
+
+
+	  <!--  Testing -->
+	  <dependency>
+    	<groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-engine</artifactId>
+    	<version>${project.version}</version>
+    	<scope>test</scope>
+	  </dependency>
+	  
+    </dependencies>
+    
+    <build>
+    <plugins>
+      <plugin>
+        <groupId>org.instantlogic</groupId>
+        <artifactId>instantlogic-maven-plugin</artifactId>
+        <version>${project.version}</version>
+        <executions>
+          <execution>
+            <id>generate-java</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate-java</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>target/generated-sources/instantlogic-app/izzy/</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+    	<plugins>
+    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+    		<plugin>
+    			<groupId>org.eclipse.m2e</groupId>
+    			<artifactId>lifecycle-mapping</artifactId>
+    			<version>1.0.0</version>
+    			<configuration>
+    				<lifecycleMappingMetadata>
+    					<pluginExecutions>
+    						<pluginExecution>
+    							<pluginExecutionFilter>
+    								<groupId>org.instantlogic</groupId>
+    								<artifactId>
+    									instantlogic-maven-plugin
+    								</artifactId>
+    								<versionRange>
+    									[0.9-SNAPSHOT,)
+    								</versionRange>
+    								<goals>
+    									<goal>generate-java</goal>
+    								</goals>
+    							</pluginExecutionFilter>
+    							<action>
+    								<ignore></ignore>
+    							</action>
+    						</pluginExecution>
+    					</pluginExecutions>
+    				</lifecycleMappingMetadata>
+    			</configuration>
+    		</plugin>
+    	</plugins>
+    </pluginManagement>
+    </build>
+    
+</project>

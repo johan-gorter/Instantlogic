@@ -37,7 +37,8 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 		travelerParameter.setEntity(TravelerEntityGenerator.ENTITY);
 		
 		setContent(
-			new FragmentTemplateDesign("Group")
+			new FragmentTemplateDesign()
+			    .setType(PresenceApplicationGenerator.GROUP)
 				.setChildren("content", 
 					new FragmentTemplateDesign("Presence")
 						.setValue("applicationName", applicationNameDeduction = new DeductionSchemeDesign())
@@ -46,7 +47,8 @@ public class TravelerPlaceTemplateGenerator extends PlaceTemplateDesign {
 							new IfElseDesign()
 								.setCondition(userHasValue = new DeductionSchemeDesign()) // Logged in
 								.setIfChild(
-									new FragmentTemplateDesign("Group")
+									new FragmentTemplateDesign()
+										.setType(PresenceApplicationGenerator.GROUP)
 										.setChildren("content",
 											new SelectionDesign()
 												.setSelection(user = new DeductionSchemeDesign())

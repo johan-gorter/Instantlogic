@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.DeductionOperationDesign;
+import org.instantlogic.designer.FragmentTypeDesign;
 import org.instantlogic.designer.tools.Generator;
 import org.instantlogic.designer.util.DesignerCasePersister;
 import org.instantlogic.engine.presence.placetemplate.TravelerPlaceTemplateGenerator;
@@ -15,11 +16,16 @@ public class PresenceApplicationGenerator extends ApplicationDesign {
 	public static final DeductionOperationDesign UserAvatarUrlDefaultDeduction  = new DeductionOperationDesign();
 	public static final DeductionOperationDesign IsMeDeduction  = new DeductionOperationDesign();
     
+	public static FragmentTypeDesign GROUP;
+	
 	public static PresenceApplicationGenerator APPLICATION = new PresenceApplicationGenerator();
 
     public PresenceApplicationGenerator() {
     	APPLICATION = this;
 		getMetadata().getCaseAdministration().setIdGenerator(new SequencePerLabelIdGenerator()); // predictable Id's for better source control
+		
+		this.addToFragmentTypes(GROUP = (FragmentTypeDesign) new FragmentTypeDesign().setName("Group"));
+		
     	addToCustomDeductionOperations(UserNameDefaultDeduction);
     	UserNameDefaultDeduction.setName("userNameDefault");
 		UserNameDefaultDeduction.setJavaClassName("org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction");

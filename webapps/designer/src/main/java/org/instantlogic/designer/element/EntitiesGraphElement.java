@@ -9,7 +9,6 @@ import org.instantlogic.designer.ApplicationDesign;
 import org.instantlogic.designer.EntityDesign;
 import org.instantlogic.designer.RelationDesign;
 import org.instantlogic.designer.entity.ApplicationDesignEntity;
-import org.instantlogic.interaction.page.Element;
 import org.instantlogic.interaction.page.FragmentFilter;
 import org.instantlogic.interaction.page.FragmentFilterChain;
 import org.instantlogic.interaction.util.ChangeContext;
@@ -23,6 +22,7 @@ public class EntitiesGraphElement implements FragmentFilter {
 	public Map<String, Object> render(RenderContext renderContext, String id, FragmentFilterChain chain) {
 		Map<String, Object> result = new LinkedHashMap<String, Object>();
 		result.put("type", "Graph");
+		result.put("id", id);
 		List<Map<String, Object>> nodes = new ArrayList<>();
 		result.put("nodes", nodes);
 		Map<String, Object> edges = new LinkedHashMap<String, Object>();
@@ -42,6 +42,7 @@ public class EntitiesGraphElement implements FragmentFilter {
 			Map<String, Object> node = new LinkedHashMap<String, Object>();
 			nodes.add(node);
 			node.put("id", entity.getMetadata().getUniqueId());
+			node.put("text", entity.getName());
 			if (entity.getExtendsFrom()!=null) {
 				Map<String, Object> edge = new LinkedHashMap<String, Object>();
 				edge.put("id", entity.getMetadata().getUniqueId()+"-extends");
@@ -69,6 +70,9 @@ public class EntitiesGraphElement implements FragmentFilter {
 				edge.put("to", relation.getTo().getMetadata().getUniqueId());
 				category.add(edge);
 			}
+		}
+		if (application.getCaseEntity()!=null) {
+			result.put("startNodeId", application.getCaseEntity().getMetadata().getUniqueId());
 		}
 		return result;
 	}
