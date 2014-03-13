@@ -1,5 +1,631 @@
 YUI.add('instantlogic-designer-graph', function(Y) {
 
+  var designerTest = {
+		  "type": "Graph",
+		  "id": "graph1",
+		  "nodes": [
+		   {
+		    "id": "EntityDesign_ApplicationDesign",
+		    "text": "ApplicationDesign"
+		   },
+		   {
+		    "id": "EntityDesign_AttributeDesign",
+		    "text": "AttributeDesign"
+		   },
+		   {
+		    "id": "EntityDesign_DataCategoryDesign",
+		    "text": "DataCategoryDesign"
+		   },
+		   {
+		    "id": "EntityDesign_DataTypeDesign",
+		    "text": "DataTypeDesign"
+		   },
+		   {
+		    "id": "EntityDesign_DeductionDesign",
+		    "text": "DeductionDesign"
+		   },
+		   {
+		    "id": "EntityDesign_DeductionInputDesign",
+		    "text": "DeductionInputDesign"
+		   },
+		   {
+		    "id": "EntityDesign_DeductionOperationDesign",
+		    "text": "DeductionOperationDesign"
+		   },
+		   {
+		    "id": "EntityDesign_DeductionOperationInputDesign",
+		    "text": "DeductionOperationInputDesign"
+		   },
+		   {
+		    "id": "EntityDesign_DeductionOperationParameterDesign",
+		    "text": "DeductionOperationParameterDesign"
+		   },
+		   {
+		    "id": "EntityDesign_DeductionParameterDesign",
+		    "text": "DeductionParameterDesign"
+		   },
+		   {
+		    "id": "EntityDesign_DeductionSchemeDesign",
+		    "text": "DeductionSchemeDesign"
+		   },
+		   {
+		    "id": "EntityDesign_Design",
+		    "text": "Design"
+		   },
+		   {
+		    "id": "EntityDesign_DestinationDesign",
+		    "text": "DestinationDesign"
+		   },
+		   {
+		    "id": "EntityDesign_ElementDesign",
+		    "text": "ElementDesign"
+		   },
+		   {
+		    "id": "EntityDesign_EntityDesign",
+		    "text": "EntityDesign"
+		   },
+		   {
+		    "id": "EntityDesign_EventDesign",
+		    "text": "EventDesign"
+		   },
+		   {
+		    "id": "EntityDesign_FlowDesign",
+		    "text": "FlowDesign"
+		   },
+		   {
+		    "id": "EntityDesign_FlowEdgeDesign",
+		    "text": "FlowEdgeDesign"
+		   },
+		   {
+		    "id": "EntityDesign_FlowNodeBaseDesign",
+		    "text": "FlowNodeBaseDesign"
+		   },
+		   {
+		    "id": "EntityDesign_FragmentTemplateContentDesign",
+		    "text": "FragmentTemplateContentDesign"
+		   },
+		   {
+		    "id": "EntityDesign_FragmentTemplateDesign",
+		    "text": "FragmentTemplateDesign"
+		   },
+		   {
+		    "id": "EntityDesign_FragmentTemplateTextDesign",
+		    "text": "FragmentTemplateTextDesign"
+		   },
+		   {
+		    "id": "EntityDesign_FragmentTemplateValueDesign",
+		    "text": "FragmentTemplateValueDesign"
+		   },
+		   {
+		    "id": "EntityDesign_FragmentTypeDesign",
+		    "text": "FragmentTypeDesign"
+		   },
+		   {
+		    "id": "EntityDesign_IfElseDesign",
+		    "text": "IfElseDesign"
+		   },
+		   {
+		    "id": "EntityDesign_PlaceParameterDesign",
+		    "text": "PlaceParameterDesign"
+		   },
+		   {
+		    "id": "EntityDesign_PlaceTemplateDesign",
+		    "text": "PlaceTemplateDesign"
+		   },
+		   {
+		    "id": "EntityDesign_PropertyDesign",
+		    "text": "PropertyDesign"
+		   },
+		   {
+		    "id": "EntityDesign_RelationDesign",
+		    "text": "RelationDesign"
+		   },
+		   {
+		    "id": "EntityDesign_SelectionDesign",
+		    "text": "SelectionDesign"
+		   },
+		   {
+		    "id": "EntityDesign_SharedElementDefinitionDesign",
+		    "text": "SharedElementDefinitionDesign"
+		   },
+		   {
+		    "id": "EntityDesign_SharedElementDesign",
+		    "text": "SharedElementDesign"
+		   },
+		   {
+		    "id": "EntityDesign_StaticInstanceDesign",
+		    "text": "StaticInstanceDesign"
+		   },
+		   {
+		    "id": "EntityDesign_StaticInstanceValueDesign",
+		    "text": "StaticInstanceValueDesign"
+		   },
+		   {
+		    "id": "EntityDesign_StringTemplateDesign",
+		    "text": "StringTemplateDesign"
+		   },
+		   {
+		    "id": "EntityDesign_SubFlowDesign",
+		    "text": "SubFlowDesign"
+		   },
+		   {
+		    "id": "EntityDesign_TextTemplateDesign",
+		    "text": "TextTemplateDesign"
+		   },
+		   {
+		    "id": "EntityDesign_ValidationDesign",
+		    "text": "ValidationDesign"
+		   }
+		  ],
+		  "edges": {
+		   "inherits": [],
+		   "ownsMany": [
+		    {
+		     "id": "RelationDesign_customDeductionOperations",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_DeductionOperationDesign"
+		    },
+		    {
+		     "id": "RelationDesign_entities",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_events",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_EventDesign"
+		    },
+		    {
+		     "id": "RelationDesign_flows",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_FlowDesign"
+		    },
+		    {
+		     "id": "RelationDesign_fragmentTypes",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_FragmentTypeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_placeTemplates",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_PlaceTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_sharedElements",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_SharedElementDefinitionDesign"
+		    },
+		    {
+		     "id": "RelationDesign_inputs",
+		     "from": "EntityDesign_DeductionDesign",
+		     "to": "EntityDesign_DeductionInputDesign"
+		    },
+		    {
+		     "id": "RelationDesign_parameters",
+		     "from": "EntityDesign_DeductionDesign",
+		     "to": "EntityDesign_DeductionParameterDesign"
+		    },
+		    {
+		     "id": "RelationDesign_inputs_2",
+		     "from": "EntityDesign_DeductionOperationDesign",
+		     "to": "EntityDesign_DeductionOperationInputDesign"
+		    },
+		    {
+		     "id": "RelationDesign_parameters_1",
+		     "from": "EntityDesign_DeductionOperationDesign",
+		     "to": "EntityDesign_DeductionOperationParameterDesign"
+		    },
+		    {
+		     "id": "RelationDesign_deductions",
+		     "from": "EntityDesign_DeductionSchemeDesign",
+		     "to": "EntityDesign_DeductionDesign"
+		    },
+		    {
+		     "id": "RelationDesign_attributes",
+		     "from": "EntityDesign_EntityDesign",
+		     "to": "EntityDesign_AttributeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_relations",
+		     "from": "EntityDesign_EntityDesign",
+		     "to": "EntityDesign_RelationDesign"
+		    },
+		    {
+		     "id": "RelationDesign_staticInstances",
+		     "from": "EntityDesign_EntityDesign",
+		     "to": "EntityDesign_StaticInstanceDesign"
+		    },
+		    {
+		     "id": "RelationDesign_validations",
+		     "from": "EntityDesign_EntityDesign",
+		     "to": "EntityDesign_ValidationDesign"
+		    },
+		    {
+		     "id": "RelationDesign_edges",
+		     "from": "EntityDesign_FlowDesign",
+		     "to": "EntityDesign_FlowEdgeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_nodes",
+		     "from": "EntityDesign_FlowDesign",
+		     "to": "EntityDesign_FlowNodeBaseDesign"
+		    },
+		    {
+		     "id": "RelationDesign_contents",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_FragmentTemplateContentDesign"
+		    },
+		    {
+		     "id": "RelationDesign_properties",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_PropertyDesign"
+		    },
+		    {
+		     "id": "RelationDesign_texts",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_FragmentTemplateTextDesign"
+		    },
+		    {
+		     "id": "RelationDesign_values",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_FragmentTemplateValueDesign"
+		    },
+		    {
+		     "id": "RelationDesign_parameters_4",
+		     "from": "EntityDesign_PlaceTemplateDesign",
+		     "to": "EntityDesign_PlaceParameterDesign"
+		    },
+		    {
+		     "id": "RelationDesign_children",
+		     "from": "EntityDesign_PropertyDesign",
+		     "to": "EntityDesign_ElementDesign"
+		    },
+		    {
+		     "id": "RelationDesign_values_2",
+		     "from": "EntityDesign_StaticInstanceDesign",
+		     "to": "EntityDesign_StaticInstanceValueDesign"
+		    },
+		    {
+		     "id": "RelationDesign_untranslated",
+		     "from": "EntityDesign_TextTemplateDesign",
+		     "to": "EntityDesign_StringTemplateDesign"
+		    }
+		   ],
+		   "ownsOne": [
+		    {
+		     "id": "RelationDesign_dataType",
+		     "from": "EntityDesign_AttributeDesign",
+		     "to": "EntityDesign_DataTypeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_default",
+		     "from": "EntityDesign_AttributeDesign",
+		     "to": "EntityDesign_DeductionSchemeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_explanation",
+		     "from": "EntityDesign_AttributeDesign",
+		     "to": "EntityDesign_TextTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_question",
+		     "from": "EntityDesign_AttributeDesign",
+		     "to": "EntityDesign_TextTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_relevance",
+		     "from": "EntityDesign_AttributeDesign",
+		     "to": "EntityDesign_DeductionSchemeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_rule",
+		     "from": "EntityDesign_AttributeDesign",
+		     "to": "EntityDesign_DeductionSchemeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_dataType_3",
+		     "from": "EntityDesign_EntityDesign",
+		     "to": "EntityDesign_DataTypeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_title",
+		     "from": "EntityDesign_EntityDesign",
+		     "to": "EntityDesign_TextTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_destination",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_DestinationDesign"
+		    },
+		    {
+		     "id": "RelationDesign_condition",
+		     "from": "EntityDesign_IfElseDesign",
+		     "to": "EntityDesign_DeductionSchemeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_elseChild",
+		     "from": "EntityDesign_IfElseDesign",
+		     "to": "EntityDesign_ElementDesign"
+		    },
+		    {
+		     "id": "RelationDesign_ifChild",
+		     "from": "EntityDesign_IfElseDesign",
+		     "to": "EntityDesign_ElementDesign"
+		    },
+		    {
+		     "id": "RelationDesign_content",
+		     "from": "EntityDesign_PlaceTemplateDesign",
+		     "to": "EntityDesign_ElementDesign"
+		    },
+		    {
+		     "id": "RelationDesign_title_1",
+		     "from": "EntityDesign_PlaceTemplateDesign",
+		     "to": "EntityDesign_TextTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_text",
+		     "from": "EntityDesign_PropertyDesign",
+		     "to": "EntityDesign_TextTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_value",
+		     "from": "EntityDesign_PropertyDesign",
+		     "to": "EntityDesign_DeductionSchemeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_options",
+		     "from": "EntityDesign_RelationDesign",
+		     "to": "EntityDesign_DeductionSchemeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_reverseDataType",
+		     "from": "EntityDesign_RelationDesign",
+		     "to": "EntityDesign_DataTypeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_child",
+		     "from": "EntityDesign_SelectionDesign",
+		     "to": "EntityDesign_ElementDesign"
+		    },
+		    {
+		     "id": "RelationDesign_selection",
+		     "from": "EntityDesign_SelectionDesign",
+		     "to": "EntityDesign_DeductionSchemeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_fragment",
+		     "from": "EntityDesign_SharedElementDefinitionDesign",
+		     "to": "EntityDesign_ElementDesign"
+		    },
+		    {
+		     "id": "RelationDesign_description",
+		     "from": "EntityDesign_StaticInstanceDesign",
+		     "to": "EntityDesign_TextTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_deduction",
+		     "from": "EntityDesign_StringTemplateDesign",
+		     "to": "EntityDesign_DeductionSchemeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_message",
+		     "from": "EntityDesign_ValidationDesign",
+		     "to": "EntityDesign_TextTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_rule_1",
+		     "from": "EntityDesign_ValidationDesign",
+		     "to": "EntityDesign_DeductionSchemeDesign"
+		    }
+		   ],
+		   "one": [
+		    {
+		     "id": "RelationDesign_caseEntity",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_loggedInEvent",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_EventDesign"
+		    },
+		    {
+		     "id": "RelationDesign_loggedInPlace",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_PlaceTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_mainFlow",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_FlowDesign"
+		    },
+		    {
+		     "id": "RelationDesign_startEvent",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_EventDesign"
+		    },
+		    {
+		     "id": "RelationDesign_startPlace",
+		     "from": "EntityDesign_ApplicationDesign",
+		     "to": "EntityDesign_PlaceTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_belongsToEntity",
+		     "from": "EntityDesign_AttributeDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_dataCategory",
+		     "from": "EntityDesign_DataTypeDesign",
+		     "to": "EntityDesign_DataCategoryDesign"
+		    },
+		    {
+		     "id": "RelationDesign_entity",
+		     "from": "EntityDesign_DataTypeDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_dataType_1",
+		     "from": "EntityDesign_DeductionDesign",
+		     "to": "EntityDesign_DataTypeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_operation",
+		     "from": "EntityDesign_DeductionDesign",
+		     "to": "EntityDesign_DeductionOperationDesign"
+		    },
+		    {
+		     "id": "RelationDesign_operationInput",
+		     "from": "EntityDesign_DeductionInputDesign",
+		     "to": "EntityDesign_DeductionOperationInputDesign"
+		    },
+		    {
+		     "id": "RelationDesign_outputDataType",
+		     "from": "EntityDesign_DeductionOperationDesign",
+		     "to": "EntityDesign_DataTypeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_dataType_2",
+		     "from": "EntityDesign_DeductionOperationInputDesign",
+		     "to": "EntityDesign_DataTypeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_attributeValue",
+		     "from": "EntityDesign_DeductionParameterDesign",
+		     "to": "EntityDesign_AttributeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_entityValue",
+		     "from": "EntityDesign_DeductionParameterDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_operationParameter",
+		     "from": "EntityDesign_DeductionParameterDesign",
+		     "to": "EntityDesign_DeductionOperationParameterDesign"
+		    },
+		    {
+		     "id": "RelationDesign_staticInstanceValue",
+		     "from": "EntityDesign_DeductionParameterDesign",
+		     "to": "EntityDesign_StaticInstanceDesign"
+		    },
+		    {
+		     "id": "RelationDesign_output",
+		     "from": "EntityDesign_DeductionSchemeDesign",
+		     "to": "EntityDesign_DeductionDesign"
+		    },
+		    {
+		     "id": "RelationDesign_selectedDeduction",
+		     "from": "EntityDesign_DeductionSchemeDesign",
+		     "to": "EntityDesign_DeductionDesign"
+		    },
+		    {
+		     "id": "RelationDesign_PlaceTemplate",
+		     "from": "EntityDesign_DestinationDesign",
+		     "to": "EntityDesign_PlaceTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_extendsFrom",
+		     "from": "EntityDesign_EntityDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_endNode",
+		     "from": "EntityDesign_FlowEdgeDesign",
+		     "to": "EntityDesign_FlowNodeBaseDesign"
+		    },
+		    {
+		     "id": "RelationDesign_event",
+		     "from": "EntityDesign_FlowEdgeDesign",
+		     "to": "EntityDesign_EventDesign"
+		    },
+		    {
+		     "id": "RelationDesign_startNode",
+		     "from": "EntityDesign_FlowEdgeDesign",
+		     "to": "EntityDesign_FlowNodeBaseDesign"
+		    },
+		    {
+		     "id": "RelationDesign_attribute",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_AttributeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_entity_1",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_event_1",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_EventDesign"
+		    },
+		    {
+		     "id": "RelationDesign_linkToPlaceTemplate",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_PlaceTemplateDesign"
+		    },
+		    {
+		     "id": "RelationDesign_type",
+		     "from": "EntityDesign_FragmentTemplateDesign",
+		     "to": "EntityDesign_FragmentTypeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_entity_2",
+		     "from": "EntityDesign_PlaceParameterDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_to",
+		     "from": "EntityDesign_RelationDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_definition",
+		     "from": "EntityDesign_SharedElementDesign",
+		     "to": "EntityDesign_SharedElementDefinitionDesign"
+		    },
+		    {
+		     "id": "RelationDesign_attribute_1",
+		     "from": "EntityDesign_StaticInstanceValueDesign",
+		     "to": "EntityDesign_AttributeDesign"
+		    },
+		    {
+		     "id": "RelationDesign_relationValue",
+		     "from": "EntityDesign_StaticInstanceValueDesign",
+		     "to": "EntityDesign_StaticInstanceDesign"
+		    },
+		    {
+		     "id": "RelationDesign_flow",
+		     "from": "EntityDesign_SubFlowDesign",
+		     "to": "EntityDesign_FlowDesign"
+		    }
+		   ],
+		   "many": [
+		    {
+		     "id": "RelationDesign_inputs_1",
+		     "from": "EntityDesign_DeductionInputDesign",
+		     "to": "EntityDesign_DeductionDesign"
+		    },
+		    {
+		     "id": "RelationDesign_parameters_2",
+		     "from": "EntityDesign_EventDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_parameters_3",
+		     "from": "EntityDesign_FlowDesign",
+		     "to": "EntityDesign_EntityDesign"
+		    },
+		    {
+		     "id": "RelationDesign_displayWith",
+		     "from": "EntityDesign_ValidationDesign",
+		     "to": "EntityDesign_AttributeDesign"
+		    }
+		   ]
+		  },
+		  "startNodeId": "EntityDesign_ApplicationDesign"
+		 }; 
+	
   var test = {
 		  "type": "Graph",
 		  "id": "graph1",

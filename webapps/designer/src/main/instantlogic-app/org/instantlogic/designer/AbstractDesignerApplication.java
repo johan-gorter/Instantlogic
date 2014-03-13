@@ -38,6 +38,7 @@ public abstract class AbstractDesignerApplication extends org.instantlogic.inter
 		org.instantlogic.designer.placetemplate.RemoveFragmentTemplatePlaceTemplate.INSTANCE,
 		org.instantlogic.designer.placetemplate.ToDataExplorerPlaceTemplate.INSTANCE,
 		org.instantlogic.designer.placetemplate.WelcomePlaceTemplate.INSTANCE,
+		org.instantlogic.designer.placetemplate.EntitiesGraphPlaceTemplate.INSTANCE,
 	};
 	
 	@Override
