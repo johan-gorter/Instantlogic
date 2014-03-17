@@ -48,6 +48,7 @@ public class EntitiesGraphElement implements FragmentFilter {
 				edge.put("id", entity.getMetadata().getUniqueId()+"-extends");
 				edge.put("from", entity.getMetadata().getUniqueId());
 				edge.put("to", entity.getExtendsFrom().getMetadata().getUniqueId());
+				inherits.add(edge);
 			}
 			for (RelationDesign relation : entity.getRelations()) {
 				List<Map<String, Object>> category;
