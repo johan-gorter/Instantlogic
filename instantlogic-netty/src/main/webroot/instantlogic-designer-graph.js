@@ -84,18 +84,34 @@ YUI.add('instantlogic-designer-graph', function(Y) {
   };
 
   var speed = 5;
-  var dragFactor = 0.08;
+  var dragFactor = 0.06; // damping
   var repelFactor = 10;
   var accFactor = speed / 1000000;
+  var speedLimit = 0.7;
+  var speedThreshold = 0.01;
+
+  var renderPathWithDiamond = function (fromX, fromY, toX, toY) {
+    var dx = toX - fromX;
+    var dy = toY - fromY;
+    var length = Math.sqrt(dx * dx + dy * dy);
+    var ndx = dx / length;
+    var ndy = dy / length;
+    return "M" + (fromX + 16 * ndx) + "," + (fromY + 16 * ndy)
+      + " l" + (-8 * ndx + 4 * ndy) + "," + (-8 * ndy - 4 * ndx)
+      + " l" + (-8 * ndx - 4 * ndy) + "," + (-8 * ndy + 4 * ndx)
+      + " l" + (8 * ndx - 4 * ndy) + "," + (8 * ndy + 4 * ndx)
+      + " l" + (8 * ndx + 4 * ndy) + "," + (8 * ndy - 4 * ndx)
+      + " L" + toX + "," + toY;
+  };
 
   edgeTypes = {
     inherits: { // subclass -> superclass
       preferredDx: 0,
-      preferredDy: -200, // from below
-      dxGrow: 10,
-      dxShrink: 10,
+      preferredDy: -100, // from below
+      dxGrow: 2,
+      dxShrink: 2,
       dyGrow: 100, // repel hard
-      dyShrink: 30, // attract
+      dyShrink: 5, // attract
       renderPath: function (fromNode, toNode) {
         var dx = fromNode.x - toNode.x;
         return "M" + toNode.x + "," + (toNode.getBottom() + 10)
@@ -105,79 +121,105 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       }
     },
     one: { 
-      preferredDx: 200,
-      preferredDy: -200,
-      dxGrow: 10,
-      dxShrink: 10,
-      dyGrow: 10,
-      dyShrink: 10,
+      preferredDx: -200,
+      preferredDy: -100,
+      dxGrow: 2,
+      dxShrink: 2,
+      dyGrow: 2,
+      dyShrink: 2,
       renderPath: function (fromNode, toNode) {
-        var fromX = (fromNode.getRight() - 10);
-        var toX = toNode.getLeft() + 10;
+        var fromX = (fromNode.getLeft() + fromNode.width / 4);
+        var fromY = fromNode.y;
+        var toX = toNode.getRight() - toNode.width / 4;
+        var toY = toNode.y;
         var dx = toX - fromX;
-        var dy = toNode.y - fromNode.y;
-        return "M" + fromX + "," + fromNode.y
-          + "c 100,-100 " + (dx - 100) + "," + dy + " " + dx + "," + dy;
+        var dy = toY - fromY;
+        var halfY = dy / 2;
+        return "M" + fromX + "," + fromY
+          + "c 0,"+halfY +" "+ dx + "," + halfY + " " + dx + "," + dy;
       }
     },
     many: { 
-      preferredDx: 300,
-      preferredDy: 150,
-      dxGrow: 10,
-      dxShrink: 10,
-      dyGrow: 10,
-      dyShrink: 10,
+      preferredDx: -200,
+      preferredDy: 100,
+      dxGrow: 2,
+      dxShrink: 2,
+      dyGrow: 5,
+      dyShrink: 5,
       renderPath: function (fromNode, toNode) {
         var fromX = (fromNode.getRight() - 10);
         var toX = toNode.getLeft() + 10;
         var dx = toX - fromX;
         var dy = toNode.y - fromNode.y;
         return "M" + fromX + "," + fromNode.y
-          + "c 100,50 " + (dx - 100) + "," + dy + " " + dx + "," + dy;
+          + "c 40,20 " + (dx - 40) + "," + dy + " " + dx + "," + dy;
       }
     },
     ownsOne: { 
       preferredDx: 200,
-      preferredDy: 200,
-      dxGrow: 10,
-      dxShrink: 10,
+      preferredDy: 0,
+      dxGrow: 5,
+      dxShrink: 5,
       dyGrow: 10,
-      dyShrink: 10,
-      renderPathX: function (fromNode, toNode) {
-        var fromX = (fromNode.getRight() - 20);
-        var fromY = fromNode.getBottom();
-        var toX = toNode.getLeft() + 20;
-        var toY = toNode.getTop();
-        var dx = toX - fromX;
-        var dy = toY - fromY;
-        var length = Math.sqrt(dx * dx + dy * dy);
-        var ndx = dx / length;
-        var ndy = dy / length;
-        return "M" + (fromX-4*ndx) + "," + (fromY-4*ndy)
-          + " L"+toX +","+toY;
-      }
-    },
-    ownsMany: { 
-      preferredDx: 0,
-      preferredDy: 300,
-      dxGrow: 10,
-      dxShrink: 10,
-      dyGrow: 10,
-      dyShrink: 10,
+      dyShrink: 50, // push down hard
+      strokeWidth: 2,
       renderPath: function (fromNode, toNode) {
         var fromX = (fromNode.getRight() - 20);
         var fromY = fromNode.getBottom();
         var toX = toNode.getLeft() + 20;
         var toY = toNode.getTop();
-        var dx = toX - fromX;
-        var dy = toY - fromY;
-        var length = Math.sqrt(dx * dx + dy * dy);
-        var ndx = dx / length;
-        var ndy = dy / length;
-        return "M" + (fromX + 10 * ndx) + "," + (fromY + 10 * ndy)
-          + " l" + (-5 * ndx + 20 * ndy) + "," + (-5 * ndy + 20 * ndx)
-          + " l" + (-5 * ndx - 20 * ndy) + "," + (-5 * ndy - 20 * ndx)
-          + " L" + toX + "," + toY;
+        return renderPathWithDiamond(fromX, fromY, toX, toY);
+      }
+    },
+    ownsMany: { 
+      preferredDx: 150,
+      preferredDy: 150,
+      dxGrow: 5,
+      dxShrink: 5,
+      dyGrow: 10,
+      dyShrink: 50, // push down hard
+	    strokeWidth: 2,
+      renderPath: function (fromNode, toNode) {
+        var fromX = (fromNode.getRight() - 40);
+        var fromY = fromNode.getBottom();
+        var toX = toNode.getLeft() + 20;
+        var toY = toNode.getTop();
+        return renderPathWithDiamond(fromX, fromY, toX, toY);
+      }
+    },
+    parts: {
+      preferredDx: 0,
+      preferredDy: 150,
+      dxGrow: 5,
+      dxShrink: 5,
+      dyGrow: 10,
+      dyShrink: 50, // push down hard
+      strokeWidth: 2,
+      fill: true,
+      renderPath: function (fromNode, toNode) {
+        var fromX = (fromNode.getRight() - 40);
+        var fromY = fromNode.getBottom();
+        var toX = toNode.getLeft() + 20;
+        var toY = toNode.getTop();
+        return renderPathWithDiamond(fromX, fromY, toX, toY)+"Z";
+      }
+    },
+    role: {
+      preferredDx: -200,
+      preferredDy: 0,
+      dxGrow: 50,
+      dxShrink: 5,
+      dyGrow: 5,
+      dyShrink: 5, 
+      strokeWidth: 1,
+      renderPath: function (fromNode, toNode) {
+        var fromX = (fromNode.getLeft());
+        var fromY = fromNode.y;
+        var toX = toNode.getRight();
+        var toY = toNode.y;
+        return "M" + (toX+8) + "," + toY
+          + "l0,4 l-8,0 l0,-8 l8,0 l0,4 "
+          + "L" + fromX + "," + fromY;
       }
     }
   };
@@ -224,6 +266,32 @@ YUI.add('instantlogic-designer-graph', function(Y) {
     };
   });
 
+  window.Physics.behavior('speedLimit', function (parent) {
+    return {
+      init: function (options) {
+        parent.init.call(this, options);
+      },
+      connect: function (world) {
+        world.subscribe('integrate:velocities', this.applySpeedLimit, this);
+      },
+      disconnect: function (world) {
+        world.unsubscribe('integrate:velocities', this.applySpeedLimit);
+      },
+      applySpeedLimit: function (data) {
+        var bodies = data.bodies;
+        for(var i = 0; i < bodies.length; i++) {
+          var body = bodies[i];
+          var vel = body.state.vel;
+          if(vel.norm() > speedLimit) {
+            vel.normalize().mult(speedLimit);
+          } else if(vel.norm() < speedThreshold) {
+            vel.set(0, 0);
+          }
+        }
+      }
+    };
+  });
+
   // Node
 
   var Node = function (id, text, graph) {
@@ -232,24 +300,46 @@ YUI.add('instantlogic-designer-graph', function(Y) {
     this.graph = graph;
     this.width = 100;
     this.height = 20;
-    this.frozenBeforeDrag = false;
+    this.expanded = false;
+    this.frozen = false;
+    this.selected = false;
   };
+
+  var fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+  var fontSize = '15px';
 
   Node.prototype = {
     appear: function (x, y) {
-      this.node = svg.svg({ width: this.width, height: this.height, x: -this.width/2, y: -this.height/2},
-        this.bottomRect = svg.rect({ stroke: 'black', 'stroke-width': 1, fill: '#666666', width: this.width, height: this.height, rx: 5, ry: 5 }),
-        this.textElement = svg.text({ 'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif', 'font-size': '15px', fill: 'white', y:15, x:2.5}, this.text)
+      this.node = svg.svg({ width: this.width, height: this.height, x: -this.width / 2, y: -this.height / 2 },
+        this.bottomRect = svg.rect({ stroke: 'black', 'stroke-width': 1, fill: '#666666', width: this.width, height: this.height, rx: 8, ry: 8 }),
+        this.textElement = svg.text({ 'font-family': fontFamily, 'font-size': fontSize, fill: 'white', y: 15, x: 4 }, this.text),
+        this.expandRect = svg.svg({ x: this.width - 20, y: 0, width: 20, height: 40, cursor: 'pointer' },
+          this.expandText = svg.text({ 'font-family': fontFamily, 'font-size': fontSize, fill: 'white', y: 25, x: 5 }, this.expanded ? '-' : '+')
+        )
       );
       this.moveTo(x, y);
       this.graph.nodesContainer.appendChild(this.node);
-      var textLength = this.textElement._node.getComputedTextLength();
-      if (textLength > this.width - 10) {
-        this.adjustWidth(textLength + 10);
-      }
+      this.adjustDimensions();
+      this.renderXY();
+
+      this.expandRect.on('mousedown', this.onExpand, this);
       this.node.on('mousedown', this.onMousedown, this);
       this.point = window.Physics.body("point", { x: x, y: y });
       this.graph.world.add(this.point);
+    },
+    adjustDimensions: function () {
+      var textLength = this.textElement._node.getComputedTextLength();
+      this.width = Math.max(100, textLength + (this.selected ? 40 : 10));
+      this.height = this.selected ? 40 : 20;
+      this.node.setAttribute("width", this.width);
+      this.node.setAttribute("height", this.height);
+      this.bottomRect.setAttribute("width", this.width);
+      this.bottomRect.setAttribute("height", this.height);
+      this.bottomRect.setAttribute('fill', this.selected ? 'blue' : "#666666");
+      this.textElement.setAttribute("y", this.selected ? 25 : 15);
+      this.textElement.setAttribute("x", this.selected ? 14 : 4);
+      this.expandRect.setAttribute("display", this.selected ? "" : "none");
+      this.expandRect.setAttribute("x", this.width - 20);
     },
     disappear: function () {
       this.graph.world.remove(this.point);
@@ -260,39 +350,50 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       return !!this.node;
     },
     isExpanded: function () {
-      return this.point && this.point.fixed;
-    },
-    adjustWidth: function (width) {
-      this.width = width;
-      this.node.setAttribute("width", this.width);
-      this.bottomRect.setAttribute("width", this.width);
-      this.renderXY();
+      return this.expanded;
     },
     freeze: function () {
+      this.frozen = true;
       this.point.fixed = true;
-      this.bottomRect.setAttribute('fill', 'blue');
     },
     unfreeze: function () {
+      this.frozen = false;
       this.point.fixed = false;
-      this.bottomRect.setAttribute('fill', '#666666');
+    },
+    setSelected: function (selected) {
+      this.selected = selected;
+      this.adjustDimensions();
+      this.renderXY();
+    },
+    onExpand: function (evt) {
+      evt.preventDefault();
+      this.expanded = !this.expanded;
+      this.expandText.set('text', this.expanded ? '-' : '+');
+      if(this.expanded) {
+        this.graph.addRelatedNodes(this);
+      } else {
+        this.graph.removeUnrelatedNodes(this);
+      }
     },
     onMousedown: function (evt) {
-      evt.preventDefault();
-      this.frozenBeforeDrag = this.point.fixed;
-      this.graph.startDrag(this, evt);
-      this.freeze();
+      if(!evt._event.defaultPrevented) {
+        evt.preventDefault();
+        this.selectedBeforeMousedown = this.selected;
+        this.setSelected(true);
+        this.point.fixed = true;
+        this.graph.startDrag(this, evt);
+      }
     },
     endDrag: function (moved) {
       if (this.point.fixed) {
         if(moved) {
           this.freeze();
-          this.graph.addRelatedNodes(this);
         } else {
-          if(this.frozenBeforeDrag) {
+          if(this.frozen) {
             this.unfreeze();
-            this.graph.removeUnrelatedNodes(this);
           } else {
-            this.graph.addRelatedNodes(this);
+            this.point.fixed = false;
+            this.setSelected(!this.selectedBeforeMousedown);
           }
         }
       }
@@ -343,7 +444,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
   Edge.prototype = {
     appear: function () {
       if(this.node) throw new Error("already visible");
-      this.node = svg.path({ stroke: 'black', 'stroke-width': this.type.strokeWidth || 1, fill: 'none' });
+      this.node = svg.path({ stroke: 'black', 'stroke-width': this.type.strokeWidth || 1, fill: this.type.fill?'black':'none' });
       this.render();
       this.graph.edgesContainer.appendChild(this.node);
     },
@@ -381,9 +482,9 @@ YUI.add('instantlogic-designer-graph', function(Y) {
     createMarkup: function () {
       this.viewBox = { // height extends the viewport deliberately
         width: 2000,
-        height: 4000,
+        height: 2000,
         minX: -1000,
-        minY: -2000
+        minY: -1000
       };
       var result = html.div({ className: 'graph'},
         this.node = svg.svg({ viewBox: [this.viewBox.minX, this.viewBox.minY, this.viewBox.width, this.viewBox.height].toString(), preserveAspectRatio: "xMidYMid slice" },
@@ -414,8 +515,8 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       }
       var startNode = this.nodes[model.startNodeId];
       startNode.appear(0, 0);
+      startNode.setSelected(true);
       startNode.freeze();
-      this.addRelatedNodes(startNode);
     },
     postUpdate: function (newModel, diff) {
 	  },    
@@ -428,10 +529,10 @@ YUI.add('instantlogic-designer-graph', function(Y) {
           var edge = this.edges[i];
           if (edge.fromNode === node) {
             otherNode = edge.toNode;
-            factor = 2;
+            factor = 4;
           } else if (edge.toNode === node) {
             otherNode = edge.fromNode;
-            factor = -2;
+            factor = -4;
           }
           if (otherNode) {
             if(!otherNode.isVisible()) {
@@ -459,7 +560,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       },
       removeUnrelatedNodes: function (node) {
         // node is no longer expanded, remove all surrounding nodes that are not visible for any other reason
-        this.adjustNodeVisibility(node);
+        //this.adjustNodeVisibility(node);
         for(var i = 0; i < this.edges.length; i++) {
           var otherNode = null;
           var edge = this.edges[i];
@@ -468,7 +569,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
           } else if (edge.toNode === node) {
             otherNode = edge.fromNode;
           }
-          if(otherNode && otherNode.isVisible() && !otherNode.isExpanded()) {
+          if(otherNode && otherNode !== node && otherNode.isVisible() && !otherNode.isExpanded()) {
             this.adjustNodeVisibility(otherNode);
           }
         }
@@ -487,6 +588,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
         this.world.add(window.Physics.integrator('verlet', { drag: dragFactor }));
         this.world.add(window.Physics.behavior('newtonian', { strength: -repelFactor }));
         this.world.add(window.Physics.behavior('edge', { graph: this }));
+        this.world.add(window.Physics.behavior('speedLimit', { }));
         var me = this;
         window.Physics.util.ticker.subscribe(function (time, dt) {
           try {

@@ -35,7 +35,7 @@
             useBrowserConsole: true, filter: 'RAW', throwFail: true, errorFn: function () { return false; }
         }).use('test', 'node', 'instantlogic', 'instantlogic-presence', 'instantlogic-fragments', 'instantlogic-answers', 'instantlogic-designer', 'instantlogic-designer-diagram', 'instantlogic-designer-graph', function (Y) {
 
-        	var modelJson = window.localStorage["graph"];
+        	var modelJson = window.localStorage["interactiveModel"];
         	var model = null;
         	if (modelJson) {
 				    model = JSON.parse(modelJson);        		
@@ -781,17 +781,9 @@
         	    },
         	    "startNodeId": "EntityDesign_ApplicationDesign"
         	  };
-	          modelJson = JSON.stringify(model, null, " ");
         	}
-        	Y.one('#input').set("value", modelJson);
-        	
             var configuration = Y.instantlogic.createBaseConfiguration(Y); 
 
-            window.onbeforeunload = function() {
-              window.localStorage["interactiveModel"] = Y.one('#input').get("value");
-            };
-            
-            Y.one('#testarea').setContent('');
             var engine = new Y.instantlogic.Engine('dummyApplication','dummyCaseId','dummyTravelerId', null, Y.one('#testarea'), configuration);
 
             engine.updatePlace(model);
