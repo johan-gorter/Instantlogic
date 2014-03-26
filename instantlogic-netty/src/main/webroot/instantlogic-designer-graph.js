@@ -85,9 +85,9 @@ YUI.add('instantlogic-designer-graph', function(Y) {
 
   var speed = 5;
   var dragFactor = 0.03; // damping
-  var repelFactor = 25;
+  var repelFactor = 0.1;
   var accFactor = speed / 1000000;
-  var speedLimit = 0.7;
+  var speedLimit = 0.4;
   var speedThreshold = 0.01;
 
   var renderPathWithDiamond = function (fromX, fromY, toX, toY) {
@@ -237,14 +237,15 @@ YUI.add('instantlogic-designer-graph', function(Y) {
         var vector = scratch.vector();
         for(var i = 0; i < edges.length; i++) {
           var edge = edges[i];
-          if(edge.isVisible()) {
+          if (edge.isVisible()) {
+            var penalty = (edge.fromNode.selected !== edge.toNode.selected)?1.5:1;
             var from = edge.fromNode.point;
             var to = edge.toNode.point;
             var type = edge.type;
             var dx = to.state.pos.get(0) - from.state.pos.get(0);
             var dy = to.state.pos.get(1) - from.state.pos.get(1);
-            var xDeviation = dx - type.preferredDx;
-            var yDeviation = dy - type.preferredDy;
+            var xDeviation = dx - type.preferredDx*penalty;
+            var yDeviation = dy - type.preferredDy*penalty;
             var addX, addY;
             if(xDeviation < 0) {
               addX = -xDeviation * type.dxShrink * accFactor;
@@ -284,10 +285,71 @@ YUI.add('instantlogic-designer-graph', function(Y) {
           var vel = body.state.vel;
           if(vel.norm() > speedLimit) {
             vel.normalize().mult(speedLimit);
-          } else if(vel.norm() < speedThreshold) {
+          } else if (vel.norm() < speedThreshold && body.state.acc.norm() < speedThreshold) {
             vel.set(0, 0);
           }
         }
+      }
+    };
+  });
+
+  window.Physics.behavior('nodes-repel', function (parent) {
+    return {
+      init: function (options) {
+        parent.init.call(this, options);
+      },
+      behave: function (data) {
+        var scratch = window.Physics.scratchpad();
+        var dist = scratch.vector();
+        var acc = scratch.vector();
+        for (var j = 0, length = data.bodies.length; j < length; j++) {
+          var body = data.bodies[j];
+          for (var i = j + 1; i < length; i++) {
+            var other = data.bodies[i];
+            var extraDistance = (body.node.selected || other.node.selected);
+            dist.clone(other.state.pos);
+            dist.vsub(body.state.pos);
+            var influenceDistance = extraDistance ? 400 : 200;
+            var dy = dist.get(1);
+            if (dy > -influenceDistance && dy < influenceDistance) {
+              var dx = dist.get(0);
+              var ady = Math.abs(dy);
+              var adx = Math.abs(dx);
+              if(adx > ady) {
+                var maxShift = (body.node.width / 2 + other.node.width / 2 - body.node.height / 2 - other.node.height / 2);
+                var shift = Math.min(adx - ady, maxShift);
+                if(dx > 0) {
+                  dx = dx - shift/1.1;
+                } else {
+                  dx = dx + shift/1.1;
+                }
+                adx = Math.abs(dx);
+              }
+              if (adx < influenceDistance) {
+
+                dist.set(dx, dy);
+                var normsq = dist.normSq();
+                var g = (extraDistance?20:10) / normsq;
+
+                other.accelerate(dist.normalize().mult(g));
+                body.accelerate(dist.negate());
+
+//                var strengthX = influenceDistance - adx;
+//                var strengthY = influenceDistance - ady;
+//                if(dx < 0) {
+//                  strengthX = -strengthX;
+//                }
+//                if (dy < 0) {
+//                  strengthY = -strengthY;
+//                }
+//                acc.set(strengthX * repelFactor, strengthY * repelFactor);
+//                other.accelerate(acc);
+//                body.accelerate(acc.negate());
+              }
+            }
+          }
+        }
+        scratch.done();
       }
     };
   });
@@ -311,10 +373,12 @@ YUI.add('instantlogic-designer-graph', function(Y) {
   Node.prototype = {
     appear: function (x, y) {
       this.node = svg.svg({ width: this.width, height: this.height, x: -this.width / 2, y: -this.height / 2 },
-        this.bottomRect = svg.rect({ stroke: 'black', 'stroke-width': 1, fill: '#666666', width: this.width, height: this.height, rx: 8, ry: 8, cursor: 'grab' }),
-        this.textElement = svg.text({ 'font-family': fontFamily, 'font-size': fontSize, fill: 'white', y: 15, x: 4 }, this.text),
-        this.expandRect = svg.svg({ x: this.width - 20, y: 0, width: 20, height: 40, cursor: 'pointer' },
-          this.expandText = svg.text({ 'font-family': fontFamily, 'font-size': fontSize, fill: 'white', y: 25, x: 5 }, this.expanded ? '-' : '+')
+        this.bottomRect = svg.rect({ stroke: 'black', 'stroke-width': 1, fill: '#666666', width: this.width, height: this.height, rx: 8, ry: 8, cursor: 'move' }),
+        this.textElement = svg.text({ 'font-family': fontFamily, 'font-size': fontSize, fill: 'white', y: 15, x: 4, cursor: 'move' }, this.text),
+        this.expandRect = svg.svg({ x: this.width - 25, y: 0, width: 25, height: 40},
+          svg.rect({ stroke: 'none', fill: 'transparent', x: 0, y: 0, width: 25, height: 40, cursor: 'pointer' }),
+          this.buttonRect = svg.rect({ stroke: 'white', 'stroke-width': 1, fill: 'none', x: 5, y: 12, width: 16, height: 16 }),
+          this.expandText = svg.text({ 'font-family': fontFamily, 'font-size': fontSize, fill: 'white', y: 25, x: 9, cursor: 'pointer' }, this.expanded ? '-' : '+')
         )
       );
       this.moveTo(x, y);
@@ -327,6 +391,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       this.node.on('mousedown', this.onMousedown, this);
       this.node.on('touchstart', this.onTouchStart, this);
       this.point = window.Physics.body("point", { x: x, y: y });
+      this.point.node = this;
       this.graph.world.add(this.point);
     },
     adjustDimensions: function () {
@@ -341,7 +406,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       this.textElement.setAttribute("y", this.selected ? 25 : 15);
       this.textElement.setAttribute("x", this.selected ? 14 : 4);
       this.expandRect.setAttribute("display", this.selected ? "" : "none");
-      this.expandRect.setAttribute("x", this.width - 20);
+      this.expandRect.setAttribute("x", this.width - 25);
     },
     disappear: function () {
       this.graph.world.remove(this.point);
@@ -368,24 +433,33 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       this.renderXY();
     },
     onExpand: function (evt) {
-      evt.preventDefault();
-      this.expanded = !this.expanded;
-      this.expandText.set('text', this.expanded ? '-' : '+');
-      if(this.expanded) {
-        this.graph.addRelatedNodes(this);
-      } else {
-        this.graph.removeUnrelatedNodes(this);
+      if(!this.graph.clickingExpand) {
+        evt.preventDefault();
+        this.graph.clickingExpand = true;
+        this.expanded = !this.expanded;
+        this.expandText.set('text', this.expanded ? '-' : '+');
+        this.buttonRect.setAttribute('fill', this.expanded ? 'darkblue' : 'none');
+        if(this.expanded) {
+          this.graph.addRelatedNodes(this);
+        } else {
+          this.graph.removeUnrelatedNodes(this);
+        }
       }
     },
     onTouchStart: function (evt) {
-      evt.preventDefault();
-      var touch = evt.changedTouches[0];
-      this.graph.startTouchDrag(this, touch);
+      if (!this.graph.clickingExpand) {
+        evt.preventDefault();
+        this.selectedAfterMouseUp = !this.selected;
+        this.setSelected(true);
+        this.point.fixed = true;
+        var touch = evt.changedTouches[0];
+        this.graph.startTouchDrag(this, touch);
+      }
     },
     onMousedown: function (evt) {
-      if(!evt._event.defaultPrevented) {
+      if (!this.graph.touchDrag && !this.graph.clickingExpand) {
         evt.preventDefault();
-        this.selectedBeforeMousedown = this.selected;
+        this.selectedAfterMouseUp = !this.selected;
         this.setSelected(true);
         this.point.fixed = true;
         this.graph.startDrag(this, evt);
@@ -400,7 +474,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
             this.unfreeze();
           } else {
             this.point.fixed = false;
-            this.setSelected(!this.selectedBeforeMousedown);
+            this.setSelected(this.selectedAfterMouseUp);
             if(!this.selected) {
               this.expanded = false;
               this.graph.removeUnrelatedNodes(this);
@@ -511,6 +585,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       return result;
     },
     postInit: function (model) {
+      this.clickingExpand = false;
       this.nodes = {};
       this.edges = [];
       this.startPhysics();
@@ -572,7 +647,9 @@ YUI.add('instantlogic-designer-graph', function(Y) {
       },
       removeUnrelatedNodes: function (node) {
         // node is no longer expanded, remove all surrounding nodes that are not visible for any other reason
-        this.adjustNodeVisibility(node);
+        if(!node.selected) {
+          this.adjustNodeVisibility(node);
+        }
         for(var i = 0; i < this.edges.length; i++) {
           var otherNode = null;
           var edge = this.edges[i];
@@ -598,7 +675,8 @@ YUI.add('instantlogic-designer-graph', function(Y) {
           maxIPF: 16
         });
         this.world.add(window.Physics.integrator('verlet', { drag: dragFactor }));
-        this.world.add(window.Physics.behavior('newtonian', { strength: -repelFactor }));
+        //        this.world.add(window.Physics.behavior('newtonian', { strength: -repelFactor }));
+        this.world.add(window.Physics.behavior('nodes-repel'));
         this.world.add(window.Physics.behavior('edge', { graph: this }));
         this.world.add(window.Physics.behavior('speedLimit', { }));
         var me = this;
@@ -660,7 +738,8 @@ YUI.add('instantlogic-designer-graph', function(Y) {
     		}
     	},
     	// onMousedown part of Node
-    	onMouseup: function(evt) {
+    	onMouseup: function (evt) {
+    	  this.clickingExpand = false;
     	  if (this.drag) {
 	        this.drag.node.endDrag(this.drag.moved);
     			this.drag = null;
@@ -691,6 +770,7 @@ YUI.add('instantlogic-designer-graph', function(Y) {
         }
       },
       onTouchEnd: function (evt) {
+        this.clickingExpand = false;
         if (this.touchDrag) {
           this.touchDrag.node.endDrag(this.touchDrag.moved);
           this.touchDrag = null;
