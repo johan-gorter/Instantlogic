@@ -5,12 +5,12 @@ YUI.add('instantlogic', function (Y) {
 	
     var ns = Y.namespace('instantlogic');
 
-  ns.createBaseConfiguration = function (YUI) {
-    return {
-      fragmentNamespaces: [YUI.instantlogic.fragments, YUI.instantlogic.presence, YUI.instantlogic.designer, YUI.instantlogic.designer.diagram, YUI.instantlogic.designer.graph],
-      createAnswer: YUI.instantlogic.answers.createAnswer
-    };
-  };
+	ns.createBaseConfiguration = function (YUI) {
+	  return {
+	    fragmentNamespaces: [YUI.instantlogic.fragments, YUI.instantlogic.presence, YUI.instantlogic.designer, YUI.instantlogic.designer.diagram, YUI.instantlogic.designer.graph],
+	    createAnswer: YUI.instantlogic.answers.createAnswer
+	  };
+	};
     
     ns.Engine = function (application, caseId, travelerId, presenceNode, placeNode, configuration) {
     	this.configuration = configuration;

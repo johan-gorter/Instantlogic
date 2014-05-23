@@ -418,7 +418,7 @@ DeductionInputDesign_86:                    operationInput={"entityName":"Deduct
 DeductionDesign_187:                       }DeductionInputDesign_86
 DeductionDesign_187:                       operation={"entityName":"DeductionOperationDesign","instanceName":"attribute"}
 DeductionDesign_187:                       parameters+DeductionParameterDesign_156:DeductionParameterDesign{
-DeductionParameterDesign_156:               attributeValue="RelationDesign_properties"
+DeductionParameterDesign_156:               attributeValue="RelationDesign_contents"
 DeductionParameterDesign_156:               operationParameter={"entityName":"DeductionOperationParameterDesign","instanceName":"attribute"}
 DeductionDesign_187:                       }DeductionParameterDesign_156
 DeductionSchemeDesign_96:                 }DeductionDesign_187

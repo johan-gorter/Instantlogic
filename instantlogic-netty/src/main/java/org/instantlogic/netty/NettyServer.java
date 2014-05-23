@@ -47,7 +47,7 @@ public class NettyServer {
 	private static EngineManager engineManager;
 	private static File webroot;
 	private static File webapps;
-	private static int port = 8080;
+	private static int port = 7080;
 	
 	
 	private static Runnable fileWatcher = new Runnable() {

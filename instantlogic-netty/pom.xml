@@ -73,6 +73,11 @@
 	    <artifactId>jquery</artifactId>
 	    <version>1.10.2-1</version>
       </dependency>
+      <dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>d3js</artifactId>
+	    <version>3.4.6-1</version>
+      </dependency>
       
       <!-- Needed to run Designer -->
       
