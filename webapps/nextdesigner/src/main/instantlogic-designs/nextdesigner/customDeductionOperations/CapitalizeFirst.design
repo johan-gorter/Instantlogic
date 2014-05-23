@@ -2,7 +2,7 @@ perationDesign_CapitalizeFirst: DeductionOperationDesign_CapitalizeFirst:Deducti
 perationDesign_CapitalizeFirst:  name="CapitalizeFirst"
 perationDesign_CapitalizeFirst:  javaClassName="org.instantlogic.designer.deduction.CapitalizeFirstDeduction"
 perationDesign_CapitalizeFirst:  inputs+DeductionOperationInputDesign_Input:DeductionOperationInputDesign{
-tionOperationInputDesign_Input:    name="Input"
+tionOperationInputDesign_Input:   name="Input"
 perationDesign_CapitalizeFirst:  }DeductionOperationInputDesign_Input
 perationDesign_CapitalizeFirst:  outputDataType={"entityName":"DataTypeDesign","instanceName":"text"}
 perationDesign_CapitalizeFirst: }DeductionOperationDesign_CapitalizeFirst

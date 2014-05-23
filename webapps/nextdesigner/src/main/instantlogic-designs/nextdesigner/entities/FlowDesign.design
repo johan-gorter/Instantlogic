@@ -1,8 +1,8 @@
-EntityDesign_FlowDesign:       EntityDesign_FlowDesign:EntityDesign{
-EntityDesign_FlowDesign:        isCustomized=true
-EntityDesign_FlowDesign:        name="FlowDesign"
-EntityDesign_FlowDesign:        extendsFrom="EntityDesign_Design"
-EntityDesign_FlowDesign:        relations+RelationDesign_edges:RelationDesign{
+EntityDesign_FlowDesign:        EntityDesign_FlowDesign:EntityDesign{
+EntityDesign_FlowDesign:         isCustomized=true
+EntityDesign_FlowDesign:         name="FlowDesign"
+EntityDesign_FlowDesign:         extendsFrom="EntityDesign_Design"
+EntityDesign_FlowDesign:         relations+RelationDesign_edges:RelationDesign{
 RelationDesign_edges:             name="edges"
 RelationDesign_edges:             autoCreate=false
 RelationDesign_edges:             owner=true
@@ -12,8 +12,8 @@ RelationDesign_edges:             dataType=DataTypeDesign_94:DataTypeDesign{
 DataTypeDesign_94:                 multivalue=true
 RelationDesign_edges:             }DataTypeDesign_94
 RelationDesign_edges:             to="EntityDesign_FlowEdgeDesign"
-EntityDesign_FlowDesign:        }RelationDesign_edges
-EntityDesign_FlowDesign:        relations+RelationDesign_nodes:RelationDesign{
+EntityDesign_FlowDesign:         }RelationDesign_edges
+EntityDesign_FlowDesign:         relations+RelationDesign_nodes:RelationDesign{
 RelationDesign_nodes:             name="nodes"
 RelationDesign_nodes:             autoCreate=false
 RelationDesign_nodes:             owner=true
@@ -23,8 +23,8 @@ RelationDesign_nodes:             dataType=DataTypeDesign_95:DataTypeDesign{
 DataTypeDesign_95:                 multivalue=true
 RelationDesign_nodes:             }DataTypeDesign_95
 RelationDesign_nodes:             to="EntityDesign_FlowNodeBaseDesign"
-EntityDesign_FlowDesign:        }RelationDesign_nodes
-EntityDesign_FlowDesign:        relations+RelationDesign_parameters_3:RelationDesign{
+EntityDesign_FlowDesign:         }RelationDesign_nodes
+EntityDesign_FlowDesign:         relations+RelationDesign_parameters_3:RelationDesign{
 RelationDesign_parameters_3:      name="parameters"
 RelationDesign_parameters_3:      autoCreate=false
 RelationDesign_parameters_3:      owner=false
@@ -33,5 +33,5 @@ RelationDesign_parameters_3:      dataType=DataTypeDesign_96:DataTypeDesign{
 DataTypeDesign_96:                 multivalue=true
 RelationDesign_parameters_3:      }DataTypeDesign_96
 RelationDesign_parameters_3:      to="EntityDesign_EntityDesign"
-EntityDesign_FlowDesign:        }RelationDesign_parameters_3
-EntityDesign_FlowDesign:       }EntityDesign_FlowDesign
+EntityDesign_FlowDesign:         }RelationDesign_parameters_3
+EntityDesign_FlowDesign:        }EntityDesign_FlowDesign

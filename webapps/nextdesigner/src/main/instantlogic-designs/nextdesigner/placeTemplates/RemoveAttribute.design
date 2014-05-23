@@ -2,7 +2,7 @@ TemplateDesign_RemoveAttribute: PlaceTemplateDesign_RemoveAttribute:PlaceTemplat
 TemplateDesign_RemoveAttribute:  isCustomized=true
 TemplateDesign_RemoveAttribute:  name="RemoveAttribute"
 TemplateDesign_RemoveAttribute:  parameters+PlaceParameterDesign_attribute_1:PlaceParameterDesign{
-aceParameterDesign_attribute_1:    name="attribute"
-aceParameterDesign_attribute_1:    entity="EntityDesign_AttributeDesign"
+aceParameterDesign_attribute_1:   name="attribute"
+aceParameterDesign_attribute_1:   entity="EntityDesign_AttributeDesign"
 TemplateDesign_RemoveAttribute:  }PlaceParameterDesign_attribute_1
 TemplateDesign_RemoveAttribute: }PlaceTemplateDesign_RemoveAttribute

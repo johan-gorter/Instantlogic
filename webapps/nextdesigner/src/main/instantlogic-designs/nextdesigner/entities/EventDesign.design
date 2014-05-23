@@ -1,8 +1,8 @@
-EntityDesign_EventDesign:      EntityDesign_EventDesign:EntityDesign{
-EntityDesign_EventDesign:       isCustomized=true
-EntityDesign_EventDesign:       name="EventDesign"
-EntityDesign_EventDesign:       extendsFrom="EntityDesign_Design"
-EntityDesign_EventDesign:       relations+RelationDesign_parameters_2:RelationDesign{
+EntityDesign_EventDesign:       EntityDesign_EventDesign:EntityDesign{
+EntityDesign_EventDesign:        isCustomized=true
+EntityDesign_EventDesign:        name="EventDesign"
+EntityDesign_EventDesign:        extendsFrom="EntityDesign_Design"
+EntityDesign_EventDesign:        relations+RelationDesign_parameters_2:RelationDesign{
 RelationDesign_parameters_2:      name="parameters"
 RelationDesign_parameters_2:      autoCreate=false
 RelationDesign_parameters_2:      owner=false
@@ -11,5 +11,5 @@ RelationDesign_parameters_2:      dataType=DataTypeDesign_93:DataTypeDesign{
 DataTypeDesign_93:                 multivalue=true
 RelationDesign_parameters_2:      }DataTypeDesign_93
 RelationDesign_parameters_2:      to="EntityDesign_EntityDesign"
-EntityDesign_EventDesign:       }RelationDesign_parameters_2
-EntityDesign_EventDesign:      }EntityDesign_EventDesign
+EntityDesign_EventDesign:        }RelationDesign_parameters_2
+EntityDesign_EventDesign:       }EntityDesign_EventDesign

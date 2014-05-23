@@ -1,4 +1,4 @@
-FragmentTypeDesign_Column:     FragmentTypeDesign_Column:FragmentTypeDesign{
-FragmentTypeDesign_Column:      name="Column"
-FragmentTypeDesign_Column:      textPropertyNames+"header"
-FragmentTypeDesign_Column:     }FragmentTypeDesign_Column
+FragmentTypeDesign_Column:      FragmentTypeDesign_Column:FragmentTypeDesign{
+FragmentTypeDesign_Column:       name="Column"
+FragmentTypeDesign_Column:       textPropertyNames+"header"
+FragmentTypeDesign_Column:      }FragmentTypeDesign_Column

@@ -1,6 +1,6 @@
-FragmentTypeDesign_Button:     FragmentTypeDesign_Button:FragmentTypeDesign{
-FragmentTypeDesign_Button:      name="Button"
-FragmentTypeDesign_Button:      contentPropertyNames+"content"
-FragmentTypeDesign_Button:      hasEvent=true
-FragmentTypeDesign_Button:      textPropertyNames+"text"
-FragmentTypeDesign_Button:     }FragmentTypeDesign_Button
+FragmentTypeDesign_Button:      FragmentTypeDesign_Button:FragmentTypeDesign{
+FragmentTypeDesign_Button:       name="Button"
+FragmentTypeDesign_Button:       contentPropertyNames+"content"
+FragmentTypeDesign_Button:       hasEvent=true
+FragmentTypeDesign_Button:       textPropertyNames+"text"
+FragmentTypeDesign_Button:      }FragmentTypeDesign_Button

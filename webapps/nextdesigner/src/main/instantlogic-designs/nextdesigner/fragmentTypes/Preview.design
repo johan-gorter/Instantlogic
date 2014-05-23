@@ -1,4 +1,4 @@
-FragmentTypeDesign_Preview:    FragmentTypeDesign_Preview:FragmentTypeDesign{
-FragmentTypeDesign_Preview:     name="Preview"
-FragmentTypeDesign_Preview:     contentPropertyNames+"content"
-FragmentTypeDesign_Preview:    }FragmentTypeDesign_Preview
+FragmentTypeDesign_Preview:     FragmentTypeDesign_Preview:FragmentTypeDesign{
+FragmentTypeDesign_Preview:      name="Preview"
+FragmentTypeDesign_Preview:      contentPropertyNames+"content"
+FragmentTypeDesign_Preview:     }FragmentTypeDesign_Preview

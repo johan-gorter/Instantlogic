@@ -2,7 +2,7 @@ eDesign_RemoveFragmentTemplate: PlaceTemplateDesign_RemoveFragmentTemplate:Place
 eDesign_RemoveFragmentTemplate:  isCustomized=true
 eDesign_RemoveFragmentTemplate:  name="RemoveFragmentTemplate"
 eDesign_RemoveFragmentTemplate:  parameters+PlaceParameterDesign_element_3:PlaceParameterDesign{
-PlaceParameterDesign_element_3:    name="element"
-PlaceParameterDesign_element_3:    entity="EntityDesign_ElementDesign"
+PlaceParameterDesign_element_3:   name="element"
+PlaceParameterDesign_element_3:   entity="EntityDesign_ElementDesign"
 eDesign_RemoveFragmentTemplate:  }PlaceParameterDesign_element_3
 eDesign_RemoveFragmentTemplate: }PlaceTemplateDesign_RemoveFragmentTemplate

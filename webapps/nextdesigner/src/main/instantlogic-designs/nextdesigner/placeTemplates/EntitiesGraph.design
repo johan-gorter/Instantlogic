@@ -1,0 +1,17 @@
+ZkwstEslpagmkgie_3a519474_df20: ZkwstEslpagmkgie_3a519474_df20:PlaceTemplateDesign{
+ZkwstEslpagmkgie_3a519474_df20:  name="EntitiesGraph"
+ZkwstEslpagmkgie_3a519474_df20:  content=IIkahqi_mmbfmfAp_70d4ae1f_8637:FragmentTemplateDesign{
+IIkahqi_mmbfmfAp_70d4ae1f_8637:   editorOpen=false
+IIkahqi_mmbfmfAp_70d4ae1f_8637:   contents+AzcomflnoqbrejuA_91a747f9_c491:FragmentTemplateContentDesign{
+AzcomflnoqbrejuA_91a747f9_c491:    propertyName="mainContent"
+AzcomflnoqbrejuA_91a747f9_c491:    children+graph1:FragmentTemplateDesign{
+graph1:                             fragmentFilters+"org.instantlogic.designer.element.EntitiesGraphElement"
+graph1:                             contents+eEIbdvzqqafdggpv_cfe118fb_2bbd:FragmentTemplateContentDesign{
+eEIbdvzqqafdggpv_cfe118fb_2bbd:      propertyName="content"
+graph1:                             }eEIbdvzqqafdggpv_cfe118fb_2bbd
+graph1:                             type="FragmentTypeDesign_Block"
+AzcomflnoqbrejuA_91a747f9_c491:    }graph1
+IIkahqi_mmbfmfAp_70d4ae1f_8637:   }AzcomflnoqbrejuA_91a747f9_c491
+IIkahqi_mmbfmfAp_70d4ae1f_8637:   type="FragmentTypeDesign_Page"
+ZkwstEslpagmkgie_3a519474_df20:  }IIkahqi_mmbfmfAp_70d4ae1f_8637
+ZkwstEslpagmkgie_3a519474_df20: }ZkwstEslpagmkgie_3a519474_df20

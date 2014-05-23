@@ -591,7 +591,7 @@ public class DesignerCasePersister extends FileCasePersister {
 			} else {
 				sb.append(forNode.uniqueId);
 				sb.append(": ");
-				for (int i=length;i<29;i++) {
+				for (int i=length;i<30;i++) {
 					sb.append(' ');
 				}
 			}
@@ -607,7 +607,7 @@ public class DesignerCasePersister extends FileCasePersister {
 		writer.write(rootNode.entityName);
 		writer.write("{\n");
 		
-		writeAttributes(writer, rootNode, prefix+" ", "   ");
+		writeAttributes(writer, rootNode, prefix+" ", "  ");
 		
 		writer.write(prefix);
 		writer.write("}");
@@ -615,8 +615,7 @@ public class DesignerCasePersister extends FileCasePersister {
 		writer.write("\n");
 	}
 
-	private void writeAttributes(OutputStreamWriter writer, InstanceNode rootNode, String prefix,
-			String nextIndent) throws IOException {
+	private void writeAttributes(OutputStreamWriter writer, InstanceNode rootNode, String prefix, String nextIndent) throws IOException {
 				for (AttributeValueNode attribute : rootNode.values) {
 					if (attribute.multivalue) {
 						if (MERGE_CONFLICT_PREVENTION>1) {

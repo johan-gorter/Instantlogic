@@ -2,7 +2,7 @@ PlaceTemplateDesign_OpenEditor: PlaceTemplateDesign_OpenEditor:PlaceTemplateDesi
 PlaceTemplateDesign_OpenEditor:  isCustomized=true
 PlaceTemplateDesign_OpenEditor:  name="OpenEditor"
 PlaceTemplateDesign_OpenEditor:  parameters+PlaceParameterDesign_element_2:PlaceParameterDesign{
-PlaceParameterDesign_element_2:    name="element"
-PlaceParameterDesign_element_2:    entity="EntityDesign_ElementDesign"
+PlaceParameterDesign_element_2:   name="element"
+PlaceParameterDesign_element_2:   entity="EntityDesign_ElementDesign"
 PlaceTemplateDesign_OpenEditor:  }PlaceParameterDesign_element_2
 PlaceTemplateDesign_OpenEditor: }PlaceTemplateDesign_OpenEditor

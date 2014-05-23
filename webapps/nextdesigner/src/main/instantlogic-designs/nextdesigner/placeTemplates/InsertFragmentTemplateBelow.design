@@ -2,7 +2,7 @@ gn_InsertFragmentTemplateBelow: PlaceTemplateDesign_InsertFragmentTemplateBelow:
 gn_InsertFragmentTemplateBelow:  isCustomized=true
 gn_InsertFragmentTemplateBelow:  name="InsertFragmentTemplateBelow"
 gn_InsertFragmentTemplateBelow:  parameters+PlaceParameterDesign_element_1:PlaceParameterDesign{
-PlaceParameterDesign_element_1:    name="element"
-PlaceParameterDesign_element_1:    entity="EntityDesign_ElementDesign"
+PlaceParameterDesign_element_1:   name="element"
+PlaceParameterDesign_element_1:   entity="EntityDesign_ElementDesign"
 gn_InsertFragmentTemplateBelow:  }PlaceParameterDesign_element_1
 gn_InsertFragmentTemplateBelow: }PlaceTemplateDesign_InsertFragmentTemplateBelow

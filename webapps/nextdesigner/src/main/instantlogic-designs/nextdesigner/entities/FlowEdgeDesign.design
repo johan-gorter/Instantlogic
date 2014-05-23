@@ -1,6 +1,6 @@
-EntityDesign_FlowEdgeDesign:   EntityDesign_FlowEdgeDesign:EntityDesign{
-EntityDesign_FlowEdgeDesign:    name="FlowEdgeDesign"
-EntityDesign_FlowEdgeDesign:    relations+RelationDesign_endNode:RelationDesign{
+EntityDesign_FlowEdgeDesign:    EntityDesign_FlowEdgeDesign:EntityDesign{
+EntityDesign_FlowEdgeDesign:     name="FlowEdgeDesign"
+EntityDesign_FlowEdgeDesign:     relations+RelationDesign_endNode:RelationDesign{
 RelationDesign_endNode:           name="endNode"
 RelationDesign_endNode:           autoCreate=false
 RelationDesign_endNode:           owner=false
@@ -10,8 +10,8 @@ RelationDesign_endNode:           dataType=DataTypeDesign_97:DataTypeDesign{
 DataTypeDesign_97:                 multivalue=false
 RelationDesign_endNode:           }DataTypeDesign_97
 RelationDesign_endNode:           to="EntityDesign_FlowNodeBaseDesign"
-EntityDesign_FlowEdgeDesign:    }RelationDesign_endNode
-EntityDesign_FlowEdgeDesign:    relations+RelationDesign_event:RelationDesign{
+EntityDesign_FlowEdgeDesign:     }RelationDesign_endNode
+EntityDesign_FlowEdgeDesign:     relations+RelationDesign_event:RelationDesign{
 RelationDesign_event:             name="event"
 RelationDesign_event:             autoCreate=false
 RelationDesign_event:             owner=false
@@ -20,8 +20,8 @@ RelationDesign_event:             dataType=DataTypeDesign_98:DataTypeDesign{
 DataTypeDesign_98:                 multivalue=false
 RelationDesign_event:             }DataTypeDesign_98
 RelationDesign_event:             to="EntityDesign_EventDesign"
-EntityDesign_FlowEdgeDesign:    }RelationDesign_event
-EntityDesign_FlowEdgeDesign:    relations+RelationDesign_startNode:RelationDesign{
+EntityDesign_FlowEdgeDesign:     }RelationDesign_event
+EntityDesign_FlowEdgeDesign:     relations+RelationDesign_startNode:RelationDesign{
 RelationDesign_startNode:         name="startNode"
 RelationDesign_startNode:         autoCreate=false
 RelationDesign_startNode:         owner=false
@@ -31,5 +31,5 @@ RelationDesign_startNode:         dataType=DataTypeDesign_99:DataTypeDesign{
 DataTypeDesign_99:                 multivalue=false
 RelationDesign_startNode:         }DataTypeDesign_99
 RelationDesign_startNode:         to="EntityDesign_FlowNodeBaseDesign"
-EntityDesign_FlowEdgeDesign:    }RelationDesign_startNode
-EntityDesign_FlowEdgeDesign:   }EntityDesign_FlowEdgeDesign
+EntityDesign_FlowEdgeDesign:     }RelationDesign_startNode
+EntityDesign_FlowEdgeDesign:    }EntityDesign_FlowEdgeDesign

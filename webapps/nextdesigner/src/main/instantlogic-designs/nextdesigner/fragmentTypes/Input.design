@@ -1,4 +1,4 @@
-FragmentTypeDesign_Input:      FragmentTypeDesign_Input:FragmentTypeDesign{
-FragmentTypeDesign_Input:       name="Input"
-FragmentTypeDesign_Input:       hasAttribute=true
-FragmentTypeDesign_Input:      }FragmentTypeDesign_Input
+FragmentTypeDesign_Input:       FragmentTypeDesign_Input:FragmentTypeDesign{
+FragmentTypeDesign_Input:        name="Input"
+FragmentTypeDesign_Input:        hasAttribute=true
+FragmentTypeDesign_Input:       }FragmentTypeDesign_Input

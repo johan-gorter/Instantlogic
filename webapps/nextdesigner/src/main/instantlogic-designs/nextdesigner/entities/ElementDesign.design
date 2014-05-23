@@ -1,6 +1,6 @@
-EntityDesign_ElementDesign:    EntityDesign_ElementDesign:EntityDesign{
-EntityDesign_ElementDesign:     name="ElementDesign"
-EntityDesign_ElementDesign:     attributes+AttributeDesign_editorOpen:AttributeDesign{
+EntityDesign_ElementDesign:     EntityDesign_ElementDesign:EntityDesign{
+EntityDesign_ElementDesign:      name="ElementDesign"
+EntityDesign_ElementDesign:      attributes+AttributeDesign_editorOpen:AttributeDesign{
 AttributeDesign_editorOpen:       name="editorOpen"
 AttributeDesign_editorOpen:       dataType=DataTypeDesign_82:DataTypeDesign{
 DataTypeDesign_82:                 dataCategory={"entityName":"DataCategoryDesign","instanceName":"boolean"}
@@ -15,8 +15,8 @@ DeductionDesign_66:                 }DeductionParameterDesign_47
 DeductionSchemeDesign_36:          }DeductionDesign_66
 DeductionSchemeDesign_36:          output="DeductionDesign_66"
 AttributeDesign_editorOpen:       }DeductionSchemeDesign_36
-EntityDesign_ElementDesign:     }AttributeDesign_editorOpen
-EntityDesign_ElementDesign:     attributes+AttributeDesign_previewMode:AttributeDesign{
+EntityDesign_ElementDesign:      }AttributeDesign_editorOpen
+EntityDesign_ElementDesign:      attributes+AttributeDesign_previewMode:AttributeDesign{
 AttributeDesign_previewMode:      name="previewMode"
 AttributeDesign_previewMode:      dataType=DataTypeDesign_83:DataTypeDesign{
 DataTypeDesign_83:                 dataCategory={"entityName":"DataCategoryDesign","instanceName":"text"}
@@ -31,7 +31,7 @@ DeductionDesign_67:                 }DeductionParameterDesign_48
 DeductionSchemeDesign_37:          }DeductionDesign_67
 DeductionSchemeDesign_37:          output="DeductionDesign_67"
 AttributeDesign_previewMode:      }DeductionSchemeDesign_37
-EntityDesign_ElementDesign:     }AttributeDesign_previewMode
-EntityDesign_ElementDesign:     dataType=DataTypeDesign_84:DataTypeDesign{
-EntityDesign_ElementDesign:     }DataTypeDesign_84
-EntityDesign_ElementDesign:    }EntityDesign_ElementDesign
+EntityDesign_ElementDesign:      }AttributeDesign_previewMode
+EntityDesign_ElementDesign:      dataType=DataTypeDesign_84:DataTypeDesign{
+EntityDesign_ElementDesign:      }DataTypeDesign_84
+EntityDesign_ElementDesign:     }EntityDesign_ElementDesign

@@ -27,7 +27,7 @@ import org.instantlogic.fabric.value.WriteableAttributeValue;
 public class Updater {
 	
 	private static final boolean DRY_RUN = false;
-	private static final boolean MAKE_FRIENDLY_IDS = true;
+	private static final boolean MAKE_FRIENDLY_IDS = false;
 
 
 	public static void main(String[] args) {

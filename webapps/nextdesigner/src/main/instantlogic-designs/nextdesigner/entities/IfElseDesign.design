@@ -1,7 +1,7 @@
-EntityDesign_IfElseDesign:     EntityDesign_IfElseDesign:EntityDesign{
-EntityDesign_IfElseDesign:      name="IfElseDesign"
-EntityDesign_IfElseDesign:      extendsFrom="EntityDesign_ElementDesign"
-EntityDesign_IfElseDesign:      relations+RelationDesign_condition:RelationDesign{
+EntityDesign_IfElseDesign:      EntityDesign_IfElseDesign:EntityDesign{
+EntityDesign_IfElseDesign:       name="IfElseDesign"
+EntityDesign_IfElseDesign:       extendsFrom="EntityDesign_ElementDesign"
+EntityDesign_IfElseDesign:       relations+RelationDesign_condition:RelationDesign{
 RelationDesign_condition:         name="condition"
 RelationDesign_condition:         autoCreate=true
 RelationDesign_condition:         owner=true
@@ -10,8 +10,8 @@ RelationDesign_condition:         dataType=DataTypeDesign_134:DataTypeDesign{
 DataTypeDesign_134:                multivalue=false
 RelationDesign_condition:         }DataTypeDesign_134
 RelationDesign_condition:         to="EntityDesign_DeductionSchemeDesign"
-EntityDesign_IfElseDesign:      }RelationDesign_condition
-EntityDesign_IfElseDesign:      relations+RelationDesign_elseChild:RelationDesign{
+EntityDesign_IfElseDesign:       }RelationDesign_condition
+EntityDesign_IfElseDesign:       relations+RelationDesign_elseChild:RelationDesign{
 RelationDesign_elseChild:         name="elseChild"
 RelationDesign_elseChild:         autoCreate=false
 RelationDesign_elseChild:         owner=true
@@ -20,8 +20,8 @@ RelationDesign_elseChild:         dataType=DataTypeDesign_135:DataTypeDesign{
 DataTypeDesign_135:                multivalue=false
 RelationDesign_elseChild:         }DataTypeDesign_135
 RelationDesign_elseChild:         to="EntityDesign_ElementDesign"
-EntityDesign_IfElseDesign:      }RelationDesign_elseChild
-EntityDesign_IfElseDesign:      relations+RelationDesign_ifChild:RelationDesign{
+EntityDesign_IfElseDesign:       }RelationDesign_elseChild
+EntityDesign_IfElseDesign:       relations+RelationDesign_ifChild:RelationDesign{
 RelationDesign_ifChild:           name="ifChild"
 RelationDesign_ifChild:           autoCreate=false
 RelationDesign_ifChild:           owner=true
@@ -30,5 +30,5 @@ RelationDesign_ifChild:           dataType=DataTypeDesign_136:DataTypeDesign{
 DataTypeDesign_136:                multivalue=false
 RelationDesign_ifChild:           }DataTypeDesign_136
 RelationDesign_ifChild:           to="EntityDesign_ElementDesign"
-EntityDesign_IfElseDesign:      }RelationDesign_ifChild
-EntityDesign_IfElseDesign:     }EntityDesign_IfElseDesign
+EntityDesign_IfElseDesign:       }RelationDesign_ifChild
+EntityDesign_IfElseDesign:      }EntityDesign_IfElseDesign

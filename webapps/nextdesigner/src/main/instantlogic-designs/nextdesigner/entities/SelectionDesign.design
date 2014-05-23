@@ -1,7 +1,7 @@
-EntityDesign_SelectionDesign:  EntityDesign_SelectionDesign:EntityDesign{
-EntityDesign_SelectionDesign:   name="SelectionDesign"
-EntityDesign_SelectionDesign:   extendsFrom="EntityDesign_ElementDesign"
-EntityDesign_SelectionDesign:   relations+RelationDesign_child:RelationDesign{
+EntityDesign_SelectionDesign:   EntityDesign_SelectionDesign:EntityDesign{
+EntityDesign_SelectionDesign:    name="SelectionDesign"
+EntityDesign_SelectionDesign:    extendsFrom="EntityDesign_ElementDesign"
+EntityDesign_SelectionDesign:    relations+RelationDesign_child:RelationDesign{
 RelationDesign_child:             name="child"
 RelationDesign_child:             autoCreate=false
 RelationDesign_child:             owner=true
@@ -11,8 +11,8 @@ RelationDesign_child:             dataType=DataTypeDesign_161:DataTypeDesign{
 DataTypeDesign_161:                multivalue=false
 RelationDesign_child:             }DataTypeDesign_161
 RelationDesign_child:             to="EntityDesign_ElementDesign"
-EntityDesign_SelectionDesign:   }RelationDesign_child
-EntityDesign_SelectionDesign:   relations+RelationDesign_selection:RelationDesign{
+EntityDesign_SelectionDesign:    }RelationDesign_child
+EntityDesign_SelectionDesign:    relations+RelationDesign_selection:RelationDesign{
 RelationDesign_selection:         name="selection"
 RelationDesign_selection:         autoCreate=true
 RelationDesign_selection:         owner=true
@@ -22,5 +22,5 @@ RelationDesign_selection:         dataType=DataTypeDesign_162:DataTypeDesign{
 DataTypeDesign_162:                multivalue=false
 RelationDesign_selection:         }DataTypeDesign_162
 RelationDesign_selection:         to="EntityDesign_DeductionSchemeDesign"
-EntityDesign_SelectionDesign:   }RelationDesign_selection
-EntityDesign_SelectionDesign:  }EntityDesign_SelectionDesign
+EntityDesign_SelectionDesign:    }RelationDesign_selection
+EntityDesign_SelectionDesign:   }EntityDesign_SelectionDesign

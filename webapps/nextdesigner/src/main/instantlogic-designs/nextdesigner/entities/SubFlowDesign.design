@@ -1,7 +1,7 @@
-EntityDesign_SubFlowDesign:    EntityDesign_SubFlowDesign:EntityDesign{
-EntityDesign_SubFlowDesign:     name="SubFlowDesign"
-EntityDesign_SubFlowDesign:     extendsFrom="EntityDesign_FlowNodeBaseDesign"
-EntityDesign_SubFlowDesign:     relations+RelationDesign_flow:RelationDesign{
+EntityDesign_SubFlowDesign:     EntityDesign_SubFlowDesign:EntityDesign{
+EntityDesign_SubFlowDesign:      name="SubFlowDesign"
+EntityDesign_SubFlowDesign:      extendsFrom="EntityDesign_FlowNodeBaseDesign"
+EntityDesign_SubFlowDesign:      relations+RelationDesign_flow:RelationDesign{
 RelationDesign_flow:              name="flow"
 RelationDesign_flow:              autoCreate=false
 RelationDesign_flow:              owner=false
@@ -11,5 +11,5 @@ RelationDesign_flow:              dataType=DataTypeDesign_173:DataTypeDesign{
 DataTypeDesign_173:                multivalue=false
 RelationDesign_flow:              }DataTypeDesign_173
 RelationDesign_flow:              to="EntityDesign_FlowDesign"
-EntityDesign_SubFlowDesign:     }RelationDesign_flow
-EntityDesign_SubFlowDesign:    }EntityDesign_SubFlowDesign
+EntityDesign_SubFlowDesign:      }RelationDesign_flow
+EntityDesign_SubFlowDesign:     }EntityDesign_SubFlowDesign

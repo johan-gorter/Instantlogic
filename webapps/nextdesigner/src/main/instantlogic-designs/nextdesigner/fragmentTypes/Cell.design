@@ -1,4 +1,4 @@
-FragmentTypeDesign_Cell:       FragmentTypeDesign_Cell:FragmentTypeDesign{
-FragmentTypeDesign_Cell:        name="Cell"
-FragmentTypeDesign_Cell:        contentPropertyNames+"content"
-FragmentTypeDesign_Cell:       }FragmentTypeDesign_Cell
+FragmentTypeDesign_Cell:        FragmentTypeDesign_Cell:FragmentTypeDesign{
+FragmentTypeDesign_Cell:         name="Cell"
+FragmentTypeDesign_Cell:         contentPropertyNames+"content"
+FragmentTypeDesign_Cell:        }FragmentTypeDesign_Cell
