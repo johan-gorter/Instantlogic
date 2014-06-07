@@ -143,22 +143,5 @@ public class PropertyDesign extends org.instantlogic.fabric.Instance {
 
 
 	// Reverse relations
-	
-	private final org.instantlogic.fabric.value.RelationValue<PropertyDesign, FragmentTemplateDesign> fragment
-		= createReverseRelationValue(org.instantlogic.designer.entity.PropertyDesignEntity.fragment);
-
-	public org.instantlogic.fabric.value.RelationValue<PropertyDesign, FragmentTemplateDesign> getFragmentRelationValue() {
-		return fragment;
-	}
-
-	public org.instantlogic.designer.FragmentTemplateDesign getFragment() {
-		return fragment.getValue();
-	}
-
-    public PropertyDesign setFragment(org.instantlogic.designer.FragmentTemplateDesign newValue) {
-        fragment.setValue(newValue);
-        return (PropertyDesign)this;
-    }
-
 
 }

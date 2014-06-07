@@ -78,7 +78,6 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> entity;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.EventDesign, org.instantlogic.designer.EventDesign> event;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> linkToPlaceTemplate;
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign> properties;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.FragmentTemplateTextDesign>, org.instantlogic.designer.FragmentTemplateTextDesign> texts;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTypeDesign, org.instantlogic.designer.FragmentTypeDesign> type;
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.FragmentTemplateValueDesign>, org.instantlogic.designer.FragmentTemplateValueDesign> values;
@@ -125,10 +124,6 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
 				"RelationDesign_linkToPlaceTemplate", "linkToPlaceTemplate", INSTANCE, "linkToPlaceTemplate", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
 		linkToPlaceTemplate = $linkToPlaceTemplate;
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign> $properties
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.PropertyDesign>, org.instantlogic.designer.PropertyDesign>(
-				"RelationDesign_properties", "properties", INSTANCE, "properties", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
-		properties = $properties;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.FragmentTemplateTextDesign>, org.instantlogic.designer.FragmentTemplateTextDesign> $texts
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.fabric.value.ValueList<org.instantlogic.designer.FragmentTemplateTextDesign>, org.instantlogic.designer.FragmentTemplateTextDesign>(
 				"RelationDesign_texts", "texts", INSTANCE, "texts", org.instantlogic.designer.AbstractFragmentTemplateDesign.class);
@@ -175,11 +170,6 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 		$linkToPlaceTemplate.valueClass = org.instantlogic.designer.PlaceTemplateDesign.class;
 		$linkToPlaceTemplate.to = org.instantlogic.designer.entity.PlaceTemplateDesignEntity.INSTANCE;
 		$linkToPlaceTemplate.setReverseRelation(org.instantlogic.designer.entity.PlaceTemplateDesignEntity.incomingLinksFromFragmentTemplates);
-		$properties.valueClass = org.instantlogic.designer.PropertyDesign.class;
-		$properties.to = org.instantlogic.designer.entity.PropertyDesignEntity.INSTANCE;
-		$properties.setReverseRelation(org.instantlogic.designer.entity.PropertyDesignEntity.fragment);
-		$properties.owner = true;
-		$properties.multivalue = true;
 		$texts.valueClass = org.instantlogic.designer.FragmentTemplateTextDesign.class;
 		$texts.to = org.instantlogic.designer.entity.FragmentTemplateTextDesignEntity.INSTANCE;
 		$texts.setReverseRelation(org.instantlogic.designer.entity.FragmentTemplateTextDesignEntity.fragmentTemplateDesign);
@@ -233,7 +223,6 @@ public class FragmentTemplateDesignEntity extends org.instantlogic.fabric.model.
 		entity,
 		event,
 		linkToPlaceTemplate,
-		properties,
 		texts,
 		type,
 		values,

@@ -229,29 +229,6 @@ public abstract class AbstractFragmentTemplateDesign extends ElementDesign {
 	
 
 	
-	private final org.instantlogic.fabric.value.RelationValues<FragmentTemplateDesign, PropertyDesign> properties
-		= createRelationValues(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.properties);
-		
-	public org.instantlogic.fabric.value.RelationValues<FragmentTemplateDesign, PropertyDesign> getPropertiesRelationValue() {
-		return properties;
-	}
-
-	public org.instantlogic.fabric.value.Values<org.instantlogic.designer.PropertyDesign> getProperties() {
-		return properties.getValue();
-	}
-	
-	public FragmentTemplateDesign addToProperties(PropertyDesign item) {
-		properties.addValue(item);
-		return (FragmentTemplateDesign)this;
-	}
-	
-	public FragmentTemplateDesign removeFromProperties(PropertyDesign item) {
-		properties.removeValue(item);
-		return (FragmentTemplateDesign)this;
-	}
-	
-	
-	
 	private final org.instantlogic.fabric.value.RelationValueList<FragmentTemplateDesign, FragmentTemplateTextDesign> texts
 		= createRelationValueList(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.texts);
 		

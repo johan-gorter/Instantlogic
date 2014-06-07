@@ -85,7 +85,7 @@ public class ElementEditorPageFragment extends org.instantlogic.interaction.page
 
 	private static org.instantlogic.fabric.deduction.Deduction createDeduction7() {
 		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
-		    d0.setAttribute(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.properties);
+		    d0.setAttribute(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.contents);
 		  	org.instantlogic.fabric.deduction.CastInstanceDeduction d1 = new org.instantlogic.fabric.deduction.CastInstanceDeduction();
 		    d1.setToEntity(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE);
 		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();

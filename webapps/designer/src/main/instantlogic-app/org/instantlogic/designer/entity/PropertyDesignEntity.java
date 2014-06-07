@@ -49,7 +49,6 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> value;
 	
 	// Reverse relations
-	public static final org.instantlogic.fabric.model.Relation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> fragment;
 
 	static {
 		// Phase 1
@@ -76,10 +75,6 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 				"RelationDesign_value", "value", INSTANCE, "value", org.instantlogic.designer.PropertyDesign.class);
 		value = $value;
 		// Reverse relations
-		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $fragment
-			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
-				"RelationDesign_properties", "fragment", INSTANCE, "fragment", org.instantlogic.designer.PropertyDesign.class);
-		fragment = $fragment;
 		
 		// Phase 2
 		EXTENSIONS = new org.instantlogic.fabric.model.Entity<?>[] {
@@ -106,10 +101,6 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		$value.setReverseRelation(org.instantlogic.designer.entity.DeductionSchemeDesignEntity.valueOnPropertyDesign);
 		$value.owner = true;
 
-		$fragment.reverse = true;
-		$fragment.valueClass = org.instantlogic.designer.FragmentTemplateDesign.class;
-		$fragment.to = org.instantlogic.designer.entity.FragmentTemplateDesignEntity.INSTANCE;
-		$fragment.setReverseRelation(org.instantlogic.designer.entity.FragmentTemplateDesignEntity.properties);
 
 		title = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).getTextTemplate();
 	}
@@ -144,7 +135,6 @@ public class PropertyDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		value,
 	};
 	private static final org.instantlogic.fabric.model.Relation[] REVERSE_RELATIONS = new org.instantlogic.fabric.model.Relation[]{
-		fragment,
 	};
 	private static final org.instantlogic.fabric.model.Validation[] VALIDATIONS = new org.instantlogic.fabric.model.Validation[]{
 	};
