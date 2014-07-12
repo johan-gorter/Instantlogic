@@ -29,8 +29,12 @@ import org.instantlogic.engine.agent.Animals;
 import org.instantlogic.engine.manager.DesignerEngineManager;
 import org.instantlogic.engine.manager.EngineManager;
 import org.instantlogic.engine.manager.Update;
-import org.jboss.netty.bootstrap.ServerBootstrap;
-import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
+
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -104,12 +108,15 @@ public class NettyServer {
 		
 		travelersManagement = new TravelersManagement(engineManager);
 		
+		EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup workerGroup = new NioEventLoopGroup();		
+		ServerBootstrap bootstrap = new ServerBootstrap()
+		  .group(bossGroup, workerGroup)
+		  .channel(NioServerSocketChannel.class)
+		  .childHandler(new InstantlogicPipelineFactory(travelersManagement, webroot));
+
 		ExecutorService executor = Executors.newCachedThreadPool(factory);
-		ServerBootstrap bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newSingleThreadExecutor(factory), executor));
-
-		// Set up the event pipeline factory.
-		bootstrap.setPipelineFactory(new InstantlogicPipelineFactory(travelersManagement, webroot));
-
+		
 		if (WATCH_FILES) {
 			executor.execute(fileWatcher);
 			executor.execute(fileWatcherStyle);

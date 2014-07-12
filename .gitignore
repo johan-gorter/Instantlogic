@@ -1,6 +1,5 @@
 /webapps/izzy/cases
 target/
-
 # Useful suggestions from GitHub for windows
 
 #################
@@ -25,3 +24,4 @@ Desktop.ini
 
 instantlogic-netty/src/main/webroot/Web.config
 *.config
+*.pptx

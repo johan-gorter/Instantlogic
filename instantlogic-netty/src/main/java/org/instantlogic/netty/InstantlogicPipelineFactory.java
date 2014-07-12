@@ -1,16 +1,15 @@
 package org.instantlogic.netty;
 
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.http.HttpContentCompressor;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpRequestDecoder;
+import io.netty.handler.codec.http.HttpResponseEncoder;
+
 import java.io.File;
 
-import org.jboss.netty.channel.ChannelPipeline;
-import org.jboss.netty.channel.ChannelPipelineFactory;
-import org.jboss.netty.channel.Channels;
-import org.jboss.netty.handler.codec.http.HttpChunkAggregator;
-import org.jboss.netty.handler.codec.http.HttpContentCompressor;
-import org.jboss.netty.handler.codec.http.HttpRequestDecoder;
-import org.jboss.netty.handler.codec.http.HttpResponseEncoder;
-
-public class InstantlogicPipelineFactory implements ChannelPipelineFactory {
+public class InstantlogicPipelineFactory extends ChannelInitializer<SocketChannel> {
 
 	private final TravelersManagement travelersManagement;
 	private final File staticRoot;
@@ -22,20 +21,11 @@ public class InstantlogicPipelineFactory implements ChannelPipelineFactory {
 
 
 	@Override
-	public ChannelPipeline getPipeline() throws Exception {
-		ChannelPipeline pipeline = Channels.pipeline();
-
-		// Uncomment the following line if you want HTTPS
-		// SSLEngine engine =
-		// SecureChatSslContextFactory.getServerContext().createSSLEngine();
-		// engine.setUseClientMode(false);
-		// pipeline.addLast("ssl", new SslHandler(engine));
-
-		pipeline.addLast("decoder", new HttpRequestDecoder());
-		pipeline.addLast("aggregator", new HttpChunkAggregator(1048576));
-		pipeline.addLast("encoder", new HttpResponseEncoder());
-		pipeline.addLast("deflater", new HttpContentCompressor());
-		pipeline.addLast("handler", new InstantlogicRequestHandler(travelersManagement, staticRoot));
-		return pipeline;
+	protected void initChannel(SocketChannel ch) throws Exception {
+		ch.pipeline().addLast("decoder", new HttpRequestDecoder());
+		ch.pipeline().addLast("aggregator", new HttpObjectAggregator(1048576));
+		ch.pipeline().addLast("encoder", new HttpResponseEncoder());
+		ch.pipeline().addLast("deflater", new HttpContentCompressor());
+		ch.pipeline().addLast("handler", new InstantlogicRequestHandler(travelersManagement, staticRoot));
 	}
 }

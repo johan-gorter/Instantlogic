@@ -1,10 +1,10 @@
 package org.instantlogic.netty;
 
-import static org.jboss.netty.handler.codec.http.HttpHeaders.isKeepAlive;
-import static org.jboss.netty.handler.codec.http.HttpHeaders.Names.CONTENT_LENGTH;
-import static org.jboss.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
-import static org.jboss.netty.handler.codec.http.HttpResponseStatus.OK;
-import static org.jboss.netty.handler.codec.http.HttpVersion.HTTP_1_1;
+import static io.netty.handler.codec.http.HttpHeaders.isKeepAlive;
+import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_LENGTH;
+import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
+import static io.netty.handler.codec.http.HttpResponseStatus.OK;
+import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,19 +24,24 @@ import org.instantlogic.engine.message.StartMessage;
 import org.instantlogic.engine.message.SubmitMessage;
 import org.instantlogic.fabric.value.Values;
 import org.instantlogic.interaction.util.TravelerInfo;
-import org.jboss.netty.buffer.ChannelBuffers;
-import org.jboss.netty.channel.Channel;
-import org.jboss.netty.channel.ChannelFuture;
-import org.jboss.netty.channel.ChannelFutureListener;
-import org.jboss.netty.channel.MessageEvent;
-import org.jboss.netty.handler.codec.http.Cookie;
-import org.jboss.netty.handler.codec.http.CookieDecoder;
-import org.jboss.netty.handler.codec.http.CookieEncoder;
-import org.jboss.netty.handler.codec.http.DefaultCookie;
-import org.jboss.netty.handler.codec.http.DefaultHttpResponse;
-import org.jboss.netty.handler.codec.http.HttpRequest;
-import org.jboss.netty.handler.codec.http.HttpResponse;
-import org.jboss.netty.util.CharsetUtil;
+
+import io.netty.buffer.Unpooled;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.http.ClientCookieEncoder;
+import io.netty.handler.codec.http.Cookie;
+import io.netty.handler.codec.http.CookieDecoder;
+import io.netty.handler.codec.http.DefaultCookie;
+import io.netty.handler.codec.http.DefaultFullHttpResponse;
+import io.netty.handler.codec.http.DefaultHttpResponse;
+import io.netty.handler.codec.http.FullHttpRequest;
+import io.netty.handler.codec.http.HttpRequest;
+import io.netty.handler.codec.http.HttpResponse;
+import io.netty.handler.codec.http.ServerCookieEncoder;
+import io.netty.util.CharsetUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,6 +57,15 @@ import com.google.gson.JsonPrimitive;
  */
 public class NettyTraveler implements TravelerProxy {
 	
+	static class ParkedEntry {
+		ChannelHandlerContext ctx;
+		FullHttpRequest request;
+		public ParkedEntry(ChannelHandlerContext ctx, FullHttpRequest request) {
+			this.ctx = ctx;
+			this.request = request;
+		}
+	}
+	
 	enum State {ACTIVE, MAY_BE_OBANDONED, REMOVED}
 	
 	private static final Logger logger = LoggerFactory.getLogger(NettyTraveler.class);
@@ -66,14 +80,14 @@ public class NettyTraveler implements TravelerProxy {
 	private final CaseProcessor caseProcessor;
 	private final TravelersManagement travelersManagement;
 		
-	private List<MessageEvent> parkedRequests = new ArrayList<MessageEvent>();
+	private List<ParkedEntry> parkedRequests = new ArrayList<ParkedEntry>();
 	private List<Update> updatesWaiting = new ArrayList<Update>();
 	private State state = State.ACTIVE;
 
 	private ChannelFutureListener channelClosed = new ChannelFutureListener() {
 		@Override
 		public void operationComplete(ChannelFuture future) throws Exception {
-			removeParkedRequestForChannel(future.getChannel());
+			removeParkedRequestForChannel(future.channel());
 		}
 	};
 
@@ -156,14 +170,14 @@ public class NettyTraveler implements TravelerProxy {
 		return jsonPrimitive.getAsString();
 	}
 
-	public synchronized void parkRequest(MessageEvent e) {
+	public synchronized void parkRequest(ChannelHandlerContext ctx, FullHttpRequest request) {
 		if (state==State.REMOVED) {
 			logger.error("Rare race condition");
 			throw new RuntimeException("This traveler was removed");
 		}
 		state = State.ACTIVE;
-		e.getChannel().getCloseFuture().addListener(channelClosed);
-		parkedRequests.add(e);
+		ctx.channel().closeFuture().addListener(channelClosed);
+		parkedRequests.add(new ParkedEntry(ctx, request));
 		if (parkedRequests.size()>1 || updatesWaiting.size()>0) {
 			sendResponseMessages(parkedRequests.remove(0));
 		}
@@ -179,26 +193,24 @@ public class NettyTraveler implements TravelerProxy {
 	 * The parked request is returned carrying the messages waiting.
 	 * @param event
 	 */
-	private void sendResponseMessages(MessageEvent event) {
-		HttpRequest request = (HttpRequest) event.getMessage();
-		
-		boolean keepAlive = isKeepAlive(request);
+	private void sendResponseMessages(ParkedEntry entry) {
+		boolean keepAlive = isKeepAlive(entry.request);
  
         // Build the response object.
-        HttpResponse response = new DefaultHttpResponse(HTTP_1_1, OK);
+		DefaultFullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.copiedBuffer(gson.toJson(updatesWaiting), CharsetUtil.UTF_8));
         logger.debug("Sending {} messages to traveler {}", updatesWaiting.size(), travelerInfo.getTravelerId());
-    	response.setContent(ChannelBuffers.copiedBuffer(gson.toJson(updatesWaiting), CharsetUtil.UTF_8)); // gson.toJsonTree(update)
+    	
     	updatesWaiting = new ArrayList<Update>();
 
-    	response.setHeader(CONTENT_TYPE, "text/plain; charset=UTF-8");
-    	handleOutgoingAuthentication(request, response, travelerInfo.getAuthenticatedUsername());
+    	response.headers().add(CONTENT_TYPE, "text/plain; charset=UTF-8");
+    	handleOutgoingAuthentication(entry.request, response, travelerInfo.getAuthenticatedUsername());
         if (keepAlive) {
             // Add 'Content-Length' header only for a keep-alive connection.
-            response.setHeader(CONTENT_LENGTH, response.getContent().readableBytes());
+            response.headers().add(CONTENT_LENGTH, response.content().readableBytes());
         }
  
         // Write the response.
-        ChannelFuture future = event.getChannel().write(response);
+        ChannelFuture future = entry.ctx.channel().writeAndFlush(response);
  
         // Close the non-keep-alive connection after the write operation is done.
         if (!keepAlive) {
@@ -208,7 +220,7 @@ public class NettyTraveler implements TravelerProxy {
 
 	synchronized void removeParkedRequestForChannel(Channel channel) {
 		for (int i=0;i<parkedRequests.size();i++) {
-			if (parkedRequests.get(i).getChannel()==channel) {
+			if (parkedRequests.get(i).ctx.channel()==channel) {
 				parkedRequests.remove(i);
 				logger.debug("A channel for traveler {} was closed by the client", travelerInfo.getTravelerId());
 				return;
@@ -264,26 +276,22 @@ public class NettyTraveler implements TravelerProxy {
 	// This is obviously only intended to be used in demonstrations, there is no real security!
 	private void handleOutgoingAuthentication(HttpRequest request, HttpResponse response, String authenticatedUsername) {
 		if (authenticatedUsername!=null && !authenticatedUsername.equals(readAuthentication(request))) {
-    		CookieEncoder encoder = new CookieEncoder(true);
     		DefaultCookie cookie = new DefaultCookie("who-am-i", travelerInfo.getAuthenticatedUsername());
     		cookie.setHttpOnly(true);
     		cookie.setMaxAge(60*60*24*365);
-    		encoder.addCookie(cookie);
-    		response.setHeader("Set-Cookie", encoder.encode());
+    		response.headers().add("Set-Cookie", ServerCookieEncoder.encode(cookie));
 		} else if (authenticatedUsername==null && readAuthentication(request)!=null) {
-    		CookieEncoder encoder = new CookieEncoder(true);
 			DefaultCookie cookie = new DefaultCookie("who-am-i", "deleteme");
     		cookie.setHttpOnly(true);
     		cookie.setMaxAge(0);
-    		encoder.addCookie(cookie);
-    		response.setHeader("Set-Cookie", encoder.encode());
+    		response.headers().add("Set-Cookie", ServerCookieEncoder.encode(cookie));
 		}
 	}
 	
 	private String readAuthentication(HttpRequest request) {
-		String requestCookie = request.getHeader("Cookie");
+		String requestCookie = request.headers().get("Cookie");
 		if (requestCookie==null) return null;
-		Set<Cookie> cookies = new CookieDecoder().decode(requestCookie);
+		Set<Cookie> cookies = CookieDecoder.decode(requestCookie);
 		for(Cookie cookie : cookies) {
 			if ("who-am-i".equals(cookie.getName())) {
 				 return cookie.getValue();
