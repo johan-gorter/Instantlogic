@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Instance Graph test page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="zepto.js"></script>
+  <script src="/webjars/d3js/3.4.6/d3.js"></script>
+  <script src="element.js"></script>
+  <script src="fragment.js"></script>
+  <script src="graph.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      font: 13px sans-serif;
+      position: relative;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="instance-graph">
+    
+  <script>
+
+    var staticData = [
+      {
+        id: "project1",
+        entity: "Project",
+        title: "Pet store",
+        reverseRelations: [],
+        relations: [
+          { id: "users", owns: true, stored: ["user1"] },
+          { id: "issues", owns: true, stored: ["issue1"] }
+        ],
+        attributes: [
+          { id: "name", stored: "Pet store" }
+        ]
+      },
+      {
+        id: "issue1",
+        entity: "Issue",
+        title: "1: Become the next big thing",
+        reverseRelations: [
+          { id: "project", reverse: "issues", owner: true, stored: "project1" }
+        ],
+        relations: [
+          { id: "assignee", stored: "user1" }
+        ],
+        attributes: [
+          { id: "headline", stored: "Become the next big thing" },
+          { id: "issueNumber", stored: 1 }
+        ]
+      },
+      {
+        id: "user1",
+        entity: "User",
+        title: "Alice",
+        reverseRelations: [
+          { id: "project", reverse: "users", owner: true, stored: "project1" },
+          { id: "assignedIssues", reverse: "assignee", name: "assigned issues", stored: ["issue1"] }
+        ],
+        relations: [
+        ],
+        attributes: [
+          { id: "name", stored: "Alice" }
+        ]
+      }
+    ];
+
+    var staticDataSource = {
+      subscribe: function (instanceId, dataCallback) {
+        setTimeout(function () {
+          for(var i = 0; i < staticData.length; i++) {
+            if(staticData[i].id === instanceId) {
+              dataCallback(staticData[i]);
+              return;
+            }
+          }
+          dataCallback(null);
+        }, 0);
+        return {
+          dispose: function () {}
+        };
+      }
+    };
+
+    var createDataSource = function () {
+      var standOff = 100; 
+      var ws;
+      var ready = false;
+      var subscriptions = [];
+      var onOpen = function () {
+        standOff = 100;
+        subscriptions.forEach(function(subscription){
+        	subscription.sendStartFrame();
+        });
+        ready = true;
+      };
+      var onMessage = function (evt) {
+        var data = JSON.parse(evt.data);
+        subscriptions.forEach(function (subscription) {
+          if(data.id === subscription.id) {
+            subscription.onUpdate(data);
+          }
+        });
+      };
+      var onError = function (evt) {
+        ready = false;
+        if(standOff < 1000) {
+          standOff = standOff + 100;
+        }
+      };
+      var onClose = function () {
+        ready = false;
+        setTimeout(start, standOff);
+        start();
+      };
+      var start = function () {
+        ws = new WebSocket("ws://localhost:7080/api");
+        ws.onopen = onOpen;
+        ws.onmessage = onMessage;
+        ws.onclose = onClose;
+        ws.onerror = onError;
+      };
+      return {
+        subscribe: function (instanceId, dataCallback) {
+          if(!ws) {
+            start();
+          }
+          var id = "/instancegraph-instance-" + instanceId;
+          var sendStartFrame = function () {
+            ws.send(JSON.stringify({ command: "subscribe-place", id: id }));
+          };
+          var subscription = {
+            sendStartFrame: sendStartFrame,
+            id: instanceId,
+            onUpdate: function (data) {
+              dataCallback(data);
+            }
+          };
+          subscriptions.push(subscription);
+          if(ready) {
+            sendStartFrame();
+          }
+          return {
+            dispose: function () {
+              if(ready) {
+                ws.send(JSON.stringify({ command: "unsubscribe-place", id: id }));
+              }
+              subscriptions.splice(subscriptions.indexOf(subscription), 1);
+            }
+          };
+        }
+      };
+    };
+      
+    var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", createDataSource(), "project1");
+    instanceGraph.test();
+  </script>
+</body>
+</html>

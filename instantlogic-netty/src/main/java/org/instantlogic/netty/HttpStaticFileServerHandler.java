@@ -12,17 +12,13 @@ import static io.netty.handler.codec.http.HttpResponseStatus.METHOD_NOT_ALLOWED;
 import static io.netty.handler.codec.http.HttpResponseStatus.NOT_FOUND;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.DefaultFileRegion;
-import io.netty.channel.FileRegion;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.TooLongFrameException;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
-import io.netty.handler.codec.http.DefaultHttpResponse;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpHeaders;
@@ -34,10 +30,8 @@ import io.netty.util.CharsetUtil;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -52,8 +46,7 @@ import org.slf4j.LoggerFactory;
  * 
  * Largely copied from netty example
  */
-public class HttpStaticFileServerHandler extends
-		SimpleChannelInboundHandler<FullHttpRequest> {
+public class HttpStaticFileServerHandler extends SimpleChannelInboundHandler<Object> {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(HttpStaticFileServerHandler.class);
@@ -67,7 +60,13 @@ public class HttpStaticFileServerHandler extends
 	private boolean sendingError = false;
 
 	@Override
-	public void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request)
+    public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+        if (msg instanceof FullHttpRequest) {
+            handleHttpRequest(ctx, (FullHttpRequest) msg);
+        }
+    }
+	
+	public void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest request)
 			throws Exception {
 		if (!request.getDecoderResult().isSuccess()) {
 			sendError(ctx, BAD_REQUEST);

@@ -2,22 +2,26 @@ package org.instantlogic.netty;
 
 import static io.netty.handler.codec.http.HttpResponseStatus.CONTINUE;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
-
-import java.io.File;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.Map;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.DefaultHttpResponse;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpHeaders;
-import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.HttpResponse;
 import io.netty.handler.codec.http.QueryStringDecoder;
+import io.netty.handler.codec.http.websocketx.CloseWebSocketFrame;
+import io.netty.handler.codec.http.websocketx.PingWebSocketFrame;
+import io.netty.handler.codec.http.websocketx.PongWebSocketFrame;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
+import io.netty.handler.codec.http.websocketx.WebSocketFrame;
+import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker;
+import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory;
 import io.netty.util.CharsetUtil;
+
+import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +31,64 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
 	private static final Logger logger = LoggerFactory.getLogger(InstantlogicRequestHandler.class);
 	
 	private final TravelersManagement travelersManagement;
+
+	private WebSocketServerHandshaker handshaker;
 	
 	public InstantlogicRequestHandler(TravelersManagement travelersManagement, File staticRoot) {
 		super(staticRoot);
 		this.travelersManagement = travelersManagement;
 	}
 
+	@Override
+    public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+        if (msg instanceof FullHttpRequest) {
+            handleHttpRequest(ctx, (FullHttpRequest) msg);
+        } else if (msg instanceof WebSocketFrame) {
+            handleWebSocketFrame(ctx, (WebSocketFrame) msg);
+        }
+    }
+
+	private void handleWebSocketFrame(ChannelHandlerContext ctx, WebSocketFrame frame) throws Exception {
+		// Check for closing frame
+        if (frame instanceof CloseWebSocketFrame) {
+            handshaker.close(ctx.channel(), (CloseWebSocketFrame) frame.retain());
+            return;
+        }
+        if (frame instanceof PingWebSocketFrame) {
+            ctx.channel().write(new PongWebSocketFrame(frame.content().retain()));
+            return;
+        }
+        if (!(frame instanceof TextWebSocketFrame)) {
+            throw new UnsupportedOperationException(String.format("%s frame types not supported", frame.getClass().getName()));
+        }
+
+        // Send the uppercase string back.
+        String request = ((TextWebSocketFrame) frame).text();
+        ctx.channel().writeAndFlush(new TextWebSocketFrame(request.toUpperCase()));
+	}
+
+	@Override
+	public void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+		if ("/api".equals(request.getUri())) {
+			// Handshake
+	        WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory(
+	                getWebSocketLocation(request), null, false);
+	        handshaker = wsFactory.newHandshaker(request);
+	        if (handshaker == null) {
+	            WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx.channel());
+	        } else {
+	            handshaker.handshake(ctx.channel(), request);
+	        }
+		} else {
+			super.handleHttpRequest(ctx, request);
+		}
+	}
+	
+	private static String getWebSocketLocation(FullHttpRequest req) {
+        String location =  req.headers().get(HttpHeaders.Names.HOST) + "/api";
+        return "ws://" + location;
+    }
+	
 	@Override
 	protected void handlePost(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
 		if (HttpHeaders.is100ContinueExpected(request)) {
@@ -77,24 +133,5 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
 	private void send100Continue(ChannelHandlerContext ctx) {
 		HttpResponse response = new DefaultHttpResponse(HTTP_1_1, CONTINUE);
 		ctx.writeAndFlush(response);
-	}
-
-	@Override
-	public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
-			throws Exception {
-		// TODO Auto-generated method stub
-		
 	}
 }
