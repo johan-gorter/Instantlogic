@@ -42,27 +42,27 @@
 .buttons {width: 100%;margin:5px 0;}
 
 .bookmark {
-	position: relative;
-	padding: 5px;
-	overflow: hidden;
+  position: relative;
+  padding: 5px;
+  overflow: hidden;
 }
 
 .bookmark a {
-	display: inline-block;
-	white-space: nowrap; 
+  display: inline-block;
+  white-space: nowrap; 
 }
 
 .bookmark-add {
-	max-width: 490px;
-	overflow: hidden;
+  max-width: 490px;
+  overflow: hidden;
 }
 
 .bookmark-remove {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	padding: 5px;
-	background-color: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 5px;
+  background-color: white;
 }
 
 /* Debugger labels */
@@ -83,6 +83,6 @@
 .fragment-debug-menu li a:hover {background-color:#80A0E0;}
 
 /* Data explorer */
-.explore-data-button {position:absolute;top:50px;right:20px;background:rgba(255,128,128,0.8);border:solid 1px #FF0000; border-radius: 5px; 5px 5px 5px; color:#FFFFFF;cursor:pointer;padding:0 4px;}
+.explore-data-button {position:absolute;top:50px;right:20px;background:rgba(255,128,128,0.8);border:solid 1px #FF0000; border-radius: 5px 5px 5px 5px; color:#FFFFFF;cursor:pointer;padding:0 4px;}
 .breadcrumb-node .breadcrumb-node {position:relative; border-left:solid 15px transparent;}
 .shopping {border: solid 1px darkgray; padding:3px; border-radius:3px;white-space:no-wrap;margin:2px 0;}

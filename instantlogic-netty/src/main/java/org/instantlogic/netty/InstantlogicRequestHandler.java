@@ -28,110 +28,120 @@ import org.slf4j.LoggerFactory;
 
 public class InstantlogicRequestHandler extends HttpStaticFileServerHandler implements ChannelHandler {
 
-	private static final Logger logger = LoggerFactory.getLogger(InstantlogicRequestHandler.class);
-	
-	private final TravelersManagement travelersManagement;
+  private static final Logger logger = LoggerFactory.getLogger(InstantlogicRequestHandler.class);
 
-	private WebSocketServerHandshaker handshaker;
-	
-	public InstantlogicRequestHandler(TravelersManagement travelersManagement, File staticRoot) {
-		super(staticRoot);
-		this.travelersManagement = travelersManagement;
-	}
+  private final TravelersManagement travelersManagement;
 
-	@Override
-    public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        if (msg instanceof FullHttpRequest) {
-            handleHttpRequest(ctx, (FullHttpRequest) msg);
-        } else if (msg instanceof WebSocketFrame) {
-            handleWebSocketFrame(ctx, (WebSocketFrame) msg);
-        }
+  private WebSocketServerHandshaker handshaker;
+  private NettyTraveler nettyTraveler;
+
+  public InstantlogicRequestHandler(TravelersManagement travelersManagement, File staticRoot) {
+    super(staticRoot);
+    this.travelersManagement = travelersManagement;
+  }
+
+  @Override
+  public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+    if (msg instanceof FullHttpRequest) {
+      handleHttpRequest(ctx, (FullHttpRequest) msg);
+    } else if (msg instanceof WebSocketFrame) {
+      handleWebSocketFrame(ctx, (WebSocketFrame) msg);
+    }
+  }
+
+  private void handleWebSocketFrame(ChannelHandlerContext ctx, WebSocketFrame frame) throws Exception {
+    // Check for closing frame
+    if (frame instanceof CloseWebSocketFrame) {
+      handshaker.close(ctx.channel(), (CloseWebSocketFrame) frame.retain());
+      return;
+    }
+    if (frame instanceof PingWebSocketFrame) {
+      ctx.channel().write(new PongWebSocketFrame(frame.content().retain()));
+      return;
+    }
+    if (!(frame instanceof TextWebSocketFrame)) {
+      throw new UnsupportedOperationException(String.format("%s frame types not supported", frame.getClass().getName()));
     }
 
-	private void handleWebSocketFrame(ChannelHandlerContext ctx, WebSocketFrame frame) throws Exception {
-		// Check for closing frame
-        if (frame instanceof CloseWebSocketFrame) {
-            handshaker.close(ctx.channel(), (CloseWebSocketFrame) frame.retain());
-            return;
-        }
-        if (frame instanceof PingWebSocketFrame) {
-            ctx.channel().write(new PongWebSocketFrame(frame.content().retain()));
-            return;
-        }
-        if (!(frame instanceof TextWebSocketFrame)) {
-            throw new UnsupportedOperationException(String.format("%s frame types not supported", frame.getClass().getName()));
-        }
+    // Send the uppercase string back.
+    String request = ((TextWebSocketFrame) frame).text();
+    nettyTraveler.registerWebsocket(ctx);
+    nettyTraveler.handleIncomingMessages(request);
+  }
 
-        // Send the uppercase string back.
-        String request = ((TextWebSocketFrame) frame).text();
-        ctx.channel().writeAndFlush(new TextWebSocketFrame(request.toUpperCase()));
-	}
+  @Override
+  public void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+    if ("/api".equals(request.getUri().substring(0, 4))) {
 
-	@Override
-	public void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
-		if ("/api".equals(request.getUri())) {
-			// Handshake
-	        WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory(
-	                getWebSocketLocation(request), null, false);
-	        handshaker = wsFactory.newHandshaker(request);
-	        if (handshaker == null) {
-	            WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx.channel());
-	        } else {
-	            handshaker.handshake(ctx.channel(), request);
-	        }
-		} else {
-			super.handleHttpRequest(ctx, request);
-		}
-	}
-	
-	private static String getWebSocketLocation(FullHttpRequest req) {
-        String location =  req.headers().get(HttpHeaders.Names.HOST) + "/api";
-        return "ws://" + location;
+      getOrCreateTraveler(request);
+
+      // Handshake
+      WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory(
+              getWebSocketLocation(request), null, false);
+      handshaker = wsFactory.newHandshaker(request);
+      if (handshaker == null) {
+        WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx.channel());
+      } else {
+        handshaker.handshake(ctx.channel(), request);
+      }
+    } else {
+      super.handleHttpRequest(ctx, request);
     }
-	
-	@Override
-	protected void handlePost(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
-		if (HttpHeaders.is100ContinueExpected(request)) {
-			send100Continue(ctx);
-		}
-		
-		QueryStringDecoder queryStringDecoder = new QueryStringDecoder(request.getUri());
-		Map<String, List<String>> params = queryStringDecoder.parameters();
-		
-		List<String> travelerIds = params.get("travelerId");
-		if (travelerIds==null || travelerIds.size()!=1) {
-			throw new Exception("No travelerId queryString parameter");
-		}
-		String travelerId = travelerIds.get(0);
-		
-		List<String> applications = params.get("application");
-		if (applications==null || applications.size()!=1) {
-			throw new Exception("No application queryString parameter");
-		}
-		String applicationName = applications.get(0).toLowerCase();
+  }
 
-		List<String> cases = params.get("case");
-		if (cases==null || cases.size()!=1) {
-			throw new Exception("No case queryString parameter");
-		}
-		String caseId = cases.get(0).toLowerCase();
-		
-		NettyTraveler nettyTraveler = travelersManagement.getOrCreate(travelerId, applicationName, caseId);
-		
-		nettyTraveler.verifyIncomingAuthentication(request);
+  private static String getWebSocketLocation(FullHttpRequest req) {
+    String location = req.headers().get(HttpHeaders.Names.HOST) + "/api";
+    return "ws://" + location;
+  }
 
-		logger.debug("Incoming request from traveler {}-{} for application {}, case {}", new Object[]{ nettyTraveler.getTravelerInfo().getAuthenticatedUsername(), travelerId, applicationName, caseId});
-		
-		ByteBuf content = request.content();
-		if (content.isReadable()) {
-			nettyTraveler.handleIncomingMessages(content.toString(CharsetUtil.UTF_8));
-		}
-		
-		nettyTraveler.parkRequest(ctx, request);
-	}
+  private void getOrCreateTraveler(FullHttpRequest request) throws Exception {
+    QueryStringDecoder queryStringDecoder = new QueryStringDecoder(request.getUri());
+    Map<String, List<String>> params = queryStringDecoder.parameters();
 
-	private void send100Continue(ChannelHandlerContext ctx) {
-		HttpResponse response = new DefaultHttpResponse(HTTP_1_1, CONTINUE);
-		ctx.writeAndFlush(response);
-	}
+    List<String> travelerIds = params.get("travelerId");
+    if (travelerIds == null || travelerIds.size() != 1) {
+      throw new Exception("No travelerId queryString parameter");
+    }
+    String travelerId = travelerIds.get(0);
+
+    List<String> applications = params.get("application");
+    if (applications == null || applications.size() != 1) {
+      throw new Exception("No application queryString parameter");
+    }
+    String applicationName = applications.get(0).toLowerCase();
+
+    List<String> cases = params.get("case");
+    if (cases == null || cases.size() != 1) {
+      throw new Exception("No case queryString parameter");
+    }
+    String caseId = cases.get(0).toLowerCase();
+
+    nettyTraveler = travelersManagement.getOrCreate(travelerId, applicationName, caseId);
+
+    nettyTraveler.verifyIncomingAuthentication(request);
+
+    logger.debug("Incoming request from traveler {}-{} for application {}, case {}", new Object[]{
+      nettyTraveler.getTravelerInfo().getAuthenticatedUsername(), travelerId, applicationName, caseId});
+  }
+
+  @Override
+  protected void handlePost(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+    if (HttpHeaders.is100ContinueExpected(request)) {
+      send100Continue(ctx);
+    }
+
+    getOrCreateTraveler(request);
+
+    ByteBuf content = request.content();
+    if (content.isReadable()) {
+      nettyTraveler.handleIncomingMessages(content.toString(CharsetUtil.UTF_8));
+    }
+
+    nettyTraveler.parkRequest(ctx, request);
+  }
+
+  private void send100Continue(ChannelHandlerContext ctx) {
+    HttpResponse response = new DefaultHttpResponse(HTTP_1_1, CONTINUE);
+    ctx.writeAndFlush(response);
+  }
 }

@@ -25,3 +25,4 @@ Desktop.ini
 instantlogic-netty/src/main/webroot/Web.config
 *.config
 *.pptx
+/instantlogic-netty/src/main/webroot/nbproject/private/
