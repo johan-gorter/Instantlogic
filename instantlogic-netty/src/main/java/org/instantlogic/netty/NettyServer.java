@@ -34,6 +34,8 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -122,8 +124,17 @@ public class NettyServer {
 			executor.execute(fileWatcherStyle);
 		}
 		
-		bootstrap.bind(new InetSocketAddress(port));
-		logger.info("Server started at port "+port);
+		bootstrap.bind(new InetSocketAddress(port)).addListener(new GenericFutureListener<Future<? super Void>>() {
+      @Override
+      public void operationComplete(Future<? super Void> future) throws Exception {
+        if (future.isSuccess()) {
+          logger.info("Server started at port "+port);
+        } else {
+          logger.error("Could not bind to port "+port);
+          System.exit(1);
+        }
+      }
+    });
 		
 		ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1,factory);
 		scheduler.scheduleWithFixedDelay(sweeper, 10, 10, TimeUnit.SECONDS); // This may be a bit short for mobile devices on the road

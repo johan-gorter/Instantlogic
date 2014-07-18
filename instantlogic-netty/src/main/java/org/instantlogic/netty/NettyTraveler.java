@@ -1,38 +1,32 @@
 package org.instantlogic.netty;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonPrimitive;
+import static io.netty.handler.codec.http.HttpHeaders.isKeepAlive;
+import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_LENGTH;
+import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
+import static io.netty.handler.codec.http.HttpResponseStatus.OK;
+import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.http.ClientCookieEncoder;
 import io.netty.handler.codec.http.Cookie;
 import io.netty.handler.codec.http.CookieDecoder;
 import io.netty.handler.codec.http.DefaultCookie;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
-import io.netty.handler.codec.http.DefaultHttpResponse;
 import io.netty.handler.codec.http.FullHttpRequest;
-import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_LENGTH;
-import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
-import static io.netty.handler.codec.http.HttpHeaders.isKeepAlive;
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.HttpResponse;
-import static io.netty.handler.codec.http.HttpResponseStatus.OK;
-import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 import io.netty.handler.codec.http.ServerCookieEncoder;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.CharsetUtil;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
 import org.instantlogic.engine.TravelerProxy;
 import org.instantlogic.engine.manager.CaseProcessor;
 import org.instantlogic.engine.manager.Update;
@@ -49,6 +43,13 @@ import org.instantlogic.fabric.value.Values;
 import org.instantlogic.interaction.util.TravelerInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 
 /**
  * A traveler usually has one open parked request. When another comes in, the first one is released.
@@ -118,7 +119,7 @@ public class NettyTraveler implements TravelerProxy {
       travelersManagement.removeTraveler(travelerInfo.getTravelerId());
       this.caseProcessor.processMessagesAndSendUpdates(this, Collections.singletonList((Message) new LeaveMessage()));
     }
-    if (state == State.ACTIVE && parkedRequests.size() == 0) {
+    if (state == State.ACTIVE && parkedRequests.size() == 0 && websocket == null) {
       state = State.MAY_BE_OBANDONED;
     }
   }

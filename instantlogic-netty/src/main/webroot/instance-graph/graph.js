@@ -3,7 +3,6 @@
 /*globals $, d3 */
 /*jslint browser: true, vars: true, indent: 2 */
 
-
 (function () {
 
   // definitions
@@ -406,7 +405,7 @@
 
 
   var createAttribute = function (append, id, type, instance) {
-    var data = {}; // format { id: "project", reverse: "issues", owner: true, stored: "project1" }
+    var data = {}; // format { id: "project", reverse: "issues", owner: true, value: "project1" }
     var bindings = [];
     var bindingFactory = window.fragment.createBindingFactory(bindings);
     var layoutData = {
@@ -438,7 +437,7 @@
       },
       update: function (newData) {
         var graph = instance.getGraph();
-        var oldValues = data.stored;
+        var oldValues = data.value;
         if(!oldValues) {
           oldValues = [];
         }
@@ -485,14 +484,14 @@
         return selected;
       },
       getValue: function () {
-        return data.stored;
+        return data.value;
       },
       forEachValue: function (callback) {
-        if (data.stored) {
-          if (data.stored instanceof Array) {
-            data.stored.forEach(callback);
+        if (data.value) {
+          if (data.value instanceof Array) {
+            data.value.forEach(callback);
           } else {
-            callback(data.stored, 0);
+            callback(data.value, 0);
           }
         }
       },
@@ -534,14 +533,14 @@
     var createDialog = function (appendTo) {
       html.h1(data.name || data.id).appendTo(appendTo);
       if(type === "attribute") {
-        html.textarea().val(data.stored).prop('readonly', true).appendTo(appendTo);
+        html.textarea().val(data.value).prop('readonly', true).appendTo(appendTo);
       } else {
-        if(data.stored instanceof Array) {
-          for(var i = 0; i < data.stored.length; i++) {
-            appendRelationLine(appendTo, data.stored[i], i);
+        if(data.value instanceof Array) {
+          for(var i = 0; i < data.value.length; i++) {
+            appendRelationLine(appendTo, data.value[i], i);
           }
         } else {
-          appendRelationLine(appendTo, data.stored, 0);
+          appendRelationLine(appendTo, data.value, 0);
         }
       }
       return {
@@ -574,17 +573,17 @@
     });
     var valueText = bindingFactory.text(function (d) {
       if (type === "attribute") {
-        if (!d.stored) return "";
-        if(d.stored instanceof Array) {
-          return ""+d.stored.length;
+        if (!d.value) return "";
+        if(d.value instanceof Array) {
+          return ""+d.value.length;
         }
-        return "" + d.stored;
+        return "" + d.value;
       }
       // relation
-      if(d.stored instanceof Array) {
-        return "" + d.stored.length;
+      if(d.value instanceof Array) {
+        return "" + d.value.length;
       } else {
-        if(!d.stored) {
+        if(!d.value) {
           return "0";
         }
         return "1";

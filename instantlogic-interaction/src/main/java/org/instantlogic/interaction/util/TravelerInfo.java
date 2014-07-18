@@ -62,7 +62,7 @@ public final class TravelerInfo {
 		Object old = travelerExtensions.put(extensionInterface, extensionInstance);
 		if (old!=null) {
 			travelerExtensions.put(extensionInterface, old);
-			throw new RuntimeException("Extension already registered");
+			throw new RuntimeException("Extension already registered: "+extensionInterface);
 		}
 	}
 	

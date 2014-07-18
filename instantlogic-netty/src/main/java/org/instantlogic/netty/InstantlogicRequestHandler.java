@@ -39,6 +39,12 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
     super(staticRoot);
     this.travelersManagement = travelersManagement;
   }
+  
+  @Override
+  public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+    super.channelInactive(ctx);
+    nettyTraveler.registerWebsocket(null);
+  }
 
   @Override
   public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -53,6 +59,7 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
     // Check for closing frame
     if (frame instanceof CloseWebSocketFrame) {
       handshaker.close(ctx.channel(), (CloseWebSocketFrame) frame.retain());
+      nettyTraveler.registerWebsocket(null);
       return;
     }
     if (frame instanceof PingWebSocketFrame) {

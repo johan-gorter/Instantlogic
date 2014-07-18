@@ -120,17 +120,17 @@
       }
     };
 
+    var append = function (node) {
+        // This is the only function that is exposed to the Fragment within
+        $(node).insertBefore(endElement);
+      };
+
     var recreateFragment = function (newModel, diff) {
       fragment.destroy();
       clear(null);
       diff.nodeUpdated($(startElement.parentNode));
       fragment = fragmentFactory.createFragment(newModel.type, append, id, parentFragment, fragmentFactory);
       fragment.init(newModel);
-    };
-
-    var append = function (node) {
-      // This is the only function that is exposed to the Fragment within
-      $(node).insertBefore(endElement);
     };
 
     return api;

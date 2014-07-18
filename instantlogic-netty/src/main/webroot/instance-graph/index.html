@@ -42,11 +42,11 @@
           title: "Pet store",
           reverseRelations: [],
           relations: [
-            {id: "users", owns: true, stored: ["user1"]},
-            {id: "issues", owns: true, stored: ["issue1"]}
+            {id: "users", owns: true, value: ["user1"]},
+            {id: "issues", owns: true, value: ["issue1"]}
           ],
           attributes: [
-            {id: "name", stored: "Pet store"}
+            {id: "name", value: "Pet store"}
           ]
         },
         {
@@ -54,14 +54,14 @@
           entity: "Issue",
           title: "1: Become the next big thing",
           reverseRelations: [
-            {id: "project", reverse: "issues", owner: true, stored: "project1"}
+            {id: "project", reverse: "issues", owner: true, value: "project1"}
           ],
           relations: [
-            {id: "assignee", stored: "user1"}
+            {id: "assignee", value: "user1"}
           ],
           attributes: [
-            {id: "headline", stored: "Become the next big thing"},
-            {id: "issueNumber", stored: 1}
+            {id: "headline", value: "Become the next big thing"},
+            {id: "issueNumber", value: 1}
           ]
         },
         {
@@ -69,13 +69,13 @@
           entity: "User",
           title: "Alice",
           reverseRelations: [
-            {id: "project", reverse: "users", owner: true, stored: "project1"},
-            {id: "assignedIssues", reverse: "assignee", name: "assigned issues", stored: ["issue1"]}
+            {id: "project", reverse: "users", owner: true, value: "project1"},
+            {id: "assignedIssues", reverse: "assignee", name: "assigned issues", value: ["issue1"]}
           ],
           relations: [
           ],
           attributes: [
-            {id: "name", stored: "Alice"}
+            {id: "name", value: "Alice"}
           ]
         }
       ];
@@ -113,10 +113,15 @@
           ready = true;
         };
         var onMessage = function(evt) {
-          var data = JSON.parse(evt.data);
-          subscriptions.forEach(function(subscription) {
-            if (data.id === subscription.id) {
-              subscription.onUpdate(data);
+          var messages = JSON.parse(evt.data);
+          messages.forEach(function(message) {
+            if (message.name === "place") {
+              var data = message.rootFragment;
+              subscriptions.forEach(function(subscription) {
+                if (data.id === subscription.id) {
+                  subscription.onUpdate(data);
+                }
+              });
             }
           });
         };
@@ -147,7 +152,7 @@
             if (!ws) {
               start();
             }
-            var location = "/_InstanceGraph-Instance(Location:" + instanceId + ")";
+            var location = "_InstanceGraph-instance(instance:" + instanceId + ")";
             var sendStartFrame = function() {
               ws.send(JSON.stringify([{message: "subscribe", location: location}]));
             };
@@ -174,7 +179,7 @@
         };
       };
 
-      var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", createDataSource(), "project1");
+      var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", createDataSource(), "Lruwoktaxucicnhv_cfa4d5c2_0295");
       instanceGraph.test();
     </script>
   </body>

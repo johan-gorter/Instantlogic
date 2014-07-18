@@ -18,15 +18,18 @@ public class DataExplorerAdministration {
 	private final Map<String, DataExplorerEntityDetailsPlaceTemplate> entityDetailsPlaceTemplates = new HashMap<>();
 	private final Map<String, Map<String, DataExplorerRelationAdministration>> relationPlaceTemplates = new HashMap<>();
 	private final Map<String, DataExplorerOwnerBreadcrumbElement> breadcrumbElements = new HashMap<String, DataExplorerOwnerBreadcrumbElement>();
+  private final Map<String, DataExplorerEntityDetailsPlaceTemplate> entityGraphPlaceTemplates = new HashMap<>();
 	private final Entity<? extends Instance> caseEntity;
 	private final Application application;
 	private final DataExplorerStaticInstancesPlaceTemplate staticInstancesPlaceTemplate;
 	private DataExplorerExplorePlaceTemplate explore;
+  private InstanceGraphInstancePlaceTemplate instanceGraphInstance;
 	
 	public DataExplorerAdministration(Application application) {
 		this.caseEntity = application.getCaseEntity();
 		this.application = application;
 		this.explore = new DataExplorerExplorePlaceTemplate(this);
+		this.instanceGraphInstance = new InstanceGraphInstancePlaceTemplate(this);
 		
 		SortedMap<String,Entity<?>> allEntitiesById = CaseAdministration.getAllEntitiesById(application.getCaseEntity());
 		for (Entity<?> entity : allEntitiesById.values()) {
@@ -99,6 +102,7 @@ public class DataExplorerAdministration {
 		}
 		placeTemplates.add(staticInstancesPlaceTemplate);
 		placeTemplates.add(explore);
+		placeTemplates.add(instanceGraphInstance);
 		return placeTemplates;
 	}
 
