@@ -22,6 +22,8 @@ XnfiUOOraIfhicsr_27518c10_adff:      propertyName="text"
 XnfiUOOraIfhicsr_27518c10_adff:      text=TextTemplateDesign_19:TextTemplateDesign{
 TextTemplateDesign_19:                untranslated+StringTemplateDesign_21:StringTemplateDesign{
 StringTemplateDesign_21:               constantText="Home"
+StringTemplateDesign_21:               deduction=ZivxonldwmdhIj_y_6b521a1c_1cb1:DeductionSchemeDesign{
+StringTemplateDesign_21:               }ZivxonldwmdhIj_y_6b521a1c_1cb1
 TextTemplateDesign_19:                }StringTemplateDesign_21
 XnfiUOOraIfhicsr_27518c10_adff:      }TextTemplateDesign_19
 FragmentTemplateDesign_16:          }XnfiUOOraIfhicsr_27518c10_adff

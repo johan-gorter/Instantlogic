@@ -71,7 +71,7 @@ public class Traveler extends AbstractTraveler implements HistoryExtension {
         placeOutdatedObserver = null;
       }
       Update update = new Update();
-      update.setName("place");
+      update.setName("subscription");
       update.setLocation(location);
 
       RenderContext renderContext = locatePlace(location);

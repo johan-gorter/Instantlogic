@@ -7,29 +7,10 @@
     <script src="/webjars/d3js/3.4.6/d3.js"></script>
     <script src="element.js"></script>
     <script src="fragment.js"></script>
+    <script src="channel.js"></script>
     <script src="graph.js"></script>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-
-      body {
-        font: 13px sans-serif;
-        position: relative;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-    </style>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="instance-graph.css" />
   </head>
   <body class="instance-graph">
 
@@ -43,86 +24,17 @@
       if (!caseMatch) throw new Error('Missing case querystring parameter');
 
       document.title = caseMatch[1] + " - " + applicationMatch[1] + ", instances graph";
-      var createDataSource = function() {
-        var standOff = 100;
-        var ws;
-        var ready = false;
-        var subscriptions = [];
-        var onOpen = function() {
-          standOff = 100;
-          subscriptions.forEach(function(subscription) {
-            subscription.sendStartFrame();
-          });
-          ready = true;
-        };
-        var onMessage = function(evt) {
-          var messages = JSON.parse(evt.data);
-          messages.forEach(function(message) {
-            if (message.name === "place") {
-              var data = message.rootFragment;
-              subscriptions.forEach(function(subscription) {
-                if (data.id === subscription.id) {
-                  subscription.onUpdate(data);
-                }
-              });
-            }
-          });
-        };
-        var onError = function(evt) {
-          ready = false;
-          if (standOff < 1000) {
-            standOff = standOff + 100;
-          }
-        };
-        var onClose = function() {
-          ready = false;
-          setTimeout(start, standOff);
-        };
-        var start = function() {
-          ready = false;
-          if (ws) {
-            ws.close();
-            ws = null;
-          }
-          ws = new WebSocket("ws://localhost:7080/api?application="+applicationMatch[1]+"&case="+caseMatch[1]+"&travelerId=" + travelerId);
-          ws.onopen = onOpen;
-          ws.onmessage = onMessage;
-          ws.onclose = onClose;
-          ws.onerror = onError;
-        };
-        return {
-          subscribe: function(instanceId, dataCallback) {
-            if (!ws) {
-              start();
-            }
-            var location = "_InstanceGraph-instance(instance:" + instanceId + ")";
-            var sendStartFrame = function() {
-              ws.send(JSON.stringify([{message: "subscribe", location: location}]));
-            };
-            var subscription = {
-              sendStartFrame: sendStartFrame,
-              id: instanceId,
-              onUpdate: function(data) {
-                dataCallback(data);
-              }
-            };
-            subscriptions.push(subscription);
-            if (ready) {
-              sendStartFrame();
-            }
-            return {
-              dispose: function() {
-                if (ready) {
-                  ws.send(JSON.stringify([{message: "unsubscribe", location: location}]));
-                }
-                subscriptions.splice(subscriptions.indexOf(subscription), 1);
-              }
-            };
-          }
-        };
-      };
 
-      var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", createDataSource());
+      var placeUpdated = function(message) {
+        
+      };
+      
+      var presenceUpdated = function(message) {
+        
+      };
+      
+      var channel = window.createChannel(applicationMatch[1], caseMatch[1], travelerId, placeUpdated, presenceUpdated)
+      var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", channel);
       if (window.location.hash) {
         instanceGraph.showInstance(window.location.hash.substr(1));
 	      instanceGraph.expandFirstLevel();
