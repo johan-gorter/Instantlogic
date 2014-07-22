@@ -31,7 +31,7 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
 	      return result;
 	    }
 	    result.put("type", getFragmentTypeName());
-	    result.put("id", instance.getMetadata().getUniqueId());
+	    result.put("id", getInstanceId(instance));
 	    result.put("entity", instance.getMetadata().getEntity().getName());
 	    result.put("title", instance.renderTitle(context));
 	    result.put("reverseRelations", getReverseRelationValues(instance)); //{id: "assignedIssues", reverse: "assignee", name: "assigned issues", value: ["issue1"]}
@@ -43,10 +43,21 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
     private Object getReverseRelationValues(Instance instance) {
       List<Map<String, Object>> result = new ArrayList<>();
       for (Relation relation : instance.getMetadata().getEntity().getReverseRelations()) {
-        Map<String, Object> data = toData(relation, instance);
-        data.put("value", getRelationValue(relation, instance));
-        data.put("reverse", relation.getReverseRelation().getUniqueId());
-        result.add(data);
+        if (relation.getReverseRelation().isOwner() && relation.get(instance).getValueAndLevel().getValue()!=null) {
+          Map<String, Object> data = toData(relation, instance);
+          data.put("value", getRelationValue(relation, instance));
+          data.put("reverse", relation.getReverseRelation().getUniqueId());
+          data.put("ownedBy", true);
+          result.add(data);
+        }
+      }
+      for (Relation relation : instance.getMetadata().getEntity().getReverseRelations()) {
+        if (!relation.getReverseRelation().isOwner()) {
+          Map<String, Object> data = toData(relation, instance);
+          data.put("value", getRelationValue(relation, instance));
+          data.put("reverse", relation.getReverseRelation().getUniqueId());
+          result.add(data);
+        }
       }
       return result;
     }
@@ -54,9 +65,19 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
     private Object getRelationValues(Instance instance) {
       List<Map<String, Object>> result = new ArrayList<>();
       for (Relation relation : instance.getMetadata().getEntity().getRelations()) {
-        Map<String, Object> data = toData(relation, instance);
-        data.put("value", getRelationValue(relation, instance));
-        result.add(data);
+        if (relation.isOwner()) {
+          Map<String, Object> data = toData(relation, instance);
+          data.put("value", getRelationValue(relation, instance));
+          data.put("owner", true);
+          result.add(data);
+        }
+      }
+      for (Relation relation : instance.getMetadata().getEntity().getRelations()) {
+        if (!relation.isOwner()) {
+          Map<String, Object> data = toData(relation, instance);
+          data.put("value", getRelationValue(relation, instance));
+          result.add(data);
+        }
       }
       return result;
     }
@@ -75,13 +96,13 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
       if (relation.isMultivalue()) {
         List<String> results = new ArrayList<String>();
         for (Instance toInstance : (Iterable<Instance>)relation.get(instance).getValue()) {
-          results.add(toInstance.getMetadata().getUniqueId());
+          results.add(getInstanceId(toInstance));
         }
         return results;
       } else {
         Instance toInstance = (Instance) relation.get(instance).getValue();
         if (toInstance!=null) {
-          return toInstance.getMetadata().getUniqueId();
+          return getInstanceId(toInstance);
         }
         return null;
       }
@@ -90,8 +111,8 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
     private Object getValue(Attribute attribute, Instance instance) {
       if (attribute.isMultivalue()) {
         List<String> results = new ArrayList<String>();
-        for (Instance toInstance : (Iterable<Instance>)attribute.get(instance).getValue()) {
-          results.add(toInstance.getMetadata().getUniqueId());
+        for (Object value : (Iterable<Instance>)attribute.get(instance).getValue()) {
+          results.add(value.toString());
         }
         return results;
       } else {

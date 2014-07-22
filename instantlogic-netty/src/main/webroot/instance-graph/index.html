@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Instance Graph test page</title>
+    <title>Instance Graph</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <script src="zepto.js"></script>
     <script src="/webjars/d3js/3.4.6/d3.js"></script>
@@ -35,71 +35,14 @@
 
     <script>
 
-      var staticData = [
-        {
-          id: "project1",
-          entity: "Project",
-          title: "Pet store",
-          reverseRelations: [],
-          relations: [
-            {id: "users", owns: true, value: ["user1"]},
-            {id: "issues", owns: true, value: ["issue1"]}
-          ],
-          attributes: [
-            {id: "name", value: "Pet store"}
-          ]
-        },
-        {
-          id: "issue1",
-          entity: "Issue",
-          title: "1: Become the next big thing",
-          reverseRelations: [
-            {id: "project", reverse: "issues", owner: true, value: "project1"}
-          ],
-          relations: [
-            {id: "assignee", value: "user1"}
-          ],
-          attributes: [
-            {id: "headline", value: "Become the next big thing"},
-            {id: "issueNumber", value: 1}
-          ]
-        },
-        {
-          id: "user1",
-          entity: "User",
-          title: "Alice",
-          reverseRelations: [
-            {id: "project", reverse: "users", owner: true, value: "project1"},
-            {id: "assignedIssues", reverse: "assignee", name: "assigned issues", value: ["issue1"]}
-          ],
-          relations: [
-          ],
-          attributes: [
-            {id: "name", value: "Alice"}
-          ]
-        }
-      ];
-
-      var staticDataSource = {
-        subscribe: function(instanceId, dataCallback) {
-          setTimeout(function() {
-            for (var i = 0; i < staticData.length; i++) {
-              if (staticData[i].id === instanceId) {
-                dataCallback(staticData[i]);
-                return;
-              }
-            }
-            dataCallback(null);
-          }, 0);
-          return {
-            dispose: function() {
-            }
-          };
-        }
-      };
-
       var travelerId = "" + Math.floor(Math.random() * 100000000000);
+      
+      var applicationMatch = /application=([^&]*)/g.exec(location.search);
+      if (!applicationMatch) throw new Error('Missing application querystring parameter');
+      var caseMatch = /case=([^&]*)/g.exec(location.search);
+      if (!caseMatch) throw new Error('Missing case querystring parameter');
 
+      document.title = caseMatch[1] + " - " + applicationMatch[1] + ", instances graph";
       var createDataSource = function() {
         var standOff = 100;
         var ws;
@@ -141,7 +84,7 @@
             ws.close();
             ws = null;
           }
-          ws = new WebSocket("ws://localhost:7080/api?application=izzy&case=project1&travelerId=" + travelerId);
+          ws = new WebSocket("ws://localhost:7080/api?application="+applicationMatch[1]+"&case="+caseMatch[1]+"&travelerId=" + travelerId);
           ws.onopen = onOpen;
           ws.onmessage = onMessage;
           ws.onclose = onClose;
@@ -179,8 +122,14 @@
         };
       };
 
-      var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", createDataSource(), "Lruwoktaxucicnhv_cfa4d5c2_0295");
-      instanceGraph.test();
+      var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", createDataSource());
+      if (window.location.hash) {
+        instanceGraph.showInstance(window.location.hash.substr(1));
+	      instanceGraph.expandFirstLevel();
+      }
+      window.onhashchange = function() {
+        instanceGraph.showInstance(window.location.hash.substr(1));
+      }
     </script>
   </body>
 </html>

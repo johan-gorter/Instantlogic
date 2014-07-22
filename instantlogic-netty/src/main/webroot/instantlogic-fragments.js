@@ -129,10 +129,10 @@ YUI.add('instantlogic-fragments', function (Y) {
     		cssClassName: function() {
     			return 'link';
     		},
-            onClick: function(e) {
-                e.preventDefault();
-                this.engine.sendSubmit(this.model.id);
-            }
+        onClick: function(e) {
+            e.preventDefault();
+            this.engine.sendSubmit(this.model.id);
+        }
     	}
     });
 

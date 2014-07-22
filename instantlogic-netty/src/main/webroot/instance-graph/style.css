@@ -49,6 +49,10 @@
 
 .instance-graph .relation {
   stroke: black;
+  stroke-width: 1;
+  fill: none;
+}
+.instance-graph .relation.owner {
   stroke-width: 3;
 }
 
@@ -71,8 +75,13 @@
   stroke-width: 2;
 }
 
+.instance-graph .instance > .entity {
+  fill: white;
+}
+
 .instance-graph .instance > .title {
   fill: white;
+  font-style: italic;
 }
 
 .instance-graph .instance > .separator {

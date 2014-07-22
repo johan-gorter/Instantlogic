@@ -108,7 +108,7 @@
         if (!data) {
           return [x, y];
         }
-        var offset = relationIsReverse ? 31 : 33;
+        var offset = relationIsReverse ? 46 : 48;
         if (!relationIsReverse) {
           getReverseRelations().forEach(function (reverseRelation) {
             if (focussed || reverseRelation.isSelected()) {
@@ -152,10 +152,10 @@
     };
 
     // the bindings and markup
-    var separator2Y = layoutBindingFactory.attribute(function (d) { return (d.visibleReverseRelationsCount * 20 + 32); });
-    var relationsGroupTransform = layoutBindingFactory.attribute(function (d) { return "translate(0, " + (d.visibleReverseRelationsCount * 20 + 33) + ")"; });
-    var separator3Y = layoutBindingFactory.attribute(function (d) { return ((d.visibleReverseRelationsCount + d.visibleRelationsCount) * 20 + 34); });
-    var attributesGroupTransform = layoutBindingFactory.attribute(function (d) { return "translate(0, " + ((d.visibleReverseRelationsCount + d.visibleRelationsCount)*20 + 35) + ")"; });
+    var separator2Y = layoutBindingFactory.attribute(function (d) { return (d.visibleReverseRelationsCount * 20 + 47); });
+    var relationsGroupTransform = layoutBindingFactory.attribute(function (d) { return "translate(0, " + (d.visibleReverseRelationsCount * 20 + 48) + ")"; });
+    var separator3Y = layoutBindingFactory.attribute(function (d) { return ((d.visibleReverseRelationsCount + d.visibleRelationsCount) * 20 + 49); });
+    var attributesGroupTransform = layoutBindingFactory.attribute(function (d) { return "translate(0, " + ((d.visibleReverseRelationsCount + d.visibleRelationsCount)*20 + 50) + ")"; });
     var expandCollapseTransform = layoutBindingFactory.attribute(function (d) { return "translate(-10, " + (d.totalHeight - 9) + ")"; });
     var backgroundX = layoutBindingFactory.attribute(function (d) { return -d.width/2; });
     var textStartX = layoutBindingFactory.attribute(function (d) { return 10 - d.width / 2;});
@@ -182,11 +182,14 @@
       svg.clipPath({ id: "clip-" + id }, svg.rect({ x: textStartX, y: "0", width: textWidth, height: totalHeight })),
       svg.clipPath({ id: "clip-key-" + id }, svg.rect({ x: textStartX, y: "0", width: textColumnWidth, height: totalHeight })),
       svg.clipPath({ id: "clip-value-" + id }, svg.rect({ x: "5", y: "0", width: textColumnWidth, height: totalHeight })),
-      svg.text({ "class": "title", "clip-path": "url(#clip-" + id + ")", "text-anchor": "left", x: textStartX, y: "4", dy: "15", "pointer-events": "none" },
+      svg.text({ "class": "entity", "clip-path": "url(#clip-" + id + ")", "text-anchor": "left", x: textStartX, y: "4", dy: "15", "pointer-events": "none" },
+          bindingFactory.text("entity")
+        ),
+      svg.text({ "class": "title", "clip-path": "url(#clip-" + id + ")", "text-anchor": "left", x: textStartX, y: "19", dy: "15", "pointer-events": "none" },
         bindingFactory.text("title")
       ),
-      svg.line({ x1: lineStartX, y1: "30", "x2": lineEndX, y2: "30", "class": "separator" }),
-      svg.g({ "transform": "translate(0,31)" },
+      svg.line({ x1: lineStartX, y1: "45", "x2": lineEndX, y2: "45", "class": "separator" }),
+      svg.g({ "transform": "translate(0,46)" },
         bindingFactory.fragmentPerItem("reverseRelations", api, createAttributeFactory("reverseRelation"), function (getChildFragments) { getReverseRelations = getChildFragments; })
       ),
       svg.line({ x1: lineStartX, y1: separator2Y, "x2": lineEndX, y2: separator2Y, "class": "separator" }),
@@ -231,7 +234,7 @@
         }
       });
       layoutData.totalHeight =
-        (layoutData.visibleReverseRelationsCount + layoutData.visibleRelationsCount + layoutData.visibleAttributesCount) * 20 + 45;
+        (layoutData.visibleReverseRelationsCount + layoutData.visibleRelationsCount + layoutData.visibleAttributesCount) * 20 + 60;
     };
 
     function renderPosition() {
@@ -421,6 +424,9 @@
       id: id,
       isReverseRelation: function () {
         return !!data.reverse;
+      },
+      isOwner: function() {
+        return !!data.owner;
       },
       getReverseOf: function () {
         return data.reverse;
@@ -622,8 +628,9 @@
 
 
   var createEdge = function(appendTo, relation, value, reverseRelation, reverseValue) {
+    var owner = relation?relation.isOwner():false;
     var path = svg.path({ "class": "relation", d: "" });
-    
+    path.toggleClass("owner", owner);
     path.appendTo(appendTo);
     
     var setVisibility = function() {
@@ -638,6 +645,8 @@
                 && reverseRelation.getReverseOf() === fromRelation.id) {
             relation = fromRelation;
             value = toValue;
+            owner = relation?relation.isOwner():false;
+            path.toggleClass("owner", owner);
             setVisibility();
             return true;
           }
@@ -687,9 +696,13 @@
       },
       render: function () {
         if (reverseRelation && relation) {
+          if (relation.isOwner() !== owner) {
+            owner = relation.isOwner();
+            path.toggleClass("owner", owner);            
+          }
           var from = relation.getInstance().getRelationPosition(relation, false, "right");
           var to = reverseRelation.getInstance().getRelationPosition(reverseRelation, true, "left");
-          path[0].setAttribute("d", "M"+from+" L"+to);
+          path[0].setAttribute("d", "M"+from+" C"+(from[0]+50)+","+from[1] + " "+ (to[0]-50)+","+to[1]+ " " + to);
         }
       },
       dispose: function () {
@@ -704,7 +717,7 @@
 
 
 
-  window.createInstanceGraph = function (appendTo, id, dataSource /*{subscribe(id, function)}*/, startInstanceId) {
+  window.createInstanceGraph = function (appendTo, id, dataSource /*{subscribe(id, function)}*/) {
 
     // state
     var instances = [];
@@ -868,9 +881,11 @@
         }
       }
     };
-    parentApi.showInstance(startInstanceId, null, null);
     return {
-      test: function () {
+      showInstance: function(instanceId) {
+        parentApi.showInstance(instanceId, null, null);
+      },
+      expandFirstLevel: function () {
         setTimeout(function () {
           parentApi.requestFocus(instances[0]);
           instances[0].getRelations().forEach(function (relation, index) {

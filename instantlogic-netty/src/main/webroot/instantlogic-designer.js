@@ -67,6 +67,17 @@ YUI.add('instantlogic-designer', function (Y) {
     	}
     });
     
+    ns.ShowInGraphButton = Y.instantlogic.createFragment({
+      baseClass: Y.instantlogic.fragments.Button,
+      overrides: {
+        onClick: function(e) {
+          e.preventDefault();
+          window.open("instance-graph/index.html?application="+this.engine.application+"&case="+this.engine.caseId+"#"+this.model.instanceId, 
+              "instance-graph-"+this.engine.application+"-"+this.engine.caseId);
+        }
+      }
+    });
+    
     // Shopping (shops for instances to add to a relation in the data-explorer)
     ns.Shopping = Y.instantlogic.createFragment({
     	createMarkup: function() {

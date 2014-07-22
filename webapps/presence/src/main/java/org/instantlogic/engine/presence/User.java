@@ -39,7 +39,9 @@ public class User extends AbstractUser implements UserExtension {
 	public List<LocationInfo> getTravelerLocations() {
 		ArrayList<LocationInfo> result = new ArrayList<>();
 		for (Traveler  traveler : getTravelers()) {
-			result.add(traveler.getCurrentPlace().getLocation());
+		  if (traveler.getCurrentPlace()!=null) {
+		    result.add(traveler.getCurrentPlace().getLocation());
+		  }
 		}
 		return result;
 	}

@@ -53,6 +53,8 @@ DeductionSchemeDesign:             }DeductionDesign_1
 DeductionSchemeDesign:             output="DeductionDesign"
 RelationDesign_assignee:          }DeductionSchemeDesign
 RelationDesign_assignee:          to="EntityDesign_user"
+RelationDesign_assignee:          reverseDataType=WhvhxuhdlucoAaxn_fb845d7d_4d23:DataTypeDesign{
+RelationDesign_assignee:          }WhvhxuhdlucoAaxn_fb845d7d_4d23
 EntityDesign_issue:              }RelationDesign_assignee
 EntityDesign_issue:              relations+RelationDesign_comments:RelationDesign{
 RelationDesign_comments:          name="comments"
@@ -65,6 +67,8 @@ DataTypeDesign_8:                  multivalue=true
 DataTypeDesign_8:                  ordered=true
 RelationDesign_comments:          }DataTypeDesign_8
 RelationDesign_comments:          to="EntityDesign_comment"
+RelationDesign_comments:          reverseDataType=MEfetkmaxiexudya_931ed8b9_f96b:DataTypeDesign{
+RelationDesign_comments:          }MEfetkmaxiexudya_931ed8b9_f96b
 EntityDesign_issue:              }RelationDesign_comments
 EntityDesign_issue:              relations+RelationDesign_reporter:RelationDesign{
 RelationDesign_reporter:          name="reporter"
@@ -97,6 +101,8 @@ DeductionSchemeDesign_1:           }DeductionDesign_3
 DeductionSchemeDesign_1:           output="DeductionDesign_3"
 RelationDesign_reporter:          }DeductionSchemeDesign_1
 RelationDesign_reporter:          to="EntityDesign_user"
+RelationDesign_reporter:          reverseDataType=GfhkUxjnpigtInwn_d7439d81_abb2:DataTypeDesign{
+RelationDesign_reporter:          }GfhkUxjnpigtInwn_d7439d81_abb2
 EntityDesign_issue:              }RelationDesign_reporter
 EntityDesign_issue:              relations+RelationDesign_status:RelationDesign{
 RelationDesign_status:            name="status"
@@ -107,6 +113,8 @@ RelationDesign_status:            dataType=DataTypeDesign_10:DataTypeDesign{
 DataTypeDesign_10:                 multivalue=false
 RelationDesign_status:            }DataTypeDesign_10
 RelationDesign_status:            to="EntityDesign_issueStatus"
+RelationDesign_status:            reverseDataType=JrsOwEpUvefzqetd_fcc7ffd5_5ee5:DataTypeDesign{
+RelationDesign_status:            }JrsOwEpUvefzqetd_fcc7ffd5_5ee5
 EntityDesign_issue:              }RelationDesign_status
 EntityDesign_issue:              title=TextTemplateDesign:TextTemplateDesign{
 TextTemplateDesign:               untranslated+StringTemplateDesign:StringTemplateDesign{

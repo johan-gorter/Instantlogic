@@ -22,7 +22,8 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
 	private DataExplorerAdministration administration;
 	private Entity<?>[] parameters;
-	private TextTemplate title = new TextTemplate().getUntranslated().add(createInstanceTitleDeduction()).getTextTemplate();
+	@SuppressWarnings("unchecked")
+  private TextTemplate title = new TextTemplate().getUntranslated().add(createInstanceTitleDeduction()).getTextTemplate();
 
 	public DataExplorerEntityDetailsPlaceTemplate(Entity<?> entity, DataExplorerOwnerBreadcrumbElement breadcrumbElement, DataExplorerAdministration administration) {
 		this.entity = entity;
@@ -49,6 +50,15 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
                     	.add(createInstanceTitleDeduction())
                     	.getTextTemplate())        
             );
+		page
+      .addChild("mainContent", new FragmentTemplate("graph-link", "ShowInGraphButton")
+      .putText("text", new TextTemplate().getUntranslated().add("Show in graph").getTextTemplate())
+      .putValue("instanceId", new Deduction<String>() {
+        @Override
+        protected ValueAndLevel<String> execute(DeductionContext context) {
+          return ValueAndLevel.rule(context.getSelectedInstance(entity).getMetadata().getUniqueId());
+        }
+      }));
 		
 		// DirectEvent buttons
 		List<PlaceTemplate> placeTemplates = administration.getPlacesWithSingleParameter(entity);
