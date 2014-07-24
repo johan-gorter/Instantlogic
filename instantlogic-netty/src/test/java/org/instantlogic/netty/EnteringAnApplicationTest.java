@@ -7,8 +7,8 @@ import junit.framework.Assert;
 import org.instantlogic.engine.TestTravelerProxy;
 import org.instantlogic.engine.manager.ApplicationManager;
 import org.instantlogic.engine.manager.CaseManager;
-import org.instantlogic.engine.message.EnterMessage;
 import org.instantlogic.engine.message.Message;
+import org.instantlogic.engine.message.StartMessage;
 import org.instantlogic.engine.presence.entity.PresenceEntity;
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
@@ -65,7 +65,7 @@ public class EnteringAnApplicationTest {
 		traveler.setAuthenticatedUsername("testUser");
 
 		TestTravelerProxy travelerProxy = new TestTravelerProxy(traveler);
-		testCase.processMessages(travelerProxy, Collections.singletonList((Message)new EnterMessage("Welcome")));
+		testCase.processMessages(travelerProxy, Collections.singletonList((Message)new StartMessage("Welcome")));
 		testCase.sendUpdates();
 
 		Assert.assertEquals(2, travelerProxy.getLastUpdates().size());

@@ -8,6 +8,7 @@
     <script src="element.js"></script>
     <script src="fragment.js"></script>
     <script src="channel.js"></script>
+    <script src="engine.js"></script>
     <script src="graph.js"></script>
     <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="instance-graph.css" />
@@ -25,16 +26,11 @@
 
       document.title = caseMatch[1] + " - " + applicationMatch[1] + ", instances graph";
 
-      var placeUpdated = function(message) {
-        
-      };
-      
-      var presenceUpdated = function(message) {
-        
-      };
-      
-      var channel = window.createChannel(applicationMatch[1], caseMatch[1], travelerId, placeUpdated, presenceUpdated)
+      var channel = window.createChannel(applicationMatch[1], caseMatch[1], travelerId)
       var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", channel);
+      var engine = window.createEngine(applicationMatch[1], caseMatch[1], travelerId, channel, null, null, {});
+      
+      
       if (window.location.hash) {
         instanceGraph.showInstance(window.location.hash.substr(1));
 	      instanceGraph.expandFirstLevel();

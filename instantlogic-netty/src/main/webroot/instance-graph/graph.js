@@ -629,7 +629,7 @@
 
   var createEdge = function(appendTo, relation, value, reverseRelation, reverseValue) {
     var owner = relation?relation.isOwner():false;
-    var path = svg.path({ "class": "relation", d: "" });
+    var path = svg.path({ "class": "relation", d: "M0,0" });
     path.toggleClass("owner", owner);
     path.appendTo(appendTo);
     

@@ -5,8 +5,8 @@
 
 (function () {
 
-  window.createChannel = function(application, caseId, travelerId, onPlaceUpdated, onPresenceUpdated) {
-    var observersPerEvent = {placeUpdated: [onPlaceUpdated], presenceUpdated: [onPresenceUpdated]};
+  window.createChannel = function(application, caseId, travelerId) {
+    var observersPerEvent = {placeUpdated: [], presenceUpdated: []};
     var standOff = 100;
     var ws = null;
     var ready = false;
@@ -49,10 +49,10 @@
           });
         }
         if (message.name === "place") {
-          notify("placeUpdated", message);
+          notify("placeUpdated", [message]);
         }
         if (message.name === "presence") {
-          notify("presenceUpdated", message);
+          notify("presenceUpdated", [message]);
         }
       });
     };

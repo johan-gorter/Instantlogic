@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Workbench</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="zepto.js"></script>
+    <script src="/webjars/d3js/3.4.6/d3.js"></script>
+    <script src="element.js"></script>
+    <script src="fragment.js"></script>
+    <script src="channel.js"></script>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="instance-graph.css" />
+  </head>
+  <body>
+
+	<textarea rows="20" cols="120" id="input" style="position:absolute;margin:0;left:0;top:30px;bottom:30px;width:500px;">{"type":"dummy", "id":"0"}
+	</textarea>
+	<button id="init" style="position:absolute;display:block;left:0;bottom:0; width:200px;height:30px;">Init</button>
+	<button id="update" style="position:absolute;display:block;left:200px;bottom:0; width:200px;height:30px;">Update</button>
+	<button id="destroy" style="position:absolute;display:block;left:400px;bottom:0; width:100px;height:30px;">Destroy</button>
+    <div id="testarea" style="position:absolute;left:500px;top:30px;right:0;bottom:0;border:dotted 10px #888888;">
+    </div>
+
+    <script>
+      $(function(){
+        
+        var html = $.element.html;
+        
+        var rootFragment = null;
+        var eventHandler = {
+          handleEvent: function(eventName, argsArray) {
+            console.log(eventName, argsArray);
+            alert(eventName);
+          }
+        }
+        
+        var workbenchLibrary = {
+          dummy: window.fragment.createFragmentType(function (appendFunction, fragment, fragmentFactory, bindingFactory) {
+            var markup = html.div({ className: "dummy" }, html.div("D"), html.div("U"), html.div("M"), html.div("M"), html.div("Y"));
+            appendFunction(markup);
+          })
+        };
+        
+        var fragmentFactory = window.fragment.createFragmentFactory([window.fragment.coreFragmentLibrary, workbenchLibrary]);
+        
+   		var input = $("#input");
+   		var output = $("#testarea");
+   		$("#init").on("click", function(){
+   		  output.empty();
+          var appendFunction = function(element) {
+	   	    output.append(element);
+	   	  };
+  		  var data = JSON.parse(input.val());
+  		  rootFragment = fragmentFactory.createRootFragment(appendFunction, data.type, eventHandler);
+  		  rootFragment.init(data);
+   		});
+   		$("#update").on("click", function(){
+  		  var data = JSON.parse(input.val());
+  		  rootFragment.update(data);
+   		});
+   		$("#destroy").on("click", function(){
+  		  rootFragment.destroy();
+  		  rootFragment = null;
+   		});
+      });
+    </script>
+  </body>
+</html>

@@ -30,8 +30,8 @@ public class Presence extends AbstractPresence {
 		}
 		traveler.setCurrentPlace(null);
 		traveler.setFocus(null);
-		if (url==null) throw new IllegalArgumentException("url");
 		traveler.placeUpdated();
+    if (url==null) return null;
 		for (Place place : getActivePlaces()) {
 			if (place.getLocation().getUrl().equals(url)) {
 				traveler.setCurrentPlace(place);

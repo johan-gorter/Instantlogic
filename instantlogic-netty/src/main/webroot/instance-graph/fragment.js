@@ -39,10 +39,10 @@
             return library[name](appendFunction, id, parentFragment, api);
           }
         }
-        return staticMessage(appendFunction, id, parentFragment, api, { message: 'No fragmentnamespace provides a fragment called ' + name, severity: 'error' });
+        return staticMessage(appendFunction, id, parentFragment, api, { message: 'No fragmentlibrary provides a fragment called ' + name, severity: 'error' });
       },
-      createRootFragment: function (appendFunction, type) {
-        var rootFragment = api.createFragment(type, appendFunction, null, api);
+      createRootFragment: function (appendFunction, type, eventHandler) {
+        var rootFragment = api.createFragment(type, appendFunction, eventHandler, api);
         return rootFragment;
       }
     };
@@ -187,7 +187,7 @@
         if(getChildFragmentsCallback) {
           getChildFragmentsCallback(function () {
             return holders.map(function (holder) { return holder.fragment; });
-          }, element);
+          });
         }
         var append = function (child) {
           element.append(child);
@@ -281,7 +281,7 @@
   };
 
   // fragmentType: function(appendFunction, id, parentFragment, fragmentFactory) -> fragment
-  // fragment: {init(data), update(newData, diff), destroy()}
+  // fragment: {init(data), update(newData, diff), destroy(), handleEvent(eventName, argumentsArray)}
   // binding: {init(data), update(newData, diff), destroy()}
 
   var createFragmentType = function (onCreate) {
@@ -309,6 +309,13 @@
             binding.destroy && binding.destroy();
           });
           callbacks.destroy && callbacks.destroy();
+        },
+        handleEvent: function(eventName, argumentsArray) {
+          var handled = callbacks.handleEvent && callbacks.handleEvent(eventName, argumentsArray);
+          if (!handled && parentFragment) {
+            handled = parentFragment.handleEvent(eventName, argumentsArray);
+          }
+          return !!handled;
         }
       };
       var callbacks = onCreate(appendFunction, fragment, fragmentFactory, createBindingFactory(bindings), options) || {};
@@ -316,6 +323,12 @@
     };
   };
 
+  var group = createFragmentType(function (appendFunction, fragment, fragmentFactory, bindingFactory) {
+    var createBinding = bindingFactory.fragmentPerItem("content", fragment, fragmentFactory);
+    var element = {append: appendFunction};
+    createBinding(element);
+  });
+  
   //fieldSet :: function (appendTo, parentFragment, id, fragmentFactory, options) -> {init, update, destroy}
   var fieldSet = createFragmentType(function (appendFunction, fragment, fragmentFactory, bindingFactory) {
     // custom binding
@@ -335,10 +348,6 @@
     );
 
     appendFunction(markup);
-
-    return {
-      destroy: function () {}
-    };
   });
 
   var staticMessage = createFragmentType(function (appendFunction, fragment, fragmentFactory, bindingFactory, staticOptions) {
@@ -385,6 +394,7 @@
     createFragmentType: createFragmentType,
     coreFragmentLibrary: {
       name: "core",
+      group: group,
       fieldSet: fieldSet,
       staticMessage: staticMessage
     },

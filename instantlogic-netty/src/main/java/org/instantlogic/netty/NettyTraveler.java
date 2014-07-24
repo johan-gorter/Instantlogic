@@ -31,11 +31,11 @@ import org.instantlogic.engine.TravelerProxy;
 import org.instantlogic.engine.manager.CaseProcessor;
 import org.instantlogic.engine.manager.Update;
 import org.instantlogic.engine.message.ChangeMessage;
-import org.instantlogic.engine.message.EnterMessage;
 import org.instantlogic.engine.message.LeaveMessage;
 import org.instantlogic.engine.message.Message;
 import org.instantlogic.engine.message.PresenceMessage;
 import org.instantlogic.engine.message.StartMessage;
+import org.instantlogic.engine.message.StopMessage;
 import org.instantlogic.engine.message.SubmitMessage;
 import org.instantlogic.engine.message.SubscribeMessage;
 import org.instantlogic.engine.message.UnsubscribeMessage;
@@ -140,6 +140,8 @@ public class NettyTraveler implements TravelerProxy {
       } else if ("submit".equals(messageName)) {
         String placeElementId = message.getAsJsonObject().get("id").getAsString();
         messages.add(new SubmitMessage(placeElementId));
+      } else if ("stop".equals(messageName)) {
+        messages.add(new StopMessage());
       } else if ("start".equals(messageName)) {
         String location = null;
         JsonElement locationElement = message.getAsJsonObject().get("location");
@@ -147,9 +149,6 @@ public class NettyTraveler implements TravelerProxy {
           location = locationElement.getAsString();
         }
         messages.add(new StartMessage(location));
-      } else if ("enter".equals(messageName)) {
-        JsonElement newLocation = message.getAsJsonObject().get("location");
-        messages.add(new EnterMessage(newLocation == null ? null : newLocation.getAsString()));
       } else if ("leave".equals(messageName)) {
         messages.add(new LeaveMessage());
       } else if ("subscribe".equals(messageName)) {
