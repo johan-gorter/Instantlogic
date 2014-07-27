@@ -7,6 +7,7 @@
     <script src="/webjars/d3js/3.4.6/d3.js"></script>
     <script src="element.js"></script>
     <script src="fragment.js"></script>
+    <script src="presence-fragment-library.js"></script>
     <script src="channel.js"></script>
     <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="instance-graph.css" />
@@ -41,10 +42,18 @@
           })
         };
         
-        var fragmentFactory = window.fragment.createFragmentFactory([window.fragment.coreFragmentLibrary, workbenchLibrary]);
+        var fragmentFactory = window.fragment.createFragmentFactory([window.fragment.coreFragmentLibrary, window.presenceFragmentLibrary, workbenchLibrary]);
         
    		var input = $("#input");
    		var output = $("#testarea");
+   		if (window.localStorage) {
+   		  if (window.localStorage.workbenchInput) {
+            input.val(window.localStorage.workbenchInput);
+   		  }
+   		  input.on("input", function(){
+   		    window.localStorage.workbenchInput = input.val();
+   		  });
+   		}
    		$("#init").on("click", function(){
    		  output.empty();
           var appendFunction = function(element) {

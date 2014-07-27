@@ -30,13 +30,18 @@
   };
 
   var createFragmentFactory = function (fragmentTypeLibraries) {
+    for (var i=0;i<fragmentTypeLibraries.length;i++) {
+      if (!fragmentTypeLibraries[i]) {
+        throw new Error("FragmentLibrary at index "+i+" was undefined.");
+      }
+    }
     var api;
     return api = {
       createFragment: function (name, appendFunction, id, parentFragment) {
         for (var i = 0; i < fragmentTypeLibraries.length; i++) {
           var library = fragmentTypeLibraries[i];
           if (library[name]) {
-            return library[name](appendFunction, id, parentFragment, api);
+            return library[name](appendFunction, parentFragment, id, api);
           }
         }
         return staticMessage(appendFunction, id, parentFragment, api, { message: 'No fragmentlibrary provides a fragment called ' + name, severity: 'error' });
