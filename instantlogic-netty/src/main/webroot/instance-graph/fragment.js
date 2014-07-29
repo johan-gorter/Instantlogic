@@ -37,17 +37,17 @@
     }
     var api;
     return api = {
-      createFragment: function (name, appendFunction, id, parentFragment) {
+      createFragment: function (name, appendFunction, id, parentFragment, options) {
         for (var i = 0; i < fragmentTypeLibraries.length; i++) {
           var library = fragmentTypeLibraries[i];
           if (library[name]) {
-            return library[name](appendFunction, parentFragment, id, api);
+            return library[name](appendFunction, parentFragment, id, api, options || {});
           }
         }
         return staticMessage(appendFunction, id, parentFragment, api, { message: 'No fragmentlibrary provides a fragment called ' + name, severity: 'error' });
       },
       createRootFragment: function (appendFunction, type, eventHandler) {
-        var rootFragment = api.createFragment(type, appendFunction, eventHandler, api);
+        var rootFragment = api.createFragment(type, appendFunction, "", eventHandler);
         return rootFragment;
       }
     };
@@ -180,9 +180,29 @@
         });
       };
     },
-    // maintains a fragment for each item in the array in the data
-    fragmentPerItem: function (propertyOrAccessor, parentFragment, fragmentFactory, getChildFragmentsCallback) {
+    toggleClass: function(className, propertyOrAccessor) {
       var bindingFactory = this;
+      if (typeof propertyOrAccessor !== "function") {
+        propertyOrAccessor = accessorFunction(propertyOrAccessor);
+      }
+      return function(element) {
+        var oldValue = null;
+        bindingFactory.addBinding(function (data) {
+          var newValue = propertyOrAccessor(data) || false;
+          if (oldValue !== newValue) {
+            element.toggleClass(className, newValue);
+            oldValue = newValue;
+          }
+        });
+      };
+    },
+    // maintains a fragment for each item in the array in the data
+    fragmentPerItem: function (propertyOrAccessor, fragmentFactory, getChildFragmentsCallback) {
+      var bindingFactory = this;
+      var parentFragment = bindingFactory.fragment;
+      if (!fragmentFactory) {
+        fragmentFactory = bindingFactory.fragment.fragmentFactory;
+      }
       if (typeof propertyOrAccessor !== "function") {
         propertyOrAccessor = accessorFunction(propertyOrAccessor);
       }
@@ -270,7 +290,7 @@
 
   };
 
-  var createBindingFactory = function(bindings) {
+  var createBindingFactory = function(bindings, fragment) {
     var result = Object.create(bindingTypes);
     result.addBinding = function (binding) {
       if(typeof binding === "function") {
@@ -282,6 +302,7 @@
         bindings.push(binding);
       }
     };
+    result.fragment = fragment;
     return result;
   };
 
@@ -291,12 +312,18 @@
 
   var createFragmentType = function (onCreate) {
     return function (appendFunction, parentFragment, id, fragmentFactory, options) {
+      if (!options) {
+        throw new Error("Missing argument(s)");
+      }
       var bindings = [];
       var fragment = {
         id: id,
         parentFragment: parentFragment,
+        data: null, /*filled during init and update*/
+        fragmentFactory: fragmentFactory,
         init: function (data) {
           callbacks.prepareData && callbacks.prepareData(data);
+          fragment.data = data;
           bindings.forEach(function (binding) {
             binding.init && binding.init(data);
           });
@@ -304,6 +331,7 @@
         },
         update: function (newData, diff) {
           callbacks.prepareData && callbacks.prepareData(newData);
+          fragment.data = newData;
           bindings.forEach(function (binding) {
             binding.update && binding.update(newData, diff);
           });
@@ -323,19 +351,19 @@
           return !!handled;
         }
       };
-      var callbacks = onCreate(appendFunction, fragment, fragmentFactory, createBindingFactory(bindings), options) || {};
+      var callbacks = onCreate(appendFunction, createBindingFactory(bindings, fragment), options) || {};
       return fragment;
     };
   };
 
-  var group = createFragmentType(function (appendFunction, fragment, fragmentFactory, bindingFactory) {
-    var createBinding = bindingFactory.fragmentPerItem("content", fragment, fragmentFactory);
+  var group = createFragmentType(function (appendFunction, bindingFactory) {
+    var createBinding = bindingFactory.fragmentPerItem("content");
     var element = {append: appendFunction};
     createBinding(element);
   });
   
   //fieldSet :: function (appendTo, parentFragment, id, fragmentFactory, options) -> {init, update, destroy}
-  var fieldSet = createFragmentType(function (appendFunction, fragment, fragmentFactory, bindingFactory) {
+  var fieldSet = createFragmentType(function (appendFunction, bindingFactory) {
     // custom binding
     var oldSelected = false;
     bindingFactory.addBinding(function (data) {
@@ -349,13 +377,13 @@
     // normal bindings
     var markup = html.fieldset({ className: "" },
       html.legend(bindingFactory.text("title")),
-      bindingFactory.fragmentPerItem("content", fragment, fragmentFactory)
+      bindingFactory.fragmentPerItem("content")
     );
 
     appendFunction(markup);
   });
 
-  var staticMessage = createFragmentType(function (appendFunction, fragment, fragmentFactory, bindingFactory, staticOptions) {
+  var staticMessage = createFragmentType(function (appendFunction, bindingFactory, staticOptions) {
     var markup = html.div({ className: "message " + staticOptions.severity },
       staticOptions.message
     );

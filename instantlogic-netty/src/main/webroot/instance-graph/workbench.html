@@ -11,6 +11,7 @@
     <script src="channel.js"></script>
     <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="instance-graph.css" />
+    <link rel="stylesheet" href="presence.css" />
   </head>
   <body>
 
@@ -24,6 +25,10 @@
 
     <script>
       $(function(){
+        
+        var travelerId = "" + Math.floor(Math.random() * 100000000000);
+        var channel = window.createChannel("Designer", "NextDesigner", travelerId);
+        channel.enableAutoRefresh();
         
         var html = $.element.html;
         

@@ -12,6 +12,7 @@
     var ready = false;
     var subscriptions = [];
     var queued = [];
+    var autoRefreshEnabled = false;
     
     var notify = function(eventName, args) {
       var observers = observersPerEvent[eventName];
@@ -47,12 +48,27 @@
               subscription.onUpdate(data);
             }
           });
-        }
-        if (message.name === "place") {
+        } else if (message.name === "place") {
           notify("placeUpdated", [message]);
-        }
-        if (message.name === "presence") {
+        } else if (message.name === "presence") {
           notify("presenceUpdated", [message]);
+        } else if (message.name === "cssFilesUpdated") {
+          notify(message.name, [message]);
+          if (autoRefreshEnabled) {
+            var i,a,s;a=document.getElementsByTagName('link'); // Code taken from ReCSS
+            for(i=0;i<a.length;i++){
+              s=a[i];
+              if(s.rel.toLowerCase().indexOf('stylesheet')>=0&&s.href) {
+                var h=s.href.replace(/(&|%5C?)forceReload=\d+/,'');
+                s.href=h+(h.indexOf('?')>=0?'&':'?')+'forceReload='+(new Date().valueOf());
+              }
+            }
+          }
+        } else if (message.name ==="filesUpdated") {
+          notify(message.name, [message]);
+          if (autoRefreshEnabled) {
+            document.location.reload();
+          }
         }
       });
     };
@@ -91,6 +107,12 @@
         } else {
           queued.push(message);
         }
+      },
+      enableAutoRefresh: function(){
+        if (!ws) {
+          start();
+        }
+        autoRefreshEnabled = true;
       },
       on: function(eventName, observer) {
         var list = observersPerEvent[eventName];

@@ -54,7 +54,6 @@
     var y = pos ? pos[1] : 0;
     var data = null;
     var bindings = [];
-    var bindingFactory = window.fragment.createBindingFactory(bindings);
     var layoutData = {
       width: 160,
       visibleReverseRelationsCount: 0,
@@ -138,6 +137,7 @@
         subscription.dispose();
       }
     };
+    var bindingFactory = window.fragment.createBindingFactory(bindings, api);
 
     var createAttributeFactory = function (attributeType) {
       return {
@@ -190,15 +190,15 @@
       ),
       svg.line({ x1: lineStartX, y1: "45", "x2": lineEndX, y2: "45", "class": "separator" }),
       svg.g({ "transform": "translate(0,46)" },
-        bindingFactory.fragmentPerItem("reverseRelations", api, createAttributeFactory("reverseRelation"), function (getChildFragments) { getReverseRelations = getChildFragments; })
+        bindingFactory.fragmentPerItem("reverseRelations", createAttributeFactory("reverseRelation"), function (getChildFragments) { getReverseRelations = getChildFragments; })
       ),
       svg.line({ x1: lineStartX, y1: separator2Y, "x2": lineEndX, y2: separator2Y, "class": "separator" }),
       svg.g({ "transform": relationsGroupTransform },
-        bindingFactory.fragmentPerItem("relations", api, createAttributeFactory("relation"), function (getChildFragments) { getRelations = getChildFragments; })
+        bindingFactory.fragmentPerItem("relations", createAttributeFactory("relation"), function (getChildFragments) { getRelations = getChildFragments; })
       ),
       svg.line({ x1: lineStartX, y1: separator3Y, "x2": lineEndX, y2: separator3Y, "class": "separator" }),
       svg.g({ "transform": attributesGroupTransform },
-        bindingFactory.fragmentPerItem("attributes", api, createAttributeFactory("attribute"), function (getChildFragments) { getAttributes = getChildFragments; })
+        bindingFactory.fragmentPerItem("attributes", createAttributeFactory("attribute"), function (getChildFragments) { getAttributes = getChildFragments; })
       ),
       resizeRect = svg.rect({x: lineEndX, y: 0, width: 5, height: totalHeight, fill: "transparent", cursor: "ew-resize"}),
       expandCollapseGroup = svg.g({ transform: expandCollapseTransform },

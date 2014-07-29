@@ -1,0 +1,11 @@
+.presence {
+  font-size: 15px;
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  height: 28px;
+  background-color:black;
+  color: white;
+  padding: 3px 13px;
+}

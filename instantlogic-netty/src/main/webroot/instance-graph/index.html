@@ -26,7 +26,7 @@
 
       document.title = caseMatch[1] + " - " + applicationMatch[1] + ", instances graph";
 
-      var channel = window.createChannel(applicationMatch[1], caseMatch[1], travelerId)
+      var channel = window.createChannel(applicationMatch[1], caseMatch[1], travelerId);
       var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", channel);
       var engine = window.createEngine(applicationMatch[1], caseMatch[1], travelerId, channel, null, null, {});
       

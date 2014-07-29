@@ -70,6 +70,13 @@ public class NettyServer {
 		}
 	};
 
+	private static Runnable fileWatcherInstanceGraph = new Runnable() {
+    @Override
+    public void run() {
+      watch(new File(webroot, "instance-graph"));
+    }
+  };
+
 	private static Animals animals;
 
 	public static void main(String[] args) throws IOException, ParseException {
@@ -122,6 +129,7 @@ public class NettyServer {
 		if (WATCH_FILES) {
 			executor.execute(fileWatcher);
 			executor.execute(fileWatcherStyle);
+      executor.execute(fileWatcherInstanceGraph);
 		}
 		
 		bootstrap.bind(new InetSocketAddress(port)).addListener(new GenericFutureListener<Future<? super Void>>() {

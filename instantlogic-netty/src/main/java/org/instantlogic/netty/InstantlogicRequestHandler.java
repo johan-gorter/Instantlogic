@@ -3,6 +3,7 @@ package org.instantlogic.netty;
 import static io.netty.handler.codec.http.HttpResponseStatus.CONTINUE;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.DefaultHttpResponse;
@@ -18,6 +19,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory;
 import io.netty.util.CharsetUtil;
+import io.netty.util.concurrent.GenericFutureListener;
 
 import java.io.File;
 import java.util.List;
@@ -74,14 +76,13 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
       throw new UnsupportedOperationException(String.format("%s frame types not supported", frame.getClass().getName()));
     }
 
-    // Send the uppercase string back.
     String request = ((TextWebSocketFrame) frame).text();
     nettyTraveler.registerWebsocket(ctx);
     nettyTraveler.handleIncomingMessages(request);
   }
 
   @Override
-  public void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+  public void handleHttpRequest(final ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
     if ("/api".equals(request.getUri().substring(0, 4))) {
 
       getOrCreateTraveler(request);
@@ -93,7 +94,12 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
       if (handshaker == null) {
         WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx.channel());
       } else {
-        handshaker.handshake(ctx.channel(), request);
+        handshaker.handshake(ctx.channel(), request).addListener(new GenericFutureListener<ChannelFuture>() {
+          @Override
+          public void operationComplete(ChannelFuture future) throws Exception {
+            nettyTraveler.registerWebsocket(ctx);
+          }
+        });
       }
     } else {
       super.handleHttpRequest(ctx, request);
