@@ -30,7 +30,7 @@
     }
     var markup = html.div({"class": "me"},
       html.span('Logged in as: '),
-      html.img({"class": "avatar", src: bindingFactory.attribute("avatarUrl"), width:"23px", height:"23px"}),
+      html.img({"class": "avatar", src: bindingFactory.attribute("avatarUrl")}),
       html.span({"class": "username"}, 
         bindingFactory.text("name")
       ),
@@ -47,20 +47,17 @@
       userListVisible = !userListVisible;
       userList.css("display", userListVisible?"":"none");
     }
-    appendFunction(
-      html.div({"class":"communicator"},
-        html.button({"class":"show-hide"}, "Communicator").on("click", showHide),
-        userList = html.div({"class":"user-list"},
+    appendFunction(html.button({"class":"communicator-show-hide"}, "Communicator").on("click", showHide));
+    var userList = html.div({"class":"communicator-user-list"},
           bindingFactory.fragmentPerItem("users")
-        ).css("display", "none")
-      )
-    );
+        ).css("display", "none");
+     appendFunction(userList);
   });
   
   var user = createFragmentType(function (appendFunction, bindingFactory) {
     appendFunction(
       html.div({"class":"user"},
-        html.img({"class": "avatar", width:"23px", height:"23px", src: bindingFactory.attribute("avatarUrl")}),
+        html.img({"class": "avatar", src: bindingFactory.attribute("avatarUrl")}),
         html.div({"class": "username"}, bindingFactory.text("name")),
         html.div({"class": "travelers"}, 
           bindingFactory.fragmentPerItem("travelers")
@@ -77,13 +74,7 @@
       return "#location="+place.url;
     }
     appendFunction(
-      html.div({"class":"traveler"},
-        html.a({href: bindingFactory.attribute("place", placeToUrl)}, bindingFactory.text("placeTitle")),
-        html.div({"class": "username"}, bindingFactory.text("name")),
-        html.div({"class": "travelers"}, 
-          bindingFactory.fragmentPerItem("travelers")
-        )
-      )
+      html.a({"class":"traveler", href: bindingFactory.attribute("place", placeToUrl)}, bindingFactory.text("placeTitle"))
     );
   });
   

@@ -12,9 +12,12 @@
     <script src="graph.js"></script>
     <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="instance-graph.css" />
+    <link rel="stylesheet" href="presence.css" />
   </head>
-  <body class="instance-graph">
-
+  <body>
+    <div class="instance-graph"></div>
+    <div id="place"></div>
+    <div id="presence"></div>
     <script>
 
       var travelerId = "" + Math.floor(Math.random() * 100000000000);
@@ -28,12 +31,11 @@
 
       var channel = window.createChannel(applicationMatch[1], caseMatch[1], travelerId);
       var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", channel);
-      var engine = window.createEngine(applicationMatch[1], caseMatch[1], travelerId, channel, null, null, {});
-      
+      var engine = window.createEngine(applicationMatch[1], caseMatch[1], travelerId, channel, $("#place"), $("#presence"), {});
       
       if (window.location.hash) {
         instanceGraph.showInstance(window.location.hash.substr(1));
-	      instanceGraph.expandFirstLevel();
+	    instanceGraph.expandFirstLevel();
       }
       window.onhashchange = function() {
         instanceGraph.showInstance(window.location.hash.substr(1));

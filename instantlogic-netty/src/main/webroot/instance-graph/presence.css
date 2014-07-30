@@ -1,11 +1,97 @@
 .presence {
   font-size: 15px;
+  line-height: 22px;
   position: fixed;
   top:0;
   left:0;
   right:0;
   height: 28px;
-  background-color:black;
-  color: white;
+  background-color:rgba(0,0,0,0.9);
+  color: #AAAAAA;
   padding: 3px 13px;
+}
+
+.presence > .home-link {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.presence > .controls {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.presence > .controls > .me {
+  display: inline-block;
+  position: relative;
+}
+
+.presence > .controls > .me > .avatar {
+  display: inline-block;
+  height: 22px;
+  width: 22px;
+  vertical-align: bottom;
+  margin-right:3px;
+}
+
+.presence > .controls > .me > .logout {
+  margin: 0 6px 0 6px;
+}
+
+.presence > .controls > button {
+  position: relative;
+  display: inline-block;
+  height: 28px;
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+  background-color: transparent;
+  color: inherit;
+  padding-top: 0;
+}
+
+.presence > .controls > .communicator-show-hide {
+  width: 150px;
+}
+
+.presence > .controls > .communicator-user-list {
+  position:fixed;
+  top:28px;
+  bottom: 0px;
+  right: 0px;
+  width: 150px;
+  background-color:rgba(0,0,0,0.9);
+  color: #AAAAAA;
+}
+
+.communicator-user-list > .user {
+  padding-top: 3px;
+}
+.communicator-user-list > .user > img {
+  width: 22px;
+  height: 22px;
+  margin: 0 3px;
+  display: inline-block;
+}
+.communicator-user-list > .user > .username {
+  display:inline-block;
+  width: calc(100% - 28px);
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.communicator-user-list > .user > .travelers > .traveler {
+  padding-left: 28px;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #AAAAAA;
+  display:block;
+  line-height:18px;
+}
+
+.communicator-user-list > .user > .travelers > .traveler:visited {
+  color: #AAAAAA;
 }
