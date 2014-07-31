@@ -49,6 +49,22 @@
       createRootFragment: function (appendFunction, type, eventHandler) {
         var rootFragment = api.createFragment(type, appendFunction, "", eventHandler);
         return rootFragment;
+      },
+      createRoot: function(element, eventHandler) {
+        var rootFragment = null;
+        var appendFunction = function(newElement) {
+          element.append(newElement);
+        };
+        return {
+          update: function(newData) {
+            if (rootFragment === null) {
+              rootFragment = api.createFragment(newData.type, appendFunction, newData.id, api, {});
+              rootFragment.init(newData);
+            } else {
+              rootFragment.update(newData, window.fragment.immediateDiff);
+            }
+          }
+        };
       }
     };
   };
@@ -307,7 +323,7 @@
   };
 
   // fragmentType: function(appendFunction, id, parentFragment, fragmentFactory) -> fragment
-  // fragment: {init(data), update(newData, diff), destroy(), handleEvent(eventName, argumentsArray)}
+  // fragment: {init(data), update(newData, diff), destroy(), handleEvent(eventObj)}
   // binding: {init(data), update(newData, diff), destroy()}
 
   var createFragmentType = function (onCreate) {
@@ -343,10 +359,10 @@
           });
           callbacks.destroy && callbacks.destroy();
         },
-        handleEvent: function(eventName, argumentsArray) {
-          var handled = callbacks.handleEvent && callbacks.handleEvent(eventName, argumentsArray);
+        handleEvent: function(eventObj) {
+          var handled = callbacks.handleEvent && callbacks.handleEvent(eventObj);
           if (!handled && parentFragment) {
-            handled = parentFragment.handleEvent(eventName, argumentsArray);
+            handled = parentFragment.handleEvent(eventObj);
           }
           return !!handled;
         }

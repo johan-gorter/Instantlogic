@@ -10,6 +10,7 @@
     <script src="channel.js"></script>
     <script src="engine.js"></script>
     <script src="graph.js"></script>
+    <script src="presence-fragment-library.js"></script>
     <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="instance-graph.css" />
     <link rel="stylesheet" href="presence.css" />
@@ -30,8 +31,9 @@
       document.title = caseMatch[1] + " - " + applicationMatch[1] + ", instances graph";
 
       var channel = window.createChannel(applicationMatch[1], caseMatch[1], travelerId);
-      var instanceGraph = window.createInstanceGraph($(document.body), "theGraph", channel);
-      var engine = window.createEngine(applicationMatch[1], caseMatch[1], travelerId, channel, $("#place"), $("#presence"), {});
+      channel.enableAutoRefresh();
+      var instanceGraph = window.createInstanceGraph($(".instance-graph"), "theGraph", channel);
+      var engine = window.createEngine(applicationMatch[1], caseMatch[1], travelerId, channel, $("#presence"), $("#place"), {});
       
       if (window.location.hash) {
         instanceGraph.showInstance(window.location.hash.substr(1));

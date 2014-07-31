@@ -18,13 +18,23 @@
       }
     };
     
+    var fragmentFactory = window.fragment.createFragmentFactory([window.fragment.coreFragmentLibrary, window.presenceFragmentLibrary]);
+
+    var eventHandler = {
+      handleEvent: function(eventObj) {
+        channel.send(eventObj);
+      }
+    };
+    
+    var placeRoot = fragmentFactory.createRoot(placeElement, eventHandler);
+    var presenceRoot = fragmentFactory.createRoot(presenceElement, eventHandler);
+    
+    
     channel.on("placeUpdated", function(message) {
-      debugger
-      message.rootFragment;
+      placeRoot.update(message.rootFragment);
     });
     channel.on("presenceUpdated", function(message) {
-      debugger
-      message.rootFragment;
+      presenceRoot.update(message.rootFragment);
     });
     
     return {

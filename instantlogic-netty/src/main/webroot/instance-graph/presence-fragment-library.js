@@ -25,7 +25,7 @@
   
   var me = createFragmentType(function (appendFunction,  bindingFactory) {
     function logout(evt) {
-      bindingFactory.fragment.handleEvent("logout", []);
+      bindingFactory.fragment.handleEvent({message:"presence", command: "logout"});
       evt.preventDefault();
     }
     var markup = html.div({"class": "me"},
@@ -81,7 +81,7 @@
   var toggleBookmarks = createFragmentType(function (appendFunction, bindingFactory) {
     function toggle(evt) {
       evt.preventDefault();
-      bindingFactory.fragment.handleEvent("toggleBookmarks", []);
+      bindingFactory.fragment.handleEvent({message:"presence", command:"toggleBookmarks"});
     };
     appendFunction(html.button({"class": "toggle-bookmarks"}, "Bookmarks").on("click", toggle));
   });
@@ -89,7 +89,7 @@
   var debugVisibleToggle = createFragmentType(function (appendFunction, bindingFactory) {
     function toggle(evt) {
       evt.preventDefault();
-      bindingFactory.fragment.handleEvent("setDebugVisible", [!bindingFactory.fragment.data.value]);
+      bindingFactory.fragment.handleEvent({message:"presence", command:"setDebugVisible", "value": !bindingFactory.fragment.data.value});
     }
     appendFunction(html.button({"class":"toggle-debug"}, "Debug", bindingFactory.toggleClass("pressed", "value")).on("click", toggle));
   });
