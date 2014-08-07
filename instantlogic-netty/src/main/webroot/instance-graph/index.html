@@ -11,9 +11,11 @@
     <script src="engine.js"></script>
     <script src="graph.js"></script>
     <script src="presence-fragment-library.js"></script>
+    <script src="basic-fragment-library.js"></script>
     <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="instance-graph.css" />
     <link rel="stylesheet" href="presence.css" />
+    <link rel="stylesheet" href="basic.css" />
   </head>
   <body>
     <div class="instance-graph"></div>
@@ -38,6 +40,8 @@
       if (window.location.hash) {
         instanceGraph.showInstance(window.location.hash.substr(1));
 	    instanceGraph.expandFirstLevel();
+	    var enterLocation = /location=([^&]*)/g.exec(window.location.hash);
+	    engine.enter(enterLocation[1]);
       }
       window.onhashchange = function() {
         instanceGraph.showInstance(window.location.hash.substr(1));

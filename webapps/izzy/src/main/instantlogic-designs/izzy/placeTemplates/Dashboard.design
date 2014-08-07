@@ -12,7 +12,7 @@ FragmentTemplateDesign_2:             editorOpen=false
 FragmentTemplateDesign_2:             contents+EajuiyoUmubgyjlA_87c08f71_2379:FragmentTemplateContentDesign{
 EajuiyoUmubgyjlA_87c08f71_2379:         propertyName="content"
 EajuiyoUmubgyjlA_87c08f71_2379:         children+FragmentTemplateDesign_3:FragmentTemplateDesign{
-FragmentTemplateDesign_3:               styleNames+"icon-plus"
+FragmentTemplateDesign_3:               styleNames+"glyphicon-plus"
 FragmentTemplateDesign_3:               type="FragmentTypeDesign_Icon"
 EajuiyoUmubgyjlA_87c08f71_2379:         }FragmentTemplateDesign_3
 FragmentTemplateDesign_2:             }EajuiyoUmubgyjlA_87c08f71_2379

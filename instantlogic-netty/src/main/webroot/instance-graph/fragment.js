@@ -88,6 +88,7 @@
       },
 
       init: function (data) {
+        startElement["data-data"]=data;
         fragmentType = data.type;
         api.fragment = fragmentFactory.createFragment(fragmentType, append, id, parentFragment, fragmentFactory);
         api.fragment.init(data);
@@ -102,11 +103,12 @@
         }
       },
 
-      update: function (newModel, diff) {
-        if (fragmentType != newModel.type) {
-          recreateFragment(newModel, diff);
+      update: function (newData, diff) {
+        startElement["data-data"]=newData;
+        if (fragmentType != newData.type) {
+          recreateFragment(newData, diff);
         } else {
-          api.fragment.update(newModel, diff);
+          api.fragment.update(newData, diff);
         }
       },
 
@@ -186,11 +188,13 @@
         propertyOrAccessor = accessorFunction(propertyOrAccessor);
       }
       return function (element) {
-        var oldValue = null;
+        var textNode = document.createTextNode("");
+        element.append(textNode);
+        var oldValue = "";
         bindingFactory.addBinding(function (data) {
           var newValue = propertyOrAccessor(data) || "";
           if (oldValue !== newValue) {
-            element.text(newValue);
+            textNode.nodeValue = newValue;
             oldValue = newValue;
           }
         });
@@ -223,6 +227,8 @@
         propertyOrAccessor = accessorFunction(propertyOrAccessor);
       }
       return function (element) {
+        var endComment = document.createComment("fragmentPerItemEnd");
+        element.append(endComment);
         var items = [];
         var holders = [];
         if(getChildFragmentsCallback) {
@@ -231,7 +237,7 @@
           });
         }
         var append = function (child) {
-          element.append(child);
+          $(child).insertBefore(endComment);
         };
         bindingFactory.addBinding({
           init: function (data) {

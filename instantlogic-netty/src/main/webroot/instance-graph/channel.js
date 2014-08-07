@@ -79,10 +79,12 @@
         standOff = standOff + 100;
       }
     };
-    var onClose = function() {
-      ready = false;
-      notifyStatusChanged();
-      setTimeout(start, standOff);
+    var onClose = function(evt) {
+      if (evt.target === ws) {
+        ready = false;
+        notifyStatusChanged();
+        setTimeout(start, standOff);
+      }
     };
     var start = function() {
       ready = false;

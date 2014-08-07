@@ -25,6 +25,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.instantlogic.engine.manager.Update;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,7 +79,14 @@ public class InstantlogicRequestHandler extends HttpStaticFileServerHandler impl
 
     String request = ((TextWebSocketFrame) frame).text();
     nettyTraveler.registerWebsocket(ctx);
-    nettyTraveler.handleIncomingMessages(request);
+    try {
+      nettyTraveler.handleIncomingMessages(request);
+    } catch (Exception e) {
+      logger.error("Exception while handling incoming message from "+nettyTraveler.getTravelerInfo().getTravelerId(), e);
+      Update update = new Update();
+      update.setExceptionMessage(e.toString());
+      nettyTraveler.sendMessage(update);
+    }
   }
 
   @Override

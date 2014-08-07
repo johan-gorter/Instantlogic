@@ -18,16 +18,16 @@
       }
     };
     
-    var fragmentFactory = window.fragment.createFragmentFactory([window.fragment.coreFragmentLibrary, window.presenceFragmentLibrary]);
+    var fragmentFactory = window.fragment.createFragmentFactory([window.fragment.coreFragmentLibrary, window.basicFragmentLibrary, window.presenceFragmentLibrary]);
 
-    var eventHandler = {
+    var fragmentEventHandler = {
       handleEvent: function(eventObj) {
         channel.send(eventObj);
       }
     };
     
-    var placeRoot = fragmentFactory.createRoot(placeElement, eventHandler);
-    var presenceRoot = fragmentFactory.createRoot(presenceElement, eventHandler);
+    var placeRoot = fragmentFactory.createRoot(placeElement, fragmentEventHandler);
+    var presenceRoot = fragmentFactory.createRoot(presenceElement, fragmentEventHandler);
     
     
     channel.on("placeUpdated", function(message) {
