@@ -36,15 +36,21 @@
       channel.enableAutoRefresh();
       var instanceGraph = window.createInstanceGraph($(".instance-graph"), "theGraph", channel);
       var engine = window.createEngine(applicationMatch[1], caseMatch[1], travelerId, channel, $("#presence"), $("#place"), {});
+
+      var parseHash = function() {
+        var location = /location=([^&]*)/g.exec(window.location.hash);
+        var idMatch = /_DataExplorer-EntityDesign_[^:\-]*\([^:]*:([^\)]*)\)/.exec(location);
+        if (idMatch) {
+          instanceGraph.showInstance(idMatch[1]);
+        }
+      }
       
       if (window.location.hash) {
-        instanceGraph.showInstance(window.location.hash.substr(1));
-	    instanceGraph.expandFirstLevel();
-	    var enterLocation = /location=([^&]*)/g.exec(window.location.hash);
-	    engine.enter(enterLocation[1]);
+	    engine.start();
+        parseHash();
       }
       window.onhashchange = function() {
-        instanceGraph.showInstance(window.location.hash.substr(1));
+        parseHash();
       }
     </script>
   </body>

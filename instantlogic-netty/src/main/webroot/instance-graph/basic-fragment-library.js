@@ -65,6 +65,49 @@
     );
   });
   
+  var table = createFragmentType(function (appendFunction, bindingFactory) {
+    appendFunction(html.table(
+      html.tr(
+        bindingFactory.fragmentPerItem("columns")
+      ),
+      bindingFactory.fragmentPerItem("rows")
+    ));
+  });
+  
+  var column = createFragmentType(function (appendFunction, bindingFactory) {
+    appendFunction(html.th(
+      bindingFactory.text("header")
+    ));
+  });
+
+  var row = createFragmentType(function (appendFunction, bindingFactory) {
+    var rowElement = html.tr(
+      bindingFactory.fragmentPerItem("cells")
+    );
+    bindingFactory.fragment.rowElement = rowElement;
+    appendFunction(rowElement);
+  });
+  
+  var link = createFragmentType(function (appendFunction, bindingFactory) {
+    function onClick(evt) {
+      bindingFactory.fragment.handleEvent({message:'submit', id:bindingFactory.fragment.data.id});
+      evt.preventDefault();
+    }    
+    var parentFragment = bindingFactory.fragment.parentFragment;
+    if (parentFragment.rowElement) {
+      // Make the row clickable instead of creating an <a href>
+      rowElement.on("click", onClick).addClass("clickable");
+      var element = {append: appendFunction};
+      var createContentBinding = bindingFactory.fragmentPerItem("content");
+      createContentBinding(element);
+    } else {
+      appendFunction(html.a({href: "#"},
+        bindingFactory.text("text"),
+        bindingFactory.fragmentPerItem("content")
+      ).on("click", onClick));
+    }
+  });
+  
   window.basicFragmentLibrary = {
     Block: divWithClass("block"),
     Page: page,
@@ -74,9 +117,13 @@
     Heading3: htmlElement("h3"),
     Heading4: htmlElement("h4"),
     Icon: icon,
-    Table: htmlElement("table"),
-    Row: htmlElement("tr"),
-    Cell: htmlElement("td")
+    Table: table,
+    Column: column,
+    Row: row,
+    Link: link,
+    Cell: htmlElement("td"),
+    Text: htmlElement("span"),
+    Div: htmlElement("div")
   };
 
 }());

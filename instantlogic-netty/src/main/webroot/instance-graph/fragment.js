@@ -58,7 +58,7 @@
         return {
           update: function(newData) {
             if (rootFragment === null) {
-              rootFragment = api.createFragment(newData.type, appendFunction, newData.id, api, {});
+              rootFragment = api.createFragment(newData.type, appendFunction, newData.id, eventHandler, {});
               rootFragment.init(newData);
             } else {
               rootFragment.update(newData, window.fragment.immediateDiff);
@@ -379,8 +379,8 @@
   };
 
   var group = createFragmentType(function (appendFunction, bindingFactory) {
-    var createBinding = bindingFactory.fragmentPerItem("content");
     var element = {append: appendFunction};
+    var createBinding = bindingFactory.fragmentPerItem("content");
     createBinding(element);
   });
   

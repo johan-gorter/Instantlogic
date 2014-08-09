@@ -42,7 +42,7 @@ public class FlowContext extends AbstractDeductionContext {
 			}
 		}
 		if (result.getCurrentPlaceTemplate()==null) {
-			throw new NoSuchElementException();
+			throw new NoSuchElementException(path);
 		}
 		return result;
 	}

@@ -29,8 +29,11 @@
     var placeRoot = fragmentFactory.createRoot(placeElement, fragmentEventHandler);
     var presenceRoot = fragmentFactory.createRoot(presenceElement, fragmentEventHandler);
     
-    
     channel.on("placeUpdated", function(message) {
+      if (location !== message.location) {
+        location = message.location;
+        document.location = "#location="+message.location;
+      }
       placeRoot.update(message.rootFragment);
     });
     channel.on("presenceUpdated", function(message) {
@@ -38,13 +41,13 @@
     });
     
     return {
-      enter: function(newLocation) {
-        location = newLocation;
-        channel.send({message:'start', location: location});
+      start: function(newLocation) {
+        var enterLocation = /location=([^&]*)/g.exec(window.location.hash);
+        channel.send({message:"start", location: enterLocation?enterLocation[1]:null});
       },
       exit: function() {
         location = null;
-        channel.send({message:'stop'});
+        channel.send({message:"stop"});
       },
       on: function(eventName, observer) {
         var list = observersPerEvent[eventName];
