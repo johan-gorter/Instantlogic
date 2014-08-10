@@ -64,11 +64,14 @@
               }
             }
           }
-        } else if (message.name ==="filesUpdated") {
+        } else if (message.name === "filesUpdated") {
           notify(message.name, [message]);
           if (autoRefreshEnabled) {
             document.location.reload();
           }
+        } else if (message.name === "exception") {
+          debugger
+          alert(JSON.stringify(message));
         }
       });
     };

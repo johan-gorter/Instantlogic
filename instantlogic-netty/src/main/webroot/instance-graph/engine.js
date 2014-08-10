@@ -18,7 +18,12 @@
       }
     };
     
-    var fragmentFactory = window.fragment.createFragmentFactory([window.fragment.coreFragmentLibrary, window.basicFragmentLibrary, window.presenceFragmentLibrary]);
+    var fragmentFactory = window.fragment.createFragmentFactory([
+      window.fragment.coreFragmentLibrary, 
+      window.htmlFragmentLibrary, 
+      window.basicFragmentLibrary, 
+      window.presenceFragmentLibrary
+    ]);
 
     var fragmentEventHandler = {
       handleEvent: function(eventObj) {
@@ -41,9 +46,12 @@
     });
     
     return {
-      start: function(newLocation) {
+      start: function() {
         var enterLocation = /location=([^&]*)/g.exec(window.location.hash);
         channel.send({message:"start", location: enterLocation?enterLocation[1]:null});
+      },
+      goTo: function(newLocation) {
+        channel.send({message:"start", location: newLocation});
       },
       exit: function() {
         location = null;

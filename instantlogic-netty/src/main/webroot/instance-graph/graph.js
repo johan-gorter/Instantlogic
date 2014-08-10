@@ -22,6 +22,7 @@
         .attr("transform",
           "translate(" + trans + ")"
           + " scale(" + scale + ")");
+      window.d3.event.sourceEvent.stopPropagation();
       onRescale(scale, trans);
     };
 
@@ -43,8 +44,9 @@
   // INSTANCE /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
+  
   var createInstance = function (appendTo, id, graph, dataSource, pos) {
+    var expanded = false;
     var focussed = false;
     var getReverseRelations;
     var getRelations;
@@ -82,18 +84,26 @@
       getGraph: function () {
         return graph;
       },
-      setFocus: function (focus) {
-        focussed = focus;
-        if (focus) {
-          rootGroup.addClass("focus");
+      setExpanded: function(newExpanded) {
+        expanded = newExpanded;
+        if (newExpanded) {
           expandCollapsePath.attr("transform", "rotate(180 10 4)");
         } else {
-          rootGroup.removeClass("focus");
           expandCollapsePath.attr("transform", "");
         }
         updateLayoutData();
         layoutEverything();
         graph.renderRelations();
+      },
+      setFocus: function (newFocussed) {
+        focussed = newFocussed;
+        if (newFocussed) {
+          rootGroup.addClass("focus");
+        } else {
+          rootGroup.removeClass("focus");
+        }
+        updateLayoutData();
+        layoutEverything();
       },
       selectReverseOf: function (relation, relationIsReverse) {
         if (data) {
@@ -110,7 +120,7 @@
         var offset = relationIsReverse ? 46 : 48;
         if (!relationIsReverse) {
           getReverseRelations().forEach(function (reverseRelation) {
-            if (focussed || reverseRelation.isSelected()) {
+            if (expanded || reverseRelation.isSelected()) {
               offset += 20;
             }
           });
@@ -211,7 +221,7 @@
       if(!getReverseRelations) return;
       layoutData.visibleReverseRelationsCount = 0;
       getReverseRelations().forEach(function (item) {
-        if (focussed || item.isSelected()) {
+        if (expanded || item.isSelected()) {
           item.setIndex(layoutData.visibleReverseRelationsCount++);
         } else {
           item.setIndex(-1);
@@ -219,7 +229,7 @@
       });
       layoutData.visibleRelationsCount = 0;
       getRelations().forEach(function (item) {
-        if (focussed || item.isSelected()) {
+        if (expanded || item.isSelected()) {
           item.setIndex(layoutData.visibleRelationsCount++);
         } else {
           item.setIndex(-1);
@@ -227,7 +237,7 @@
       });
       layoutData.visibleAttributesCount = 0;
       getAttributes().forEach(function (item) {
-        if (focussed || item.isSelected()) {
+        if (expanded || item.isSelected()) {
           item.setIndex(layoutData.visibleAttributesCount++);
         } else {
           item.setIndex(-1);
@@ -351,7 +361,7 @@
 
     expandCollapseGroup.on("mousedown touchstart", stopPropagation);
     expandCollapseGroup.on("click", function (evt) {
-      click(evt);
+      api.setExpanded(!expanded);
     });
 
     appendTo.append(rootGroup);
@@ -726,6 +736,16 @@
     var onRescale = function (newScale) {
       scale = newScale;
     };
+    
+    var observersPerEvent = {focus: []};
+    var notify = function(eventName, args) {
+      var observers = observersPerEvent[eventName];
+      if (observers) {
+        observers.forEach(function(observer){
+          observer.apply(null, args);
+        });
+      }
+    };
 
     var hideRelations = function (instance) {
       for(var i = 0; i < edges.length;) {
@@ -748,9 +768,9 @@
             svg.stop({offset: "0%", "class": "instance-gradient-from"}),
             svg.stop({offset: "100%", "class": "instance-gradient-to"})
           ),
-          svg.linearGradient({ id: "selected-instance-gradient", x1: "0%", y1: "0%", x2: "0%", y2: "100%" },
-            svg.stop({ offset: "0%", "class": "selected-instance-gradient-from" }),
-            svg.stop({ offset: "100%", "class": "selected-instance-gradient-to" })
+          svg.linearGradient({ id: "focussed-instance-gradient", x1: "0%", y1: "0%", x2: "0%", y2: "100%" },
+            svg.stop({ offset: "0%", "class": "focussed-instance-gradient-from" }),
+            svg.stop({ offset: "100%", "class": "focussed-instance-gradient-to" })
           )
         )
       )
@@ -770,8 +790,21 @@
     appendTo.append(chartSvg);
 
     initZoom(handleZoom, visualization, onRescale);
+    var mouseDownNotMoved = false;
+    handleZoom.on("mousedown", function(evt){
+      mouseDownNotMoved = true;
+    });
+    handleZoom.on("mousemove", function(evt){
+      mouseDownNotMoved = false;
+    });
+    handleZoom.on("mouseup", function(evt){
+      if (mouseDownNotMoved) {
+        parentApi.requestFocus(null);
+        mouseDownNotMoved = false;
+      }
+    });
 
-    // API
+    // Api seen from instances
     var parentApi = {
       getScale: function () {
         return scale;
@@ -780,13 +813,11 @@
         if(focussedInstance) {
           focussedInstance.setFocus(false);
         }
-        if(instance === focussedInstance) {
-          focussedInstance = null;
-          instance.setFocus(false);
-        } else {
-          focussedInstance = instance;
+        focussedInstance = instance;
+        if (focussedInstance) {
           focussedInstance.setFocus(true);
         }
+        notify("focus", [instance?instance.id:null]);
       },
       showDialog: function (callback) {
         var dialog = $("<div class='overlay'><div class='dialog'><div class='close'>&times;</div></div></div>")
@@ -822,6 +853,7 @@
         var instance = createInstance(instancesGroup, instanceId, parentApi, dataSource, [x, y]);
         instances.push(instance);
         instance.selectReverseOf(relation, relationIsReverse);
+        return instance;
       },
       hideInstance: function (instanceId) {
         for(var i = 0; i < instances.length; i++) {
@@ -885,6 +917,18 @@
       showInstance: function(instanceId) {
         parentApi.showInstance(instanceId, null, null);
       },
+      focusInstance: function(instanceId) {
+        var found = false;
+        instances.forEach(function(instance) {
+          if (instance.id === instanceId) {
+            parentApi.requestFocus(instance);
+            found = true;
+          }
+        });
+        if (!found) {
+          parentApi.requestFocus(parentApi.showInstance(instanceId, null, null));
+        }
+      },
       expandFirstLevel: function () {
         setTimeout(function () {
           parentApi.requestFocus(instances[0]);
@@ -900,6 +944,9 @@
             }
           });
         }, 50);
+      },
+      onFocus: function(callback) {
+        observersPerEvent.focus.push(callback);
       }
     };
   };

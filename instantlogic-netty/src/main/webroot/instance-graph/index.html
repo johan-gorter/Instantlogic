@@ -11,6 +11,7 @@
     <script src="engine.js"></script>
     <script src="graph.js"></script>
     <script src="presence-fragment-library.js"></script>
+    <script src="html-fragment-library.js"></script>
     <script src="basic-fragment-library.js"></script>
     <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="instance-graph.css" />
@@ -41,7 +42,7 @@
         var location = /location=([^&]*)/g.exec(window.location.hash);
         var idMatch = /_DataExplorer-EntityDesign_[^:\-]*\([^:]*:([^\)]*)\)/.exec(location);
         if (idMatch) {
-          instanceGraph.showInstance(idMatch[1]);
+          instanceGraph.focusInstance(idMatch[1]);
         }
       }
       
@@ -52,6 +53,13 @@
       window.onhashchange = function() {
         parseHash();
       }
+      instanceGraph.onFocus(function(id){
+        if (id) {
+          engine.goTo("_DataExplorer-explore(instance:"+id+")");
+        } else {
+          engine.goTo("staticinstances");
+        }
+      });
     </script>
   </body>
 </html>

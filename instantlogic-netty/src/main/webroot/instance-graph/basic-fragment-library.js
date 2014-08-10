@@ -19,15 +19,6 @@
     });
   };
   
-  var htmlElement = function(tagName) {
-    return createFragmentType(function (appendFunction, bindingFactory) {
-      appendFunction(html[tagName](
-        bindingFactory.fragmentPerItem("content"),
-        bindingFactory.text("text")
-      ));
-    });
-  };
-
   var page = createFragmentType(function (appendFunction, bindingFactory) {
     appendFunction(
       html.div({"class":"page"},
@@ -111,19 +102,11 @@
   window.basicFragmentLibrary = {
     Block: divWithClass("block"),
     Page: page,
-    Button: htmlElement("button"),
-    Heading1: htmlElement("h1"),
-    Heading2: htmlElement("h2"),
-    Heading3: htmlElement("h3"),
-    Heading4: htmlElement("h4"),
     Icon: icon,
     Table: table,
     Column: column,
     Row: row,
     Link: link,
-    Cell: htmlElement("td"),
-    Text: htmlElement("span"),
-    Div: htmlElement("div")
   };
 
 }());

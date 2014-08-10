@@ -52,20 +52,20 @@ body {
   user-select: none;
 }
 
-.instance-graph .instance-gradient-from {
-  stop-color: rgb(192,192,192);
+.instance-graph .focussed-instance-gradient-from {
+  stop-color: rgb(192,32,32);
   stop-opacity: 1; 
 }
-.instance-graph .instance-gradient-to {
-  stop-color:rgb(128,128,128);
+.instance-graph .focussed-instance-gradient-to {
+  stop-color:rgb(128,16,16);
   stop-opacity:1
 }
 
-.instance-graph .selected-instance-gradient-from {
+.instance-graph .instance-gradient-from {
   stop-color:rgb(32,32,192);
   stop-opacity:1
 }
-.instance-graph .selected-instance-gradient-to {
+.instance-graph .instance-gradient-to {
   stop-color:rgb(16,16,128);
   stop-opacity:1
 }
@@ -92,7 +92,11 @@ body {
 }
 
 .instance-graph .instance > .background {
-  fill: url(#selected-instance-gradient);
+  fill: url(#instance-gradient);
+}
+
+.instance-graph .instance.focus > .background {
+  fill: url(#focussed-instance-gradient);
 }
 
 .instance-graph .instance > g > .button {
