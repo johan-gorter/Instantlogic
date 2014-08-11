@@ -845,10 +845,33 @@
       showInstance: function (instanceId, fromInstance, relation, itemNr, relationIsReverse) {
         var x = 0;
         var y = 0;
-        if(fromInstance && relation) {
+        if(fromInstance && relation) { // old
           var pos = fromInstance.getPosition();
           x = pos[0] + (300 * (relationIsReverse ? -1 : 1));
           y = pos[1] + relation.getIndex() * 20 + itemNr * 40;
+        } else {
+          x = -400;
+          y = -150;
+          if (focussedInstance) {
+            focussedInstance.forEachRelationValue(function(relation, value, relationIsReverse){
+              if (value === instanceId) {
+                var position = focussedInstance.getRelationPosition(relation, relationIsReverse, relationIsReverse?"left":"right");
+                y = position[1];
+                x = position[0] + (relationIsReverse?-140:140);
+              }
+            });
+          }
+          // make sure there is enough room, otherwise go down
+          var oldY = null;
+          while (oldY !== y) {
+            oldY = y;
+            instances.forEach(function(instance) {
+              var pos = instance.getPosition();
+              if (pos[0]>x-100 && pos[0]<x+100) {
+                y = Math.max(y, pos[1]+100);
+              }
+            });
+          }
         }
         var instance = createInstance(instancesGroup, instanceId, parentApi, dataSource, [x, y]);
         instances.push(instance);
