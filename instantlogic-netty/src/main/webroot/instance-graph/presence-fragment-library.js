@@ -103,7 +103,8 @@
     User: user,
     Traveler: traveler,
     ToggleBookmarks: toggleBookmarks,
-    DebugVisibleToggle: debugVisibleToggle
+    DebugVisibleToggle: debugVisibleToggle,
+    Avatar: /*TODO*/ window.fragment.coreFragmentLibrary.group
   };
 
 }());

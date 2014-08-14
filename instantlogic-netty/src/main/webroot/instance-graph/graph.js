@@ -507,7 +507,7 @@
           if (data.value instanceof Array) {
             data.value.forEach(callback);
           } else {
-            callback(data.value, 0);
+            callback(data.value?data.value.id:null, 0);
           }
         }
       },
@@ -600,9 +600,9 @@
         return "" + d.value.length;
       } else {
         if(!d.value) {
-          return "0";
+          return "";
         }
-        return "1";
+        return d.value.title;
       }
     });
 

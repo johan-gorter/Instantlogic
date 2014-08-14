@@ -8,7 +8,7 @@
   var html = $.element.html;
   var svg = $.element.svg;
 
-  // private utitlity functions
+  // private utility functions
 
   var accessorFunction = function (propertyName) {
     return function (data) {
@@ -216,6 +216,29 @@
         });
       };
     },
+    cssClasses: function(propertyOrAccessor) {
+      var bindingFactory = this;
+      if (typeof propertyOrAccessor !== "function") {
+        propertyOrAccessor = accessorFunction(propertyOrAccessor);
+      }
+      return function(element) {
+        var oldValue = [];
+        bindingFactory.addBinding(function (data) {
+          var newValue = propertyOrAccessor(data) || [];
+          newValue.forEach(function(className){
+            if (oldValue.indexOf(className)===-1) {
+              element.addClass(className);
+            }
+          });
+          oldValue.forEach(function(className){
+            if (newValue.indexOf(className)===-1) {
+              element.removeClass(className);
+            }
+          });
+          oldValue = newValue;
+        });
+      };
+    },
     // maintains a fragment for each item in the array in the data
     fragmentPerItem: function (propertyOrAccessor, fragmentFactory, getChildFragmentsCallback) {
       var bindingFactory = this;
@@ -328,7 +351,7 @@
     return result;
   };
 
-  // fragmentType: function(appendFunction, id, parentFragment, fragmentFactory) -> fragment
+  // fragmentType: function(appendFunction, parentFragment, id, fragmentFactory, options) -> fragment
   // fragment: {init(data), update(newData, diff), destroy(), handleEvent(eventObj)}
   // binding: {init(data), update(newData, diff), destroy()}
 

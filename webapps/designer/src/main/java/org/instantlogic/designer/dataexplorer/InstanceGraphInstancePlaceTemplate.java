@@ -45,6 +45,7 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
       for (Relation relation : instance.getMetadata().getEntity().getReverseRelations()) {
         if (relation.getReverseRelation().isOwner() && relation.get(instance).getValueAndLevel().getValue()!=null) {
           Map<String, Object> data = toData(relation, instance);
+          data.put("multivalue", false);
           data.put("value", getRelationValue(relation, instance));
           data.put("reverse", relation.getReverseRelation().getUniqueId());
           data.put("ownedBy", true);
@@ -54,6 +55,7 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
       for (Relation relation : instance.getMetadata().getEntity().getReverseRelations()) {
         if (!relation.getReverseRelation().isOwner()) {
           Map<String, Object> data = toData(relation, instance);
+          data.put("multivalue", relation.isMultivalue());
           data.put("value", getRelationValue(relation, instance));
           data.put("reverse", relation.getReverseRelation().getUniqueId());
           result.add(data);
@@ -67,6 +69,7 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
       for (Relation relation : instance.getMetadata().getEntity().getRelations()) {
         if (relation.isOwner()) {
           Map<String, Object> data = toData(relation, instance);
+          data.put("multivalue", relation.isMultivalue());
           data.put("value", getRelationValue(relation, instance));
           data.put("owner", true);
           result.add(data);
@@ -75,6 +78,7 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
       for (Relation relation : instance.getMetadata().getEntity().getRelations()) {
         if (!relation.isOwner()) {
           Map<String, Object> data = toData(relation, instance);
+          data.put("multivalue", relation.isMultivalue());
           data.put("value", getRelationValue(relation, instance));
           result.add(data);
         }
@@ -102,7 +106,10 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
       } else {
         Instance toInstance = (Instance) relation.get(instance).getValue();
         if (toInstance!=null) {
-          return getInstanceId(toInstance);
+          Map<String, Object> result = new HashMap<>();
+          result.put("id", getInstanceId(toInstance));
+          result.put("title", toInstance.renderTitle());
+          return result;
         }
         return null;
       }

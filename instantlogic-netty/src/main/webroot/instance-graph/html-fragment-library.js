@@ -11,7 +11,8 @@
     return createFragmentType(function (appendFunction, bindingFactory) {
       appendFunction(html[tagName](
         bindingFactory.fragmentPerItem("content"),
-        bindingFactory.text("text")
+        bindingFactory.text("text"),
+        bindingFactory.cssClasses("styleNames")
       ));
     });
   };

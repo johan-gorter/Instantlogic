@@ -12,7 +12,7 @@
 
   var divWithClass = function(className) {
     return createFragmentType(function (appendFunction, bindingFactory) {
-      appendFunction(html.div({className: className},
+      appendFunction(html.div({"class": className},
         bindingFactory.fragmentPerItem("content"),
         bindingFactory.text("text")
       ));
@@ -99,6 +99,81 @@
     }
   });
   
+  var keyValue = createFragmentType(function (appendFunction, bindingFactory) {
+    appendFunction(html.div({"class": "key-value"},
+      html.div({"class": "key"}, bindingFactory.fragmentPerItem("keyContent")),
+      html.div({"class": "value"}, bindingFactory.fragmentPerItem("valueContent"))
+    ));
+  });
+  
+  var jsonTextBox = createFragmentType(function(appendFunction, bindingFactory) {
+    appendFunction(html.input({type:"text", value: bindingFactory.attribute("value", JSON.stringify)}));
+  });
+  
+  var textBox = createFragmentType(function(appendFunction, bindingFactory) {
+    appendFunction(html.input({type:"text", value: bindingFactory.attribute("value")}));
+  });
+  
+  var textArea = createFragmentType(function(appendFunction, bindingFactory) {
+    appendFunction(html.textarea({rows: 4}, bindingFactory.text("value")));
+  });
+  
+  var answerFragmentTypes = [
+    {
+      match: function(dataType) {
+        return dataType.category === "text" && dataType.multiLine;
+      },
+      fragmentType: textArea
+    },
+    {
+      match: function(dataType) {
+        return dataType.category === "text";
+      },
+      fragmentType: textBox
+    },
+    {
+      match: function(dataType) {
+        return true;
+      },
+      fragmentType: jsonTextBox
+    }
+  ];
+  
+  var inputField = createFragmentType(function (appendFunction, bindingFactory) {
+    var valueDiv = null;
+    var answerFragmentType = null;
+    var answerFragment = null;
+    bindingFactory.addBinding(function(data, diff){
+      var newAnswerFragmentType = null;
+      for (var i=0; i<answerFragmentTypes.length; i++) {
+        if (answerFragmentTypes[i].match(data.dataType)) {
+          newAnswerFragmentType = answerFragmentTypes[i];
+          break;
+        }
+      }
+      if (answerFragmentType !== newAnswerFragmentType) {
+        if (answerFragment) {
+          answerFragment.destroy();
+          valueDiv.children().forEach(function(childNode){
+            diff.nodeToRemove(childNode);
+          });
+        }
+        answerFragment = newAnswerFragmentType.fragmentType(
+          function(element) {valueDiv.append(element);}, 
+          bindingFactory.fragment, bindingFactory.fragment.id, bindingFactory.fragment.fragmentFactory, {}
+        );
+        answerFragment.init(data);
+      } else {
+        answerFragment.update(data, diff);
+      }
+    });
+    
+    appendFunction(html.div({"class": "key-value"},
+        html.label({"class": "key"}, bindingFactory.text("questionText")),
+        valueDiv = html.div({"class": "value"})
+      ));
+    });
+  
   window.basicFragmentLibrary = {
     Block: divWithClass("block"),
     Page: page,
@@ -107,6 +182,9 @@
     Column: column,
     Row: row,
     Link: link,
+    
+    inputField: inputField,
+    keyValue: keyValue
   };
 
 }());
