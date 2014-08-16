@@ -19,7 +19,6 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 
 	private final Entity<?> entity;
 	private Relation<?, ?, ?> relation;
-	private DataExplorerOwnerBreadcrumbElement breadcrumbElement;
 	private DataExplorerAdministration administration;
 	private DataExplorerRelationAdministration relationAdministration;
 	private Entity<?>[] parameters;
@@ -28,7 +27,6 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 		this.entity = entity;
 		this.relation = relation;
 		this.relationAdministration = relationAdministration;
-		this.breadcrumbElement = breadcrumbElement;
 		this.administration = administration;
 		this.parameters = new Entity<?>[]{entity};
 	}
@@ -36,18 +34,10 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 	@Override
 	public FragmentTemplate getRootContainer() {
 		FragmentTemplate page = new FragmentTemplate(relation.getUniqueId()+"-details", "Page")
-		.addChild("mainContent", new FragmentTemplate("h2", "Heading2")
-			.putText("text", new TextTemplate().getUntranslated().add("Data Explorer").getTextTemplate()))
-		.addChild("mainContent", new FragmentTemplate("staticinstances-link", "Link")
-			.putText("text", new TextTemplate().getUntranslated().add("Static instances").getTextTemplate())
-			.setDestination(administration.getStaticInstancesPlaceTemplate()))
 		.addChild("mainContent", new ShoppingElement(administration))
-		.addChild("mainContent", breadcrumbElement)
 		.addChild("mainContent",
-                new FragmentTemplate("h1", "Heading1")      
-                    .putText("text", new org.instantlogic.fabric.text.TextTemplate().getUntranslated()
-                    	.add("Relation '"+ relation.getName()+"'").getTextTemplate())        
-            );
+      new FragmentTemplate("h1", "Heading1")      
+        .putText("text", new TextTemplate().getUntranslated().add("Relation '"+ relation.getName()+"'").getTextTemplate()));
 		page.addChild("mainContent", new FragmentTemplate("h2", "Heading2")
 			.addChild("content", new FragmentTemplate("h2-1","Text").putConstantText("text", "On "))
 			.addChild("content", 
@@ -59,7 +49,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 			)
 		);
 		
-		for (Entry<Entity, DataExplorerCreateInstancePlaceTemplate> entry : relationAdministration.createPlaceTemplates.entrySet()) {
+		for (Entry<Entity, DataExplorerCreateInstancePlaceTemplate> entry: relationAdministration.createPlaceTemplates.entrySet()) {
 			Entity entity = entry.getKey();
 			page.addChild("mainContent",
 				new FragmentTemplate("add-"+entity.getUniqueId(), "Button")
@@ -159,7 +149,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getName() {
-		return "_DataExplorer-"+entity.getUniqueId()+"-"+relation.getName();
+		return "_DataExplorer-"+relation.getUniqueId();
 	}
 
 	@Override

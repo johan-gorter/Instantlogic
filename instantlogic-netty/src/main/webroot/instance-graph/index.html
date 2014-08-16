@@ -57,9 +57,16 @@
         if (id) {
           engine.goTo("_DataExplorer-explore(instance:"+id+")");
         } else {
-          engine.goTo("staticinstances");
+          engine.goTo("_DataExplorer-staticinstances");
         }
       });
+      instanceGraph.onFocusAttribute(function(attributeId) {
+        // TODO: put browser focus on element with id of attributeId
+      });
+      instanceGraph.onFocusRelation(function(entityName, instanceId, attributeId) {
+        engine.goTo("_DataExplorer-"+attributeId+"("+entityName+":"+instanceId+")");
+      });
+      
     </script>
   </body>
 </html>

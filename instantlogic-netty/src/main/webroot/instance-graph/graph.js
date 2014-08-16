@@ -68,6 +68,9 @@
 
     var api = {
       id: id,
+      getEntity: function() {
+        return data.entity;
+      },
       getPosition: function () {
         return [x, y];
       },
@@ -432,6 +435,7 @@
 
     var api = {
       id: id,
+      type: type,
       isReverseRelation: function () {
         return !!data.reverse;
       },
@@ -520,47 +524,10 @@
       }
     };
 
-    var openEditor = function (evt) {
-      instance.getGraph().showDialog(createDialog);
+    var requestFocus = function (evt) {
+      instance.getGraph().requestAttributeFocus(api);
       evt.preventDefault();
       evt.stopPropagation();
-    };
-
-    var appendRelationLine = function (appendTo, instanceId, lineIndex) {
-      var visible = instance.getGraph().isInstanceVisible(instanceId);
-      var toggle = function () {
-        visible = !visible;
-        if(visible) {
-          instance.getGraph().showInstance(instanceId, instance, api, lineIndex, type === "reverseRelation");
-        } else {
-          instance.getGraph().hideInstance(instanceId);
-        }
-        showHideButton.text(visible ? "Hide" : "Show");
-        line.toggleClass("instance-visible", visible);
-      };
-      var showHideButton = html.button(visible ? "Hide" : "Show").on("click", toggle);
-
-      var line = html.div({ "class": "line" },
-        html.span(instanceId),
-        showHideButton
-      ).toggleClass("instance-visible", visible).appendTo(appendTo);
-    };
-
-    var createDialog = function (appendTo) {
-      html.h1(data.name || data.id).appendTo(appendTo);
-      if(type === "attribute") {
-        html.textarea().val(data.value).prop('readonly', true).appendTo(appendTo);
-      } else {
-        if(data.value instanceof Array) {
-          for(var i = 0; i < data.value.length; i++) {
-            appendRelationLine(appendTo, data.value[i], i);
-          }
-        } else {
-          appendRelationLine(appendTo, data.value, 0);
-        }
-      }
-      return {
-      };
     };
 
     var toggleSelected = function (evt) {
@@ -620,12 +587,12 @@
         x: textStartX, y: "0", dy: "15", "pointer-events": "none"
       }, nameText),
       svg.rect({x: 0, y: 0, width: columWidth, height: "20", fill: "transparent", cursor: "pointer" })
-        .on("click", openEditor)
+        .on("click", requestFocus)
         .on("mousedown", stopPropagation),
       svg.text({
         "class": "value", "text-anchor": "left", "clip-path": "url(#clip-value-" + instance.getId() + ")",
         x: "10", y: "0", dy: "15", "pointer-events": "none"
-      }, valueText).on("click", openEditor)
+      }, valueText).on("click", requestFocus)
     );
 
     append(rootGroup);
@@ -737,7 +704,7 @@
       scale = newScale;
     };
     
-    var observersPerEvent = {focus: []};
+    var observersPerEvent = {focus: [], focusAttribute: [], focusRelation: []};
     var notify = function(eventName, args) {
       var observers = observersPerEvent[eventName];
       if (observers) {
@@ -819,20 +786,16 @@
         }
         notify("focus", [instance?instance.id:null]);
       },
-      showDialog: function (callback) {
-        var dialog = $("<div class='overlay'><div class='dialog'><div class='close'>&times;</div></div></div>")
-          .on("click", function (evt) {
-            var target = $(evt.target); 
-            if(target.closest(".close").length === 1 || target.closest(".dialog").length === 0) {
-              evt.preventDefault();
-              dialog.remove();
-            }
-          })
-          .appendTo(chartSvg);
-        callback(chartSvg.find(".dialog"));
-      },
-      removeDialog: function () {
-        chartSvg.find(".overlay").remove();
+      requestAttributeFocus: function(attribute) {
+        if(attribute.type === "attribute") {
+          if (focussedInstance === attribute.getInstance()) {
+            notify("focusAttribute", [attribute.id]);
+          } else {
+            parentApi.requestFocus(attribute.getInstance());
+          }
+        } else {
+          notify("focusRelation", [attribute.getInstance().getEntity(), attribute.getInstance().id, attribute.id]);
+        }
       },
       isInstanceVisible: function (instanceId) {
         for(var i = 0; i < instances.length; i++) {
@@ -970,6 +933,12 @@
       },
       onFocus: function(callback) {
         observersPerEvent.focus.push(callback);
+      },
+      onFocusAttribute: function(callback) {
+        observersPerEvent.focusAttribute.push(callback);
+      },
+      onFocusRelation: function(callback) {
+        observersPerEvent.focusRelation.push(callback);
       }
     };
   };

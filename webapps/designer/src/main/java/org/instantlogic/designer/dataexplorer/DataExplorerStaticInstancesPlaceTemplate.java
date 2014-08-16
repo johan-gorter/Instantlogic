@@ -70,7 +70,7 @@ public class DataExplorerStaticInstancesPlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getName() {
-		return "staticinstances";
+		return "_DataExplorer-staticinstances";
 	}
 
 }

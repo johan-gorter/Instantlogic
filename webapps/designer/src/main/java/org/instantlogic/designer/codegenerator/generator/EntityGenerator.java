@@ -158,7 +158,7 @@ public class EntityGenerator extends AbstractGenerator<EntityClassModel> {
 				EntityClassModel.Relation relation = new EntityClassModel.Relation();
 				// Inversion takes place here
 				relation.name = relationDesign.getReverseName();
-				relation.id = relationDesign.getMetadata().getUniqueId();
+				relation.id = "reverse-"+relationDesign.getMetadata().getUniqueId();
 				relation.technicalName = relationDesign.getReverseTechnicalName();
 				relation.technicalNameCapitalized = TechnicalNameDeduction.capitalizeFirst(relationDesign.getReverseTechnicalName());
 				relation.javaIdentifier = relationDesign.getReverseJavaIdentifier();
