@@ -128,9 +128,24 @@ body {
   cursor: cell;
 }
 
+.instance-graph .attribute.droptarget > .background {
+  stroke-width: 2;
+  stroke: rgb(192,32,32);
+  cursor: copy;
+}
+
 .instance-graph .attribute > .value {
   text-decoration: underline;
 }
+
+.instance-graph .attribute > .value-background {
+  cursor: pointer;
+}
+
+.instance-graph .attribute.droptarget > .value-background {
+  cursor: copy;
+}
+
 
 .instance-graph .attribute.selected > .background {
   fill: rgb(24,24,160);

@@ -157,6 +157,9 @@
         subscription.dispose();
       }
     };
+    var draggable = {  
+    };
+    
     var bindingFactory = window.fragment.createBindingFactory(bindings, api);
 
     var createAttributeFactory = function (attributeType) {
@@ -281,6 +284,8 @@
       var scale = graph.getScale();
       var from = toSVGCoordinates(rootGroup[0], fromX, fromY);
       var svg = $(rootGroup[0].ownerSVGElement);
+      var currentDropTarget = null;
+      rootGroup.attr("pointer-events", "none");
       function moveTo(toX, toY) {
         var to = toSVGCoordinates(rootGroup[0], toX, toY);
         x = oldX + (to[0] - from[0]) / scale;
@@ -289,9 +294,30 @@
       };
       function mouseMoved(evt) {
         moved = true;
-        moveTo(evt.clientX, evt.clientY);
+        var itemRootGroup = $(evt.target).parent("g"); 
+        var dropTarget = (itemRootGroup.length === 1) ? itemRootGroup[0].dropTarget : null;
+        if (dropTarget) {
+          x = oldX;
+          y = oldY;
+          renderPosition();
+        } else {
+          moveTo(evt.clientX, evt.clientY);
+        }
+        if (dropTarget !== currentDropTarget) {
+          if (currentDropTarget) {
+            currentDropTarget.exit(draggable);
+          }
+          currentDropTarget = dropTarget;
+          if (currentDropTarget) {
+            currentDropTarget.enter(draggable);
+          }
+        }
       };
       function dragEnd(evt) {
+        rootGroup.attr("pointer-events", "");
+        if (currentDropTarget) {
+          currentDropTarget.dropped(draggable);
+        }
         if(!moved) {
           click(evt);
         }
@@ -446,7 +472,7 @@
 
 
 
-  // ATTRIBUTE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ATTRIBUTE / ITEM (relation, reverserelation or attribute) ////////////////////////////////////
 
 
 
@@ -561,6 +587,19 @@
         renderLayout();
       }
     };
+    
+    var dropTarget = {
+      enter: function(draggable) {
+        rootGroup.addClass("droptarget");
+      }, 
+      exit: function(draggable) {
+        rootGroup.removeClass("droptarget");
+      },
+      dropped: function(draggable) {
+        rootGroup.removeClass("droptarget");
+        alert(draggable);
+      }
+    };
 
     var requestFocus = function (evt) {
       instance.getGraph().requestAttributeFocus(api);
@@ -624,7 +663,7 @@
         "class": "name", "text-anchor": "left", "clip-path": "url(#clip-key-" + instance.getId() + ")",
         x: textStartX, y: "0", dy: "15", "pointer-events": "none"
       }, nameText),
-      svg.rect({x: 0, y: 0, width: columWidth, height: "20", fill: "transparent", cursor: "pointer" })
+      svg.rect({x: 0, y: 0, width: columWidth, height: "20", fill: "transparent", "class": "value-background" })
         .on("click", requestFocus)
         .on("mousedown", stopPropagation),
       svg.text({
@@ -633,6 +672,7 @@
       }, valueText).on("click", requestFocus)
     );
 
+    rootGroup[0].dropTarget = dropTarget;
     append(rootGroup);
     renderLayout();
     return api;

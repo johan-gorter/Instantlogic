@@ -146,8 +146,6 @@ public class Traveler extends AbstractTraveler implements HistoryExtension {
       Subscription subscription = iterator.next();
       if (subscription.location.equals(location)) {
         iterator.remove();
-      } else {
-        iterator.next();
       }
     }
   }
