@@ -149,7 +149,7 @@ public class DataExplorerRelationDetailsPlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getName() {
-		return "_DataExplorer-"+relation.getUniqueId();
+		return "_DataExplorer-Relation-"+relation.getUniqueId();
 	}
 
 	@Override

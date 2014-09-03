@@ -48,9 +48,10 @@
   var createInstance = function (appendTo, id, graph, dataSource, pos) {
     var expanded = false;
     var focussed = false;
+    var focussedItem = null; // Can be set through the api only
     var getReverseRelations;
     var getRelations;
-    var getAttributes ;
+    var getAttributes;
     var afterLoad = {};
     var x = pos ? pos[0] : 0;
     var y = pos ? pos[1] : 0;
@@ -73,6 +74,12 @@
       },
       getPosition: function () {
         return [x, y];
+      },
+      focusItem: function(attributeOrRelationId) {
+        if (!focusItem(attributeOrRelationId)) {
+          afterLoad.focusItem = attributeOrRelationId;
+        }
+        rootGroup.toggleClass("focus", false);
       },
       getRelations: function () {
         return getRelations(); // temporary for testing
@@ -99,12 +106,12 @@
         graph.renderRelations();
       },
       setFocus: function (newFocussed) {
-        focussed = newFocussed;
-        if (newFocussed) {
-          rootGroup.addClass("focus");
-        } else {
-          rootGroup.removeClass("focus");
+        if (focussedItem) {
+          focussedItem.setFocus(false);
+          focussedItem = null;
         }
+        focussed = newFocussed;
+        rootGroup.toggleClass("focus", newFocussed);
         updateLayoutData();
         layoutEverything();
       },
@@ -385,6 +392,26 @@
         });
       }
     };
+    
+    var focusItem = function(itemId) {
+      if (focussedItem!=null) {
+        focussedItem.setFocus(false);
+      }
+      focussedItem = null;
+      getRelations().forEach(function (relation) {
+        if(relation.id === itemId) {
+          relation.setFocus(true);
+          focussedItem = relation;
+        }
+      });
+      getReverseRelations().forEach(function (relation) {
+        if (relation.id === itemId) {
+          relation.setFocus(true);
+          focussedItem = relation;
+        }
+      });
+      return focussedItem!=null;
+    };
 
     // Initialization
 
@@ -402,8 +429,11 @@
         });
         if(afterLoad.selectReverseOf) {
           selectReverseOf(afterLoad.selectReverseOf, afterLoad.selectReverseOfIsReverse);
-          afterLoad = {};
         }
+        if(afterLoad.focusItem) {
+          focusItem(afterLoad.focusItem);
+        }
+        afterLoad = {};
         updateLayoutData();
         layoutEverything();
         graph.renderRelations();
@@ -432,6 +462,7 @@
 
     var index = -1;
     var selected = false;
+    var focussed = false;
 
     var api = {
       id: id,
@@ -498,6 +529,13 @@
           rootGroup.toggleClass("selected", newSelected);
           instance.render();
           instance.getGraph().renderRelations();
+        }
+      },
+      setFocus: function(newFocussed) {
+        focussed = newFocussed;
+        rootGroup.toggleClass("focus", newFocussed);
+        if (!selected && newFocussed) {
+          api.setSelected(true);
         }
       },
       isSelected: function () {
@@ -776,7 +814,7 @@
       getScale: function () {
         return scale;
       },
-      requestFocus: function (instance) {
+      requestFocus: function (instance, skipNotify) {
         if(focussedInstance) {
           focussedInstance.setFocus(false);
         }
@@ -784,7 +822,9 @@
         if (focussedInstance) {
           focussedInstance.setFocus(true);
         }
-        notify("focus", [instance?instance.id:null]);
+        if (!skipNotify) {
+          notify("focus", [instance?instance.id:null]);
+        }
       },
       requestAttributeFocus: function(attribute) {
         if(attribute.type === "attribute") {
@@ -914,6 +954,19 @@
         if (!found) {
           parentApi.requestFocus(parentApi.showInstance(instanceId, null, null));
         }
+      },
+      focusRelation: function(instanceId, relationId) {
+        var instanceFound = false;
+        instances.forEach(function(instance) {
+          if (instance.id === instanceId) {
+            parentApi.requestFocus(instance, true);
+            instanceFound = true;
+          }
+        });
+        if (!instanceFound) {
+          parentApi.requestFocus(parentApi.showInstance(instanceId, null, null));
+        }
+        focussedInstance.focusItem(relationId);
       },
       expandFirstLevel: function () {
         setTimeout(function () {

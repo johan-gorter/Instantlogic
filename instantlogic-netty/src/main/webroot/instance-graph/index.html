@@ -40,9 +40,13 @@
 
       var parseHash = function() {
         var location = /location=([^&]*)/g.exec(window.location.hash);
-        var idMatch = /_DataExplorer-EntityDesign_[^:\-]*\([^:]*:([^\)]*)\)/.exec(location);
+        var idMatch = /_DataExplorer-Instance-[^\(]*\([^:]*:([^\)]*)\)/.exec(location);
         if (idMatch) {
           instanceGraph.focusInstance(idMatch[1]);
+        }
+        var relationMatch = /_DataExplorer-Relation-([^\(]+)\([^:]*:([^\)]*)\)/.exec(location);
+        if (relationMatch) {
+          instanceGraph.focusRelation(relationMatch[2], relationMatch[1]);
         }
       }
       
@@ -64,7 +68,7 @@
         // TODO: put browser focus on element with id of attributeId
       });
       instanceGraph.onFocusRelation(function(entityName, instanceId, attributeId) {
-        engine.goTo("_DataExplorer-"+attributeId+"("+entityName+":"+instanceId+")");
+        engine.goTo("_DataExplorer-Relation-"+attributeId+"("+entityName+":"+instanceId+")");
       });
       
     </script>

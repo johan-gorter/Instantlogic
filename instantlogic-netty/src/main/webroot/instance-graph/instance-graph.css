@@ -133,8 +133,13 @@ body {
 }
 
 .instance-graph .attribute.selected > .background {
-  fill: none;
+  fill: rgb(24,24,160);
 }
+
+.instance-graph .attribute.focus > .background {
+  fill: rgb(160,24,24);
+}
+
 .instance-graph .attribute.selected > text {
   fill: white;
 }

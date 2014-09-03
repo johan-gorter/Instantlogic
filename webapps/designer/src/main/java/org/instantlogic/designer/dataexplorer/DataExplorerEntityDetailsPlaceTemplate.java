@@ -2,7 +2,6 @@ package org.instantlogic.designer.dataexplorer;
 
 import java.util.List;
 
-import org.instantlogic.designer.IfElseDesign;
 import org.instantlogic.fabric.deduction.AttributeDeduction;
 import org.instantlogic.fabric.deduction.Deduction;
 import org.instantlogic.fabric.deduction.HasValueDeduction;
@@ -165,7 +164,7 @@ public class DataExplorerEntityDetailsPlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getName() {
-		return "_DataExplorer-"+entity.getUniqueId();
+		return "_DataExplorer-Instance-"+entity.getUniqueId();
 	}
 
 	@Override
