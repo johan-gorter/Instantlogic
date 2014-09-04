@@ -217,7 +217,7 @@ public class Traveler extends AbstractTraveler implements HistoryExtension {
     FlowContext flowContext = new FlowContext(PresenceApplication.INSTANCE, caseManager.getPresence(), "presence", getTravelerInfo());
     flowContext.setCurrentPlaceTemplate(TravelerPlaceTemplate.INSTANCE);
     RenderContext renderContext = new RenderContext(flowContext, location);
-    renderContext.pushSelectedInstance(this);
+    renderContext.pushSelectedInstance(this, "traveler");
     CaseAdministration caseAdministration = caseManager.getPresence().getMetadata().getCaseAdministration();
     caseAdministration.startRecordingObservations();
     Map<String, Object> result = placeTemplate.render(renderContext);

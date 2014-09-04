@@ -3,6 +3,7 @@ package org.instantlogic.fabric.util;
 import java.util.List;
 
 
+
 import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 
@@ -37,5 +38,13 @@ public class SingleInstanceDeductionContext extends DeductionContext {
 	public String printDiagnostics() {
 		return "SingleInstanceDeductionContext("+instance+")";
 	}
+
+  @Override
+  public <I extends Instance> I getSelectedInstance(Entity<I> entity, String parameterName) {
+    if (!parameterName.equals("instance")) {
+      throw new RuntimeException("The only valid parameter name is [instance], requested parameter name was ["+parameterName+"]");
+    }
+    return getSelectedInstance(entity);
+  }
 
 }

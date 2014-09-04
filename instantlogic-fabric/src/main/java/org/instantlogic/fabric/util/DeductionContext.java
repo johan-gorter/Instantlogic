@@ -12,6 +12,8 @@ public abstract class DeductionContext {
 
 	public abstract <I extends Instance> I getSelectedInstance(Entity<I> entity);
 	
+  public abstract <I extends Instance> I getSelectedInstance(Entity<I> entity, String parameterName);
+	
 	// Convenience methods
 	
 	public <I extends Instance, Value extends Object> Value getValue(Entity<I> entity, Attribute<I, Value, ? extends Object> attribute) {

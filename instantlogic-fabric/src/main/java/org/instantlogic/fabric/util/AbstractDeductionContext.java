@@ -14,6 +14,7 @@ import org.instantlogic.fabric.model.Entity;
 public abstract class AbstractDeductionContext extends DeductionContext {
 
 	protected final List<Instance> selectedInstances = new ArrayList<Instance>();
+	protected final List<String> parameterNames = new ArrayList<String>();
 	
 	private final DeductionContext parent;
 	
@@ -43,11 +44,38 @@ public abstract class AbstractDeductionContext extends DeductionContext {
 		}
 		return null;
 	}
+	
+  @SuppressWarnings("unchecked")
+  @Override
+  public <I extends Instance> I getSelectedInstance(Entity<I> entity, String parameterName) {
+    for (int i=parameterNames.size()-1;i>=0;i--) {
+      if (parameterNames.get(i).equals(parameterName)) {
+        Instance candidate = selectedInstances.get(i);
+        if (entity == null || Entity.extendsFrom(candidate.getMetadata().getEntity(), entity)) {
+          return (I)candidate;
+        } else {
+          throw new RuntimeException("Parameter ["+parameterName+"] value was not of type ["+entity+"]");
+        }
+      }
+    }
+    if (parent!=null) {
+      return parent.getSelectedInstance(entity, parameterName);
+    }
+    return null;
+  }
 
 	public void pushSelectedInstance(Instance instance) {
 		selectedInstances.add(instance);
 	}
 	
+  public void pushSelectedInstance(Instance instance, String parameterName) {
+    if (parameterNames.size()!=selectedInstances.size()) {
+      throw new RuntimeException("Do not mix anonymous parameters with named ones");
+    }
+    selectedInstances.add(instance);
+    parameterNames.add(parameterName);
+  }
+  
 	public Instance popSelectedInstance() {
 		if (this.selectedInstances.size()==0) {
 			throw new RuntimeException("Asymmetric push/pop");

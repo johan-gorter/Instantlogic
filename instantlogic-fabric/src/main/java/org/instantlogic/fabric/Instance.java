@@ -119,7 +119,7 @@ public abstract class Instance implements Comparable<Instance> {
 		TextTemplate title = entity.getTitle();
 		if (title==null) return null;
 		try {
-			context.pushSelectedInstance(this);
+			context.pushSelectedInstance(this, "instance");
 			return title.renderText(context);
 		} finally {
 			context.popSelectedInstance(this);

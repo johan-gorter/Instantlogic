@@ -31,7 +31,7 @@ public class FlowContext extends AbstractDeductionContext {
 							if (keyValue.length!=2 || (parameter!=null && !parameter.getName().equals(keyValue[0]))) {
 								throw new RuntimeException("Invalid place parameter value "+pathElements[index-1]);
 							}
-							result.pushSelectedInstance(getInstance(parameter, keyValue[1], caseInstance));
+							result.pushSelectedInstance(getInstance(parameter, keyValue[1], caseInstance),parameter==null?"instance":parameter.getName());
 						}
 						if (index!=pathElements.length) {
 							throw new RuntimeException("Too many parameter values");
@@ -119,7 +119,7 @@ public class FlowContext extends AbstractDeductionContext {
 		}
 		throw new RuntimeException("No active instance of entity "+entity.getName());
 	}
-
+	
 	public FlowEventOccurrence step(FlowEventOccurrence occurrence) {
 		lastOccurrence = occurrence;
 		lastNode = currentPlaceTemplate;
@@ -193,5 +193,5 @@ public class FlowContext extends AbstractDeductionContext {
 	public Application getApplication() {
 		return application;
 	}
-	
+
 }

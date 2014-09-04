@@ -16,6 +16,7 @@ public class DataExplorerRelationAdministration {
 	public final DataExplorerShopForInstancePlaceTemplate shopPlaceTemplate;
 	public final Map<Entity, DataExplorerCreateInstancePlaceTemplate> createPlaceTemplates = new HashMap<>();
 	public final DataExplorerRemoveInstancePlaceTemplate removePlaceTemplate;
+  public final DataExplorerAddInstancePlaceTemplate addPlaceTemplate;
 	
 	public DataExplorerRelationAdministration(
 			Relation<?, ? extends Object, ? extends Instance> relation,
@@ -24,6 +25,7 @@ public class DataExplorerRelationAdministration {
 		Entity entity = relation.getEntity();
 		relationDetailsPlaceTemplate = new DataExplorerRelationDetailsPlaceTemplate(administration, this, breadcrumbElement, relation.getEntity(), relation);
 		removePlaceTemplate = new DataExplorerRemoveInstancePlaceTemplate(entity, relation, administration);
+		addPlaceTemplate = new DataExplorerAddInstancePlaceTemplate(entity, relation, administration);
 		
 		if (relation.isOwner()) {
 			shopPlaceTemplate = null;
@@ -47,7 +49,8 @@ public class DataExplorerRelationAdministration {
 
 	public void addPlaceTemplates(List<PlaceTemplate> to) {
 		to.add(relationDetailsPlaceTemplate);
-		to.add(relationDetailsPlaceTemplate);
+    to.add(removePlaceTemplate);
+		to.add(addPlaceTemplate);
 		if (shopPlaceTemplate!=null) {
 			to.add(shopPlaceTemplate);
 		}
