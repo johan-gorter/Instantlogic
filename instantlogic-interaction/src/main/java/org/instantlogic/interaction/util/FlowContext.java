@@ -182,7 +182,7 @@ public class FlowContext extends AbstractDeductionContext {
 				} else {
 					first = false;
 				}
-				result.append(parameter.getName());
+				result.append(parameter==null?"instance":parameter.getName());
 				result.append(":");
 				appendInstanceId(result, getSelectedInstance(parameter));
 			}

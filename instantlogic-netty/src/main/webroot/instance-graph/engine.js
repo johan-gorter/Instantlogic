@@ -22,7 +22,8 @@
       window.fragment.coreFragmentLibrary, 
       window.htmlFragmentLibrary, 
       window.basicFragmentLibrary, 
-      window.presenceFragmentLibrary
+      window.presenceFragmentLibrary,
+      window.dataExplorerFragmentLibrary
     ]);
 
     var fragmentEventHandler = {

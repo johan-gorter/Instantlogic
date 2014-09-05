@@ -157,7 +157,8 @@
         subscription.dispose();
       }
     };
-    var draggable = {  
+    var draggable = {
+      id: id
     };
     
     var bindingFactory = window.fragment.createBindingFactory(bindings, api);
@@ -597,7 +598,7 @@
       },
       dropped: function(draggable) {
         rootGroup.removeClass("droptarget");
-        alert(draggable);
+        instance.getGraph().droppedInstance(instance, id, draggable);
       }
     };
 
@@ -782,14 +783,11 @@
       scale = newScale;
     };
     
-    var observersPerEvent = {focus: [], focusAttribute: [], focusRelation: []};
+    var observersPerEvent = {focus: [], focusAttribute: [], focusRelation: [], dropInstance: []};
     var notify = function(eventName, args) {
-      var observers = observersPerEvent[eventName];
-      if (observers) {
-        observers.forEach(function(observer){
-          observer.apply(null, args);
-        });
-      }
+      observersPerEvent[eventName].forEach(function(observer){
+        observer.apply(null, args);
+      });
     };
 
     var hideRelations = function (instance) {
@@ -977,6 +975,9 @@
           edges.splice(edges.indexOf(edgeToRemove), 1);
           edgeToRemove.dispose();
         }
+      },
+      droppedInstance: function(instance, relationId, draggable) {
+        notify("dropInstance", [instance.getEntity(), instance.id, relationId, draggable.id]);
       }
     };
     return {
@@ -1032,6 +1033,9 @@
       },
       onFocusRelation: function(callback) {
         observersPerEvent.focusRelation.push(callback);
+      },
+      onDropInstance: function(callback) {
+        observersPerEvent.dropInstance.push(callback);
       }
     };
   };

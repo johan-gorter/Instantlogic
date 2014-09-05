@@ -182,17 +182,20 @@
       };
     },
     // the inner text of an element
-    text: function (propertyOrAccessor) {
+    text: function (propertyOrAccessor, translator) {
       var bindingFactory = this;
       if (typeof propertyOrAccessor !== "function") {
         propertyOrAccessor = accessorFunction(propertyOrAccessor);
+      }
+      if(!translator) {
+        translator = identityFunction;
       }
       return function (element) {
         var textNode = document.createTextNode("");
         element.append(textNode);
         var oldValue = "";
         bindingFactory.addBinding(function (data) {
-          var newValue = propertyOrAccessor(data) || "";
+          var newValue = translator(propertyOrAccessor(data)) || "";
           if (oldValue !== newValue) {
             textNode.nodeValue = newValue;
             oldValue = newValue;

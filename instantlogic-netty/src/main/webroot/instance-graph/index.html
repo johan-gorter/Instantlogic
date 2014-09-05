@@ -10,6 +10,7 @@
     <script src="channel.js"></script>
     <script src="engine.js"></script>
     <script src="graph.js"></script>
+    <script src="dataexplorer-fragment-library.js"></script>
     <script src="presence-fragment-library.js"></script>
     <script src="html-fragment-library.js"></script>
     <script src="basic-fragment-library.js"></script>
@@ -69,6 +70,9 @@
       });
       instanceGraph.onFocusRelation(function(entityName, instanceId, attributeId) {
         engine.goTo("_DataExplorer-Relation-"+attributeId+"("+entityName+":"+instanceId+")");
+      });
+      instanceGraph.onDropInstance(function(entityName, instanceId, relationId, draggedInstanceId) {
+        engine.goTo("_DataExplorer-AddToRelation-"+relationId+"("+entityName+":"+instanceId+",instance:"+draggedInstanceId+")");
       });
       
     </script>

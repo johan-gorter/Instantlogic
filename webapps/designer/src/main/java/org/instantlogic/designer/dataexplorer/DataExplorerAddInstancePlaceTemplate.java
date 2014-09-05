@@ -24,12 +24,14 @@ public class DataExplorerAddInstancePlaceTemplate extends PlaceTemplate {
 
   public class ExecuteElement extends Element {
     
+    private String id = "confirm-addinstance";
+    
     @Override
     public void render(RenderContext context, List<Map<String, Object>> appendTo) {
       Map<String, Object> result = new HashMap<>();
       appendTo.add(result);
-      result.put("id", "the-addinstance-execute-element");
-      result.put("type", "addInstanceExecute");
+      result.put("id", id);
+      result.put("type", "confirmActions");
       Instance from = context.getSelectedInstance(entity, entity.getName());
       Instance candidate = context.getSelectedInstance(null, "instance");
       if (!Entity.extendsFrom(candidate.getMetadata().getEntity(), relation.getTo())) {
@@ -71,7 +73,15 @@ public class DataExplorerAddInstancePlaceTemplate extends PlaceTemplate {
     }
 
     @Override
-    public FlowEventOccurrence submit(SubmitContext submitContext) {
+    public FlowEventOccurrence submit(SubmitContext context) {
+      Instance from = context.getSelectedInstance(entity, entity.getName());
+      Instance candidate = context.getSelectedInstance(null, "instance");
+      if (context.getPageElementId().equals(id+"-ok")) {
+        return new FlowEventOccurrence(administration.getExplorePlaceTemplate(), candidate);
+      }
+      if (context.getPageElementId().equals(id+"-cancel")) {
+        return new FlowEventOccurrence(administration.getExplorePlaceTemplate(), candidate);
+      }
       return null;
     }
 
@@ -123,6 +133,6 @@ public class DataExplorerAddInstancePlaceTemplate extends PlaceTemplate {
 
 	@Override
 	public String getName() {
-		return "_DataExplorer-AddToRelation-"+entityId+"-"+relationId;
+		return "_DataExplorer-AddToRelation-"+relationId;
 	}
 }
