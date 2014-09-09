@@ -8,6 +8,7 @@ import org.instantlogic.fabric.Instance;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
+import org.instantlogic.fabric.value.WriteableAttributeValue;
 import org.instantlogic.interaction.flow.PlaceTemplate;
 import org.instantlogic.interaction.page.Element;
 import org.instantlogic.interaction.page.FragmentTemplate;
@@ -55,7 +56,16 @@ public class DataExplorerAddInstancePlaceTemplate extends PlaceTemplate {
         }
       } else {
         if (relation.isMultivalue()) {
-          actions.append("Add "+describeInstance(candidate)+"' to "+relation.getName()+"\n");
+          if (!relation.getReverseRelation().isMultivalue()) {
+            actions.append("Remove " + 
+                describeInstance((Instance)relation.getReverseRelation().get(candidate).getValue()) + 
+                " as " + 
+                relation.getReverseRelation().getName() + 
+                " on " + 
+                describeInstance(candidate) + 
+                "\n");
+          }
+          actions.append("Add "+describeInstance(candidate)+"' to "+relation.getName()+" on "+describeInstance(from)+"\n");
         } else {
           Instance original = (Instance)relation.get(from).getValue();
           if (original == candidate) {
@@ -77,7 +87,8 @@ public class DataExplorerAddInstancePlaceTemplate extends PlaceTemplate {
       Instance from = context.getSelectedInstance(entity, entity.getName());
       Instance candidate = context.getSelectedInstance(null, "instance");
       if (context.getPageElementId().equals(id+"-ok")) {
-        return new FlowEventOccurrence(administration.getExplorePlaceTemplate(), candidate);
+        ((WriteableAttributeValue)relation.get(from)).setOrAdd(candidate);
+        return new FlowEventOccurrence(administration.getRelationPlaceTemplate(entity, relationId), from);
       }
       if (context.getPageElementId().equals(id+"-cancel")) {
         return new FlowEventOccurrence(administration.getExplorePlaceTemplate(), candidate);

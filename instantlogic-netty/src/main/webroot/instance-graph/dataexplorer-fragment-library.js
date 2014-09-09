@@ -26,7 +26,7 @@
     appendFunction(actionsUl);
     appendFunction(
       html.div(
-        html.button("ok").on("click", function(evt){
+        html.button("ok", bindingFactory.visible("executable")).on("click", function(evt){
           evt.preventDefault();
           bindingFactory.fragment.handleEvent({message:'submit', id:bindingFactory.fragment.data.id+"-ok"});
         }), 

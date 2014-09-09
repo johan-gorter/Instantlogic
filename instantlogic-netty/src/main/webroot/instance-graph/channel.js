@@ -45,12 +45,15 @@
           var data = message.rootFragment;
           subscriptions.forEach(function(subscription) {
             if (data.id === subscription.id) {
+              console.log("received subscription "+data.id, data);
               subscription.onUpdate(data);
             }
           });
         } else if (message.name === "place") {
+          console.log("received place ", message);
           notify("placeUpdated", [message]);
         } else if (message.name === "presence") {
+          console.log("received presence ", message);
           notify("presenceUpdated", [message]);
         } else if (message.name === "cssFilesUpdated") {
           notify(message.name, [message]);

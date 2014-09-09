@@ -525,10 +525,10 @@
         data = newData;
         api.forEachValue(function (newValue) {
           var i = oldValues.indexOf(newValue);
-          if(index === -1) {
-            oldValues.splice(i, 1);
-          } else {
+          if(i === -1) {
             graph.relationValueAdded(api, newValue, data.reverse);
+          } else {
+            oldValues.splice(i, 1);
           }
         });
         oldValues.forEach(function (value) {
@@ -732,8 +732,14 @@
         }
         return true;
       },
-      removeFromReverse: function () {
-        throw new Error("not yet implemented");
+      removeFromReverse: function (toInstance, toReverseRelation, oldValue) {
+        if(reverseRelation && reverseRelation === toReverseRelation) {
+          if (reverseValue === oldValue) {
+            relation = reverseRelation = null;
+            return false; // indicates that we should be removed now
+          }
+        }
+        return true;
       },
       instanceHidden: function(id) {
         if (relation && relation.getInstance().id === id) {

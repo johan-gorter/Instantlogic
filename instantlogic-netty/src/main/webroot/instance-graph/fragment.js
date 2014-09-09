@@ -181,6 +181,44 @@
         });
       };
     },
+    visible: function(propertyOrAccessor, translator) {
+      var bindingFactory = this;
+      if (typeof propertyOrAccessor !== "function") {
+        propertyOrAccessor = accessorFunction(propertyOrAccessor);
+      }
+      if(!translator) {
+        translator = identityFunction;
+      }
+      return function (element) {
+        var oldValue = null;
+        bindingFactory.addBinding(function (data) {
+          var newValue = translator(propertyOrAccessor(data)) || false;
+          if (oldValue !== newValue) {
+            element.css("display", newValue?"":"none");
+            oldValue = newValue;
+          }
+        });
+      };
+    },
+    hidden: function(propertyOrAccessor, translator) {
+      var bindingFactory = this;
+      if (typeof propertyOrAccessor !== "function") {
+        propertyOrAccessor = accessorFunction(propertyOrAccessor);
+      }
+      if(!translator) {
+        translator = identityFunction;
+      }
+      return function (element) {
+        var oldValue = null;
+        bindingFactory.addBinding(function (data) {
+          var newValue = translator(propertyOrAccessor(data)) || false;
+          if (oldValue !== newValue) {
+            element.css("display", newValue?"none":"");
+            oldValue = newValue;
+          }
+        });
+      };
+    },
     // the inner text of an element
     text: function (propertyOrAccessor, translator) {
       var bindingFactory = this;
