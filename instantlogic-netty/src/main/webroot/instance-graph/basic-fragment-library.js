@@ -78,6 +78,18 @@
     bindingFactory.fragment.rowElement = rowElement;
     appendFunction(rowElement);
   });
+
+  var button = createFragmentType(function (appendFunction, bindingFactory) {
+    function onClick(evt) {
+      bindingFactory.fragment.handleEvent({message:'submit', id:bindingFactory.fragment.data.id});
+      evt.preventDefault();
+    }    
+    appendFunction(html.button(
+      bindingFactory.text("text"),
+      bindingFactory.fragmentPerItem("content"),
+      bindingFactory.cssClasses("styleNames")      
+    ).on("click", onClick));
+  });
   
   var link = createFragmentType(function (appendFunction, bindingFactory) {
     function onClick(evt) {
@@ -106,16 +118,47 @@
     ));
   });
   
+  var submitOnBlurAndEnter = function(inputEl, submitFunction) {
+    inputEl.on("blur", submitFunction);
+    inputEl.on("keyup", function(evt){
+      if (evt.which===13) {
+        submitFunction();
+        evt.preventDefault();
+        evt.stopPropagation();
+      }
+    });
+    return inputEl;
+  };
+  
   var jsonTextBox = createFragmentType(function(appendFunction, bindingFactory) {
-    appendFunction(html.input({type:"text", value: bindingFactory.attribute("value", JSON.stringify)}));
+    var input = html.input({type:"text", value: bindingFactory.attribute("value", JSON.stringify)});
+    function submitValue() {
+      bindingFactory.fragment.handleEvent({message:'change', id:bindingFactory.fragment.data.id, value: input.val()});
+    }    
+    submitOnBlurAndEnter(input, submitValue);
+    appendFunction(input);
   });
   
   var textBox = createFragmentType(function(appendFunction, bindingFactory) {
-    appendFunction(html.input({type:"text", value: bindingFactory.attribute("value")}));
+    var input = html.input({type:"text", value: bindingFactory.attribute("value")});
+    function submitValue(evt) {
+      var value = input.val();
+      if (value === "") {
+        value = null;
+      }
+      bindingFactory.fragment.handleEvent({message:'change', id:bindingFactory.fragment.data.id, value: value});
+    }    
+    submitOnBlurAndEnter(input, submitValue);
+    appendFunction(input);
   });
   
   var textArea = createFragmentType(function(appendFunction, bindingFactory) {
-    appendFunction(html.textarea({rows: 4}, bindingFactory.text("value")));
+    var input = html.textarea({rows: 4}, bindingFactory.text("value"));
+    function submitValue(evt) {
+      bindingFactory.fragment.handleEvent({message:'change', id:bindingFactory.fragment.data.id, value: input.val()});
+    }    
+    submitOnBlurAndEnter(input, submitValue);
+    appendFunction(input);
   });
   
   var answerFragmentTypes = [
@@ -158,6 +201,7 @@
             diff.nodeToRemove(childNode);
           });
         }
+        answerFragmentType = newAnswerFragmentType;
         answerFragment = newAnswerFragmentType.fragmentType(
           function(element) {valueDiv.append(element);}, 
           bindingFactory.fragment, bindingFactory.fragment.id, bindingFactory.fragment.fragmentFactory, {}
@@ -176,6 +220,7 @@
   
   window.basicFragmentLibrary = {
     Block: divWithClass("block"),
+    Button: button,
     Page: page,
     Icon: icon,
     Table: table,

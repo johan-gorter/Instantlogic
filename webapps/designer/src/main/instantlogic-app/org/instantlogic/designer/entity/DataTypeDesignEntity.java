@@ -208,27 +208,27 @@ public class DataTypeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign> $attribute
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.AttributeDesign>(
-				"RelationDesign_dataType", "attribute", INSTANCE, "attribute", org.instantlogic.designer.DataTypeDesign.class);
+				"reverse-RelationDesign_dataType", "attribute", INSTANCE, "attribute", org.instantlogic.designer.DataTypeDesign.class);
 		attribute = $attribute;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign> $dataTypeOnDeductionDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionDesign>, org.instantlogic.designer.DeductionDesign>(
-				"RelationDesign_dataType_1", "dataTypeOnDeductionDesign", INSTANCE, "dataTypeOnDeductionDesign", org.instantlogic.designer.DataTypeDesign.class);
+				"reverse-RelationDesign_dataType_1", "dataTypeOnDeductionDesign", INSTANCE, "dataTypeOnDeductionDesign", org.instantlogic.designer.DataTypeDesign.class);
 		dataTypeOnDeductionDesign = $dataTypeOnDeductionDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign> $dataTypeOnDeductionOperationInputDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationInputDesign>, org.instantlogic.designer.DeductionOperationInputDesign>(
-				"RelationDesign_dataType_2", "dataTypeOnDeductionOperationInputDesign", INSTANCE, "dataTypeOnDeductionOperationInputDesign", org.instantlogic.designer.DataTypeDesign.class);
+				"reverse-RelationDesign_dataType_2", "dataTypeOnDeductionOperationInputDesign", INSTANCE, "dataTypeOnDeductionOperationInputDesign", org.instantlogic.designer.DataTypeDesign.class);
 		dataTypeOnDeductionOperationInputDesign = $dataTypeOnDeductionOperationInputDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $forEntity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"RelationDesign_dataType_3", "forEntity", INSTANCE, "forEntity", org.instantlogic.designer.DataTypeDesign.class);
+				"reverse-RelationDesign_dataType_3", "forEntity", INSTANCE, "forEntity", org.instantlogic.designer.DataTypeDesign.class);
 		forEntity = $forEntity;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign> $outputDataTypeOnDeductionOperationDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionOperationDesign>, org.instantlogic.designer.DeductionOperationDesign>(
-				"RelationDesign_outputDataType", "outputDataTypeOnDeductionOperationDesign", INSTANCE, "outputDataTypeOnDeductionOperationDesign", org.instantlogic.designer.DataTypeDesign.class);
+				"reverse-RelationDesign_outputDataType", "outputDataTypeOnDeductionOperationDesign", INSTANCE, "outputDataTypeOnDeductionOperationDesign", org.instantlogic.designer.DataTypeDesign.class);
 		outputDataTypeOnDeductionOperationDesign = $outputDataTypeOnDeductionOperationDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign, org.instantlogic.designer.RelationDesign> $reverseRelation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.RelationDesign, org.instantlogic.designer.RelationDesign>(
-				"RelationDesign_reverseDataType", "reverseRelation", INSTANCE, "reverseRelation", org.instantlogic.designer.DataTypeDesign.class);
+				"reverse-RelationDesign_reverseDataType", "reverseRelation", INSTANCE, "reverseRelation", org.instantlogic.designer.DataTypeDesign.class);
 		reverseRelation = $reverseRelation;
 		
 		// Phase 2

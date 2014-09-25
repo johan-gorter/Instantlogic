@@ -123,19 +123,19 @@ public class DeductionDesignEntity extends org.instantlogic.fabric.model.Entity<
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $scheme
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"RelationDesign_deductions", "scheme", INSTANCE, "scheme", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"reverse-RelationDesign_deductions", "scheme", INSTANCE, "scheme", org.instantlogic.designer.AbstractDeductionDesign.class);
 		scheme = $scheme;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $outputs
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
-				"RelationDesign_inputs_1", "outputs", INSTANCE, "outputs", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"reverse-RelationDesign_inputs_1", "outputs", INSTANCE, "outputs", org.instantlogic.designer.AbstractDeductionDesign.class);
 		outputs = $outputs;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $outputOfScheme
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"RelationDesign_output", "outputOfScheme", INSTANCE, "outputOfScheme", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"reverse-RelationDesign_output", "outputOfScheme", INSTANCE, "outputOfScheme", org.instantlogic.designer.AbstractDeductionDesign.class);
 		outputOfScheme = $outputOfScheme;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign> $selectionInScheme
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionSchemeDesign, org.instantlogic.designer.DeductionSchemeDesign>(
-				"RelationDesign_selectedDeduction", "selectionInScheme", INSTANCE, "selectionInScheme", org.instantlogic.designer.AbstractDeductionDesign.class);
+				"reverse-RelationDesign_selectedDeduction", "selectionInScheme", INSTANCE, "selectionInScheme", org.instantlogic.designer.AbstractDeductionDesign.class);
 		selectionInScheme = $selectionInScheme;
 		
 		// Phase 2

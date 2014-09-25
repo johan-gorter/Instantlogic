@@ -28,7 +28,7 @@ public class FragmentTemplateTextDesignEntity extends org.instantlogic.fabric.mo
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateTextDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $fragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateTextDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
-				"RelationDesign_texts", "fragmentTemplateDesign", INSTANCE, "fragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateTextDesign.class);
+				"reverse-RelationDesign_texts", "fragmentTemplateDesign", INSTANCE, "fragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateTextDesign.class);
 		fragmentTemplateDesign = $fragmentTemplateDesign;
 		
 		// Phase 2

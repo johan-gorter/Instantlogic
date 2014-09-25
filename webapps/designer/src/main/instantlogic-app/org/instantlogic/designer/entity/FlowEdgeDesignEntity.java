@@ -39,7 +39,7 @@ public class FlowEdgeDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign> $owner
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowEdgeDesign, org.instantlogic.designer.FlowDesign, org.instantlogic.designer.FlowDesign>(
-				"RelationDesign_edges", "owner", INSTANCE, "owner", org.instantlogic.designer.FlowEdgeDesign.class);
+				"reverse-RelationDesign_edges", "owner", INSTANCE, "owner", org.instantlogic.designer.FlowEdgeDesign.class);
 		owner = $owner;
 		
 		// Phase 2

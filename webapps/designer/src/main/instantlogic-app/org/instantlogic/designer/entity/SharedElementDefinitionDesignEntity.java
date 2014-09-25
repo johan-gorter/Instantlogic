@@ -34,11 +34,11 @@ public class SharedElementDefinitionDesignEntity extends org.instantlogic.fabric
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign> $usages
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.SharedElementDesign>, org.instantlogic.designer.SharedElementDesign>(
-				"RelationDesign_definition", "usages", INSTANCE, "usages", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+				"reverse-RelationDesign_definition", "usages", INSTANCE, "usages", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
 		usages = $usages;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"RelationDesign_sharedElements", "application", INSTANCE, "application", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
+				"reverse-RelationDesign_sharedElements", "application", INSTANCE, "application", org.instantlogic.designer.AbstractSharedElementDefinitionDesign.class);
 		application = $application;
 		
 		// Phase 2

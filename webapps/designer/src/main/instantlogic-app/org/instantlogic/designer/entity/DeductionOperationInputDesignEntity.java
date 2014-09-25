@@ -58,11 +58,11 @@ public class DeductionOperationInputDesignEntity extends org.instantlogic.fabric
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
-				"RelationDesign_inputs_2", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"reverse-RelationDesign_inputs_2", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		operation = $operation;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign> $operationInputOnDeductionInputDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationInputDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionInputDesign>, org.instantlogic.designer.DeductionInputDesign>(
-				"RelationDesign_operationInput", "operationInputOnDeductionInputDesign", INSTANCE, "operationInputOnDeductionInputDesign", org.instantlogic.designer.DeductionOperationInputDesign.class);
+				"reverse-RelationDesign_operationInput", "operationInputOnDeductionInputDesign", INSTANCE, "operationInputOnDeductionInputDesign", org.instantlogic.designer.DeductionOperationInputDesign.class);
 		operationInputOnDeductionInputDesign = $operationInputOnDeductionInputDesign;
 		
 		// Phase 2

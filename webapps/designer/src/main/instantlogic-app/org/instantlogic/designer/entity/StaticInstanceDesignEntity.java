@@ -40,15 +40,15 @@ public class StaticInstanceDesignEntity extends org.instantlogic.fabric.model.En
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> $valueOfStaticInstances
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
-				"RelationDesign_relationValue", "valueOfStaticInstances", INSTANCE, "valueOfStaticInstances", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"reverse-RelationDesign_relationValue", "valueOfStaticInstances", INSTANCE, "valueOfStaticInstances", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		valueOfStaticInstances = $valueOfStaticInstances;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> $staticInstanceValueOnDeductionParameterDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
-				"RelationDesign_staticInstanceValue", "staticInstanceValueOnDeductionParameterDesign", INSTANCE, "staticInstanceValueOnDeductionParameterDesign", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"reverse-RelationDesign_staticInstanceValue", "staticInstanceValueOnDeductionParameterDesign", INSTANCE, "staticInstanceValueOnDeductionParameterDesign", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		staticInstanceValueOnDeductionParameterDesign = $staticInstanceValueOnDeductionParameterDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $entity
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.StaticInstanceDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"RelationDesign_staticInstances", "entity", INSTANCE, "entity", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
+				"reverse-RelationDesign_staticInstances", "entity", INSTANCE, "entity", org.instantlogic.designer.AbstractStaticInstanceDesign.class);
 		entity = $entity;
 		
 		// Phase 2

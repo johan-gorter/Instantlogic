@@ -37,23 +37,23 @@ public class EventDesignEntity extends org.instantlogic.fabric.model.Entity<org.
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign> $eventOnFlowEdgeDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowEdgeDesign>, org.instantlogic.designer.FlowEdgeDesign>(
-				"RelationDesign_event", "eventOnFlowEdgeDesign", INSTANCE, "eventOnFlowEdgeDesign", org.instantlogic.designer.AbstractEventDesign.class);
+				"reverse-RelationDesign_event", "eventOnFlowEdgeDesign", INSTANCE, "eventOnFlowEdgeDesign", org.instantlogic.designer.AbstractEventDesign.class);
 		eventOnFlowEdgeDesign = $eventOnFlowEdgeDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $eventOnFragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign>(
-				"RelationDesign_event_1", "eventOnFragmentTemplateDesign", INSTANCE, "eventOnFragmentTemplateDesign", org.instantlogic.designer.AbstractEventDesign.class);
+				"reverse-RelationDesign_event_1", "eventOnFragmentTemplateDesign", INSTANCE, "eventOnFragmentTemplateDesign", org.instantlogic.designer.AbstractEventDesign.class);
 		eventOnFragmentTemplateDesign = $eventOnFragmentTemplateDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"RelationDesign_events", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEventDesign.class);
+				"reverse-RelationDesign_events", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEventDesign.class);
 		application = $application;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $loggedInEventOnApplicationDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"RelationDesign_loggedInEvent", "loggedInEventOnApplicationDesign", INSTANCE, "loggedInEventOnApplicationDesign", org.instantlogic.designer.AbstractEventDesign.class);
+				"reverse-RelationDesign_loggedInEvent", "loggedInEventOnApplicationDesign", INSTANCE, "loggedInEventOnApplicationDesign", org.instantlogic.designer.AbstractEventDesign.class);
 		loggedInEventOnApplicationDesign = $loggedInEventOnApplicationDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $startEventOnApplicationDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EventDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"RelationDesign_startEvent", "startEventOnApplicationDesign", INSTANCE, "startEventOnApplicationDesign", org.instantlogic.designer.AbstractEventDesign.class);
+				"reverse-RelationDesign_startEvent", "startEventOnApplicationDesign", INSTANCE, "startEventOnApplicationDesign", org.instantlogic.designer.AbstractEventDesign.class);
 		startEventOnApplicationDesign = $startEventOnApplicationDesign;
 		
 		// Phase 2

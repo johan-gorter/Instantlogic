@@ -29,7 +29,7 @@ public class DestinationDesignEntity extends org.instantlogic.fabric.model.Entit
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DestinationDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $destinationOnFragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DestinationDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
-				"RelationDesign_destination", "destinationOnFragmentTemplateDesign", INSTANCE, "destinationOnFragmentTemplateDesign", org.instantlogic.designer.DestinationDesign.class);
+				"reverse-RelationDesign_destination", "destinationOnFragmentTemplateDesign", INSTANCE, "destinationOnFragmentTemplateDesign", org.instantlogic.designer.DestinationDesign.class);
 		destinationOnFragmentTemplateDesign = $destinationOnFragmentTemplateDesign;
 		
 		// Phase 2

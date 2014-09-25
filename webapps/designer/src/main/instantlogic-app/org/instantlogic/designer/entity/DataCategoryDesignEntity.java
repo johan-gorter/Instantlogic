@@ -24,7 +24,7 @@ public class DataCategoryDesignEntity extends org.instantlogic.fabric.model.Enti
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $dataCategoryOnDataTypeDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DataCategoryDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"RelationDesign_dataCategory", "dataCategoryOnDataTypeDesign", INSTANCE, "dataCategoryOnDataTypeDesign", org.instantlogic.designer.DataCategoryDesign.class);
+				"reverse-RelationDesign_dataCategory", "dataCategoryOnDataTypeDesign", INSTANCE, "dataCategoryOnDataTypeDesign", org.instantlogic.designer.DataCategoryDesign.class);
 		dataCategoryOnDataTypeDesign = $dataCategoryOnDataTypeDesign;
 		
 		// Phase 2

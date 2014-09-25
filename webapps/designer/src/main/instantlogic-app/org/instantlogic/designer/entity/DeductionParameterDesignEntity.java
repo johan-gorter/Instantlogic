@@ -76,7 +76,7 @@ public class DeductionParameterDesignEntity extends org.instantlogic.fabric.mode
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionParameterDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign> $deduction
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionParameterDesign, org.instantlogic.designer.DeductionDesign, org.instantlogic.designer.DeductionDesign>(
-				"RelationDesign_parameters", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionParameterDesign.class);
+				"reverse-RelationDesign_parameters", "deduction", INSTANCE, "deduction", org.instantlogic.designer.DeductionParameterDesign.class);
 		deduction = $deduction;
 		
 		// Phase 2

@@ -174,7 +174,11 @@
         bindingFactory.addBinding(function (data) {
           var newValue = translator(propertyOrAccessor(data)) || "";
           if (oldValue !== newValue) {
-            element[0].setAttribute(propertyName, newValue);
+            if (propertyName === "value") {
+              element[0][propertyName] = newValue;
+            } else {
+              element[0].setAttribute(propertyName, newValue);
+            }
             // JGO: animating this change is not yet implemented (but this is easy to do)
             oldValue = newValue;
           }

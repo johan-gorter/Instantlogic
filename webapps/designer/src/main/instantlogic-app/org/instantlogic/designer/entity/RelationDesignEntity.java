@@ -114,7 +114,7 @@ public class RelationDesignEntity extends org.instantlogic.fabric.model.Entity<o
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $from
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.RelationDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"RelationDesign_relations", "from", INSTANCE, "from", org.instantlogic.designer.RelationDesign.class);
+				"reverse-RelationDesign_relations", "from", INSTANCE, "from", org.instantlogic.designer.RelationDesign.class);
 		from = $from;
 		
 		// Phase 2

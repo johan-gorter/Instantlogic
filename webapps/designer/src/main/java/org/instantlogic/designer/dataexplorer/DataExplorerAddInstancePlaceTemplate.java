@@ -87,7 +87,13 @@ public class DataExplorerAddInstancePlaceTemplate extends PlaceTemplate {
       Instance from = context.getSelectedInstance(entity, entity.getName());
       Instance candidate = context.getSelectedInstance(null, "instance");
       if (context.getPageElementId().equals(id+"-ok")) {
-        ((WriteableAttributeValue)relation.get(from)).setOrAdd(candidate);
+        if (relation.isOwner()) {
+          Instance clone = candidate.getMetadata().getEntity().createInstance();
+          ((WriteableAttributeValue)relation.get(from)).setOrAdd(clone);
+          clone.getMetadata().deepCopyFrom(candidate);
+        } else {
+          ((WriteableAttributeValue)relation.get(from)).setOrAdd(candidate);
+        }
         return new FlowEventOccurrence(administration.getRelationPlaceTemplate(entity, relationId), from);
       }
       if (context.getPageElementId().equals(id+"-cancel")) {

@@ -73,47 +73,47 @@ public class EntityDesignEntity extends org.instantlogic.fabric.model.Entity<org
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign> $belongsToEntityOnAttributeDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.AttributeDesign>, org.instantlogic.designer.AttributeDesign>(
-				"RelationDesign_belongsToEntity", "belongsToEntityOnAttributeDesign", INSTANCE, "belongsToEntityOnAttributeDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_belongsToEntity", "belongsToEntityOnAttributeDesign", INSTANCE, "belongsToEntityOnAttributeDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		belongsToEntityOnAttributeDesign = $belongsToEntityOnAttributeDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $caseEntityOnApplicationDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"RelationDesign_caseEntity", "caseEntityOnApplicationDesign", INSTANCE, "caseEntityOnApplicationDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_caseEntity", "caseEntityOnApplicationDesign", INSTANCE, "caseEntityOnApplicationDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		caseEntityOnApplicationDesign = $caseEntityOnApplicationDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"RelationDesign_entities", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_entities", "application", INSTANCE, "application", org.instantlogic.designer.AbstractEntityDesign.class);
 		application = $application;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign> $entityOnDataTypeDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.DataTypeDesign, org.instantlogic.designer.DataTypeDesign>(
-				"RelationDesign_entity", "entityOnDataTypeDesign", INSTANCE, "entityOnDataTypeDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_entity", "entityOnDataTypeDesign", INSTANCE, "entityOnDataTypeDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		entityOnDataTypeDesign = $entityOnDataTypeDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> $entityValueOnDeductionParameterDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
-				"RelationDesign_entityValue", "entityValueOnDeductionParameterDesign", INSTANCE, "entityValueOnDeductionParameterDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_entityValue", "entityValueOnDeductionParameterDesign", INSTANCE, "entityValueOnDeductionParameterDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		entityValueOnDeductionParameterDesign = $entityValueOnDeductionParameterDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $entityOnFragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign>(
-				"RelationDesign_entity_1", "entityOnFragmentTemplateDesign", INSTANCE, "entityOnFragmentTemplateDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_entity_1", "entityOnFragmentTemplateDesign", INSTANCE, "entityOnFragmentTemplateDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		entityOnFragmentTemplateDesign = $entityOnFragmentTemplateDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceParameterDesign> $placeParameter
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceParameterDesign>(
-				"RelationDesign_entity_2", "placeParameter", INSTANCE, "placeParameter", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_entity_2", "placeParameter", INSTANCE, "placeParameter", org.instantlogic.designer.AbstractEntityDesign.class);
 		placeParameter = $placeParameter;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign> $extensions
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EntityDesign>, org.instantlogic.designer.EntityDesign>(
-				"RelationDesign_extendsFrom", "extensions", INSTANCE, "extensions", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_extendsFrom", "extensions", INSTANCE, "extensions", org.instantlogic.designer.AbstractEntityDesign.class);
 		extensions = $extensions;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign> $parametersOnEventDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.EventDesign>, org.instantlogic.designer.EventDesign>(
-				"RelationDesign_parameters_2", "parametersOnEventDesign", INSTANCE, "parametersOnEventDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_parameters_2", "parametersOnEventDesign", INSTANCE, "parametersOnEventDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		parametersOnEventDesign = $parametersOnEventDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign> $parametersOnFlowDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FlowDesign>, org.instantlogic.designer.FlowDesign>(
-				"RelationDesign_parameters_3", "parametersOnFlowDesign", INSTANCE, "parametersOnFlowDesign", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_parameters_3", "parametersOnFlowDesign", INSTANCE, "parametersOnFlowDesign", org.instantlogic.designer.AbstractEntityDesign.class);
 		parametersOnFlowDesign = $parametersOnFlowDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign> $reverseRelations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.EntityDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.RelationDesign>, org.instantlogic.designer.RelationDesign>(
-				"RelationDesign_to", "reverseRelations", INSTANCE, "reverseRelations", org.instantlogic.designer.AbstractEntityDesign.class);
+				"reverse-RelationDesign_to", "reverseRelations", INSTANCE, "reverseRelations", org.instantlogic.designer.AbstractEntityDesign.class);
 		reverseRelations = $reverseRelations;
 		
 		// Phase 2

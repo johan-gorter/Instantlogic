@@ -59,27 +59,27 @@ public class ElementDesignEntity extends org.instantlogic.fabric.model.Entity<or
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign> $childOfSelection
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SelectionDesign, org.instantlogic.designer.SelectionDesign>(
-				"RelationDesign_child", "childOfSelection", INSTANCE, "childOfSelection", org.instantlogic.designer.ElementDesign.class);
+				"reverse-RelationDesign_child", "childOfSelection", INSTANCE, "childOfSelection", org.instantlogic.designer.ElementDesign.class);
 		childOfSelection = $childOfSelection;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.PropertyDesign> $childrenForFragment
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PropertyDesign, org.instantlogic.designer.PropertyDesign>(
-				"RelationDesign_children", "childrenForFragment", INSTANCE, "childrenForFragment", org.instantlogic.designer.ElementDesign.class);
+				"reverse-RelationDesign_children", "childrenForFragment", INSTANCE, "childrenForFragment", org.instantlogic.designer.ElementDesign.class);
 		childrenForFragment = $childrenForFragment;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $contentOfPage
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
-				"RelationDesign_content", "contentOfPage", INSTANCE, "contentOfPage", org.instantlogic.designer.ElementDesign.class);
+				"reverse-RelationDesign_content", "contentOfPage", INSTANCE, "contentOfPage", org.instantlogic.designer.ElementDesign.class);
 		contentOfPage = $contentOfPage;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign> $elseChildOnIfElseDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign>(
-				"RelationDesign_elseChild", "elseChildOnIfElseDesign", INSTANCE, "elseChildOnIfElseDesign", org.instantlogic.designer.ElementDesign.class);
+				"reverse-RelationDesign_elseChild", "elseChildOnIfElseDesign", INSTANCE, "elseChildOnIfElseDesign", org.instantlogic.designer.ElementDesign.class);
 		elseChildOnIfElseDesign = $elseChildOnIfElseDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDefinitionDesign> $partOfSharedElementDefinition
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.SharedElementDefinitionDesign, org.instantlogic.designer.SharedElementDefinitionDesign>(
-				"RelationDesign_fragment", "partOfSharedElementDefinition", INSTANCE, "partOfSharedElementDefinition", org.instantlogic.designer.ElementDesign.class);
+				"reverse-RelationDesign_fragment", "partOfSharedElementDefinition", INSTANCE, "partOfSharedElementDefinition", org.instantlogic.designer.ElementDesign.class);
 		partOfSharedElementDefinition = $partOfSharedElementDefinition;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign> $ifChildOnIfElseDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.ElementDesign, org.instantlogic.designer.IfElseDesign, org.instantlogic.designer.IfElseDesign>(
-				"RelationDesign_ifChild", "ifChildOnIfElseDesign", INSTANCE, "ifChildOnIfElseDesign", org.instantlogic.designer.ElementDesign.class);
+				"reverse-RelationDesign_ifChild", "ifChildOnIfElseDesign", INSTANCE, "ifChildOnIfElseDesign", org.instantlogic.designer.ElementDesign.class);
 		ifChildOnIfElseDesign = $ifChildOnIfElseDesign;
 		
 		// Phase 2

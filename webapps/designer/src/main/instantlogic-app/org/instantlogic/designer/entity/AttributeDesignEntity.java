@@ -120,23 +120,23 @@ public class AttributeDesignEntity extends org.instantlogic.fabric.model.Entity<
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign> $attributeOnFragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.FragmentTemplateDesign>, org.instantlogic.designer.FragmentTemplateDesign>(
-				"RelationDesign_attribute", "attributeOnFragmentTemplateDesign", INSTANCE, "attributeOnFragmentTemplateDesign", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"reverse-RelationDesign_attribute", "attributeOnFragmentTemplateDesign", INSTANCE, "attributeOnFragmentTemplateDesign", org.instantlogic.designer.AbstractAttributeDesign.class);
 		attributeOnFragmentTemplateDesign = $attributeOnFragmentTemplateDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> $attributeValueOnDeductionParameterDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
-				"RelationDesign_attributeValue", "attributeValueOnDeductionParameterDesign", INSTANCE, "attributeValueOnDeductionParameterDesign", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"reverse-RelationDesign_attributeValue", "attributeValueOnDeductionParameterDesign", INSTANCE, "attributeValueOnDeductionParameterDesign", org.instantlogic.designer.AbstractAttributeDesign.class);
 		attributeValueOnDeductionParameterDesign = $attributeValueOnDeductionParameterDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign> $attributeOnStaticInstanceValueDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.StaticInstanceValueDesign>, org.instantlogic.designer.StaticInstanceValueDesign>(
-				"RelationDesign_attribute_1", "attributeOnStaticInstanceValueDesign", INSTANCE, "attributeOnStaticInstanceValueDesign", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"reverse-RelationDesign_attribute_1", "attributeOnStaticInstanceValueDesign", INSTANCE, "attributeOnStaticInstanceValueDesign", org.instantlogic.designer.AbstractAttributeDesign.class);
 		attributeOnStaticInstanceValueDesign = $attributeOnStaticInstanceValueDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign> $attributeOf
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.designer.EntityDesign, org.instantlogic.designer.EntityDesign>(
-				"RelationDesign_attributes", "attributeOf", INSTANCE, "attributeOf", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"reverse-RelationDesign_attributes", "attributeOf", INSTANCE, "attributeOf", org.instantlogic.designer.AbstractAttributeDesign.class);
 		attributeOf = $attributeOf;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign> $validations
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.AttributeDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.ValidationDesign>, org.instantlogic.designer.ValidationDesign>(
-				"RelationDesign_displayWith", "validations", INSTANCE, "validations", org.instantlogic.designer.AbstractAttributeDesign.class);
+				"reverse-RelationDesign_displayWith", "validations", INSTANCE, "validations", org.instantlogic.designer.AbstractAttributeDesign.class);
 		validations = $validations;
 		
 		// Phase 2

@@ -80,6 +80,9 @@ public abstract class AbstractDeductionContext extends DeductionContext {
 		if (this.selectedInstances.size()==0) {
 			throw new RuntimeException("Asymmetric push/pop");
 		}
+    if (parameterNames.size()==selectedInstances.size()) {
+      parameterNames.remove(parameterNames.size()-1);
+    }
 		return selectedInstances.remove(selectedInstances.size()-1);
 	}
 

@@ -19,7 +19,6 @@
  
   window.htmlFragmentLibrary = {
     // These will be renamed to their normal lowercase html tagnames.
-    Button: htmlElement("button"),
     Heading1: htmlElement("h1"),
     Heading2: htmlElement("h2"),
     Heading3: htmlElement("h3"),

@@ -33,7 +33,7 @@ public class PlaceParameterDesignEntity extends org.instantlogic.fabric.model.En
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign> $placeTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.PlaceParameterDesign, org.instantlogic.designer.PlaceTemplateDesign, org.instantlogic.designer.PlaceTemplateDesign>(
-				"RelationDesign_parameters_4", "placeTemplateDesign", INSTANCE, "placeTemplateDesign", org.instantlogic.designer.PlaceParameterDesign.class);
+				"reverse-RelationDesign_parameters_4", "placeTemplateDesign", INSTANCE, "placeTemplateDesign", org.instantlogic.designer.PlaceParameterDesign.class);
 		placeTemplateDesign = $placeTemplateDesign;
 		
 		// Phase 2

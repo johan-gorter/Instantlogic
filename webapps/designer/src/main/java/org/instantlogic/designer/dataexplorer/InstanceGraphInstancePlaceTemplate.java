@@ -33,7 +33,7 @@ public class InstanceGraphInstancePlaceTemplate extends PlaceTemplate {
 	    result.put("type", getFragmentTypeName());
 	    result.put("id", getInstanceId(instance));
 	    result.put("entity", instance.getMetadata().getEntity().getName());
-	    result.put("title", instance.renderTitle(context));
+	    result.put("title", DataExplorerInstanceTitleDeduction.renderTitle(instance));
 	    result.put("reverseRelations", getReverseRelationValues(instance)); //{id: "assignedIssues", reverse: "assignee", name: "assigned issues", value: ["issue1"]}
 	    result.put("relations", getRelationValues(instance));
 	    result.put("attributes", getAttributeValues(instance));

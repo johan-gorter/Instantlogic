@@ -45,15 +45,15 @@ public class FlowDesignEntity extends org.instantlogic.fabric.model.Entity<org.i
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.designer.SubFlowDesign, org.instantlogic.designer.SubFlowDesign> $subFlowIn
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.designer.SubFlowDesign, org.instantlogic.designer.SubFlowDesign>(
-				"RelationDesign_flow", "subFlowIn", INSTANCE, "subFlowIn", org.instantlogic.designer.AbstractFlowDesign.class);
+				"reverse-RelationDesign_flow", "subFlowIn", INSTANCE, "subFlowIn", org.instantlogic.designer.AbstractFlowDesign.class);
 		subFlowIn = $subFlowIn;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $application
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"RelationDesign_flows", "application", INSTANCE, "application", org.instantlogic.designer.AbstractFlowDesign.class);
+				"reverse-RelationDesign_flows", "application", INSTANCE, "application", org.instantlogic.designer.AbstractFlowDesign.class);
 		application = $application;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign> $mainFlowOnApplicationDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FlowDesign, org.instantlogic.designer.ApplicationDesign, org.instantlogic.designer.ApplicationDesign>(
-				"RelationDesign_mainFlow", "mainFlowOnApplicationDesign", INSTANCE, "mainFlowOnApplicationDesign", org.instantlogic.designer.AbstractFlowDesign.class);
+				"reverse-RelationDesign_mainFlow", "mainFlowOnApplicationDesign", INSTANCE, "mainFlowOnApplicationDesign", org.instantlogic.designer.AbstractFlowDesign.class);
 		mainFlowOnApplicationDesign = $mainFlowOnApplicationDesign;
 		
 		// Phase 2

@@ -10,9 +10,11 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.instantlogic.fabric.Instance;
+import org.instantlogic.fabric.model.Attribute;
 import org.instantlogic.fabric.model.Entity;
 import org.instantlogic.fabric.model.Relation;
 import org.instantlogic.fabric.text.TextTemplate;
+import org.instantlogic.fabric.value.AttributeValue;
 import org.instantlogic.fabric.value.ReadOnlyAttributeValue;
 import org.instantlogic.fabric.value.RelationValue;
 import org.instantlogic.fabric.value.RelationValueList;
@@ -378,4 +380,78 @@ public class InstanceMetadata {
 	public void detach() {
 		this.ownerRelationValue.clearOrRemove(instance);
 	}
+	
+	public void deepCopyFrom(Instance from) {
+	  List<Instance> clones = new ArrayList<>();
+    List<Instance> originals = new ArrayList<>();
+    recreateStructure(from, originals, clones);
+    for (int i=0;i<clones.size();i++) {
+      clones.get(i).getMetadata().copyDataFrom(originals.get(i), originals, clones);
+    }
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+  private void recreateStructure(Instance from, List<Instance> originals, List<Instance> clones) {
+    originals.add(from);
+    clones.add(instance);
+    for (Relation relation : getEntity().getRelations()) {
+      if (relation.isOwner()) {
+        ReadOnlyAttributeValue attributeValue = relation.get(instance);
+        if (attributeValue.hasStoredValue()) {
+          if (relation.isMultivalue()) {
+            WriteableAttributeValue originalValues = (WriteableAttributeValue)relation.get(from);
+            WriteableAttributeValue cloneValues = (WriteableAttributeValue)relation.get(instance);
+            for (Instance fromInstance : (Values<? extends Instance>)originalValues.getValue()) {
+              Instance clonedInstance = fromInstance.getMetadata().getEntity().createInstance();
+              cloneValues.setOrAdd(clonedInstance);
+              clonedInstance.getMetadata().recreateStructure(fromInstance, originals, clones);
+            }
+          } else {
+            Instance fromInstance = (Instance)relation.get(from).getValue();
+            Instance clonedInstance = fromInstance.getMetadata().getEntity().createInstance();
+            ((RelationValue)relation.get(instance)).setValue(clonedInstance);
+            clonedInstance.getMetadata().recreateStructure(fromInstance, originals, clones);
+          }
+        }
+      }
+    }
+	}
+
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  private void copyDataFrom(Instance from, List<Instance> originals, List<Instance> clones) {
+    if (from.getMetadata().getEntity() != getEntity()) {
+      throw new RuntimeException("Can only copy from instances of the same Entity");
+    }
+    if (from == instance) {
+      throw new RuntimeException("Cannot copy to self");
+    }
+    for (Attribute attribute : getEntity().getAttributes()) {
+      if (!attribute.isReadOnly()) {
+        if (attribute.isMultivalue()) {
+          WriteableAttributeValue oldAttributeValues = (WriteableAttributeValue)attribute.get(from);
+          WriteableAttributeValue newAttributeValues = (WriteableAttributeValue)attribute.get(instance);
+          for (Object oldValue : (Values)oldAttributeValues.getStoredValue()) {
+            newAttributeValues.setOrAdd(oldValue);
+          }
+        } else {
+          Object oldValue = ((AttributeValue)attribute.get(from)).getStoredValue();
+          ((AttributeValue)attribute.get(instance)).setValue(oldValue);
+        }
+      }
+    }
+    for (Relation relation: getEntity().getRelations()) {
+      if (!relation.isOwner()) {
+        if (relation.isMultivalue()) {
+          WriteableAttributeValue oldAttributeValues = (WriteableAttributeValue)relation.get(from);
+          WriteableAttributeValue newAttributeValues = (WriteableAttributeValue)relation.get(instance);
+          for (Instance oldValue : (Values<Instance>)oldAttributeValues.getStoredValue()) {
+            newAttributeValues.setOrAdd(oldValue);
+          }
+        } else {
+          Instance oldValue = (Instance)((AttributeValue)relation.get(from)).getStoredValue();
+          ((AttributeValue)relation.get(instance)).setValue(oldValue);
+        }
+      }
+    }
+  }
 }

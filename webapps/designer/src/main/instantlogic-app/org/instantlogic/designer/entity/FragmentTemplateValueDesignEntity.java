@@ -28,7 +28,7 @@ public class FragmentTemplateValueDesignEntity extends org.instantlogic.fabric.m
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateValueDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign> $valuesOnFragmentTemplateDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.FragmentTemplateValueDesign, org.instantlogic.designer.FragmentTemplateDesign, org.instantlogic.designer.FragmentTemplateDesign>(
-				"RelationDesign_values", "valuesOnFragmentTemplateDesign", INSTANCE, "valuesOnFragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateValueDesign.class);
+				"reverse-RelationDesign_values", "valuesOnFragmentTemplateDesign", INSTANCE, "valuesOnFragmentTemplateDesign", org.instantlogic.designer.FragmentTemplateValueDesign.class);
 		valuesOnFragmentTemplateDesign = $valuesOnFragmentTemplateDesign;
 		
 		// Phase 2

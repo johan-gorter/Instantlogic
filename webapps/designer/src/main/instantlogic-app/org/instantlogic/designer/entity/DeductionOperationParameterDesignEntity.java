@@ -34,11 +34,11 @@ public class DeductionOperationParameterDesignEntity extends org.instantlogic.fa
 		// Reverse relations
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign> $operationParameterOnDeductionParameterDesign
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.fabric.value.Values<org.instantlogic.designer.DeductionParameterDesign>, org.instantlogic.designer.DeductionParameterDesign>(
-				"RelationDesign_operationParameter", "operationParameterOnDeductionParameterDesign", INSTANCE, "operationParameterOnDeductionParameterDesign", org.instantlogic.designer.DeductionOperationParameterDesign.class);
+				"reverse-RelationDesign_operationParameter", "operationParameterOnDeductionParameterDesign", INSTANCE, "operationParameterOnDeductionParameterDesign", org.instantlogic.designer.DeductionOperationParameterDesign.class);
 		operationParameterOnDeductionParameterDesign = $operationParameterOnDeductionParameterDesign;
 		org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign> $operation
 			= new org.instantlogic.fabric.model.impl.SimpleRelation<org.instantlogic.designer.DeductionOperationParameterDesign, org.instantlogic.designer.DeductionOperationDesign, org.instantlogic.designer.DeductionOperationDesign>(
-				"RelationDesign_parameters_1", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationParameterDesign.class);
+				"reverse-RelationDesign_parameters_1", "operation", INSTANCE, "operation", org.instantlogic.designer.DeductionOperationParameterDesign.class);
 		operation = $operation;
 		
 		// Phase 2

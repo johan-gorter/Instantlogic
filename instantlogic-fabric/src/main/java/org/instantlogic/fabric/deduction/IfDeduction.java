@@ -29,7 +29,7 @@ public class IfDeduction<V> extends Deduction<V> {
 			if (conditionResult.hasValue()) {
 				if (conditionResult.getValue()!=Boolean.FALSE) {
 					return trueValue.execute(context);
-				} else {
+				} else if (falseValue != null){
 					return falseValue.execute(context);
 				}
 			}
