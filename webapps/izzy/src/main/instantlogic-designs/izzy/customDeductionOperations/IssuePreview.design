@@ -1,8 +1,4 @@
-LUEiuif_emabymyn_96b9de4d_70e9: LUEiuif_emabymyn_96b9de4d_70e9:DeductionOperationDesign{
-LUEiuif_emabymyn_96b9de4d_70e9:  name="cut off text"
-LUEiuif_emabymyn_96b9de4d_70e9:  javaClassName="org.instantlogic.example.izzy.deduction.CutOffTextDeduction"
-LUEiuif_emabymyn_96b9de4d_70e9:  inputs+Qnvatpsx_y_sekpj_dc9e8136_f26c:DeductionOperationInputDesign{
-Qnvatpsx_y_sekpj_dc9e8136_f26c:   name="text"
-Qnvatpsx_y_sekpj_dc9e8136_f26c:   diagramPosition="primary"
-LUEiuif_emabymyn_96b9de4d_70e9:  }Qnvatpsx_y_sekpj_dc9e8136_f26c
-LUEiuif_emabymyn_96b9de4d_70e9: }LUEiuif_emabymyn_96b9de4d_70e9
+onOperationDesign_issuePreview: DeductionOperationDesign_issuePreview:DeductionOperationDesign{
+onOperationDesign_issuePreview:  name="issuepreview"
+onOperationDesign_issuePreview:  javaClassName="org.instantlogic.example.izzy.deduction.IssuePreviewDeduction"
+onOperationDesign_issuePreview: }DeductionOperationDesign_issuePreview

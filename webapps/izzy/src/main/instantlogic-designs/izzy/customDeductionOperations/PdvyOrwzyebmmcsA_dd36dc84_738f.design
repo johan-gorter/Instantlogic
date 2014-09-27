@@ -1,0 +1,8 @@
+PdvyOrwzyebmmcsA_dd36dc84_738f: PdvyOrwzyebmmcsA_dd36dc84_738f:DeductionOperationDesign{
+PdvyOrwzyebmmcsA_dd36dc84_738f:  isCustomized=false
+PdvyOrwzyebmmcsA_dd36dc84_738f:  name="cut off text"
+PdvyOrwzyebmmcsA_dd36dc84_738f:  javaClassName="org.instantlogic.example.izzy.deduction.CutOffTextDeduction"
+PdvyOrwzyebmmcsA_dd36dc84_738f:  inputs+QblhtzUlnmflgbiE_3eb42af6_eb83:DeductionOperationInputDesign{
+QblhtzUlnmflgbiE_3eb42af6_eb83:   name="text"
+PdvyOrwzyebmmcsA_dd36dc84_738f:  }QblhtzUlnmflgbiE_3eb42af6_eb83
+PdvyOrwzyebmmcsA_dd36dc84_738f: }PdvyOrwzyebmmcsA_dd36dc84_738f

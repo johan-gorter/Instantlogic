@@ -154,6 +154,13 @@ public class InstanceStorageInfo {
 			list = new ArrayList<>();
 			subStorages.put(relationName, list);
 		}
+		// Make fileName unique
+	  for (InstanceStorageInfo other : list) {
+      if (other.fileName.equalsIgnoreCase(storageInfo.fileName)) {
+        storageInfo.fileName = storageInfo.node.uniqueId+".design";
+        break;
+      }
+    }
 		list.add(storageInfo);
 	}
 
