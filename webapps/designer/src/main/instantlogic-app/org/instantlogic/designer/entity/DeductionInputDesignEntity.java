@@ -9,6 +9,25 @@ public class DeductionInputDesignEntity extends org.instantlogic.fabric.model.En
 	
 	// Deductions
 
+	private static org.instantlogic.fabric.deduction.Deduction createDeduction0() {
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d0 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d0.setAttribute(org.instantlogic.designer.entity.DesignEntity.name);
+		  	org.instantlogic.fabric.deduction.AttributeDeduction d1 = new org.instantlogic.fabric.deduction.AttributeDeduction();
+		    d1.setAttribute(org.instantlogic.designer.entity.DeductionInputDesignEntity.operationInput);
+		  	org.instantlogic.fabric.deduction.SelectedInstanceDeduction d2 = new org.instantlogic.fabric.deduction.SelectedInstanceDeduction();
+		    d2.setOfEntity(org.instantlogic.designer.entity.DeductionInputDesignEntity.INSTANCE);
+		    d0.setInstance(d1);
+		    d1.setInstance(d2);
+		return d0;
+	}
+
+
+	// Title
+	private static final org.instantlogic.fabric.text.TextTemplate title;
+	@Override
+	public org.instantlogic.fabric.text.TextTemplate getTitle() {
+		return title;
+	}
 	
 	// Attributes
 	
@@ -52,6 +71,8 @@ public class DeductionInputDesignEntity extends org.instantlogic.fabric.model.En
 		$deduction.valueClass = org.instantlogic.designer.DeductionDesign.class;
 		$deduction.to = org.instantlogic.designer.entity.DeductionDesignEntity.INSTANCE;
 		$deduction.setReverseRelation(org.instantlogic.designer.entity.DeductionDesignEntity.inputs);
+
+		title = new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add(createDeduction0()).getTextTemplate();
 	}
 
 	@Override
