@@ -82,10 +82,17 @@ public class EngineManager {
     URL customized = customizationsDir.toURI().toURL();
     URL preGenerated = preGeneratedDir.toURI().toURL();
     URLClassLoader classLoader = new URLClassLoader(new URL[]{customized, preGenerated});
-    Class<?> applicationClass = classLoader.loadClass(findApplicationClassName(customizationsDir, preGeneratedDir));
-    logger.info("Application [{}] loaded", name);
-    Application application = (Application) applicationClass.getField("INSTANCE").get(null);
-    application.addCloseableResource(classLoader); //TODO: Untested, this may introduce problems
+    ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
+    Application application;
+    try {
+      Thread.currentThread().setContextClassLoader(classLoader);
+      Class<?> applicationClass = classLoader.loadClass(findApplicationClassName(customizationsDir, preGeneratedDir));
+      logger.info("Application [{}] loaded", name);
+      application = (Application) applicationClass.getField("INSTANCE").get(null);
+      application.addCloseableResource(classLoader); //TODO: Untested, this may introduce problems
+    } finally {
+      Thread.currentThread().setContextClassLoader(oldClassLoader);
+    }
     return registerApplication(application, name);
   }
 

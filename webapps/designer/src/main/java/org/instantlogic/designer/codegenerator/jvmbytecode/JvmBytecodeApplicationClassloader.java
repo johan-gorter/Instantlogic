@@ -65,8 +65,14 @@ public class JvmBytecodeApplicationClassloader extends URLClassLoader {
 
 	public Application getApplication(String rootPackageName, String applicationName) {
 		try {
-			Class<?> applicationClass = loadClass(rootPackageName+"."+capitalizeFirst(applicationName)+"Application");
-			return (Application) applicationClass.getField("INSTANCE").get(null);
+		  ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
+		  try {
+        Thread.currentThread().setContextClassLoader(this);
+  			Class<?> applicationClass = loadClass(rootPackageName+"."+capitalizeFirst(applicationName)+"Application");
+  			return (Application) applicationClass.getField("INSTANCE").get(null);
+		  } finally {
+	      Thread.currentThread().setContextClassLoader(oldClassLoader);
+		  }
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

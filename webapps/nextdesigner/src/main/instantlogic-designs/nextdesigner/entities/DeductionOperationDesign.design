@@ -7,6 +7,8 @@ DataTypeDesign_55:                 dataCategory={"entityName":"DataCategoryDesig
 ttributeDesign_javaClassName_1:   }DataTypeDesign_55
 esign_DeductionOperationDesign:  }AttributeDesign_javaClassName_1
 esign_DeductionOperationDesign:  extendsFrom="EntityDesign_Design"
+esign_DeductionOperationDesign:  dataType=UqxfjyawcycUadmb_5aec02a5_a92d:DataTypeDesign{
+esign_DeductionOperationDesign:  }UqxfjyawcycUadmb_5aec02a5_a92d
 esign_DeductionOperationDesign:  relations+RelationDesign_inputs_2:RelationDesign{
 RelationDesign_inputs_2:          name="inputs"
 RelationDesign_inputs_2:          autoCreate=false

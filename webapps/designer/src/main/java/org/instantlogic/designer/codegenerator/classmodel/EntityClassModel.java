@@ -153,6 +153,8 @@ public class EntityClassModel extends AbstractClassModel {
 		public ValueModel value;
 		public boolean multivalue;
 		public String attributeName;
+		public String attributeEntityClassName;
+    public String itemClassName;
 		
 		public ValueModel getValue() {
 			return value;

@@ -33,6 +33,8 @@ DeductionSchemeDesign_29:          output="DeductionDesign_57"
 AttributeDesign_multivalue_1:     }DeductionSchemeDesign_29
 _DeductionOperationInputDesign:  }AttributeDesign_multivalue_1
 _DeductionOperationInputDesign:  extendsFrom="EntityDesign_Design"
+_DeductionOperationInputDesign:  dataType=EjgeinAacydEifzh_a8f1b125_712c:DataTypeDesign{
+_DeductionOperationInputDesign:  }EjgeinAacydEifzh_a8f1b125_712c
 _DeductionOperationInputDesign:  relations+RelationDesign_dataType_2:RelationDesign{
 RelationDesign_dataType_2:        name="dataType"
 RelationDesign_dataType_2:        autoCreate=false

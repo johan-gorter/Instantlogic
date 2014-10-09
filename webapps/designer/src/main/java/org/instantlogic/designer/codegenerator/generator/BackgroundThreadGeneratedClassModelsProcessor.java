@@ -39,6 +39,8 @@ public class BackgroundThreadGeneratedClassModelsProcessor implements GeneratedC
 						return;
 					}
 					logger.error("Exception in background "+name, e);
+				} catch (Error e) {
+          logger.error("Error in background "+name, e);
 				}
 			}
 		}

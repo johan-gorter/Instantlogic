@@ -59,6 +59,8 @@ DataTypeDesign_69:                 multivalue=false
 tionDesign_staticInstanceValue:   }DataTypeDesign_69
 tionDesign_staticInstanceValue:   to="EntityDesign_StaticInstanceDesign"
 esign_DeductionParameterDesign:  }RelationDesign_staticInstanceValue
+esign_DeductionParameterDesign:  dataType=VksOmpAslm_dgenl_b4393ac8_8d32:DataTypeDesign{
+esign_DeductionParameterDesign:  }VksOmpAslm_dgenl_b4393ac8_8d32
 esign_DeductionParameterDesign:  title=TextTemplateDesign_43:TextTemplateDesign{
 TextTemplateDesign_43:            untranslated+StringTemplateDesign_43:StringTemplateDesign{
 StringTemplateDesign_43:           deduction=DeductionSchemeDesign_31:DeductionSchemeDesign{

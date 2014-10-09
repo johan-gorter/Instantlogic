@@ -187,15 +187,20 @@ public class EntityGenerator extends AbstractGenerator<EntityClassModel> {
 			staticInstance.javaIdentifier = staticInstanceDesign.getJavaIdentifier();
 			staticInstance.description = TextGenerator.generate(staticInstanceDesign.getDescription(), model);
 			for (StaticInstanceValueDesign valueDesign: staticInstanceDesign.getValues()) {
-				StaticInstanceValue value = new StaticInstanceValue();
-				value.attributeName = valueDesign.getAttribute().getTechnicalNameCapitalized();
-				value.multivalue = valueDesign.getAttribute().getDataType().getMultivalue();
-				if (valueDesign.getRelationValue()!=null) {
-					value.value = new StaticFieldValueModel(model.rootPackageName + "."+ valueDesign.getRelationValue().getEntity().getTechnicalNameCapitalized(), valueDesign.getRelationValue().getJavaIdentifier(), "org.instantlogic.fabric.model.Relation");
-				} else {
-					value.value = new ConstantValueModel(valueDesign.getValue());
-				}
-				staticInstance.values.add(value);
+			  if (valueDesign.getAttribute()!=null && (valueDesign.getValue()!=null || valueDesign.getRelationValue() != null)) {
+	        StaticInstanceValue value = new StaticInstanceValue();
+	        value.attributeName = valueDesign.getAttribute().getTechnicalNameCapitalized();
+          value.itemClassName = valueDesign.getAttribute().getDataType().getJavaClassName();
+          value.attributeEntityClassName = model.rootPackageName+"."+valueDesign.getAttribute().getBelongsToEntity().getTechnicalNameCapitalized();
+	        value.multivalue = valueDesign.getAttribute().getDataType().getMultivalue();
+	        if (valueDesign.getRelationValue()!=null) {
+	          value.value = new StaticFieldValueModel(model.rootPackageName + "."+ valueDesign.getRelationValue().getEntity().getTechnicalNameCapitalized(), valueDesign.getRelationValue().getJavaIdentifier(), 
+	              model.rootPackageName + "."+ valueDesign.getRelationValue().getEntity().getTechnicalNameCapitalized());
+	        } else {
+	          value.value = new ConstantValueModel(valueDesign.getValue());
+	        }
+	        staticInstance.values.add(value);
+			  }
 			}
 			model.staticInstances.add(staticInstance);
 		}

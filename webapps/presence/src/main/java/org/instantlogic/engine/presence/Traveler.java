@@ -283,5 +283,12 @@ public class Traveler extends AbstractTraveler implements HistoryExtension {
       placeOutdatedObserver.remove();
       placeOutdatedObserver = null;
     }
+    for (Subscription subscription : subscriptions) {
+      subscription.placeOutdated = true;
+      if (subscription.placeOutdatedObserver!=null) {
+        subscription.placeOutdatedObserver.remove();
+        subscription.placeOutdatedObserver = null;
+      }
+    }
   }
 }

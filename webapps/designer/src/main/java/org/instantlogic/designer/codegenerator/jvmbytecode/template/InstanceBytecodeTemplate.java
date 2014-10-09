@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel;
 import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstance;
+import org.instantlogic.designer.codegenerator.classmodel.EntityClassModel.StaticInstanceValue;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
@@ -19,7 +20,7 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 		ClassWriter cwriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 
 		ClassVisitor cw;
-		if (TRACE) { // && "FragmentTemplateDesign".equals(model.name)) {
+		if (TRACE) { // || "DeductionOperationDesign".equals(model.name)) {
 			cw = new TraceClassVisitor(cwriter, new ASMifier(), new PrintWriter(System.out));
 		} else {
 			cw=cwriter;
@@ -112,6 +113,20 @@ public class InstanceBytecodeTemplate extends AbstractBytecodeTemplate {
 			
 			// Phase 2
 			for (EntityClassModel.StaticInstance staticInstance : model.staticInstances) {
+
+			  for (StaticInstanceValue value : staticInstance.values) {
+	        // ${staticInstance.javaIdentifier}.<#if value.multivalue>addTo<#else>set</#if>${value.attributeName}(${value.value.asJavaTemplate});
+          mv.visitFieldInsn(GETSTATIC, className, staticInstance.javaIdentifier, "L"+concreteClassName+";");
+          value.getValue().writeJvmBytecode(mv);
+          if (value.multivalue) {
+            mv.visitMethodInsn(INVOKEVIRTUAL, concreteClassName, "addTo"+value.attributeName, "(L"+value.itemClassName.replace(".","/")+";)L"+value.attributeEntityClassName.replace(".", "/")+";");
+          } else {
+//          mv.visitMethodInsn(INVOKEVIRTUAL, "org/instantlogic/example/izzy/IssueStatus", "setPrio", "(Ljava/lang/Double;)Lorg/instantlogic/example/izzy/IssueStatus;", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, concreteClassName, "set"+value.attributeName, "(L"+value.itemClassName.replace(".","/")+";)L"+value.attributeEntityClassName.replace(".", "/")+";");
+          }
+          mv.visitInsn(POP);          
+			  }
+			  
 				if (staticInstance.getDescription()!=null) {
 					// draft.getMetadata().setStaticDescription(new org.instantlogic.fabric.text.TextTemplate().getUntranslated().add("Draft").getTextTemplate());
 					mv.visitFieldInsn(GETSTATIC, className, staticInstance.javaIdentifier, "L"+concreteClassName+";");
