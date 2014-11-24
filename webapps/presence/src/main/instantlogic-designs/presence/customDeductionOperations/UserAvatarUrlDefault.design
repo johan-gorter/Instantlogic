@@ -1,0 +1,4 @@
+ionDesign_userAvatarUrlDefault: DeductionOperationDesign_userAvatarUrlDefault:DeductionOperationDesign{
+ionDesign_userAvatarUrlDefault:  name="userAvatarUrlDefault"
+ionDesign_userAvatarUrlDefault:  javaClassName="org.instantlogic.engine.presence.deduction.UserAvatarUrlDefaultDeduction"
+ionDesign_userAvatarUrlDefault: }DeductionOperationDesign_userAvatarUrlDefault

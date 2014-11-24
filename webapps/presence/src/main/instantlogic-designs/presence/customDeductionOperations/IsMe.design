@@ -1,0 +1,4 @@
+DeductionOperationDesign_isMe: DeductionOperationDesign_isMe:DeductionOperationDesign{
+DeductionOperationDesign_isMe:  name="isMe"
+DeductionOperationDesign_isMe:  javaClassName="org.instantlogic.engine.presence.deduction.IsMeDeduction"
+DeductionOperationDesign_isMe: }DeductionOperationDesign_isMe
