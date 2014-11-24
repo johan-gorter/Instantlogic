@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Workbench</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="mithril-0.1.24.js"></script>
+    <script src="zepto.js"></script>
+    <script src="channel.js"></script>
+    <script src="presence-fragments.js"></script>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="presence.css" />
+  </head>
+  <body>
+	<textarea rows="20" cols="120" id="input" style="position:absolute;margin:0;left:0;top:30px;bottom:30px;width:500px;">{"type":"dummy", "id":"0"}
+	</textarea>
+	<button id="init" style="position:absolute;display:block;left:0;bottom:0; width:200px;height:30px;">Init</button>
+	<button id="update" style="position:absolute;display:block;left:200px;bottom:0; width:200px;height:30px;">Update</button>
+	<button id="destroy" style="position:absolute;display:block;left:400px;bottom:0; width:100px;height:30px;">Destroy</button>
+    <div id="testarea" style="position:absolute;left:500px;top:30px;right:0;bottom:0;border:dotted 10px #888888;">
+    </div>
+
+    <script>
+      $(function(){
+        
+        var travelerId = "" + Math.floor(Math.random() * 100000000000);
+        var channel = window.createChannel("Designer", "NextDesigner", travelerId);
+        channel.enableAutoRefresh();
+        
+        var context = {
+          notify: function(eventName, argsArray) {
+            console.log(eventName, argsArray);
+            alert(eventName);
+	      }
+        };
+
+        var fragmentTypes = {
+            dummy: function(context, data) {
+              return m("div", { "class": "dummy" }, [m("div", ["D"]), m("div", ["U"]), m("div", ["M"]), m("div", ["M"]), m("div", ["Y"])]);
+            },
+            Group: function(context, data) {
+              return data.content.map(renderFragment.bind(undefined, context));
+            }
+        }
+        
+        var renderFragment = function(context, data) {
+          var fragmentType = fragmentTypes[data.type];
+          if (!fragmentType) {
+            return m("span", {"class":"static-text warning"}, ["Fragment-type is not registered: "+data.type])
+          }
+          return fragmentType(context, data);
+        }
+        
+        addPresenceControls(fragmentTypes, renderFragment);
+        
+   		var input = $("#input");
+   		var output = $("#testarea");
+   		if (window.localStorage) {
+   		  if (window.localStorage.workbenchInput) {
+            input.val(window.localStorage.workbenchInput);
+   		  }
+   		  input.on("input", function(){
+   		    window.localStorage.workbenchInput = input.val();
+   		  });
+   		}
+   		$("#init").on("click", function(){
+   		  m.module(output[0], {
+   		    controller: function() {
+   		      return {
+   		        getData: function(){
+   		          var data = JSON.parse(input.val());
+   		          return data;
+   		        }
+   		      }
+   		    }, 
+   		    view: function(ctrl){
+   		      return renderFragment(context, ctrl.getData());
+   		    }
+   		  });
+   		});
+   		$("#update").on("click", function(){
+   		});
+   		$("#destroy").on("click", function(){
+   		});
+      });
+    </script>
+  </body>
+</html>
