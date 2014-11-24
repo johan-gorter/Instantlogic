@@ -1,4 +1,0 @@
-perationDesign_userNameDefault: DeductionOperationDesign_userNameDefault:DeductionOperationDesign{
-perationDesign_userNameDefault:  name="userNameDefault"
-perationDesign_userNameDefault:  javaClassName="org.instantlogic.engine.presence.deduction.UserNameDefaultDeduction"
-perationDesign_userNameDefault: }DeductionOperationDesign_userNameDefault
