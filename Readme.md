@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/johan-gorter/Instantlogic.png?branch=master)](https://travis-ci.org/johan-gorter/Instantlogic)
-
 # Instantlogic
 Instantlogic is an experimental framework for creating real-time, collaborative web applications. See http://instantlogic.org.
 
