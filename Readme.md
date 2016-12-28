@@ -1,6 +1,3 @@
-# Instantlogic
-Instantlogic is an experimental framework for creating real-time, collaborative web applications. See http://instantlogic.org.
-
 ## Build instructions
 
 1. Do a maven build using 'mvn install' (use 'install' because a maven plugin is built that will be used later in the build)
